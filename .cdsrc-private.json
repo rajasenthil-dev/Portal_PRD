@@ -1,0 +1,36 @@
+{
+  "requires": {
+    "[hybrid]": {
+      "db": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.us20.hana.ondemand.com",
+          "org": "McKesson Corporation_discovery-sunrise",
+          "space": "Datasphere_Dev",
+          "instance": "mck-portal-ds-db",
+          "key": "mck-portal-ds-db-key",
+          "resolved": false
+        },
+        "kind": "hana-cloud",
+        "vcap": {
+          "name": "db"
+        }
+      },
+      "auth": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.us20.hana.ondemand.com",
+          "org": "McKesson Corporation_discovery-sunrise",
+          "space": "Datasphere_Dev",
+          "instance": "mck-portal-auth",
+          "key": "default",
+          "resolved": false
+        },
+        "kind": "xsuaa-auth",
+        "vcap": {
+          "name": "auth"
+        }
+      }
+    }
+  }
+}
