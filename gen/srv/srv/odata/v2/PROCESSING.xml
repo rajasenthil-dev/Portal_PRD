@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="HTML5" Namespace="com.sap.vocabularies.HTML5.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="PROCESSING" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Annotation Term="Core.Links">
+        <Collection>
+          <Record>
+            <PropertyValue Property="rel" String="author"/>
+            <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+          </Record>
+        </Collection>
+      </Annotation>
+      <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="RETURNS" EntityType="PROCESSING.RETURNS"/>
+        <EntitySet Name="RETCUST" EntityType="PROCESSING.RETCUST"/>
+        <EntitySet Name="RETRGA" EntityType="PROCESSING.RETRGA"/>
+        <EntitySet Name="RETREASON" EntityType="PROCESSING.RETREASON"/>
+        <EntitySet Name="SHIPPINGHISTORY" EntityType="PROCESSING.SHIPPINGHISTORY"/>
+        <EntitySet Name="SHINVOICE" EntityType="PROCESSING.SHINVOICE"/>
+        <EntitySet Name="SHCUSTOMER" EntityType="PROCESSING.SHCUSTOMER"/>
+        <EntitySet Name="SHCARRIER" EntityType="PROCESSING.SHCARRIER"/>
+        <EntitySet Name="SHTRACKING" EntityType="PROCESSING.SHTRACKING"/>
+        <EntitySet Name="SHSHIPTO" EntityType="PROCESSING.SHSHIPTO"/>
+        <EntitySet Name="OPENORDERS" EntityType="PROCESSING.OPENORDERS"/>
+        <EntitySet Name="OOPRODDESC" EntityType="PROCESSING.OOPRODDESC"/>
+        <EntitySet Name="OOSHIPTO" EntityType="PROCESSING.OOSHIPTO"/>
+        <EntitySet Name="OOCUST" EntityType="PROCESSING.OOCUST"/>
+        <EntitySet Name="OOPROVINCE" EntityType="PROCESSING.OOPROVINCE"/>
+        <EntitySet Name="BACKORDERS" EntityType="PROCESSING.BACKORDERS"/>
+        <EntitySet Name="BOBILLTO" EntityType="PROCESSING.BOBILLTO"/>
+        <EntitySet Name="BOSHIPTO" EntityType="PROCESSING.BOSHIPTO"/>
+        <EntitySet Name="BOPRODUCTDESC" EntityType="PROCESSING.BOPRODUCTDESC"/>
+      </EntityContainer>
+      <EntityType Name="RETURNS">
+        <Key>
+          <PropertyRef Name="VBELN"/>
+        </Key>
+        <Property Name="VKORG" Type="Edm.String" MaxLength="4"/>
+        <Property Name="VBELN" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="NETWR" Type="Edm.Decimal" Precision="15" Scale="2"/>
+        <Property Name="AUDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10"/>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+        <Property Name="ERDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="REGIO" Type="Edm.String" MaxLength="3"/>
+        <Property Name="AUGRU" Type="Edm.String" MaxLength="3"/>
+        <Property Name="VGBEL" Type="Edm.String" MaxLength="10"/>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35"/>
+      </EntityType>
+      <EntityType Name="RETCUST">
+        <Key>
+          <PropertyRef Name="KUNNR"/>
+        </Key>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="RETRGA">
+        <Key>
+          <PropertyRef Name="BSTKD"/>
+        </Key>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="RETREASON">
+        <Key>
+          <PropertyRef Name="AUGRU"/>
+        </Key>
+        <Property Name="AUGRU" Type="Edm.String" MaxLength="3" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="SHIPPINGHISTORY">
+        <Key>
+          <PropertyRef Name="VBELN"/>
+        </Key>
+        <Property Name="CARRIER" Type="Edm.String" MaxLength="10"/>
+        <Property Name="VKORG" Type="Edm.String" MaxLength="4"/>
+        <Property Name="KUNAG" Type="Edm.String" MaxLength="10"/>
+        <Property Name="WADAT_IST" Type="Edm.String" MaxLength="8"/>
+        <Property Name="LFDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="LFUHR" Type="Edm.String" MaxLength="6"/>
+        <Property Name="VBELN" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="PSTLZ" Type="Edm.String" MaxLength="10"/>
+        <Property Name="TRK_DLVTO" Type="Edm.String" MaxLength="40"/>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10"/>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+        <Property Name="TRACKN" Type="Edm.String" MaxLength="35"/>
+        <Property Name="MFRNR" Type="Edm.String" MaxLength="10"/>
+        <Property Name="CAL_BILL_ITM_COUNT" Type="Edm.Int32"/>
+        <Property Name="FKIMG" Type="Edm.Decimal" Precision="18" Scale="3"/>
+        <Property Name="MEINS" Type="Edm.String" MaxLength="3"/>
+      </EntityType>
+      <EntityType Name="SHINVOICE">
+        <Key>
+          <PropertyRef Name="VBELN"/>
+        </Key>
+        <Property Name="VBELN" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="SHCUSTOMER">
+        <Key>
+          <PropertyRef Name="KUNAG"/>
+        </Key>
+        <Property Name="KUNAG" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="SHCARRIER">
+        <Key>
+          <PropertyRef Name="CARRIER"/>
+        </Key>
+        <Property Name="CARRIER" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="SHTRACKING">
+        <Key>
+          <PropertyRef Name="TRACKN"/>
+        </Key>
+        <Property Name="TRACKN" Type="Edm.String" MaxLength="35" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="SHSHIPTO">
+        <Key>
+          <PropertyRef Name="KUNNR"/>
+        </Key>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="OPENORDERS">
+        <Key>
+          <PropertyRef Name="KUNNR"/>
+          <PropertyRef Name="VBELN"/>
+        </Key>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="VDATU" Type="Edm.String" MaxLength="10"/>
+        <Property Name="CAL_NAME" Type="Edm.String" MaxLength="70"/>
+        <Property Name="VBELN" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="ERDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="GBSTK" Type="Edm.String" MaxLength="1"/>
+        <Property Name="MATNR" Type="Edm.String" MaxLength="40"/>
+        <Property Name="MAKTX" Type="Edm.String" MaxLength="40"/>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35"/>
+        <Property Name="KWMENG" Type="Edm.Decimal" Precision="20" Scale="3"/>
+        <Property Name="KUNWE_ANA" Type="Edm.String" MaxLength="10"/>
+        <Property Name="REGIO" Type="Edm.String" MaxLength="3"/>
+        <Property Name="MFRNR" Type="Edm.String" MaxLength="10"/>
+      </EntityType>
+      <EntityType Name="OOPRODDESC">
+        <Key>
+          <PropertyRef Name="MAKTX"/>
+        </Key>
+        <Property Name="MAKTX" Type="Edm.String" MaxLength="40" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="OOSHIPTO">
+        <Key>
+          <PropertyRef Name="KUNWE_ANA"/>
+        </Key>
+        <Property Name="KUNWE_ANA" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="OOCUST">
+        <Key>
+          <PropertyRef Name="KUNNR"/>
+        </Key>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="OOPROVINCE">
+        <Key>
+          <PropertyRef Name="REGIO"/>
+        </Key>
+        <Property Name="REGIO" Type="Edm.String" MaxLength="3" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="BACKORDERS">
+        <Key>
+          <PropertyRef Name="KUNRE_ANA"/>
+          <PropertyRef Name="VKORG"/>
+          <PropertyRef Name="VBELN"/>
+          <PropertyRef Name="MATNR"/>
+          <PropertyRef Name="KUNWE_ANA"/>
+        </Key>
+        <Property Name="DATE_DIFF" Type="Edm.Int32"/>
+        <Property Name="KUNRE_ANA" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="UDATE" Type="Edm.String" MaxLength="8"/>
+        <Property Name="VKORG" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35"/>
+        <Property Name="EXTENSION" Type="Edm.Decimal" Precision="38" Scale="21"/>
+        <Property Name="VBELN" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="ERDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="UNIT_PRICE" Type="Edm.Decimal" Precision="30" Scale="18"/>
+        <Property Name="MATNR" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="MAKTX" Type="Edm.String" MaxLength="40"/>
+        <Property Name="CAL_CONFIRMED_QTY" Type="Edm.Decimal" Precision="18" Scale="3"/>
+        <Property Name="KUNWE_ANA" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+        <Property Name="MFRNR" Type="Edm.String" MaxLength="10"/>
+      </EntityType>
+      <EntityType Name="BOBILLTO">
+        <Key>
+          <PropertyRef Name="KUNRE_ANA"/>
+        </Key>
+        <Property Name="KUNRE_ANA" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="BOSHIPTO">
+        <Key>
+          <PropertyRef Name="KUNWE_ANA"/>
+        </Key>
+        <Property Name="KUNWE_ANA" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="BOPRODUCTDESC">
+        <Key>
+          <PropertyRef Name="MAKTX"/>
+        </Key>
+        <Property Name="MAKTX" Type="Edm.String" MaxLength="40" Nullable="false"/>
+      </EntityType>
+      <Annotations Target="PROCESSING.RETURNS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>BSTKD</PropertyPath>
+            <PropertyPath>KUNNR</PropertyPath>
+            <PropertyPath>AUGRU</PropertyPath>
+            <PropertyPath>ERDAT</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ERDAT"/>
+              <PropertyValue Property="Label" String="Date Entered"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNNR"/>
+              <PropertyValue Property="Label" String="Customer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NAME1"/>
+              <PropertyValue Property="Label" String="Customer Name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="REGIO"/>
+              <PropertyValue Property="Label" String="Province"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BSTKD"/>
+              <PropertyValue Property="Label" String="RGA #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VGBEL"/>
+              <PropertyValue Property="Label" String="Reference #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="AUGRU"/>
+              <PropertyValue Property="Label" String="Reason"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VBELN"/>
+              <PropertyValue Property="Label" String="Credit #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="AUDAT"/>
+              <PropertyValue Property="Label" String="Credit Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NETWR"/>
+              <PropertyValue Property="Label" String="Credit Amt $"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VKORG"/>
+              <PropertyValue Property="Label" String="Co."/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/VKORG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Co."/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/VBELN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Credit #"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/NETWR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Credit Amt"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/AUDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Credit Date"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/KUNNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="RETCUST"/>
+            <PropertyValue Property="Label" String="Customer"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNNR"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNNR"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Customer"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/NAME1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/ERDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Date Entered"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/REGIO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Province"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/AUGRU" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="RETREASON"/>
+            <PropertyValue Property="Label" String="Reason"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="AUGRU"/>
+                  <PropertyValue Property="ValueListProperty" String="AUGRU"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Reason"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/VGBEL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Reference #"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.RETURNS/BSTKD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="RETRGA"/>
+            <PropertyValue Property="Label" String="RGA #"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="BSTKD"/>
+                  <PropertyValue Property="ValueListProperty" String="BSTKD"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="RGA #"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>VBELN</PropertyPath>
+            <PropertyPath>KUNAG</PropertyPath>
+            <PropertyPath>KUNNR</PropertyPath>
+            <PropertyPath>WADAT_IST</PropertyPath>
+            <PropertyPath>LFDAT</PropertyPath>
+            <PropertyPath>TRACKN</PropertyPath>
+            <PropertyPath>CARRIER</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VBELN"/>
+              <PropertyValue Property="Label" String="Ivoince #"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNAG"/>
+              <PropertyValue Property="Label" String="Customer"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNNR"/>
+              <PropertyValue Property="Label" String="Ship To"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NAME1"/>
+              <PropertyValue Property="Label" String="Ship To Name"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="PSTLZ"/>
+              <PropertyValue Property="Label" String="Postal Code"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="WADAT_IST"/>
+              <PropertyValue Property="Label" String="Date Shipped"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CARRIER"/>
+              <PropertyValue Property="Label" String="Carrier"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="TRACKN"/>
+              <PropertyValue Property="Label" String="Tracking #"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="LFDAT"/>
+              <PropertyValue Property="Label" String="Delivery Date"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="LFUHR"/>
+              <PropertyValue Property="Label" String="Delivery Time"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="TRK_DLVTO"/>
+              <PropertyValue Property="Label" String="Recieved"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_BILL_ITM_COUNT"/>
+              <PropertyValue Property="Label" String="Recieved"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="FKIMG"/>
+              <PropertyValue Property="Label" String="Item Amount"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MEINS"/>
+              <PropertyValue Property="Label" String="Unit of Measure"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/CARRIER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SHCARRIER"/>
+            <PropertyValue Property="Label" String="Carrier"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="CARRIER"/>
+                  <PropertyValue Property="ValueListProperty" String="CARRIER"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Carrier"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/VKORG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Co."/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/KUNAG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SHCUSTOMER"/>
+            <PropertyValue Property="Label" String="Customer"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNAG"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNAG"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Customer"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/WADAT_IST" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Date Shipped"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/LFDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Delivery Date"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/LFUHR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Delivery Time"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/VBELN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SHINVOICE"/>
+            <PropertyValue Property="Label" String="Customer"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="VBELN"/>
+                  <PropertyValue Property="ValueListProperty" String="VBELN"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Invoice Number"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/PSTLZ" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Postal Code"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/TRK_DLVTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Received"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/KUNNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SHSHIPTO"/>
+            <PropertyValue Property="Label" String="Ship To"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNNR"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNNR"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Ship To"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/NAME1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Ship To Name"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/TRACKN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SHTRACKING"/>
+            <PropertyValue Property="Label" String="Tracking #"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="TRACKN"/>
+                  <PropertyValue Property="ValueListProperty" String="TRACKN"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Tracking #"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/MFRNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Manufacturer Number"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/CAL_BILL_ITM_COUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Label" String="Item Count"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/FKIMG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Invoiced Quanity"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.SHIPPINGHISTORY/MEINS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Label" String="Unit of Measure"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>KUNNR</PropertyPath>
+            <PropertyPath>KUNWE_ANA</PropertyPath>
+            <PropertyPath>REGIO</PropertyPath>
+            <PropertyPath>MAKTX</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VBELN"/>
+              <PropertyValue Property="Label" String="Order #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BSTKD"/>
+              <PropertyValue Property="Label" String="Purchase Order"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MATNR"/>
+              <PropertyValue Property="Label" String="Product"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MAKTX"/>
+              <PropertyValue Property="Label" String="Product Desc"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KWMENG"/>
+              <PropertyValue Property="Label" String="Quantity"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ERDAT"/>
+              <PropertyValue Property="Label" String="Order Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VDATU"/>
+              <PropertyValue Property="Label" String="Delivery By Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="GBSTK"/>
+              <PropertyValue Property="Label" String="Order Status"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNNR"/>
+              <PropertyValue Property="Label" String="Customer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNWE_ANA"/>
+              <PropertyValue Property="Label" String="Ship To"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_NAME"/>
+              <PropertyValue Property="Label" String="Name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="REGIO"/>
+              <PropertyValue Property="Label" String="Province"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MFRNR"/>
+              <PropertyValue Property="Label" String="Manufacturer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/KUNNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="OOCUST"/>
+            <PropertyValue Property="Label" String="Warehouse/Status"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNNR"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNNR"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Customer"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/VDATU" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Delivery By Date"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/CAL_NAME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/VBELN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Order #"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/ERDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Order Date"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/GBSTK" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Order Status"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/MATNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Product"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/MAKTX" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="OOPRODDESC"/>
+            <PropertyValue Property="Label" String="Warehouse/Status"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="MAKTX"/>
+                  <PropertyValue Property="ValueListProperty" String="MAKTX"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Product Desc"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/BSTKD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Purchase Order"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/KWMENG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Quantity"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/KUNWE_ANA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="OOSHIPTO"/>
+            <PropertyValue Property="Label" String="Warehouse/Status"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNWE_ANA"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNWE_ANA"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Ship To"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/REGIO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="OOPROVINCE"/>
+            <PropertyValue Property="Label" String="Warehouse/Status"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="REGIO"/>
+                  <PropertyValue Property="ValueListProperty" String="REGIO"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Province"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.OPENORDERS/MFRNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Manufacturer"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>MAKTX</PropertyPath>
+            <PropertyPath>KUNRE_ANA</PropertyPath>
+            <PropertyPath>KUNWE_ANA</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VBELN"/>
+              <PropertyValue Property="Label" String="Order #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BSTKD"/>
+              <PropertyValue Property="Label" String="Customer PO"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ERDAT"/>
+              <PropertyValue Property="Label" String="Order Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="DATE_DIFF"/>
+              <PropertyValue Property="Label" String="Age"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="UDATE"/>
+              <PropertyValue Property="Label" String="Cancel Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MATNR"/>
+              <PropertyValue Property="Label" String="Product"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MAKTX"/>
+              <PropertyValue Property="Label" String="Product Desc"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_CONFIRMED_QTY"/>
+              <PropertyValue Property="Label" String="Quantity"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="UNIT_PRICE"/>
+              <PropertyValue Property="Label" String="Price"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="EXTENSION"/>
+              <PropertyValue Property="Label" String="Extension"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNRE_ANA"/>
+              <PropertyValue Property="Label" String="Bill To"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNWE_ANA"/>
+              <PropertyValue Property="Label" String="Ship To"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NAME1"/>
+              <PropertyValue Property="Label" String="Ship To Name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VKORG"/>
+              <PropertyValue Property="Label" String="Co."/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MFRNR"/>
+              <PropertyValue Property="Label" String="Manufacturer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/DATE_DIFF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Age"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/KUNRE_ANA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="BOBILLTO"/>
+            <PropertyValue Property="Label" String="Bill To"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNRE_ANA"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNRE_ANA"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Bill To"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/UDATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Cancel Date"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/VKORG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Co."/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/BSTKD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Customer PO"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/EXTENSION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Extension"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/VBELN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Order #"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/ERDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Order Date"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/UNIT_PRICE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Price"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/MATNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Product"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/MAKTX" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="BOPRODUCTDESC"/>
+            <PropertyValue Property="Label" String="Product Description"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="MAKTX"/>
+                  <PropertyValue Property="ValueListProperty" String="MAKTX"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Product Desc"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/CAL_CONFIRMED_QTY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Quantity"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/KUNWE_ANA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="BOSHIPTO"/>
+            <PropertyValue Property="Label" String="Bill To Name"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNWE_ANA"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNWE_ANA"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Ship To"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/NAME1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Ship To Name"/>
+      </Annotations>
+      <Annotations Target="PROCESSING.BACKORDERS/MFRNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Manufacturer"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

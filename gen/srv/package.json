@@ -1,0 +1,64 @@
+{
+  "name": "mck-portal",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.13.5",
+    "@sap/cds-dk": "latest",
+    "@sap/cds": "^8",
+    "express": "^4",
+    "@sap/xssec": "^4",
+    "@cap-js/hana": "^1"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "rimraf": "^5.0.5",
+    "@sap/cds-dk": "^8",
+    "@sap/ux-specification": "UI5-1.129"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch": "cds watch --profile hybrid",
+    "watch-poc-app": "cds watch --open poc-app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy mck-portal --delete-services --delete-service-keys --delete-service-brokers",
+    "watch-project426": "cds watch --open project426/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-itemmas": "cds watch --open itemmas/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-dude": "cds watch --open dude/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-shiphis": "cds watch --open shiphis/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-pricelist": "cds watch --open pricelist/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-cashjour": "cds watch --open cashjour/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-inv-status": "cds watch --open inv-status/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-inv-audit-trail": "cds watch --open inv-audit-trail/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-openorders": "cds watch --open openorders/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-returns": "cds watch --open returns/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-customermaster": "cds watch --open customermaster/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-inv-bylot": "cds watch --open inv-bylot/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-invsnapshot": "cds watch --open invsnapshot/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-invval": "cds watch --open invval/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-invoicehis": "cds watch --open invoicehis/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-openar": "cds watch --open openar/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-salesbycus": "cds watch --open salesbycus/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-bckorders": "cds watch --open bckorders/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "hana": {
+      "deploy-format": "hdbtable",
+      "skip-generation": {
+        "hdbview": true
+      }
+    },
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "auth": "xsuaa",
+      "html5-repo": true
+    }
+  }
+}

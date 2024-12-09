@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="HTML5" Namespace="com.sap.vocabularies.HTML5.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="FINANCE" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Annotation Term="Core.Links">
+        <Collection>
+          <Record>
+            <PropertyValue Property="rel" String="author"/>
+            <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+          </Record>
+        </Collection>
+      </Annotation>
+      <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="OPENAR" EntityType="FINANCE.OPENAR"/>
+        <EntitySet Name="OPENARCUSTOMER" EntityType="FINANCE.OPENARCUSTOMER"/>
+        <EntitySet Name="CASHJOURNAL" EntityType="FINANCE.CASHJOURNAL"/>
+        <EntitySet Name="BLARTS" EntityType="FINANCE.BLARTS"/>
+        <EntitySet Name="BILL_TOS" EntityType="FINANCE.BILL_TOS"/>
+      </EntityContainer>
+      <EntityType Name="OPENAR">
+        <Key>
+          <PropertyRef Name="BELNR"/>
+          <PropertyRef Name="BLART"/>
+        </Key>
+        <Property Name="CAL_1_30" Type="Edm.Decimal" Precision="24" Scale="2"/>
+        <Property Name="CAL_31_60" Type="Edm.Decimal" Precision="24" Scale="2"/>
+        <Property Name="CAL_61_90" Type="Edm.Decimal" Precision="24" Scale="2"/>
+        <Property Name="CAL_AGE" Type="Edm.Int32"/>
+        <Property Name="TSL" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="VKORG" Type="Edm.String" MaxLength="4"/>
+        <Property Name="CREDIT_LIMIT" Type="Edm.Decimal" Precision="15" Scale="2"/>
+        <Property Name="CAL_CURRENT" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="BILL_TO" Type="Edm.String" MaxLength="10"/>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35"/>
+        <Property Name="NETDT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="BELNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="FKDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="ZTERM" Type="Edm.String" MaxLength="4"/>
+        <Property Name="NETWR" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="CAL_OVER_90" Type="Edm.Decimal" Precision="24" Scale="2"/>
+        <Property Name="STORE_SHIP_TO" Type="Edm.String" MaxLength="10"/>
+        <Property Name="BLART" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="MFRNR" Type="Edm.String" MaxLength="10"/>
+      </EntityType>
+      <EntityType Name="OPENARCUSTOMER">
+        <Key>
+          <PropertyRef Name="NAME1"/>
+        </Key>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="CASHJOURNAL">
+        <Key>
+          <PropertyRef Name="VBELN"/>
+          <PropertyRef Name="BUKRS"/>
+          <PropertyRef Name="BELNR"/>
+          <PropertyRef Name="RLDNR"/>
+          <PropertyRef Name="GJAHR"/>
+        </Key>
+        <Property Name="BILL_TO" Type="Edm.String" MaxLength="10"/>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+        <Property Name="CAL_CASH_RECEIVED" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="VKORG" Type="Edm.String" MaxLength="4"/>
+        <Property Name="BKTXT" Type="Edm.String" MaxLength="25"/>
+        <Property Name="SGTXT" Type="Edm.String" MaxLength="50"/>
+        <Property Name="BUDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="CAL_DISCOUNT" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="VBELN" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="NETWR" Type="Edm.Decimal" Precision="15" Scale="2"/>
+        <Property Name="FKDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="BLART" Type="Edm.String" MaxLength="2"/>
+        <Property Name="AUGBL" Type="Edm.String" MaxLength="10"/>
+        <Property Name="SHIP_TO" Type="Edm.String" MaxLength="10"/>
+        <Property Name="BUKRS" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="MFRNR" Type="Edm.String" MaxLength="10"/>
+        <Property Name="BELNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="RLDNR" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="GJAHR" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35"/>
+      </EntityType>
+      <EntityType Name="BLARTS">
+        <Key>
+          <PropertyRef Name="BLART"/>
+        </Key>
+        <Property Name="BLART" Type="Edm.String" MaxLength="2" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="BILL_TOS">
+        <Key>
+          <PropertyRef Name="BILL_TO"/>
+        </Key>
+        <Property Name="BILL_TO" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <Annotations Target="FINANCE.OPENAR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>NAME1</PropertyPath>
+            <PropertyPath>FKDAT</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BILL_TO"/>
+              <PropertyValue Property="Label" String="Customer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NAME1"/>
+              <PropertyValue Property="Label" String="Customer Name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="10rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BELNR"/>
+              <PropertyValue Property="Label" String="Invoice #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BSTKD"/>
+              <PropertyValue Property="Label" String="Customer PO"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="FKDAT"/>
+              <PropertyValue Property="Label" String="Invoice Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NETDT"/>
+              <PropertyValue Property="Label" String="Due Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BLART"/>
+              <PropertyValue Property="Label" String="Type"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="STORE_SHIP_TO"/>
+              <PropertyValue Property="Label" String="Store"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_AGE"/>
+              <PropertyValue Property="Label" String="Age"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="3.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_CURRENT"/>
+              <PropertyValue Property="Label" String="Current"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="4.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_1_30"/>
+              <PropertyValue Property="Label" String="1 to 30"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="4.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_31_60"/>
+              <PropertyValue Property="Label" String="31 to 60"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="4.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_61_90"/>
+              <PropertyValue Property="Label" String="61 to 90"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="4.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_OVER_90"/>
+              <PropertyValue Property="Label" String="Over 90"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NETWR"/>
+              <PropertyValue Property="Label" String="Invoiced Amount"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="TSL"/>
+              <PropertyValue Property="Label" String="Amount Paid"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ZTERM"/>
+              <PropertyValue Property="Label" String="Invoice Terms"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CREDIT_LIMIT"/>
+              <PropertyValue Property="Label" String="Credit Limit"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VKORG"/>
+              <PropertyValue Property="Label" String="CO."/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MFRNR"/>
+              <PropertyValue Property="Label" String="Manufacturer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CAL_1_30" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="1 to 30"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CAL_31_60" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="31 to 60"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CAL_61_90" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="61 to 90"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CAL_AGE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Age"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/TSL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Amount Paid"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/VKORG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="CO."/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CREDIT_LIMIT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Credit Limit"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CAL_CURRENT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Current"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/BILL_TO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Customer"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/NAME1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="OPENARCUSTOMER"/>
+            <PropertyValue Property="Label" String="Lot #"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="NAME1"/>
+                  <PropertyValue Property="ValueListProperty" String="NAME1"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Customer Name"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/BSTKD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Customer PO"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/NETDT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Due Date"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/BELNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Invoice #"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/FKDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Invoice Date"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/ZTERM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Invoice Terms"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/NETWR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Invoiced Amount"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/CAL_OVER_90" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Over 90"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/STORE_SHIP_TO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Store"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/BLART" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Type"/>
+      </Annotations>
+      <Annotations Target="FINANCE.OPENAR/MFRNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Manufacturer"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>BILL_TO</PropertyPath>
+            <PropertyPath>BUDAT</PropertyPath>
+            <PropertyPath>BLART</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BILL_TO"/>
+              <PropertyValue Property="Label" String="Bill To"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="10rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NAME1"/>
+              <PropertyValue Property="Label" String="Bill To Name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="10rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="SHIP_TO"/>
+              <PropertyValue Property="Label" String="Ship To Code"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VBELN"/>
+              <PropertyValue Property="Label" String="Invoice #"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="FKDAT"/>
+              <PropertyValue Property="Label" String="Invoice Date"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NETWR"/>
+              <PropertyValue Property="Label" String="Invoice Amount"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="AUGBL"/>
+              <PropertyValue Property="Label" String="Reference"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_CASH_RECEIVED"/>
+              <PropertyValue Property="Label" String="Cash Recieved"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_DISCOUNT"/>
+              <PropertyValue Property="Label" String="Discount"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BLART"/>
+              <PropertyValue Property="Label" String="Payment Type"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BUDAT"/>
+              <PropertyValue Property="Label" String="Deposit Date"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BUKRS"/>
+              <PropertyValue Property="Label" String="Company Code"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BELNR"/>
+              <PropertyValue Property="Label" String="Accounting Document"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="RLDNR"/>
+              <PropertyValue Property="Label" String="Ledger in GL Accounting"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="GJAHR"/>
+              <PropertyValue Property="Label" String="Fiscal Year"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VKORG"/>
+              <PropertyValue Property="Label" String="Co."/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="3rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BSTKD"/>
+              <PropertyValue Property="Label" String="Customer PO"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BKTXT"/>
+              <PropertyValue Property="Label" String="Comment 1"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7.813rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="SGTXT"/>
+              <PropertyValue Property="Label" String="Comment 2"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MFRNR"/>
+              <PropertyValue Property="Label" String="Manufacturer"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BILL_TO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="BILL_TOS"/>
+            <PropertyValue Property="Label" String="Bill To Name"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="BILL_TO"/>
+                  <PropertyValue Property="ValueListProperty" String="BILL_TO"/>
+                </Record>
+                <Record Type="Common.ValueListParameterDisplayOnly">
+                  <PropertyValue Property="ValueListProperty" String="BILL_TO"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Bill To"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/NAME1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Bill To Name"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/CAL_CASH_RECEIVED" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Cash Received"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/VKORG" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Co."/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BKTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Comment 1"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/SGTXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Comment 2"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BUDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.Label" String="Deposit Date"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/CAL_DISCOUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Discount"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/VBELN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Invoice #"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/NETWR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Invoice Amount"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/FKDAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Invoice Date"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BLART" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="BLARTS"/>
+            <PropertyValue Property="Label" String="Payment Type"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="BLART"/>
+                  <PropertyValue Property="ValueListProperty" String="BLART"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Payment Type"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/AUGBL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Reference"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/SHIP_TO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Ship To Code"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BUKRS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Company Code"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/MFRNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Manufacturer"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BELNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Accounting Document"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/RLDNR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Ledger in GL Accounting"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/GJAHR" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Fiscal Year"/>
+      </Annotations>
+      <Annotations Target="FINANCE.CASHJOURNAL/BSTKD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Common.Label" String="Customer PO"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

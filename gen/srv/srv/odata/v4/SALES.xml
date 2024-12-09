@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+    <edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml">
+    <edmx:Include Alias="HTML5" Namespace="com.sap.vocabularies.HTML5.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="SALES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotation Term="Core.Links">
+        <Collection>
+          <Record>
+            <PropertyValue Property="rel" String="author"/>
+            <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+          </Record>
+        </Collection>
+      </Annotation>
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="INVOICEHISTORY" EntityType="SALES.INVOICEHISTORY"/>
+        <EntitySet Name="IHCUSTOMER" EntityType="SALES.IHCUSTOMER"/>
+        <EntitySet Name="IHSHIPTO" EntityType="SALES.IHSHIPTO"/>
+        <EntitySet Name="IHINVOICE" EntityType="SALES.IHINVOICE"/>
+        <EntitySet Name="IHPO" EntityType="SALES.IHPO"/>
+        <EntitySet Name="IHTYPE" EntityType="SALES.IHTYPE"/>
+        <EntitySet Name="IHPROVINCE" EntityType="SALES.IHPROVINCE"/>
+      </EntityContainer>
+      <EntityType Name="INVOICEHISTORY">
+        <Key>
+          <PropertyRef Name="KUNNR"/>
+          <PropertyRef Name="BELNR"/>
+          <PropertyRef Name="AUBEL"/>
+        </Key>
+        <Property Name="TSL_AMOUNT" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="ORT01" Type="Edm.String" MaxLength="35"/>
+        <Property Name="VKORG" Type="Edm.String" MaxLength="4"/>
+        <Property Name="BKTXT" Type="Edm.String" MaxLength="25"/>
+        <Property Name="KUNNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="LFDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="CAL_GST" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="BELNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="BUDAT" Type="Edm.String" MaxLength="8"/>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35"/>
+        <Property Name="AUBEL" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="PSTLZ" Type="Edm.String" MaxLength="10"/>
+        <Property Name="REGIO" Type="Edm.String" MaxLength="3"/>
+        <Property Name="CAL_PST" Type="Edm.Decimal" Precision="23" Scale="2"/>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35"/>
+        <Property Name="SHIP_TO" Type="Edm.String" MaxLength="10"/>
+        <Property Name="TRACKN" Type="Edm.String" MaxLength="35"/>
+        <Property Name="BLART" Type="Edm.String" MaxLength="2"/>
+        <Property Name="MFRNR" Type="Edm.String" MaxLength="10"/>
+      </EntityType>
+      <EntityType Name="IHCUSTOMER">
+        <Key>
+          <PropertyRef Name="NAME1"/>
+        </Key>
+        <Property Name="NAME1" Type="Edm.String" MaxLength="35" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="IHSHIPTO">
+        <Key>
+          <PropertyRef Name="SHIP_TO"/>
+        </Key>
+        <Property Name="SHIP_TO" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="IHINVOICE">
+        <Key>
+          <PropertyRef Name="BELNR"/>
+        </Key>
+        <Property Name="BELNR" Type="Edm.String" MaxLength="10" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="IHPO">
+        <Key>
+          <PropertyRef Name="BSTKD"/>
+        </Key>
+        <Property Name="BSTKD" Type="Edm.String" MaxLength="35" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="IHTYPE">
+        <Key>
+          <PropertyRef Name="BLART"/>
+        </Key>
+        <Property Name="BLART" Type="Edm.String" MaxLength="2" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="IHPROVINCE">
+        <Key>
+          <PropertyRef Name="REGIO"/>
+        </Key>
+        <Property Name="REGIO" Type="Edm.String" MaxLength="3" Nullable="false"/>
+      </EntityType>
+      <Annotations Target="SALES.INVOICEHISTORY">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>KUNNR</PropertyPath>
+            <PropertyPath>SHIP_TO</PropertyPath>
+            <PropertyPath>BELNR</PropertyPath>
+            <PropertyPath>BSTKD</PropertyPath>
+            <PropertyPath>BUDAT</PropertyPath>
+            <PropertyPath>BLART</PropertyPath>
+            <PropertyPath>REGIO</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="KUNNR"/>
+              <PropertyValue Property="Label" String="Customer"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="8rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="NAME1"/>
+              <PropertyValue Property="Label" String="Customer Name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="8rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ORT01"/>
+              <PropertyValue Property="Label" String="City"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="REGIO"/>
+              <PropertyValue Property="Label" String="Province"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="6rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="PSTLZ"/>
+              <PropertyValue Property="Label" String="Postal Code"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="SHIP_TO"/>
+              <PropertyValue Property="Label" String="Ship To"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="10rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BSTKD"/>
+              <PropertyValue Property="Label" String="Purchase Order"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="10rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="AUBEL"/>
+              <PropertyValue Property="Label" String="Order #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BELNR"/>
+              <PropertyValue Property="Label" String="Invoice #"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BUDAT"/>
+              <PropertyValue Property="Label" String="Invoice Date"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="5rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="TSL_AMOUNT"/>
+              <PropertyValue Property="Label" String="$ Amount"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_PST"/>
+              <PropertyValue Property="Label" String="P.S.T."/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="7rem"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="CAL_GST"/>
+              <PropertyValue Property="Label" String="G.S.T."/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BLART"/>
+              <PropertyValue Property="Label" String="Type"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="TRACKN"/>
+              <PropertyValue Property="Label" String="Tracking #"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="LFDAT"/>
+              <PropertyValue Property="Label" String="Delivery Date"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BKTXT"/>
+              <PropertyValue Property="Label" String="Comment"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="VKORG"/>
+              <PropertyValue Property="Label" String="CO"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="MFRNR"/>
+              <PropertyValue Property="Label" String="Manufacturer"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/TSL_AMOUNT">
+        <Annotation Term="Common.Label" String="$ Amount"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/ORT01">
+        <Annotation Term="Common.Label" String="City"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/VKORG">
+        <Annotation Term="Common.Label" String="CO"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/BKTXT">
+        <Annotation Term="Common.Label" String="Comment"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/KUNNR">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHCUSTOMER"/>
+            <PropertyValue Property="Label" String="Customer"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="KUNNR"/>
+                  <PropertyValue Property="ValueListProperty" String="KUNNR"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Customer"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/LFDAT">
+        <Annotation Term="Common.Label" String="Delivery Date"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/CAL_GST">
+        <Annotation Term="Common.Label" String="G.S.T."/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/BELNR">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHINVOICE"/>
+            <PropertyValue Property="Label" String="Invoice #"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="BELNR"/>
+                  <PropertyValue Property="ValueListProperty" String="BELNR"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Invoice #"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/BUDAT">
+        <Annotation Term="Common.Label" String="Invoice Date"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/NAME1">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHCUSTOMER"/>
+            <PropertyValue Property="Label" String="Customer"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="NAME1"/>
+                  <PropertyValue Property="ValueListProperty" String="NAME1"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Customer Name"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/AUBEL">
+        <Annotation Term="Common.Label" String="Order #"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/PSTLZ">
+        <Annotation Term="Common.Label" String="Postal Code"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/REGIO">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHPROVINCE"/>
+            <PropertyValue Property="Label" String="Province"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="REGIO"/>
+                  <PropertyValue Property="ValueListProperty" String="REGIO"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Province"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/CAL_PST">
+        <Annotation Term="Common.Label" String="P.S.T."/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/BSTKD">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHPO"/>
+            <PropertyValue Property="Label" String="Purchase Order"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="BSTKD"/>
+                  <PropertyValue Property="ValueListProperty" String="BSTKD"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Purchase Order"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/SHIP_TO">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHSHIPTO"/>
+            <PropertyValue Property="Label" String="Ship To"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="SHIP_TO"/>
+                  <PropertyValue Property="ValueListProperty" String="SHIP_TO"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Ship To"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/TRACKN">
+        <Annotation Term="Common.Label" String="Tracking #"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/BLART">
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="IHTYPE"/>
+            <PropertyValue Property="Label" String="Customer"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="BLART"/>
+                  <PropertyValue Property="ValueListProperty" String="BLART"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.Label" String="Type"/>
+      </Annotations>
+      <Annotations Target="SALES.INVOICEHISTORY/MFRNR">
+        <Annotation Term="Common.Label" String="Manufacturer"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

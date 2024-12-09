@@ -1,0 +1,129 @@
+{
+	"UPS_DEMO_USER": {
+		"object_owner": {
+			"roles": [],
+			"container_roles": [],
+			"object_privileges": [
+				{
+					"type": "VIEW",
+					"name": "Billing_Document_with_Batches_1",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_MD_MATERIAL",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Inventory_Status_C_View_V4",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPMMIN_MATDOC_02",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPFICJ_01",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Inventory_Snapshot_C_View_V2",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Inventory_By_Lot_C_View_V1",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPFICJ_02",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Inventory_Valuation_View_V1",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPFICJ_03",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Current_Historical_Sales_by_Customer_by_Product_UN",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_MD_BILL_SHIPTO",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPSDBL_01",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPSDPC_01",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "PRO_MFR_Openorders",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Returns_Reports_View",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "REP_TPSDOR_01",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				}
+			]
+		}
+	}
+}

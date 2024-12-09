@@ -1,0 +1,106 @@
+{
+  "SYNBILLINGDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Billing_Document_with_Batches_1"
+      }
+    },
+    "SYNREPMATERIALDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_MD_MATERIAL"
+      }
+    },
+    "SYNINVENTORYSTATUSDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Inventory_Status_C_View_V4"
+      }
+    },
+    "SYNINVENTORYAUDITTRAILDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPMMIN_MATDOC_02"
+      }
+    },
+    "SYNCASHJOURNALDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPFICJ_01"
+      }
+    },
+    "SYNINVENTORYSNAPSHOTDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Inventory_Snapshot_C_View_V2"
+      }
+    },
+    "SYNINVENTORYBYLOTDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Inventory_By_Lot_C_View_V1"
+      }
+    },
+    "SYNOPENARDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPFICJ_02"
+      }
+    }
+    ,
+    "SYNINVENTORYVALUATIONDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Inventory_Valuation_View_V1"
+      }
+    },
+    "SYNINVOICEHISTORYDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPFICJ_03"
+      }
+    },
+    "SYNSALESBYCURRENTDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Current_Historical_Sales_by_Customer_by_Product_UN"
+      }
+    },
+    "SYNCUSTOMERMASTERDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_MD_BILL_SHIPTO"
+      }
+    },
+    "SYNSHIPPINGHISTORYDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPSDBL_01"
+      }
+    },
+    "SYNPRICINGDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPSDPC_01"
+      }
+    },
+    "SYNOPENORDERSDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "PRO_MFR_Openorders"
+      }
+    },
+    "SYNRETURNSDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Returns_Reports_View"
+      }
+    },
+    "SYNBACKORDERSDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "REP_TPSDOR_01"
+      }
+    }
+}
+
