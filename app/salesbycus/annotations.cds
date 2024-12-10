@@ -1,6 +1,6 @@
-using VDSP as service from '../../srv/service';
+using SALES as service from '../../srv/service';
 
-annotate VDSP.SALESBYCURRENT with @(
+annotate SALES.SALESBYCURRENT with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
@@ -19,16 +19,12 @@ Search.defaultSearchElement: true,
             POSTAL_CODE_PSTLZ:true, 
             CITY_ORT01:true, 
             PROVINCE_REGIO:true, 
-            SPECIAL_HANDLING:true, 
-            UPC_EAN11:true, 
+            SPECIAL_HANDLING:true,  
             WAREHOUSE:true, 
             TRACKING_TRACKN:true,  
             COMMENT:true, 
             CO_VKORG:true, 
-            CURRENT:true,
-            INVOICE_DATE_FKDAT:true,
-            EXPIRY_DATE_VFDAT:true,
-            DELEVERY_DATE_VDATU:true   
+            CURRENT:true 
         }
     },
     UI : {
@@ -38,8 +34,8 @@ Search.defaultSearchElement: true,
             TYPE_FKART,
             WAREHOUSE,
             LOT_CHARG,
-            BILL_TO_KUNRE_ANA,
-            SHIP_TO_KUNWE_ANA,
+            BILL_TO_NAME,
+            SHIP_TO_NAME,
             INVOICE_DATE_FKDAT,
             EXPIRY_DATE_VFDAT,
             DELEVERY_DATE_VDATU
@@ -218,14 +214,44 @@ Search.defaultSearchElement: true,
     }, 
 ){
     INVOICE_CREDIT_VBELN@(
-        title: 'Invoice/Credit #'
+        title: 'Invoice/Credit #',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCINVOICE',
+                Label : 'Invoice #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'INVOICE_CREDIT_VBELN',
+                        ValueListProperty : 'INVOICE_CREDIT_VBELN'
+                    }
+                ]
+            },
+        } 
         
     );
     INVOICE_DATE_FKDAT@(title: 'Invoice Date');
     PURCHASE_ORDER_BSTKD@(title: 'Purchase Order');
     SKU_MATNR@(title: 'SKU #');
     PRODUCT_DESCRIPTION_MAKTX@(
-        title: 'Product Description'
+        title: 'Product Description',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCPRODDESC',
+                Label : 'Product Description',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PRODUCT_DESCRIPTION_MAKTX',
+                        ValueListProperty : 'PRODUCT_DESCRIPTION_MAKTX'
+                    }
+                ]
+            },
+        }
         
     );
     UNITS_PER_CASE@(title: 'Units Per Case');
@@ -233,22 +259,81 @@ Search.defaultSearchElement: true,
     PRICE_CAL_UNIT_COST@(title: 'Price');
     AMOUNT_NETWR@(title: '$Amount');
     LOT_CHARG@(
-        title: 'Lot #'
+        title: 'Lot #',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCLOT',
+                Label : 'Lot #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'LOT_CHARG',
+                        ValueListProperty : 'LOT_CHARG'
+                    }
+                ]
+            },
+        }
         
     );
     EXPIRY_DATE_VFDAT@(title: 'Expiry Date');
     TYPE_FKART@( 
-        title: 'Type'
+        title: 'Type',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCTYPE',
+                Label : 'Type',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'TYPE_FKART',
+                        ValueListProperty : 'TYPE_FKART'
+                    }
+                ]
+            },
+        }
         
     );
     BILL_TO_KUNRE_ANA@(title: 'Bill To');
     SHIP_TO_KUNWE_ANA@(title: 'Ship To');
     BILL_TO_NAME@(
-        title: 'Bill To Name'
-        
+        title: 'Bill To Name',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCBILLTO',
+                Label : 'Bill To',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'BILL_TO_NAME',
+                        ValueListProperty : 'BILL_TO_NAME'
+                    }
+                ]
+            },
+        }
     );
     SHIP_TO_NAME@(
-        title: 'Ship To Name'
+        title: 'Ship To Name',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCSHIPTO',
+                Label : 'Ship To',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'SHIP_TO_NAME',
+                        ValueListProperty : 'SHIP_TO_NAME'
+                    }
+                ]
+            },
+        }
         
     );
     ADDRESS_1@(title: 'Address 1');
@@ -259,7 +344,22 @@ Search.defaultSearchElement: true,
     SPECIAL_HANDLING@(title: 'Special Handling');
     UPC_EAN11@(title: 'UPC');
     WAREHOUSE@(
-        title: 'Warehouse'
+        title: 'Warehouse',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCWAREHOUSE',
+                Label : 'Warehouse',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'WAREHOUSE',
+                        ValueListProperty : 'WAREHOUSE'
+                    }
+                ]
+            },
+        }
         
     );
     TRACKING_TRACKN@(title: 'Tracking #');

@@ -12,7 +12,6 @@ sap.ui.define([
             oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
         },
         _calculateTotals: function (oEvent) {
-            debugger
             var oTable = oEvent.getSource();
             var oBinding = oTable.getBinding("rows");  // Get the rows binding
             var aContexts = oBinding.getContexts(0, oBinding.getLength());

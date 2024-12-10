@@ -135,6 +135,14 @@ using IHPO as ENTIHPO from '../db/schema';
 using IHTYPE as ENTIHTYPE from '../db/schema';
 using IHPROVINCE as ENTIHPROVINCE from '../db/schema';
 
+using SBCINVOICE as ENTSBCINVOICE from '../db/schema';
+using SBCPRODDESC as ENTSBCPRODDESC from '../db/schema';
+using SBCTYPE as ENTSBCTYPE from '../db/schema';
+using SBCLOT as ENTSBCLOT from '../db/schema';
+using SBCWAREHOUSE as ENTSBCWAREHOUSE from '../db/schema';
+using SBCBILLTO as ENTSBCBILLTO from '../db/schema';
+using SBCSHIPTO as ENTSBCSHIPTO from '../db/schema';
+
 service SALES {
 
     // Ivoice History Related Entities
@@ -148,7 +156,14 @@ service SALES {
 
 
     // Sales By Product/Customer Related Entities
-    // entity SALESBYCURRENT as projection on ENTSALESBYCURRENT;
+    entity SALESBYCURRENT as projection on ENTSALESBYCURRENT;
+    entity SBCINVOICE as projection on ENTSBCINVOICE;
+    entity SBCPRODDESC as projection on ENTSBCPRODDESC;
+    entity SBCTYPE as projection on ENTSBCTYPE;
+    entity SBCLOT as projection on ENTSBCLOT;
+    entity SBCWAREHOUSE as projection on ENTSBCWAREHOUSE;
+    entity SBCBILLTO as projection on ENTSBCBILLTO;
+    entity SBCSHIPTO as projection on ENTSBCSHIPTO;
 
 }
 

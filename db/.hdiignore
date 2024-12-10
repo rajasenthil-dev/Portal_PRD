@@ -153,4 +153,20 @@ src/gen/IHPO.hdbview
 src/gen/IHTYPE.hdbview
 src/gen/IHPROVINCE.hdbview
 
+src/gen/SALES.SALESBYCURRENT.hdbview
+src/gen/SALES.SBCINVOICE.hdbview
+src/gen/SALES.SBCPRODDESC.hdbview
+src/gen/SALES.SBCTYPE.hdbview
+src/gen/SALES.SBCLOT.hdbview
+src/gen/SALES.SBCWAREHOUSE.hdbview
+src/gen/SALES.SBCBILLTO.hdbview
+src/gen/SALES.SBCSHIPTO.hdbview
+src/gen/SBCINVOICE.hdbview
+src/gen/SBCPRODDESC.hdbview
+src/gen/SBCTYPE.hdbview
+src/gen/SBCLOT.hdbview
+src/gen/SBCWAREHOUSE.hdbview
+src/gen/SBCBILLTO.hdbview
+src/gen/SBCSHIPTO.hdbview
+
 

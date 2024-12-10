@@ -490,7 +490,34 @@ entity SALESBYCURRENT //@(restrict: [
         CO_VKORG                    : String(4);
         CURRENT                     : String(1);
 }
-
+define view SBCINVOICE as
+    select from SALESBYCURRENT distinct {
+        key INVOICE_CREDIT_VBELN
+};
+define view SBCPRODDESC as
+    select from SALESBYCURRENT distinct {
+        key PRODUCT_DESCRIPTION_MAKTX
+};
+define view SBCTYPE as
+    select from SALESBYCURRENT distinct {
+        key TYPE_FKART
+};
+define view SBCWAREHOUSE as
+    select from SALESBYCURRENT distinct {
+        key WAREHOUSE
+};
+define view SBCLOT as
+    select from SALESBYCURRENT distinct {
+        key LOT_CHARG
+};
+define view SBCBILLTO as
+    select from SALESBYCURRENT distinct {
+        key BILL_TO_NAME
+};
+define view SBCSHIPTO as
+    select from SALESBYCURRENT distinct {
+        key SHIP_TO_NAME
+};
 // Sales by Product/Customer
 // Security attributes to match: ??
 @cds.search: { 
