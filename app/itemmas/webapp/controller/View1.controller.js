@@ -8,13 +8,44 @@ function (Controller) {
         onInit: function () {
 
         },
-        _formatCurrency : function(value) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-            }).format(value);
+        _formatCurrency: function (value) {
+            if (value == null || value === undefined) {
+            return "";
+            }
+        
+            // Get the locale
+            var sLocale = sap.ui.getCore().getConfiguration().getLocale().getLanguage();
+            var sCurrencyCode;
+        
+            switch (sLocale) {
+                case "en-US":
+                    sCurrencyCode = "USD";
+                    break;
+                case "en-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+                case "fr-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+            // Add more cases as needed for other languages/regions
+                default:
+                    sCurrencyCode = "USD"; // Default currency code
+                    break;
+            }
+        
+            // Create a NumberFormat instance with currency type
+            var oNumberFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance({
+            "currencyCode": false,
+            "customCurrencies": {
+                "MyDollar": {
+                    "isoCode": sCurrencyCode,
+                    "decimals": 2
+                }
+            },
+            groupingEnabled: true,
+            showMeasure: true
+            });
+            return oNumberFormat.format(value, "MyDollar");
         },
         _formatDate: function (date) {
             if (!date) return ""; // Return empty string if no date is provided

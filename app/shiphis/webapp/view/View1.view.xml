@@ -112,7 +112,7 @@
                                 </t:customData>
                             <Text id="_IDGenText6" text="Invoice #"></Text>
                             <t:template>
-                                <Text id="_IDGenText9" text="{path: 'VBELN', formatter: '._removeLeadingZeros'}" />
+                                <Link id="_IDGenText9" press=".onInvoiceClick" text="{path: 'VBELN', formatter: '._removeLeadingZeros'}" />
                             </t:template>
                         </t:Column>
                         <t:Column id="_IDGenColumn6">

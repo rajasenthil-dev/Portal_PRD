@@ -1,14 +1,6 @@
-using SALESBYCURRENT as ENTSALESBYCURRENT from '../db/schema';
-using SALESBYHISTORICAL as ENTSALESBYHISTORICAL from '../db/schema';
 
 service VDSP {
     // First Initial Test Service
-    
-    
-    entity INVOICEHISTORY as projection on ENTINVOICEHISTORY;
-    entity SALESBYCURRENT as projection on ENTSALESBYCURRENT;
-    entity SALESBYHISTORICAL as projection on ENTSALESBYHISTORICAL;
-    entity OPENORDERS as projection on ENTOPENORDERS;
 }
 
 // Processing Service
@@ -135,6 +127,7 @@ using IHPO as ENTIHPO from '../db/schema';
 using IHTYPE as ENTIHTYPE from '../db/schema';
 using IHPROVINCE as ENTIHPROVINCE from '../db/schema';
 
+using SALESBYCURRENT as ENTSALESBYCURRENT from '../db/schema';
 using SBCINVOICE as ENTSBCINVOICE from '../db/schema';
 using SBCPRODDESC as ENTSBCPRODDESC from '../db/schema';
 using SBCTYPE as ENTSBCTYPE from '../db/schema';
@@ -204,6 +197,13 @@ service FINANCE {
     entity CASHJOURNAL as projection on ENTCASHJOURNAL;
     entity BLARTS as projection on ENTBLARTS;
     entity BILL_TOS as projection on ENTBILL_TOS;
+}
+
+service CatalogService {
+    @readonly entity Invoices {
+        key ID: UUID;
+        InvoiceNumber: String;
+    }
 }
 
 

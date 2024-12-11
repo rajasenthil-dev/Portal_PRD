@@ -63,10 +63,17 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : CAL_CONFIRMED_QTY,
+                Value : BACK_ORD_QTY,
                 Label : 'Quantity',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
+            {
+                $Type : 'UI.DataField',
+                Value : MEINS,
+                Label : 'Unit',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+
             {
                 $Type : 'UI.DataField',
                 Value : UNIT_PRICE,
@@ -136,7 +143,8 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    CAL_CONFIRMED_QTY@(title: 'Quantity');
+    BACK_ORD_QTY@(title: 'Quantity');
+    MEINS@(title: 'Unit');
     UNIT_PRICE@(title: 'Price');
     EXTENSION@(title:'Extension');
     KUNRE_ANA@(title:'Bill To',

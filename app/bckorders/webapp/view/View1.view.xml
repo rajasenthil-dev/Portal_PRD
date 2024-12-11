@@ -133,7 +133,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn2" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "UNIT_PRICE", "leadingProperty": "UNIT_PRICE", "columnIndex": 8}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "UNIT_PRICE", "leadingProperty": "UNIT_PRICE", "columnIndex": 9}'/>
                             </t:customData>
                             <Text id="_IDGenText5" text="Price"></Text>
                             <t:template>
@@ -142,7 +142,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn3" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "EXTENSION", "leadingProperty": "EXTENSION", "columnIndex": 9}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "EXTENSION", "leadingProperty": "EXTENSION", "columnIndex": 10}'/>
                             </t:customData>
                             <Text id="_IDGenText6" text="Extension"></Text>
                             <t:template>
@@ -165,7 +165,11 @@
                         <FlexBox id="_IDGenFlexBox11" >
                             <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                                <Text id="footerText1" class="footerText" text =""/>
+                                <Text id="footerText1" class="footerText" 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    text =""/>
                             </HBox>
                             <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>

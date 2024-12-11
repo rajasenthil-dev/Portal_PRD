@@ -26,12 +26,11 @@
 				<sf:SmartFilterBar 
                     id="bar0" 
                     entitySet="INVENTORYVALUATION" 
-                    enableBasicSearch="true" 
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_INVENTORYVALUATION" 
                     smartVariant="pageVariant" 
                     liveMode="true" 
-                    search="onSearch">
+                    filterChange="onFilterChange">
                     <sf:controlConfiguration>
                         
                     </sf:controlConfiguration>
@@ -42,31 +41,31 @@
                     
                         <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text="{path: 'summaryCounts>/counts/OpenStock'}"/>
+                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text="{path: 'summaryCounts>/OPEN_STOCK', formatter: '._formatNumber'}"/>
                         </FlexBox>
                         <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">                            
                             <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
-                            <Text id="_IDGenNumericContent2" class="mck_TileContent" text="{path: 'summaryCounts>/counts/Quarantine'}"/>
+                            <Text id="_IDGenNumericContent2" class="mck_TileContent" text="{path: 'summaryCounts>/QUARANTINE', formatter: '._formatNumber'}"/>
                         </FlexBox>  
                         <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
-                            <Text id="_IDGenNumericContent3" class="mck_TileContent" text="{path: 'summaryCounts>/counts/Damage'}"/>
+                            <Text id="_IDGenNumericContent3" class="mck_TileContent" text="{path: 'summaryCounts>/DAMAGE_DESTRUCTION', formatter: '._formatNumber'}"/>
                         </FlexBox>  
                          <FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>tileTitle4}"/>
-                            <Text id="_IDGenNumericContent4" class="mck_TileContent" text="{path: 'summaryCounts>/counts/Retains'}"/>
+                            <Text id="_IDGenNumericContent4" class="mck_TileContent" text="{path: 'summaryCounts>/RETAINS', formatter: '._formatNumber'}"/>
                         </FlexBox> 
                         <FlexBox id="_IDGenFlexBox5" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle5" class="mck_TileContentTitle" text="{i18n>tileTitle5}"/>
-                            <Text id="_IDGenNumericContent5" class="mck_TileContent" text="{path: 'summaryCounts>/counts/QualityHold'}"/>
+                            <Text id="_IDGenNumericContent5" class="mck_TileContent" text="{path: 'summaryCounts>/QUALITY_HOLD', formatter: '._formatNumber'}"/>
                         </FlexBox> 
                          <FlexBox id="IDGenFlexBox6" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle6" class="mck_TileContentTitle" text="{i18n>tileTitle6}"/>
-                            <Text id="_IDGenNumericContent6" class="mck_TileContent" text="{path: 'summaryCounts>/counts/Returns'}"/>
+                            <Text id="_IDGenNumericContent6" class="mck_TileContent" text="{path: 'summaryCounts>/RETURNS_CAL', formatter: '._formatNumber'}"/>
                         </FlexBox> 
                         <FlexBox id="IDGenFlexBox7" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle7" class="mck_TileContentTitle" text="{i18n>tileTitle7}"/>
-                            <Text id="_IDGenNumericContent7" class="mck_TileContent" text="{path: 'summaryCounts>/counts/Recalls'}"/>
+                            <Text id="_IDGenNumericContent7" class="mck_TileContent" text="{path: 'summaryCounts>/RECALLS', formatter: '._formatNumber'}"/>
                         </FlexBox>
                     
 				    </HeaderContainer>
@@ -153,35 +152,35 @@
                     <FlexBox id="_IDGenFlexBox11" wrap="Wrap">
                         <HBox id="_IDGenHBox22" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                            <Text id="footerText1" class="footerText" text ="{path: 'footerCounts>/counts/TotalCost', formatter: '._formatNumber'}"/>
+                            <Text id="footerText1" class="footerText" text ="{path: 'footerCounts>/TOTAL_COST', formatter: '._formatCurrency'}"/>
                         </HBox>
                         <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                            <Text id="footerText2" class="footerText" text ="{path: 'footerCounts>/counts/OpenStock', formatter: '._formatNumber'}"/>
+                            <Text id="footerText2" class="footerText" text ="{path: 'footerCounts>/OPEN_STOCK', formatter: '._formatNumber'}"/>
                         </HBox>
                         <HBox id="_IDGenHBox31" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel31" text="{i18n>footerLabel3}:" class="cssLabelTotal"/>
-                            <Text id="footerText3" class="footerText" text ="{path: 'footerCounts>/counts/Quarantine', formatter: '._formatNumber'}"/>
+                            <Text id="footerText3" class="footerText" text ="{path: 'footerCounts>/QUARANTINE', formatter: '._formatNumber'}"/>
                         </HBox>
                         <HBox id="_IDGenHBox32" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel32" text="{i18n>footerLabel4}:" class="cssLabelTotal"/>
-                            <Text id="footerText4" class="footerText" text ="{path: 'footerCounts>/counts/Destruction', formatter: '._formatNumber'}"/>
+                            <Text id="footerText4" class="footerText" text ="{path: 'footerCounts>/DAMAGE_DESTRUCTION', formatter: '._formatNumber'}"/>
                         </HBox>	
                         <HBox id="_IDGenHBox33" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel33" text="{i18n>footerLabel5}:" class="cssLabelTotal"/>
-                            <Text id="footerText5" class="footerText" text ="{path: 'footerCounts>/counts/Retains', formatter: '._formatNumber'}"/>
+                            <Text id="footerText5" class="footerText" text ="{path: 'footerCounts>/RETAINS', formatter: '._formatNumber'}"/>
                         </HBox>	
                         <HBox id="_IDGenHBox3" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel34" text="{i18n>footerLabel6}:" class="cssLabelTotal"/>
-                            <Text id="footerText6" class="footerText" text ="{path: 'footerCounts>/counts/QualityHold', formatter: '._formatNumber'}"/>
+                            <Text id="footerText6" class="footerText" text ="{path: 'footerCounts>/QUALITY_HOLD', formatter: '._formatNumber'}"/>
                         </HBox>	
                         <HBox id="_IDGenHBox35" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel35" text="{i18n>footerLabel7}:" class="cssLabelTotal"/>
-                            <Text id="footerText7" class="footerText" text ="{path: 'footerCounts>/counts/Returns', formatter: '._formatNumber'}"/>
+                            <Text id="footerText7" class="footerText" text ="{path: 'footerCounts>/RETURNS_CAL', formatter: '._formatNumber'}"/>
                         </HBox>	
                         <HBox id="_IDGenHBox36" class="sapUiSmallMarginEnd">
-                            <Label id="_IDGenLabel36" text="{i18n>footerLabel7}:" class="cssLabelTotal"/>
-                            <Text id="footerText8" class="footerText" text ="{path: 'footerCounts>/counts/Recalls', formatter: '._formatNumber'}"/>
+                            <Label id="_IDGenLabel36" text="{i18n>footerLabel8}:" class="cssLabelTotal"/>
+                            <Text id="footerText8" class="footerText" text ="{path: 'footerCounts>/RECALLS', formatter: '._formatNumber'}"/>
                         </HBox>	
                     </FlexBox>
                 </FlexBox>

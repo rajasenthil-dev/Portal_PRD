@@ -112,7 +112,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                         <FlexBox id="_IDGenFlexBox11" >
                             <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                                <Text id="TotUnitsPriceText" class="footerText" text ="{ProductCollection>/TotUnitsPrice}"/>
+                                <Text id="footerText1" class="footerText" text =""/>
                             </HBox>
                         </FlexBox>
                     </FlexBox>

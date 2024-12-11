@@ -2,6 +2,7 @@ sap.ui.define([], () => {
 	"use strict";
 
 	return {
+        
 		_formatDate: function (date) {
             if (!date) return ""; // Return empty string if no date is provided
         
@@ -39,6 +40,11 @@ sap.ui.define([], () => {
         
             // Return the formatted date
             return oDateFormat.format(oDate);
+        },
+        _formatNumber: function (value) {
+            return new Intl.NumberFormat('en-US', {
+                maximumFractionDigits: 0
+            }).format(value);
         },
         _formatCurrency: function (value, currencyCode) {
             if (value == null || value === undefined) {

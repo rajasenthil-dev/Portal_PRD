@@ -870,12 +870,13 @@ entity BACKORDERS //@(restrict: [
     key VBELN               : String(10);	
         ERDAT               : String(8);	 
         UNIT_PRICE          : Decimal(30,18);	 
-    key MATNR               : String(40) @Search.defaultSearchElement;	
-        MAKTX               : String(40);	 
-        CAL_CONFIRMED_QTY   : Decimal(18,3);	 
+    key MATNR               : String(40);	
+        MAKTX               : String(40); 
+        BACK_ORD_QTY        : Decimal(18,3);	 
     key KUNWE_ANA           : String(10);	
         NAME1               : String(35);	 
         MFRNR               : String(10);	 
+        MEINS               : String(3);
 }
 
 //  Back Orders Product Name filter

@@ -5,8 +5,34 @@ sap.ui.define([
 
     return Controller.extend("invsnapshot.controller.View1", {
         onInit: function () {
+            
+            const oTable = this.byId("table");
 
+            oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
         },
+        _calculateTotals: function (oEvent) {
+            var oTable = oEvent.getSource();
+            var oBinding = oTable.getBinding("rows");  // Get the rows binding
+            var aContexts = oBinding.getContexts(0, oBinding.getLength());
+            // Ensure that the binding exists and is set up
+            if (oBinding) { // Get the data rows
+                var fTotalOnHand = 0;
+                
+                var aData = aContexts.map(oContext => oContext.getObject());
+                
+                // Iterate through the rows to sum the values
+                aContexts.forEach(function (oContext) {
+                    var oData = oContext.getObject();
+                    fTotalOnHand += parseFloat(oContext.getProperty("ON_HAND")) || 0;
+                });
+                
+                // Update footer with the calculated totals
+                
+                this.byId("footerText1").setText(fTotalOnHand);
+                
+            }
+        },
+        
         _formatCurrency : function(value) {
             return new Intl.NumberFormat('en-US', {
                 style: 'currency',

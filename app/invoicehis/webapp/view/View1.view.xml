@@ -41,6 +41,7 @@
                     smartVariant="pageVariant" 
                     liveMode="true" 
                     search="onSearch"
+                    filterChange="onFilterChange"
                 >
                     <sf:controlConfiguration>
                         <sf:ControlConfiguration id="_IDGenControlConfiguration"
@@ -58,11 +59,11 @@
                     
                         <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text="{summary>/totalSales}"/>
+                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text="{path:'summaryCounts>/TotalSalesFormatted'}"/>
                         </FlexBox>
                         <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
-                            <Text id="_IDGenNumericContent2" class="mck_TileContent" text="{summary>/totalInvoices}"/>
+                            <Text id="_IDGenNumericContent2" class="mck_TileContent" text="{summaryCounts>/UniqueInvoices}"/>
                         </FlexBox>  
                        
                     
@@ -99,6 +100,15 @@
                     selectionMode="None"
                     alternateRowColors="true" >
                     <t:columns>
+                        <t:Column id="_IDGenColumn10" width='7.813rem'>
+                            <t:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "BELNR", "leadingProperty": "BELNR", "columnIndex": 8}'/>
+                            </t:customData>
+                            <Text id="_IDGenText30" text="Invoice #"></Text>
+                            <t:template>
+                                <Link id="invoice" text="{BELNR}" press=".onInvoiceClick"/>
+                            </t:template>
+                        </t:Column>
                         <t:Column id="_IDGenColumn" width='6.5rem'>
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "BUDAT", "leadingProperty": "BUDAT", "columnIndex": 9}'/>
@@ -143,15 +153,15 @@
                     <FlexBox id="_IDGenFlexBox11" >
                         <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                            <Text id="footerText1" class="footerText" text ="{footer>/sales}"/>
+                            <Text id="footerText1" class="footerText" text ="{path: 'footerCounts>/TSL_AMOUNT', formatter: '._formatCurrency'}"/>
                         </HBox>
                         <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                            <Text id="footerText2" class="footerText" text ="{footer>/pst}"/>
+                            <Text id="footerText2" class="footerText" text ="{path: 'footerCounts>/CAL_PST', formatter: '._formatCurrency'}"/>
                         </HBox>
                         <HBox id="_IDGenHBox3" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel3" text="{i18n>footerLabel3}:" class="cssLabelTotal"/>
-                            <Text id="footerText3" class="footerText" text ="{footer>/gst}"/>
+                            <Text id="footerText3" class="footerText" text ="{path: 'footerCounts>/CAL_GST', formatter: '._formatCurrency'}"/>
                         </HBox>	
                     </FlexBox>
                 </FlexBox>
