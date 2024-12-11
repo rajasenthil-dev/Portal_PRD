@@ -10,6 +10,7 @@ sap.ui.define([
             oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
         },
         _calculateTotals: function () {
+          debugger
             var oSmartTable = this.getView().byId("table0");
             var oTable = oSmartTable.getTable();
             var oBinding = oTable.getBinding("rows");

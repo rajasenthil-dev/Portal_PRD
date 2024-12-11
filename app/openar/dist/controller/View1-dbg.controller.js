@@ -1,6 +1,9 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/Image"
+], (Controller, Dialog, Button, Image) => {
     "use strict";
 
     return Controller.extend("openar.controller.View1", {
@@ -16,6 +19,7 @@ sap.ui.define([
 
         // Table update handler for rowsUpdated event
         _onTableUpdate: function () {
+            debugger
             this._calculateFooterAndSummary();
         },
 
@@ -84,12 +88,43 @@ sap.ui.define([
 
         // Helper function to format currency
         _formatCurrency: function (value) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-            }).format(value);
+            if (value == null || value === undefined) {
+            return "";
+            }
+        
+            // Get the locale
+            var sLocale = sap.ui.getCore().getConfiguration().getLocale().getLanguage();
+            var sCurrencyCode;
+        
+            switch (sLocale) {
+                case "en-US":
+                    sCurrencyCode = "USD";
+                    break;
+                case "en-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+                case "fr-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+            // Add more cases as needed for other languages/regions
+                default:
+                    sCurrencyCode = "USD"; // Default currency code
+                    break;
+            }
+        
+            // Create a NumberFormat instance with currency type
+            var oNumberFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance({
+            "currencyCode": false,
+            "customCurrencies": {
+                "MyDollar": {
+                    "isoCode": sCurrencyCode,
+                    "decimals": 2
+                }
+            },
+            groupingEnabled: true,
+            showMeasure: true
+            });
+            return oNumberFormat.format(value, "MyDollar");
         },
 
         // Helper function to update footer text index
@@ -224,6 +259,62 @@ sap.ui.define([
         
             // Return the formatted date
             return oDateFormat.format(oDate);
+        },
+        onInvoiceClick: function (oEvent) {
+            const sInvoiceNumber = oEvent.getSource().getText();
+
+            // Mock API Call
+            const sMockAPI = `/mock-api/invoices/${sInvoiceNumber}`;
+            this._fetchInvoiceImage(sMockAPI)
+                .then((sImageUrl) => this._showInvoiceDialog(sImageUrl))
+                .catch((err) => sap.m.MessageToast.show("Failed to load invoice"));
+        },
+
+        _fetchInvoiceImage: function (sUrl) {
+            // Simulate API response
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("https://via.placeholder.com/600x800.png?text=Invoice");
+                }, 1000);
+            });
+        },
+
+        _showInvoiceDialog: function (sImageUrl) {
+            const oDialog = new Dialog({
+                title: "Invoice",
+                content: new Image({ src: sImageUrl, width: "100%" }),
+                buttons: [
+                    new Button({
+                        text: "Download",
+                        press: () => this._downloadImage(sImageUrl)
+                    }),
+                    new Button({
+                        text: "Print",
+                        press: () => this._printImage(sImageUrl)
+                    }),
+                    new Button({
+                        text: "Close",
+                        press: function () {
+                            oDialog.close();
+                        }
+                    })
+                ]
+            });
+            oDialog.open();
+        },
+
+        _downloadImage: function (sImageUrl) {
+            const oLink = document.createElement("a");
+            oLink.href = sImageUrl;
+            oLink.download = "invoice.png";
+            oLink.click();
+        },
+
+        _printImage: function (sImageUrl) {
+            const printWindow = window.open("");
+            printWindow.document.write(`<img src='${sImageUrl}' style='width:100%;'/>`);
+            printWindow.print();
+            printWindow.close();
         }
     });
 });

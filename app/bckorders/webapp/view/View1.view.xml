@@ -32,7 +32,7 @@
                         </GenericTile>
                     </HeaderContainer>
                 </FlexBox>
-				<sf:SmartFilterBar id="bar0" entitySet="BACKORDERS" enableBasicSearch="true" filterChange=".onFilterBarFilterChange" useDateRangeType="true" persistencyKey="SmartFilterBar_BACKORDERS" smartVariant="pageVariant" liveMode="true" search="onSearch">
+				<sf:SmartFilterBar id="bar0" entitySet="BACKORDERS" filterChange=".onFilterBarFilterChange" useDateRangeType="true" persistencyKey="SmartFilterBar_BACKORDERS" smartVariant="pageVariant" liveMode="true" search="onSearch">
                     <sf:controlConfiguration>
                         <sf:ControlConfiguration id="_IDGenControlConfiguration1"
 							key="MAKTX"

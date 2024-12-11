@@ -32,7 +32,7 @@
                         </GenericTile>
                     </HeaderContainer>
                 </FlexBox>
-				<sf:SmartFilterBar id="bar0" entitySet="CASHJOURNAL" enableBasicSearch="true" useDateRangeType="true" persistencyKey="SmartFilterBar_CASHJOURNAL" smartVariant="pageVariant" liveMode="true" search="onSearch">
+				<sf:SmartFilterBar id="bar0" entitySet="CASHJOURNAL" useDateRangeType="true" persistencyKey="SmartFilterBar_CASHJOURNAL" smartVariant="pageVariant" liveMode="true" search="onSearch">
                     <sf:controlConfiguration>
                     
                         <sf:ControlConfiguration id="_IDGenControlConfiguration1"
@@ -44,14 +44,14 @@
 						/>
                     </sf:controlConfiguration>
                 </sf:SmartFilterBar>
-                <Panel id="_IDGenPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+                <!-- <Panel id="_IDGenPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
                     <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
                         <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>collectionActivityTileTitle}"/>
                             <Text id="_IDGenNumericContent1" class="mck_TileContent" text="7419"/>
                         </FlexBox>
                     </HeaderContainer>
-                </Panel>
+                </Panel> -->
 			</f:DynamicPageHeader>
 		</f:header>
         <f:content>
@@ -66,7 +66,6 @@
                 enableAutoBinding="true" 
                 id="table0" 
                 smartFilterId="bar0" 
-                initiallyVisibleFields="BILL_TO,NAME1,CAL_CASH_RECEIVED,VKORG,BKTXT,SGTXT,BUDAT,CAL_DISCOUNT,VBELN,NETWR,FKDAT,BLART,AUGBL,SHIP_TO,BUKRS,MFRNR,BELNR,RLDNR,GJAHR" 
                 cd:w5g.dt.context="/CASHJOURNAL" 
                 entitySet="CASHJOURNAL" 
                 placeToolbarInTable="true" 
@@ -86,6 +85,15 @@
                     alternateRowColors="true"
                     >
                     <t:columns>
+                        <t:Column id="_IDGenColumn10" width='7.813rem'>
+                            <t:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "VBELN", "leadingProperty": "VBELN", "columnIndex": 3}'/>
+                            </t:customData>
+                            <Text id="_IDGenText30" text="Invoice #"></Text>
+                            <t:template>
+                                <Link id="invoice" text="{VBELN}" press=".onInvoiceClick"/>
+                            </t:template>
+                        </t:Column>
                         <t:Column id="_IDGenColumn" width='7.813rem'>
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "FKDAT", "leadingProperty": "FKDAT", "columnIndex": 4}'/>

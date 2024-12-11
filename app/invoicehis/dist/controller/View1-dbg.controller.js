@@ -1,15 +1,36 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/format/NumberFormat"
-], (Controller, JSONModel, NumberFormat) => {
+    "sap/ui/core/format/NumberFormat",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/Image"
+], (Controller, JSONModel, NumberFormat, Dialog, Button, Image) => {
     "use strict";
 
     return Controller.extend("invoicehis.controller.View1", {
         onInit: function () {
-            const oSmartTable = this.byId("table0");
-            const oTable = oSmartTable.getTable();
-            //oTable.attachEvent("rowsUpdated", this._fetchVisibleData.bind(this));
+            var oTileCountsModel = new JSONModel({
+                counts: {
+                    "UniqueInvoices": 0,
+                    "TotalSales": 0,
+                    "TotalSalesFormatted": 0
+                }
+            });
+            var oFooterCountsModel = new JSONModel({
+                counts: {
+                    "TSL_AMOUNT": 0,
+                    "CAL_PST": 0,
+                    "CAL_GST": 0
+                    
+                }
+            });
+
+            this.getView().setModel(oTileCountsModel, "summaryCounts"); // GridTable
+            this.getView().setModel(oFooterCountsModel, "footerCounts");
+
+            
+            this.getView().byId("table").attachEvent("rowsUpdated", this.onTableScroll.bind(this));
         },
 
         // _fetchVisibleData: function () {
@@ -35,21 +56,118 @@ sap.ui.define([
         //         }
         //     });
         // },
-
-        _updateFooter: function (totalSales, totalPST, totalGST) {
-            const oTable = this.byId("table");
-            const oFooterData = {
-                sales: this._formatCurrency(totalSales),
-                pst: this._formatCurrency(totalPST),
-                gst: this._formatCurrency(totalGST)
-            };
-
-            // Assuming footer is rendered with custom rows or JSON binding
-            const oFooterModel = new JSONModel(oFooterData);
-            oTable.setModel(oFooterModel, "footer");
+        onTableScroll: function () {
+            const table = this.getView().byId("table");
+            const data = table.getBinding("rows").getContexts().map(context => context.getObject());
+            this.updateCalculations(data);
         },
+        updateCalculations: function (data) {
+            // Define properties for calculations
+            const decimalProperties = ["TSL_AMOUNT", "CAL_PST", "CAL_GST"]; // Footer sums
+            const summarySalesProperty = "TSL_AMOUNT"; // Total sales for summary
+            const uniqueInvoiceProperty = "BELNR"; // Unique invoice count
+        
+            const oFooterCountsModel = this.getView().getModel('footerCounts');
+            const oSummaryCountsModel = this.getView().getModel('summaryCounts');
+            const existingFooterCounts = oFooterCountsModel.getData();
+            const existingSummaryCounts = oSummaryCountsModel.getData();
+        
+            // Temporary storage for unique invoices
+            const uniqueInvoices = existingSummaryCounts._uniqueInvoices || new Set();
+        
+            // Process each row
+            data.forEach(row => {
+                // Sum footer values
+                decimalProperties.forEach(property => {
+                    const rowValue = typeof row[property] === "number" ? row[property] : parseFloat(row[property]) || 0;
+                    const existingValue = typeof existingFooterCounts[property] === "number" 
+                        ? existingFooterCounts[property] 
+                        : parseFloat(existingFooterCounts[property]) || 0;
+        
+                    existingFooterCounts[property] = parseFloat((existingValue + rowValue).toFixed(2));
+                });
+        
+                // Add invoice numbers to the unique set
+                if (row[uniqueInvoiceProperty]) {
+                    uniqueInvoices.add(row[uniqueInvoiceProperty]);
+                }
+        
+                // Sum for summary total sales
+                const rowSalesValue = typeof row[summarySalesProperty] === "number" 
+                    ? row[summarySalesProperty] 
+                    : parseFloat(row[summarySalesProperty]) || 0;
+                const existingSalesValue = typeof existingSummaryCounts["TotalSales"] === "number" 
+                    ? existingSummaryCounts["TotalSales"] 
+                    : parseFloat(existingSummaryCounts["TotalSales"]) || 0;
+        
+                existingSummaryCounts["TotalSales"] = parseFloat((existingSalesValue + rowSalesValue).toFixed(2));
+            });
+           // Set unique invoice count
+            existingSummaryCounts["UniqueInvoices"] = uniqueInvoices.size;
 
-        _formatLargeNumber: function (value) {
+            // Store the Set in the model for persistence
+            existingSummaryCounts._uniqueInvoices = uniqueInvoices;
+        
+            // Format summary sales value for display
+            existingSummaryCounts["TotalSalesFormatted"] = this.formatLargeNumber(existingSummaryCounts["TotalSales"]);
+        
+            // Update models
+            this.getView().getModel("footerCounts").setData(existingFooterCounts);
+            this.getView().getModel("summaryCounts").setData(existingSummaryCounts);
+        
+            console.log("Final footerCounts:", existingFooterCounts);
+            console.log("Final summaryCounts:", existingSummaryCounts);
+        },
+        
+        /**
+         * Format large numbers for summary panel.
+         * Converts 233594532.19 to $233M, 2321980.45 to $2.32M, etc.
+         */
+        formatLargeNumber: function (value) {
+            if (value >= 1e6) {
+                return `$${(value / 1e6).toFixed(2)}M`;
+            } else if (value >= 1e3) {
+                return `$${(value / 1e3).toFixed(2)}K`;
+            }
+            return `$${value.toFixed(2)}`;
+        },
+        
+        onFilterChange: function () {
+            const table = this.getView().byId("table");
+            const data = table.getBinding("rows").getContexts().map(context => context.getObject());
+
+            // Reset totals to 0
+            const oFooterCountsModel = this.getView().getModel('footerCounts');
+            const oTileCountsModel = this.getView().getModel('summaryCounts');
+            const resetFTotals = {
+                "UniqueInvoices": 0,
+                "TotalSales": 0,
+                "TotalSalesFormatted": 0
+            };
+            const resetSTotals = {
+                "TSL_AMOUNT": 0,
+                "CAL_PST": 0,
+                "CAL_GST": 0
+            };
+            oFooterCountsModel.setData(resetFTotals);
+            oTileCountsModel.setData(resetSTotals)
+            // Recalculate totals
+            this.updateCalculations(data);
+        },
+        // _updateFooter: function (totalSales, totalPST, totalGST) {
+        //     const oTable = this.byId("table");
+        //     const oFooterData = {
+        //         sales: this._formatCurrency(totalSales),
+        //         pst: this._formatCurrency(totalPST),
+        //         gst: this._formatCurrency(totalGST)
+        //     };
+
+        //     // Assuming footer is rendered with custom rows or JSON binding
+        //     const oFooterModel = new JSONModel(oFooterData);
+        //     oTable.setModel(oFooterModel, "footer");
+        // },
+
+        formatLargeNumber: function (value) {
             const oNumberFormat = NumberFormat.getFloatInstance({
                 style: "short",
                 minFractionDigits: 0,
@@ -59,19 +177,44 @@ sap.ui.define([
         },
 
         _formatCurrency: function (value) {
-            const oCurrencyFormat = NumberFormat.getCurrencyInstance({
-                currencyCode: false
+            if (value == null || value === undefined) {
+            return "";
+            }
+        
+            // Get the locale
+            var sLocale = sap.ui.getCore().getConfiguration().getLocale().getLanguage();
+            var sCurrencyCode;
+        
+            switch (sLocale) {
+                case "en-US":
+                    sCurrencyCode = "USD";
+                    break;
+                case "en-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+                case "fr-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+            // Add more cases as needed for other languages/regions
+                default:
+                    sCurrencyCode = "USD"; // Default currency code
+                    break;
+            }
+        
+            // Create a NumberFormat instance with currency type
+            var oNumberFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance({
+            "currencyCode": false,
+            "customCurrencies": {
+                "MyDollar": {
+                    "isoCode": sCurrencyCode,
+                    "decimals": 2
+                }
+            },
+            groupingEnabled: true,
+            showMeasure: true
             });
-            return oCurrencyFormat.format(value, "USD");
+            return oNumberFormat.format(value, "MyDollar");
         },
-        // _formatCurrency : function(value) {
-        //     return new Intl.NumberFormat('en-US', {
-        //         style: 'currency',
-        //         currency: 'USD',
-        //         minimumFractionDigits: 2,
-        //         maximumFractionDigits: 2,
-        //     }).format(value);
-        // },
         _formatDate: function (date) {
             if (!date) return ""; // Return empty string if no date is provided
         
@@ -139,6 +282,60 @@ sap.ui.define([
             }
 
             return formattedValue;
+        },
+        onInvoiceClick: function (oEvent) {
+            const sInvoiceNumber = oEvent.getSource().getText();
+
+            // Mock API Call
+            const sMockAPI = `/mock-api/invoices/${sInvoiceNumber}`;
+            this._fetchInvoiceImage(sMockAPI)
+                .then((sImageUrl) => this._showInvoiceDialog(sImageUrl))
+                .catch((err) => sap.m.MessageToast.show("Failed to load invoice"));
+        },
+        _fetchInvoiceImage: function (sUrl) {
+            // Simulate API response
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("https://via.placeholder.com/600x800.png?text=Invoice");
+                }, 1000);
+            });
+        },
+        _showInvoiceDialog: function (sImageUrl) {
+            const oDialog = new Dialog({
+                title: "Invoice",
+                content: new Image({ src: sImageUrl, width: "100%" }),
+                buttons: [
+                    new Button({
+                        text: "Download",
+                        press: () => this._downloadImage(sImageUrl)
+                    }),
+                    new Button({
+                        text: "Print",
+                        press: () => this._printImage(sImageUrl)
+                    }),
+                    new Button({
+                        text: "Close",
+                        press: function () {
+                            oDialog.close();
+                        }
+                    })
+                ]
+            });
+            oDialog.open();
+        },
+
+        _downloadImage: function (sImageUrl) {
+            const oLink = document.createElement("a");
+            oLink.href = sImageUrl;
+            oLink.download = "invoice.png";
+            oLink.click();
+        },
+
+        _printImage: function (sImageUrl) {
+            const printWindow = window.open("");
+            printWindow.document.write(`<img src='${sImageUrl}' style='width:100%;'/>`);
+            printWindow.print();
+            printWindow.close();
         }
     });
 });

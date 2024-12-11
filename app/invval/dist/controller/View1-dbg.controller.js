@@ -9,127 +9,251 @@ sap.ui.define([
         onInit: function () {
             var oTileCountsModel = new JSONModel({
                 counts: {
-                    OpenStock: 0,
-                    Quarantine: 0,
-                    Damage: 0,
-                    Retains: 0,
-                    QualityHold: 0,
-                    Returns: 0,
-                    Recalls: 0
+                    "OPEN_STOCK": 0,
+                    "QUARANTINE": 0,
+                    "DAMAGE_DESTRUCTION": 0,
+                    "RETAINS": 0,
+                    "QUALITY_HOLD": 0,
+                    "RETURNS_CAL": 0,
+                    "RECALLS": 0
                 }
             });
             var oFooterCountsModel = new JSONModel({
                 counts: {
-                    TotalCost: 0,
-                    OpenStock: 0,
-                    Quarantine: 0,
-                    Damage: 0,
-                    Retains: 0,
-                    QualityHold: 0,
-                    Returns: 0,
-                    Recalls: 0
+                    "TOTAL_COST": 0,
+                    "OPEN_STOCK": 0,
+                    "QUARANTINE": 0,
+                    "DAMAGE_DESTRUCTION": 0,
+                    "RETAINS": 0,
+                    "QUALITY_HOLD": 0,
+                    "RETURNS_CAL": 0,
+                    "RECALLS": 0
                 }
             });
 
             this.getView().setModel(oTileCountsModel, "summaryCounts"); // GridTable
             this.getView().setModel(oFooterCountsModel, "footerCounts");
 
-            // Set up OData model
-            const oModel = new sap.ui.model.odata.v2.ODataModel("/odata/v2/inventory");
-            this.getView().setModel(oModel);
+            
+            this.getView().byId("table").attachEvent("rowsUpdated", this.onTableScroll.bind(this));
 
-            // Get the SmartTable and bind the data change event
-            var oSmartTable = this.getView().byId("table0");
-            var oTable = oSmartTable.getTable();
-            oTable.bindRows({
-                path: "/INVENTORYVALUATION",
-                parameters: { $top: 100, $skip: 0 }
+            // // Set up OData model
+            // const oModel = new sap.ui.model.odata.v2.ODataModel("/odata/v2/inventory");
+            // this.getView().setModel(oModel);
+
+            // // Get the SmartTable and bind the data change event
+            // var oSmartTable = this.getView().byId("table0");
+            // var oTable = oSmartTable.getTable();
+            // oTable.bindRows({
+            //     path: "/INVENTORYVALUATION",
+            //     parameters: { $top: 100, $skip: 0 }
+            // });
+
+            // // Attach scroll event for lazy loading
+            // oTable.attachEventOnce("rowsUpdated", () => {
+            //     const domRef = oTable.getDomRef("vsb");
+            //     if (domRef) {
+            //         domRef.addEventListener("scroll", this.onScrollLoad.bind(this));
+            //     }
+            // });
+
+            // // Call _calculateTotals whenever rows are updated
+            // oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+        },
+        onTableScroll: function () {
+            const table = this.getView().byId("table");
+            const data = table.getBinding("rows").getContexts().map(context => context.getObject());
+            this.updateCalculations(data);
+        },
+        
+        updateCalculations: function (data) {
+            const decimalProperties = ["TOTAL_COST"];
+            const integerProperties = [
+                "OPEN_STOCK",
+                "QUARANTINE",
+                "DAMAGE_DESTRUCTION",
+                "RETAINS",
+                "QUALITY_HOLD",
+                "RETURNS_CAL",
+                "RECALLS"
+            ];
+            const allProperties = [...decimalProperties, ...integerProperties];
+        
+            const oFooterCountsModel = this.getView().getModel('footerCounts');
+            const oTileCountsModel = this.getView().getModel('summaryCounts');
+            const existingFooterCounts = oFooterCountsModel.getData();
+            const existingSummaryCounts = oTileCountsModel.getData();
+        
+            data.forEach(row => {
+                allProperties.forEach(property => {
+                    const rowValue = typeof row[property] === "number" ? row[property] : parseFloat(row[property]) || 0;
+                    const existingValue = typeof existingFooterCounts[property] === "number" 
+                        ? existingFooterCounts[property] 
+                        : parseFloat(existingFooterCounts[property]) || 0;
+                    const existingSummaryValue = typeof existingSummaryCounts[property] === "number" 
+                        ? existingSummaryCounts[property] 
+                        : parseFloat(existingSummaryCounts[property]) || 0;
+        
+                    if (decimalProperties.includes(property)) {
+                        existingFooterCounts[property] = parseFloat((existingValue + rowValue).toFixed(2));
+                        existingSummaryCounts[property] = parseFloat((existingSummaryValue + rowValue).toFixed(2));
+                    } else if (integerProperties.includes(property)) {
+                        existingFooterCounts[property] = existingValue + rowValue;
+                        existingSummaryCounts[property] = existingSummaryValue + rowValue;
+                    }
+                });
             });
+        
+            this.getView().getModel("footerCounts").setData(existingFooterCounts);
+            this.getView().getModel("summaryCounts").setData(existingSummaryCounts);
+        
+            console.log("Final footerCounts:", existingFooterCounts);
+            console.log("Final summaryCounts:", existingSummaryCounts);
+        },
+        onFilterChange: function () {
+            debugger
+            const table = this.getView().byId("table");
+            const data = table.getBinding("rows").getContexts().map(context => context.getObject());
 
-            // Attach scroll event for lazy loading
-            oTable.attachEventOnce("rowsUpdated", () => {
-                const domRef = oTable.getDomRef("vsb");
-                if (domRef) {
-                    domRef.addEventListener("scroll", this.onScrollLoad.bind(this));
-                }
-            });
-
-            // Call _calculateTotals whenever rows are updated
-            oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+            // Reset totals to 0
+            const oFooterCountsModel = this.getView().getModel('footerCounts');
+            const oTileCountsModel = this.getView().getModel('summaryCounts');
+            const resetTotals = {
+                TOTAL_COST: 0,
+                OPEN_STOCK: 0,
+                QUARANTINE: 0,
+                DAMAGE_DESTRUCTION: 0,
+                RETAINS: 0,
+                RETURN_CAL: 0,
+                RECALLS: 0
+            };
+            oFooterCountsModel.setData(resetTotals);
+            oTileCountsModel.setData(resetTotals)
+            // Recalculate totals
+            this.updateCalculations(data);
         },
 
-        onScrollLoad: function (event) {
-            const oTable = this.byId("table0");
-            const scrollPosition = event.target.scrollTop;
-            const maxScroll = event.target.scrollHeight - event.target.clientHeight;
-
-            if (scrollPosition === maxScroll) {
-                this.loadMoreData(oTable);
+        // _formatNumber: function (value) {
+        //     return value.toLocaleString();
+        // },
+        
+        formatLargeNumber: function (value) {
+            if (value >= 1_000_000) return (value / 1_000_000).toFixed(1) + "M";
+            if (value >= 1_000) return (value / 1_000).toFixed(1) + "K";
+            return value.toString();
+        },
+        
+        _formatCurrency: function (value) {
+            if (value == null || value === undefined) {
+            return "";
             }
-        },
-
-        loadMoreData: function (oTable) {
-            const oBinding = oTable.getBinding("rows");
-            const currentLength = oBinding.getLength();
-
-            oBinding.suspend();
-            oBinding.updateParameters({
-                $top: 100,
-                $skip: currentLength
+        
+            // Get the locale
+            var sLocale = sap.ui.getCore().getConfiguration().getLocale().getLanguage();
+            var sCurrencyCode;
+        
+            switch (sLocale) {
+                case "en-US":
+                    sCurrencyCode = "USD";
+                    break;
+                case "en-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+                case "fr-CA":
+                    sCurrencyCode = "CAD";
+                    break;
+            // Add more cases as needed for other languages/regions
+                default:
+                    sCurrencyCode = "USD"; // Default currency code
+                    break;
+            }
+        
+            // Create a NumberFormat instance with currency type
+            var oNumberFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance({
+            "currencyCode": false,
+            "customCurrencies": {
+                "MyDollar": {
+                    "isoCode": sCurrencyCode,
+                    "decimals": 2
+                }
+            },
+            groupingEnabled: true,
+            showMeasure: true
             });
-            oBinding.resume();
+            return oNumberFormat.format(value, "MyDollar");
         },
+        // onScrollLoad: function (event) {
+        //     const oTable = this.byId("table0");
+        //     const scrollPosition = event.target.scrollTop;
+        //     const maxScroll = event.target.scrollHeight - event.target.clientHeight;
 
-        _calculateTotals: function () {
-            var oSmartTable = this.getView().byId("table0");
-            var oTable = oSmartTable.getTable();
-            var oBinding = oTable.getBinding("rows"); // For GridTable
-            var aContexts = oBinding.getContexts(0, oBinding.getLength()); // Get all contexts
+        //     if (scrollPosition === maxScroll) {
+        //         this.loadMoreData(oTable);
+        //     }
+        // },
 
-            var oTileCounts = {
-                OpenStock: 0,
-                Quarantine: 0,
-                Damage: 0,
-                Retains: 0,
-                QualityHold: 0,
-                Returns: 0,
-                Recalls: 0
-            };
+        // loadMoreData: function (oTable) {
+        //     const oBinding = oTable.getBinding("rows");
+        //     const currentLength = oBinding.getLength();
 
-            var oFooterCounts = {
-                TotalCost: 0,
-                OpenStock: 0,
-                Quarantine: 0,
-                Damage: 0,
-                Retains: 0,
-                QualityHold: 0,
-                Returns: 0,
-                Recalls: 0
-            };
+        //     oBinding.suspend();
+        //     oBinding.updateParameters({
+        //         $top: 100,
+        //         $skip: currentLength
+        //     });
+        //     oBinding.resume();
+        // },
 
-            aContexts.forEach(function (oContext) {
-                oTileCounts.OpenStock += parseFloat(oContext.getProperty("OPEN_STOCK")) || 0;
-                oTileCounts.Quarantine += parseFloat(oContext.getProperty("QUARANTINE")) || 0;
-                oTileCounts.Damage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
-                oTileCounts.Retains += parseFloat(oContext.getProperty("RETAINS")) || 0;
-                oTileCounts.QualityHold += parseFloat(oContext.getProperty("QUALITY_HOLD")) || 0;
-                oTileCounts.Returns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
-                oTileCounts.Recalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
+        // _calculateTotals: function () {
+        //     var oSmartTable = this.getView().byId("table0");
+        //     var oTable = oSmartTable.getTable();
+        //     var oBinding = oTable.getBinding("rows"); // For GridTable
+        //     var aContexts = oBinding.getContexts(0, oBinding.getLength()); // Get all contexts
 
-                oFooterCounts.TotalCost += parseFloat(oContext.getProperty("TOTAL_COST")) || 0;
-                oFooterCounts.OpenStock += parseFloat(oContext.getProperty("OPEN_STOCK")) || 0;
-                oFooterCounts.Quarantine += parseFloat(oContext.getProperty("QUARANTINE")) || 0;
-                oFooterCounts.Damage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
-                oFooterCounts.Retains += parseFloat(oContext.getProperty("RETAINS")) || 0;
-                oFooterCounts.QualityHold += parseFloat(oContext.getProperty("QUALITY_HOLD")) || 0;
-                oFooterCounts.Returns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
-                oFooterCounts.Recalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
-            });
+        //     var oTileCounts = {
+        //         OpenStock: 0,
+        //         Quarantine: 0,
+        //         Damage: 0,
+        //         Retains: 0,
+        //         QualityHold: 0,
+        //         Returns: 0,
+        //         Recalls: 0
+        //     };
 
-            // Update the models with calculated totals
-            this.getView().getModel("summaryCounts").setProperty("/counts", oTileCounts);
-            this.getView().getModel("footerCounts").setProperty("/counts", oFooterCounts);
-        },
+        //     var oFooterCounts = {
+        //         TotalCost: 0,
+        //         OpenStock: 0,
+        //         Quarantine: 0,
+        //         Damage: 0,
+        //         Retains: 0,
+        //         QualityHold: 0,
+        //         Returns: 0,
+        //         Recalls: 0
+        //     };
+
+        //     aContexts.forEach(function (oContext) {
+        //         oTileCounts.OpenStock += parseFloat(oContext.getProperty("OPEN_STOCK")) || 0;
+        //         oTileCounts.Quarantine += parseFloat(oContext.getProperty("QUARANTINE")) || 0;
+        //         oTileCounts.Damage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
+        //         oTileCounts.Retains += parseFloat(oContext.getProperty("RETAINS")) || 0;
+        //         oTileCounts.QualityHold += parseFloat(oContext.getProperty("QUALITY_HOLD")) || 0;
+        //         oTileCounts.Returns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
+        //         oTileCounts.Recalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
+
+        //         oFooterCounts.TotalCost += parseFloat(oContext.getProperty("TOTAL_COST")) || 0;
+        //         oFooterCounts.OpenStock += parseFloat(oContext.getProperty("OPEN_STOCK")) || 0;
+        //         oFooterCounts.Quarantine += parseFloat(oContext.getProperty("QUARANTINE")) || 0;
+        //         oFooterCounts.Damage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
+        //         oFooterCounts.Retains += parseFloat(oContext.getProperty("RETAINS")) || 0;
+        //         oFooterCounts.QualityHold += parseFloat(oContext.getProperty("QUALITY_HOLD")) || 0;
+        //         oFooterCounts.Returns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
+        //         oFooterCounts.Recalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
+        //     });
+
+        //     // Update the models with calculated totals
+        //     this.getView().getModel("summaryCounts").setProperty("/counts", oTileCounts);
+        //     this.getView().getModel("footerCounts").setProperty("/counts", oFooterCounts);
+        // },
 
         _formatNumber: function (value) {
             return new Intl.NumberFormat('en-US', {
@@ -137,14 +261,7 @@ sap.ui.define([
             }).format(value);
         },
 
-        _formatCurrency: function (value) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(value);
-        },
+        
 
         _formatDate: function (date) {
             if (!date) return ""; // Return empty string if no date is provided

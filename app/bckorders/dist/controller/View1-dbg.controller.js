@@ -10,6 +10,7 @@ sap.ui.define([
             oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
         },
         _calculateTotals: function () {
+          debugger
             var oSmartTable = this.getView().byId("table0");
             var oTable = oSmartTable.getTable();
             var oBinding = oTable.getBinding("rows");
@@ -34,7 +35,7 @@ sap.ui.define([
                     totalBackOrders++;
                     impactedCustomers.add(oData.KUNRE_ANA); // Add unique impacted customers
                     totalItemsOnBackOrder.add(oData.MATNR); // Count the number of items on each back order
-                    totalUnitsBackOrdered += parseFloat(oData.CAL_CONFIRMED_QTY); // Sum the quantity of units back ordered
+                    totalUnitsBackOrdered += parseFloat(oData.BACK_ORD_QTY); // Sum the quantity of units back ordered
                     totalExtension += parseFloat(oData.EXTENSION);
                     // Include calculation logic for 'Units to be received' as needed.
                     // Assuming units to be received is calculated based on some logic with your data.
@@ -46,6 +47,7 @@ sap.ui.define([
             const impactedCustomersCount = impactedCustomers.size;
             const totalItemsOnBackOrderCount = totalItemsOnBackOrder.size;
             const totalExtensionFormatted = this._formatCurrency(totalExtension)
+            const totalQtyFormatted = this._formatNumber(totalUnitsBackOrdered)
       
             // Update UI elements (tiles) with calculated values
             this.byId("TileContent1").setText(totalBackOrders);
@@ -54,9 +56,14 @@ sap.ui.define([
             this.byId("TileContent4").setText(totalUnitsBackOrdered);
             this.byId("TileContent5").setText(totalUnitsToBeReceived);
 
-            this.byId("footerText1").setText(totalUnitsBackOrdered);
+            this.byId("footerText1").setText(totalQtyFormatted);
             this.byId("footerText2").setText(totalExtensionFormatted);
         },
+        _formatNumber: function (value) {
+          return new Intl.NumberFormat('en-US', {
+              maximumFractionDigits: 0
+          }).format(value);
+      },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {
               return "";

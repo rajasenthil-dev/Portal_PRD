@@ -35,7 +35,6 @@
 				<sf:SmartFilterBar
                     id="bar0"
                     entitySet="SALESBYCURRENT"
-                    enableBasicSearch="true"
                     useDateRangeType="true"
                     persistencyKey="SmartFilterBar_SALESBYCURRENT"
                     smartVariant="pageVariant"

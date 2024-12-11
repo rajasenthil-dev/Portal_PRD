@@ -33,7 +33,7 @@
                         </GenericTile>
                     </HeaderContainer>
                 </FlexBox>
-				<sf:SmartFilterBar id="bar0" entitySet="INVENTORYBYLOT" enableBasicSearch="true" useDateRangeType="true" persistencyKey="SmartFilterBar_INVENTORYBYLOT" smartVariant="pageVariant" liveMode="true" search="onSearch">
+				<sf:SmartFilterBar id="bar0" entitySet="INVENTORYBYLOT" useDateRangeType="true" persistencyKey="SmartFilterBar_INVENTORYBYLOT" smartVariant="pageVariant" liveMode="true" search="onSearch">
                     <sf:controlConfiguration>
                         
                     </sf:controlConfiguration>

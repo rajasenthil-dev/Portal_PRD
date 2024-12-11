@@ -35,7 +35,6 @@
 				<sf:SmartFilterBar 
                     id="bar0" 
                     entitySet="INVOICEHISTORY" 
-                    enableBasicSearch="true" 
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_INVOICEHISTORY" 
                     smartVariant="pageVariant" 

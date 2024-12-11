@@ -35,7 +35,6 @@
 				<sf:SmartFilterBar 
                     id="bar0" 
                     entitySet="INVENTORYSTATUS" 
-                    enableBasicSearch="true" 
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_INVENTORYSTATUS" 
                     smartVariant="pageVariant" 

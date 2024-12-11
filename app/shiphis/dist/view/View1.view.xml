@@ -35,7 +35,6 @@
 				<sf:SmartFilterBar 
                     id="bar0" 
                     entitySet="SHIPPINGHISTORY" 
-                    enableBasicSearch="true" 
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_SHIPPINGHISTORY" 
                     smartVariant="pageVariant" 
@@ -65,7 +64,7 @@
                     
                         <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text="18K"/>
+                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text=""/>
                         </FlexBox>
                         <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
@@ -73,7 +72,7 @@
                         </FlexBox>  
                         <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
-                            <Text id="_IDGenNumericContent3" class="mck_TileContent" text="6M"/>
+                            <Text id="_IDGenNumericContent3" class="mck_TileContent" text=""/>
                         </FlexBox>  
                     
 				    </HeaderContainer>
@@ -112,7 +111,7 @@
                                 </t:customData>
                             <Text id="_IDGenText6" text="Invoice #"></Text>
                             <t:template>
-                                <Text id="_IDGenText9" text="{path: 'VBELN', formatter: '._removeLeadingZeros'}" />
+                                <Link id="_IDGenText9" press=".onInvoiceClick" text="{path: 'VBELN', formatter: '._removeLeadingZeros'}" />
                             </t:template>
                         </t:Column>
                         <t:Column id="_IDGenColumn6">

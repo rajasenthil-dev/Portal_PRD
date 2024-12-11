@@ -19,6 +19,7 @@ sap.ui.define([
 
         // Table update handler for rowsUpdated event
         _onTableUpdate: function () {
+            debugger
             this._calculateFooterAndSummary();
         },
 

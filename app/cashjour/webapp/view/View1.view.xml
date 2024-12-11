@@ -32,7 +32,7 @@
                         </GenericTile>
                     </HeaderContainer>
                 </FlexBox>
-				<sf:SmartFilterBar id="bar0" entitySet="CASHJOURNAL" enableBasicSearch="true" useDateRangeType="true" persistencyKey="SmartFilterBar_CASHJOURNAL" smartVariant="pageVariant" liveMode="true" search="onSearch">
+				<sf:SmartFilterBar id="bar0" entitySet="CASHJOURNAL" useDateRangeType="true" persistencyKey="SmartFilterBar_CASHJOURNAL" smartVariant="pageVariant" liveMode="true" search="onSearch">
                     <sf:controlConfiguration>
                     
                         <sf:ControlConfiguration id="_IDGenControlConfiguration1"
@@ -44,14 +44,14 @@
 						/>
                     </sf:controlConfiguration>
                 </sf:SmartFilterBar>
-                <Panel id="_IDGenPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+                <!-- <Panel id="_IDGenPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
                     <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
                         <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                             <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>collectionActivityTileTitle}"/>
                             <Text id="_IDGenNumericContent1" class="mck_TileContent" text="7419"/>
                         </FlexBox>
                     </HeaderContainer>
-                </Panel>
+                </Panel> -->
 			</f:DynamicPageHeader>
 		</f:header>
         <f:content>

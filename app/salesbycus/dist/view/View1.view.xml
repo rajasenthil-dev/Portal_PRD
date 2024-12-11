@@ -35,7 +35,6 @@
 				<sf:SmartFilterBar
                     id="bar0"
                     entitySet="SALESBYCURRENT"
-                    enableBasicSearch="true"
                     useDateRangeType="true"
                     persistencyKey="SmartFilterBar_SALESBYCURRENT"
                     smartVariant="pageVariant"
@@ -119,6 +118,15 @@
                     id="table"
                     alternateRowColors="true">
                     <t:columns>
+                        <t:Column id="_IDGenColumn10" width='7.813rem'>
+                            <t:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_VBELN", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 0}'/>
+                            </t:customData>
+                            <Text id="_IDGenText30" text="Invoice/Credit #"></Text>
+                            <t:template>
+                                <Link id="inviocecredir" text="{INVOICE_CREDIT_VBELN}" press=".onInvoiceClick"/>
+                            </t:template>
+                        </t:Column>
                         <t:Column id="_IDGenColumn" width='7.813rem'>
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "PRICE_CAL_UNIT_COST", "leadingProperty": "PRICE_CAL_UNIT_COST", "columnIndex": 7}'/>

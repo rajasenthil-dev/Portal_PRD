@@ -1,36 +1,102 @@
 {
-	"SYNBILLINGDOC" : {
-	},
-	"SYNREPMATERIALDOC" : {
-	},
-	"SYNINVENTORYSTATUSDOC" : {
-	},
-	"SYNINVENTORYAUDITTRAILDOC" : {
-	},
-	"SYNCASHJOURNALDOC" : {
-	},
-	"SYNINVENTORYSNAPSHOTDOC" : {
-	},
-	"SYNINVENTORYBYLOTDOC" : {
-	},
-	"SYNOPENARDOC" : {
-	},
-	"SYNINVENTORYVALUATIONDOC" : {
-	},
-	"SYNINVOICEHISTORYDOC" : {
-	},
-	"SYNSALESBYCURRENTDOC" : {
-	},
-	"SYNCUSTOMERMASTERDOC" : {
-	},
-	"SYNSHIPPINGHISTORYDOC" : {
-	},
-	"SYNPRICINGDOC" : {
-	},
-	"SYNOPENORDERSDOC" : {
-	},
-	"SYNRETURNSDOC" : {
-	},
-	"SYNBACKORDERSDOC" : {
+  "SYNBILLINGDOC": {
+    
+  },
+  "SYNREPMATERIALDOC": {
+    "target": {
+      "object": "REP_MD_MATERIAL",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNINVENTORYSTATUSDOC": {
+	"target": {
+      "object": "Inventory_Status_C_View_V4",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNINVENTORYAUDITTRAILDOC": {
+	"target": {
+      "object": "REP_TPMMIN_MATDOC_02",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNCASHJOURNALDOC": {
+	"target": {
+      "object": "REP_TPFICJ_01",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNINVENTORYSNAPSHOTDOC": {
+	"target": {
+      "object": "Inventory_Snapshot_C_View_V2",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNINVENTORYBYLOTDOC": {
+	"target": {
+      "object": "Inventory_By_Lot_C_View_V1",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNOPENARDOC": {
+	"target": {
+      "object": "REP_TPFICJ_02",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNINVENTORYVALUATIONDOC": {
+	"target": {
+      "object": "Inventory_Valuation_View_V1",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNINVOICEHISTORYDOC": {
+	"target": {
+      "object": "REP_TPFICJ_03",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNSALESBYCURRENTDOC": {
+	"target": {
+      "object": "Current_Historical_Sales_by_Customer_by_Product_UN",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNCUSTOMERMASTERDOC": {
+	"target": {
+      "object": "REP_MD_BILL_SHIPTO",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNSHIPPINGHISTORYDOC": {
+	"target": {
+      "object": "REP_TPSDBL_01",
+      "schema": "MCK_DEMO"
+    }
+  },
+  "SYNPRICINGDOC": {
+	"target": {
+	  "object": "REP_TPSDPC_01",
+	  "schema": "MCK_DEMO"
 	}
+  },
+  "SYNOPENORDERSDOC": {
+	"target": {
+	  "object": "PRO_MFR_Openorders",
+	  "schema": "MCK_DEMO"
+	}
+	
+  },
+  "SYNRETURNSDOC": {
+	"target": {
+	  "object": "Returns_Reports_View",
+	  "schema": "MCK_DEMO"
+	}
+  },
+  "SYNBACKORDERSDOC": {
+	"target": {
+	  "object": "REP_TPSDOR_01",
+	  "schema": "MCK_DEMO"
+	}
+  }
 }

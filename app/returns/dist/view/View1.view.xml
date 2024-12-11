@@ -25,8 +25,7 @@
                 </FlexBox>
 				<sf:SmartFilterBar 
                     id="bar0" 
-                    entitySet="RETURNS" 
-                    enableBasicSearch="true" 
+                    entitySet="RETURNS"  
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_RETURNS" 
                     smartVariant="pageVariant" 

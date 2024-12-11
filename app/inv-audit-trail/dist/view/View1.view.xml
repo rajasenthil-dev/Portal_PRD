@@ -34,8 +34,7 @@
                 </FlexBox>
 				<sf:SmartFilterBar 
                     id="bar0" 
-                    entitySet="INVENTORYAUDITTRAIL" 
-                    enableBasicSearch="true" 
+                    entitySet="INVENTORYAUDITTRAIL"  
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_INVENTORYAUDITTRAIL" 
                     smartVariant="pageVariant" 

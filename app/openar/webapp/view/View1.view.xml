@@ -38,7 +38,6 @@
                 
 				<sf:SmartFilterBar id="bar0" 
                     entitySet="OPENAR" 
-                    enableBasicSearch="true" 
                     useDateRangeType="true" 
                     persistencyKey="SmartFilterBar_OPENAR" 
                     smartVariant="pageVariant" 
