@@ -145,10 +145,7 @@
                             <Label id="_IDGenLabel32" text="{i18n>footerLabel4}:" class="cssLabelTotal"/>
                             <Text id="footerText4" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
                         </HBox>	
-                        <HBox id="_IDGenHBox33" class="sapUiSmallMarginEnd">
-                            <Label id="_IDGenLabel33" text="{i18n>footerLabel5}:" class="cssLabelTotal"/>
-                            <Text id="footerText5" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
-                        </HBox>	
+                        
                         <HBox id="_IDGenHBox3" class="sapUiSmallMarginEnd">
                             <Label id="_IDGenLabel34" text="{i18n>footerLabel6}:" class="cssLabelTotal"/>
                             <Text id="footerText6" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>

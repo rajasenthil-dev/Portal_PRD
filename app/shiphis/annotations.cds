@@ -81,12 +81,12 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CAL_BILL_ITM_COUNT,
-                Label : 'Recieved'
+                Label : 'Item Count'
             },
             {
                 $Type : 'UI.DataField',
                 Value : FKIMG,
-                Label : 'Item Amount'
+                Label : 'Invoiced Quanity'
             },
             {
                 $Type : 'UI.DataField',

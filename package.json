@@ -44,7 +44,9 @@
     "watch-invoicehis": "cds watch --open invoicehis/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-openar": "cds watch --open openar/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-salesbycus": "cds watch --open salesbycus/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-bckorders": "cds watch --open bckorders/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-bckorders": "cds watch --open bckorders/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project12345": "cds watch --open project12345/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-test1245": "cds watch --open test1245/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "hana": {

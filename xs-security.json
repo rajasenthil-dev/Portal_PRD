@@ -1,32 +1,41 @@
 {
-  "xsappname": "mck-portal",
-  "tenant-mode": "shared",
-  "scopes": [
-    {
-      "name": "$XSAPPNAME.Admin",
-      "description": "Admin"
-    }
-  ],
-  "attributes": [],
-  "role-templates": [
-    {
-      "name": "Admin",
-      "description": "generated",
-      "scope-references": [
-        "$XSAPPNAME.Admin"
-      ],
-      "attribute-references": []
-    }
-  ],
-  "oauth2-configuration": {
-    "credential-types": [
-      "binding-secret",
-      "x509"
+    "xsappname": "mck-portal",
+    "tenant-mode": "dedicated",
+    "description": "Security profile of called application",
+    "scopes": [
+        {
+            "name": "uaa.user",
+            "description": "UAA"
+        },
+        {
+            "name": "$XSAPPNAME.mfg",
+            "description": "scope from okta"
+        }
     ],
-    "redirect-uris": [
-      "https://*.applicationstudio.cloud.sap/**",
-      "https://**cfapps.us20.hana.ondemand.com/login/callback",
-      "http://localhost:5000/**"
-    ]
-  }
+    "role-templates": [
+        {
+            "name": "Token_Exchange",
+            "description": "UAA",
+            "scope-references": [
+                "uaa.user"
+            ]
+        },
+        {
+            "name": "MFG",
+            "description": "OKTA",
+            "scope-references": [
+                "$XSAPPNAME.mfg"
+            ]
+        }
+    ],
+    "oauth2-configuration": {
+        "credential-types": [
+            "binding-secret",
+            "x509"
+        ],
+        "redirect-uris": [
+            "https://**cfapps.us20.hana.ondemand.com/**"
+        ]
+    }
+    
 }

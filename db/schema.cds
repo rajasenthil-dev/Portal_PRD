@@ -62,7 +62,7 @@ define view ITEMMASCATEGORY as
 
 // Inventory Status
 // Security attributes to match: ??
-@cds.search: { SKU, PRODUCT_CODE, SIZE, MANUFACTURER, PRODUCT_DESCRIPTION, CO, WAREHOUSE }
+@cds.search: { SKU_MATNR, PRODUCT_CODE, CON_SIZE_UOM_SIZE, MANUFACTURER, PRODUCT_DESCRIPTION, CO, WAREHOUSE }
 @cds.persistence.exists
 entity INVENTORYSTATUS //@(restrict: [
 //     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
@@ -70,30 +70,35 @@ entity INVENTORYSTATUS //@(restrict: [
 // ])
 {
         @UI.HiddenFilter: true
-    key SKU                 : String(40);
-        PRODUCT_CODE        : String(99);
+    key SKU_MATNR                   : String(40);
+        PRODUCT_CODE                : String(40);
         @UI.HiddenFilter: true
-        SIZE                : String(30);
+        CON_SIZE_UOM_SIZE           : String(30);
         @UI.HiddenFilter: true
-        PRODUCT_DESCRIPTION : String(40);
+        PRODUCT_DESCRIPTION       : String(40);
         @UI.HiddenFilter: true
-        OPEN_STOCK          : Decimal(36,14);
+        OPEN_STOCK                  : Decimal(36,14);
         @UI.HiddenFilter: true
-        QUARANTINE          : Decimal(36,14);
+        QUARANTINE                  : Decimal(36,14);
         @UI.HiddenFilter: true
-        DAMAGE_DESTRUCTION  : Decimal(36,14);
+        DAMAGE_DESTRUCTION          : Decimal(36,14);
         @UI.HiddenFilter: true
-        RETAINS             : Decimal(36,14);
+        RETAINS                   : Decimal(36,14);
         @UI.HiddenFilter: true
-        RETURNS_CAL         : Decimal(36,14);
+        RETURNS_CAL                 : Decimal(36,14);
         @UI.HiddenFilter: true
-        RECALLS             : Decimal(36,14);
+        RECALLS                     : Decimal(36,14);
         @UI.HiddenFilter: true
-    key CO                  : String(4);
+    key SALES_ORGANIZATION_VKORG    : String(4);
         @UI.HiddenFilter: true
-        WAREHOUSE           : String(4);
+        SALES_OFFICE_VKBUR          : String(4);
         @UI.HiddenFilter: true
-        MANUFACTURER        : String(40);
+        MANUFACTURER_MFRPN          : String(40);
+        @UI.HiddenFilter: true
+        PROFIT_CENTER_PRCTR         : String(10);
+
+
+
 }
 // Inventory Status Product Code filter
 define view INVSTATUSPRODUCTCODE as
@@ -258,7 +263,7 @@ define view INVSNAPWARESTAT as
 };
 // Inventory By Lot 
 // Security attributes to match: ??
-@cds.search: { SKU, PRODUCT_CODE, PRODUCT_DESCRIPTION, SIZE, LOT, UPC, CO, MANUFACTURER, WAREHOUSE }
+@cds.search: { SKU, PRODUCT_CODE, SIZE, LOT, UPC, CO, MANUFACTURER, WAREHOUSE }
 @cds.persistence.exists
 entity INVENTORYBYLOT //@(restrict: [
 //     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
@@ -266,41 +271,54 @@ entity INVENTORYBYLOT //@(restrict: [
 // ])
 {
         @UI.HiddenFilter: true
-    key SKU                 : String(40);
+    key SKU                     : String(40);
+        PRODUCT_CODE_1          : String(16);
+        //PRODUCT_DESCRIPTION : String(40);
         @UI.HiddenFilter: true
-        PRODUCT_CODE        : String(99);
-        PRODUCT_DESCRIPTION : String(40);
+        SIZE                        : String(30);
+        LOT_CHARG                   : String(10);
         @UI.HiddenFilter: true
-        SIZE                : String(30);
-        LOT                 : String(10);
+        EXPIRY_DATE_VFDAT           : String(8);
+        WAREHOUSE_STATUS            : String(4);
         @UI.HiddenFilter: true
-        EXPIRY_DATE         : String(8);
+        QTY_ON_HAND                 : Decimal(36,14);
         @UI.HiddenFilter: true
-        QTY_ON_HAND         : Decimal(36,14);
+        DAYS_UNTIL_EXPIRY           : Integer;
         @UI.HiddenFilter: true
-        DAYS_UNTIL_EXPIRY   : Date;
+        OPEN_STOCK                  : Decimal(36,14);
         @UI.HiddenFilter: true
-        UPC                 : String(18);
+        QUARANTINE                  : Decimal(36,14);
         @UI.HiddenFilter: true
-        CO                  : String(4);
+        DAMAGE_DESTRUCTION          : Decimal(36,14);
         @UI.HiddenFilter: true
-        MANUFACTURER        : String(10);
-        WAREHOUSE           : String(4);
+        RETAINS                     : Decimal(36,14);
+        @UI.HiddenFilter: true
+        RETURNS_CAL                 : Decimal(36,14);
+        @UI.HiddenFilter: true
+        RECALLS                     : Decimal(36,14);
+        @UI.HiddenFilter: true
+        SALES_ORGANIZATION_VKORG    : String(18);
+        @UI.HiddenFilter: true
+        SALES_OFFICE_VKBUR          : String(4);
+        @UI.HiddenFilter: true
+        MANUFACTURER_MFRPN          : String(10);
+        @UI.HiddenFilter: true
+        PROFIT_CENTER_PRCTR         : String(10);
 }
 // Inventory by Lot Product Code filter
 define view INVBYLOTPRODUCTCODE as
     select from INVENTORYBYLOT distinct {
-        key PRODUCT_CODE
+        key PRODUCT_CODE_1
 };
 // Inventory by Lot Lot filter
 define view INVBYLOTLOT as
     select from INVENTORYBYLOT distinct {
-        key LOT
+        key LOT_CHARG
 };
 // Inventory by Lot Warehouse filter
 define view INVBYLOTWAREHOUSE as
     select from INVENTORYBYLOT distinct {
-        key WAREHOUSE
+        key WAREHOUSE_STATUS
 };
 
 // Accounts Receivable

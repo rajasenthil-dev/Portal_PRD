@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/UIComponent","test1245/model/models"],(e,t)=>{"use strict";return e.extend("test1245.Component",{metadata:{manifest:"json",interfaces:["sap.ui.core.IAsyncContentCreation"]},init(){e.prototype.init.apply(this,arguments);this.setModel(t.createDeviceModel(),"device");this.getRouter().initialize()}})});
+//# sourceMappingURL=Component.js.map

@@ -20,7 +20,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Inventory_Status_C_View_V4",
+					"name": "Inventory_Status_C_View_V5",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
@@ -48,7 +48,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Inventory_By_Lot_C_View_V1",
+					"name": "Inventory_Lot_V1",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]

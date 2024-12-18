@@ -4,12 +4,11 @@ annotate INVENTORY.INVENTORYSTATUS with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-              SKU: true,
+              SKU_MATNR: true,
                 PRODUCT_CODE: true,
-                PRODUCT_DESCRIPTION: true,
+                PRODUCTDESCRIPTION_EN: true,
                 MANUFACTURER: true,
                 SIZE: true,
-                WAREHOUSE: true,
                 CO: true,
         }
     },
@@ -20,7 +19,7 @@ Search.defaultSearchElement: true,
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : SKU,
+                Value : SKU_MATNR,
                 Label : 'SKU',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
 
@@ -34,7 +33,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : SIZE,
+                Value : CON_SIZE_UOM_SIZE,
                 Label : 'Size',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
             },
@@ -88,26 +87,32 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : WAREHOUSE,
-                Label : 'Warehouse',
+                Value : SALES_ORGANIZATION_VKORG,
+                Label : 'Sales Org',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : CO,
-                Label : 'CO',
+                Value : SALES_OFFICE_VKBUR,
+                Label : 'Sales Office',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : MANUFACTURER,
+                Value : MANUFACTURER_MFRPN,
                 Label : 'Manufacturer',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PROFIT_CENTER_PRCTR,
+                Label : 'Profit Center',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],
     },
 ){
-    SKU@(title: 'SKU');
+    SKU_MATNR@(title: 'SKU');
     PRODUCT_CODE@(
         title: 'Product Code',
         Common: {
@@ -126,15 +131,16 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    SIZE@(title: 'Size');
-    PRODUCT_DESCRIPTION@(title: 'Product Description');
+    CON_SIZE_UOM_SIZE@(title: 'Size');
+    PRODUCTDESCRIPTION_EN@(title: 'Product Description');
     OPEN_STOCK@(title: 'Open Stock');
     QUARANTINE@(title: 'Quarantine');
     DAMAGE_DESTRUCTION@(title: 'Damage/Destruction');
-    RETAINS@(title: 'Retains');
+    RETAINS_1@(title: 'Retains');
     RETURNS_CAL@(title: 'Returns');
     RECALLS@(title: 'Recalls');
-    WAREHOUSE@(title: 'Warehouse');
-    CO@(title: 'CO');
+    SALES_ORGANIZATION_VKORG@(title: 'Sales Org');
+    SALES_OFFICE@(title: 'Sales Office');
     MANUFACTURER@(title: 'Manufacturer'); 
+    PROFIT_CENTER@(title: 'Profit Center'); 
 };

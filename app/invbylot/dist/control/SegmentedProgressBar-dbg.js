@@ -43,8 +43,13 @@ sap.ui.define([
 
             this._oProgressBar.setState(sColor);
 
-            var sLabel = iDaysLeft >= 0? iDaysLeft + " " + this.getModel("i18n").getResourceBundle().getText("daysLeft") : this.getModel("i18n").getResourceBundle().getText("expired");
-            this._oLabel.setText(sLabel);
+            var sLabel = iDaysLeft > 0? iDaysLeft + " " + this.getModel("i18n").getResourceBundle().getText("daysLeft") : this.getModel("i18n").getResourceBundle().getText("expired");
+            var sLabel1 = "No Expiration Date";
+            if (iDaysLeft === null) {
+                this._oLabel.setText(sLabel1);
+            } else {
+                this._oLabel.setText(sLabel)
+            }
         },
         renderer: function (oRM, oControl) {
             

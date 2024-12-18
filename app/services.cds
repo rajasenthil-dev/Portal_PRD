@@ -32,3 +32,5 @@ using from './openar/annotations';
 using from './salesbycus/annotations';
 
 using from './bckorders/annotations';
+
+using from './test1245/annotations';

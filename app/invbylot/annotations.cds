@@ -16,9 +16,9 @@ annotate INVENTORY.INVENTORYBYLOT with @(
     },
     UI : {
         SelectionFields  : [
-            PRODUCT_CODE, 
-            LOT,
-            WAREHOUSE
+            PRODUCT_CODE_1, 
+            LOT_CHARG,
+            WAREHOUSE_STATUS
             
         ],
         
@@ -32,18 +32,18 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCT_CODE,
+                Value : PRODUCT_CODE_1,
                 Label : 'Product Code',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
-            {
-                $Type : 'UI.DataField',
-                Value : PRODUCT_DESCRIPTION,
-                Label : 'Product Description',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : PRODUCT_DESCRIPTION,
+            //     Label : 'Product Description',
+            //     ![@HTML5.CssDefaults] : {width : '10rem'}
                 
-            },
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : SIZE,
@@ -52,20 +52,20 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : LOT,
+                Value : LOT_CHARG,
                 Label : 'LOT',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : EXPIRY_DATE,
+                Value : EXPIRY_DATE_VFDAT,
                 Label : 'Expiry Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
-                Value : WAREHOUSE,
+                Value : WAREHOUSE_STATUS,
                 Label : 'Warehouse Status'
             },
             {
@@ -81,19 +81,55 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : UPC,
-                Label : 'UPC'
+                Value : OPEN_STOCK,
+                Label : 'Open Stock'
             },
             {
                 $Type : 'UI.DataField',
-                Value : CO,
-                Label : 'CO.'
+                Value : QUARANTINE,
+                Label : 'Quarantine'
             },
             {
                 $Type : 'UI.DataField',
-                Value : MANUFACTURER,
+                Value : DAMAGE_DESTRUCTION,
+                Label : 'Damage Destruction'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RETAINS,
+                Label : 'Retains'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RETURNS_CAL,
+                Label : 'Returns'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RECALLS,
+                Label : 'Recalls'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SALES_ORGANIZATION_VKORG,
+                Label : 'Sales Organization'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SALES_OFFICE_VKBUR,
+                Label : 'Sales Office'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MANUFACTURER_MFRPN,
                 Label : 'Manufacturer'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PROFIT_CENTER_PRCTR,
+                Label : 'Profit Center'
             }
+
         ],
     },
     
@@ -102,28 +138,28 @@ annotate INVENTORY.INVENTORYBYLOT with @(
 
 {   
     SKU@(title: 'SKU');
-    PRODUCT_CODE@(
+    PRODUCT_CODE_1@(
         title: 'Product Code',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTPRODUCTCODE',
-                Label : 'Warehouse/Status',
+                Label : 'Product Code',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PRODUCT_CODE',
-                        ValueListProperty : 'PRODUCT_CODE'
+                        LocalDataProperty : 'PRODUCT_CODE_1',
+                        ValueListProperty : 'PRODUCT_CODE_1'
                     }
                 ]
             },
         } 
     
     );
-    PRODUCT_DESCRIPTION@(title: 'Product Description');
+    // PRODUCT_DESCRIPTION@(title: 'Product Description');
     SIZE@(title: 'Size');
-    LOT@(
+    LOT_CHARG@(
         title: 'Lot #',
         Common: {
             ValueListWithFixedValues,
@@ -134,16 +170,16 @@ annotate INVENTORY.INVENTORYBYLOT with @(
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'LOT',
-                        ValueListProperty : 'LOT'
+                        LocalDataProperty : 'LOT_CHARG',
+                        ValueListProperty : 'LOT_CHARG'
                     }
                 ]
             },
         } 
     
     );
-    EXPIRY_DATE@(title: 'Expiry Date');
-    WAREHOUSE@(
+    EXPIRY_DATE_VFDAT@(title: 'Expiry Date');
+    WAREHOUSE_STATUS@(
         title: 'Warehouse Status',
         Common: {
             ValueListWithFixedValues,
@@ -154,8 +190,8 @@ annotate INVENTORY.INVENTORYBYLOT with @(
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'WAREHOUSE',
-                        ValueListProperty : 'WAREHOUSE'
+                        LocalDataProperty : 'WAREHOUSE_STATUS',
+                        ValueListProperty : 'WAREHOUSE_STATUS'
                     }
                 ]
             },
@@ -164,7 +200,14 @@ annotate INVENTORY.INVENTORYBYLOT with @(
     );
     QTY_ON_HAND@(title: 'On Hand');
     DAYS_UNTIL_EXPIRY@(title: 'Report Date');
-    UPC@(title: 'UPC');
-    CO@(title: 'CO.');
-    MANUFACTURER@(title:'Manufacturer');
+    OPEN_STOCK@(title: 'Open Stock');
+    QUARANTINE@(title: 'Quarantine');
+    DAMAGE_DESTRUCTION@(title: 'Damage/Destruction');
+    RETAINS@(title: 'Retains');
+    RETURNS_CAL@(title: 'Returs');
+    RECALLS@(title: 'Recalls');
+    SALES_ORGANIZATION_VKORG@(title: 'Sales Org');
+    SALES_OFFICE_VKBUR@(title: 'Sales Office');
+    MANUFACTURER_MFRPN@(title:'Manufacturer');
+    PROFIT_CENTER_PRCTR@(title: 'Profit Center');
 };

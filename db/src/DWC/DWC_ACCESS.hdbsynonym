@@ -10,7 +10,7 @@
   },
   "SYNINVENTORYSTATUSDOC": {
 	"target": {
-      "object": "Inventory_Status_C_View_V4",
+      "object": "Inventory_Status_C_View_V5",
       "schema": "MCK_DEMO"
     }
   },
@@ -34,7 +34,7 @@
   },
   "SYNINVENTORYBYLOTDOC": {
 	"target": {
-      "object": "Inventory_By_Lot_C_View_V1",
+      "object": "Inventory_Lot_V1",
       "schema": "MCK_DEMO"
     }
   },

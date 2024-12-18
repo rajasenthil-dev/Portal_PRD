@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: mck-portal
 description: A simple CAP project.
-version: 1.0.0
+version: 1.0.1
 modules:
 - name: mck-portal-srv
   type: nodejs
@@ -41,6 +41,10 @@ modules:
   type: com.sap.application.content
   path: gen
   requires:
+  - name: mck-portal-auth
+    parameters:
+      service-key:
+        name: mck-portal-auth-key
   - name: mck-portal-html5-repo-host
     parameters:
       content-target: true
@@ -114,7 +118,11 @@ modules:
     - artifacts:
       - bckorders.zip
       name: bckorders
-      target-path: app//
+      target-path: app/
+    - artifacts:
+      - test1245.zip
+      name: test1245
+      target-path: app/
 - name: mck-portal-destination-content
   type: com.sap.application.content
   requires:
@@ -129,6 +137,7 @@ modules:
     parameters:
       service-key:
         name: mck-portal-auth-key
+  - name: srv-api
   parameters:
     content:
       instance:
@@ -139,9 +148,9 @@ modules:
           sap.cloud.service: mck.portal
         - Authentication: OAuth2UserTokenExchange
           Name: mck_portal_auth
-          ServiceInstanceName: mck-portal-auth
+          ServiceInstanceName: mck-portal-xsuaa-auth
           ServiceKeyName: mck-portal-auth-key
-          sap.cloud.service: mck-portal
+          sap.cloud.service: mck.portal
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
@@ -315,6 +324,16 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+- name: test1245
+  type: html5
+  path: app/test1245
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: mck-portal-auth
   type: org.cloudfoundry.managed-service
@@ -324,13 +343,14 @@ resources:
       xsappname: mck-portal
     path: ./xs-security.json
     service: xsuaa
+    service-name: mck-portal-xsuaa-auth
     service-plan: application
 - name: mck-portal-ds-db
   type: com.sap.xs.hdi-container
   parameters:
     config:
       database_id: 451e8954-27cd-4d2f-9402-3ca1944484c7
-      schema: MCK_DEMO
+      schema: 70991A916E38463FB4C634988731A9CF
     service: hana
     service-plan: hdi-shared
   properties:
@@ -350,13 +370,33 @@ resources:
         instance:
           destinations:
           - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            HTML5.Timeout: 600000001
+            Name: srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}          
+          - Authentication: NoAuthentication
             Name: ui5
             ProxyType: Internet
             Type: HTTP
             URL: https://ui5.sap.com
           existing_destinations_policy: update
+        subaccount:
+          destinations:
+          - Authentication: OAuth2ClientCredentials
+            Name: srv-api
+            TokenServiceInstanceName: mck-portal-xsuaa-auth
+            TokenServiceKeyName: mck-portal-auth-key
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+      version: 1.0.0
     service: destination
+    service-name: mck-portal-destination-service
     service-plan: lite
+  requires:
+  - name: srv-api
 - name: mck-portal-html5-repo-host
   type: org.cloudfoundry.managed-service
   parameters:

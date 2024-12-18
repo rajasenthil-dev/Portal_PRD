@@ -11,18 +11,11 @@ sap.ui.define([
             oTable.attachEvent("rowsUpdated",this.calculateTotals.bind(this));// For GridTable
         },
         calculateTotals: function () {
-            debugger
             var oSmartTable = this.getView().byId("table0");
             var oTable = oSmartTable.getTable();
             var oBinding = oTable.getBinding("rows"); // For GridTable
             var aContexts = oBinding.getContexts(0, oBinding.getLength()); // Get all contexts
-            var oTotalCounts = {
-                Order: 0,
-                Receipt: 0,
-                Adjustments: 0,
-                Returns: 0,
-                PhysicalCount: 0
-            };
+            
             var fTotalOpenStock = 0;
             var fTotalQuarantine = 0;
             var fTotalDamage= 0;
@@ -45,7 +38,6 @@ sap.ui.define([
             var formattedOpenStock = this._formatNumber(fTotalOpenStock);
             var formattedQuarantine = this._formatNumber(fTotalQuarantine);
             var formattedDamage = this._formatNumber(fTotalDamage);
-            var formattedQualityHold = this._formatNumber(fTotalQualityHold);
             var formattedRetains = this._formatNumber(fTotalRetains);
             var formattedReturns = this._formatNumber(fTotalReturns);
             var formattedRecalls = this._formatNumber(fTotalRecalls);
@@ -55,7 +47,6 @@ sap.ui.define([
             this.byId("footerText2").setText(formattedQuarantine);
             this.byId("footerText3").setText(formattedDamage);
             this.byId("footerText4").setText(formattedRetains);
-            this.byId("footerText5").setText(formattedQualityHold);
             this.byId("footerText6").setText(formattedReturns);
             this.byId("footerText7").setText(formattedRecalls);
         },
@@ -63,12 +54,6 @@ sap.ui.define([
             return new Intl.NumberFormat('en-US', {
                 maximumFractionDigits: 0
             }).format(value);
-
-            oTileCounts.Order = formatNumber(oTileCounts.Order);
-            oTileCounts.Receipt = formatNumber(oTileCounts.Receipt);
-            oTileCounts.Adjustments = formatNumber(oTileCounts.Adjustments);
-            oTileCounts.Returns = formatNumber(oTileCounts.Returns);
-            oTileCounts.PhysicalCount = formatNumber(oTileCounts.PhysicalCount);
 
         },
     });

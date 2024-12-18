@@ -117,27 +117,9 @@
                     selectionMode="None"
                     alternateRowColors="true">
                      <t:rowSettingsTemplate>
-					    <t:RowSettings id="_IDGenRowSettings" highlight="{path:'EXPIRY_DATE', formatter:'._formatRowHighlight'}" highlightText="{EXPIRY_DATE}"/>
+					    <t:RowSettings id="_IDGenRowSettings" highlight="{path:'DAYS_UNTIL_EXPIRY', formatter:'._formatRowHighlight'}" highlightText="{DAYS_UNTIL_EXPIRY}"/>
 				    </t:rowSettingsTemplate>
                     <t:columns>
-                        <t:Column id="_IDGenColumn" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "SKU", "leadingProperty": "SKU", "columnIndex": 0}'/>
-                            </t:customData>
-                            <Text id="_IDGenText3" text="SKU"></Text>
-                            <t:template>
-                                <Text id="sku" text="{path: 'SKU', formatter: '.removeLeadingZeros'}"/>
-                            </t:template>
-                        </t:Column>
-                        <t:Column id="_IDGenColumn4" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT_CODE", "leadingProperty": "PRODUCT_CODE", "columnIndex": 1}'/>
-                            </t:customData>
-                            <Text id="_IDGenText4" text="Product Code"></Text>
-                            <t:template>
-                                <Text id="productCode" text="{path: 'PRODUCT_CODE', formatter: '.removeLeadingZeros'}"/>
-                            </t:template>
-                        </t:Column>
                         <t:Column id="_IDGenColumn3" width='7.813rem'>
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "DAYS_UNTIL_EXPIRY", "leadingProperty": "DAYS_UNTIL_EXPIRY", "columnIndex": 5}'/>
@@ -145,6 +127,15 @@
                             <Text id="_IDGenText2" text="{i18n>daysUntilExpiry}"></Text>
                             <t:template>
                                 <my:SegmentedProgressBar id="_IDGenSegmentedProgressBar" value="{DAYS_UNTIL_EXPIRY}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="_IDGenColumn1" width='7.813rem'>
+                            <t:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "EXPIRY_DATE_VFDAT", "leadingProperty": "EXPIRY_DATE_VFDAT", "columnIndex": 4}'/>
+                            </t:customData>
+                            <Text id="_IDGenText4" text="Expiry Date"></Text>
+                            <t:template>
+                                <Text id="exipryDate" text="{path: 'EXPIRY_DATE_VFDAT', formatter: '._formatDate'}" />
                             </t:template>
                         </t:Column>
                     </t:columns> 

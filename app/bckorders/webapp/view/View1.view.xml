@@ -16,10 +16,9 @@
                     <HeaderContainer id="container1" scrollStep="200" height="100px">
                         <FlexBox id="_IDGenFlexBox7" alignItems="Center" height="100px">
                             <FlexBox id="_IDGenFlexBox8" alignItems="Center" height="75px" class="imgBG">
-                                <Image id="_IDGenImage1" src="/img/logoipsum-325.svg" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo" >
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow"/>
-                                    </layoutData>
+                            <!-- <Title id="mfname" text="Manufacturer Name"/> -->
+                                <Image id="_IDGenImage1" width="125px" src="img/klipartz.com.png" decorative="false" press="onLogoPressed" tooltip="SAP Logo" >
+                
                                 </Image>
                             </FlexBox>
                         </FlexBox>  

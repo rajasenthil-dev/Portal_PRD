@@ -191,7 +191,7 @@ using OPENARCUSTOMER as ENTOPENARCUSTOMER from '../db/schema';
 service FINANCE {
     // Accounts Receivable Related Entities
     entity OPENAR as projection on ENTOPENAR;
-    entity OPENARCUSTOMER as projection on ENTOPENARCUSTOMER
+    entity OPENARCUSTOMER as projection on ENTOPENARCUSTOMER;
 
     // Cash Journal Related Entities
     entity CASHJOURNAL as projection on ENTCASHJOURNAL;

@@ -3,9 +3,14 @@
   "authenticationMethod": "route",
   "routes": [
     {
+      "source": "^/user-api(.*)",
+      "target": "$1",
+      "service": "sap-approuter-userapi"
+    },
+    {
       "source": "^/odata/(.*)$",
       "target": "/odata/$1",
-      "destination": "DIRECT_SERVICE_BINDING",
+      "destination": "srv-api",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

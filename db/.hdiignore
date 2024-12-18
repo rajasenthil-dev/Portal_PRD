@@ -45,6 +45,9 @@ src/gen/PROCESSING.RETREASON.hdbview
 src/gen/RETCUST.hdbview
 src/gen/RETRGA.hdbview
 src/gen/RETREASON.hdbview
+src/gen/PROCESSING.RETURNS.hdbview
+src/gen/PROCESSING.Returns.hdbview
+
 
 src/gen/PROCESSING.SHINVOICE.hdbview
 src/gen/PROCESSING.SHIPPINGHISTORY.hdbview
