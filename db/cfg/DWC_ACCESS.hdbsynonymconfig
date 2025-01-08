@@ -51,7 +51,7 @@
     "SYNINVENTORYVALUATIONDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Inventory_Valuation_View_V1"
+        "object": "Inventory_Valuation_View_V2"
       }
     },
     "SYNINVOICEHISTORYDOC": {
@@ -93,13 +93,25 @@
     "SYNRETURNSDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Returns_Reports_View"
+        "object": "Returns_Reports_View_V3"
       }
     },
     "SYNBACKORDERSDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
         "object": "REP_TPSDOR_01"
+      }
+    },
+    "SYNMAINPAGESUMMARYDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Main_Page_Summary1_CONSUMABLE_V2"
+      }
+    },
+    "SYNMAINPAGEINVENTORYDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Main_Page_Summary2_CONSUMABLE"
       }
     }
 }

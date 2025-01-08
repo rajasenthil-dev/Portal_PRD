@@ -129,7 +129,7 @@
             }
         },
         "rootView": {
-            "viewName": "itemmas.view.App",
+            "viewName": "itemmas.view.View1",
             "type": "XML",
             "async": true,
             "id": "App"

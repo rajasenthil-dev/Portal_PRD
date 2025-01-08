@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "cashjour.view.App",
+            "viewName": "cashjour.view.View1",
             "type": "XML",
             "id": "App"
         }

@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "invstatus.view.App",
+            "viewName": "invstatus.view.View1",
             "type": "XML",
             "id": "App"
         }

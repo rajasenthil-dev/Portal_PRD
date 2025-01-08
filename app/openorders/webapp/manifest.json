@@ -103,7 +103,7 @@
       "config": {
         "routerClass": "sap.m.routing.Router",
         "controlAggregation": "pages",
-        "controlId": "app",
+        "controlId": "View1",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
@@ -126,9 +126,9 @@
       }
     },
     "rootView": {
-      "viewName": "openorders.view.App",
+      "viewName": "openorders.view.View1",
       "type": "XML",
-      "id": "App"
+      "id": "View1"
     }
   },
   "sap.cloud": {

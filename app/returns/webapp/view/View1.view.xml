@@ -1,6 +1,7 @@
 <mvc:View controllerName="returns.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf="sap.ui.comp.smartfilterbar" xmlns:st="sap.ui.comp.smarttable" xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" displayBlock="true">
-    <f:DynamicPage id="dynamicPage" showFooter="true">
+    <App id="app">
+        <f:DynamicPage id="dynamicPage" showFooter="true">
         <f:header>
 			<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" class="noPadding">
                 <FlexBox id="_IDGenFlexBox6" width="100%" direction="Row" wrap="Wrap" justifyContent="SpaceBetween" class="headerPadding sapUiMediumMarginBottom borderBottom">
@@ -88,29 +89,29 @@
                     <t:columns>
                         <t:Column id="_IDGenColumn" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "ERDAT", "leadingProperty": "ERDAT", "columnIndex": 0}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "DATE_ENTERED_FKDAT_ANA", "leadingProperty": "DATE_ENTERED_FKDAT_ANA", "columnIndex": 0}'/>
                             </t:customData>
                             <Text id="_IDGenText3" text="Date Entered"></Text>
                             <t:template>
-                                <Text id="enteredDate" text="{path: 'ERDAT', formatter: '._formatDate'}"/>
+                                <Text id="enteredDate" text="{path: 'DATE_ENTERED_FKDAT_ANA', formatter: '._formatDate'}"/>
                             </t:template>
                         </t:Column>
                         <t:Column id="_IDGenColumn1" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "AUDAT", "leadingProperty": "AUDAT", "columnIndex": 8}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "CREDIT_DATE_ERDAT", "leadingProperty": "CREDIT_DATE_ERDAT", "columnIndex": 8}'/>
                             </t:customData>
                             <Text id="_IDGenText5" text="Credit Date"></Text>
                             <t:template>
-                                <Text id="creditDate" text="{path: 'AUDAT', formatter: '._formatDate'}"/>
+                                <Text id="creditDate" text="{path: 'CREDIT_DATE_ERDAT', formatter: '._formatDate'}"/>
                             </t:template>
                         </t:Column>
                         <t:Column id="_IDGenColumn2" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "NETWR", "leadingProperty": "NETWR", "columnIndex": 9}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "CREDIT_AMT_NETWR", "leadingProperty": "CREDIT_AMT_NETWR", "columnIndex": 9}'/>
                             </t:customData>
                             <Text id="_IDGenText4" text="Credit Amount"></Text>
                             <t:template>
-                                <Text id="creditAmount" text="{path: 'NETWR', formatter: '._formatCurrency'}"/>
+                                <Text id="creditAmount" text="{path: 'CREDIT_AMT_NETWR', formatter: '._formatCurrency'}"/>
                             </t:template>
                         </t:Column>
                         
@@ -137,5 +138,6 @@
 			</OverflowToolbar>
         </f:footer>
       
-	</f:DynamicPage>
+	    </f:DynamicPage>
+    </App>
 </mvc:View>

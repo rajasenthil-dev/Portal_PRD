@@ -67,15 +67,20 @@ sap.ui.define([
         },
         
         updateCalculations: function (data) {
-            const decimalProperties = ["TOTAL_COST"];
+            const decimalProperties = [
+                "TOTAL_COST",
+                "OPEN_STOCK",
+                "QUARANTINE",
+                "DAMAGE_DESTRUCTION",
+                "RETAINS",
+                "RETURNS_CAL",
+            ];
             const integerProperties = [
                 "OPEN_STOCK",
                 "QUARANTINE",
                 "DAMAGE_DESTRUCTION",
                 "RETAINS",
-                "QUALITY_HOLD",
-                "RETURNS_CAL",
-                "RECALLS"
+                "RETURNS_CAL"
             ];
             const allProperties = [...decimalProperties, ...integerProperties];
         

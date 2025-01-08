@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "invval.view.App",
+            "viewName": "invval.view.View1",
             "type": "XML",
             "id": "App"
         }

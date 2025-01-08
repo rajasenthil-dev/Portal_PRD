@@ -1,8 +1,6 @@
 {
 	"UPS_DEMO_USER": {
 		"object_owner": {
-			"roles": [],
-			"container_roles": [],
 			"object_privileges": [
 				{
 					"type": "VIEW",
@@ -62,7 +60,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Inventory_Valuation_View_V1",
+					"name": "Inventory_Valuation_View_V2",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
@@ -111,7 +109,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Returns_Reports_View",
+					"name": "Returns_Reports_View_V3",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
@@ -119,6 +117,20 @@
 				{
 					"type": "VIEW",
 					"name": "REP_TPSDOR_01",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Main_Page_Summary1_CONSUMABLE_V2",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Main_Page_Summary2_CONSUMABLE",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]

@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "pricelist.view.App",
+            "viewName": "pricelist.view.View1",
             "type": "XML",
             "id": "App"
         }

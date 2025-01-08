@@ -5,98 +5,109 @@
   "SYNREPMATERIALDOC": {
     "target": {
       "object": "REP_MD_MATERIAL",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNINVENTORYSTATUSDOC": {
 	"target": {
       "object": "Inventory_Status_C_View_V5",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNINVENTORYAUDITTRAILDOC": {
 	"target": {
       "object": "REP_TPMMIN_MATDOC_02",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNCASHJOURNALDOC": {
 	"target": {
       "object": "REP_TPFICJ_01",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNINVENTORYSNAPSHOTDOC": {
 	"target": {
       "object": "Inventory_Snapshot_C_View_V2",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNINVENTORYBYLOTDOC": {
 	"target": {
       "object": "Inventory_Lot_V1",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNOPENARDOC": {
 	"target": {
       "object": "REP_TPFICJ_02",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNINVENTORYVALUATIONDOC": {
 	"target": {
-      "object": "Inventory_Valuation_View_V1",
-      "schema": "MCK_DEMO"
+      "object": "Inventory_Valuation_View_V2",
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNINVOICEHISTORYDOC": {
 	"target": {
-      "object": "REP_TPFICJ_03",
-      "schema": "MCK_DEMO"
+      "object": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNSALESBYCURRENTDOC": {
 	"target": {
       "object": "Current_Historical_Sales_by_Customer_by_Product_UN",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNCUSTOMERMASTERDOC": {
 	"target": {
       "object": "REP_MD_BILL_SHIPTO",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNSHIPPINGHISTORYDOC": {
 	"target": {
       "object": "REP_TPSDBL_01",
-      "schema": "MCK_DEMO"
+      "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNPRICINGDOC": {
 	"target": {
 	  "object": "REP_TPSDPC_01",
-	  "schema": "MCK_DEMO"
+	  "schema": "70991A916E38463FB4C634988731A9CF"
 	}
   },
   "SYNOPENORDERSDOC": {
 	"target": {
 	  "object": "PRO_MFR_Openorders",
-	  "schema": "MCK_DEMO"
+	  "schema": "70991A916E38463FB4C634988731A9CF"
 	}
 	
   },
   "SYNRETURNSDOC": {
 	"target": {
-	  "object": "Returns_Reports_View",
-	  "schema": "MCK_DEMO"
+	  "object": "Returns_Reports_View_V3",
+	  "schema": "70991A916E38463FB4C634988731A9CF"
 	}
   },
   "SYNBACKORDERSDOC": {
-	"target": {
-	  "object": "REP_TPSDOR_01",
-	  "schema": "MCK_DEMO"
-	}
+    "target": {
+      "object": "REP_TPSDOR_01",
+      "schema": "70991A916E38463FB4C634988731A9CF"
+    }
+  },
+  "SYNMAINPAGESUMMARYDOC": {
+    "target": {
+      "object": "Main_Page_Summary1_CONSUMABLE_V2",
+      "schema": "70991A916E38463FB4C634988731A9CF"
+    }
+  },
+  "SYNMAINPAGEINVENTORYDOC": {
+    "target": {
+      "object": "Main_Page_Summary2_CONSUMABLE",
+      "schema": "70991A916E38463FB4C634988731A9CF"
+    }
   }
 }

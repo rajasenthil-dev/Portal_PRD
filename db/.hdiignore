@@ -47,6 +47,7 @@ src/gen/RETRGA.hdbview
 src/gen/RETREASON.hdbview
 src/gen/PROCESSING.RETURNS.hdbview
 src/gen/PROCESSING.Returns.hdbview
+src/gen/PROCESSING.RETURNSSUMMARY.hdbview
 
 
 src/gen/PROCESSING.SHINVOICE.hdbview
@@ -125,6 +126,8 @@ src/gen/BOSHIPTO.hdbview
 src/gen/INVENTORY.INVENTORYVALUATION.hdbview
 src/gen/INVENTORY.INVVALPRODDESC.hdbview
 src/gen/INVVALPRODDESC.hdbview
+src/gen/INVENTORY.INVVALPROD.hdbview
+src/gen/INVVALPROD.hdbview
 
 src/gen/INVENTORY.ITEMMASTER.hdbview
 src/gen/INVENTORY.ITEMMASPD.hdbview
@@ -172,4 +175,9 @@ src/gen/SBCWAREHOUSE.hdbview
 src/gen/SBCBILLTO.hdbview
 src/gen/SBCSHIPTO.hdbview
 
+src/gen/MAINPAGE.MAINPAGESUMMARY.hdbview
+src/gen/MAINPAGESUMMARY.hdbview
+
+src/gen/MAINPAGE.MAINPAGEINVENTORY.hdbview
+src/gen/MAINPAGEINVENTORY.hdbview
 

@@ -9,6 +9,7 @@
     xmlns:st="sap.ui.comp.smarttable" 
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
     displayBlock="true">
+    <App id="app">
     <f:DynamicPage id="dynamicPage" showFooter="true">
         <f:header>
 			<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" class="noPadding">
@@ -178,5 +179,6 @@
         </f:content>
 		 
       
-		</f:DynamicPage>
+    </f:DynamicPage>
+    </App>
 </mvc:View>

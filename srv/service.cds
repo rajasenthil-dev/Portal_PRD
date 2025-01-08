@@ -9,6 +9,7 @@ using RETCUST as ENTRETCUST from '../db/schema';
 using RETRGA as ENTRETRGA from '../db/schema';
 using RETREASON as ENTRETREASON from '../db/schema';
 
+
 using SHIPPINGHISTORY as ENTSHIPPINGHISTORY from '../db/schema';
 using SHINVOICE as ENTSHINVOICE from '../db/schema';
 using SHCUSTOMER as ENTSHCUSTOMER from '../db/schema';
@@ -77,6 +78,7 @@ using INVSNAPWARESTAT as ENTINVSNAPWARESTAT from '../db/schema';
 
 using INVENTORYVALUATION as ENTINVENTORYVALUATION from '../db/schema';
 using INVVALPRODDESC as ENTINVVALPRODDESC from '../db/schema';
+using INVVALPROD as ENTINVVALPROD from '../db/schema';
 
 using ITEMMASTER as ENTITEMMASTER from '../db/schema';
 using ITEMMASPD as ENTITEMMASPD from '../db/schema';
@@ -96,6 +98,7 @@ service INVENTORY {
     // Inventory Valuation Related Entities
     entity INVENTORYVALUATION as projection on ENTINVENTORYVALUATION;
     entity INVVALPRODDESC as projection on ENTINVVALPRODDESC;
+    entity INVVALPROD as projection on ENTINVVALPROD;
 
     // Inventory Status Related Entities
     entity INVENTORYSTATUS as projection on ENTINVENTORYSTATUS;
@@ -199,12 +202,29 @@ service FINANCE {
     entity BILL_TOS as projection on ENTBILL_TOS;
 }
 
+using MAINPAGESUMMARY as ENTMAINPAGESUMMARY from '../db/schema';
+using MAINPAGEINVENTORY as ENTMAINPAGEINVENTORY from '../db/schema';
+
+service MAINPAGE {
+    entity MAINPAGESUMMARY as select from ENTMAINPAGESUMMARY {
+        sum(UNIT_SHIPPED) as UNIT_SHIPPED,
+        sum(TOTAL_SALES_AMOUNT) as TOTAL_SALES_AMOUNT,
+        sum(INVOICES) as INVOICES
+    }
+    
+    entity MAINPAGEINVENTORY as projection on ENTMAINPAGEINVENTORY;
+} 
+
 service CatalogService {
     @readonly entity Invoices {
         key ID: UUID;
         InvoiceNumber: String;
     }
 }
+
+
+
+
 
 
 

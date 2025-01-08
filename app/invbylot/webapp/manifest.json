@@ -123,7 +123,7 @@
       }
     },
     "rootView": {
-      "viewName": "invbylot.view.App",
+      "viewName": "invbylot.view.View1",
       "type": "XML",
       "id": "App"
     }

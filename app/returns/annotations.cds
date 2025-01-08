@@ -4,91 +4,110 @@ annotate PROCESSING.RETURNS with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-                KUNNR: true
-                
-                
+                CUSTOMER_KUNNR: true,
+                CUSTOMER_NAME_NAME1: true,
+                PROVINCE_REGIO: true,
+                RGA_VBELN: true,
+                REASON_BEZEI: true,
+                REFERENCE_BSTKD: true,
+                CO_VKORG: true,
+                SALES_OFFICE_VKBUR: true,
+                MANUFACTURER_MFRNR: true,
+                PROFIT_CENTER_PRCTR: true
         }
     },
     UI : {
         SelectionFields  : [
-           BSTKD, KUNNR, AUGRU, ERDAT
+           REFERENCE_BSTKD, CUSTOMER_KUNNR, REASON_BEZEI, DATE_ENTERED_FKDAT_ANA
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : ERDAT,
+                Value : DATE_ENTERED_FKDAT_ANA,
                 Label : 'Date Entered',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : KUNNR,
+                Value : CUSTOMER_KUNNR,
                 Label : 'Customer',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : NAME1,
+                Value : CUSTOMER_NAME_NAME1,
                 Label : 'Customer Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : REGIO,
+                Value : PROVINCE_REGIO,
                 Label : 'Province',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : BSTKD,
+                Value : RGA_VBELN,
                 Label : 'RGA #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : VGBEL,
+                Value : REFERENCE_BSTKD,
                 Label : 'Reference #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : AUGRU,
+                Value : REASON_BEZEI,
                 Label : 'Reason',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : VBELN,
-                Label : 'Credit #',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : AUDAT,
+                Value : CREDIT_DATE_ERDAT,
                 Label : 'Credit Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : NETWR,
+                Value : CREDIT_AMT_NETWR,
                 Label : 'Credit Amt $',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : VKORG,
+                Value : CO_VKORG,
                 Label : 'Co.',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SALES_OFFICE_VKBUR,
+                Label : 'Sales Office',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MANUFACTURER_MFRNR,
+                Label : 'Manufacturer Number',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PROFIT_CENTER_PRCTR,
+                Label : 'Profit Center',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],
     },
 ){
-    ERDAT@(title: 'Date Entered');
-    KUNNR@(
-        title: 'Customer',
-        Common: {
+    DATE_ENTERED_FKDAT_ANA@(title: 'Date Entered');
+    CUSTOMER_KUNNR@(title: 'Customer');
+    CUSTOMER_NAME_NAME1@(title: 'Name',
+    Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -97,16 +116,15 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'KUNNR',
-                        ValueListProperty : 'KUNNR'
+                        LocalDataProperty : 'CUSTOMER_NAME_NAME1',
+                        ValueListProperty : 'CUSTOMER_NAME_NAME1'
                     }
                 ]
             },
-        } 
+        }
     );
-    NAME1@(title: 'Name');
-    REGIO@(title: 'Province');
-    BSTKD@(
+    PROVINCE_REGIO@(title: 'Province');
+    RGA_VBELN@(
         title: 'RGA #',
         Common: {
             ValueListWithFixedValues,
@@ -117,16 +135,16 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'BSTKD',
-                        ValueListProperty : 'BSTKD'
+                        LocalDataProperty : 'RGA_VBELN',
+                        ValueListProperty : 'RGA_VBELN'
                     }
                 ]
             },
-        } 
-        
+        }
+
     );
-    VGBEL@(title: 'Reference #');
-    AUGRU@(
+    REFERENCE_BSTKD@(title: 'Reference #');
+    REASON_BEZEI@(
         title: 'Reason',
         Common: {
             ValueListWithFixedValues,
@@ -137,16 +155,21 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'AUGRU',
-                        ValueListProperty : 'AUGRU'
+                        LocalDataProperty : 'REASON_BEZEI',
+                        ValueListProperty : 'REASON_BEZEI'
                     }
                 ]
             },
-        } 
-        
+        }
+
     );
-    VBELN@(title: 'Credit #');
-    AUDAT@(title: 'Credit Date');
-    NETWR@(title: 'Credit Amt');
-    VKORG@(title: 'Co.');
+    CREDIT_DATE_ERDAT@(title: 'Credit Date');
+    CREDIT_AMT_NETWR@(title: 'Credit Amt');
+    CO_VKORG@(title: 'Co.');
+    SALES_OFFICE_VKBUR@(title: 'Sales Office');
+    MANUFACTURER_MFRNR@(title: 'Manufacturer Number');
+    PROFIT_CENTER_PRCTR@(title: 'Profit Center');
+
+
+
 };

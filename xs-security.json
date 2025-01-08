@@ -1,15 +1,74 @@
 {
     "xsappname": "mck-portal",
     "tenant-mode": "dedicated",
-    "description": "Security profile of called application",
+    "description": "Security profile of called application", 
+    "oauth2-configuration": {
+        "grant-types": ["client_credentials", "authorization_code", "refresh_token", "urn:ietf:params:oauth:grant-type:jwt-bearer", "user_token"],
+        "credential-types": ["binding-secret","x509"],
+        "system-attributes": ["groups","rolecollections"],
+        "allowedproviders": [],
+        "redirect-uris": [
+            "https://**cfapps.us20.hana.ondemand.com/**","https://**cfapps.us20.hana.ondemand.com/my/logout"
+        ]
+    },
+    "foreign-scope-references": ["$ACCEPT_GRANTED_SCOPES"], 
+    "authorities":["$ACCEPT_GRANTED_AUTHORITIES"],
     "scopes": [
         {
             "name": "uaa.user",
             "description": "UAA"
         },
         {
+            "name": "$XSAPPNAME.User",
+            "description": "User access"
+        },
+        {
             "name": "$XSAPPNAME.mfg",
-            "description": "scope from okta"
+            "description": "User mfg"
+        },
+        {
+            "name": "$XSAPPNAME.email",
+            "description": "User email"
+        },
+        {
+            "name": "$XSAPPNAME.openid",
+            "description": "Open Id Connect"
+        },
+        {
+            "name": "$XSAPPNAME.UserAttributes",
+            "description": "Access user attributes"
+        }
+    ],
+    "attributes": [
+        {
+            "name": "MFGName",
+            "description": "Mfg Name",
+            "valueType": "string",
+            "valueRequired" : "false"
+        },
+        {
+            "name": "SalesOffice",
+            "description": "SalesOffice",
+            "valueType": "string",
+            "valueRequired" : "false"
+        },
+        {
+            "name": "ProfitCentre",
+            "description": "ProfitCentre",
+            "valueType": "string",
+            "valueRequired" : "false"
+        },
+        {
+            "name": "ManufacturerNumber",
+            "description": "ManufacturerNumber",
+            "valueType": "string",
+            "valueRequired" : "false"
+        },
+        {
+            "name": "SalesOrg",
+            "description": "SalesOrg",
+            "valueType": "string",
+            "valueRequired" : "false"
         }
     ],
     "role-templates": [
@@ -17,25 +76,19 @@
             "name": "Token_Exchange",
             "description": "UAA",
             "scope-references": [
-                "uaa.user"
+                "uaa.user", "$XSAPPNAME.mfg", "$XSAPPNAME.email", "$XSAPPNAME.openid", "$XSAPPNAME.UserAttributes"
             ]
         },
         {
-            "name": "MFG",
-            "description": "OKTA",
+            "name": "Viewer",
+            "description": "Viewer Role",
             "scope-references": [
-                "$XSAPPNAME.mfg"
+                "$XSAPPNAME.User", "$XSAPPNAME.mfg", "$XSAPPNAME.email", "$XSAPPNAME.openid", "$XSAPPNAME.UserAttributes"
+            ],
+            "attribute-references": [
+                "MFGName", "SalesOffice", "SalesOrg", "ManufacturerNumber", "ProfitCentre"
             ]
         }
-    ],
-    "oauth2-configuration": {
-        "credential-types": [
-            "binding-secret",
-            "x509"
-        ],
-        "redirect-uris": [
-            "https://**cfapps.us20.hana.ondemand.com/**"
-        ]
-    }
+    ]   
     
 }

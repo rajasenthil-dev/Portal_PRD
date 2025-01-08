@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "returns.view.App",
+            "viewName": "returns.view.View1",
             "type": "XML",
             "id": "App"
         }

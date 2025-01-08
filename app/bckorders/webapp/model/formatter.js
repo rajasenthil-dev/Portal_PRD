@@ -1,64 +1,48 @@
-sap.ui.define([], () => {
-	"use strict";
+sap.ui.define([
+    "sap/ui/core/format/DateFormat",
+    "sap/ui/core/format/NumberFormat"
+], (DateFormat, NumberFormat) => {
+    "use strict";
 
-	return {
+    return {
         
-		_formatDate: function (date) {
-            if (!date) return ""; // Return empty string if no date is provided
-        
+        formatDate: function (date) {
+            if (!date) return "";
+
             let oDate;
-        
-            // Handle string date (e.g., 'yyyyMMdd')
-            if (typeof date === "string") {
-                if (date.length === 8) { // Ensure the format is correct
-                    const formattedDateString = date.slice(0, 4) + '-' + date.slice(4, 6) + '-' + date.slice(6, 8);
-                    oDate = new Date(formattedDateString + "T00:00:00Z"); // Force UTC for consistency
-                } else {
-                    return ""; // Invalid string format
-                }
-            }
-            // Handle Date object
-            else if (date instanceof Date) {
-                oDate = new Date(date.getTime()); // Clone to avoid mutation
+
+            // Parse string date (e.g., 'yyyyMMdd')
+            if (typeof date === "string" && date.length === 8) {
+                const formattedDateString = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
+                oDate = new Date(`${formattedDateString}T00:00:00Z`);
+            } else if (date instanceof Date) {
+                oDate = new Date(date.getTime());
             } else {
                 return ""; // Unsupported type
             }
-        
-            // Check if the date is valid
-            if (isNaN(oDate.getTime())) {
-                return ""; // Return empty string for invalid date
-            }
-        
-            // Adjust for local timezone only if necessary
-            // Remove the offset adjustment if using UTC consistently across your app
-            oDate.setMinutes(oDate.getMinutes() + oDate.getTimezoneOffset());
-        
-            // Format the date into a more readable string
-            const oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({
-                style: "medium" // Use 'medium' style or customize as needed
+
+            if (isNaN(oDate.getTime())) return ""; // Invalid date
+
+            const oDateFormat = DateFormat.getDateInstance({
+                style: "medium"
             });
-        
-            // Return the formatted date
             return oDateFormat.format(oDate);
         },
-        _formatNumber: function (value) {
-            return new Intl.NumberFormat('en-US', {
-                maximumFractionDigits: 0
-            }).format(value);
+
+        formatNumber: function (value) {
+            return value != null ? new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value) : "";
         },
-        _formatCurrency: function (value, currencyCode) {
-            if (value == null || value === undefined) {
-                return "";
-            }
-            
-            // Create a NumberFormat instance with currency type
-            var oNumberFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance({
-                currencyCode: currencyCode,
-                groupingEnabled: true, // Optional, to enable thousands separators
-                showMeasure: true      // Shows currency symbol (e.g., $)
+
+        formatCurrency: function (value, currencyCode) {
+            if (value == null) return "";
+
+            const oNumberFormat = NumberFormat.getCurrencyInstance({
+                currencyCode: !!currencyCode,
+                groupingEnabled: true,
+                showMeasure: true
             });
-            
+
             return oNumberFormat.format(value);
         }
-	};
+    };
 });

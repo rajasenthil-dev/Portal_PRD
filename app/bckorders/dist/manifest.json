@@ -104,7 +104,6 @@
                 "routerClass": "sap.m.routing.Router",
                 "controlAggregation": "pages",
                 "controlId": "app",
-                "transition": "slide",
                 "type": "View",
                 "viewType": "XML",
                 "path": "bckorders.view"
@@ -126,7 +125,7 @@
             }
         },
         "rootView": {
-            "viewName": "bckorders.view.App",
+            "viewName": "bckorders.view.View1",
             "type": "XML",
             "id": "App"
         }

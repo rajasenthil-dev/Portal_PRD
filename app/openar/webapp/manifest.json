@@ -123,7 +123,7 @@
       }
     },
     "rootView": {
-      "viewName": "openar.view.App",
+      "viewName": "openar.view.View1",
       "type": "XML",
       "id": "App"
     }

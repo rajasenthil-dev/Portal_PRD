@@ -124,7 +124,7 @@
       }
     },
     "rootView": {
-      "viewName": "customermaster.view.App",
+      "viewName": "customermaster.view.View1",
       "type": "XML",
       "id": "App"
     }

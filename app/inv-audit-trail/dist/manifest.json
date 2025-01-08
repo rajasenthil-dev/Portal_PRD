@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "invaudittrail.view.App",
+            "viewName": "invaudittrail.view.View1",
             "type": "XML",
             "id": "App"
         }

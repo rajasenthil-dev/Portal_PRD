@@ -9,198 +9,200 @@
     xmlns:st="sap.ui.comp.smarttable"
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     displayBlock="true">
-    <f:DynamicPage id="dynamicPage" showFooter="true">
-        <f:header>
-			<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" class="noPadding">
-                <FlexBox id="_IDGenFlexBox6" width="100%" direction="Row" wrap="Wrap" justifyContent="SpaceBetween" class="headerPadding sapUiMediumMarginBottom borderBottom">
-                    <HeaderContainer id="container1" scrollStep="200" height="100px">
-                        <FlexBox id="_IDGenFlexBox7" alignItems="Center" height="100px">
-                            <FlexBox id="_IDGenFlexBox8" alignItems="Center" height="75px" class="imgBG">
-                                <Image id="_IDGenImage1" src="/img/logoipsum-325.svg" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo" >
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow"/>
-                                    </layoutData>
-                                </Image>
+    <App id="app">
+        <f:DynamicPage id="dynamicPage" showFooter="true">
+            <f:header>
+                <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" class="noPadding">
+                    <FlexBox id="_IDGenFlexBox6" width="100%" direction="Row" wrap="Wrap" justifyContent="SpaceBetween" class="headerPadding sapUiMediumMarginBottom borderBottom">
+                        <HeaderContainer id="container1" scrollStep="200" height="100px">
+                            <FlexBox id="_IDGenFlexBox7" alignItems="Center" height="100px">
+                                <FlexBox id="_IDGenFlexBox8" alignItems="Center" height="75px" class="imgBG">
+                                    <Image id="_IDGenImage1" src="/img/logoipsum-325.svg" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo" >
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow"/>
+                                        </layoutData>
+                                    </Image>
+                                </FlexBox>
                             </FlexBox>
-                        </FlexBox>
-                    </HeaderContainer>
-                    <HeaderContainer id="container2" scrollStep="200">
-                        <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
-                            <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
-                                <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
-                            </TileContent>
-                        </GenericTile>
-                    </HeaderContainer>
-                </FlexBox>
-				<sf:SmartFilterBar
-                    id="bar0"
-                    entitySet="SALESBYCURRENT"
-                    useDateRangeType="true"
-                    persistencyKey="SmartFilterBar_SALESBYCURRENT"
-                    smartVariant="pageVariant"
-                    liveMode="true"
-                    search="onSearch">
-                    <sf:controlConfiguration>
-                        <sf:ControlConfiguration id="_IDGenControlConfiguration1"
-							key="INVOICE_DATE_FKDAT"
-							visibleInAdvancedArea="true"
-							conditionType="{
-								module: 'sap.ui.comp.config.condition.DateRangeType'
-							}"
-						/>
-                        <sf:ControlConfiguration id="_IDGenControlConfiguration2"
-							key="EXPIRY_DATE_VFDAT"
-							visibleInAdvancedArea="true"
-							conditionType="{
-								module: 'sap.ui.comp.config.condition.DateRangeType'
-							}"
-						/>
-                        <sf:ControlConfiguration id="_IDGenControlConfiguration3"
-							key="DELEVERY_DATE_VDATU"
-							visibleInAdvancedArea="true"
-							conditionType="{
-								module: 'sap.ui.comp.config.condition.DateRangeType'
-							}"
-						/>
-                    </sf:controlConfiguration>
-                </sf:SmartFilterBar>
-                <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
-
-				    <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
-
-                        <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
-                            <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text="$181M"/>
-                        </FlexBox>
-                        <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
-                            <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
-                            <Text id="_IDGenNumericContent2" class="mck_TileContent" text="19K"/>
-                        </FlexBox>
-                        <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
-                            <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
-                            <Text id="_IDGenNumericContent3" class="mck_TileContent" text="69K"/>
-                        </FlexBox>
-                         <FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
-                            <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>tileTitle4}"/>
-                            <Text id="_IDGenNumericContent4" class="mck_TileContent" text="6M"/>
-                        </FlexBox>
-
-				    </HeaderContainer>
-                </Panel>
-			</f:DynamicPageHeader>
-		</f:header>
-
-        <f:content>
-            <st:SmartTable
-                xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
-                width="100%" 
-                direction="Column" 
-                fitContainer="true" 
-                tableType="Table" 
-                header="{i18n>tableTitle}" 
-                enableAutoBinding="true" 
-                id="table0" 
-                smartFilterId="bar0"
-                cd:w5g.dt.context="/SALESBYCURRENT" 
-                entitySet="SALESBYCURRENT" 
-                placeToolbarInTable="true" 
-                useExportToExcel="true" 
-                beforeExport="onBeforeExport" 
-                useVariantManagement="true" 
-                useTablePersonalisation="true" 
-                showRowCount="true" 
-                persistencyKey="SmartTableAnalytical_Explored"
-                enableAutoColumnWidth="true" 
-                class="sapUiResponsiveContentPadding"
-            >
-                <t:Table
-                    selectionMode="None"
-                    id="table"
-                    alternateRowColors="true">
-                    <t:columns>
-                        <t:Column id="_IDGenColumn10" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_VBELN", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 0}'/>
-                            </t:customData>
-                            <Text id="_IDGenText30" text="Invoice/Credit #"></Text>
-                            <t:template>
-                                <Link id="inviocecredir" text="{INVOICE_CREDIT_VBELN}" press=".onInvoiceClick"/>
-                            </t:template>
-                        </t:Column>
-                        <t:Column id="_IDGenColumn" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "PRICE_CAL_UNIT_COST", "leadingProperty": "PRICE_CAL_UNIT_COST", "columnIndex": 7}'/>
-                            </t:customData>
-                            <Text id="_IDGenText3" text="Price"></Text>
-                            <t:template>
-                                <Text id="invoiceDate" 
-                                core:require="{
-                                        Formatter: 'salesbycus/model/formatter'
-                                    }"
-                                text="{path: 'PRICE_CAL_UNIT_COST', formatter: 'Formatter._formatCurrency'}"/>
-                            </t:template>
-                        </t:Column>
-                        <t:Column id="_IDGenColumn1" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "AMOUNT_NETWR", "leadingProperty": "AMOUNT_NETWR", "columnIndex": 8}'/>
-                            </t:customData>
-                            <Text id="_IDGenText4" text="$ Amount"></Text>
-                            <t:template>
-                                <Text id="invoiceAmount" 
-                                    core:require="{
-                                        Formatter: 'salesbycus/model/formatter'
-                                    }"
-                                    text="{path: 'AMOUNT_NETWR', formatter: 'Formatter._formatCurrency'}"/>
-                            </t:template>
-                        </t:Column>
-                        <!-- <t:Column id="_IDGenColumn2" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_DATE_FKDAT", "leadingProperty": "INVOICE_DATE_FKDAT", "columnIndex": 1}'/>
-                            </t:customData>
-                            <Text id="_IDGenText5" text="Invoice Date"></Text>
-                            <t:template>
-                                <Text id="invoiceDate1" 
-                                    core:require="{
-                                        Formatter: 'salesbycus/model/formatter'
-                                    }"
-                                    text="{path: 'INVOICE_DATE_FKDAT', formatter: 'Formatter._formatDate'}"/>
-                            </t:template>
-                        </t:Column> -->
-                        <!-- <t:Column id="_IDGenColumn3" width='7.813rem'>
-                            <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "BUDAT", "leadingProperty": "BUDAT", "columnIndex": 10}'/>
-                            </t:customData>
-                            <Text id="_IDGenText6" text="Deposit Date"></Text>
-                            <t:template>
-                                <Text id="depositDate" text="{path: 'BUDAT', formatter: '._formatDate'}"/>
-                            </t:template>
-                        </t:Column> -->
-                    </t:columns>
-                </t:Table>
-            </st:SmartTable>
-        </f:content>
-		 <f:footer>
-            <OverflowToolbar id="_IDGenOverflowToolbar1" class="footer">
-                <!-- Added by Bryan Cash in order to make the footer fully responsive for mobile devices -->
-                <FlexBox id="_IDGenFlexBox9" width="100%" justifyContent="SpaceBetween" wrap="Wrap">
-                    <FlexBox id="_IDGenFlexBox10">
-                        <ObjectIdentifier id="_IDGenObjectIdentifier1"
-                            title="{i18n>totals}"
-                            class="footerTitle"/>
+                        </HeaderContainer>
+                        <HeaderContainer id="container2" scrollStep="200">
+                            <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
+                                <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
+                                    <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
+                                </TileContent>
+                            </GenericTile>
+                        </HeaderContainer>
                     </FlexBox>
-                    <FlexBox id="_IDGenFlexBox11" >
-                        <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
-                            <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                            <Text id="TotUnitsPriceText" class="footerText" text ="{ProductCollection>/TotUnitsPrice}"/>
-                        </HBox>
-                        <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
-                            <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                            <Text id="TotUnitsInStockText" class="footerText" text ="{ProductCollection>/TotUnitsInStock}"/>
-                        </HBox>
-                    </FlexBox>
-                </FlexBox>
-			</OverflowToolbar>
-        </f:footer>
+                    <sf:SmartFilterBar
+                        id="bar0"
+                        entitySet="SALESBYCURRENT"
+                        useDateRangeType="true"
+                        persistencyKey="SmartFilterBar_SALESBYCURRENT"
+                        smartVariant="pageVariant"
+                        liveMode="true"
+                        search="onSearch">
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                                key="INVOICE_DATE_FKDAT"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }"
+                            />
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration2"
+                                key="EXPIRY_DATE_VFDAT"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }"
+                            />
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration3"
+                                key="DELEVERY_DATE_VDATU"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }"
+                            />
+                        </sf:controlConfiguration>
+                    </sf:SmartFilterBar>
+                    <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
 
-		</f:DynamicPage>
+                        <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
+
+                            <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
+                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text="$181M"/>
+                            </FlexBox>
+                            <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
+                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text="19K"/>
+                            </FlexBox>
+                            <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
+                                <Text id="_IDGenNumericContent3" class="mck_TileContent" text="69K"/>
+                            </FlexBox>
+                            <FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>tileTitle4}"/>
+                                <Text id="_IDGenNumericContent4" class="mck_TileContent" text="6M"/>
+                            </FlexBox>
+
+                        </HeaderContainer>
+                    </Panel>
+                </f:DynamicPageHeader>
+            </f:header>
+
+            <f:content>
+                <st:SmartTable
+                    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+                    width="100%" 
+                    direction="Column" 
+                    fitContainer="true" 
+                    tableType="Table" 
+                    header="{i18n>tableTitle}" 
+                    enableAutoBinding="true" 
+                    id="table0" 
+                    smartFilterId="bar0"
+                    cd:w5g.dt.context="/SALESBYCURRENT" 
+                    entitySet="SALESBYCURRENT" 
+                    placeToolbarInTable="true" 
+                    useExportToExcel="true" 
+                    beforeExport="onBeforeExport" 
+                    useVariantManagement="true" 
+                    useTablePersonalisation="true" 
+                    showRowCount="true" 
+                    persistencyKey="SmartTableAnalytical_Explored"
+                    enableAutoColumnWidth="true" 
+                    class="sapUiResponsiveContentPadding"
+                >
+                    <t:Table
+                        selectionMode="None"
+                        id="table"
+                        alternateRowColors="true">
+                        <t:columns>
+                            <t:Column id="_IDGenColumn10" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_VBELN", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText30" text="Invoice/Credit #"></Text>
+                                <t:template>
+                                    <Link id="inviocecredir" text="{INVOICE_CREDIT_VBELN}" press=".onInvoiceClick"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRICE_CAL_UNIT_COST", "leadingProperty": "PRICE_CAL_UNIT_COST", "columnIndex": 7}'/>
+                                </t:customData>
+                                <Text id="_IDGenText3" text="Price"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate" 
+                                    core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }"
+                                    text="{path: 'PRICE_CAL_UNIT_COST', formatter: 'Formatter._formatCurrency'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn1" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "AMOUNT_NETWR", "leadingProperty": "AMOUNT_NETWR", "columnIndex": 8}'/>
+                                </t:customData>
+                                <Text id="_IDGenText4" text="$ Amount"></Text>
+                                <t:template>
+                                    <Text id="invoiceAmount" 
+                                        core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }"
+                                        text="{path: 'AMOUNT_NETWR', formatter: 'Formatter._formatCurrency'}"/>
+                                </t:template>
+                            </t:Column>
+                            <!-- <t:Column id="_IDGenColumn2" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_DATE_FKDAT", "leadingProperty": "INVOICE_DATE_FKDAT", "columnIndex": 1}'/>
+                                </t:customData>
+                                <Text id="_IDGenText5" text="Invoice Date"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate1" 
+                                        core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }"
+                                        text="{path: 'INVOICE_DATE_FKDAT', formatter: 'Formatter._formatDate'}"/>
+                                </t:template>
+                            </t:Column> -->
+                            <!-- <t:Column id="_IDGenColumn3" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BUDAT", "leadingProperty": "BUDAT", "columnIndex": 10}'/>
+                                </t:customData>
+                                <Text id="_IDGenText6" text="Deposit Date"></Text>
+                                <t:template>
+                                    <Text id="depositDate" text="{path: 'BUDAT', formatter: '._formatDate'}"/>
+                                </t:template>
+                            </t:Column> -->
+                        </t:columns>
+                    </t:Table>
+                </st:SmartTable>
+            </f:content>
+            <f:footer>
+                <OverflowToolbar id="_IDGenOverflowToolbar1" class="footer">
+                    <!-- Added by Bryan Cash in order to make the footer fully responsive for mobile devices -->
+                    <FlexBox id="_IDGenFlexBox9" width="100%" justifyContent="SpaceBetween" wrap="Wrap">
+                        <FlexBox id="_IDGenFlexBox10">
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1"
+                                title="{i18n>totals}"
+                                class="footerTitle"/>
+                        </FlexBox>
+                        <FlexBox id="_IDGenFlexBox11" >
+                            <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
+                                <Text id="TotUnitsPriceText" class="footerText" text ="{ProductCollection>/TotUnitsPrice}"/>
+                            </HBox>
+                            <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
+                                <Text id="TotUnitsInStockText" class="footerText" text ="{ProductCollection>/TotUnitsInStock}"/>
+                            </HBox>
+                        </FlexBox>
+                    </FlexBox>
+                </OverflowToolbar>
+            </f:footer>
+
+        </f:DynamicPage>
+    </App>
 </mvc:View>

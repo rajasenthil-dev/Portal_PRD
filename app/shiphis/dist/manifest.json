@@ -126,7 +126,7 @@
             }
         },
         "rootView": {
-            "viewName": "shiphis.view.App",
+            "viewName": "shiphis.view.View1",
             "type": "XML",
             "id": "App"
         }

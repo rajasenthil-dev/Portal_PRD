@@ -120,7 +120,21 @@
 				"privileges": [
 				  "SELECT"
 				]
-			  }     
+			  },
+			  {
+				"type": "SYNONYM",
+				"name": "SYNMAINPAGESUMMARYDOC",
+				"privileges": [
+				  "SELECT"
+				]
+			  },
+			  {
+				"type": "SYNONYM",
+				"name": "SYNMAINPAGEINVENTORYDOC",
+				"privileges": [
+				  "SELECT"
+				]
+			  }
 		],
 		"schema_privileges":[
 		 {

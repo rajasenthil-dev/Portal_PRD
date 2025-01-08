@@ -123,7 +123,7 @@
       }
     },
     "rootView": {
-      "viewName": "salesbycus.view.App",
+      "viewName": "salesbycus.view.View1",
       "type": "XML",
       "id": "App"
     }

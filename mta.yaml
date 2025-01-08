@@ -119,10 +119,6 @@ modules:
       - bckorders.zip
       name: bckorders
       target-path: app/
-    - artifacts:
-      - test1245.zip
-      name: test1245
-      target-path: app/
 - name: mck-portal-destination-content
   type: com.sap.application.content
   requires:
@@ -317,16 +313,6 @@ modules:
 - name: bckorders
   type: html5
   path: app/bckorders
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: test1245
-  type: html5
-  path: app/test1245
   build-parameters:
     build-result: dist
     builder: custom
