@@ -1,6 +1,6 @@
 {
-  "name": "customermaster",
-  "version": "0.0.1",
+  "name": "customermaster-dev",
+  "version": "0.0.2",
   "description": "An SAP Fiori application.",
   "keywords": [
     "ui5",

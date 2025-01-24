@@ -23,3 +23,6 @@ builder:
       archiveName: cashjour
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "cashjour/controller/**"

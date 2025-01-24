@@ -57,3 +57,14 @@ gen
 
 # added by cds
 .cdsrc-private.json
+
+# auto generated wildcard
+app/.env
+# added by cds
+.cdsrc-private.json
+
+# added by cds
+.cdsrc-private.json
+
+# added by cds
+.cdsrc-private.json

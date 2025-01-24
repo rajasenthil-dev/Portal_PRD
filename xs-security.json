@@ -1,94 +1,126 @@
 {
     "xsappname": "mck-portal",
     "tenant-mode": "dedicated",
-    "description": "Security profile of called application", 
+    "description": "Security profile of called application",
     "oauth2-configuration": {
-        "grant-types": ["client_credentials", "authorization_code", "refresh_token", "urn:ietf:params:oauth:grant-type:jwt-bearer", "user_token"],
-        "credential-types": ["binding-secret","x509"],
-        "system-attributes": ["groups","rolecollections"],
+        "grant-types": [
+            "client_credentials",
+            "authorization_code",
+            "refresh_token",
+            "urn:ietf:params:oauth:grant-type:jwt-bearer",
+            "user_token"
+        ],
+        "credential-types": [
+            "binding-secret",
+            "x509"
+        ],
+        "system-attributes": [
+            "groups"
+        ],
         "allowedproviders": [],
         "redirect-uris": [
-            "https://**cfapps.us20.hana.ondemand.com/**","https://**cfapps.us20.hana.ondemand.com/my/logout"
+            "https://**cfapps.us20.hana.ondemand.com/**",
+            "https://**cfapps.us20.hana.ondemand.com/my/logout",
+            "https://*.applicationstudio.cloud.sap/**"
         ]
     },
-    "foreign-scope-references": ["$ACCEPT_GRANTED_SCOPES"], 
-    "authorities":["$ACCEPT_GRANTED_AUTHORITIES"],
     "scopes": [
         {
-            "name": "uaa.user",
-            "description": "UAA"
+            "name": "$XSAPPNAME.Admin",
+            "description": "Admin scope"
         },
         {
-            "name": "$XSAPPNAME.User",
-            "description": "User access"
+            "name": "$XSAPPNAME.Viewer",
+            "description": "Viewer scope with restricted access"
         },
         {
-            "name": "$XSAPPNAME.mfg",
-            "description": "User mfg"
-        },
-        {
-            "name": "$XSAPPNAME.email",
-            "description": "User email"
-        },
-        {
-            "name": "$XSAPPNAME.openid",
-            "description": "Open Id Connect"
-        },
-        {
-            "name": "$XSAPPNAME.UserAttributes",
-            "description": "Access user attributes"
+            "name": "$XSAPPNAME.Internal",
+            "description": "Internal access scope"
         }
     ],
     "attributes": [
         {
-            "name": "MFGName",
-            "description": "Mfg Name",
+            "name": "SalesOrg",
+            "description": "SalesOrg",
             "valueType": "string",
-            "valueRequired" : "false"
-        },
-        {
-            "name": "SalesOffice",
-            "description": "SalesOffice",
-            "valueType": "string",
-            "valueRequired" : "false"
-        },
-        {
-            "name": "ProfitCentre",
-            "description": "ProfitCentre",
-            "valueType": "string",
-            "valueRequired" : "false"
+            "valueRequired": false
         },
         {
             "name": "ManufacturerNumber",
             "description": "ManufacturerNumber",
             "valueType": "string",
-            "valueRequired" : "false"
+            "valueRequired": false
         },
         {
-            "name": "SalesOrg",
-            "description": "SalesOrg",
+            "name": "SalesOffice",
+            "description": "SalesOffice",
             "valueType": "string",
-            "valueRequired" : "false"
+            "valueRequired": false
+        },
+        {
+            "name": "ProfitCentre",
+            "description": "ProfitCentre",
+            "valueType": "string",
+            "valueRequired": false
+        },
+        {
+            "name": "MFGName",
+            "description": "type",
+            "valueType": "string",
+            "valueRequired": false
         }
     ],
     "role-templates": [
         {
-            "name": "Token_Exchange",
-            "description": "UAA",
+            "name": "Admin",
+            "description": "Administrator Role",
             "scope-references": [
-                "uaa.user", "$XSAPPNAME.mfg", "$XSAPPNAME.email", "$XSAPPNAME.openid", "$XSAPPNAME.UserAttributes"
+                "$XSAPPNAME.Admin"
             ]
         },
         {
             "name": "Viewer",
-            "description": "Viewer Role",
+            "description": "Viewer Role with Restricted Access",
             "scope-references": [
-                "$XSAPPNAME.User", "$XSAPPNAME.mfg", "$XSAPPNAME.email", "$XSAPPNAME.openid", "$XSAPPNAME.UserAttributes"
+                "$XSAPPNAME.Viewer"
             ],
             "attribute-references": [
-                "MFGName", "SalesOffice", "SalesOrg", "ManufacturerNumber", "ProfitCentre"
+                "SalesOrg",
+                "ManufacturerNumber",
+                "SalesOffice",
+                "ProfitCentre",
+                "MFGName"
+            ]
+        },
+        {
+            "name": "Internal",
+            "description": "Internal Role with Full Access",
+            "scope-references": [
+                "$XSAPPNAME.Internal"
             ]
         }
-    ]   
-    
+    ],
+    "role-collections": [
+        {
+            "name": "Admin",
+            "description": "Internal User Role Collection",
+            "role-template-references": [
+                "$XSAPPNAME.Admin"
+            ]
+        },
+        {
+            "name": "Internal",
+            "description": "Internal User Role Collection",
+            "role-template-references": [
+                "$XSAPPNAME.Internal"
+            ]
+        },
+        {
+            "name": "Viewer",
+            "description": "Viewer User Role Collection",
+            "role-template-references": [
+                "$XSAPPNAME.Viewer"
+            ]
+        }
+    ]
 }

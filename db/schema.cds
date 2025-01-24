@@ -23,35 +23,21 @@ entity ITEMMASTER //@(restrict: [
 //     { grant: 'READ', where: 'Internal'}
 // ])
 {
-        @UI.HiddenFilter: true
     key PRODUCT                 : String(40);
-        @UI.HiddenFilter: true
     key SALESORG                : String(4);
-        @UI.HiddenFilter: true
         CREATIONDATE            : String(8);
-        @UI.HiddenFilter: true
         DIN                     : String(70);
-        @UI.HiddenFilter: true
         GST_APPLICABLE          : String(1);
-        @UI.HiddenFilter: true
         LOT_CONTROL_YN          : String(1);
-        @UI.HiddenFilter: true
         NARCOTIC_YN             : String(1);
         CATEGORY                : String(20) @Search.defaultSearchElement;
         PRODUCTDESCRIPTION_EN   : String(40);
-        @UI.HiddenFilter: true
         PRODUCTDESCRIPTION_FR   : String(40);
-        @UI.HiddenFilter: true
         PST_APPLICABLE          : String(1);
-        @UI.HiddenFilter: true
         REFRIGERATED            : String(1);
-        @UI.HiddenFilter: true
         UNITS_PER_CASE          : Decimal(5,0);
-        @UI.HiddenFilter: true
         SIZEUOM                 : String(80);
-        @UI.HiddenFilter: true
         PRODUCTSTANDARDID       : String(18);
-        @UI.HiddenFilter: true
         MANUFACTURERNUMBER      : String(10);
 }
 define view ITEMMASPD as
@@ -69,32 +55,20 @@ define view ITEMMASCATEGORY as
 @cds.persistence.exists
 entity INVENTORYSTATUS 
 {
-        @UI.HiddenFilter: true
+        
     key SKU_MATNR                   : String(40);
         PRODUCT_CODE                : String(40);
-        @UI.HiddenFilter: true
         CON_SIZE_UOM_SIZE           : String(30);
-        @UI.HiddenFilter: true
         PRODUCT_DESCRIPTION         : String(40);
-        @UI.HiddenFilter: true
         OPEN_STOCK                  : Decimal(36,14);
-        @UI.HiddenFilter: true
         QUARANTINE                  : Decimal(36,14);
-        @UI.HiddenFilter: true
         DAMAGE_DESTRUCTION          : Decimal(36,14);
-        @UI.HiddenFilter: true
         RETAINS                     : Decimal(36,14);
-        @UI.HiddenFilter: true
         RETURNS_CAL                 : Decimal(36,14);
-        @UI.HiddenFilter: true
         RECALLS                     : Decimal(36,14);
-        @UI.HiddenFilter: true
     key SALES_ORGANIZATION_VKORG    : String(4);
-        @UI.HiddenFilter: true
         SALES_OFFICE_VKBUR          : String(4);
-        @UI.HiddenFilter: true
         MANUFACTURER_MFRPN          : String(40);
-        @UI.HiddenFilter: true
         PROFIT_CENTER_PRCTR         : String(10);
 }
 // Inventory Status Product Code filter
@@ -114,29 +88,17 @@ entity INVENTORYAUDITTRAIL
         CHARG               : String(10);
         WAREHOUSE_STATUS    : String(40);
         KUNNR               : String(10);
-        @UI.HiddenFilter: true
         MATNR               : String(40);
-        @UI.HiddenFilter: true
         MAKTX               : String(40);
-        @UI.HiddenFilter: true
         TRAN_TYPE           : String(40);
-        @UI.HiddenFilter: true
         MENGE               : Decimal(13,3);
-        @UI.HiddenFilter: true
         CUSTOMER_NAME       : String(35);
-        @UI.HiddenFilter: true
     key INV_MATDOC_ITEM     : String(15);
-        @UI.HiddenFilter: true
         WERKS               : String(4);
-        @UI.HiddenFilter: true
         LGORT               : String(4);
-        @UI.HiddenFilter: true
         MFRNR               : String(10);
-        @UI.HiddenFilter: true 
         NAME1_PLANT         : String(40);
-        @UI.HiddenFilter: true
-        MEINS               : String(3);
-        @UI.HiddenFilter: true
+        MEINS               : String(3); 
         VFDAT               : String(8);              
 }
 // Inventory Audit Trail Product Code Filter
@@ -170,41 +132,24 @@ entity CASHJOURNAL //@(restrict: [
 // ])
 {
         BILL_TO             : String(10);
-        @UI.HiddenFilter: true
         NAME1               : String(35);
-        @UI.HiddenFilter: true
         CAL_CASH_RECEIVED   : Decimal(23,2);
-        @UI.HiddenFilter: true
         VKORG               : String(4);
-        @UI.HiddenFilter: true
         BKTXT               : String(25);
-        @UI.HiddenFilter: true
         SGTXT               : String(50);
         BUDAT               : String(8);
-        @UI.HiddenFilter: true
         CAL_DISCOUNT        : Decimal(23,2);
-        @UI.HiddenFilter: true
     key VBELN               : String(10);
-        @UI.HiddenFilter: true
         NETWR               : Decimal(15,2);
-        @UI.HiddenFilter: true
         FKDAT               : String(8);
         BLART               : String(2);
-        @UI.HiddenFilter: true
         AUGBL               : String(10);
-        @UI.HiddenFilter: true
         SHIP_TO             : String(10);
-        @UI.HiddenFilter: true
     key BUKRS               : String(4);
-        @UI.HiddenFilter: true
         MFRNR               : String(10);
-        @UI.HiddenFilter: true
     key BELNR               : String(10);
-        @UI.HiddenFilter: true
     key RLDNR               : String(2);
-        @UI.HiddenFilter: true
     key GJAHR               : String(4);
-        @UI.HiddenFilter: true
         BSTKD               : String(35);
 }
 // Cash Journal Invoice filter
@@ -227,23 +172,17 @@ entity INVENTORYSNAPSHOT //@(restrict: [
 //     { grant: 'READ', to: 'Internal'}
 // ])
 {
-        @UI.HiddenFilter: true
+        
     key SKU                 : String(40);
-        @UI.HiddenFilter: true
         PORDUCT_CODE        : String(40);
         PRODUCT_DESCRIPTION : String(40);
-        @UI.HiddenFilter: true
         SIZE                : String(70);
         LOT                 : String(10);
-        @UI.HiddenFilter: true
         EXPIRY_DATE         : String(8);
         WAREHOUSE_STATUS    : String(5000);
         REPORT_DATE         : Date;
-        @UI.HiddenFilter: true
         ON_HAND             : Decimal(36,14);
-        @UI.HiddenFilter: true
         DAYS_UNTIL_EXPIRY   : Integer;
-        @UI.HiddenFilter: true
         UPC                 : String(18);
 }
 define view INVSNAPPRODDESC as
@@ -262,31 +201,24 @@ define view INVSNAPWARESTAT as
 // Security attributes to match: ??
 @cds.search: { SKU, PRODUCT_CODE, SIZE, LOT, UPC, CO, MANUFACTURER, WAREHOUSE }
 @cds.persistence.exists
-entity INVENTORYBYLOT @(restrict: [
-     { grant: 'READ', where: 'MANUFACTURER_MFRPN = $user.ManufacturerNumber'  },
-     //{ grant: 'READ', to: 'Internal'}
-])
+entity INVENTORYBYLOT // @(restrict: [
+//      { grant: 'READ', where: 'MANUFACTURER_MFRPN = $user.ManufacturerNumber'  },
+//      { grant: 'READ', where: `$user.email like '%@mckesson.com%'`}
+// ])
 {
-        @UI.HiddenFilter: true
+        
     key SKU                     : String(40);
         PRODUCT_CODE_1          : String(16);
         //PRODUCT_DESCRIPTION : String(40);
-        @UI.HiddenFilter: true
         SIZE                        : String(30);
         LOT_CHARG                   : String(10);
-        @UI.HiddenFilter: true
         EXPIRY_DATE_VFDAT           : String(8);
         WAREHOUSE_STATUS            : String(4);
-        @UI.HiddenFilter: true
         QTY_ON_HAND                 : Decimal(36,14);
-        @UI.HiddenFilter: true
         DAYS_UNTIL_EXPIRY           : Integer;
-        @UI.HiddenFilter: true
         SALES_ORGANIZATION_VKORG    : String(18);
-        @UI.HiddenFilter: true
         SALES_OFFICE_VKBUR          : String(4);
         MANUFACTURER_MFRPN          : String(10);
-        @UI.HiddenFilter: true
         PROFIT_CENTER_PRCTR         : String(10);
 }
 // Inventory by Lot Product Code filter
@@ -378,10 +310,7 @@ define view INVVALPRODDESC as
 // Security attributes to match: ??
 @cds.search: { ORT01, VKORG, BKTXT, KUNNR, LFDAT, BELNR, BUDAT, NAME1, AUBEL, PSTLZ, REGIO, BSTKD, SHIP_TO, TRACKN, BLART, MFRNR }
 @cds.persistence.exists
-entity INVOICEHISTORY //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity INVOICEHISTORY 
 {
         @Aggregation.default: #SUM
         @Semantics.amount.currencyCode: 'currency'
@@ -725,10 +654,7 @@ define view SHTRACKING as
     MFRNR
 }
 @cds.persistence.exists
-entity PRICING  //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity PRICING  
 {
     key VKORG :	String(4);
         KBETR :	Decimal(11,2);
@@ -822,13 +748,7 @@ define view OOPROVINCE as
     PROFIT_CENTER_PRCTR
 }
 @cds.persistence.exists
-entity RETURNS @(restrict: [
-    // Apply read access restriction only if the user's preferred_name does not contain '@mckesson.com'
-    { 
-        grant: 'READ', 
-        where: `CO_VKORG = $user.SalesOrg AND MANUFACTURER_MFRNR = $user.ManufacturerNumber`// Add this line to bypass for @mckesson.com users
-    }
-])
+entity RETURNS 
 {
         DATE_ENTERED_FKDAT_ANA  : String(8);
     key CUSTOMER_KUNNR          : String(10);
@@ -909,6 +829,7 @@ define view BOBILLTO as
 
 };
 
+
 //  Back Orders Ship To filter
 define view BOSHIPTO as
     select from BACKORDERS distinct {
@@ -929,13 +850,18 @@ entity MAINPAGESUMMARY //@(restrict: [
     // }
 //])
 {
-        UNIT_SHIPPED        : Decimal(18,3);
-        TOTAL_SALES_AMOUNT  : Decimal(20,2);
-        INVOICES            : Integer;
-    key YEAR_CAL            : String(4);
-    key MANUFACTURER        : String(10);	 
+        UNITS_SHIPPED_FKIMG         : Decimal(23,3);
+        TOTAL_SALES_AMOUNT_NETWR    : Decimal(20,2);
+        INVOICES                    : Integer;
+        YEAR_CAL                    : String(4);
+    key MANUFACTURER_MFRNR          : String(10);
     
 }
+
+define view MPSYEAR as
+    select from MAINPAGESUMMARY distinct {
+        key YEAR_CAL
+};
 
 @cds.persistence.exists
 entity MAINPAGEINVENTORY //@(restrict: [
@@ -958,8 +884,48 @@ entity MAINPAGEINVENTORY //@(restrict: [
     RECALLS             : Decimal(38, 2);	
     QUARANTINE          : Decimal(38, 2);
     DAMAGE_DESTRUCTION  : Decimal(38, 2); 
+    MANUFACTURER        : String(10);
     
 }
+
+@cds.persistence.exists
+entity MAINPAGEUNIT //@(restrict: [
+    // Apply read access restriction only if the user's preferred_name does not contain '@mckesson.com'
+    // { 
+    //     grant: 'READ', 
+    //     where: `VKORG = $user.SalesOrg AND MFRNR = $user.ManufacturerNumber`// Add this line to bypass for @mckesson.com users
+    // },
+    // // Grant unrestricted read access for users with preferred_name containing '@mckesson.com'
+    // {
+    //     grant: 'READ',
+    //     where: `$user.preferred_username like '%@mckesson.com%'`
+    // }
+//])
+{
+        CALYEAR             : Integer;
+    key MFRNR               : String(10);
+        CALMONTH            : String;
+        QTY_CURRENT         : Decimal(18, 3);
+        PREVIOUS_MONTH      : Integer;	
+        QTY_DIFF            : Decimal(18, 2);
+        PERCENTAGE_DIFF     : Decimal(38, 3); 
+        MEINS               : String(3);
+        QTY_PREVIOUS        : Decimal(18, 3);    
+}
+
+define view MPUYEAR as
+    select from MAINPAGEUNIT distinct {
+        key CALYEAR
+};
+
+entity Manufacturers {
+    key manufacturerNumber  : String(50);
+        MFGName             : String(255);
+        imageName           : String(255);
+        publicURL           : String(512);
+        createdAt           : Timestamp @default: now;
+}
+
 
 
 

@@ -180,4 +180,10 @@ src/gen/MAINPAGESUMMARY.hdbview
 
 src/gen/MAINPAGE.MAINPAGEINVENTORY.hdbview
 src/gen/MAINPAGEINVENTORY.hdbview
+src/gen/MAINPAGEUNIT.hdbview
+src/gen/MAINPAGE.MAINPAGEUNIT.hdbview
+src/gen/MAINPAGE.MPUYEAR.hdbview
+src/gen/MPUYEAR.hdbview
+src/gen/MAINPAGE.MPSYEAR.hdbview
+src/gen/MPSYEAR.hdbview
 

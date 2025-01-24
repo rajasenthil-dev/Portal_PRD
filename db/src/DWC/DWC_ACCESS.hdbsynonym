@@ -100,13 +100,19 @@
   },
   "SYNMAINPAGESUMMARYDOC": {
     "target": {
-      "object": "Main_Page_Summary1_CONSUMABLE_V2",
+      "object": "Main_Page_Summary1_V4_Agg_Cons",
       "schema": "70991A916E38463FB4C634988731A9CF"
     }
   },
   "SYNMAINPAGEINVENTORYDOC": {
     "target": {
-      "object": "Main_Page_Summary2_CONSUMABLE",
+      "object": "Main_Page_Summary2_Agg_Cons",
+      "schema": "70991A916E38463FB4C634988731A9CF"
+    }
+  },
+  "SYNMAINPAGEUNITDOC": {
+    "target": {
+      "object": "Main_Page_Summary3_2",
       "schema": "70991A916E38463FB4C634988731A9CF"
     }
   }

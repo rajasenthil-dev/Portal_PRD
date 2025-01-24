@@ -1,17 +1,28 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
-  "bckorders/model/formatter"
-], (Controller, formatter) => {
+  "bckorders/model/formatter",
+  "sap/m/MessageBox"
+], (Controller, formatter, MessageBox) => {
   "use strict";
 
   return Controller.extend("bckorders.controller.View1", {
-      formatter: formatter,
+    formatter: formatter,
 
-      onInit: function () {
-          const oSmartTable = this.getView().byId("table0");
-          const oTable = oSmartTable.getTable();
-          oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
-      },
+    onInit: function () {
+        var oModel = this.getOwnerComponent().getModel();
+
+        oModel.attachRequestFailed(function (oEvent) {
+            var oParams = oEvent.getParameters();
+            if (oParams.response.statusCode === "403") {
+            MessageBox.error("You currently do not have authorization to view this resource. If you feel this in incorrect please reach out to the administrator.");
+            } else {
+            MessageBox.error("An error occurred: " + oParams.response.message);
+            }
+        });
+        const oSmartTable = this.getView().byId("table0");
+        const oTable = oSmartTable.getTable();
+        oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+    },
 
       _calculateTotals: function () {
           const oSmartTable = this.getView().byId("table0");

@@ -23,3 +23,6 @@ builder:
       archiveName: invsnapshot
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "invsnapshot/controller/**"

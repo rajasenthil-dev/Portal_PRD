@@ -23,3 +23,6 @@ builder:
       archiveName: pricelist
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "pricelist/controller/**"

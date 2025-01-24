@@ -23,3 +23,6 @@ builder:
       archiveName: salesbycus
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "salesbycus/controller/**"

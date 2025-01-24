@@ -1,9 +1,63 @@
+// const multer = require('multer');
 // const cds = require('@sap/cds');
-// const jwt = require('jsonwebtoken'); // Ensure you install this package
-// const axios = require('axios'); // For calling user-api
-// const { getUserAttributes } = require('./utils/userApi');
+// // Set up multer for file handling (you can configure storage options based on your needs)
+// const upload = multer({ storage: multer.memoryStorage() });
 
-// // Middleware to authenticate and enrich user info
+// module.exports = cds.service.impl(function () {
+//   const { Manufacturers } = this.entities;
+
+//   // Expose the action for uploading manufacturer details
+//   this.on('uploadManufacturerDetails', upload.single('file'), async (req) => {
+//     const { manufacturerNumber, MFGName, imageName } = req.data;
+//     const file = req.file; // file will be available as raw binary data in req.file
+
+//     // Check if the manufacturer already exists
+//     const existingManufacturer = await SELECT.one.from(Manufacturers).where({ manufacturerNumber });
+//     if (existingManufacturer) {
+//       req.error(400, `Manufacturer with number ${manufacturerNumber} already exists.`);
+//     }
+
+//     // Connect to Object Store
+//     const { url, clientid, clientsecret } = cds.env.services.ObjectStore.credentials;
+//     const tokenResponse = await axios.post(`${url}/oauth/token`, null, {
+//       auth: { username: clientid, password: clientsecret },
+//       params: { grant_type: 'client_credentials' },
+//     });
+//     const token = tokenResponse.data.access_token;
+
+//     // Generate unique object key for the image
+//     const objectKey = `${manufacturerNumber}-${imageName}`;
+//     console.log("Uploading Image.................")
+//     // Upload image to Object Store
+//     await axios.put(`${url}/v1/objects/${objectKey}`, file.buffer, { // use file.buffer for binary data
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'image/png',
+//       },
+//     });
+
+//     // Generate public URL for the uploaded image
+//     const publicURL = `${url}/v1/objects/${objectKey}`;
+
+//     // Save manufacturer details in the database
+//     await INSERT.into(Manufacturers).entries({
+//       manufacturerNumber,
+//       MFGName,
+//       imageName,
+//       imageUrl: publicURL,
+//     });
+//     return { manufacturerNumber, MFGName, imageName, imageUrl: publicURL };
+//   });
+// });
+
+
+// // const cds = require('@sap/cds');
+// // const jwt = require('jsonwebtoken'); // Ensure you install this package
+// // const axios = require('axios'); // For calling user-api
+// // const { getUserAttributes } = require('./utils/userApi');
+// // const express = require("express");
+
+// // // Middleware to authenticate and enrich user info
 // // async function authMiddleware(req, res, next) {
 // //   const authHeader = req.headers['authorization'];
 // //   if (!authHeader) {
@@ -11,47 +65,15 @@
 // //     return res.status(401).send('Unauthorized');
 // //   } else {
 // //     console.log('User Token: ', authHeader)
+// //     console.log('User: ', req.user)
 // //   }
 
-// //   try {
-// //     // Extract and decode JWT token
-// //     const token = authHeader.split(' ')[1];
-// //     const decoded = jwt.decode(token);
-
-// //     if (!decoded) {
-// //       console.log('Invalid Token');
-// //       return res.status(401).send('Invalid Token');
-// //     }
-// //     // Define the app router URL (update with your app router domain)
-// //     const appRouterBaseUrl = process.env.APP_ROUTER_BASE_URL || `https://discovery-sunrise.authentication.us20.hana.ondemand.com`;
-
-// //     // Construct the user-api URL
-// //     const userApiUrl = `${appRouterBaseUrl}/config?action=who&details=true`;
-
-// //     // Call the user-api to fetch user attributes
-// //     const response = await axios.get(userApiUrl, {
-// //       headers: { Authorization: authHeader },
-// //     });
-
-// //     const userInfo = response.data
-    
-    
-
-// //     // Create the enriched user object
-// //     console.log('User Info:', userInfo)
-
-// //     console.log('User authenticated:', req.user);
-// //     next();
-// //   } catch (error) {
-// //     console.error('Error in authMiddleware:', error.message);
-// //     res.status(500).send('Internal Server Error');
-// //   }
 // // }
 
-// //module.exports = authMiddleware;
+// // module.exports = authMiddleware;
 
 // cds.on('bootstrap', (app) => {
-//   // console.log('CAP is Starting.....');
+//   console.log('CAP is Starting.....');
 
 //   // // Use the authentication middleware
 //   // app.use(authMiddleware);

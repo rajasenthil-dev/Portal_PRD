@@ -15,6 +15,7 @@
     "axios": "^1.7.9",
     "express": "^4",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "passport": "^0.7.0"
   },
   "devDependencies": {
@@ -22,7 +23,8 @@
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^8",
     "@sap/ux-specification": "UI5-1.129",
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.29"
   },
   "scripts": {
     "start": "cds-serve",
@@ -50,7 +52,8 @@
     "watch-salesbycus": "cds watch --open salesbycus/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-bckorders": "cds watch --open bckorders/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-project12345": "cds watch --open project12345/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-test1245": "cds watch --open test1245/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-test1245": "cds watch --open test1245/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-backorders1": "cds watch --open backorders1/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "hana": {
@@ -60,10 +63,20 @@
       }
     },
     "requires": {
+      "auth": "xsuaa",
+      "xsuaa_api": {
+        "kind": "rest",
+        "credentials": {
+          "url": "https://discovery-sunrise.authentication.us20.hana.ondemand.com",
+          "forwardAuthToken": true
+        }
+      },
+      "approuter": {
+        "kind": "cloudfoundry"
+      },
       "db": {
         "kind": "sql"
       },
-      "auth": "xsuaa",
       "html5-repo": true
     }
   }

@@ -1,20 +1,22 @@
+const connectUtilsMiddleware = require('@sap/approuter/lib/middleware/connect-utils-middleware');
 const axios = require('axios');
 
-async function getUserAttributes(req) {
-    const userApiUrl = process.env.USER_API_URL || "https://services.usermanagement.us20cf.hana.ondemand.com";
-    const token = req.headers.authorization;
+module.exports = async (req, res, next) => {
+  if (!req.user) return next(); // Skip if no user object exists
 
-    try {
-        const response = await axios.get(`${userApiUrl}/v1/me`, {
-            headers: {
-                Authorization: token
-            }
-        });
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching user attributes", error);
-        throw new Error("Could not fetch user attributes");
-    }
-}
+  try {
+    const userApiUrl = `${req.protocol}://${req.get('host')}/user-api`;
+    const response = await axios.get(`${userApiUrl}/attributes`, {
+      headers: { Authorization: `Bearer ${req.authInfo.token}` },
+    });
 
-module.exports = { getUserAttributes};
+    // Attach user attributes to the request object
+    req.user.attr = response.data.attributes;
+    console.log('User Attributes: ', req.user.attr);
+    next();
+  } catch (error) {
+    console.error('Error fetching user attributes:', error.message);
+    res.status(500).send('Failed to fetch user attributes.');
+  }
+};
+

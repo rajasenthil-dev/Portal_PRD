@@ -23,3 +23,6 @@ builder:
       archiveName: shiphis
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "shiphis/controller/**"

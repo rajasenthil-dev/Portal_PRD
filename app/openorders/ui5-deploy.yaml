@@ -25,4 +25,4 @@ builder:
       - xs-app.json
   componentPreload:
     excludes:
-      - "bckorders/controller/**"
+      - "openorders/controller/**"

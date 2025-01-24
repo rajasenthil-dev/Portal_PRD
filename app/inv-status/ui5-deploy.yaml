@@ -23,3 +23,6 @@ builder:
       archiveName: invstatus
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "invstatus/controller/**"

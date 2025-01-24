@@ -3,9 +3,6 @@ sap.ui.require.preload({
 	"pricelist/Component.js":function(){
 sap.ui.define(["sap/ui/core/UIComponent","pricelist/model/models"],(e,t)=>{"use strict";return e.extend("pricelist.Component",{metadata:{manifest:"json",interfaces:["sap.ui.core.IAsyncContentCreation"]},init(){e.prototype.init.apply(this,arguments);this.setModel(t.createDeviceModel(),"device");this.getRouter().initialize()}})});
 },
-	"pricelist/controller/View1.controller.js":function(){
-sap.ui.define(["sap/ui/core/mvc/Controller"],e=>{"use strict";return e.extend("pricelist.controller.View1",{onInit(){}})});
-},
 	"pricelist/i18n/i18n.properties":'# This is the resource bundle for pricing\n\n#Texts for manifest.json\n\n#XTIT: Application name\nappTitle=Pricing\n\n#YDES: Application description\nappDescription=An SAP Fiori application.\n#XTIT: Main view title\ntitle=Pricing\n\n#XFLD,48\nflpTitle=Pricing\nflpSubTitle=Current Product and Service Prices\nflpIcon=sap-icon://tags\n\n#HeaderContent\nlastRefresh=Last Refresh\n\ntableTitle=Pricing\n',
 	"pricelist/i18n/i18n_en.properties":'# This is the resource bundle for pricing\n\n#Texts for manifest.json\n\n#XTIT: Application name\nappTitle=Pricing\n\n#YDES: Application description\nappDescription=An SAP Fiori application.\n#XTIT: Main view title\ntitle=Pricing\n\n#XFLD,48\nflpTitle=Pricing\nflpSubTitle=Current Product and Service Prices\nflpIcon=sap-icon://tags\n\n#HeaderContent\nlastRefresh=Last Refresh\n\ntableTitle=Pricing',
 	"pricelist/i18n/i18n_fr.properties":'# This is the resource bundle for pricing\n\n#Texts for manifest.json\n\n#XTIT: Application name\nappTitle=Tarifs\n\n#YDES: Application description\nappDescription=Une application SAP Fiori.\n#XTIT: Main view title\ntitle=Tarifs\n\n#XFLD,48\nflpTitle=Tarifs\nflpSubTitle=Prix \\u200b\\u200bactuels des produits et services\nflpIcon=sap-icon://tags\n\n#HeaderContent\nlastRefresh=Derni\\u00e8re actualisation\n\ntableTitle=Tarifs',

@@ -27,8 +27,8 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "processing-display": {
-                    "semanticObject": "processing",
+                "backorders-display": {
+                    "semanticObject": "backorders",
                     "action": "display",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubTitle}}",

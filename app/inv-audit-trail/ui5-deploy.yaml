@@ -23,3 +23,6 @@ builder:
       archiveName: invaudittrail
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "invaudittrail/controller/**"

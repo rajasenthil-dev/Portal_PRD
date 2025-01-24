@@ -130,7 +130,7 @@
 			  },
 			  {
 				"type": "SYNONYM",
-				"name": "SYNMAINPAGEINVENTORYDOC",
+				"name": "SYNMAINPAGEUNITDOC",
 				"privileges": [
 				  "SELECT"
 				]

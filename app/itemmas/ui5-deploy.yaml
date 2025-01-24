@@ -23,3 +23,6 @@ builder:
       archiveName: itemmas
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "itemmas/controller/**"

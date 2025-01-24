@@ -23,3 +23,6 @@ builder:
       archiveName: customermaster
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "customermaster/controller/**"

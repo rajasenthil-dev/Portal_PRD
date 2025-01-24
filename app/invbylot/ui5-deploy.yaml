@@ -23,3 +23,6 @@ builder:
       archiveName: invbylot
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "invbylot/controller/**"

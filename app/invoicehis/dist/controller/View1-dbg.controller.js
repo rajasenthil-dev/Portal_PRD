@@ -4,12 +4,23 @@ sap.ui.define([
     "sap/ui/core/format/NumberFormat",
     "sap/m/Dialog",
     "sap/m/Button",
-    "sap/m/Image"
-], (Controller, JSONModel, NumberFormat, Dialog, Button, Image) => {
+    "sap/m/Image",
+    "sap/m/MessageBox"
+], (Controller, JSONModel, NumberFormat, Dialog, Button, Image, MessageBox) => {
     "use strict";
 
     return Controller.extend("invoicehis.controller.View1", {
         onInit: function () {
+            var oModel = this.getOwnerComponent().getModel();
+
+            oModel.attachRequestFailed(function (oEvent) {
+                var oParams = oEvent.getParameters();
+                if (oParams.response.statusCode === "403") {
+                MessageBox.error("You currently do not have authorization to view this resource. If you feel this in incorrect please reach out to the administrator.");
+                } else {
+                MessageBox.error("An error occurred: " + oParams.response.message);
+                }
+            });
             var oTileCountsModel = new JSONModel({
                 counts: {
                     "UniqueInvoices": 0,

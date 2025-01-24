@@ -23,3 +23,6 @@ builder:
       archiveName: invval
       additionalFiles:
       - xs-app.json
+  componentPreload:
+    excludes:
+      - "invval/controller/**"

@@ -105,13 +105,19 @@
     "SYNMAINPAGESUMMARYDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Main_Page_Summary1_CONSUMABLE_V2"
+        "object": "Main_Page_Summary1_V4_Agg_Cons"
       }
     },
     "SYNMAINPAGEINVENTORYDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Main_Page_Summary2_CONSUMABLE"
+        "object": "Main_Page_Summary2_Agg_Cons"
+      }
+    },
+    "SYNMAINPAGEUNITDOC": {
+      "target": {
+        "schema.configure": "UPS_DEMO_USER/schema",
+        "object": "Main_Page_Summary3_2"
       }
     }
 }

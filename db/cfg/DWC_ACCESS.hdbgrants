@@ -123,14 +123,21 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Main_Page_Summary1_CONSUMABLE_V2",
+					"name": "Main_Page_Summary1_V4_Agg_Cons",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
 				},
 				{
 					"type": "VIEW",
-					"name": "Main_Page_Summary2_CONSUMABLE",
+					"name": "Main_Page_Summary2_Agg_Cons",
+					"privileges_with_grant_option": [
+						"SELECT"
+					]
+				},
+				{
+					"type": "VIEW",
+					"name": "Main_Page_Summary3_2",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]

@@ -30,6 +30,7 @@ using OOPROVINCE as ENTOOPROVINCE from '../db/schema';
 
 
 service PROCESSING {
+    @requires: 'authenticated-user'
     // Returns Related Entities
     entity RETURNS as projection on ENTRETURNS;
     entity RETCUST as projection on ENTRETCUST;
@@ -57,37 +58,47 @@ service PROCESSING {
     entity BOPRODUCTDESC as projection on ENTBOPRODUCTDESC;
 }
 
+// annotate PROCESSING.OPENORDERS with @restrict: [
+//     { grant: 'READ', where: '$user.ManufacturerNumber = MFRNR' },
+    
+// ];
+
+// Inventory Audit Trail
 using INVENTORYAUDITTRAIL as ENTINVENTORYAUDITTRAIL from '../db/schema';
 using IATPRODUCTCODE as ENTIATPRODUCTCODE from '../db/schema';
 using IATLOT as ENTIATLOT from '../db/schema';
 using IATWAREHOUSE as ENTIATWAREHOUSE from '../db/schema';
 using IATCUSTSUPP as ENTIATCUSTSUPP from '../db/schema';
 
+// Inventory Status
 using INVENTORYSTATUS as ENTINVENTORYSTATUS from '../db/schema';
 using INVSTATUSPRODUCTCODE as ENTINVSTATUSPRODUCTCODE from '../db/schema';
 
+// Inventory By Lot
 using INVENTORYBYLOT as ENTINVENTORYBYLOT from '../db/schema';
 using INVBYLOTPRODUCTCODE as ENTINVBYLOTPRODUCTCODE from '../db/schema';
 using INVBYLOTLOT as ENTINVBYLOTLOT from '../db/schema';
 using INVBYLOTWAREHOUSE as ENTINVBYLOTWAREHOUSE from '../db/schema';
 
+// Inventory Snapshot
 using INVENTORYSNAPSHOT as ENTINVENTORYSNAPSHOT from '../db/schema';
 using INVSNAPPRODDESC as ENTINVSNAPPRODDESC from '../db/schema';
 using INVSNAPLOT as ENTINVSNAPLOT from '../db/schema';
 using INVSNAPWARESTAT as ENTINVSNAPWARESTAT from '../db/schema';
 
+// Inventory Valuation
 using INVENTORYVALUATION as ENTINVENTORYVALUATION from '../db/schema';
 using INVVALPRODDESC as ENTINVVALPRODDESC from '../db/schema';
 using INVVALPROD as ENTINVVALPROD from '../db/schema';
 
+// Item Master
 using ITEMMASTER as ENTITEMMASTER from '../db/schema';
 using ITEMMASPD as ENTITEMMASPD from '../db/schema';
 using ITEMMASCATEGORY as ENTITEMMASCATEGORY from '../db/schema';
 
-
-
-
+// Inventory Service
 service INVENTORY {
+    @requires: 'authenticated-user'
     // Inventory Audit Trail Related Entities
     entity INVENTORYAUDITTRAIL as projection on ENTINVENTORYAUDITTRAIL; 
     entity IATPRODUCTCODE as projection on ENTIATPRODUCTCODE;
@@ -122,6 +133,13 @@ service INVENTORY {
     entity INVSNAPWARESTAT as projection on ENTINVSNAPWARESTAT;
 }
 
+// Authorization & Data Segregation
+// Item Master
+
+
+// Inventory Status
+
+
 using INVOICEHISTORY as ENTINVOICEHISTORY from '../db/schema';
 using IHCUSTOMER as ENTIHCUSTOMER from '../db/schema';
 using IHSHIPTO as ENTIHSHIPTO from '../db/schema';
@@ -140,6 +158,7 @@ using SBCBILLTO as ENTSBCBILLTO from '../db/schema';
 using SBCSHIPTO as ENTSBCSHIPTO from '../db/schema';
 
 service SALES {
+    @requires: 'authenticated-user'
 
     // Ivoice History Related Entities
     entity INVOICEHISTORY as projection on ENTINVOICEHISTORY;
@@ -172,6 +191,7 @@ using PRICING as ENTPRICING from '../db/schema';
 using PRICINGPRICEDESC as ENTPRICINGPRICEDESC from '../db/schema';
 using PRICINGPRODUCTDESC as ENTPRICINGPRODUCTDESC from '../db/schema';
 service CUSTOMERS {
+    @requires: 'authenticated-user'
     // Customer Listing Related Entities
     entity CUSTOMERMASTER as projection on ENTCUSTOMERMASTER;
     entity KUNN2_BILLTO as projection on ENTKUNN2_BILLTO;
@@ -184,6 +204,12 @@ service CUSTOMERS {
     entity PRICINGPRODUCTDESC as projection on ENTPRICINGPRODUCTDESC;
 }
 
+
+// annotate CUSTOMERS.PRICING with @restrict: [
+//     { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+    
+// ];
+
 using CASHJOURNAL as ENTCASHJOURNAL from '../db/schema';
 using BLARTS as ENTBLARTS from '../db/schema';
 using BILL_TOS as ENTBILL_TOS from '../db/schema';
@@ -192,6 +218,7 @@ using OPENAR as ENTOPENAR from '../db/schema';
 using OPENARCUSTOMER as ENTOPENARCUSTOMER from '../db/schema';
 
 service FINANCE {
+    @requires: 'authenticated-user'
     // Accounts Receivable Related Entities
     entity OPENAR as projection on ENTOPENAR;
     entity OPENARCUSTOMER as projection on ENTOPENARCUSTOMER;
@@ -203,24 +230,42 @@ service FINANCE {
 }
 
 using MAINPAGESUMMARY as ENTMAINPAGESUMMARY from '../db/schema';
+using MPSYEAR as ENTMPSYEAR from '../db/schema';
 using MAINPAGEINVENTORY as ENTMAINPAGEINVENTORY from '../db/schema';
+using MAINPAGEUNIT as ENTMAINPAGEUNIT from '../db/schema';
+using MPUYEAR as ENTMPUYEAR from '../db/schema';
 
 service MAINPAGE {
-    entity MAINPAGESUMMARY as select from ENTMAINPAGESUMMARY {
-        sum(UNIT_SHIPPED) as UNIT_SHIPPED,
-        sum(TOTAL_SALES_AMOUNT) as TOTAL_SALES_AMOUNT,
-        sum(INVOICES) as INVOICES
-    }
-    
+    entity MAINPAGESUMMARY as projection on ENTMAINPAGESUMMARY;
+    entity MPSYEAR as projection on ENTMPSYEAR;
     entity MAINPAGEINVENTORY as projection on ENTMAINPAGEINVENTORY;
+    entity MAINPAGEUNIT as projection on ENTMAINPAGEUNIT;
+    entity MPUYEAR as projection on ENTMPUYEAR;
 } 
 
 service CatalogService {
+    @requires: 'authenticated-user'
     @readonly entity Invoices {
         key ID: UUID;
         InvoiceNumber: String;
     }
+    
 }
+
+using Manufacturers as ENTManufacturers from '../db/schema';
+
+service ManufacturerService {
+    entity Manufacturers as projection on ENTManufacturers;
+
+    action uploadManufacturerDetails(
+        manufacturerNumber: String,
+        MFGName: String,
+        imageName: String,
+        file: LargeBinary
+    );
+}
+
+
 
 
 
