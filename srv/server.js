@@ -1,9 +1,17 @@
-// const multer = require('multer');
-// const cds = require('@sap/cds');
+const multer = require('multer');
+const cds = require('@sap/cds');
+const jwt = require('jsonwebtoken'); // Ensure you install this package
+const axios = require('axios'); // For calling user-api
+const { getUserAttributes } = require('./utils/userApi');
+const express = require("express");
+const { endswith } = require('@cap-js/hana/lib/cql-functions');
 // // Set up multer for file handling (you can configure storage options based on your needs)
 // const upload = multer({ storage: multer.memoryStorage() });
 
-// module.exports = cds.service.impl(function () {
+module.exports = cds.service.impl(async function () {
+
+
+    
 //   const { Manufacturers } = this.entities;
 
 //   // Expose the action for uploading manufacturer details
@@ -48,56 +56,48 @@
 //     });
 //     return { manufacturerNumber, MFGName, imageName, imageUrl: publicURL };
 //   });
-// });
+});
 
+// Middleware to authenticate and enrich user info
+async function authMiddleware(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const user = cds.User.privileged
 
-// // const cds = require('@sap/cds');
-// // const jwt = require('jsonwebtoken'); // Ensure you install this package
-// // const axios = require('axios'); // For calling user-api
-// // const { getUserAttributes } = require('./utils/userApi');
-// // const express = require("express");
+  if (!authHeader) {
+    console.log('No Authorization Header Found');
+    return res.status(401).send('Unauthorized');
+  } else {
+    console.log('User Token: ', authHeader);
+    
+  }
+  if(req) {
+    console.log('User Is Logged in:')
+  } else {
+    console.log('No User Logged in')
+  }
+  next();
+}
 
-// // // Middleware to authenticate and enrich user info
-// // async function authMiddleware(req, res, next) {
-// //   const authHeader = req.headers['authorization'];
-// //   if (!authHeader) {
-// //     console.log('No Authorization Header Found');
-// //     return res.status(401).send('Unauthorized');
-// //   } else {
-// //     console.log('User Token: ', authHeader)
-// //     console.log('User: ', req.user)
-// //   }
+module.exports = authMiddleware;
 
-// // }
+cds.on('bootstrap', (app) => {
+  console.log('CAP is Starting.....');
 
-// // module.exports = authMiddleware;
+  // Use the authentication middleware
+  app.use(authMiddleware);
 
-// cds.on('bootstrap', (app) => {
-//   console.log('CAP is Starting.....');
+  // Add custom middleware or routes
+  app.get('/mock-api/invoices/:number', (req, res) => {
+    const invoiceNumber = req.params.number;
 
-//   // // Use the authentication middleware
-//   // app.use(authMiddleware);
+    // Simulated response for the mock API
+    const mockImageUrl = "https://via.placeholder.com/600x800.png?text=Invoice";
+    res.status(200).json({ imageUrl: mockImageUrl });
+  });
+});
 
-//   // app.use((req, res, next) => {
-//   //   if(req.user) {
-//   //     console.log('UserInfo: ', req.user)
-//   //   } else {
-//   //     console.log('User not authenticated');
-//   //   }
-//   //   next();
-//   // });
-//   // Add custom middleware or routes
-//   app.get('/mock-api/invoices/:number', (req, res) => {
-//     const invoiceNumber = req.params.number;
-
-//     // Simulated response for the mock API
-//     const mockImageUrl = "https://via.placeholder.com/600x800.png?text=Invoice";
-//     res.status(200).json({ imageUrl: mockImageUrl });
-//   });
-// });
-
-// // Bootstrapping the CAP service
-// module.exports = cds.server;
+// Bootstrapping the CAP service
+module.exports = cds.server;
 
 
 

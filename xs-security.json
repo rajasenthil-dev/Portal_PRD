@@ -21,7 +21,8 @@
         "redirect-uris": [
             "https://**cfapps.us20.hana.ondemand.com/**",
             "https://**cfapps.us20.hana.ondemand.com/my/logout",
-            "https://*.applicationstudio.cloud.sap/**"
+            "https://*.applicationstudio.cloud.sap/**",
+            "https://port5000-workspaces-ws-7hzlf.us20.applicationstudio.cloud.sap/"
         ]
     },
     "scopes": [

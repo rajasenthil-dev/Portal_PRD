@@ -337,9 +337,31 @@ modules:
       commands:
         - npm install
         - npm run build:cf
-        - npm ci
       supported-platforms:
         []
+
+  - name: mck-portal
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: mck-portal-auth
+      - name: mck-portal-destination-service
+      - name: mck-portal-html5-runtime
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
 resources:
   - name: MCK-CF-OBJECT_STORE
     type: org.cloudfoundry.managed-service
