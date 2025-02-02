@@ -1,0 +1,13 @@
+@Host=localhost
+
+@port=4004
+
+@protocol=http
+
+###POST operation to upload image
+
+POST {{protocol}};//{{Host}}:{{port}}/odata/v4/media(IsActiveEntity=false)/Media.draftActivate
+Content-Type: image/png
+slug: McK-Logo-RBG.png
+
+./McK-Logo-RBG.png 

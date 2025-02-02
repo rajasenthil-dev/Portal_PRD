@@ -59,7 +59,12 @@ service PROCESSING {
 }
 
 // annotate PROCESSING.OPENORDERS with @restrict: [
-//     { grant: 'READ', where: '$user.ManufacturerNumber = MFRNR' },
+//     { grant: 'READ', where: 'MFRNR = ''0001000001'''}
+    
+// ];
+
+// annotate PROCESSING.BACKORDERS with @restrict: [
+//     { grant: 'READ', where: '$user.att.ManufacturerNumber = MFRNR'}
     
 // ];
 
@@ -252,18 +257,13 @@ service CatalogService {
     
 }
 
-using Manufacturers as ENTManufacturers from '../db/schema';
+using MediaFile as ENTMediaFile from '../db/schema';
 
-service ManufacturerService {
-    entity Manufacturers as projection on ENTManufacturers;
-
-    action uploadManufacturerDetails(
-        manufacturerNumber: String,
-        MFGName: String,
-        imageName: String,
-        file: LargeBinary
-    );
+service Media {
+    entity MediaFile as projection on ENTMediaFile
 }
+
+annotate Media.MediaFile with @odata.draft.enabled: true;
 
 
 

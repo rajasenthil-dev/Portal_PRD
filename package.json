@@ -13,6 +13,8 @@
     "@sap/cds-dk": "latest",
     "@sap/xssec": "^4",
     "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "cuid": "^3.0.0",
     "express": "^4",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
@@ -23,8 +25,8 @@
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^8",
     "@sap/ux-specification": "UI5-1.129",
-    "rimraf": "^5.0.5",
-    "mbt": "^1.2.29"
+    "mbt": "^1.2.29",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "cds-serve",
@@ -53,9 +55,13 @@
     "watch-bckorders": "cds watch --open bckorders/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-project12345": "cds watch --open project12345/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-test1245": "cds watch --open test1245/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-backorders1": "cds watch --open backorders1/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-backorders1": "cds watch --open backorders1/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-admindash": "cds watch --open admindash/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
+    "service": {
+      "path": "srv"
+    },
     "hana": {
       "deploy-format": "hdbtable",
       "skip-generation": {
@@ -63,7 +69,12 @@
       }
     },
     "requires": {
-      "auth": "xsuaa",
+      "auth": {
+        "kind": "xsuaa"
+      },
+      "logger": {
+        "level": "debug"
+      },
       "xsuaa_api": {
         "kind": "rest",
         "credentials": {

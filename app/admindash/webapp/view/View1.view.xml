@@ -1,0 +1,97 @@
+<mvc:View controllerName="admindash.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified">
+    <Page title="{i18n>uploadPageTitle}">
+        <content>
+            <!-- <VBox>
+                <Label text="{i18n>manufacturerNumberLabel}" labelFor="manufacturerNumberInput" />
+                <Input id="manufacturerNumberInput" value="{ui>/manufacturerNumber}" valueStateText="{i18n>manufacturerNumberError}" placeholder="{i18n>manufacturerNumberPlaceholder}" required="true" liveChange=".onManufacturerNumberLiveChange"/>
+
+                <Label text="{i18n>mfgNameLabel}" labelFor="mfgNameInput" />
+                <Input id="mfgNameInput" value="{ui>/mfgName}" valueStateText="{i18n>manufacturerNumberError}" placeholder="{i18n>mfgNamePlaceholder}" required="true" liveChange=".onManufacturerNameLiveChange"/>
+
+                <u:FileUploader
+                    id="fileUploader"
+                    name="myFile"
+                    placeholder="{i18n>fileUploaderPlaceholder}"
+                    change="onChange"
+                    typeMissmatch="onTypeMissmatch">
+                </u:FileUploader>
+            </VBox> -->
+            <Table id="idMediaFilesTable"
+                inset="false"
+                mode="MultiSelect"
+                items="{
+                    path: '/MediaFile'
+                }">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="Manufacturer Details" level="H2"/>
+                            <ToolbarSpacer />
+                            <!-- Button to Open the Modal for Adding New Manufacturer -->
+                            <Button text="Add New Manufacturer" press="onOpenDialog" type="Emphasized" />
+                            <Button text="Delete Entries" press=".onDeleteDraft" type="Reject" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Manufacturer Number" />
+                    </Column>
+                    <Column>
+                        <Text text="Manufacturer Name" />
+                    </Column>
+                    <Column>
+                        <Text text="File Name" />
+                    </Column>
+                    <Column>
+                        <Text text="Logo" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{manufacturerNumber}" />
+                            <Text text="{MFGName}" />
+                            <Text text="{fileName}" />
+                            <Image src="{url}" alt="{fileName}" width="100px" />
+                            
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <!-- Modal Dialog for Adding/Editing Manufacturer -->
+            <Dialog id="addManufacturerDialog" title="Add Manufacturer" stretch="true" class="sapUiSizeCompact" 
+                afterClose="onCloseDialog">
+                <content>
+                    <VBox class="dialogContent sapUIMarginMedium" justifyContent="SpaceBetween" width="100%">
+                        <Label text="{i18n>manufacturerNumberLabel}" labelFor="manufacturerNumberInput" />
+                        <Input id="manufacturerNumberInput" value="{ui>/manufacturerNumber}" 
+                            valueStateText="{i18n>manufacturerNumberError}" 
+                            placeholder="{i18n>manufacturerNumberPlaceholder}" required="true"
+                            liveChange=".onManufacturerNumberLiveChange" width="100%" class="dialogInput"/>
+
+                        <Label text="{i18n>mfgNameLabel}" labelFor="mfgNameInput" />
+                        <Input id="mfgNameInput" value="{ui>/mfgName}" 
+                            valueStateText="{i18n>manufacturerNameError}" 
+                            placeholder="{i18n>mfgNamePlaceholder}" required="true" 
+                            liveChange=".onManufacturerNameLiveChange" width="100%" class="dialogInput"/>
+                        
+                        <Label text="{i18n>mfgUploadLabel}" labelFor="mfgLogoUpload" />
+                        <u:FileUploader id="fileUploader" name="myFile" 
+                            placeholder="{i18n>fileUploaderPlaceholder}" 
+                            change="onChange" 
+                            typeMissmatch="onFileTypeMismatch" width="100%" class="dialogFileUploader"/>
+                    </VBox>
+                </content>
+                <buttons>
+                    <Button text="Submit" press="onUploadPress" width="100px"/>
+                    <Button text="Cancel" press="onCloseDialog" width="100px"/>
+                </buttons>
+            </Dialog>
+        </content>
+    </Page>
+</mvc:View>

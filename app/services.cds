@@ -33,3 +33,4 @@ using from './salesbycus/annotations';
 
 using from './bckorders/annotations';
 
+using from './admindash/annotations';

@@ -1,0 +1,323 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/format/FileSizeFormat",
+    "sap/m/MessageBox"
+], function (Controller, MessageToast, JSONModel, FileSizeFormat, MessageBox) {
+    "use strict";
+
+    return Controller.extend("admindash.controller.View1", {
+        onInit: function () {
+            this.oUploadSet = this.byId("fileUploader");
+            this._oModel = this.getOwnerComponent().getModel();
+            this.getView().setModel(new JSONModel({
+                fileData: null,
+                csrfToken: null,
+                manufacturerNumber: "",
+                mfgName: "",
+                existingManufacturers: [],  // Existing Manufacturer Numbers
+                existingMfgNames: []       // Existing Manufacturer Names 
+            }), "ui");
+            this._binding = null;
+
+            this._fetchExistingManufacturers();
+        },
+
+        onBeforeRendering: function () {
+            this._fetchCSRFToken();
+        },
+
+        _fetchExistingManufacturers: function () {
+            return fetch("/odata/v4/media/MediaFile") // or whatever endpoint that returns the manufacturers
+                .then(response => response.json())
+                .then(data => {
+                    var existingManufacturers = data.value.map(item => item.manufacturerNumber);
+                    var existingMfgNames = data.value.map(item => item.MFGName);
+                    this.getView().getModel("ui").setProperty("/existingManufacturers", existingManufacturers);
+                    this.getView().getModel("ui").setProperty("/existingMfgNames", existingMfgNames);
+                })
+                .catch(error => console.error("Error fetching manufacturers:", error));
+        },
+        
+
+        onChange: function (oEvent) {
+            var oFile = oEvent.getParameter("files")?.[0];
+            var oUiModel = this.getView().getModel("ui");
+
+            if (oFile) {
+                oUiModel.setProperty("/fileData", {
+                    file: oFile,
+                    fileName: oFile.name,
+                    fileSize: FileSizeFormat.getInstance({
+                        binaryFilesize: false,
+                        maxFractionDigits: 1,
+                        maxIntegerDigits: 3
+                    }).format(oFile.size),
+                    fileType: oFile.type
+                });
+            } else {
+                oUiModel.setProperty("/fileData", null);
+            }
+        },
+        // Open the dialog
+        onOpenDialog: function () {
+            this.getView().byId("addManufacturerDialog").open();
+        },
+
+        // Close the dialog
+        onCloseDialog: function () {
+            this.getView().byId("addManufacturerDialog").close();
+        },
+        onUploadPress: async function () {
+            var oUiModel = this.getView().getModel("ui");
+            var oFile = oUiModel.getProperty("/fileData/file");
+            var sManufacturerNumber = oUiModel.getProperty("/manufacturerNumber");
+            var sMFGName = oUiModel.getProperty("/mfgName");
+            var sToken = oUiModel.getProperty("/csrfToken");
+
+            // Normalize values to lowercase for case-insensitive comparison
+            var existingManufacturers = oUiModel.getProperty("/existingManufacturers").map(num => num.toLowerCase());
+            var existingMfgNames = oUiModel.getProperty("/existingMfgNames").map(name => name.toLowerCase());
+
+            // Check if manufacturer number already exists (case-insensitive)
+            if (existingManufacturers.includes(sManufacturerNumber.toLowerCase())) {
+                MessageBox.error("This Manufacturer Number already exists.");
+                return; // Prevent upload
+            }
+
+            // Check if manufacturer name already exists (case-insensitive)
+            if (existingMfgNames.includes(sMFGName.toLowerCase())) {
+                MessageBox.error("This Manufacturer Name already exists.");
+                return; // Prevent upload
+            }
+
+            if (!this._validateUploadInputs(sManufacturerNumber, sMFGName, oFile)) return;
+            
+            try {
+                if (!this._binding) {
+                    const response = await this._createDraft(sManufacturerNumber, sMFGName, oFile.name, oFile.type, sToken);
+                    if (response?.context) {
+                        this._binding = this.getView().getModel().bindContext(response.context.getPath(), null, {
+                            $$updateGroupId: "UploadGroup"
+                        });
+                    }
+                }
+                
+                await this._updateDraftWithContent(this._binding.getPath(), oFile, oFile.type, oFile.name, sToken);
+                await this._activateDraft(this._binding.getPath(), sToken);
+                
+                MessageBox.success("File uploaded successfully.");
+                this._resetForm();
+                this.onCloseDialog();
+            } catch (error) {
+                MessageBox.error("Error during upload process: " + error.message);
+            }
+        },
+
+        _fetchCSRFToken: function () {
+            return fetch("/odata/v4/media/", {
+                method: "GET",
+                headers: { "X-CSRF-Token": "Fetch" }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to fetch CSRF token');
+                this.getView().getModel("ui").setProperty("/csrfToken", response.headers.get("x-csrf-token"));
+            })
+            .catch(error => console.error("Error fetching CSRF token: ", error));
+        },
+
+        _validateUploadInputs: function (sManufacturerNumber, sMFGName, oFile) {
+            if (!sManufacturerNumber) return MessageBox.error("Please enter a Manufacturer Number."), false;
+            if (!sMFGName) return MessageBox.error("Please enter an MFG Name."), false;
+            if (!oFile) return MessageBox.error("Please choose a file to upload."), false;
+            return true;
+        },
+
+        _resetForm: function () {
+            var oUiModel = this.getView().getModel("ui");
+            this.byId("fileUploader").clear();
+            oUiModel.setProperty("/fileData", null);
+            oUiModel.setProperty("/manufacturerNumber", "");
+            oUiModel.setProperty("/mfgName", "");
+            this.getView().getModel().refresh();
+            this._binding = null;
+            this.byId("idMediaFilesTable").removeSelections(true);
+        },
+
+        _createDraft: function (manufacturerNumber, mfgName, fileName, fileType, csrfToken) {
+            return fetch("/odata/v4/media/MediaFile", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
+                body: JSON.stringify({ manufacturerNumber, MFGName: mfgName, fileName, mediaType: fileType })
+            })
+            .then(response => response.json())
+            .then(data => ({ context: { getPath: () => `/MediaFile(ID=${data.ID},IsActiveEntity=false)` } }))
+            .catch(error => { throw new Error("Failed to create draft: " + error.message); });
+        },
+        
+        _updateDraftWithContent: async function (sPath, oFile, sFileType, sFileName, sToken) {
+            try {
+                const response = await fetch(this._oModel.sServiceUrl + sPath + "/content", {
+                    method: "PUT",
+                    headers: {
+                        "X-CSRF-Token": sToken,
+                        "Content-Type": sFileType,
+                        "slug": sFileName
+                    },
+                    body: oFile
+                });
+        
+                console.log("Server Response Status:", response.status);
+        
+                if (!response.ok) {
+                    throw new Error(`Failed to upload file. Server responded with status: ${response.status}`);
+                }
+        
+                let fileUrl = null;
+                let cuid = null; // Capture the CUID (ID) for constructing the final URL
+        
+                if (response.status === 204) {
+                    console.warn("Server returned 204 No Content. Constructing file URL manually...");
+                } else {
+                    const responseText = await response.text();
+                    console.log("Raw server response:", responseText);
+        
+                    if (responseText) {
+                        try {
+                            const oResponseData = JSON.parse(responseText);
+                            cuid = oResponseData?.ID; // Capture the ID
+                        } catch (error) {
+                            console.warn("Response is not valid JSON.");
+                        }
+                    }
+                }
+        
+                
+                let updatedPath = sPath.replace("IsActiveEntity=false", "IsActiveEntity=true");
+                // Construct the correct file URL
+                fileUrl = this._oModel.sServiceUrl + updatedPath + "/content";
+                console.log("Final file URL:", fileUrl);
+        
+                // **Step 1: Store in UI Model**
+                this.getView().getModel("ui").setProperty("/fileData/fileUrl", fileUrl);
+        
+                // **Step 2: Update Backend with the Correct File URL**
+                const patchResponse = await fetch(this._oModel.sServiceUrl + sPath, {
+                    method: "PATCH",
+                    headers: {
+                        "X-CSRF-Token": sToken,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ url: fileUrl })
+                });
+        
+                if (!patchResponse.ok) {
+                    throw new Error(`Failed to update file URL in backend. Status: ${patchResponse.status}`);
+                }
+        
+                console.log("✅ File URL successfully updated in backend.");
+        
+            } catch (error) {
+                console.error("Upload error:", error.message);
+                MessageBox.error("Upload error: " + error.message);
+            }
+        },
+        // _updateDraftWithContent: function (sPath, file, mediaType, fileName, csrfToken) {
+        //     return fetch(`/odata/v4/media${sPath}/content`, {
+        //         method: "PUT",
+        //         headers: { "Content-Type": mediaType, "slug": fileName, "X-CSRF-Token": csrfToken },
+        //         body: file
+        //     })
+        //     .then(response => { if (!response.ok) throw new Error("Failed to update draft with content"); })
+        //     .catch(error => { throw new Error("Error updating draft with content: " + error.message); });
+        // },
+
+        _activateDraft: function (sPath, csrfToken) {
+            return fetch(`/odata/v4/media${sPath}/Media.draftActivate`, {
+                method: "POST",
+                headers: { "X-CSRF-Token": csrfToken, "Content-Type": "application/json" }
+            })
+            .then(response => { if (!response.ok) throw new Error("Failed to activate draft"); })
+            .catch(error => { throw new Error("Error activating draft: " + error.message); });
+        },
+
+        onTypeMissmatch: function () {
+            MessageBox.error("Invalid file type. Allowed types are: txt, pdf, docx, jpg, png, jpeg");
+        },
+
+        onManufacturerNumberLiveChange: function (oEvent) {
+            var sValue = oEvent.getParameter("value");
+            var oInput = oEvent.getSource();
+            var oUiModel = this.getView().getModel("ui");
+            var existingManufacturers = oUiModel.getProperty("/existingManufacturers");
+
+            if (/[a-zA-Z]/.test(sValue)) {
+                oInput.setValueState("Error");
+                oInput.setValueStateText("Manufacturer Number should not contain letters.");
+            } else {
+                oInput.setValueState("None");
+            }
+    
+            // Check if manufacturer number already exists
+            if (existingManufacturers.includes(sValue)) {
+                oInput.setValueState("Error");
+                oInput.setValueStateText("This Manufacturer Number already exists.");
+            } else {
+                oInput.setValueState("None");
+            }
+        },
+        onManufacturerNameLiveChange: function (oEvent) {
+            var sValue = oEvent.getParameter("value");
+            var oInput = oEvent.getSource();
+            var oUiModel = this.getView().getModel("ui");
+            var existingMfgNames = oUiModel.getProperty("/existingMfgNames").map(name => name.toLowerCase()); // Convert all existing names to lowercase
+        
+            // Check if manufacturer name already exists
+            if (existingMfgNames.includes(sValue)) {
+                oInput.setValueState("Error");
+                oInput.setValueStateText("This Manufacturer Name already exists.");
+            } else {
+                oInput.setValueState("None");
+            }
+        },
+        onDeleteDraft: function () {
+            var oTable = this.byId("idMediaFilesTable");
+            var aSelectedItems = oTable.getSelectedItems();
+        
+            if (!aSelectedItems.length) {
+                MessageBox.warning("Please select at least one draft to delete.");
+                return;
+            }
+        
+            MessageBox.warning("Make sure ONLY entries you want to delete are selected. Once deleted, this action cannot be undone.", {
+                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                emphasizedAction: MessageBox.Action.OK,
+                onClose: (oAction) => {
+                    if (oAction === MessageBox.Action.OK) {
+                        this._deleteDrafts(aSelectedItems);
+                    }
+                }
+            });
+        },
+        
+        _deleteDrafts: function (aSelectedItems) {
+            var oModel = this.getView().getModel();
+            var aDeletePromises = [];
+        
+            aSelectedItems.forEach(oItem => {
+                var oContext = oItem.getBindingContext();
+                aDeletePromises.push(oContext.delete());
+            });
+        
+            Promise.all(aDeletePromises)
+                .then(() => {
+                    MessageToast.show("Selected items deleted successfully.");
+                    oModel.refresh();
+                })
+                .catch((oError) => {
+                    MessageBox.error("Error deleting items: " + oError.message);
+                });
+        }
+    });
+});

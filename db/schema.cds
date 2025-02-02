@@ -124,7 +124,7 @@ define view IATCUSTSUPP as
 
 // Cash Journal
 // Security attributes to match: ??
-@cds.search: { BILL_TO, NAME1, VKORG, BKTXT, SGTXT, BUDAT, VBELN, FKDAT, BLART, AUGBL, SHIP_TO, BUKRS, MFRNR, BELNR, RLDNR, GJAHR, BSTKD }
+@cds.search: { BILL_TO, NAME1, VKORG, BKTXT, SGTXT, BUDAT, VBELN, FKDAT, BLART, AUBEL, SHIP_TO, BUKRS, MFRNR, BELNR, PRCTR, GJAHR, BSTKD }
 @cds.persistence.exists
 entity CASHJOURNAL //@(restrict: [
 //     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
@@ -143,14 +143,14 @@ entity CASHJOURNAL //@(restrict: [
         NETWR               : Decimal(15,2);
         FKDAT               : String(8);
         BLART               : String(2);
-        AUGBL               : String(10);
+        AUBEL               : String(10);
         SHIP_TO             : String(10);
     key BUKRS               : String(4);
         MFRNR               : String(10);
     key BELNR               : String(10);
-    key RLDNR               : String(2);
     key GJAHR               : String(4);
         BSTKD               : String(35);
+        PRCTR               : String(10);
 }
 // Cash Journal Invoice filter
 define view BLARTS as
@@ -918,13 +918,21 @@ define view MPUYEAR as
         key CALYEAR
 };
 
-entity Manufacturers {
-    key manufacturerNumber  : String(50);
-        MFGName             : String(255);
-        imageName           : String(255);
-        publicURL           : String(512);
-        createdAt           : Timestamp @default: now;
+using {cuid} from '@sap/cds/common';
+entity MediaFile : cuid {
+        @Core.ContentDisposition.Filename : fileName
+        @Core.MediaType                   : mediaType
+        content                           : LargeBinary;
+        fileName                          : String;
+        @Core.IsMediaType                 : true
+        mediaType                         : String;
+        url                               : String;
+        manufacturerNumber                : String(50);
+        MFGName                           : String(255);
 }
+
+
+
 
 
 

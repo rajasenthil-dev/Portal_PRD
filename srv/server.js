@@ -1,99 +1,154 @@
-const multer = require('multer');
 const cds = require('@sap/cds');
-const jwt = require('jsonwebtoken'); // Ensure you install this package
-const axios = require('axios'); // For calling user-api
-const { getUserAttributes } = require('./utils/userApi');
-const express = require("express");
-const { endswith } = require('@cap-js/hana/lib/cql-functions');
-// // Set up multer for file handling (you can configure storage options based on your needs)
-// const upload = multer({ storage: multer.memoryStorage() });
+const path = require('path');
+const cors = require('cors');
+const cuid = require('cuid'); // Generates unique IDs
 
-module.exports = cds.service.impl(async function () {
+// ✅ Reusable function to update MediaFile after modifying content
+async function updateMediaFile(req) {
+    const { MediaFile } = cds.entities;
+    const LOG = cds.log('media-service');
 
+    if (!req._ || !req._.req || !req._.req.path) {
+        console.error("Invalid request object: missing '_', '_.req', or '_.req.path'");
+        return;
+    }
 
-    
-//   const { Manufacturers } = this.entities;
+    const urlPath = req._.req.path;
+    LOG.debug('UPDATE handler triggered');
+    LOG.debug('Request URL:', urlPath);
 
-//   // Expose the action for uploading manufacturer details
-//   this.on('uploadManufacturerDetails', upload.single('file'), async (req) => {
-//     const { manufacturerNumber, MFGName, imageName } = req.data;
-//     const file = req.file; // file will be available as raw binary data in req.file
+    if (!urlPath.includes('content')) return;
 
-//     // Check if the manufacturer already exists
-//     const existingManufacturer = await SELECT.one.from(Manufacturers).where({ manufacturerNumber });
-//     if (existingManufacturer) {
-//       req.error(400, `Manufacturer with number ${manufacturerNumber} already exists.`);
-//     }
+    const id = req.data.ID;
+    LOG.debug('ID:', id);
 
-//     // Connect to Object Store
-//     const { url, clientid, clientsecret } = cds.env.services.ObjectStore.credentials;
-//     const tokenResponse = await axios.post(`${url}/oauth/token`, null, {
-//       auth: { username: clientid, password: clientsecret },
-//       params: { grant_type: 'client_credentials' },
-//     });
-//     const token = tokenResponse.data.access_token;
+    if (!id) {
+        req.reject(400, 'ID is required to update content');
+        return;
+    }
 
-//     // Generate unique object key for the image
-//     const objectKey = `${manufacturerNumber}-${imageName}`;
-//     console.log("Uploading Image.................")
-//     // Upload image to Object Store
-//     await axios.put(`${url}/v1/objects/${objectKey}`, file.buffer, { // use file.buffer for binary data
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//         'Content-Type': 'image/png',
-//       },
-//     });
+    // Fetch existing record
+    const obj = await cds.run(SELECT.one.from(MediaFile).where({ ID: id }));
 
-//     // Generate public URL for the uploaded image
-//     const publicURL = `${url}/v1/objects/${objectKey}`;
+    if (!obj) {
+        req.reject(404, 'No data found!');
+        return;
+    }
 
-//     // Save manufacturer details in the database
-//     await INSERT.into(Manufacturers).entries({
-//       manufacturerNumber,
-//       MFGName,
-//       imageName,
-//       imageUrl: publicURL,
-//     });
-//     return { manufacturerNumber, MFGName, imageName, imageUrl: publicURL };
-//   });
-});
+    const generatedUrl = `/media/serve/${id}/${encodeURIComponent(req.headers.slug)}`;
 
-// Middleware to authenticate and enrich user info
-async function authMiddleware(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const user = cds.User.privileged
+    // Update only necessary fields in the database
+    const db = await cds.connect.to('db');
+    await db.run(
+        UPDATE(MediaFile)
+            .set({
+                fileName: req.headers.slug,
+                mediaType: req.headers['content-type'],
+                url: generatedUrl,
+                content: req.data.content
+            })
+            .where({ ID: id })
+    );
 
-  if (!authHeader) {
-    console.log('No Authorization Header Found');
-    return res.status(401).send('Unauthorized');
-  } else {
-    console.log('User Token: ', authHeader);
-    
-  }
-  if(req) {
-    console.log('User Is Logged in:')
-  } else {
-    console.log('No User Logged in')
-  }
-  next();
+    LOG.debug(`Updated MediaFile with ID ${id}, URL: ${generatedUrl}`);
 }
 
-module.exports = authMiddleware;
+// ✅ CAP Service Handler
+module.exports = cds.service.impl(async function () {
+    const { MediaFile } = this.entities;
 
-cds.on('bootstrap', (app) => {
-  console.log('CAP is Starting.....');
+    // Handle file updates before 'UPDATE' event
+    this.before('UPDATE', MediaFile, async (req, next) => {
+        await updateMediaFile(req);
+        return next();
+    });
+});
 
-  // Use the authentication middleware
-  app.use(authMiddleware);
+// ✅ Middleware to authenticate users (Optional)
+async function authMiddleware(req, res, next) {
+    const authHeader = req.headers['authorization'];
 
-  // Add custom middleware or routes
-  app.get('/mock-api/invoices/:number', (req, res) => {
-    const invoiceNumber = req.params.number;
+    if (!authHeader) {
+        console.log('No Authorization Header Found');
+        return res.status(401).send('Unauthorized');
+    } else {
+        console.log('User Token:', authHeader);
+    }
 
-    // Simulated response for the mock API
-    const mockImageUrl = "https://via.placeholder.com/600x800.png?text=Invoice";
-    res.status(200).json({ imageUrl: mockImageUrl });
-  });
+    next();
+}
+
+// ✅ Bootstrap Event
+cds.on('bootstrap', async (app) => {
+    console.log('CAP is Starting.....');
+
+    // CORS Configuration
+    app.use(cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Authorization', 'Content-Type']
+    }));
+
+    // ✅ File Serving Route
+    app.get('/media/serve/:id/:fileName', async (req, res) => {
+        const { id, fileName } = req.params;
+
+        const db = await cds.connect.to('db');
+        const result = await db.run(
+            SELECT.one.from('MediaFile').where({ ID: id, fileName: decodeURIComponent(fileName) })
+        );
+
+        if (!result) return res.status(404).send('File not found');
+
+        res.setHeader('Content-Type', result.mediaType);
+        res.send(result.content);
+    });
+
+    // ✅ File Upload Route
+    app.put('/media/upload', async (req, res) => {
+        const { slug, 'content-type': mediaType } = req.headers;
+
+        if (!slug || !mediaType || !req.body) {
+            return res.status(400).send('Missing required headers or file data');
+        }
+
+        const db = await cds.connect.to('db');
+        const fileId = cuid(); // Generate unique file ID
+
+        // Insert file data into the HANA database
+        await db.run(
+            INSERT.into('MediaFile').entries({
+                ID: fileId,
+                fileName: slug,
+                mediaType,
+                content: req.body,
+                url: `/media/serve/${fileId}/${slug}`
+            })
+        );
+
+        res.status(201).json({ url: `/media/serve/${fileId}/${slug}` });
+    });
+
+    // ✅ Invoice Mock API (Reintegrated)
+    app.get('/mock-api/invoices/:number', (req, res) => {
+        const invoiceNumber = req.params.number;
+        const mockImageUrl = "https://via.placeholder.com/600x800.png?text=Invoice+" + invoiceNumber;
+        res.status(200).json({ imageUrl: mockImageUrl });
+    });
+
+    // ✅ Manual test of file update function
+    try {
+        const fakeRequest = {
+            _: { req: { path: '/odata/v4/media/MediaFile(ID=123)/content' } },
+            data: { ID: 123, content: Buffer.from("Fake Image Data") },
+            headers: { slug: 'test.png', 'content-type': 'image/png' },
+            reject: (code, msg) => console.log(`Rejected: ${code} - ${msg}`)
+        };
+
+        await updateMediaFile(fakeRequest);
+    } catch (error) {
+        console.error("Error calling updateMediaFile in bootstrap:", error);
+    }
 });
 
 // Bootstrapping the CAP service

@@ -37,6 +37,10 @@
         {
             "name": "$XSAPPNAME.Internal",
             "description": "Internal access scope"
+        },
+        {
+            "name": "$XSAPPNAME.Media.MediaFile.draftActivate",
+            "description": "Activate draft for MediaFile"
         }
     ],
     "attributes": [
@@ -59,7 +63,7 @@
             "valueRequired": false
         },
         {
-            "name": "ProfitCentre",
+            "name": "customAttribute1",
             "description": "ProfitCentre",
             "valueType": "string",
             "valueRequired": false
@@ -71,6 +75,8 @@
             "valueRequired": false
         }
     ],
+  
+    
     "role-templates": [
         {
             "name": "Admin",
@@ -80,16 +86,23 @@
             ]
         },
         {
+            "name": "MediaFileAdmin", 
+            "description": "Administrator for MediaFile",
+            "scope-references": [
+              "$XSAPPNAME.Media.MediaFile.draftActivate"
+            ]
+        },
+        {
             "name": "Viewer",
             "description": "Viewer Role with Restricted Access",
             "scope-references": [
-                "$XSAPPNAME.Viewer"
+                "$XSAPPNAME.Viewer", "uaa.user"
             ],
             "attribute-references": [
                 "SalesOrg",
                 "ManufacturerNumber",
                 "SalesOffice",
-                "ProfitCentre",
+                "customAttribute1",
                 "MFGName"
             ]
         },

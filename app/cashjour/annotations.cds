@@ -11,7 +11,7 @@ Search.defaultSearchElement: true,
             SGTXT: true,
             VBELN: true,
             BLART: true,
-            AUGBL: true,
+            AUBEL: true,
             SHIP_TO: true,
             BUKRS: true,
             MFRNR: true,
@@ -19,6 +19,7 @@ Search.defaultSearchElement: true,
             RLDNR: true,
             GJAHR: true,
             BSTKD: true,
+            PRCTR: true
         }
     },
     UI : {
@@ -66,7 +67,7 @@ Search.defaultSearchElement: true,
             },  
             {
                 $Type : 'UI.DataField',
-                Value : AUGBL,
+                Value : AUBEL,
                 Label : 'Reference',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },          
@@ -104,11 +105,7 @@ Search.defaultSearchElement: true,
                 Value : BELNR,
                 Label : 'Accounting Document'
             },
-            {
-                $Type : 'UI.DataField',
-                Value : RLDNR,
-                Label : 'Ledger in GL Accounting'
-            },
+            
             {
                 $Type : 'UI.DataField',
                 Value : GJAHR,
@@ -144,6 +141,11 @@ Search.defaultSearchElement: true,
                 Value : MFRNR,
                 Label : 'Manufacturer'
             },
+            {
+                $Type : 'UI.DataField',
+                Value : PRCTR,
+                Label : 'Profit Center'
+            },
         ],
     },
     
@@ -177,7 +179,7 @@ Search.defaultSearchElement: true,
     VBELN@(title:'Invoice #');
     FKDAT@(title:'Invoice Date');
     NETWR@(title:'Invoice Amount');
-    AUGBL@(title:'Reference');
+    AUBEL@(title:'Reference');
     CAL_CASH_RECEIVED@(title:'Cash Received');
     CAL_DISCOUNT@(title:'Discount');
     BLART@(
@@ -205,7 +207,7 @@ Search.defaultSearchElement: true,
     VKORG@(title:'Co.');
     BUKRS@(title:'Company Code');
     BELNR@(title: 'Accounting Document');
-    RLDNR@(title: 'Ledger in GL Accounting');
+    PRCTR@(title: 'Profit Center');
     GJAHR@(title: 'Fiscal Year');
     MFRNR@(title: 'Manufacturer'); 
 };
