@@ -10,7 +10,6 @@ modules:
   - name: mck-portal-ds-db
   - name: cross-container-service-1
   - name: mck-portal-auth
-  - name: MCK-CF-OBJECT_STORE
   - name: mck-portal-destination-service
   provides:
   - name: srv-api
@@ -359,11 +358,6 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
-- name: MCK-CF-OBJECT_STORE
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: objectstore
-    service-plan: standard
 - name: mck-portal-auth
   type: org.cloudfoundry.managed-service
   parameters:

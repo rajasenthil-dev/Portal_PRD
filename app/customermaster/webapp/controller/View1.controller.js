@@ -6,6 +6,28 @@ sap.ui.define([
     return Controller.extend("customermaster.controller.View1", {
         onInit: function () {
             this._oSmartTable = this.byId("_IDGenSmartTable1");
+            var oModelLogo = this.getOwnerComponent().getModel("logo");
+            // Bind to the MediaFile entity with a filter
+            var oBinding = oModelLogo.bindList("/MediaFile");
+            // Fetch data
+             oBinding.requestContexts().then(function (aContexts) {
+                if (aContexts.length > 0) {
+                    var oData = aContexts[0].getObject();
+                    console.log("Manufacturer:", oData.MFGName);
+                    console.log("File URL:", oData.url);
+                    var sAppPath = sap.ui.require.toUrl("customermaster").split("/resources")[0];
+                    if(sAppPath === ".") {
+                        sAppPath = "";
+                    }
+                    console.log("✅ Dynamic Base Path:", sAppPath);
+    
+                    var sSrcUrl = sAppPath + oData.url;
+                    // Example: Set the image source
+                    this.getView().byId("logoImage").setSrc(sSrcUrl);
+                } else {
+                    console.log("No media found for this manufacturer.");
+                }
+            }.bind(this));
         },
         onTableLayoutChange: function (oEvent) {
             var selectedItem = oEvent.getSource().aRBs[1].mProperties.text; // Get selected text

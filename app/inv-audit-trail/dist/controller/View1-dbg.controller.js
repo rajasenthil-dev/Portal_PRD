@@ -24,7 +24,35 @@ sap.ui.define([
             var oTable = oSmartTable.getTable();
             oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
          },
+         onGetManufacturerMedia: function (sManufacturerNumber) {
+            var oModel = this.getView().getModel("logo");
+            
+            // Bind to the MediaFile entity with a filter
+            var oBinding = oModel.bindList("/MediaFile", undefined, undefined);
+        
+            // Fetch data
+            oBinding.requestContexts().then(function (aContexts) {
+                if (aContexts.length > 0) {
+                    var oData = aContexts[0].getObject();
+                    console.log("Manufacturer:", oData.MFGName);
+                    console.log("File URL:", oData.url);
+                    var sAppPath = sap.ui.require.toUrl("invaudittrail").split("/resources")[0];
+                    if(sAppPath === ".") {
+                        sAppPath = "";
+                    }
+                    console.log("✅ Dynamic Base Path:", sAppPath);
+    
+                    var sSrcUrl = sAppPath + oData.url;
+                    // Example: Set the image source
+                    this.getView().byId("logoImage").setSrc(sSrcUrl);
+                } else {
+                    console.log("No media found for this manufacturer.");
+                }
+            }.bind(this));
+        },
+         
         _calculateTotals: function () {
+            this.onGetManufacturerMedia();
             var oSmartTable = this.getView().byId("table0");
             var oTable = oSmartTable.getTable();
             var oBinding = oTable.getBinding("rows");

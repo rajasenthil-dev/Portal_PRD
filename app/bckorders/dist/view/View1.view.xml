@@ -16,7 +16,12 @@
                         <HeaderContainer id="logoContainer" scrollStep="200" height="100px">
                             <FlexBox id="_IDGenFlexBox" alignItems="Center" height="100px">
                                 <FlexBox id="_IDGenFlexBox1" alignItems="Center" height="75px" class="imgBG">
-                                    <Image id="logoImage" width="125px" src="img/klipartz.com.png" decorative="false" press="onLogoPressed" tooltip="SAP Logo"/>
+                                    <Image 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    src="{path: 'logo>url', formatter: 'Formatter.formatUrl.bind($controller)'}"
+                                    id="logoImage" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo"/>
                                 </FlexBox>
                             </FlexBox>
                         </HeaderContainer>

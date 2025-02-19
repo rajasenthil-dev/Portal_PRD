@@ -81,7 +81,7 @@ async function authMiddleware(req, res, next) {
 // ✅ Bootstrap Event
 cds.on('bootstrap', async (app) => {
     console.log('CAP is Starting.....');
-
+    app.use(authMiddleware);
     // CORS Configuration
     app.use(cors({
         origin: '*',

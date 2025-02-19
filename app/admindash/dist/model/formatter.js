@@ -1,0 +1,2 @@
+sap.ui.define([],()=>{"use strict";return{formatUrl:function(r){if(!r)return"";var e=sap.ui.require.toUrl("admindash").split("/resources")[0];if(e==="."){e=""}console.log("✅ Dynamic Base Path:",e);var i=e+r;return i}}});
+//# sourceMappingURL=formatter.js.map

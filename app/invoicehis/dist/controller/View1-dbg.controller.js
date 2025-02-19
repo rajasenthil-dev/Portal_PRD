@@ -42,8 +42,34 @@ sap.ui.define([
 
             
             this.getView().byId("table").attachEvent("rowsUpdated", this.onTableScroll.bind(this));
+            this.getView().byId("table").attachEvent("rowsUpdated", this.onGetManufacturerMedia.bind(this));
         },
-
+        onGetManufacturerMedia: function (sManufacturerNumber) {
+            var oModel = this.getView().getModel("logo");
+            
+            // Bind to the MediaFile entity with a filter
+            var oBinding = oModel.bindList("/MediaFile", undefined, undefined);
+        
+            // Fetch data
+            oBinding.requestContexts().then(function (aContexts) {
+                if (aContexts.length > 0) {
+                    var oData = aContexts[0].getObject();
+                    console.log("Manufacturer:", oData.MFGName);
+                    console.log("File URL:", oData.url);
+                    var sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0];
+                    if(sAppPath === ".") {
+                        sAppPath = "";
+                    }
+                    console.log("✅ Dynamic Base Path:", sAppPath);
+    
+                    var sSrcUrl = sAppPath + oData.url;
+                    // Example: Set the image source
+                    this.getView().byId("logoImage").setSrc(sSrcUrl);
+                } else {
+                    console.log("No media found for this manufacturer.");
+                }
+            }.bind(this));
+        },
         // _fetchVisibleData: function () {
         //     debugger
         //     const oModel = this.getView().getModel(); // OData v2 model
@@ -71,8 +97,10 @@ sap.ui.define([
             const table = this.getView().byId("table");
             const data = table.getBinding("rows").getContexts().map(context => context.getObject());
             this.updateCalculations(data);
+            
         },
         updateCalculations: function (data) {
+            
             // Define properties for calculations
             const decimalProperties = ["TSL_AMOUNT", "CAL_PST", "CAL_GST"]; // Footer sums
             const summarySalesProperty = "TSL_AMOUNT"; // Total sales for summary

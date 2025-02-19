@@ -33,9 +33,14 @@ sap.ui.define([
 
             this.getView().setModel(oTileCountsModel, "summaryCounts"); // GridTable
             this.getView().setModel(oFooterCountsModel, "footerCounts");
-
+            var oModel = this.getOwnerComponent().getModel("logo");
+            oModel.attachDataReceived(function() {
+                this.onGetManufacturerMedia();
+            });
             
             this.getView().byId("table").attachEvent("rowsUpdated", this.onTableScroll.bind(this));
+            
+            
 
             // // Set up OData model
             // const oModel = new sap.ui.model.odata.v2.ODataModel("/odata/v2/inventory");
@@ -59,6 +64,32 @@ sap.ui.define([
 
             // // Call _calculateTotals whenever rows are updated
             // oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+        },
+        onGetManufacturerMedia: function (sManufacturerNumber) {
+            var oModel = this.getView().getModel("logo");
+            
+            // Bind to the MediaFile entity with a filter
+            var oBinding = oModel.bindList("/MediaFile", undefined, undefined);
+        
+            // Fetch data
+            oBinding.requestContexts().then(function (aContexts) {
+                if (aContexts.length > 0) {
+                    var oData = aContexts[0].getObject();
+                    console.log("Manufacturer:", oData.MFGName);
+                    console.log("File URL:", oData.url);
+                    var sAppPath = sap.ui.require.toUrl("invval").split("/resources")[0];
+                    if(sAppPath === ".") {
+                        sAppPath = "";
+                    }
+                    console.log("✅ Dynamic Base Path:", sAppPath);
+    
+                    var sSrcUrl = sAppPath + oData.url;
+                    // Example: Set the image source
+                    this.getView().byId("logoImage").setSrc(sSrcUrl);
+                } else {
+                    console.log("No media found for this manufacturer.");
+                }
+            }.bind(this));
         },
         onTableScroll: function () {
             const table = this.getView().byId("table");
