@@ -31,6 +31,8 @@
                     "semanticObject": "Dashboard",
                     "action": "display",
                     "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubTitle}}",
+                    "icon": "{{flpIcon}}",
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"

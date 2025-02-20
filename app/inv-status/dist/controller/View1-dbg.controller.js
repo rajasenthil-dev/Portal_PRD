@@ -1,20 +1,17 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"
+], (Controller, MessageBox) => {
     "use strict";
 
     return Controller.extend("invstatus.controller.View1", {
         onInit() {
-            var oSmartTable = this.getView().byId("table0");
-            var oTable = oSmartTable.getTable();
+            
 
-            oTable.attachEvent("rowsUpdated",this.calculateTotals.bind(this));// For GridTable
-        },
-        onGetManufacturerMedia: function (sManufacturerNumber) {
-            var oModel = this.getView().getModel("logo");
+            var oModelLogo = this.getOwnerComponent().getModel("logo");
             
             // Bind to the MediaFile entity with a filter
-            var oBinding = oModel.bindList("/MediaFile", undefined, undefined);
+            var oBinding = oModelLogo.bindList("/MediaFile", undefined, undefined);
         
             // Fetch data
             oBinding.requestContexts().then(function (aContexts) {
@@ -27,17 +24,41 @@ sap.ui.define([
                         sAppPath = "";
                     }
                     console.log("✅ Dynamic Base Path:", sAppPath);
-    
+                    
                     var sSrcUrl = sAppPath + oData.url;
+
                     // Example: Set the image source
                     this.getView().byId("logoImage").setSrc(sSrcUrl);
                 } else {
                     console.log("No media found for this manufacturer.");
                 }
             }.bind(this));
+            var oModel = this.getOwnerComponent().getModel();
+            const oSmartTable = this.getView().byId("table0");
+            const oTable = oSmartTable.getTable();
+            this.bAuthorizationErrorShown = false;
+            oModel.attachRequestFailed(function (oEvent) {
+                var oParams = oEvent.getParameters();
+                if (oParams.response.statusCode === "403") {
+                    oTable.setNoData("No data available due to authorization restrictions");
+                    oTable.setBusy(false); 
+                    if(!this.bAuthorizationErrorShown) {
+                        this.bAuthorizationErrorShown = true;
+                        MessageBox.error("You do not have the required permissions to access this report.", {
+                            title: "Unauthorized Access",
+                            id: "messageBoxId1",
+                            details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+                            contentWidth: "100px",
+                        });
+                    }
+                }
+            });
+
+            oTable.attachEvent("rowsUpdated",this.calculateTotals.bind(this));// For GridTable
+            
         },
+        
         calculateTotals: function () {
-            this.onGetManufacturerMedia();
             var oSmartTable = this.getView().byId("table0");
             var oTable = oSmartTable.getTable();
             var oBinding = oTable.getBinding("rows"); // For GridTable

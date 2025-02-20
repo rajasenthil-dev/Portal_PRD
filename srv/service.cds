@@ -191,13 +191,6 @@ service INVENTORY {
     entity INVSNAPWARESTAT as projection on ENTINVSNAPWARESTAT;
 }
 
-// Authorization & Data Segregation
-// Item Master
-
-
-// Inventory Status
-
-
 using INVOICEHISTORY as ENTINVOICEHISTORY from '../db/schema';
 using IHCUSTOMER as ENTIHCUSTOMER from '../db/schema';
 using IHSHIPTO as ENTIHSHIPTO from '../db/schema';
@@ -327,8 +320,7 @@ service CatalogService {
     @readonly entity Invoices {
         key ID: UUID;
         InvoiceNumber: String;
-    }
-    
+    }  
 }
 
 using MediaFile as ENTMediaFile from '../db/schema';

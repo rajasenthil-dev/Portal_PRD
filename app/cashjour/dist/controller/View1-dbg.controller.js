@@ -2,26 +2,43 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/Dialog",
     "sap/m/Button",
-    "sap/m/Image"
-], (Controller, Dialog, Button, Image) => {
+    "sap/m/Image",
+    "sap/m/MessageBox"
+], (Controller, Dialog, Button, Image, MessageBox) => {
     "use strict";
 
     return Controller.extend("cashjour.controller.View1", {
         onInit: function () {
-            var oSmartTable = this.byId("table0"); // Get the SmartTable by ID
-            var oTable = oSmartTable.getTable();   // Access the underlying table
+            var oModel = this.getOwnerComponent().getModel();
+            const oSmartTable = this.getView().byId("table0");
+            const oTable = oSmartTable.getTable();
+            this.bAuthorizationErrorShown = false;
+            oModel.attachRequestFailed(function (oEvent) {
+                var oParams = oEvent.getParameters();
+                if (oParams.response.statusCode === "403") {
+                    oTable.setNoData("No data available due to authorization restrictions");
+                    oTable.setBusy(false)    
+                    if(!this.bAuthorizationErrorShown) {
+                        this.bAuthorizationErrorShown = true;
+                        MessageBox.error("You do not have the required permissions to access this report.", {
+                            title: "Unauthorized Access",
+                            id: "messageBoxId1",
+                            details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+                            contentWidth: "100px",
+                        });
+                    
+                    }
+                }
+            });
+              // Access the underlying table
             
             this._debouncedCalculateTotals = this._debounce(this._calculateTotals.bind(this), 300);
             oTable.attachEvent("rowsUpdated", this._debouncedCalculateTotals);
-        },
-        onGetManufacturerMedia: function (sManufacturerNumber) {
-            var oModel = this.getView().getModel("logo");
-            
+            var oModelLogo = this.getOwnerComponent().getModel("logo");
             // Bind to the MediaFile entity with a filter
-            var oBinding = oModel.bindList("/MediaFile", undefined, undefined);
-        
+            var oBinding = oModelLogo.bindList("/MediaFile");
             // Fetch data
-            oBinding.requestContexts().then(function (aContexts) {
+             oBinding.requestContexts().then(function (aContexts) {
                 if (aContexts.length > 0) {
                     var oData = aContexts[0].getObject();
                     console.log("Manufacturer:", oData.MFGName);
@@ -40,8 +57,8 @@ sap.ui.define([
                 }
             }.bind(this));
         },
+        
         _calculateTotals: function (oEvent) {
-            this.onGetManufacturerMedia();
             var oTable = oEvent.getSource();
             var oBinding = oTable.getBinding("rows");  // Get the rows binding
             
