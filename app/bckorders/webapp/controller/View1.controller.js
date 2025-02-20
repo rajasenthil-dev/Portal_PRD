@@ -5,22 +5,34 @@ sap.ui.define([
 ], (Controller, formatter, MessageBox) => {
   "use strict";
 
+  var sResponsivePaddingClasses = "sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer";
+
   return Controller.extend("bckorders.controller.View1", {
     formatter: formatter,
 
     onInit: function () {
         var oModel = this.getOwnerComponent().getModel();
-
+        const oSmartTable = this.getView().byId("table0");
+        const oTable = oSmartTable.getTable();
+        this.bAuthorizationErrorShown = false;
         oModel.attachRequestFailed(function (oEvent) {
             var oParams = oEvent.getParameters();
             if (oParams.response.statusCode === "403") {
-            MessageBox.error("You currently do not have authorization to view this resource. If you feel this in incorrect please reach out to the administrator.");
-            } else {
-            MessageBox.error("An error occurred: " + oParams.response.message);
+                oTable.setNoData("No data available due to authorization restrictions");
+                oTable.setBusy(false)    
+                if(!this.bAuthorizationErrorShown) {
+                    this.bAuthorizationErrorShown = true;
+                    MessageBox.error("You do not have the required permissions to access this report.", {
+                        title: "Unauthorized Access",
+                        id: "messageBoxId1",
+                        details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+                        contentWidth: "100px",
+                    });
+                
+                }
             }
         });
-        const oSmartTable = this.getView().byId("table0");
-        const oTable = oSmartTable.getTable();
+        
         oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
 
         var oModelLogo = this.getOwnerComponent().getModel("logo");
@@ -46,32 +58,6 @@ sap.ui.define([
             }
         }.bind(this));
     },
-    // onGetManufacturerMedia: function (sManufacturerNumber) {
-    //     var oModel = this.getView().getModel("logo");
-        
-    //     // Bind to the MediaFile entity with a filter
-    //     var oBinding = oModel.bindList("/MediaFile", undefined, undefined);
-    
-    //     // Fetch data
-    //     oBinding.requestContexts().then(function (aContexts) {
-    //         if (aContexts.length > 0) {
-    //             var oData = aContexts[0].getObject();
-    //             console.log("Manufacturer:", oData.MFGName);
-    //             console.log("File URL:", oData.url);
-    //             var sAppPath = sap.ui.require.toUrl("bckorders").split("/resources")[0];
-    //             if(sAppPath === ".") {
-    //                 sAppPath = "";
-    //             }
-    //             console.log("✅ Dynamic Base Path:", sAppPath);
-
-    //             var sSrcUrl = sAppPath + oData.url;
-    //             // Example: Set the image source
-    //             this.getView().byId("logoImage").setSrc(sSrcUrl);
-    //         } else {
-    //             console.log("No media found for this manufacturer.");
-    //         }
-    //     }.bind(this));
-    // },
     _calculateTotals: function () {
         const oSmartTable = this.getView().byId("table0");
         const oTable = oSmartTable.getTable();

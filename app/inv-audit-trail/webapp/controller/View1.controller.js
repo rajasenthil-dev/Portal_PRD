@@ -1,12 +1,34 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/BusyIndicator"
-], (Controller, JSONModel, BusyIndicator) => {
+    "sap/ui/core/BusyIndicator",
+    "sap/m/MessageBox"
+], (Controller, JSONModel, BusyIndicator, MessageBox) => {
     "use strict";
 
     return Controller.extend("invaudittrail.controller.View1", {
         onInit: function () {
+            var oModel = this.getOwnerComponent().getModel();
+            const oSmartTable = this.getView().byId("table0");
+            const oTable = oSmartTable.getTable();
+            this.bAuthorizationErrorShown = false;
+            oModel.attachRequestFailed(function (oEvent) {
+                var oParams = oEvent.getParameters();
+                if (oParams.response.statusCode === "403") {
+                    oTable.setNoData("No data available due to authorization restrictions");
+                    oTable.setBusy(false)    
+                    if(!this.bAuthorizationErrorShown) {
+                        this.bAuthorizationErrorShown = true;
+                        MessageBox.error("You do not have the required permissions to access this report.", {
+                            title: "Unauthorized Access",
+                            id: "messageBoxId1",
+                            details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+                            contentWidth: "100px",
+                        });
+                    
+                    }
+                }
+            });
             // Initialize a model for tile counts
             var oTileCountsModel = new JSONModel({
                 counts: {
@@ -20,8 +42,6 @@ sap.ui.define([
             this.getView().setModel(oTileCountsModel, "transactionCounts");
 
             // Get the SmartTable and bind the data change event
-            var oSmartTable = this.getView().byId("table0");
-            var oTable = oSmartTable.getTable();
             oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
 
             var oModelLogo = this.getOwnerComponent().getModel("logo");

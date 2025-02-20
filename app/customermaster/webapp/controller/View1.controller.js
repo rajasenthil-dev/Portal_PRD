@@ -1,11 +1,33 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"
+], (Controller, MessageBox) => {
     "use strict";
 
     return Controller.extend("customermaster.controller.View1", {
         onInit: function () {
-            this._oSmartTable = this.byId("_IDGenSmartTable1");
+            var oModel = this.getOwnerComponent().getModel();
+            const oSmartTable = this.getView().byId("table0");
+            const oTable = oSmartTable.getTable();
+            this.bAuthorizationErrorShown = false;
+            oModel.attachRequestFailed(function (oEvent) {
+                var oParams = oEvent.getParameters();
+                if (oParams.response.statusCode === "403") {
+                    oTable.setNoData("No data available due to authorization restrictions");
+                    oTable.setBusy(false)    
+                    if(!this.bAuthorizationErrorShown) {
+                        this.bAuthorizationErrorShown = true;
+                        MessageBox.error("You do not have the required permissions to access this report.", {
+                            title: "Unauthorized Access",
+                            id: "messageBoxId1",
+                            details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+                            contentWidth: "100px",
+                        });
+                    
+                    }
+                }
+            });
+            
             var oModelLogo = this.getOwnerComponent().getModel("logo");
             // Bind to the MediaFile entity with a filter
             var oBinding = oModelLogo.bindList("/MediaFile");
@@ -31,8 +53,8 @@ sap.ui.define([
         },
         onTableLayoutChange: function (oEvent) {
             var selectedItem = oEvent.getSource().aRBs[1].mProperties.text; // Get selected text
-            
-            var oTable = this._oSmartTable.getTable();
+            const oSmartTable = this.getView().byId("table0");
+            const oTable = oSmartTable.getTable();
             
             if (selectedItem === "Responsive") {
                 if (oTable instanceof sap.ui.table.Table) {

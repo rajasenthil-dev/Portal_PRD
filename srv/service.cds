@@ -159,6 +159,15 @@ service INVENTORY {
     entity INVSTATUSPRODUCTCODE as projection on ENTINVSTATUSPRODUCTCODE;
 
     // Inventory By Lot Related Entities
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRPN and $user.SalesOrg = SALES_ORGANIZATION_VKORG and $user.SalesOffice = SALES_OFFICE_VKBUR and $user.ProfitCentre = PROFIT_CENTER_PRCTR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVENTORYBYLOT as projection on ENTINVENTORYBYLOT;
     entity INVBYLOTPRODUCTCODE as projection on ENTINVBYLOTPRODUCTCODE;
     entity INVBYLOTLOT as projection on ENTINVBYLOTLOT;
@@ -325,6 +334,11 @@ service CatalogService {
 using MediaFile as ENTMediaFile from '../db/schema';
 
 service Media {
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = manufacturerNumber or $user.ManufacturerNumber is null' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity MediaFile as projection on ENTMediaFile
 }
 
