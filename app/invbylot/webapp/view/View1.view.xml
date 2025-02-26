@@ -100,13 +100,13 @@
                                     <my:SegmentedProgressBar id="_IDGenSegmentedProgressBar" value="{DAYS_UNTIL_EXPIRY}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width='7.813rem'>
+                            <t:Column id="_IDGenColumn1" autoResizable="true" width="10rem">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "EXPIRY_DATE_VFDAT", "leadingProperty": "EXPIRY_DATE_VFDAT", "columnIndex": 4}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 4}'/>
                                 </t:customData>
-                                <Text id="_IDGenText4" text="Expiry Date"></Text>
+                                <Text id="_IDGenText4" text="Shelf Life or Best-Before Date"></Text>
                                 <t:template>
-                                    <Text id="exipryDate" text="{path: 'EXPIRY_DATE_VFDAT', formatter: '._formatDate'}" />
+                                    <Text id="exipryDate" text="{path: 'VFDAT', formatter: '._formatDate'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns> 

@@ -17,6 +17,7 @@ AS SELECT
     BSTKD,	    
     SHIP_TO,	    
     TRACKN,	    
-    BLART,	    
+    BLART,
+    CURRENT,	    
     MFRNR	    
 FROM "SYNINVOICEHISTORYDOC"

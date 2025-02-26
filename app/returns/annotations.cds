@@ -18,7 +18,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           REFERENCE_BSTKD, CUSTOMER_KUNNR, REASON_BEZEI, DATE_ENTERED_FKDAT_ANA
+           RGA_VBELN, CUSTOMER_NAME_NAME1, REASON_BEZEI, DATE_ENTERED_FKDAT_ANA
         ],
         LineItem  : [
             {
@@ -80,7 +80,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CO_VKORG,
-                Label : 'Co.',
+                Label : 'Sales Org.',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -107,7 +107,7 @@ Search.defaultSearchElement: true,
     DATE_ENTERED_FKDAT_ANA@(title: 'Date Entered');
     CUSTOMER_KUNNR@(title: 'Customer');
     CUSTOMER_NAME_NAME1@(title: 'Name',
-    Common: {
+        Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -165,10 +165,74 @@ Search.defaultSearchElement: true,
     );
     CREDIT_DATE_ERDAT@(title: 'Credit Date');
     CREDIT_AMT_NETWR@(title: 'Credit Amt');
-    CO_VKORG@(title: 'Co.');
-    SALES_OFFICE_VKBUR@(title: 'Sales Office');
-    MANUFACTURER_MFRNR@(title: 'Manufacturer Number');
-    PROFIT_CENTER_PRCTR@(title: 'Profit Center');
+    CO_VKORG@(title: 'Sales Org.',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'RETVKORG',
+                Label : 'Sales Org.',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'CO_VKORG',
+                        ValueListProperty : 'CO_VKORG'
+                    }
+                ]
+            },
+        }
+    );
+    SALES_OFFICE_VKBUR@(title: 'Sales Office',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'RETVKBUR',
+                Label : 'Sales Office',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'SALES_OFFICE_VKBUR',
+                        ValueListProperty : 'SALES_OFFICE_VKBUR'
+                    }
+                ]
+            },
+        }
+    );
+    MANUFACTURER_MFRNR@(title: 'Manufacturer Number',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'RETMFRNR',
+                Label : 'Manufacturer',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MANUFACTURER_MFRNR',
+                        ValueListProperty : 'MANUFACTURER_MFRNR'
+                    }
+                ]
+            },
+        }
+    );
+    PROFIT_CENTER_PRCTR@(title: 'Profit Center',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'RETPRCTR',
+                Label : 'Profit Center',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PROFIT_CENTER_PRCTR',
+                        ValueListProperty : 'PROFIT_CENTER_PRCTR'
+                    }
+                ]
+            },
+        }
+    );
 
 
 

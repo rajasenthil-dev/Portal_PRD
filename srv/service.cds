@@ -1,15 +1,13 @@
-
-service VDSP {
-    // First Initial Test Service
-}
-
 // Processing Service
 
 using RETURNS as ENTRETURNS from '../db/schema';
 using RETCUST as ENTRETCUST from '../db/schema';
 using RETRGA as ENTRETRGA from '../db/schema';
 using RETREASON as ENTRETREASON from '../db/schema';
-
+using RETVKORG as ENTRETVKORG from '../db/schema';
+using RETMFRNR as ENTRETMFRNR from '../db/schema';
+using RETVKBUR as ENTRETVKBUR from '../db/schema';
+using RETPRCTR as ENTRETPRCTR from '../db/schema';
 
 using SHIPPINGHISTORY as ENTSHIPPINGHISTORY from '../db/schema';
 using SHINVOICE as ENTSHINVOICE from '../db/schema';
@@ -22,6 +20,8 @@ using BACKORDERS as ENTBACKORDERS from '../db/schema';
 using BOPRODUCTDESC as ENTBOPRODUCTDESC from '../db/schema';
 using BOSHIPTO as ENTBOSHIPTO from '../db/schema';
 using BOBILLTO as ENTBOBILLTO from '../db/schema';
+using BOMFRNR as ENTBOMFRNR from '../db/schema';
+using BOVKORG as ENTBOVKORG from '../db/schema';
 
 using OPENORDERS as ENTOPENORDERS from '../db/schema';
 using OOPRODDESC as ENTOOPRODDESC from '../db/schema';
@@ -42,9 +42,81 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETURNS as projection on ENTRETURNS;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity RETCUST as projection on ENTRETCUST;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity RETRGA as projection on ENTRETRGA; 
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity RETREASON as projection on ENTRETREASON;
+    
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.SalesOrg = CO_VKORG' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity RETVKORG as projection on ENTRETVKORG;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity RETMFRNR as projection on ENTRETMFRNR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.SalesOffice = SALES_OFFICE_VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity RETVKBUR as projection on ENTRETVKBUR;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ProfitCentre = PROFIT_CENTER_PRCTR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity RETPRCTR as projection on ENTRETPRCTR;
+
+
 
     // Shipping History Related Entities
     @requires: 'authenticated-user'
@@ -59,6 +131,9 @@ service PROCESSING {
     entity SHTRACKING as projection on ENTTRACKING;
     entity SHSHIPTO as projection on ENTSHSHIPTO;
 
+
+
+
     //Open Orders Related Entities
     @requires: 'authenticated-user'
     @restrict: [
@@ -71,6 +146,9 @@ service PROCESSING {
     entity OOCUST as projection on ENTOOCUST;
     entity OOPROVINCE as projection on ENTOOPROVINCE;
 
+
+
+
     // Back Orders Related Entities
     @requires: 'authenticated-user'
     @restrict: [
@@ -78,9 +156,36 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity BACKORDERS as projection on ENTBACKORDERS;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity BOBILLTO as projection on ENTBOBILLTO;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity BOSHIPTO as projection on ENTBOSHIPTO;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity BOPRODUCTDESC as projection on ENTBOPRODUCTDESC;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity BOMFRNR as projection on ENTBOMFRNR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity BOVKORG as projection on ENTBOVKORG;
 }
 
 // Inventory Audit Trail
@@ -93,16 +198,23 @@ using IATCUSTSUPP as ENTIATCUSTSUPP from '../db/schema';
 // Inventory Status
 using INVENTORYSTATUS as ENTINVENTORYSTATUS from '../db/schema';
 using INVSTATUSPRODUCTCODE as ENTINVSTATUSPRODUCTCODE from '../db/schema';
+using INVSTATUSMFRNR as ENTINVSTATUSMFRNR from '../db/schema';
+using INVSTATUSVKBUR as ENTINVSTATUSVKBUR from '../db/schema';
 
 // Inventory By Lot
 using INVENTORYBYLOT as ENTINVENTORYBYLOT from '../db/schema';
 using INVBYLOTPRODUCTCODE as ENTINVBYLOTPRODUCTCODE from '../db/schema';
 using INVBYLOTLOT as ENTINVBYLOTLOT from '../db/schema';
 using INVBYLOTWAREHOUSE as ENTINVBYLOTWAREHOUSE from '../db/schema';
+using INVBYLOTMFRNR as ENTINVBYLOTMFRNR from '../db/schema';
+using INVBYLOTVKBUR as ENTINVBYLOTVKBUR from '../db/schema';
 
 // Inventory Snapshot
 using INVENTORYSNAPSHOT as ENTINVENTORYSNAPSHOT from '../db/schema';
 using INVSNAPPRODDESC as ENTINVSNAPPRODDESC from '../db/schema';
+using INVSNAPPROD as ENTINVSNAPPROD from '../db/schema';
+using INVSNAPMFRNR as ENTINVSNAPMFRNR from '../db/schema';
+using INVSNAPVKORG as ENTINVSNAPVKORG from '../db/schema';
 using INVSNAPLOT as ENTINVSNAPLOT from '../db/schema';
 using INVSNAPWARESTAT as ENTINVSNAPWARESTAT from '../db/schema';
 
@@ -110,9 +222,10 @@ using INVSNAPWARESTAT as ENTINVSNAPWARESTAT from '../db/schema';
 using INVENTORYVALUATION as ENTINVENTORYVALUATION from '../db/schema';
 using INVVALPRODDESC as ENTINVVALPRODDESC from '../db/schema';
 using INVVALPROD as ENTINVVALPROD from '../db/schema';
+using INVVALMFRNR as ENTINVVALMFRNR from '../db/schema';
+using INVVALVKBUR as ENTINVVALVKBUR from '../db/schema';
 
 // Item Master
-
 using ITEMMASTER as ENTITEMMASTER from '../db/schema';
 using ITEMMASPD as ENTITEMMASPD from '../db/schema';
 using ITEMMASCATEGORY as ENTITEMMASCATEGORY from '../db/schema';
@@ -131,19 +244,62 @@ service INVENTORY {
     entity IATWAREHOUSE as projection on ENTIATWAREHOUSE;
     entity IATCUSTSUPP as projection on ENTIATCUSTSUPP;
 
+
+
     // Inventory Valuation Related Entities
     @requires: 'authenticated-user'
     @restrict: [
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = CO_VKORG and $user.SalesOffice = SALES_OFFICE_VKBUR and $user.ProfitCentre = PROFIT_CENTER_PRCTR' 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOffice = SALES_OFFICE_VKBUR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYVALUATION as projection on ENTINVENTORYVALUATION;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOffice = SALES_OFFICE_VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVVALPRODDESC as projection on ENTINVVALPRODDESC;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOffice = SALES_OFFICE_VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVVALPROD as projection on ENTINVVALPROD;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVVALMFRNR as projection on ENTINVVALMFRNR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVVALVKBUR as projection on ENTINVVALVKBUR;
+
+
+
 
     // Inventory Status Related Entities
     @requires: 'authenticated-user'
@@ -151,12 +307,34 @@ service INVENTORY {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRPN and $user.SalesOrg = CO_VKORG and $user.SalesOffice = SALES_OFFICE_VKBUR and $user.ProfitCentre = PROFIT_CENTER_PRCTR' 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRPN and $user.SalesOffice = VKBUR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYSTATUS as projection on ENTINVENTORYSTATUS;
+
+    
     entity INVSTATUSPRODUCTCODE as projection on ENTINVSTATUSPRODUCTCODE;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRPN ' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVSTATUSMFRNR as projection on ENTINVSTATUSMFRNR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.SalesOffice = VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVSTATUSVKBUR as projection on ENTINVSTATUSVKBUR;
 
     // Inventory By Lot Related Entities
     @requires: 'authenticated-user'
@@ -164,14 +342,63 @@ service INVENTORY {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRPN and $user.SalesOrg = SALES_ORGANIZATION_VKORG and $user.SalesOffice = SALES_OFFICE_VKBUR and $user.ProfitCentre = PROFIT_CENTER_PRCTR' 
+            where: '$user.ManufacturerNumber = MFRPN and $user.SalesOffice = VKBUR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYBYLOT as projection on ENTINVENTORYBYLOT;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MFRPN and $user.SalesOffice = VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVBYLOTPRODUCTCODE as projection on ENTINVBYLOTPRODUCTCODE;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MFRPN and $user.SalesOffice = VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVBYLOTLOT as projection on ENTINVBYLOTLOT;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MFRPN and $user.SalesOffice = VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVBYLOTWAREHOUSE as projection on ENTINVBYLOTWAREHOUSE;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MFRPN' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVBYLOTMFRNR as projection on ENTINVBYLOTMFRNR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.SalesOffice = VKBUR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVBYLOTVKBUR as projection on ENTINVBYLOTVKBUR;
+
+
 
     // Item Master Related Entities
     @requires: 'authenticated-user'
@@ -183,16 +410,57 @@ service INVENTORY {
     entity ITEMMASPD as projection on ENTITEMMASPD;
     entity ITEMMASCATEGORY as projection on ENTITEMMASCATEGORY;
 
-    // Lot Inventory Snapshot Related Entities 
 
+
+
+    // Lot Inventory Snapshot Related Entities 
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVENTORYSNAPSHOT as projection on ENTINVENTORYSNAPSHOT;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVSNAPPRODDESC as projection on ENTINVSNAPPRODDESC;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVSNAPPROD as projection on ENTINVSNAPPROD;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVSNAPMFRNR as projection on ENTINVSNAPMFRNR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVSNAPVKORG as projection on ENTINVSNAPVKORG;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVSNAPLOT as projection on ENTINVSNAPLOT;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity INVSNAPWARESTAT as projection on ENTINVSNAPWARESTAT;
 }
 
 using INVOICEHISTORY as ENTINVOICEHISTORY from '../db/schema';
 using IHCUSTOMER as ENTIHCUSTOMER from '../db/schema';
+using IHCUSTOMERID as ENTIHCUSTOMERID from '../db/schema';
 using IHSHIPTO as ENTIHSHIPTO from '../db/schema';
 using IHINVOICE as ENTIHINVOICE from '../db/schema';
 using IHPO as ENTIHPO from '../db/schema';
@@ -216,12 +484,14 @@ service SALES {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVOICEHISTORY as projection on ENTINVOICEHISTORY;
+    entity IHCUSTOMERID as projection on ENTIHCUSTOMERID;
     entity IHCUSTOMER as projection on ENTIHCUSTOMER;
     entity IHSHIPTO as projection on ENTIHSHIPTO;
     entity IHINVOICE as projection on ENTIHINVOICE;
     entity IHPO as projection on ENTIHPO;
     entity IHTYPE as projection on ENTIHTYPE;
     entity IHPROVINCE as projection on ENTIHPROVINCE;
+
 
 
     // Sales By Product/Customer Related Entities
@@ -238,7 +508,6 @@ service SALES {
     entity SBCWAREHOUSE as projection on ENTSBCWAREHOUSE;
     entity SBCBILLTO as projection on ENTSBCBILLTO;
     entity SBCSHIPTO as projection on ENTSBCSHIPTO;
-
 }
 
 using CUSTOMERMASTER as ENTCUSTOMERMASTER from '../db/schema';
@@ -261,6 +530,9 @@ service CUSTOMERS {
     entity KUNN2_BILLTO as projection on ENTKUNN2_BILLTO;
     entity KUNN2_SHIPTO as projection on ENTKUNN2_SHIPTO;
     entity CAL_CUST_STATUS as projection on ENTCAL_CUST_STATUS;
+
+
+
 
     // Pricing Related Entities
     @requires: 'authenticated-user'
@@ -289,6 +561,9 @@ service FINANCE {
     ]
     entity OPENAR as projection on ENTOPENAR;
     entity OPENARCUSTOMER as projection on ENTOPENARCUSTOMER;
+
+
+
 
     // Cash Journal Related Entities
     @requires: 'authenticated-user'
@@ -326,11 +601,6 @@ service CatalogService {
 using MediaFile as ENTMediaFile from '../db/schema';
 
 service Media {
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = manufacturerNumber or $user.ManufacturerNumber is null' },
-        { grant: 'READ', to: 'Internal' }
-    ]
     entity MediaFile as projection on ENTMediaFile
 }
 

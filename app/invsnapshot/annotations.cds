@@ -4,19 +4,23 @@ annotate INVENTORY.INVENTORYSNAPSHOT with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-            SKU: true,
-            PORDUCT_CODE: true, 
-            PRODUCT_DESCRIPTION: true, 
+            MATNR: true,
+            MFRPN: true, 
+            MAKTX: true, 
             SIZE:true,
-            LOT:true,
+            CHARG:true,
             WAREHOUSE_STATUS:true,
-            UPC:true
+            VKORG:true,
+            MFRNR:true,
+            LGNUM: true,
+            EAN11: true
         }
     },
     UI : {
         SelectionFields  : [
-            PRODUCT_DESCRIPTION, 
-            LOT,
+            MFRPN,
+            MAKTX, 
+            CHARG,
             WAREHOUSE_STATUS, 
             REPORT_DATE,
             
@@ -25,43 +29,43 @@ Search.defaultSearchElement: true,
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : SKU,
-                Label : 'SKU',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+                Value : MATNR,
+                Label : 'SKU'
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : PORDUCT_CODE,
-                Label : 'Product Code',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+                Value : MFRPN,
+                Label : 'Product Code'
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCT_DESCRIPTION,
-                Label : 'Product Description',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+                Value : MAKTX,
+                Label : 'Product Description'
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : SIZE,
                 Label : 'Size',
-                ![@HTML5.CssDefaults] : {width : '3rem'}
+                ![@HTML5.CssDefaults] : {width : '5rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : LOT,
-                Label : 'LOT',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                Value : CHARG,
+                Label : 'Batch Number'
             },
             {
                 $Type : 'UI.DataField',
-                Value : EXPIRY_DATE,
-                Label : 'Expiry Date',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-                
+                Value : VFDAT,
+                Label : 'Shelf Life Expiration or Best-Before Date'  
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : LGNUM,
+                Label : 'Warehouse Number/Warehouse Complex',
+                ![@HTML5.CssDefaults] : {width : '15rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -75,6 +79,12 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : UNIT,
+                Label : 'Base Unit of Measure',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : DAYS_UNTIL_EXPIRY,
                 Label : 'Days Until Expiry'
             },
@@ -85,8 +95,18 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : UPC,
+                Value : EAN11,
                 Label : 'UPC'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VKORG,
+                Label : 'Sales Org.'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR,
+                Label : 'Manufacturer'
             }
         ],
     },
@@ -95,21 +115,37 @@ Search.defaultSearchElement: true,
 )
 
 {   
-    SKU@(title: 'SKU');
-    PORDUCT_CODE@(title: 'Product Code');
-    PRODUCT_DESCRIPTION@(
+    MATNR@(title: 'SKU');
+    MFRPN@(title: 'Product Code',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSNAPPROD',
+                Label : 'Product Code',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRPN',
+                        ValueListProperty : 'MFRPN'
+                    }
+                ]
+            },
+        }      
+    );
+    MAKTX@(
         title: 'Product Description',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPPRODDESC',
-                Label : 'Bill To Name',
+                Label : 'Product Description',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PRODUCT_DESCRIPTION',
-                        ValueListProperty : 'PRODUCT_DESCRIPTION'
+                        LocalDataProperty : 'MAKTX',
+                        ValueListProperty : 'MAKTX'
                     }
                 ]
             },
@@ -117,26 +153,27 @@ Search.defaultSearchElement: true,
         
     );
     SIZE@(title: 'Size');
-    LOT@(
-        title: 'Lot #',
+    CHARG@(
+        title: 'Batch Number',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPLOT',
-                Label : 'Bill To Name',
+                Label : 'Batch Number',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'LOT',
-                        ValueListProperty : 'LOT'
+                        LocalDataProperty : 'CHARG',
+                        ValueListProperty : 'CHARG'
                     }
                 ]
             },
         }      
         
     );
-    EXPIRY_DATE@(title: 'Expiry Date');
+    VFDAT@(title: 'Shelf Life Expiration or Best-Before Date');
+    LGNUM@(title: 'Warehouse Number/Warehouse Complex');
     WAREHOUSE_STATUS@(
         title: 'Warehouse Status',
         Common: {
@@ -144,7 +181,7 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPWARESTAT',
-                Label : 'Bill To Name',
+                Label : 'Warehouse Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -157,7 +194,47 @@ Search.defaultSearchElement: true,
         
     );
     ON_HAND@(title: 'On Hand');
+    UNIT@(title: 'Base Unit of Measure');
     DAYS_UNTIL_EXPIRY@(title: 'Days Until Expiry');
     REPORT_DATE@(title: 'Report Date');
-    UPC@(title: 'UPC');
+    EAN11@(title: 'UPC');
+    VKORG@(
+        title: 'Sales Org.',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSNAPVKORG',
+                Label : 'Sales Organization',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        }      
+        
+    );
+    MFRNR@(
+        title: 'Manufacturer',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSNAPMFRNR',
+                Label : 'Manufacturer',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }      
+        
+    );
+
 };

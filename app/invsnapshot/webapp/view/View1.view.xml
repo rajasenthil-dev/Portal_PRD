@@ -43,11 +43,13 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
             <f:content>
 
                 <st:SmartTable
+                
                     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+                    
                     width="100%"
                     direction="Column"
                     fitContainer="true"
-                    tableType="ResponsiveTable"
+                    tableType="Table"
                     header="{i18n>tableTitle}"
                     enableAutoBinding="true"
                     id="table0"
@@ -61,40 +63,40 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                     useTablePersonalisation="true"
                     showRowCount="true"
                     persistencyKey="SmartTableAnalytical_Explored"
-                    demandPopin="true"
                     enableAutoColumnWidth="true"
                     class="sapUiResponsiveContentPadding"
                 >
                     <t:Table
                         id="table"
                         selectionMode="None"
-                        alternateRowColors="true">
+                        alternateRowColors="true"
+                        >
                         <t:columns>
-                            <t:Column id="_IDGenColumn">
+                            <t:Column id="_IDGenColumn" width="7rem">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU", "leadingProperty": "SKU", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                     </t:customData>
                                 <Text id="_IDGenText6" text="SKU"></Text>
                                 <t:template>
-                                <Text id="_IDGenText9" text="{path: 'SKU', formatter: '._removeLeadingZeros'}" />
+                                <Text id="_IDGenText9" text="{path: 'MATNR', formatter: '._removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6">
+                            <t:Column id="_IDGenColumn1" width="10rem">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PORDUCT_CODE", "leadingProperty": "PORDUCT_CODE", "columnIndex": 1}'/>
-                                    </t:customData>
-                                <Text id="_IDGenText2" text="Product Code"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText4" text="{path: 'PORDUCT_CODE', formatter: '._removeLeadingZeros'}" />
-                                </t:template>
-                            </t:Column>
-                            <t:Column id="_IDGenColumn4">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "EXPIRY_DATE", "leadingProperty": "EXPIRY_DATE", "columnIndex": 5}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "LGNUM", "leadingProperty": "LGNUM", "columnIndex": 7}'/>
                                 </t:customData>
-                                <Text id="_IDGenText5" text="Expiry Date"></Text>
+                                <Text id="_IDGenText3" text="Warehouse Number / Warehouse Complex"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText" text="{path: 'EXPIRY_DATE', formatter: '._formatDate'}" />
+                                    <Text id="_IDGenText2" text="{path: 'LGNUM'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn4" width="10rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 5}'/>
+                                </t:customData>
+                                <Text id="_IDGenText5" text="Shelf Life Expiration or Best-Before Date"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText" text="{path: 'VFDAT', formatter: '._formatDate'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns>

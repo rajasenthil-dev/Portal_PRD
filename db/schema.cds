@@ -1,27 +1,8 @@
-// First Initial Datashpere POC Entity
-@cds.persistence.exists
-@cds.search: { MANDT, VBELN, POSNR, FKART, LIFNR }
-entity BILLING //@(restrict: [
-//     { grant: 'READ', where: 'LIFNR = $user.LIFNR AND MFRNR = $user.MFRNR'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
-{
-    key MANDT   : String(3)@Common.FilterDefaultValueHigh : MANDT;
-    key VBELN   : String(10);
-    key POSNR   : String(4);
-        FKART   : String(4);
-        LIFNR   : String(10);
-        MFRNR   : String(10);
-}
-
 // Item Master Entity 
 // Security attibutes to match: ??
 @cds.search: { PRODUCTSTANDARDID, PRODUCT, CATEGORY, MANUFACTURERNUMBER, SALESORG, CREATIONDATE, PRODUCTDESCRIPTION_EN, SIZEUOM }
 @cds.persistence.exists
-entity ITEMMASTER //@(restrict: [
-//     { grant: 'READ', where: 'SALESORG = $user.SALESORG AND MFRNR = $user.MFRNR'  },
-//     { grant: 'READ', where: 'Internal'}
-// ])
+entity ITEMMASTER 
 {
     key PRODUCT                 : String(40);
     key SALESORG                : String(4);
@@ -51,30 +32,41 @@ define view ITEMMASCATEGORY as
 
 // Inventory Status
 // Security attributes to match: ??
-@cds.search: { SKU_MATNR, PRODUCT_CODE, CON_SIZE_UOM_SIZE, MANUFACTURER, PRODUCT_DESCRIPTION, CO, WAREHOUSE }
+@cds.search: { SKU_MATNR, PRODUCT_CODE, SIZE, MANUFACTURER_MFRPN, PRODUCT_DESCRIPTION, VKBUR }
 @cds.persistence.exists
 entity INVENTORYSTATUS 
 {
         
     key SKU_MATNR                   : String(40);
         PRODUCT_CODE                : String(40);
-        CON_SIZE_UOM_SIZE           : String(30);
+        SIZE                        : String(70);
         PRODUCT_DESCRIPTION         : String(40);
-        OPEN_STOCK                  : Decimal(36,14);
-        QUARANTINE                  : Decimal(36,14);
-        DAMAGE_DESTRUCTION          : Decimal(36,14);
-        RETAINS                     : Decimal(36,14);
-        RETURNS_CAL                 : Decimal(36,14);
-        RECALLS                     : Decimal(36,14);
-    key SALES_ORGANIZATION_VKORG    : String(4);
-        SALES_OFFICE_VKBUR          : String(4);
+        OPEN_STOCK                  : Decimal(36,2);
+        QUARANTINE                  : Decimal(36,2);
+        DAMAGE_DESTRUCTION          : Decimal(36,2);
+        RETAINS                     : Decimal(36,2);
+        QUALITY_HOLD                : Decimal(36,2);
+        RETURNS_CAL                 : Decimal(36,2);
+        RECALLS                     : Decimal(36,2);
+        INVENTORY_HOLD              : Decimal(36,2);
+        RELABEL_QTY                 : Decimal(36,2);
+        SAMPLE_QTY                  : Decimal(36,2);
+        UNIT                        : String(3);
+        VKBUR                       : String(4);
         MANUFACTURER_MFRPN          : String(40);
-        PROFIT_CENTER_PRCTR         : String(10);
 }
 // Inventory Status Product Code filter
 define view INVSTATUSPRODUCTCODE as
     select from INVENTORYSTATUS distinct {
         key PRODUCT_CODE
+};
+define view INVSTATUSMFRNR as
+    select from INVENTORYSTATUS distinct {
+        key MANUFACTURER_MFRPN
+};
+define view INVSTATUSVKBUR as
+    select from INVENTORYSTATUS distinct {
+        key VKBUR
 };
 
 // Invetory Audit Trail 
@@ -126,10 +118,7 @@ define view IATCUSTSUPP as
 // Security attributes to match: ??
 @cds.search: { BILL_TO, NAME1, VKORG, BKTXT, SGTXT, BUDAT, VBELN, FKDAT, BLART, AUBEL, SHIP_TO, BUKRS, MFRNR, BELNR, PRCTR, GJAHR, BSTKD }
 @cds.persistence.exists
-entity CASHJOURNAL //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity CASHJOURNAL 
 {
         BILL_TO             : String(10);
         NAME1               : String(35);
@@ -165,86 +154,112 @@ define view BILL_TOS as
 
 // Inventory Snapshot
 // Security attributes to match: ??
-@cds.search: { SKU, PORDUCT_CODE, PRODUCT_DESCRIPTION, SIZE, LOT, WAREHOUSE_STATUS, UPC }
+@cds.search: { MATNR, MFRPN, MAKTX, SIZE, CHARG, WAREHOUSE_STATUS, EAN11, MFRNR, VKORG, LGNUM }
 @cds.persistence.exists
-entity INVENTORYSNAPSHOT //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity INVENTORYSNAPSHOT 
 {
         
-    key SKU                 : String(40);
-        PORDUCT_CODE        : String(40);
-        PRODUCT_DESCRIPTION : String(40);
+    key MATNR               : String(40);
+        MFRPN               : String(40);
+        MAKTX               : String(40);
         SIZE                : String(70);
-        LOT                 : String(10);
-        EXPIRY_DATE         : String(8);
-        WAREHOUSE_STATUS    : String(5000);
+        VFDAT               : String(8);
+        WAREHOUSE_STATUS    : String(30);
         REPORT_DATE         : Date;
-        ON_HAND             : Decimal(36,14);
+        ON_HAND             : Decimal(36,2);
+        UNIT                : String(3);
         DAYS_UNTIL_EXPIRY   : Integer;
-        UPC                 : String(18);
+        EAN11               : String(18);
+        VKORG               : String(4);
+        LGNUM               : String(4);
+        MFRNR               : String(10);
+        CHARG               : String(10)
 }
+define view INVSNAPPROD as
+    select from INVENTORYSNAPSHOT distinct {
+        key MFRPN,
+            MFRNR
+};
 define view INVSNAPPRODDESC as
     select from INVENTORYSNAPSHOT distinct {
-        key PRODUCT_DESCRIPTION
+        key MAKTX,
+            MFRNR
 };
 define view INVSNAPLOT as
     select from INVENTORYSNAPSHOT distinct {
-        key LOT
+        key CHARG,
+            MFRNR
 };
 define view INVSNAPWARESTAT as
     select from INVENTORYSNAPSHOT distinct {
-        key WAREHOUSE_STATUS
+        key WAREHOUSE_STATUS,
+            MFRNR
+};
+define view INVSNAPMFRNR as
+    select from INVENTORYSNAPSHOT distinct {
+        key MFRNR
+};
+define view INVSNAPVKORG as
+    select from INVENTORYSNAPSHOT distinct {
+        key VKORG
 };
 // Inventory By Lot 
 // Security attributes to match: ??
-@cds.search: { SKU, PRODUCT_CODE, SIZE, LOT, UPC, CO, MANUFACTURER, WAREHOUSE }
+@cds.search: { MATNR, WAREHOUSE_STATUS, EAN11, MFRPN, LGNUM, MFRNR, MAKTX, CHARG, PLANT, DIN, VKBUR }
 @cds.persistence.exists
-entity INVENTORYBYLOT // @(restrict: [
-//      { grant: 'READ', where: 'MANUFACTURER_MFRPN = $user.ManufacturerNumber'  },
-//      { grant: 'READ', where: `$user.email like '%@mckesson.com%'`}
-// ])
+entity INVENTORYBYLOT 
 {
         
-    key SKU                     : String(40);
-        PRODUCT_CODE_1          : String(16);
-        //PRODUCT_DESCRIPTION : String(40);
-        SIZE                        : String(30);
-        LOT_CHARG                   : String(10);
-        EXPIRY_DATE_VFDAT           : String(8);
+    key MATNR                       : String(40);
         WAREHOUSE_STATUS            : String(4);
-        QTY_ON_HAND                 : Decimal(36,14);
+        EAN11                       : String(18);
+        ON_HAND                     : Decimal(38,2);
+        MFRPN                       : String(40);
         DAYS_UNTIL_EXPIRY           : Integer;
-        SALES_ORGANIZATION_VKORG    : String(18);
-        SALES_OFFICE_VKBUR          : String(4);
-        MANUFACTURER_MFRPN          : String(10);
-        PROFIT_CENTER_PRCTR         : String(10);
+        LGNUM                       : String(4);
+        UNIT                        : String(3);
+        MFRNR                       : String(10);
+        SIZE                        : String(70);
+        MAKTX                       : String(40);
+        CHARG                       : String(10);
+        VFDAT                       : String(8);
+        DIN                         : String(100);
+        PLANT                       : String(18);
+        VKBUR                       : String(4);
 }
 // Inventory by Lot Product Code filter
 define view INVBYLOTPRODUCTCODE as
     select from INVENTORYBYLOT distinct {
-        key PRODUCT_CODE_1
+        key MFRPN,
+            MAKTX,
+            MFRNR
 };
 // Inventory by Lot Lot filter
 define view INVBYLOTLOT as
     select from INVENTORYBYLOT distinct {
-        key LOT_CHARG
+        key CHARG,
+            MFRNR
 };
 // Inventory by Lot Warehouse filter
 define view INVBYLOTWAREHOUSE as
     select from INVENTORYBYLOT distinct {
-        key WAREHOUSE_STATUS
+        key WAREHOUSE_STATUS,
+            MFRNR
+};
+define view INVBYLOTMFRNR as
+    select from INVENTORYBYLOT distinct {
+        key MFRNR
+};
+define view INVBYLOTVKBUR as
+    select from INVENTORYBYLOT distinct {
+        key VKBUR
 };
 
 // Accounts Receivable
 // Security attributes to match
 @cds.search: { VKORG, BILL_TO, NAME1, BSTKD, BELNR, ZTERM, STORE_SHIP_TO, BLART, MFRNR }
 @cds.persistence.exists
-entity OPENAR //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity OPENAR 
 {
         CAL_1_30            : Decimal(24,2);
         CAL_31_60           : Decimal(24,2);
@@ -273,42 +288,68 @@ define view OPENARCUSTOMER as
 };
 // Inventory Valuation
 // Security attributes to match:??
-@cds.search: { SKU, PRODUCT_CODE, PRODUCT_DESCRIPTION, CO }
+@cds.search: { PLANT, LGNUM, MATNR, MAKTX, MFRPN,VKBUR,MFRNR }
 @cds.persistence.exists
-entity INVENTORYVALUATION //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity INVENTORYVALUATION 
 {
-        SKU_MATNR                   : String(40);
-    key PRODUCT_CODE                : String(40);
-        PRODUCT_DESCRIPTION_NORMT   : String(18);
-        UNIT_COST_CAL_UNIT_COST     : Decimal(11,2);
-        TOTAL_COST_SALK3            : Decimal(13,2);
-        OPEN_STOCK                  : Decimal(38,14);
-        QUARANTINE                  : Decimal(38,14);
-        DAMAGE_DESTRUCTION          : Decimal(38,14);
-        RETAINS                     : Decimal(38,14);
-        RETURNS_CAL                 : Decimal(38,14);
-    key CO_VKORG                    : String(4);
-        SALES_OFFICE_VKBUR          : String(10);
-        MANUFACTURER_MFRNR          : String(10);
-        PROFIT_CENTER_PRCTR         : String(4);
-    
+        PLANT                       : String(4);
+        LGNUM                       : String(4);
+        MATNR                       : String(40);
+        MAKTX                       : String(40);
+    key MFRPN                       : String(40);
+        DIN                         : String(100);
+        SIZE                        : String(70);
+        VKBUR                       : String(10);
+        MFRNR                       : String(10);
+        WAERS                       : String(5);
+        UNIT_PRICE                  : Decimal(11,2);
+        TOTAL_COST                  : Decimal(38,2);
+        AVAILABLE_COST              : Decimal(38,2);
+        QUARANTINE_COST             : Decimal(38,2);
+        RETAINS_COST                : Decimal(38,2);
+        QUALITY_HOLD_COST           : Decimal(38,2);
+        RETURNS_COST                : Decimal(38,2);
+        RECALL_COST                 : Decimal(38,2);
+        INVENTORY_HOLD_COST         : Decimal(38,2);
+        RELABEL_COST                : Decimal(38,2);
+        DAMAGE_DESTRUCTION_COST     : Decimal(38,2);
+        SAMPLE_COST                 : Decimal(38,2);
+        UNIT                        : String(3);
+        QUAN                        : Decimal(38,2);
+        SAMPLE_QTY                  : Decimal(38,2);
+        DAMAGE_DESTRUCTION_QTY      : Decimal(38,2);
+        RELABEL_QTY                 : Decimal(38,2);
+        INVENTORY_HOLD_QTY          : Decimal(38,2);
+        RECALL_QTY                  : Decimal(38,2);
+        RETURNS_QTY                 : Decimal(38,2);
+        QUALITY_HOLD_QTY            : Decimal(38,2);
+        RETAINS_QTY                 : Decimal(38,2);
+        QUARANTINE_QTY              : Decimal(38,2);
+        AVAILABLE_QTY               : Decimal(38,2);   
 }
 
 define view INVVALPROD as
     select from INVENTORYVALUATION distinct {
-        key PRODUCT_CODE
+        key MFRPN,
+            MFRNR
 };
 define view INVVALPRODDESC as
     select from INVENTORYVALUATION distinct {
-        key PRODUCT_DESCRIPTION_NORMT
+        key MAKTX,
+            MFRNR
+};
+define view INVVALMFRNR as
+    select from INVENTORYVALUATION distinct {
+        key MFRNR
+};
+define view INVVALVKBUR as
+    select from INVENTORYVALUATION distinct {
+        key VKBUR
 };
 
 // Invoice History
 // Security attributes to match: ??
-@cds.search: { ORT01, VKORG, BKTXT, KUNNR, LFDAT, BELNR, BUDAT, NAME1, AUBEL, PSTLZ, REGIO, BSTKD, SHIP_TO, TRACKN, BLART, MFRNR }
+@cds.search: { ORT01, VKORG, BKTXT, KUNNR, LFDAT, BELNR, BUDAT, NAME1, AUBEL, PSTLZ, REGIO, BSTKD, SHIP_TO, TRACKN, CURRENT, BLART, MFRNR }
 @cds.persistence.exists
 entity INVOICEHISTORY 
 {
@@ -332,9 +373,13 @@ entity INVOICEHISTORY
         SHIP_TO	    : String(10);
         TRACKN	    : String(35);
         BLART	    : String(2);
+        CURRENT     : String(1);
         MFRNR	    : String(10);
 }
-
+define view IHCUSTOMERID as
+    select from INVOICEHISTORY distinct {
+        key KUNNR
+};
 // Invoice History Customer filter
 define view IHCUSTOMER as
     select from INVOICEHISTORY distinct {
@@ -392,10 +437,7 @@ define view IHPROVINCE as
     CO_VKORG
 }
 @cds.persistence.exists
-entity SALESBYCURRENT //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity SALESBYCURRENT 
 {
     key INVOICE_CREDIT_VBELN        : String(10);
         PURCHASE_ORDER_BSTKD        : String(35);
@@ -478,10 +520,7 @@ define view SBCSHIPTO as
     CO_VKORG 
 }
 @cds.persistence.exists
-entity SALESBYHISTORICAL //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity SALESBYHISTORICAL 
 {
     key INVOICE_CREDIT              : Integer64;
         INVOICE_DATE                : Date;
@@ -538,10 +577,7 @@ entity SALESBYHISTORICAL //@(restrict: [
     CAL_TERM
 }
 @cds.persistence.exists
-entity CUSTOMERMASTER //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity CUSTOMERMASTER 
 {
     key KUNN2_BILLTO	: String(10);	
         STRAS_BILLTO	: String(35);     
@@ -595,10 +631,7 @@ define view CAL_CUST_STATUS as
     MFRNR
 }
 @cds.persistence.exists
-entity SHIPPINGHISTORY //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity SHIPPINGHISTORY 
 {
         CARRIER	            : String(10);
         VKORG	            : String(4);
@@ -644,7 +677,6 @@ define view SHTRACKING as
 };
 
 // Pricing
-// Security attributes to match: ??
 @cds.search: { 
     VKORG,
     KSCHL,
@@ -677,7 +709,6 @@ define view PRICINGPRODUCTDESC as
 };
 
 // Open Orders
-// Security attributes to match: ??
 @cds.search: { 
     KUNNR,	
     VDATU,	 
@@ -692,10 +723,7 @@ define view PRICINGPRODUCTDESC as
     MFRNR
 }
 @cds.persistence.exists
-entity OPENORDERS //@(restrict: [
-//     { grant: 'READ', where: 'MANUFACTURER = $user.MANUFACTURER'  },
-//     { grant: 'READ', to: 'Internal'}
-// ])
+entity OPENORDERS 
 {
     key KUNNR	        : String(10);
         VDATU	        : String(10);
@@ -767,36 +795,40 @@ entity RETURNS
 //  Returns Customer filter
 define view RETCUST as
     select from RETURNS distinct {
-        key CUSTOMER_NAME_NAME1
+        key CUSTOMER_NAME_NAME1,
+            MANUFACTURER_MFRNR
 };
 //  Returns Reason filter
 define view RETREASON as
     select from RETURNS distinct {
-        key REASON_BEZEI
+        key REASON_BEZEI,
+            MANUFACTURER_MFRNR
 };
 //  Returns RGA filter
 define view RETRGA as
     select from RETURNS distinct {
-        key RGA_VBELN
+        key RGA_VBELN,
+            MANUFACTURER_MFRNR
 };
-
-
-// Returns
-// Security attributes to match: ??
+define view RETVKORG as
+    select from RETURNS distinct {
+        key CO_VKORG
+};
+define view RETMFRNR as
+    select from RETURNS distinct {
+        key MANUFACTURER_MFRNR
+};
+define view RETVKBUR as
+    select from RETURNS distinct {
+        key SALES_OFFICE_VKBUR
+};
+define view RETPRCTR as
+    select from RETURNS distinct {
+        key PROFIT_CENTER_PRCTR
+};
 @cds.search: { KUNRE_ANA, KUNWE_ANA, VKORG,	BSTKD, VBELN, MATNR, MAKTX, NAME1, MFRNR }
 @cds.persistence.exists
-entity BACKORDERS //@(restrict: [
-    // Apply read access restriction only if the user's preferred_name does not contain '@mckesson.com'
-    // { 
-    //     grant: 'READ', 
-    //     where: `VKORG = $user.SalesOrg AND MFRNR = $user.ManufacturerNumber`// Add this line to bypass for @mckesson.com users
-    // },
-    // // Grant unrestricted read access for users with preferred_name containing '@mckesson.com'
-    // {
-    //     grant: 'READ',
-    //     where: `$user.preferred_username like '%@mckesson.com%'`
-    // }
-//])
+entity BACKORDERS 
 {
         DATE_DIFF           : Integer;	 
     key KUNRE_ANA           : String(10);	
@@ -819,36 +851,34 @@ entity BACKORDERS //@(restrict: [
 //  Back Orders Product Name filter
 define view BOPRODUCTDESC as
     select from BACKORDERS distinct {
-        key MAKTX
+        key MAKTX,
+            MFRNR
 };
 
 //  Back Orders Bill To filter
 define view BOBILLTO as
     select from BACKORDERS distinct {
-        key KUNRE_ANA
+        key KUNRE_ANA,
+            MFRNR
 
 };
-
-
 //  Back Orders Ship To filter
 define view BOSHIPTO as
     select from BACKORDERS distinct {
-        key KUNWE_ANA
+        key KUNWE_ANA,
+            MFRNR
+};
+define view BOMFRNR as
+    select from BACKORDERS distinct {
+        key MFRNR
+};
+define view BOVKORG as
+    select from BACKORDERS distinct {
+        key VKORG
 };
 
 @cds.persistence.exists
-entity MAINPAGESUMMARY //@(restrict: [
-    // Apply read access restriction only if the user's preferred_name does not contain '@mckesson.com'
-    // { 
-    //     grant: 'READ', 
-    //     where: `VKORG = $user.SalesOrg AND MFRNR = $user.ManufacturerNumber`// Add this line to bypass for @mckesson.com users
-    // },
-    // // Grant unrestricted read access for users with preferred_name containing '@mckesson.com'
-    // {
-    //     grant: 'READ',
-    //     where: `$user.preferred_username like '%@mckesson.com%'`
-    // }
-//])
+entity MAINPAGESUMMARY 
 {
         UNITS_SHIPPED_FKIMG         : Decimal(23,3);
         TOTAL_SALES_AMOUNT_NETWR    : Decimal(20,2);
@@ -864,18 +894,7 @@ define view MPSYEAR as
 };
 
 @cds.persistence.exists
-entity MAINPAGEINVENTORY //@(restrict: [
-    // Apply read access restriction only if the user's preferred_name does not contain '@mckesson.com'
-    // { 
-    //     grant: 'READ', 
-    //     where: `VKORG = $user.SalesOrg AND MFRNR = $user.ManufacturerNumber`// Add this line to bypass for @mckesson.com users
-    // },
-    // // Grant unrestricted read access for users with preferred_name containing '@mckesson.com'
-    // {
-    //     grant: 'READ',
-    //     where: `$user.preferred_username like '%@mckesson.com%'`
-    // }
-//])
+entity MAINPAGEINVENTORY
 {
     key QUAN_AVAILABLE_QUANTITY  : Decimal(38, 2);
     OPEN_STOCK          : Decimal(38, 2);
@@ -889,18 +908,7 @@ entity MAINPAGEINVENTORY //@(restrict: [
 }
 
 @cds.persistence.exists
-entity MAINPAGEUNIT //@(restrict: [
-    // Apply read access restriction only if the user's preferred_name does not contain '@mckesson.com'
-    // { 
-    //     grant: 'READ', 
-    //     where: `VKORG = $user.SalesOrg AND MFRNR = $user.ManufacturerNumber`// Add this line to bypass for @mckesson.com users
-    // },
-    // // Grant unrestricted read access for users with preferred_name containing '@mckesson.com'
-    // {
-    //     grant: 'READ',
-    //     where: `$user.preferred_username like '%@mckesson.com%'`
-    // }
-//])
+entity MAINPAGEUNIT 
 {
         CALYEAR             : Integer;
     key MFRNR               : String(10);

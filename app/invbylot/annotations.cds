@@ -3,21 +3,23 @@ using INVENTORY as service from '../../srv/service';
 annotate INVENTORY.INVENTORYBYLOT with @(
     odata: {
         filterable: {
-            SKU: true,
-            PRODUCT_CODE: true, 
-            PRODUCT_DESCRIPTION: true, 
-            SIZE:true,
-            LOT:true,
-            WAREHOUSE:true,
-            UPC:true,
-            CO: true,
-            MANUFACTURER: true
+            MATNR: true, 
+            WAREHOUSE_STATUS: true, 
+            EAN11: true, 
+            MFRPN: true, 
+            LGNUM: true, 
+            MFRNR: true, 
+            MAKTX: true, 
+            CHARG: true, 
+            PLANT: true, 
+            DIN: true, 
+            VKBUR: true
         }
     },
     UI : {
         SelectionFields  : [
-            PRODUCT_CODE_1, 
-            LOT_CHARG,
+            MFRPN, 
+            CHARG,
             WAREHOUSE_STATUS
             
         ],
@@ -25,42 +27,39 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : SKU,
+                Value : MATNR,
                 Label : 'SKU',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCT_CODE_1,
+                Value : MFRPN,
                 Label : 'Product Code',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : PRODUCT_DESCRIPTION,
-            //     Label : 'Product Description',
-            //     ![@HTML5.CssDefaults] : {width : '10rem'}
+            {
+                $Type : 'UI.DataField',
+                Value : MAKTX,
+                Label : 'Product Description',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
                 
-            // },
+            },
             {
                 $Type : 'UI.DataField',
                 Value : SIZE,
                 Label : 'Size',
-                ![@HTML5.CssDefaults] : {width : '3rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : LOT_CHARG,
-                Label : 'LOT',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                Value : CHARG,
+                Label : 'Batch Number',
             },
             {
                 $Type : 'UI.DataField',
-                Value : EXPIRY_DATE_VFDAT,
-                Label : 'Expiry Date',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                Value : VFDAT,
+                Label : 'Shelf Life or Best-Before Date',
                 
             },
             {
@@ -70,8 +69,18 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : QTY_ON_HAND,
+                Value : EAN11,
+                Label : 'UPC'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ON_HAND,
                 Label : 'Qty On Hand'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : UNIT,
+                Label : 'Base Unit of Measure'
             },
             {
                 $Type : 'UI.DataField',
@@ -81,55 +90,29 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : OPEN_STOCK,
-                Label : 'Open Stock'
+                Value : LGNUM,
+                Label : 'Warehouse Number'
             },
             {
                 $Type : 'UI.DataField',
-                Value : QUARANTINE,
-                Label : 'Quarantine'
+                Value : DIN,
+                Label : 'DIN'
             },
             {
                 $Type : 'UI.DataField',
-                Value : DAMAGE_DESTRUCTION,
-                Label : 'Damage Destruction'
+                Value : PLANT,
+                Label : 'Plant'
             },
             {
                 $Type : 'UI.DataField',
-                Value : RETAINS,
-                Label : 'Retains'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : RETURNS_CAL,
-                Label : 'Returns'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : RECALLS,
-                Label : 'Recalls'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : SALES_ORGANIZATION_VKORG,
-                Label : 'Sales Organization'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : SALES_OFFICE_VKBUR,
+                Value : VKBUR,
                 Label : 'Sales Office'
             },
             {
                 $Type : 'UI.DataField',
-                Value : MANUFACTURER_MFRPN,
+                Value : MFRNR,
                 Label : 'Manufacturer'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : PROFIT_CENTER_PRCTR,
-                Label : 'Profit Center'
             }
-
         ],
     },
     
@@ -137,8 +120,8 @@ annotate INVENTORY.INVENTORYBYLOT with @(
 )
 
 {   
-    SKU@(title: 'SKU');
-    PRODUCT_CODE_1@(
+    MATNR@(title: 'SKU');
+    MFRPN@(
         title: 'Product Code',
         Common: {
             ValueListWithFixedValues,
@@ -148,37 +131,43 @@ annotate INVENTORY.INVENTORYBYLOT with @(
                 Label : 'Product Code',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PRODUCT_CODE_1',
-                        ValueListProperty : 'PRODUCT_CODE_1'
-                    }
+                        $Type : 'Common.ValueListParameterInOut',
+                        LocalDataProperty : 'MFRPN',
+                        ValueListProperty : 'MFRPN'
+                    },
+                    {
+                        $Type             : 'Common.ValueListParameterDisplayOnly', //Displays additional information from the entity set of the value help 
+                        ValueListProperty : 'MAKTX',
+                    },
+                    
                 ]
             },
         } 
     
     );
-    // PRODUCT_DESCRIPTION@(title: 'Product Description');
+    MAKTX@(title: 'Product Description');
     SIZE@(title: 'Size');
-    LOT_CHARG@(
-        title: 'Lot #',
+    CHARG@(
+        title: 'Batch Number',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTLOT',
-                Label : 'Warehouse/Status',
+                Label : 'Batch Number',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'LOT_CHARG',
-                        ValueListProperty : 'LOT_CHARG'
+                        LocalDataProperty : 'CHARG',
+                        ValueListProperty : 'CHARG'
                     }
                 ]
             },
         } 
     
     );
-    EXPIRY_DATE_VFDAT@(title: 'Expiry Date');
+    VFDAT@(title: 'Shelf Life or Best-Before Date');
+    EAN11@(title: 'UPC');
     WAREHOUSE_STATUS@(
         title: 'Warehouse Status',
         Common: {
@@ -198,16 +187,46 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         } 
     
     );
-    QTY_ON_HAND@(title: 'On Hand');
+    ON_HAND@(title: 'On Hand');
+    UNIT@(title: 'Base Unit of Measure');
     DAYS_UNTIL_EXPIRY@(title: 'Report Date');
-    OPEN_STOCK@(title: 'Open Stock');
-    QUARANTINE@(title: 'Quarantine');
-    DAMAGE_DESTRUCTION@(title: 'Damage/Destruction');
-    RETAINS@(title: 'Retains');
-    RETURNS_CAL@(title: 'Returs');
-    RECALLS@(title: 'Recalls');
-    SALES_ORGANIZATION_VKORG@(title: 'Sales Org');
-    SALES_OFFICE_VKBUR@(title: 'Sales Office');
-    MANUFACTURER_MFRPN@(title:'Manufacturer');
-    PROFIT_CENTER_PRCTR@(title: 'Profit Center');
+    LGNUM@(title:'Warehouse Number');
+    DIN@(title: 'DIN');
+    PLANT@(title:'Plant');
+    VKBUR@(title: 'Sales Office',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVBYLOTVKBUR',
+                Label : 'Sales Office',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKBUR',
+                        ValueListProperty : 'VKBUR'
+                    }
+                ]
+            },
+        } 
+    
+    );
+    MFRNR@(title:'Manufacturer',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVBYLOTMFRNR',
+                Label : 'Warehouse/Status',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        } 
+    
+    );
 };

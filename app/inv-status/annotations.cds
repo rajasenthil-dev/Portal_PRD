@@ -4,12 +4,12 @@ annotate INVENTORY.INVENTORYSTATUS with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-              SKU_MATNR: true,
-                PRODUCT_CODE: true,
-                PRODUCTDESCRIPTION_EN: true,
-                MANUFACTURER: true,
-                SIZE: true,
-                CO: true,
+            SKU_MATNR: true,
+            PRODUCT_CODE: true,
+            PRODUCT_DESCRIPTION: true,
+            MANUFACTURER_MFRPN: true,
+            SIZE: true,
+            VKBUR: true,
         }
     },
     UI : {
@@ -33,7 +33,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : CON_SIZE_UOM_SIZE,
+                Value : SIZE,
                 Label : 'Size',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
             },
@@ -73,6 +73,13 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : QUALITY_HOLD,
+                Label : 'Quality Hold',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+                
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : RETURNS_CAL,
                 Label : 'Returns',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
@@ -87,13 +94,35 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : SALES_ORGANIZATION_VKORG,
-                Label : 'Sales Org',
+                Value : INVENTORY_HOLD,
+                Label : 'Inventory Hold',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
+                
             },
             {
                 $Type : 'UI.DataField',
-                Value : SALES_OFFICE_VKBUR,
+                Value : RELABEL_QTY,
+                Label : 'Re-Label',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+                
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SAMPLE_QTY,
+                Label : 'Sample',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+                
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : UNIT,
+                Label : 'Base Unit of Measure',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+                
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VKBUR,
                 Label : 'Sales Office',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
             },
@@ -101,12 +130,6 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MANUFACTURER_MFRPN,
                 Label : 'Manufacturer',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : PROFIT_CENTER_PRCTR,
-                Label : 'Profit Center',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],
@@ -131,16 +154,51 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    CON_SIZE_UOM_SIZE@(title: 'Size');
-    PRODUCTDESCRIPTION_EN@(title: 'Product Description');
+    SIZE@(title: 'Size');
+    PRODUCT_DESCRIPTION@(title: 'Product Description');
     OPEN_STOCK@(title: 'Open Stock');
     QUARANTINE@(title: 'Quarantine');
     DAMAGE_DESTRUCTION@(title: 'Damage/Destruction');
-    RETAINS_1@(title: 'Retains');
+    RETAINS@(title: 'Retains');
+    QUALITY_HOLD@(title:'Quality Hold');
     RETURNS_CAL@(title: 'Returns');
     RECALLS@(title: 'Recalls');
-    SALES_ORGANIZATION_VKORG@(title: 'Sales Org');
-    SALES_OFFICE@(title: 'Sales Office');
-    MANUFACTURER@(title: 'Manufacturer'); 
-    PROFIT_CENTER@(title: 'Profit Center'); 
+    INVENTORY_HOLD@(title:'Inventory Hold');
+    RELABEL_QTY@(title:'Re-Label');
+    SAMPLE_QTY@(title:'Sample');
+    UNIT@(title:'Base Unit of Measure');
+    VKBUR@(title: 'Sales Office',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSTATUSVKBUR',
+                Label : 'Warehouse/Status',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKBUR',
+                        ValueListProperty : 'VKBUR'
+                    }
+                ]
+            },
+        }
+    );
+    MANUFACTURER_MFRPN@(title: 'Manufacturer',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSTATUSMFRNR',
+                Label : 'Warehouse/Status',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MANUFACTURER_MFRPN',
+                        ValueListProperty : 'MANUFACTURER_MFRPN'
+                    }
+                ]
+            },
+        }
+    ); 
 };

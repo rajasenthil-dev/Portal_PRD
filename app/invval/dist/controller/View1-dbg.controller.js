@@ -381,8 +381,11 @@ sap.ui.define([
             return oDateFormat.format(oDate);
         },
 
-        _removeLeadingZeros: function (sku) {
-            return sku ? String(parseInt(sku, 10)) : sku;
+        _removeLeadingZeros: function (value) {
+            if(typeof value === "string" && /^\d+/.test(value)) {
+                return String(Number(value))
+            }
+            return value
         }
     });
 });

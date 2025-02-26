@@ -4,13 +4,6 @@
 			"object_privileges": [
 				{
 					"type": "VIEW",
-					"name": "Billing_Document_with_Batches_1",
-					"privileges_with_grant_option": [
-						"SELECT"
-					]
-				},
-				{
-					"type": "VIEW",
 					"name": "REP_MD_MATERIAL",
 					"privileges_with_grant_option": [
 						"SELECT"
@@ -18,7 +11,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Inventory_Status_C_View_V5",
+					"name": "REP_TPMMWM_INVENTORY_STATUS_MP",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
@@ -46,7 +39,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Inventory_Lot_V1",
+					"name": "REP_TPMMWM_INV_BY_LOT",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
@@ -60,7 +53,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Inventory_Valuation_View_V2",
+					"name": "REP_TPMMWM_WAREHOUSE_VALUATION",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]

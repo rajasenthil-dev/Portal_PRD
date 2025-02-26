@@ -1,119 +1,117 @@
 {
-  "SYNBILLINGDOC": {
-    
-  },
   "SYNREPMATERIALDOC": {
     "target": {
       "object": "REP_MD_MATERIAL",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNINVENTORYSTATUSDOC": {
 	"target": {
-      "object": "Inventory_Status_C_View_V5",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "object": "REP_TPMMWM_INVENTORY_STATUS_MP",
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNINVENTORYAUDITTRAILDOC": {
 	"target": {
       "object": "REP_TPMMIN_MATDOC_02",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNCASHJOURNALDOC": {
 	"target": {
       "object": "REP_TPFICJ_01",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNINVENTORYSNAPSHOTDOC": {
 	"target": {
       "object": "Inventory_Snapshot_C_View_V2",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNINVENTORYBYLOTDOC": {
 	"target": {
-      "object": "Inventory_Lot_V1",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "object": "REP_TPMMWM_INV_BY_LOT",
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNOPENARDOC": {
 	"target": {
       "object": "REP_TPFICJ_02",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNINVENTORYVALUATIONDOC": {
 	"target": {
-      "object": "Inventory_Valuation_View_V2",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "object": "REP_TPMMWM_WAREHOUSE_VALUATION",
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNINVOICEHISTORYDOC": {
 	"target": {
-      "object": "70991A916E38463FB4C634988731A9CF"
+      "object": "REP_TPFICJ_03",
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNSALESBYCURRENTDOC": {
 	"target": {
       "object": "Current_Historical_Sales_by_Customer_by_Product_UN",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNCUSTOMERMASTERDOC": {
 	"target": {
       "object": "REP_MD_BILL_SHIPTO",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNSHIPPINGHISTORYDOC": {
 	"target": {
       "object": "REP_TPSDBL_01",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNPRICINGDOC": {
 	"target": {
 	  "object": "REP_TPSDPC_01",
-	  "schema": "70991A916E38463FB4C634988731A9CF"
+	  "schema": "MCK_RQ2_300"
 	}
   },
   "SYNOPENORDERSDOC": {
 	"target": {
 	  "object": "PRO_MFR_Openorders",
-	  "schema": "70991A916E38463FB4C634988731A9CF"
+	  "schema": "MCK_RQ2_300"
 	}
 	
   },
   "SYNRETURNSDOC": {
 	"target": {
 	  "object": "Returns_Reports_View_V3",
-	  "schema": "70991A916E38463FB4C634988731A9CF"
+	  "schema": "MCK_RQ2_300"
 	}
   },
   "SYNBACKORDERSDOC": {
     "target": {
       "object": "REP_TPSDOR_01",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNMAINPAGESUMMARYDOC": {
     "target": {
       "object": "Main_Page_Summary1_V4_Agg_Cons",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNMAINPAGEINVENTORYDOC": {
     "target": {
       "object": "Main_Page_Summary2_Agg_Cons",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   },
   "SYNMAINPAGEUNITDOC": {
     "target": {
       "object": "Main_Page_Summary3_2",
-      "schema": "70991A916E38463FB4C634988731A9CF"
+      "schema": "MCK_RQ2_300"
     }
   }
 }

@@ -7,7 +7,7 @@ modules:
   type: nodejs
   path: gen/srv
   requires:
-  - name: mck-portal-ds-db
+  - name: mck-portal-ds-db-3
   - name: cross-container-service-1
   - name: mck-portal-auth
   - name: mck-portal-destination-service
@@ -21,11 +21,11 @@ modules:
     readiness-health-check-type: http
   build-parameters:
     builder: npm
-- name: mck-portal-db-deployer
+- name: mck-portal-db-3-deployer
   type: hdb
   path: gen/db
   requires:
-  - name: mck-portal-ds-db
+  - name: mck-portal-ds-db-3
     properties:
       TARGET_CONTAINER: ~{hdi-service-name}
     parameters:
@@ -368,12 +368,12 @@ resources:
     service: xsuaa
     service-name: mck-portal-auth
     service-plan: application
-- name: mck-portal-ds-db
+- name: mck-portal-ds-db-3
   type: com.sap.xs.hdi-container
   parameters:
     config:
       database_id: 451e8954-27cd-4d2f-9402-3ca1944484c7
-      schema: 70991A916E38463FB4C634988731A9CF
+      schema: MCK_RQ2_300
     service: hana
     service-plan: hdi-shared
   properties:
@@ -441,7 +441,7 @@ resources:
 - name: cross-container-service-2
   type: org.cloudfoundry.existing-service
   parameters:
-    service-name: mck-portal-ds-db
+    service-name: mck-portal-ds-db-3
   properties:
     the-service-name: ${service-name}
 parameters:

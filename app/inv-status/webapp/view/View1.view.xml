@@ -100,11 +100,11 @@
                         <t:columns>
                             <t:Column id="_IDGenColumn" width='7.813rem'>
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU", "leadingProperty": "SKU", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU_MATNR", "leadingProperty": "SKU_MATNR", "columnIndex": 0}'/>
                                     </t:customData>
                                 <Text id="_IDGenText6" text="SKU"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText9" text="{path: 'SKU'}" />
+                                    <Text id="_IDGenText9" text="{path: 'SKU_MATNR'}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn6" width='7.813rem'>

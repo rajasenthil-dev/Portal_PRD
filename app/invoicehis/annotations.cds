@@ -24,80 +24,68 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            KUNNR, SHIP_TO, BELNR, BSTKD, BUDAT, BLART, REGIO
+            KUNNR, NAME1, SHIP_TO, BELNR, BSTKD, BUDAT, BLART, REGIO, CURRENT
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : KUNNR,
-                Label : 'Customer',
-                ![@HTML5.CssDefaults] : {width : '8rem'}
+                Label : 'Customer'
             },
             {
                 $Type : 'UI.DataField',
                 Value : NAME1,
-                Label : 'Customer Name',
-                ![@HTML5.CssDefaults] : {width : '8rem'}
+                Label : 'Customer Name'
             },
             {
                 $Type : 'UI.DataField',
                 Value : ORT01,
-                Label : 'City',
-                ![@HTML5.CssDefaults] : {width : '6rem'}
+                Label : 'City'
             },
             {
                 $Type : 'UI.DataField',
                 Value : REGIO,
-                Label : 'Province',
-                ![@HTML5.CssDefaults] : {width : '6rem'}
+                Label : 'Province'
             },
             {
                 $Type : 'UI.DataField',
                 Value : PSTLZ,
-                Label : 'Postal Code',
-                ![@HTML5.CssDefaults] : {width : '5rem'}
+                Label : 'Postal Code'
             },
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO,
-                Label : 'Ship To',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+                Label : 'Ship To'
             },
             {
                 $Type : 'UI.DataField',
                 Value : BSTKD,
-                Label : 'Purchase Order',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+                Label : 'Purchase Order'
             },
             {
                 $Type : 'UI.DataField',
                 Value : AUBEL,
-                Label : 'Order #',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Label : 'Order #'
             },
             {
                 $Type : 'UI.DataField',
                 Value : BELNR,
-                Label : 'Invoice #',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Label : 'Invoice #'
             },
             {
                 $Type : 'UI.DataField',
                 Value : BUDAT,
-                Label : 'Invoice Date',
-                ![@HTML5.CssDefaults] : {width : '5rem'}
+                Label : 'Invoice Date'
             },
             {
                 $Type : 'UI.DataField',
                 Value : TSL_AMOUNT,
-                Label : '$ Amount',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Label : '$ Amount'
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_PST,
-                Label : 'P.S.T.',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Label : 'P.S.T.'
             },
             {
                 $Type : 'UI.DataField',
@@ -126,9 +114,15 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : CURRENT,
+                Label : 'Current'
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : VKORG,
                 Label : 'CO'
             },
+            
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
@@ -143,7 +137,7 @@ Search.defaultSearchElement: true,
                 ValueListWithFixedValues,
                 ValueList : {
                     $Type : 'Common.ValueListType',
-                    CollectionPath : 'IHCUSTOMER',
+                    CollectionPath : 'IHCUSTOMERID',
                     Label : 'Customer',
                     Parameters : [
                         {
@@ -278,6 +272,7 @@ Search.defaultSearchElement: true,
     TRACKN@(title: 'Tracking #');	    
     LFDAT@(title: 'Delivery Date');	    
     BKTXT@(title: 'Comment');     
-    VKORG@(title: 'CO');	    
+    VKORG@(title: 'CO');
+    CURRENT@(title: 'Current');	    
     MFRNR@(title: 'Manufacturer');  
 };

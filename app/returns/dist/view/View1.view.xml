@@ -34,7 +34,7 @@
                     search="onSearch">
                     <sf:controlConfiguration>
                         <sf:ControlConfiguration id="_IDGenControlConfiguration1"
-							key="ERDAT"
+							key="DATE_ENTERED_FKDAT_ANA"
 							visibleInAdvancedArea="true"
 							conditionType="{
 								module: 'sap.ui.comp.config.condition.DateRangeType'

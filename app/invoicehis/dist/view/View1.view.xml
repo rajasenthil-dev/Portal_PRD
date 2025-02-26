@@ -52,6 +52,20 @@
                                 }"
                             />
                         </sf:controlConfiguration>
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                                key="CURRENT"
+                                visibleInAdvancedArea="true"
+                            >
+                            <!-- <sf:customControl>
+                                <ComboBox id="_IDGenComboBox" change="handleHistoricalChange">
+                                    <core:Item id="_IDGenItem" key="" text="All"></core:Item>
+                                    <core:Item id="_IDGenItem1" key="Y" text="Current"></core:Item>
+                                    <core:Item id="_IDGenItem2" key="N" text="Historical"></core:Item>
+                                </ComboBox>
+                            </sf:customControl> -->
+                            </sf:ControlConfiguration>
+                        </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                     <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
 

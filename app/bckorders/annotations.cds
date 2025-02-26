@@ -108,7 +108,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'Co.',
+                Label : 'Sales Org.',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -183,6 +183,38 @@ Search.defaultSearchElement: true,
         }
     );
     NAME1@(title: 'Ship To Name');
-    VKORG@(title: 'Co.');
-    MFRNR@(title: 'Manufacturer');   
+    VKORG@(title: 'Sales Org.',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'BOVKORG',
+                Label : 'Sales Org.',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        }
+    );
+    MFRNR@(title: 'Manufacturer',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'BOMFRNR',
+                Label : 'Manufacturer',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }
+    );   
 };

@@ -79,6 +79,50 @@ sap.ui.define([
                 }
             }.bind(this));
         },
+        // handleHistoricalChange: function (oEvent) {
+        //     // Get the selected key from the ComboBox
+        //     var sSelectedKey = oEvent.getSource().getSelectedKey();
+        
+        //     // Perform actions based on the selected key
+        //     switch (sSelectedKey) {
+        //         case "Y":
+        //             // Handle the "Current" selection
+        //             this._filterData("Y");
+        //             break;
+        //         case "N":
+        //             // Handle the "Historical" selection
+        //             this._filterData("N");
+        //             break;
+        //         default:
+        //             // Handle the "All" selection
+        //             this._filterData("");
+        //             break;
+        //     }
+        // },
+        
+        // _filterData: function (sFilterType) {
+        //     // Implement your logic to filter data based on the filter type
+        //     // For example, you can make an OData call to fetch the filtered data
+        //     var oModel = this.getView().getModel();
+        //     var sPath = "/INVOICEHISTORY";
+        //     var aFilters = [];
+        
+        //     if (sFilterType !== null) {
+        //         aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.EQ, sFilterType));
+        //     }
+        
+        //     oModel.read(sPath, {
+        //         filters: aFilters,
+        //         success: function (oData) {
+        //             // Handle the success scenario
+        //             console.log("Data fetched successfully:", oData);
+        //         },
+        //         error: function (oError) {
+        //             // Handle the error scenario
+        //             console.error("Error fetching data:", oError);
+        //         }
+        //     });
+        // },
         // _fetchVisibleData: function () {
         //     debugger
         //     const oModel = this.getView().getModel(); // OData v2 model

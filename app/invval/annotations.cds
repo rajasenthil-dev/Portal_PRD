@@ -4,107 +4,119 @@ annotate INVENTORY.INVENTORYVALUATION with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-            SKU_MATNRU: true,
-            PRODUCT_CODE: true,
-            PRODUCT_DESCRIPTION_NORMT: true,            
-            CO_VKORG: true,
+            PLANT: true,
+            LGNUM: true,
+            MATNR: true,            
+            MAKTX: true,
+            MFRPN: true,
+            MFRNR: true,
+            VKBUR: true
         }
     },
     UI : {
         SelectionFields  : [
-            PRODUCT_CODE,
-            PRODUCT_DESCRIPTION_NORMT
+            MFRPN,
+            MAKTX
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : SKU_MATNR,
+                Value : MATNR,
                 Label : 'SKU'
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCT_CODE,
+                Value : MFRPN,
                 Label : 'Product Code'
                 
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCT_DESCRIPTION_NORMT,
+                Value : MAKTX,
                 Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '20rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : UNIT_COST_CAL_UNIT_COST,
-                Label : 'Unit Cost',
-                ![@HTML5.CssDefaults] : {width : '4.65rem'}
+                Value : PLANT,
+                Label : 'Plant',
             },
             {
                 $Type : 'UI.DataField',
-                Value : TOTAL_COST_SALK3,
-                Label : 'Total Cost',
-                ![@HTML5.CssDefaults] : {width : '5rem'}
+                Value : UNIT_PRICE,
+                Label : 'Unit Price'
             },
             {
                 $Type : 'UI.DataField',
-                Value : OPEN_STOCK,
-                Label : 'Open Stock',
-                ![@HTML5.CssDefaults] : {width : '5.5rem'}
+                Value : TOTAL_COST,
+                Label : 'Total Cost'
             },
             {
                 $Type : 'UI.DataField',
-                Value : QUARANTINE,
-                Label : 'Quarantine',
-                ![@HTML5.CssDefaults] : {width : '5.75rem'}
+                Value : AVAILABLE_COST,
+                Label : 'Open Stock'
             },
             {
                 $Type : 'UI.DataField',
-                Value : DAMAGE_DESTRUCTION,
-                Label : 'Damage/Destruction',
-                ![@HTML5.CssDefaults] : {width : '9rem'}
+                Value : QUARANTINE_COST,
+                Label : 'Quarantine'
             },
             {
                 $Type : 'UI.DataField',
-                Value : RETAINS,
-                Label : 'Retains',
-                ![@HTML5.CssDefaults] : {width : '5rem'}
+                Value : DAMAGE_DESTRUCTION_COST,
+                Label : 'Damage/Destruction'
             },
             {
                 $Type : 'UI.DataField',
-                Value : RETURNS_CAL,
-                Label : 'Returns',
-                ![@HTML5.CssDefaults] : {width : '5rem'}
+                Value : RETAINS_COST,
+                Label : 'Retains'
             },
             {
                 $Type : 'UI.DataField',
-                Value : CO_VKORG,
-                Label : 'CO',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Value : QUALITY_HOLD_COST,
+                Label : 'Quality Hold'
             },
             {
                 $Type : 'UI.DataField',
-                Value : SALES_OFFICE_VKBUR,
-                Label : 'Sales Office',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Value : RETURNS_COST,
+                Label : 'Returns'
             },
             {
                 $Type : 'UI.DataField',
-                Value : MANUFACTURER_MFRNR,
-                Label : 'Manufacturer Number',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Value : RECALL_COST,
+                Label : 'Recalls'
             },
             {
                 $Type : 'UI.DataField',
-                Value : PROFIT_CENTER_PRCTR,
-                Label : 'Profit Center',
-                ![@HTML5.CssDefaults] : {width : '7rem'}
+                Value : INVENTORY_HOLD_COST,
+                Label : 'Inventory Hold'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RELABEL_COST,
+                Label : 'Re-labels'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SAMPLE_COST,
+                Label : 'Samples'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VKBUR,
+                Label : 'Sales Office'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR,
+                Label : 'Manufacturer Number'
             }
         ],
     },
 ){
-    SKU_MATNR@(title: 'SKU');
-    PRODUCT_CODE@( 
+    MATNR@(title: 'SKU');
+    MFRPN@( 
         title: 'Product Code',
         Common: {
             ValueListWithFixedValues,
@@ -115,13 +127,13 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PRODUCT_CODE',
-                        ValueListProperty : 'PRODUCT_CODE'
+                        LocalDataProperty : 'MFRPN',
+                        ValueListProperty : 'MFRPN'
                     }
                 ]
             },
         } );
-    PRODUCT_DESCRIPTION_NORMT@(
+    MAKTX@(
         title: 'Product Description',
         Common: {
             ValueListWithFixedValues,
@@ -132,22 +144,58 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PRODUCT_DESCRIPTION_NORMT',
-                        ValueListProperty : 'PRODUCT_DESCRIPTION_NORMT'
+                        LocalDataProperty : 'MAKTX',
+                        ValueListProperty : 'MAKTX'
                     }
                 ]
             },
         } 
     );
-    UNIT_COST_CAL_UNIT_COST@(title: 'Unit Cost');
-    TOTAL_COST_SALK3@(title: 'Total Cost');
-    OPEN_STOCK@(title: 'Open Stock');
-    QUARANTINE@(title: 'Quarantine');
-    DAMAGE_DESTRUCTION@(title: 'Damage/Destruction');
-    RETAINS@(title: 'Retains');
-    RETURNS_CAL@(title: 'Returns');
-    CO_VKORG@(title: 'CO');  
-    SALES_OFFICE_VKBUR@(title: 'Sales Office');
-    MANUFACTURER_MFRNR@(title: 'Manufacturer Number');
-    PROFIT_CENTER_PRCTR@(title: 'Profit Center'); 
+    PLANT@(title: 'Plant');
+    UNIT_PRICE@(title: 'Unit Price');
+    TOTAL_COST@(title: 'Total Cost');
+    AVAILABLE_COST@(title: 'Open Stock');
+    QUARANTINE_COST@(title: 'Quarantine');
+    DAMAGE_DESTRUCTION_COST@(title: 'Damage/Destruction');
+    RETAINS_COST@(title: 'Retains');
+    RETURNS_COST@(title: 'Returns');
+    INVENTORY_HOLD_COST@(title: 'Inventory Hold');
+    QUALITY_HOLD_COST@(title: 'Returns');
+    RECALL_COST@(title: 'Recalls');
+    RELABEL_COST@(title: 'Re-Labels');
+    SAMPLE_COST@(title: 'Samples'); 
+    VKBUR@(title: 'Sales Office',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVVALVKBUR',
+                Label : 'Product Description',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKBUR',
+                        ValueListProperty : 'VKBUR'
+                    }
+                ]
+            },
+        } 
+    );
+    MFRNR@(title: 'Manufacturer Number',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVVALMFRNR',
+                Label : 'Product Description',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        } 
+    );
 };

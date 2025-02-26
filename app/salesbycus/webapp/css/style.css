@@ -58,7 +58,11 @@
 }
 .imgBG {
     background: #fff;
-    padding:.25rem;
+    padding-top:.25rem;
+    padding-bottom:.25rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    border-radius: 10px;
 }
 
 .sapFDynamicPageFooter .sapFDynamicPageActualFooterControl.sapMIBar.footer {

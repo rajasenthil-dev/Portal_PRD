@@ -103,40 +103,23 @@
                         <t:columns>
                             <t:Column id="_IDGenColumn" width='7.813rem'>
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU_MATNR", "leadingProperty": "SKU_MATNR", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                 </t:customData>
                                 <Text id="_IDGenText3" text="SKU"></Text>
                                 <t:template>
-                                    <Text id="sku" text="{path: 'SKU_MATNR', formatter: '._removeLeadingZeros'}"/>
+                                    <Text id="sku" text="{path: 'MATNR', formatter: '._removeLeadingZeros'}"/>
                                 </t:template>     
                             </t:Column>
                             <t:Column id="_IDGenColumn4" width='7.813rem'>
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT_CODE", "leadingProperty": "PRODUCT_CODE", "columnIndex": 1}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 1}'/>
                                 </t:customData>
                                 <Text id="_IDGenText4" text="Product Code"></Text>
                                 <t:template>
-                                    <Text id="productCode" text="{path: 'PRODUCT_CODE', formatter: '._removeLeadingZeros'}"/>
+                                    <Text id="productCode" text="{path: 'MFRPN', formatter: '._removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" width='7.813rem'>
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "UNIT_COST_CAL_UNIT_COST", "leadingProperty": "UNIT_COST_CAL_UNIT_COST", "columnIndex": 3}'/>
-                                </t:customData>
-                                <Text id="_IDGenText5" text="Unit Cost"></Text>
-                                <t:template>
-                                    <Text id="unitCost" text="{path: 'UNIT_COST_CAL_UNIT_COST', formatter: '._formatCurrency'}"/>
-                                </t:template>                           
-                            </t:Column>
-                            <t:Column id="_IDGenColumn6" width='7.813rem'>
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "TOTAL_COST_SALK3", "leadingProperty": "TOTAL_COST_SALK3", "columnIndex": 4}'/>
-                                </t:customData>
-                                <Text id="_IDGenText6" text="Total Cost"></Text>
-                                <t:template>
-                                    <Text id="totalCost" text="{path: 'TOTAL_COST_SALK3', formatter: '._formatCurrency'}"/>
-                                </t:template>
-                            </t:Column>
+                            
                         </t:columns>
                     </t:Table>
                 </st:SmartTable>
