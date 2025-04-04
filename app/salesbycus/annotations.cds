@@ -31,17 +31,24 @@ Search.defaultSearchElement: true,
         SelectionFields  : [
             INVOICE_CREDIT_VBELN,
             PRODUCT_DESCRIPTION_MAKTX,
-            TYPE_FKART,
+            VTEXT_FKART,
             WAREHOUSE,
             LOT_CHARG,
             BILL_TO_NAME,
             SHIP_TO_NAME,
             INVOICE_DATE_FKDAT,
             EXPIRY_DATE_VFDAT,
-            DELEVERY_DATE_VDATU
+            DELEVERY_DATE_VDATU,
+            CURRENT
         ],
         
         LineItem  : [
+            {
+                $Type : 'UI.DataField',
+                Value : CURRENT,
+                Label : 'Current',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
             {
                 $Type : 'UI.DataField',
                 Value : INVOICE_CREDIT_VBELN,
@@ -86,14 +93,38 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : RBTXT,
+                Label : 'Storage Conditions',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : PRICE_CAL_UNIT_COST,
                 Label : 'Price',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
+                Value : UNIT_PRICE,
+                Label : 'Unit Price',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : AMOUNT_NETWR,
                 Label : '$ Amount',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : WAERK,
+                Label : 'SD Document Currency',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : AUGRU_AUFT,
+                Label : 'Order Reason',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -110,7 +141,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : TYPE_FKART,
+                Value : VTEXT_FKART,
                 Label : 'Type',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
@@ -170,8 +201,8 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : SPECIAL_HANDLING,
-                Label : 'Special Handling',
+                Value : TBTXT,
+                Label : 'Temp. Conditions',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -188,6 +219,12 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : WERKS,
+                Label : 'Plant',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : TRACKING_TRACKN,
                 Label : 'Tracking #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
@@ -200,6 +237,18 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : PATIENT_ID,
+                Label : 'Patient Id',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRPN,
+                Label : 'Manufacturer Part Number',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : COMMENT,
                 Label : 'Comment',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
@@ -208,6 +257,18 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : CO_VKORG,
                 Label : 'CO.',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VKBUR,
+                Label : 'Sales Office',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR,
+                Label : 'Manufacturer Number',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
         ],
@@ -232,9 +293,6 @@ Search.defaultSearchElement: true,
         } 
         
     );
-    INVOICE_DATE_FKDAT@(title: 'Invoice Date');
-    PURCHASE_ORDER_BSTKD@(title: 'Purchase Order');
-    SKU_MATNR@(title: 'SKU #');
     PRODUCT_DESCRIPTION_MAKTX@(
         title: 'Product Description',
         Common: {
@@ -254,14 +312,9 @@ Search.defaultSearchElement: true,
         }
         
     );
-    UNITS_PER_CASE@(title: 'Units Per Case');
-    QUANTITY_FKIMG@(title: 'Quantity');
-    PRICE_CAL_UNIT_COST@(title: 'Price');
-    AMOUNT_NETWR@(title: '$Amount');
     LOT_CHARG@(
         title: 'Lot #',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCLOT',
@@ -277,8 +330,7 @@ Search.defaultSearchElement: true,
         }
         
     );
-    EXPIRY_DATE_VFDAT@(title: 'Expiry Date');
-    TYPE_FKART@( 
+    VTEXT_FKART@( 
         title: 'Type',
         Common: {
             ValueListWithFixedValues,
@@ -289,16 +341,14 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'TYPE_FKART',
-                        ValueListProperty : 'TYPE_FKART'
+                        LocalDataProperty : 'VTEXT_FKART',
+                        ValueListProperty : 'VTEXT_FKART'
                     }
                 ]
             },
         }
         
     );
-    BILL_TO_KUNRE_ANA@(title: 'Bill To');
-    SHIP_TO_KUNWE_ANA@(title: 'Ship To');
     BILL_TO_NAME@(
         title: 'Bill To Name',
         Common: {
@@ -336,17 +386,9 @@ Search.defaultSearchElement: true,
         }
         
     );
-    ADDRESS_1@(title: 'Address 1');
-    ADDRESS_2@(title: 'Address 2');
-    CITY_ORT01@(title: 'City');
-    POSTAL_CODE_PSTLZ@(title: 'Postal Code');
-    PROVINCE_REGIO@(title: 'Province');
-    SPECIAL_HANDLING@(title: 'Special Handling');
-    UPC_EAN11@(title: 'UPC');
     WAREHOUSE@(
         title: 'Warehouse',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCWAREHOUSE',
@@ -362,10 +404,6 @@ Search.defaultSearchElement: true,
         }
         
     );
-    TRACKING_TRACKN@(title: 'Tracking #');
-    DELEVERY_DATE_VDATU@(title: 'Delivery Date');
-    COMMENT@(title: 'Comment');
-    CO_VKORG@(title: 'Co.');
 };
 
 

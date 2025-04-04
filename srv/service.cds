@@ -7,7 +7,6 @@ using RETREASON as ENTRETREASON from '../db/schema';
 using RETVKORG as ENTRETVKORG from '../db/schema';
 using RETMFRNR as ENTRETMFRNR from '../db/schema';
 using RETVKBUR as ENTRETVKBUR from '../db/schema';
-using RETPRCTR as ENTRETPRCTR from '../db/schema';
 
 using SHIPPINGHISTORY as ENTSHIPPINGHISTORY from '../db/schema';
 using SHINVOICE as ENTSHINVOICE from '../db/schema';
@@ -15,6 +14,8 @@ using SHCUSTOMER as ENTSHCUSTOMER from '../db/schema';
 using SHCARRIER as ENTSHCARRIER from '../db/schema';
 using SHTRACKING as ENTTRACKING from '../db/schema';
 using SHSHIPTO as ENTSHSHIPTO from '../db/schema';
+using SHMFRNR as ENTSHMFRNR from '../db/schema';
+using SHVKORG as ENTSHVKORG from '../db/schema';
 
 using BACKORDERS as ENTBACKORDERS from '../db/schema';
 using BOPRODUCTDESC as ENTBOPRODUCTDESC from '../db/schema';
@@ -31,7 +32,8 @@ using OOPROVINCE as ENTOOPROVINCE from '../db/schema';
 
 
 service PROCESSING {
-    // Returns Related Entities
+    // ℹ️ Returns Related Entities
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -42,6 +44,7 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETURNS as projection on ENTRETURNS;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -52,6 +55,7 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETCUST as projection on ENTRETCUST;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -62,6 +66,7 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETRGA as projection on ENTRETRGA; 
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -72,7 +77,7 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETREASON as projection on ENTRETREASON;
-    
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -83,7 +88,7 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETVKORG as projection on ENTRETVKORG;
-
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -94,6 +99,7 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity RETMFRNR as projection on ENTRETMFRNR;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -105,36 +111,77 @@ service PROCESSING {
     ]
     entity RETVKBUR as projection on ENTRETVKBUR;
 
-    @requires: 'authenticated-user'
-    @restrict: [
-        {   
-            grant: 'READ', 
-            to: 'Viewer', 
-            where: '$user.ProfitCentre = PROFIT_CENTER_PRCTR' 
-        },
-        { grant: 'READ', to: 'Internal' }
-    ]
-    entity RETPRCTR as projection on ENTRETPRCTR;
 
 
-
-    // Shipping History Related Entities
+    // ℹ️ Shipping History Related Entities
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity SHIPPINGHISTORY as projection on ENTSHIPPINGHISTORY;
+
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SHINVOICE as projection on ENTSHINVOICE;
+
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SHCUSTOMER as projection on ENTSHCUSTOMER;
+
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SHCARRIER as projection on ENTSHCARRIER;
+
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SHTRACKING as projection on ENTTRACKING;
+
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SHSHIPTO as projection on ENTSHSHIPTO;
 
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHMFRNR as projection on ENTSHMFRNR;
+
+    // ✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHVKORG as projection on ENTSHVKORG;
 
 
 
-    //Open Orders Related Entities
+    // ℹ️ Open Orders Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
@@ -149,37 +196,42 @@ service PROCESSING {
 
 
 
-    // Back Orders Related Entities
+    // ℹ️ Back Orders Related Entities
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BACKORDERS as projection on ENTBACKORDERS;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BOBILLTO as projection on ENTBOBILLTO;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BOSHIPTO as projection on ENTBOSHIPTO;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BOPRODUCTDESC as projection on ENTBOPRODUCTDESC;
-    @requires: 'authenticated-user'
+    // ✅ CDS Authorization Complete    @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BOMFRNR as projection on ENTBOMFRNR;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = VKORG' },
@@ -232,7 +284,8 @@ using ITEMMASCATEGORY as ENTITEMMASCATEGORY from '../db/schema';
 
 // Inventory Service
 service INVENTORY {
-    // Inventory Audit Trail Related Entities
+    // ℹ️ Inventory Audit Trail Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
@@ -246,7 +299,8 @@ service INVENTORY {
 
 
 
-    // Inventory Valuation Related Entities
+    // ℹ️ Inventory Valuation Related Entities
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -257,6 +311,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYVALUATION as projection on ENTINVENTORYVALUATION;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -267,6 +322,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVVALPRODDESC as projection on ENTINVVALPRODDESC;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -277,6 +333,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVVALPROD as projection on ENTINVVALPROD;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -287,6 +344,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVVALMFRNR as projection on ENTINVVALMFRNR;
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -301,7 +359,8 @@ service INVENTORY {
 
 
 
-    // Inventory Status Related Entities
+    // ℹ️ Inventory Status Related Entities
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -315,6 +374,8 @@ service INVENTORY {
 
     
     entity INVSTATUSPRODUCTCODE as projection on ENTINVSTATUSPRODUCTCODE;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -325,6 +386,8 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVSTATUSMFRNR as projection on ENTINVSTATUSMFRNR;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -336,7 +399,11 @@ service INVENTORY {
     ]
     entity INVSTATUSVKBUR as projection on ENTINVSTATUSVKBUR;
 
-    // Inventory By Lot Related Entities
+
+
+
+    // ℹ️ Inventory By Lot Related Entities
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -347,6 +414,8 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYBYLOT as projection on ENTINVENTORYBYLOT;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -357,6 +426,8 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVBYLOTPRODUCTCODE as projection on ENTINVBYLOTPRODUCTCODE;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -367,6 +438,8 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVBYLOTLOT as projection on ENTINVBYLOTLOT;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -377,6 +450,8 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVBYLOTWAREHOUSE as projection on ENTINVBYLOTWAREHOUSE;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -387,6 +462,8 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVBYLOTMFRNR as projection on ENTINVBYLOTMFRNR;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         {   
@@ -400,7 +477,8 @@ service INVENTORY {
 
 
 
-    // Item Master Related Entities
+    // ℹ️ Item Master Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURERNUMBER and $user.SalesOrg = SALESORG' },
@@ -413,43 +491,37 @@ service INVENTORY {
 
 
 
-    // Lot Inventory Snapshot Related Entities 
+    // ℹ️ Lot Inventory Snapshot Related Entities 
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYSNAPSHOT as projection on ENTINVENTORYSNAPSHOT;
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
-        { grant: 'READ', to: 'Internal' }
-    ]
+
+    
     entity INVSNAPPRODDESC as projection on ENTINVSNAPPRODDESC;
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
-        { grant: 'READ', to: 'Internal' }
-    ]
+
+   
+    
     entity INVSNAPPROD as projection on ENTINVSNAPPROD;
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
-        { grant: 'READ', to: 'Internal' }
-    ]
+
+    
     entity INVSNAPMFRNR as projection on ENTINVSNAPMFRNR;
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = VKORG' },
-        { grant: 'READ', to: 'Internal' }
-    ]
+
+   
     entity INVSNAPVKORG as projection on ENTINVSNAPVKORG;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVSNAPLOT as projection on ENTINVSNAPLOT;
+
+    // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
@@ -477,7 +549,8 @@ using SBCBILLTO as ENTSBCBILLTO from '../db/schema';
 using SBCSHIPTO as ENTSBCSHIPTO from '../db/schema';
 
 service SALES {
-    // Ivoice History Related Entities
+    // ℹ️ Ivoice History Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
@@ -494,7 +567,8 @@ service SALES {
 
 
 
-    // Sales By Product/Customer Related Entities
+    // ℹ️ Sales By Product/Customer Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = CO_VKORG' },
@@ -520,7 +594,8 @@ using PRICINGPRICEDESC as ENTPRICINGPRICEDESC from '../db/schema';
 using PRICINGPRODUCTDESC as ENTPRICINGPRODUCTDESC from '../db/schema';
 
 service CUSTOMERS {
-    // Customer Listing Related Entities
+    // ℹ️ Customer Listing Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = VKORG' },
@@ -534,7 +609,8 @@ service CUSTOMERS {
 
 
 
-    // Pricing Related Entities
+    // ℹ️ Pricing Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
@@ -553,7 +629,8 @@ using OPENAR as ENTOPENAR from '../db/schema';
 using OPENARCUSTOMER as ENTOPENARCUSTOMER from '../db/schema';
 
 service FINANCE {
-    // Accounts Receivable Related Entities
+    // ℹ️ Accounts Receivable Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
@@ -565,7 +642,8 @@ service FINANCE {
 
 
 
-    // Cash Journal Related Entities
+    // ℹ️ Cash Journal Related Entities
+    // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG and $user.ProfitCentre = PRCTR' },
@@ -583,9 +661,17 @@ using MAINPAGEUNIT as ENTMAINPAGEUNIT from '../db/schema';
 using MPUYEAR as ENTMPUYEAR from '../db/schema';
 
 service MAINPAGE {
+    // ⚠️ CDS Authorization Pending
     entity MAINPAGESUMMARY as projection on ENTMAINPAGESUMMARY;
     entity MPSYEAR as projection on ENTMPSYEAR;
+    // ⚠️ CDS Authorization Pending
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRPN' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity MAINPAGEINVENTORY as projection on ENTMAINPAGEINVENTORY;
+    // ⚠️ CDS Authorization Pending
     entity MAINPAGEUNIT as projection on ENTMAINPAGEUNIT;
     entity MPUYEAR as projection on ENTMPUYEAR;
 } 
@@ -599,11 +685,9 @@ service CatalogService {
 }
 
 using MediaFile as ENTMediaFile from '../db/schema';
-
 service Media {
     entity MediaFile as projection on ENTMediaFile
 }
-
 annotate Media.MediaFile with @odata.draft.enabled: true;
 
 

@@ -1,25 +1,23 @@
-// Item Master Entity 
-// Security attibutes to match: ??
 @cds.search: { PRODUCTSTANDARDID, PRODUCT, CATEGORY, MANUFACTURERNUMBER, SALESORG, CREATIONDATE, PRODUCTDESCRIPTION_EN, SIZEUOM }
 @cds.persistence.exists
 entity ITEMMASTER 
 {
-    key PRODUCT                 : String(40);
-    key SALESORG                : String(4);
-        CREATIONDATE            : String(8);
-        DIN                     : String(70);
-        GST_APPLICABLE          : String(1);
-        LOT_CONTROL_YN          : String(1);
-        NARCOTIC_YN             : String(1);
-        CATEGORY                : String(20) @Search.defaultSearchElement;
-        PRODUCTDESCRIPTION_EN   : String(40);
-        PRODUCTDESCRIPTION_FR   : String(40);
-        PST_APPLICABLE          : String(1);
-        REFRIGERATED            : String(1);
-        UNITS_PER_CASE          : Decimal(5,0);
-        SIZEUOM                 : String(80);
-        PRODUCTSTANDARDID       : String(18);
-        MANUFACTURERNUMBER      : String(10);
+    key PRODUCT                 : String(40)    @title: 'SKU';
+    key SALESORG                : String(4)     @title: 'Sales Org';
+        CREATIONDATE            : String(8)     @title: 'Creation Date';
+        DIN                     : String(70)    @title: 'DIN';
+        GST_APPLICABLE          : String(1)     @title: 'GST Applicable';
+        LOT_CONTROL_YN          : String(1)     @title: 'Lot Control Y/N';
+        NARCOTIC_YN             : String(1)     @title: 'Narcotic Y/N';
+        CATEGORY                : String(20)    @title: 'Category' @Search.defaultSearchElement;
+        PRODUCTDESCRIPTION_EN   : String(40)    @title: 'Product Desc.';
+        PRODUCTDESCRIPTION_FR   : String(40)    @title: 'Special Handling';
+        PST_APPLICABLE          : String(1)     @title: 'PST Applicable';
+        REFRIGERATED            : String(1)     @title: 'Refridgerated';
+        UNITS_PER_CASE          : Decimal(5,0)  @title: 'Units Per Case';
+        SIZEUOM                 : String(80)    @title: 'Size';
+        PRODUCTSTANDARDID       : String(18)    @title: 'Product Code';
+        MANUFACTURERNUMBER      : String(10)    @title: 'Manufacturer Number';
 }
 define view ITEMMASPD as
     select from ITEMMASTER distinct {
@@ -29,33 +27,29 @@ define view ITEMMASCATEGORY as
     select from ITEMMASTER distinct {
         key CATEGORY
 };
-
-// Inventory Status
-// Security attributes to match: ??
 @cds.search: { SKU_MATNR, PRODUCT_CODE, SIZE, MANUFACTURER_MFRPN, PRODUCT_DESCRIPTION, VKBUR }
 @cds.persistence.exists
 entity INVENTORYSTATUS 
 {
         
-    key SKU_MATNR                   : String(40);
-        PRODUCT_CODE                : String(40);
-        SIZE                        : String(70);
-        PRODUCT_DESCRIPTION         : String(40);
-        OPEN_STOCK                  : Decimal(36,2);
-        QUARANTINE                  : Decimal(36,2);
-        DAMAGE_DESTRUCTION          : Decimal(36,2);
-        RETAINS                     : Decimal(36,2);
-        QUALITY_HOLD                : Decimal(36,2);
-        RETURNS_CAL                 : Decimal(36,2);
-        RECALLS                     : Decimal(36,2);
-        INVENTORY_HOLD              : Decimal(36,2);
-        RELABEL_QTY                 : Decimal(36,2);
-        SAMPLE_QTY                  : Decimal(36,2);
-        UNIT                        : String(3);
-        VKBUR                       : String(4);
-        MANUFACTURER_MFRPN          : String(40);
+    key SKU_MATNR                   : String(40)        @title : 'SKU';
+        PRODUCT_CODE                : String(40)        @title : 'Product Code';
+        SIZE                        : String(70)        @title : 'Size';
+        PRODUCT_DESCRIPTION         : String(40)        @title : 'Product Desc.';
+        OPEN_STOCK                  : Decimal(36,2)     @title : 'Open Stock';
+        QUARANTINE                  : Decimal(36,2)     @title : 'Quarantine';
+        DAMAGE_DESTRUCTION          : Decimal(36,2)     @title : 'Damage/Destruction';
+        RETAINS                     : Decimal(36,2)     @title : 'Retains';
+        QUALITY_HOLD                : Decimal(36,2)     @title : 'Quality Hold';
+        RETURNS_CAL                 : Decimal(36,2)     @title : 'Returns';
+        RECALLS                     : Decimal(36,2)     @title : 'Recalls';
+        INVENTORY_HOLD              : Decimal(36,2)     @title : 'Inventory Hold';
+        RELABEL_QTY                 : Decimal(36,2)     @title : 'Re-Lable';
+        SAMPLE_QTY                  : Decimal(36,2)     @title : 'Samples';
+        UNIT                        : String(3)         @title : 'Base Unit of Measure';
+        VKBUR                       : String(4)         @title : 'Sales Office';
+        MANUFACTURER_MFRPN          : String(40)        @title : 'Manufacturer Number';
 }
-// Inventory Status Product Code filter
 define view INVSTATUSPRODUCTCODE as
     select from INVENTORYSTATUS distinct {
         key PRODUCT_CODE
@@ -68,132 +62,121 @@ define view INVSTATUSVKBUR as
     select from INVENTORYSTATUS distinct {
         key VKBUR
 };
-
-// Invetory Audit Trail 
-// Security attibutes to match:  
 @cds.search: { MATNR, MAKTX, POSTING_DATE, CHARG, WAREHOUSE_STATUS, KUNNR, CUSTOMER_NAME, INV_MATDOC_ITEM, WERKS, LGORT, MFRNR, NAME1_PLANT }
 @cds.persistence.exists
 entity INVENTORYAUDITTRAIL
 {
-        MFRNR_PROD_CODE     : String(40);
-        POSTING_DATE        : Date;
-        CHARG               : String(10);
-        WAREHOUSE_STATUS    : String(40);
-        KUNNR               : String(10);
-        MATNR               : String(40);
-        MAKTX               : String(40);
-        TRAN_TYPE           : String(40);
-        MENGE               : Decimal(13,3);
-        CUSTOMER_NAME       : String(35);
-    key INV_MATDOC_ITEM     : String(15);
-        WERKS               : String(4);
-        LGORT               : String(4);
-        MFRNR               : String(10);
-        NAME1_PLANT         : String(40);
-        MEINS               : String(3); 
-        VFDAT               : String(8);              
+        MFRNR_PROD_CODE     : String(40)        @title : 'Product Code';
+        POSTING_DATE        : Date              @title : 'Posting Date';
+        CHARG               : String(10)        @title : 'Lot #';
+        WAREHOUSE_STATUS    : String(40)        @title : 'Warehouse Status';
+        KUNNR               : String(10)        @title : 'Customer/Supplier Number';
+        MATNR               : String(40)        @title : 'SKU';
+        MAKTX               : String(40)        @title : 'Product Desc.';
+        TRAN_TYPE           : String(40)        @title : 'Transaction Type';
+        MENGE               : Decimal(13,3)     @title : 'Quantity';
+        CUSTOMER_NAME       : String(35)        @title : 'Customer/Supplier Name';
+    key INV_MATDOC_ITEM     : String(15)        @title : 'Inv/Adj/Receipt Number';
+        WERKS               : String(4)         @title : 'Plant';
+        LGORT               : String(4)         @title : 'Storage Location';
+        MFRNR               : String(10)        @title : 'Manufacturer Number';
+        NAME1_PLANT         : String(40)        @title : 'Plant Name';
+        MEINS               : String(3)         @title : 'Base Unit of Measure'; 
+        VFDAT               : String(8)         @title : 'Expiry Date';              
 }
-// Inventory Audit Trail Product Code Filter
 define view IATPRODUCTCODE as
     select from INVENTORYAUDITTRAIL distinct {
         key MFRNR_PROD_CODE
 };
-// Inventory Audit Trail Lot# filter
+
 define view IATLOT as
     select from INVENTORYAUDITTRAIL distinct {
         key CHARG
 };
-// Inventory Audit Trail Warehouse Status filter
+
 define view IATWAREHOUSE as
     select from INVENTORYAUDITTRAIL distinct {
         key WAREHOUSE_STATUS
 };
-// Inventory Audit Trail Customer/Supplier filter
+
 define view IATCUSTSUPP as
     select from INVENTORYAUDITTRAIL distinct {
         key KUNNR
 };
 
-// Cash Journal
-// Security attributes to match: ??
 @cds.search: { BILL_TO, NAME1, VKORG, BKTXT, SGTXT, BUDAT, VBELN, FKDAT, BLART, AUBEL, SHIP_TO, BUKRS, MFRNR, BELNR, PRCTR, GJAHR, BSTKD }
 @cds.persistence.exists
 entity CASHJOURNAL 
 {
-        BILL_TO             : String(10);
-        NAME1               : String(35);
-        CAL_CASH_RECEIVED   : Decimal(23,2);
-        VKORG               : String(4);
-        BKTXT               : String(25);
-        SGTXT               : String(50);
-        BUDAT               : String(8);
-        CAL_DISCOUNT        : Decimal(23,2);
-    key VBELN               : String(10);
-        NETWR               : Decimal(15,2);
-        FKDAT               : String(8);
-        BLART               : String(2);
-        AUBEL               : String(10);
-        SHIP_TO             : String(10);
-    key BUKRS               : String(4);
-        MFRNR               : String(10);
-    key BELNR               : String(10);
-    key GJAHR               : String(4);
-        BSTKD               : String(35);
-        PRCTR               : String(10);
+        BILL_TO             : String(10)        @title : 'Bill To';
+        NAME1               : String(35)        @title : 'Bill To Name';
+        CAL_CASH_RECEIVED   : Decimal(23,2)     @title : 'Cash Received';
+        VKORG               : String(4)         @title : 'Sales Org.';
+        BKTXT               : String(25)        @title : 'Comment 1';
+        SGTXT               : String(50)        @title : 'Comment 2';
+        BUDAT               : String(8)         @title : 'Deposit Date';
+        CAL_DISCOUNT        : Decimal(23,2)     @title : 'Discount';
+    key VBELN               : String(10)        @title : 'Invoice Number';
+        NETWR               : Decimal(15,2)     @title : 'Invoice Amount';
+        FKDAT               : String(8)         @title : 'Invoice Date';
+        BLART               : String(2)         @title : 'Payment Type';
+        AUBEL               : String(10)        @title : 'Reference';
+        SHIP_TO             : String(10)        @title : 'Ship To Code';
+    key BUKRS               : String(4)         @title : 'Company Code';
+        MFRNR               : String(10)        @title : 'Manufacturer Number';
+    key BELNR               : String(10)        @title : 'Accounting Document';
+    key GJAHR               : String(4)         @title : 'Fiscal Year';
+        BSTKD               : String(35)        @title : 'Customer PO';
+        PRCTR               : String(10)        @title : 'Profit Center';
 }
-// Cash Journal Invoice filter
 define view BLARTS as
     select from CASHJOURNAL distinct {
         key BLART
 };
-// Cash Journal Bill TO filter
 define view BILL_TOS as
     select from CASHJOURNAL distinct {
         key BILL_TO
 };
 
-// Inventory Snapshot
-// Security attributes to match: ??
 @cds.search: { MATNR, MFRPN, MAKTX, SIZE, CHARG, WAREHOUSE_STATUS, EAN11, MFRNR, VKORG, LGNUM }
 @cds.persistence.exists
 entity INVENTORYSNAPSHOT 
 {
-        
-    key MATNR               : String(40);
-        MFRPN               : String(40);
-        MAKTX               : String(40);
-        SIZE                : String(70);
-        VFDAT               : String(8);
-        WAREHOUSE_STATUS    : String(30);
-        REPORT_DATE         : Date;
-        ON_HAND             : Decimal(36,2);
-        UNIT                : String(3);
-        DAYS_UNTIL_EXPIRY   : Integer;
-        EAN11               : String(18);
-        VKORG               : String(4);
-        LGNUM               : String(4);
-        MFRNR               : String(10);
-        CHARG               : String(10)
+    key MATNR               : String(40)    @title: 'SKU';
+    key WAREHOUSE_STATUS    : String(30)    @title: 'Warehouse Status';
+        EAN11               : String(18)    @title: 'UPC';
+        ON_HAND             : Decimal(36,2) @title: 'On Hand';
+        MFRPN               : String(40)    @title: 'Product Code';
+        DAYS_UNTIL_EXPIRY   : Integer       @title: 'Days Until Expiry';
+    key REPORT_DATE         : Date          @title: 'Report Date';
+    key VKORG               : String(4)     @title: 'Sales Org.';
+    key LGNUM               : String(4)     @title: 'Warehouse Number/Warehouse Complex';
+        UNIT                : String(3)     @title: 'Base Unit of Measure';
+        MFRNR               : String(10)    @title: 'Manufacturer Number';
+        SIZE                : String(70)    @title: 'Size';
+        MAKTX               : String(40)    @title: 'Product Desc.';
+    key CHARG               : String(10)    @title: 'Lot Number';
+    key VFDAT               : String(8)     @title: 'Shelf Life Expiration or Best-Before Date';
+        DIN                 : String(100)   @title: 'DIN';
+        RBTXT               : String(20)    @title: 'Storage Condition Description';
+        TBTXT               : String(60)    @title: 'Desctription of Temperature Conditions';
+        CURRENT             : String(3)     @title: 'Current/Historical';
 }
 define view INVSNAPPROD as
     select from INVENTORYSNAPSHOT distinct {
-        key MFRPN,
-            MFRNR
+        key MFRPN
 };
 define view INVSNAPPRODDESC as
     select from INVENTORYSNAPSHOT distinct {
-        key MAKTX,
-            MFRNR
+        key MAKTX
 };
 define view INVSNAPLOT as
     select from INVENTORYSNAPSHOT distinct {
-        key CHARG,
-            MFRNR
+        key CHARG
 };
 define view INVSNAPWARESTAT as
     select from INVENTORYSNAPSHOT distinct {
-        key WAREHOUSE_STATUS,
-            MFRNR
+        key WAREHOUSE_STATUS
 };
 define view INVSNAPMFRNR as
     select from INVENTORYSNAPSHOT distinct {
@@ -203,48 +186,41 @@ define view INVSNAPVKORG as
     select from INVENTORYSNAPSHOT distinct {
         key VKORG
 };
-// Inventory By Lot 
-// Security attributes to match: ??
 @cds.search: { MATNR, WAREHOUSE_STATUS, EAN11, MFRPN, LGNUM, MFRNR, MAKTX, CHARG, PLANT, DIN, VKBUR }
 @cds.persistence.exists
 entity INVENTORYBYLOT 
 {
         
-    key MATNR                       : String(40);
-        WAREHOUSE_STATUS            : String(4);
-        EAN11                       : String(18);
-        ON_HAND                     : Decimal(38,2);
-        MFRPN                       : String(40);
-        DAYS_UNTIL_EXPIRY           : Integer;
-        LGNUM                       : String(4);
-        UNIT                        : String(3);
-        MFRNR                       : String(10);
-        SIZE                        : String(70);
-        MAKTX                       : String(40);
-        CHARG                       : String(10);
-        VFDAT                       : String(8);
-        DIN                         : String(100);
-        PLANT                       : String(18);
-        VKBUR                       : String(4);
+    key MATNR                       : String(40)        @title : 'SKU';
+        WAREHOUSE_STATUS            : String(4)         @title : 'Warehouse Status';
+        EAN11                       : String(18)        @title : 'UPC';
+        ON_HAND                     : Decimal(38,2)     @title : 'On Hand';
+        MFRPN                       : String(40)        @title : 'Product Code';
+        DAYS_UNTIL_EXPIRY           : Integer           @title : 'Days Until Expiry';
+        LGNUM                       : String(4)         @title : 'Warehouse Number';
+        UNIT                        : String(3)         @title : 'Base Unit of Measure';
+        MFRNR                       : String(10)        @title : 'Manufacturer Number';
+        SIZE                        : String(70)        @title : 'Size';
+        MAKTX                       : String(40)        @title : 'Product Desc.';
+        CHARG                       : String(10)        @title : 'Lot Number';
+        VFDAT                       : String(8)         @title : 'Shelf Life or Best-Before Date';
+        DIN                         : String(100)       @title : 'DIN';
+        PLANT                       : String(18)        @title : 'Plant';
+        VKBUR                       : String(4)         @title : 'Sales Office';
 }
-// Inventory by Lot Product Code filter
+
 define view INVBYLOTPRODUCTCODE as
     select from INVENTORYBYLOT distinct {
-        key MFRPN,
-            MAKTX,
-            MFRNR
+        key MFRPN
 };
-// Inventory by Lot Lot filter
 define view INVBYLOTLOT as
     select from INVENTORYBYLOT distinct {
-        key CHARG,
-            MFRNR
+        key CHARG
 };
-// Inventory by Lot Warehouse filter
+
 define view INVBYLOTWAREHOUSE as
     select from INVENTORYBYLOT distinct {
-        key WAREHOUSE_STATUS,
-            MFRNR
+        key WAREHOUSE_STATUS
 };
 define view INVBYLOTMFRNR as
     select from INVENTORYBYLOT distinct {
@@ -255,88 +231,72 @@ define view INVBYLOTVKBUR as
         key VKBUR
 };
 
-// Accounts Receivable
-// Security attributes to match
 @cds.search: { VKORG, BILL_TO, NAME1, BSTKD, BELNR, ZTERM, STORE_SHIP_TO, BLART, MFRNR }
 @cds.persistence.exists
 entity OPENAR 
 {
-        CAL_1_30            : Decimal(24,2);
-        CAL_31_60           : Decimal(24,2);
-        CAL_61_90           : Decimal(24,2);
-        CAL_AGE             : Integer;
-        TSL                 : Decimal(23,2);
-        VKORG               : String(4);
-        CREDIT_LIMIT        : Decimal(15,2);
-        CAL_CURRENT         : Decimal(23,2);
-        BILL_TO             : String(10);
-        NAME1               : String(35);
-        BSTKD               : String(35);
-        NETDT               : String(8);
-    key BELNR               : String(10);
-        FKDAT               : String(8);
-        ZTERM               : String(4);
-        NETWR               : Decimal(23,2);
-        CAL_OVER_90         : Decimal(24,2);
-        STORE_SHIP_TO       : String(10);
-    key BLART               : String(2);
-        MFRNR               : String(10);
+        CAL_1_30            : Decimal(24,2)     @title : '1 to 30';
+        CAL_31_60           : Decimal(24,2)     @title : '31 to 60';
+        CAL_61_90           : Decimal(24,2)     @title : '61 to 90';
+        CAL_AGE             : Integer           @title : 'Age';
+        TSL                 : Decimal(23,2)     @title : 'Amount Paid';
+        VKORG               : String(4)         @title : 'Sales Org.';
+        CREDIT_LIMIT        : Decimal(15,2)     @title : 'Credit Limit';
+        CAL_CURRENT         : Decimal(23,2)     @title : 'Current';
+        BILL_TO             : String(10)        @title : 'Customer ID';
+        NAME1               : String(35)        @title : 'Customer Name';
+        BSTKD               : String(35)        @title : 'Customer PO';
+        NETDT               : String(8)         @title : 'Due Date';
+    key BELNR               : String(10)        @title : 'Invoice Number';
+        FKDAT               : String(8)         @title : 'Invoice Date';
+        ZTERM               : String(4)         @title : 'Invoice Terms';
+        NETWR               : Decimal(23,2)     @title : 'Invoiced Amount';
+        CAL_OVER_90         : Decimal(24,2)     @title : 'Over 90';
+        STORE_SHIP_TO       : String(10)        @title : 'Store';
+    key BLART               : String(2)         @title : 'Type';
+        MFRNR               : String(10)        @title : 'Manufacturer Number';
 }
 define view OPENARCUSTOMER as
     select from OPENAR distinct {
         key NAME1
 };
-// Inventory Valuation
-// Security attributes to match:??
 @cds.search: { PLANT, LGNUM, MATNR, MAKTX, MFRPN,VKBUR,MFRNR }
 @cds.persistence.exists
 entity INVENTORYVALUATION 
 {
-        PLANT                       : String(4);
-        LGNUM                       : String(4);
-        MATNR                       : String(40);
-        MAKTX                       : String(40);
-    key MFRPN                       : String(40);
-        DIN                         : String(100);
-        SIZE                        : String(70);
-        VKBUR                       : String(10);
-        MFRNR                       : String(10);
-        WAERS                       : String(5);
-        UNIT_PRICE                  : Decimal(11,2);
-        TOTAL_COST                  : Decimal(38,2);
-        AVAILABLE_COST              : Decimal(38,2);
-        QUARANTINE_COST             : Decimal(38,2);
-        RETAINS_COST                : Decimal(38,2);
-        QUALITY_HOLD_COST           : Decimal(38,2);
-        RETURNS_COST                : Decimal(38,2);
-        RECALL_COST                 : Decimal(38,2);
-        INVENTORY_HOLD_COST         : Decimal(38,2);
-        RELABEL_COST                : Decimal(38,2);
-        DAMAGE_DESTRUCTION_COST     : Decimal(38,2);
-        SAMPLE_COST                 : Decimal(38,2);
-        UNIT                        : String(3);
-        QUAN                        : Decimal(38,2);
-        SAMPLE_QTY                  : Decimal(38,2);
-        DAMAGE_DESTRUCTION_QTY      : Decimal(38,2);
-        RELABEL_QTY                 : Decimal(38,2);
-        INVENTORY_HOLD_QTY          : Decimal(38,2);
-        RECALL_QTY                  : Decimal(38,2);
-        RETURNS_QTY                 : Decimal(38,2);
-        QUALITY_HOLD_QTY            : Decimal(38,2);
-        RETAINS_QTY                 : Decimal(38,2);
-        QUARANTINE_QTY              : Decimal(38,2);
-        AVAILABLE_QTY               : Decimal(38,2);   
+        PLANT                       : String(4)         @title : 'Plant';
+        LGNUM                       : String(4)         @title : 'Warehouse Number';
+        MATNR                       : String(18)        @title : 'SKU';
+        MAKTX                       : String(40)        @title : 'Product Desc.';
+    key MFRPN                       : String(40)        @title : 'Product Code';
+        DIN                         : String(100)       @title : 'DIN';
+        SIZE                        : String(70)        @title : 'Size';
+        VKBUR                       : String(10)        @title : 'Sales Office';
+        MFRNR                       : String(10)        @title : 'Manufacturer Number';
+        WAERS                       : String(5)         @title : 'Currency Key';
+        UNIT_PRICE                  : Decimal(11,2)     @title : 'Unit Price';
+        TOTAL_COST                  : Decimal(38,2)     @title : 'Total Cost';
+        AVAILABLE_COST              : Decimal(38,2)     @title : 'Open Stock';
+        QUARANTINE_COST             : Decimal(38,2)     @title : 'Quarantine';
+        RETAINS_COST                : Decimal(38,2)     @title : 'Retains';
+        QUALITY_HOLD_COST           : Decimal(38,2)     @title : 'Quality Hold';
+        RETURNS_COST                : Decimal(38,2)     @title : 'Returns';
+        RECALL_COST                 : Decimal(38,2)     @title : 'Recalls';
+        INVENTORY_HOLD_COST         : Decimal(38,2)     @title : 'Inventory Hold';
+        RELABEL_COST                : Decimal(38,2)     @title : 'Re-Label';
+        DAMAGE_DESTRUCTION_COST     : Decimal(38,2)     @title : 'Damage/Destruction';
+        SAMPLE_COST                 : Decimal(38,2)     @title : 'Samples';
+        UNIT                        : String(3)         @title : 'Base Unit of Measure';
+        QUAN                        : Decimal(38,2)     @title : 'Total Quantity';   
 }
 
 define view INVVALPROD as
     select from INVENTORYVALUATION distinct {
-        key MFRPN,
-            MFRNR
+        key MFRPN
 };
 define view INVVALPRODDESC as
     select from INVENTORYVALUATION distinct {
-        key MAKTX,
-            MFRNR
+        key MAKTX
 };
 define view INVVALMFRNR as
     select from INVENTORYVALUATION distinct {
@@ -355,26 +315,26 @@ entity INVOICEHISTORY
 {
         @Aggregation.default: #SUM
         @Semantics.amount.currencyCode: 'currency'
-        TSL_AMOUNT	: Decimal(23,2);
-        ORT01	    : String(35);
-        VKORG	    : String(4);
-        BKTXT	    : String(25);
-    key KUNNR       : String(10);
-        LFDAT	    : String(8);
-        CAL_GST	    : Decimal(23,2);
-    key BELNR       : String(10);
-        BUDAT	    : String(8);
-        NAME1	    : String(35);
-    key AUBEL       : String(10);
-        PSTLZ	    : String(10);
-        REGIO	    : String(3);
-        CAL_PST	    : Decimal(23,2);
-        BSTKD	    : String(35);
-        SHIP_TO	    : String(10);
-        TRACKN	    : String(35);
-        BLART	    : String(2);
-        CURRENT     : String(1);
-        MFRNR	    : String(10);
+        TSL_AMOUNT	: Decimal(23,2)     @title : '$ Amount';
+        ORT01	    : String(35)        @title : 'City';
+        VKORG	    : String(4)         @title : 'Sales Org.';
+        BKTXT	    : String(25)        @title : 'Comment';
+    key KUNNR       : String(10)        @title : 'Customer';
+        LFDAT	    : String(8)         @title : 'Delivery Date';
+        CAL_GST	    : Decimal(23,2)     @title : 'G.S.T.';
+    key BELNR       : String(10)        @title : 'Invoice Number';
+        BUDAT	    : String(8)         @title : 'Invoice Date';
+        NAME1	    : String(35)        @title : 'Customer Name';
+    key AUBEL       : String(10)        @title : 'Order Number';
+        PSTLZ	    : String(10)        @title : 'Postal Code';
+        REGIO	    : String(3)         @title : 'Province';
+        CAL_PST	    : Decimal(23,2)     @title : 'P.S.T.';
+        BSTKD	    : String(35)        @title : 'Purchase Order';
+        SHIP_TO	    : String(10)        @title : 'Ship To';
+        TRACKN	    : String(35)        @title : 'Tracking Number';
+        ORDER_TYPE	: String(20)        @title : 'Type';
+        CURRENT     : String(1)         @title : 'Current/Historical';
+        MFRNR	    : String(10)        @title : 'Manufacturer Number';
 }
 define view IHCUSTOMERID as
     select from INVOICEHISTORY distinct {
@@ -403,7 +363,7 @@ define view IHPO as
 // Invoice History Type filter
 define view IHTYPE as
     select from INVOICEHISTORY distinct {
-        key BLART
+        key ORDER_TYPE
 };
 // Invoice History Province filter
 define view IHPROVINCE as
@@ -412,7 +372,6 @@ define view IHPROVINCE as
 };
 
 // Sales by Product/Customer
-// Security attributes to match: ??
 @cds.search: { 
     INVOICE_CREDIT_VBELN, 
     PURCHASE_ORDER_BSTKD, 
@@ -434,40 +393,50 @@ define view IHPROVINCE as
     WAREHOUSE, 
     TRACKING_TRACKN, 
     COMMENT, 
+    CURRENT,
     CO_VKORG
 }
 @cds.persistence.exists
 entity SALESBYCURRENT 
-{
-    key INVOICE_CREDIT_VBELN        : String(10);
-        PURCHASE_ORDER_BSTKD        : String(35);
-    key SKU_MATNR                   : String(40);
-        PRODUCT_DESCRIPTION_MAKTX   : String(40);
-        UNITS_PER_CASE              : Integer;
-        QUANTITY_FKIMG              : Decimal(13,3);
-        PRICE_CAL_UNIT_COST         : Decimal(11,2);
-        AMOUNT_NETWR                : Decimal(15,2);
-    key LOT_CHARG                   : String(10);
-        TYPE_FKART                  : String(4);
-        BILL_TO_KUNRE_ANA           : String(10);
-        SHIP_TO_KUNWE_ANA           : String(10); 
-        BILL_TO_NAME                : String(70);
-        SHIP_TO_NAME                : String(70);
-        ADDRESS_1                   : String(9);
-        ADDRESS_2                   : String(9);
-        POSTAL_CODE_PSTLZ           : String(10);
-        CITY_ORT01                  : String(35);
-        INVOICE_DATE_FKDAT          : Date;
-        PROVINCE_REGIO              : String(3);
-        EXPIRY_DATE_VFDAT           : Date;
-        SPECIAL_HANDLING            : String(13);
-        DELEVERY_DATE_VDATU         : Date;
-        UPC_EAN11                   : String(18);
-        WAREHOUSE                   : String(12);
-        TRACKING_TRACKN             : String(35);
-        COMMENT                     : String(13);
-        CO_VKORG                    : String(4);
-        CURRENT                     : String(1);
+{   
+        ADDRESS_1                   : String(35)            @title: 'Address 1';
+        ADDRESS_2                   : String(40)            @title: 'Address 2';
+        AMOUNT_NETWR                : Decimal(20,2)         @title: '$Amount';
+        AUGRU_AUFT                  : String(3)             @title: 'Order Reason';
+        BILL_TO_KUNRE_ANA           : String(10)            @title: 'Bill To';
+        BILL_TO_NAME                : String(70)            @title: 'Bill To Name';
+        CITY_ORT01                  : String(35)            @title: 'City';
+        CO_VKORG                    : String(4)             @title: 'Sales Org.';
+        COMMENT                     : String(13)            @title: 'Comment';
+        CURRENT                     : String(3)             @title: 'Current/Historical';
+        DELEVERY_DATE_VDATU         : String(8)             @title: 'Delivery Date';
+        EXPIRY_DATE_VFDAT           : String(8)             @title: 'Expiry Date';
+    key INVOICE_CREDIT_VBELN        : String(10)            @title: 'Invoice/Credit #';
+        INVOICE_DATE_FKDAT          : String(8)             @title: 'Invoice Date';
+    key LOT_CHARG                   : String(10)            @title: 'Lot #';
+        MFRNR                       : String(10)            @title: 'Manufacturer Number';
+        MFRPN                       : String(40)            @title: 'Manufacturer Part Number';
+        PATIENT_ID                  : String(20)            @title: 'Patient Id';
+        POSTAL_CODE_PSTLZ           : String(10)            @title: 'Postal Code';
+        PRICE_CAL_UNIT_COST         : Decimal(11,2)         @title: 'Price';
+        PRODUCT_DESCRIPTION_MAKTX   : String(40)            @title: 'Product Desctription';
+        PROVINCE_REGIO              : String(3)             @title: 'Province';
+        PURCHASE_ORDER_BSTKD        : String(35)            @title: 'Purchase Order';
+        QUANTITY_FKIMG              : Decimal(13,3)         @title: 'Quantity';
+        RBTXT                       : String(20)            @title: 'Storage Conditions';
+        SHIP_TO_KUNWE_ANA           : String(10)            @title: 'Ship To';
+        SHIP_TO_NAME                : String(70)            @title: 'Ship To Name';
+    key SKU_MATNR                   : String(40)            @title: 'SKU';
+        TBTXT                       : String(60)            @title: 'Temp. Conditions';
+        TRACKING_TRACKN             : String(35)            @title: 'Tracking #';
+        UNIT_PRICE                  : Decimal(32,2)         @title: 'Unit Price';
+        UNITS_PER_CASE              : Integer               @title: 'Units Per Case';
+        UPC_EAN11                   : String(18)            @title: 'UPC';
+        VKBUR                       : String(4)             @title: 'Sales Office';
+        VTEXT_FKART                 : String(40)            @title: 'Type';      
+        WAERK                       : String(5)             @title: 'SD Document Currency';
+        WAREHOUSE                   : String(12)            @title: 'Warehouse';
+    key WERKS                       : String(4)             @title: 'Plant';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -479,7 +448,7 @@ define view SBCPRODDESC as
 };
 define view SBCTYPE as
     select from SALESBYCURRENT distinct {
-        key TYPE_FKART
+        key VTEXT_FKART
 };
 define view SBCWAREHOUSE as
     select from SALESBYCURRENT distinct {
@@ -519,40 +488,6 @@ define view SBCSHIPTO as
     COMMENT, 
     CO_VKORG 
 }
-@cds.persistence.exists
-entity SALESBYHISTORICAL 
-{
-    key INVOICE_CREDIT              : Integer64;
-        INVOICE_DATE                : Date;
-        PURCHASE_ORDER              : String(5000);
-    key SKU                         : Integer64;
-        PRODUCT_DESCRIPTION         : String(5000);
-        UNITS_PER_CASE              : Integer64;
-        QUANTITY                    : Integer64;
-        PRICE                       : String(5000);
-        AMOUNT                      : String(5000);
-    key LOT                         : String(5000);
-        EXPIRY_DATA                 : Date;
-        TYPE                        : String(5000);
-        BILL_TO                     : String(5000);
-        SHIP_TO                     : String(5000); 
-        BILL_TO_NAME                : String(5000);
-        SHIP_TO_NAME                : String(5000);
-        ADDRESS1                   : String(5000);
-        ADDRESS2                   : String(5000);
-        POSTAL_CODE                 : String(5000);
-        CITY                        : String(5000);
-        PROVANCE                    : String(5000);
-        SPECIAL_HANDLING            : String(5000);
-        UPC                         : Integer64;
-        WAREHOUSE                   : String(5000);
-        TRACKING                    : Decimal(38,19);
-        DELEVERY_DATE               : Date;
-        COMMENT                     : String(5000);
-        CO                          : String(4);
-        CURRENT                     : String(1);
-}
-
 // Customer Master
 // Security attributes to match: ??
 @cds.search: { 
@@ -579,26 +514,26 @@ entity SALESBYHISTORICAL
 @cds.persistence.exists
 entity CUSTOMERMASTER 
 {
-    key KUNN2_BILLTO	: String(10);	
-        STRAS_BILLTO	: String(35);     
-        ORT01_BILLTO	: String(35);	 
-        ERDAT_BILLTO	: String(8);	 
-        NAME1_BILLTO	: String(35);	 
-        PSTLZ_BILLTO	: String(10);  
-        BEZEI_BILLTO	: String(20);	 
-        KTEXT_BILLTO	: String(20);	 
-    key VKORG	        : String(4);	
-        CREDIT_LIMIT	: Decimal(15,2);	 
-    key KUNN2_SHIPTO	: String(10);	
-        STRAS_SHIPTO	: String(35);	 
-        ORT01_SHIPTO	: String(35);	 
-        ERDAT_SHIPTO	: String(8);	 
-        NAME1_SHIPTO	: String(35);	 
-        PSTLZ_SHIPTO	: String(10);	 
-        BEZEI_SHIPTO	: String(20);	 
-        KTEXT_SHIPTO	: String(20);	 
-        CAL_CUST_STATUS	: String(1);	 
-        CAL_TERM	    : String(4);	 
+    key KUNN2_BILLTO	: String(10)        @title: 'Bill To';	
+        STRAS_BILLTO	: String(35)        @title: 'Bill To Address';     
+        ORT01_BILLTO	: String(35)        @title: 'Bill To City';	 
+        ERDAT_BILLTO	: String(8)         @title: 'Bill To Created';	 
+        NAME1_BILLTO	: String(35)        @title: 'Bill To Name';	 
+        PSTLZ_BILLTO	: String(10)        @title: 'Bill To Postal Code';  
+        BEZEI_BILLTO	: String(20)        @title: 'Bill To Province';	 
+        KTEXT_BILLTO	: String(20)        @title: 'Bill To Type';	 
+    key VKORG	        : String(4)         @title: 'Sales Org.';	
+        CREDIT_LIMIT	: Decimal(15,2)     @title: 'Credit Limit';	 
+    key KUNN2_SHIPTO	: String(10)        @title: 'Ship To';	
+        STRAS_SHIPTO	: String(35)        @title: 'Ship To Address';	 
+        ORT01_SHIPTO	: String(35)        @title: 'Ship To City';	 
+        ERDAT_SHIPTO	: String(8)         @title: 'Ship To Created';	 
+        NAME1_SHIPTO	: String(35)        @title: 'Ship To Name';	 
+        PSTLZ_SHIPTO	: String(10)        @title: 'Ship To Postal Code';	 
+        BEZEI_SHIPTO	: String(20)        @title: 'Ship To Province';	 
+        KTEXT_SHIPTO	: String(20)        @title: 'Ship To Type';	 
+        CAL_CUST_STATUS	: String(1)         @title: 'Status';	 
+        CAL_TERM	    : String(4)         @title: 'Terms';	 
 }
 // Customer Master Bill To filter
 define view KUNN2_BILLTO as
@@ -633,22 +568,22 @@ define view CAL_CUST_STATUS as
 @cds.persistence.exists
 entity SHIPPINGHISTORY 
 {
-        CARRIER	            : String(10);
-        VKORG	            : String(4);
-        KUNAG	            : String(10);
-        WADAT_IST	        : String(8);
-        LFDAT	            : String(8);
-        LFUHR	            : String(6);
-    key VBELN	            : String(10);
-        PSTLZ	            : String(10);
-        TRK_DLVTO	        : String(40);
-        KUNNR	            : String(10);
-        NAME1	            : String(35);
-        TRACKN	            : String(35);
-        MFRNR	            : String(10);
-        CAL_BILL_ITM_COUNT  : Integer;
-        FKIMG               : Decimal(18,3);
-        MEINS               : String(3); 
+        CARRIER	            : String(10)        @title: 'Carrier';
+        VKORG	            : String(4)         @title: 'Sales Org.';
+        KUNAG	            : String(10)        @title: 'Customer';
+        WADAT_IST	        : String(8)         @title: 'Date Shipped';
+        LFDAT	            : String(8)         @title: 'Delivery Date';
+        LFUHR	            : String(6)         @title: 'delivery Time';
+    key VBELN	            : String(10)        @title: 'Invoice #';
+        PSTLZ	            : String(10)        @title: 'Postal Code';
+        TRK_DLVTO	        : String(40)        @title: 'Received';
+        KUNNR	            : String(10)        @title: 'Ship To';
+        NAME1	            : String(35)        @title: 'Ship To Name';
+        TRACKN	            : String(35)        @title: 'Tracking #';
+        MFRNR	            : String(10)        @title: 'Manufacturer Number';
+        CAL_BILL_ITM_COUNT  : Integer           @title: 'Item Count';
+        FKIMG               : Decimal(18,3)     @title: 'Invoice Quantity';
+        MEINS               : String(3)         @title: 'Base Unit of Measure'; 
 }
 // Shipping History Invoice filter
 define view SHINVOICE as
@@ -676,6 +611,16 @@ define view SHTRACKING as
         key TRACKN
 };
 
+define view SHMFRNR as
+    select from SHIPPINGHISTORY distinct {
+        key MFRNR
+};
+
+define view SHVKORG as
+    select from SHIPPINGHISTORY distinct {
+        key VKORG
+};
+
 // Pricing
 @cds.search: { 
     VKORG,
@@ -688,14 +633,14 @@ define view SHTRACKING as
 @cds.persistence.exists
 entity PRICING  
 {
-    key VKORG :	String(4);
-        KBETR :	Decimal(11,2);
-        KSCHL : String(4);
-        VTEXT :	String(20);
-    key MATNR :	String(40);
-        MAKTX :	String(40);
-        MFRNR :	String(10);	
-        KONWA : String(5); 
+    key VKORG :	String(4)       @title: 'Sales Org.';
+        KBETR :	Decimal(11,2)   @title: 'Price';
+        KSCHL : String(4)       @title: 'Price Level Code';
+        VTEXT :	String(20)      @title: 'Price Level Desc.';
+    key MATNR :	String(40)      @title: 'Product';
+        MAKTX :	String(40)      @title: 'Product Desc.';
+        MFRNR :	String(10)      @title: 'Manufacturer Number';	
+        KONWA : String(5)       @title: 'Currency'; 
 }
 // Shipping History Carrier filter
 define view PRICINGPRICEDESC as
@@ -725,19 +670,19 @@ define view PRICINGPRODUCTDESC as
 @cds.persistence.exists
 entity OPENORDERS 
 {
-    key KUNNR	        : String(10);
-        VDATU	        : String(10);
-        CAL_NAME        : String(70);
-    key VBELN	        : String(10);
-        ERDAT   	    : String(8);	 
-        GBSTK           : String(1);
-        MATNR           : String(40); 
-        MAKTX           : String(40);
-        BSTKD           : String(35);
-        KWMENG	        : Decimal(20,3);	 
-        KUNWE_ANA	    : String(10);
-        REGIO           : String(3);
-        MFRNR           : String(10);
+    key KUNNR	        : String(10)        @title: 'Customer';
+        VDATU	        : String(10)        @title: 'Delivery By Date';
+        CAL_NAME        : String(70)        @title: 'Name';
+    key VBELN	        : String(10)        @title: 'Order #';
+        ERDAT   	    : String(8)         @title: 'Order Date';	 
+        GBSTK           : String(1)         @title: 'Order Status';
+        MATNR           : String(40)        @title: 'Product'; 
+        MAKTX           : String(40)        @title: 'Product Desc.';
+        BSTKD           : String(35)        @title: 'Purchase Order';
+        KWMENG	        : Decimal(20,3)     @title: 'Quantity';	 
+        KUNWE_ANA	    : String(10)        @title: 'Ship To';
+        REGIO           : String(3)         @title: 'Province';
+        MFRNR           : String(10)        @title: 'Manufacturer Number';
 }
 
 // Open Orders Product Description filter
@@ -778,37 +723,35 @@ define view OOPROVINCE as
 @cds.persistence.exists
 entity RETURNS 
 {
-        DATE_ENTERED_FKDAT_ANA  : String(8);
-    key CUSTOMER_KUNNR          : String(10);
-        CUSTOMER_NAME_NAME1     : String(35);
-        PROVINCE_REGIO          : String(3);
-    key RGA_VBELN               : String(10);
-        REASON_BEZEI            : String(40);
-        REFERENCE_BSTKD         : String(35);
-        CREDIT_DATE_ERDAT       : String(8);
-        CREDIT_AMT_NETWR        : Decimal(15,2);
-        CO_VKORG                : String(4);
-        MANUFACTURER_MFRNR      : String(10);
-        SALES_OFFICE_VKBUR      : String(4);
-        PROFIT_CENTER_PRCTR     : String(10); 
+        ERDAT                   : String(8)         @title: 'Date Entered';
+    key CUSTOMER_KUNNR          : String(10)        @title: 'Customer';
+        CUSTOMER_NAME_NAME1     : String(35)        @title: 'Customer Name';
+        PROVINCE_REGIO          : String(3)         @title: 'Province';
+    key VBELN_VBAK              : String(10)        @title: 'RGA #';
+        REASON_BEZEI            : String(40)        @title: 'Reason';
+        REFERENCE_BSTKD         : String(35)        @title: 'Reference #';
+    key VBELN_VBRK              : String(35)        @title: 'Credit #';
+        FKDAT_ANA               : String(8)         @title: 'Credit Date';
+        CREDIT_AMT_NETWR        : Decimal(15,2)     @title: 'Credit Amt $';
+        CO_VKORG                : String(4)         @title: 'Sales Org.';
+        MFRNR                   : String(10)        @title: 'Manufacturer Number';
+        VKBUR                   : String(4)         @title: 'Sales Office';
+        CURRENT                 : String(10)        @title: 'Current/Historical'; 
 }
 //  Returns Customer filter
 define view RETCUST as
     select from RETURNS distinct {
-        key CUSTOMER_NAME_NAME1,
-            MANUFACTURER_MFRNR
+        key CUSTOMER_NAME_NAME1
 };
 //  Returns Reason filter
 define view RETREASON as
     select from RETURNS distinct {
-        key REASON_BEZEI,
-            MANUFACTURER_MFRNR
+        key REASON_BEZEI
 };
 //  Returns RGA filter
 define view RETRGA as
     select from RETURNS distinct {
-        key RGA_VBELN,
-            MANUFACTURER_MFRNR
+        key VBELN_VBAK
 };
 define view RETVKORG as
     select from RETURNS distinct {
@@ -816,57 +759,50 @@ define view RETVKORG as
 };
 define view RETMFRNR as
     select from RETURNS distinct {
-        key MANUFACTURER_MFRNR
+        key MFRNR
 };
 define view RETVKBUR as
     select from RETURNS distinct {
-        key SALES_OFFICE_VKBUR
-};
-define view RETPRCTR as
-    select from RETURNS distinct {
-        key PROFIT_CENTER_PRCTR
+        key VKBUR
 };
 @cds.search: { KUNRE_ANA, KUNWE_ANA, VKORG,	BSTKD, VBELN, MATNR, MAKTX, NAME1, MFRNR }
 @cds.persistence.exists
 entity BACKORDERS 
 {
-        DATE_DIFF           : Integer;	 
-    key KUNRE_ANA           : String(10);	
-        UDATE               : String(8);	 
-    key VKORG               : String(4);	
-        BSTKD               : String(35);	 
-        EXTENSION           : Decimal(38,21);	 
-    key VBELN               : String(10);	
-        ERDAT               : String(8);	 
-        UNIT_PRICE          : Decimal(30,18);	 
-    key MATNR               : String(40);	
-        MAKTX               : String(40); 
-        BACK_ORD_QTY        : Decimal(18,3);	 
-    key KUNWE_ANA           : String(10);	
-        NAME1               : String(35);	 
-        MFRNR               : String(10);	 
-        MEINS               : String(3);
+        DATE_DIFF           : Integer               @title: 'Age';	 
+    key KUNRE_ANA           : String(10)            @title: 'Bill To';	
+        UDATE               : String(8)             @title: 'Cancel Date';	 
+    key VKORG               : String(4)             @title: 'Sales Org.';	
+        BSTKD               : String(35)            @title: 'Customer PO';	 
+        EXTENSION           : Decimal(38,21)        @title: 'Extension';	 
+    key VBELN               : String(10)            @title: 'Order #';	
+        ERDAT               : String(8)             @title: 'Order Date';	 
+        UNIT_PRICE          : Decimal(30,18)        @title: 'Price';	 
+    key MATNR               : String(40)            @title: 'Product';	
+        MAKTX               : String(40)            @title: 'Product Desc.'; 
+        BACK_ORD_QTY        : Decimal(18,3)         @title: 'Quantity';	 
+    key KUNWE_ANA           : String(10)            @title: 'Ship To';	
+        NAME1               : String(35)            @title: 'Ship To Name';	 
+        MFRNR               : String(10)            @title: 'Manufacturer Number';	 
+        MEINS               : String(3)             @title: 'Base Unit of Measure';
 }
 
 //  Back Orders Product Name filter
 define view BOPRODUCTDESC as
     select from BACKORDERS distinct {
-        key MAKTX,
-            MFRNR
+        key MAKTX
 };
 
 //  Back Orders Bill To filter
 define view BOBILLTO as
     select from BACKORDERS distinct {
-        key KUNRE_ANA,
-            MFRNR
+        key KUNRE_ANA
 
 };
 //  Back Orders Ship To filter
 define view BOSHIPTO as
     select from BACKORDERS distinct {
-        key KUNWE_ANA,
-            MFRNR
+        key KUNWE_ANA
 };
 define view BOMFRNR as
     select from BACKORDERS distinct {
@@ -896,14 +832,19 @@ define view MPSYEAR as
 @cds.persistence.exists
 entity MAINPAGEINVENTORY
 {
-    key QUAN_AVAILABLE_QUANTITY  : Decimal(38, 2);
+    key SKU_MATNR       : String(40);
+    QUAN_AVAILABLE_QUANTITY  : Decimal(38, 2);
     OPEN_STOCK          : Decimal(38, 2);
-    RETAINS             : Decimal(38, 2);
-    RETURNS_CAL         : Decimal(38, 2);
-    RECALLS             : Decimal(38, 2);	
     QUARANTINE          : Decimal(38, 2);
-    DAMAGE_DESTRUCTION  : Decimal(38, 2); 
-    MANUFACTURER        : String(10);
+    RETAINS             : Decimal(38, 2);
+    QUALITY_HOLD        : Decimal(38, 2);
+    RETURNS_CAL         : Decimal(38, 2);
+    RECALLS             : Decimal(38, 2);
+    INVENTORY_HOLD      : Decimal(38, 2);
+    RELABEL_QTY         : Decimal(38, 2);	
+    DAMAGE_DESTRUCTION  : Decimal(38, 2);
+    SAMPLE_QTY          : Decimal(38, 2); 
+    MANUFACTURER_MFRPN  : String(10);
     
 }
 

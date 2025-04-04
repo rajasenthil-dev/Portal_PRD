@@ -161,6 +161,12 @@ sap.ui.define([
         
             // Return the formatted date
             return oDateFormat.format(oDate);
+        },
+        removeLeadingZeros: function(value) {
+            if (typeof value === "string" && /^\d+$/.test(value)) {
+                return String(Number(value));
+            }
+            return value; 
         }
         
         

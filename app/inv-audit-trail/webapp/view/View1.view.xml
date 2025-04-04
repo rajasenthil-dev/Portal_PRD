@@ -104,13 +104,22 @@
                     >
                     <t:Table id="table" selectionMode="None" alternateRowColors="true">
                         <t:columns>
+                        <t:Column id="_IDGenColumn12" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText312" text="SKU"></Text>
+                                <t:template>
+                                    <Text id="sku" text="{path: 'MATNR', formatter: '.removeLeadingZeros'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn" width='7.813rem'>
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 8}'/>
                                 </t:customData>
                                 <Text id="_IDGenText3" text="Expiry Date"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate" text="{path: 'VFDAT', formatter: '._formatDate'}"/>
+                                    <Text id="invoiceDate" text="{= ${VFDAT} === '00000000' ? ' ' : ${path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}}"/>
                                 </t:template>
                             </t:Column>
                             <!-- <t:Column id="_IDGenColumn1" width='7.813rem'>

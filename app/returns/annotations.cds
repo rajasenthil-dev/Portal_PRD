@@ -7,23 +7,28 @@ Search.defaultSearchElement: true,
                 CUSTOMER_KUNNR: true,
                 CUSTOMER_NAME_NAME1: true,
                 PROVINCE_REGIO: true,
-                RGA_VBELN: true,
+                VBELN_VBAK: true,
                 REASON_BEZEI: true,
                 REFERENCE_BSTKD: true,
                 CO_VKORG: true,
-                SALES_OFFICE_VKBUR: true,
-                MANUFACTURER_MFRNR: true,
-                PROFIT_CENTER_PRCTR: true
+                VKBUR: true,
+                MFRNR: true
         }
     },
     UI : {
         SelectionFields  : [
-           RGA_VBELN, CUSTOMER_NAME_NAME1, REASON_BEZEI, DATE_ENTERED_FKDAT_ANA
+           VBELN_VBAK, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : DATE_ENTERED_FKDAT_ANA,
+                Value : CURRENT,
+                Label : 'Current/Historical',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ERDAT,
                 Label : 'Date Entered',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
@@ -49,7 +54,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : RGA_VBELN,
+                Value : VBELN_VBAK,
                 Label : 'RGA #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
@@ -67,7 +72,13 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : CREDIT_DATE_ERDAT,
+                Value : VBELN_VBRK,
+                Label : 'Credit #',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : FKDAT_ANA,
                 Label : 'Credit Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
@@ -85,27 +96,21 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : SALES_OFFICE_VKBUR,
+                Value : VKBUR,
                 Label : 'Sales Office',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : MANUFACTURER_MFRNR,
+                Value : MFRNR,
                 Label : 'Manufacturer Number',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : PROFIT_CENTER_PRCTR,
-                Label : 'Profit Center',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
+            
         ],
     },
 ){
-    DATE_ENTERED_FKDAT_ANA@(title: 'Date Entered');
-    CUSTOMER_KUNNR@(title: 'Customer');
+    
     CUSTOMER_NAME_NAME1@(title: 'Name',
         Common: {
             ValueListWithFixedValues,
@@ -123,8 +128,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    PROVINCE_REGIO@(title: 'Province');
-    RGA_VBELN@(
+    VBELN_VBAK@(
         title: 'RGA #',
         Common: {
             ValueListWithFixedValues,
@@ -135,15 +139,14 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'RGA_VBELN',
-                        ValueListProperty : 'RGA_VBELN'
+                        LocalDataProperty : 'VBELN_VBAK',
+                        ValueListProperty : 'VBELN_VBAK'
                     }
                 ]
             },
         }
 
     );
-    REFERENCE_BSTKD@(title: 'Reference #');
     REASON_BEZEI@(
         title: 'Reason',
         Common: {
@@ -163,8 +166,6 @@ Search.defaultSearchElement: true,
         }
 
     );
-    CREDIT_DATE_ERDAT@(title: 'Credit Date');
-    CREDIT_AMT_NETWR@(title: 'Credit Amt');
     CO_VKORG@(title: 'Sales Org.',
         Common: {
             ValueListWithFixedValues,
@@ -182,7 +183,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    SALES_OFFICE_VKBUR@(title: 'Sales Office',
+    VKBUR@(title: 'Sales Office',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -192,14 +193,14 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'SALES_OFFICE_VKBUR',
-                        ValueListProperty : 'SALES_OFFICE_VKBUR'
+                        LocalDataProperty : 'VKBUR',
+                        ValueListProperty : 'VKBUR'
                     }
                 ]
             },
         }
     );
-    MANUFACTURER_MFRNR@(title: 'Manufacturer Number',
+    MFRNR@(title: 'Manufacturer Number',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -209,30 +210,14 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'MANUFACTURER_MFRNR',
-                        ValueListProperty : 'MANUFACTURER_MFRNR'
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
                     }
                 ]
             },
         }
     );
-    PROFIT_CENTER_PRCTR@(title: 'Profit Center',
-        Common: {
-            ValueListWithFixedValues,
-            ValueList : {
-                $Type : 'Common.ValueListType',
-                CollectionPath : 'RETPRCTR',
-                Label : 'Profit Center',
-                Parameters : [
-                    {
-                        $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PROFIT_CENTER_PRCTR',
-                        ValueListProperty : 'PROFIT_CENTER_PRCTR'
-                    }
-                ]
-            },
-        }
-    );
+    
 
 
 

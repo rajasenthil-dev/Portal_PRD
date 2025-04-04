@@ -121,12 +121,7 @@ Search.defaultSearchElement: true,
         ],
     },
 ){
-    VBELN@(title: 'Order #');
-    BSTKD@(title: 'Customer PO');
-    ERDAT@(title: 'Order Date');
-    DATE_DIFF@(title: 'Age');
-    UDATE@(title: 'Cancel Date');
-    MATNR@(title: 'Product');
+    
     MAKTX@(title: 'Product Desc',
         Common: {
             ValueListWithFixedValues,
@@ -144,10 +139,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    BACK_ORD_QTY@(title: 'Quantity');
-    MEINS@(title: 'Unit');
-    UNIT_PRICE@(title: 'Price');
-    EXTENSION@(title:'Extension');
+    
     KUNRE_ANA@(title:'Bill To',
         Common: {
             ValueListWithFixedValues,
@@ -182,7 +174,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    NAME1@(title: 'Ship To Name');
+    
     VKORG@(title: 'Sales Org.',
         Common: {
             ValueListWithFixedValues,

@@ -2,6 +2,16 @@ sap.ui.define([], () => {
 	"use strict";
 
 	return {
+        removeLeadingZeros: function(value) {
+            if (typeof value === "string" && /^\d+$/.test(value)) {
+                return String(Number(value));
+            }
+            return value; 
+        },
+        formatDate: function(value) {
+            if (!value) return "";
+            return value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+        },
 		_formatDate: function (date) {
             if (!date) return ""; // Return empty string if no date is provided
         
@@ -39,6 +49,31 @@ sap.ui.define([], () => {
         
             // Return the formatted date
             return oDateFormat.format(oDate);
+        },
+        yesNoIconColor: function (value) {
+            const cleanValue = (value || "").trim().toUpperCase(); // Clean and normalize data
+            
+            if (cleanValue.includes("Y")) {
+                return "Success";  // Green for "Current"
+            } 
+            if (cleanValue.includes("N")) {
+                return "Information";    // Red for "Historical"
+            } 
+            
+            return "None"; // Default state for unexpected values
+        },
+        
+        yesNoIcon: function (value) {
+            const cleanValue = (value || "").trim().toUpperCase();
+        
+            if (cleanValue.includes("Y")) {
+                return "sap-icon://present"; // Checkmark for "Current"
+            } 
+            if (cleanValue.includes("N")) {
+                return "sap-icon://history"; // Cross for "Historical"
+            } 
+            
+            return ""; // No icon for undefined or invalid values
         },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {

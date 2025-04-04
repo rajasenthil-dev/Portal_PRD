@@ -13,7 +13,8 @@ Search.defaultSearchElement: true,
             VKORG:true,
             MFRNR:true,
             LGNUM: true,
-            EAN11: true
+            EAN11: true,
+            CURRENT: true
         }
     },
     UI : {
@@ -23,10 +24,16 @@ Search.defaultSearchElement: true,
             CHARG,
             WAREHOUSE_STATUS, 
             REPORT_DATE,
+            CURRENT
             
         ],
         
         LineItem  : [
+            {
+                $Type : 'UI.DataField',
+                Value : CURRENT,
+                Label : 'Current/Historical'
+            },
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
@@ -54,12 +61,22 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CHARG,
-                Label : 'Batch Number'
+                Label : 'Lot Number'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VFDAT,
                 Label : 'Shelf Life Expiration or Best-Before Date'  
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : REPORT_DATE,
+                Label : 'Report Date'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DAYS_UNTIL_EXPIRY,
+                Label : 'Days Until Expiry'
             },
             {
                 $Type : 'UI.DataField',
@@ -85,18 +102,23 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : DAYS_UNTIL_EXPIRY,
-                Label : 'Days Until Expiry'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : REPORT_DATE,
-                Label : 'Report Date'
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : EAN11,
                 Label : 'UPC'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DIN,
+                Label : 'DIN'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RBTXT,
+                Label : 'Storage Conditions Desc.'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TBTXT,
+                Label : 'Description of Temp. Conditions'
             },
             {
                 $Type : 'UI.DataField',
@@ -154,13 +176,12 @@ Search.defaultSearchElement: true,
     );
     SIZE@(title: 'Size');
     CHARG@(
-        title: 'Batch Number',
+        title: 'Lot Number',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPLOT',
-                Label : 'Batch Number',
+                Label : 'Lot Number',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

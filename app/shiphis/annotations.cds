@@ -92,12 +92,22 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MEINS,
                 Label : 'Unit of Measure'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VKORG,
+                Label : 'Sales Org.'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR,
+                Label : 'Manufacturer Number'
             }
         ],
     },   
 ){
     VBELN@(
-        title:'Invoice Number',
+        title:'Invoice #',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -192,8 +202,40 @@ Search.defaultSearchElement: true,
     LFDAT@(title:'Delivery Date');
     LFUHR@(title:'Delivery Time');
     TRK_DLVTO@(title:'Received');
-    VKORG@(title:'Co.');
-    MFRNR@(title:'Manufacturer Number');
+    VKORG@(title:'Sales Org.',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHVKORG',
+                Label : 'Sales Org.',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        }, 
+    );
+    MFRNR@(title:'Manufacturer Number',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHMFRNR',
+                Label : 'Manufacturer Number',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }, 
+    );
     CAL_BILL_ITM_COUNT@(title: 'Item Count');
     FKIMG@(title: 'Invoiced Quanity');
     MEINS@(title: 'Unit of Measure');

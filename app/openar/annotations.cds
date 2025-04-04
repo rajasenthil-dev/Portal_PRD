@@ -134,7 +134,7 @@ annotate FINANCE.OPENAR with @(
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'CO.',
+                Label : 'Sales Org.',
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
             {
@@ -150,10 +150,8 @@ annotate FINANCE.OPENAR with @(
     
 )
 
-{   
-    BILL_TO@(title: 'Customer');
+{
     NAME1@(
-        title: 'Customer Name',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -171,24 +169,4 @@ annotate FINANCE.OPENAR with @(
         }    
         
     );
-    BELNR@(title: 'Invoice #');
-    BSTKD@(title: 'Customer PO');
-    FKDAT@(title: 'Invoice Date');
-    NETDT@(title: 'Due Date');
-    BLART@(title: 'Type');
-    STORE_SHIP_TO@(title: 'Store');
-    CAL_AGE@(title: 'Age');
-    CAL_CURRENT@(title: 'Current');
-    CAL_1_30@(title: '1 to 30');
-    CAL_31_60@(title: '31 to 60');
-    CAL_61_90@(title: '61 to 90');
-    CAL_OVER_90@(title: 'Over 90');
-    NETWR@(title: 'Invoiced Amount');
-    TSL@(title: 'Amount Paid');
-    ZTERM@(title: 'Invoice Terms');
-    CREDIT_LIMIT@(title: 'Credit Limit');
-    VKORG@(title: 'CO.');
-    MFRNR@(title: 'Manufacturer');
-
-    
 };

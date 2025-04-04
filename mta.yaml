@@ -124,6 +124,10 @@ modules:
       - admindash.zip
       name: admindash
       target-path: app/
+    - artifacts:
+      - logo.zip
+      name: logo
+      target-path: app/
 - name: mck-portal-destination-content
   type: com.sap.application.content
   requires:
@@ -350,6 +354,16 @@ modules:
 - name: admindash
   type: html5
   path: app/admindash
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: logo
+  type: html5
+  path: app/logo
   build-parameters:
     build-result: dist
     builder: custom

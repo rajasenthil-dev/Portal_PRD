@@ -79,20 +79,100 @@
                         <t:columns>
                             <t:Column id="_IDGenColumn" width="7.813rem">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT", "leadingProperty": "PRODUCT", "columnIndex": 1}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT", "leadingProperty": "PRODUCT", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText6" text="Product"></Text>
+                                <Text id="_IDGenText6" text="SKU"></Text>
                                 <t:template>
                                     <Text id="_IDGenText9" text="{path: 'PRODUCT', formatter: '._removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6">
+                            <t:Column id="_IDGenColumn11" width='6rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "NARCOTIC_YN", "leadingProperty": "NARCOTIC_YN", "columnIndex": 8}'/>
+                                </t:customData>
+                                <Text id="_IDGenText31" text="Narcotic Y/N"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                    core:require="{
+                                            Formatter: 'itemmas/model/formatter'
+                                        }"
+                                        icon="{path: 'NARCOTIC_YN', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'NARCOTIC_YN', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${NARCOTIC_YN} === 'Y' ? 'Yes' : 'No'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn111" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "LOT_CONTROL_YN", "leadingProperty": "LOT_CONTROL_YN", "columnIndex": 9}'/>
+                                </t:customData>
+                                <Text id="_IDGenText311" text="Lot Control Y/N"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus1"
+                                    core:require="{
+                                            Formatter: 'itemmas/model/formatter'
+                                        }"
+                                        icon="{path: 'LOT_CONTROL_YN', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'LOT_CONTROL_YN', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${LOT_CONTROL_YN} === 'Y' ? 'Yes' : 'No'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn112" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "REFRIGERATED", "leadingProperty": "REFRIGERATED", "columnIndex": 10}'/>
+                                </t:customData>
+                                <Text id="_IDGenText312" text="Refridgerated"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus2"
+                                    core:require="{
+                                            Formatter: 'itemmas/model/formatter'
+                                        }"
+                                        icon="{path: 'REFRIGERATED', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'REFRIGERATED', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${REFRIGERATED} === 'Y' ? 'Yes' : 'No'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn113" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PST_APPLICABLE", "leadingProperty": "PST_APPLICABLE", "columnIndex": 11}'/>
+                                </t:customData>
+                                <Text id="_IDGenText313" text="PST Applicable"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus3"
+                                    core:require="{
+                                            Formatter: 'itemmas/model/formatter'
+                                        }"
+                                        icon="{path: 'PST_APPLICABLE', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'PST_APPLICABLE', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${PST_APPLICABLE} === 'Y' ? 'Yes' : 'No'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn114" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "GST_APPLICABLE", "leadingProperty": "GST_APPLICABLE", "columnIndex": 12}'/>
+                                </t:customData>
+                                <Text id="_IDGenText314" text="PST Applicable"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus4"
+                                    core:require="{
+                                            Formatter: 'itemmas/model/formatter'
+                                        }"
+                                        icon="{path: 'GST_APPLICABLE', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'GST_APPLICABLE', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${GST_APPLICABLE} === 'Y' ? 'Yes' : 'No'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn6" width="7rem">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CREATIONDATE", "leadingProperty": "CREATIONDATE", "columnIndex": 13}'/>
                                 </t:customData>
                                 <Text id="_IDGenText2" text="Creation Date"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText4" text="{path: 'CREATIONDATE', formatter: '._formatDate'}" />
+                                    <Text id="_IDGenText4" text="{path: 'CREATIONDATE', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns>

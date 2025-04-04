@@ -125,7 +125,7 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'Comp.'
+                Label : 'Sales Org.'
             },
             {
                 $Type : 'UI.DataField',
@@ -194,21 +194,4 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
         } 
         
     );
-    STRAS_BILLTO@(title:'Bill To Address 1');   
-    ORT01_BILLTO@(title:'Bill To City'); 	 
-    ERDAT_BILLTO@(title:'Bill To Created'); 	 
-    NAME1_BILLTO@(title:'Bill To Name'); 	 
-    PSTLZ_BILLTO@(title:'Bill To Postal Code'); 
-    BEZEI_BILLTO@(title:'Bill To Province'); 	 
-    KTEXT_BILLTO@(title:'Bill To Type'); 	 
-    VKORG@(title:'Comp.'); 	
-    CREDIT_LIMIT@(title:'Credit Limit');	
-    STRAS_SHIPTO@(title:'Ship To Address 1'); 	 
-    ORT01_SHIPTO@(title:'Ship To City'); 	 
-    ERDAT_SHIPTO@(title:'Ship To Created'); 	 
-    NAME1_SHIPTO@(title:'Ship To Name'); 	 
-    PSTLZ_SHIPTO@(title:'Ship To Postal Code'); 	 
-    BEZEI_SHIPTO@(title:'Ship To Province'); 	 
-    KTEXT_SHIPTO@(title:'Ship To Type'); 	 
-    CAL_TERM@(title:'Terms'); 
 };

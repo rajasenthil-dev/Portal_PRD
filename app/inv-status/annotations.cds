@@ -33,15 +33,15 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : SIZE,
-                Label : 'Size',
-                ![@HTML5.CssDefaults] : {width : '4.688rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : PRODUCT_DESCRIPTION,
                 Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '20rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SIZE,
+                Label : 'Size',
+                ![@HTML5.CssDefaults] : {width : '4.688rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -135,7 +135,6 @@ Search.defaultSearchElement: true,
         ],
     },
 ){
-    SKU_MATNR@(title: 'SKU');
     PRODUCT_CODE@(
         title: 'Product Code',
         Common: {
@@ -154,19 +153,6 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    SIZE@(title: 'Size');
-    PRODUCT_DESCRIPTION@(title: 'Product Description');
-    OPEN_STOCK@(title: 'Open Stock');
-    QUARANTINE@(title: 'Quarantine');
-    DAMAGE_DESTRUCTION@(title: 'Damage/Destruction');
-    RETAINS@(title: 'Retains');
-    QUALITY_HOLD@(title:'Quality Hold');
-    RETURNS_CAL@(title: 'Returns');
-    RECALLS@(title: 'Recalls');
-    INVENTORY_HOLD@(title:'Inventory Hold');
-    RELABEL_QTY@(title:'Re-Label');
-    SAMPLE_QTY@(title:'Sample');
-    UNIT@(title:'Base Unit of Measure');
     VKBUR@(title: 'Sales Office',
         Common: {
             ValueListWithFixedValues,

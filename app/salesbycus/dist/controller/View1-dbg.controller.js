@@ -29,6 +29,7 @@ sap.ui.define([
                     }
                 }
             });
+            oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
             var oModelLogo = this.getOwnerComponent().getModel("logo");
             // Bind to the MediaFile entity with a filter
             var oBinding = oModelLogo.bindList("/MediaFile");
@@ -52,7 +53,109 @@ sap.ui.define([
                 }
             }.bind(this));
         },
+        _calculateTotals: function () {
+            const oSmartTable = this.getView().byId("table0");
+            const oTable = oSmartTable.getTable();
+            const oBinding = oTable.getBinding("rows");
+        
+            if (!oBinding) {
+                console.warn("Table binding is missing.");
+                return;
+            }
+        
+            const aContexts = oBinding.getContexts(0, oBinding.getLength());
+            if (!aContexts) {
+                console.warn("Data is not available for calculation.");
+                return;
+            }
+        
+            // Initialize totals
+            const totals = aContexts.reduce((acc, oContext) => {
+                const oData = oContext.getObject();
+                if (!oData) return acc;
+        
+                // Sales & Amount Calculation
+                acc.salesTotal += parseFloat(oData.AMOUNT_NETWR || 0);
+        
+                // Invoices Calculation (Count only 'Invoice' types)
+                if (oData.VTEXT_FKART === "Invoice") {
+                    acc.invoiceCount++;
+                }
+        
+                // Lines Calculation (Count every row)
+                acc.lineCount++;
+        
+                // Units Calculation (Units per case * Quantity)
+                const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
+                const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
+                acc.unitsTotal += unitsPerCase * quantity;
+        
+                // Footer Quantity Calculation (Sum QUANTITY_FKIMG)
+                acc.quantityTotal += quantity;
+        
+                return acc;
+            }, {
+                salesTotal: 0,
+                invoiceCount: 0,
+                lineCount: 0,
+                unitsTotal: 0,
+                quantityTotal: 0
+            });
+        
+            // Update Tiles
+            this._updateTile("_IDGenNumericContent1", this.formatLargeNumber(totals.salesTotal)); // Sales
+            this._updateTile("_IDGenNumericContent2", this.formatNumberWithCommas(totals.invoiceCount)); // Invoices
+            this._updateTile("_IDGenNumericContent3", this.formatNumberWithCommas(totals.lineCount)); // Lines
+            this._updateTile("_IDGenNumericContent4", this.formatNumberWithCommas(totals.unitsTotal)); // Units
+        
+            // Update Footer
+            this._updateTile("FooterText1", this.formatNumberWithCommas(totals.quantityTotal)); // Quantity
+            this._updateTile("FooterText2", this.formatCurrency(totals.salesTotal, "USD")); // Amount (Same as Sales)
+        },
+        
+        _updateTile: function (sTileId, value) {
+            const oTile = this.byId(sTileId);
+            if (oTile) {
+                oTile.setText(value);
+            } else {
+                console.warn(`Tile with ID ${sTileId} not found.`);
+            }
+        },
+        onSearch: function () {
+            const oSmartFilterBar = this.getView().byId("smartFilterBar");
+            const oSmartTable = this.getView().byId("table0");
+            const oBinding = oSmartTable.getTable().getBinding("rows");
+        
+            if (!oBinding) {
+                console.warn("Table binding is missing.");
+                return;
+            }
+        
+            // Get selected value from the filter
+            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+        
+            // Build the filter condition
+            let aFilters = [];
+            if (sCurrentStatus) {
+                aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+            }
+        
+            // Apply the filter
+            oBinding.filter(aFilters);
+        },
+        _formatRowHighlight: function (oValue) {
+			// Your logic for rowHighlight goes here
+			if (oValue === "NO") { 
+				return "Information";
+            }
+			return "Success";
+		},
+        formatDate:function(value) {
+            if (!value) return "";
+            return value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+        },
         _formatDate: function (date) {
+            
             if (!date) return ""; // Return empty string if no date is provided
         
             let oDate;
@@ -89,6 +192,33 @@ sap.ui.define([
         
             // Return the formatted date
             return oDateFormat.format(oDate);
+        },
+        formatLargeNumber: function(value) {
+            if (!value || isNaN(value)) return "0";
+        
+            const absValue = Math.abs(value); // Handle negative numbers safely
+        
+            if (absValue >= 1_000_000_000) {
+                return (value / 1_000_000_000).toFixed(2) + "B";
+            } else if (absValue >= 1_000_000) {
+                return (value / 1_000_000).toFixed(2) + "M";
+            } else if (absValue >= 1_000) {
+                return (value / 1_000).toFixed(2) + "K";
+            } 
+            return value.toFixed(2); // For values less than 1K
+        },
+        formatNumberWithCommas: function(value) {
+            if (!value || isNaN(value)) return "0";
+        
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        formatCurrency: function(value, currency = "USD") {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currency,
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(value);
         },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {

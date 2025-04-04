@@ -56,6 +56,40 @@ sap.ui.define([
                 }
             }.bind(this));
         },
+        _formatRowHighlight: function (oValue) {
+			// Your logic for rowHighlight goes here
+			if (oValue >= 120) {
+                return "Success";
+            } else if (oValue > 0) {
+                return "Warning";
+            } else if (oValue = 0) {
+                return "Error"
+            } else {
+                return "Error"
+            }
+		},
+        onSearch: function () {
+            const oSmartFilterBar = this.getView().byId("smartFilterBar");
+            const oSmartTable = this.getView().byId("table0");
+            const oBinding = oSmartTable.getTable().getBinding("rows");
+        
+            if (!oBinding) {
+                console.warn("Table binding is missing.");
+                return;
+            }
+        
+            // Get selected value from the filter
+            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+        
+            // Build the filter condition
+            let aFilters = [];
+            if (sCurrentStatus) {
+                aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+            }
+        
+            // Apply the filter
+            oBinding.filter(aFilters);
+        },
         _calculateTotals: function (oEvent) {
             var oTable = oEvent.getSource();
             var oBinding = oTable.getBinding("rows");  // Get the rows binding

@@ -36,7 +36,7 @@
         "crossNavigation": {
             "inbounds": {
                 "inventory-display": {
-                    "semanticObject": "inventory",
+                    "semanticObject": "invsnapshot",
                     "action": "display",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubTitle}}",

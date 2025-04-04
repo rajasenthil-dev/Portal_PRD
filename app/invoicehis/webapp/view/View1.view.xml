@@ -17,7 +17,7 @@
                         <HeaderContainer id="container1" scrollStep="200" height="100px">
                             <FlexBox id="_IDGenFlexBox7" alignItems="Center" height="100px">
                                 <FlexBox id="_IDGenFlexBox8" alignItems="Center" height="75px" class="imgBG">
-                                    <Image id="logoImage" src="/img/logoipsum-325.svg" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo" >
+                                    <Image id="logoImage" src="" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo" >
                                         <layoutData>
                                             <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow"/>
                                         </layoutData>
@@ -53,17 +53,20 @@
                             />
                         </sf:controlConfiguration>
                         <sf:controlConfiguration>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                            <sf:ControlConfiguration id="customCurrentFilter"
                                 key="CURRENT"
                                 visibleInAdvancedArea="true"
+                                label="Current/Historical"
                             >
-                            <!-- <sf:customControl>
-                                <ComboBox id="_IDGenComboBox" change="handleHistoricalChange">
-                                    <core:Item id="_IDGenItem" key="" text="All"></core:Item>
-                                    <core:Item id="_IDGenItem1" key="Y" text="Current"></core:Item>
-                                    <core:Item id="_IDGenItem2" key="N" text="Historical"></core:Item>
-                                </ComboBox>
-                            </sf:customControl> -->
+                                <sf:customControl>
+                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                        <items>
+                                            <core:Item id="_IDGenItem2" key="" text="All"/>
+                                            <core:Item id="_IDGenItem" key="Y" text="Current"/>
+                                            <core:Item id="_IDGenItem1" key="N" text="Historical"/>
+                                        </items>
+                                    </ComboBox>
+                                </sf:customControl>
                             </sf:ControlConfiguration>
                         </sf:controlConfiguration>
                     </sf:SmartFilterBar>
@@ -73,12 +76,36 @@
                         
                             <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text="{path:'summaryCounts>/TotalSalesFormatted'}"/>
+                                <Text id="TileContent1" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
-                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text="{summaryCounts>/UniqueInvoices}"/>
-                            </FlexBox>  
+                                <Text id="TileContent2" class="mck_TileContent" text=""/>
+                            </FlexBox>
+                            <!-- <FlexBox id="_IDGenFlexBox21" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle21" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
+                                <HBox justifyContent="SpaceBetween">
+                                    <VBox id="_IDGenHBox" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                        <Label text="Historical data from before the new implementation of the portal"/>
+                                        <ObjectStatus id="_IDGenObjectStatus1"
+                                                icon="sap-icon://history"
+                                                inverted="true"
+                                                state="Information"
+                                                text="Historical"
+                                                class="sapUiTinyMarginEnd"/>
+
+                                        
+                                    </VBox>
+                                    <VBox class="sapUiTinyMarginBottom" id="_IDGenHBox12" >
+                                        <Label text="Current data from new implementation of the portal"/>
+                                        <ObjectStatus id="_IDGenObjectStatus22"
+                                                icon="sap-icon://present"
+                                                inverted="true"
+                                                state="Success"
+                                                text="Current"/>
+                                    </VBox>
+                                </HBox>
+                            </FlexBox>     -->
                         
                         
                         </HeaderContainer>
@@ -113,6 +140,9 @@
                         id="table" 
                         selectionMode="None"
                         alternateRowColors="true" >
+                        <t:rowSettingsTemplate>
+                            <t:RowSettings id="_IDGenRowSettings" highlight="{path:'CURRENT', formatter:'._formatRowHighlight'}" highlightText="{CURRENT}"/>
+                        </t:rowSettingsTemplate>
                         <t:columns>
                             <t:Column id="_IDGenColumn10" width='7.813rem'>
                                 <t:customData>
@@ -129,7 +159,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText6" text="Invoice Date"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText9" text="{path: 'BUDAT', formatter: '._formatDate'}" />
+                                    <Text id="_IDGenText9" text="{path: 'BUDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn6" width='7rem'>
@@ -147,9 +177,27 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="Delivery Date"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText11" text="{path: 'LFDAT', formatter: '._formatDate'}" />
+                                    <Text id="_IDGenText11" text="{path: 'LFDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn11" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText31" text="Current/Historical"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                    core:require="{
+                                            Formatter: 'invoicehis/model/formatter'
+                                        }"
+                                        icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${CURRENT} === 'Y' ? 'Current' : 'Historical'}"/>
+                                </t:template>
+                            </t:Column>
+
+                            
                         </t:columns> 
                     </t:Table>
                 </st:SmartTable>
@@ -167,15 +215,15 @@
                         <FlexBox id="_IDGenFlexBox11" >
                             <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                                <Text id="footerText1" class="footerText" text ="{path: 'footerCounts>/TSL_AMOUNT', formatter: '._formatCurrency'}"/>
+                                <Text id="FooterContent1" class="footerText" text ="{path: 'footerCounts>/TSL_AMOUNT', formatter: '._formatCurrency'}"/>
                             </HBox>
                             <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                                <Text id="footerText2" class="footerText" text ="{path: 'footerCounts>/CAL_PST', formatter: '._formatCurrency'}"/>
+                                <Text id="FooterContent2" class="footerText" text ="{path: 'footerCounts>/CAL_PST', formatter: '._formatCurrency'}"/>
                             </HBox>
                             <HBox id="_IDGenHBox3" class="sapUiSmallMarginEnd">
                                     <Label id="_IDGenLabel3" text="{i18n>footerLabel3}:" class="cssLabelTotal"/>
-                                <Text id="footerText3" class="footerText" text ="{path: 'footerCounts>/CAL_GST', formatter: '._formatCurrency'}"/>
+                                <Text id="FooterContent3" class="footerText" text ="{path: 'footerCounts>/CAL_GST', formatter: '._formatCurrency'}"/>
                             </HBox>	
                         </FlexBox>
                     </FlexBox>

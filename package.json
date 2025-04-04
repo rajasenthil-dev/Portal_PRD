@@ -55,7 +55,8 @@
     "watch-project12345": "cds watch --open project12345/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-test1245": "cds watch --open test1245/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-backorders1": "cds watch --open backorders1/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-admindash": "cds watch --open admindash/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-admindash": "cds watch --open admindash/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-logo": "cds watch --open logo/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "service": {

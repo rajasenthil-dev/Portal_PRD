@@ -10,12 +10,14 @@
         {
             "name": "$XSAPPNAME.Viewer",
             "description": "Viewer",
-            "grant-as-authority-to-apps": ["mck-portal"]
+            "grant-as-authority-to-apps": ["mck-portal"],
+            "attributes": ["groups"]
         },
         {
             "name": "$XSAPPNAME.Internal",
             "description": "Internal User",
-            "grant-as-authority-to-apps": ["mck-portal"]
+            "grant-as-authority-to-apps": ["mck-portal"],
+            "attributes": ["groups"]
         }
     ],
     "attributes": [
@@ -115,7 +117,7 @@
         "allowedproviders": [],
         "redirect-uris": [
             "https://**cfapps.us20.hana.ondemand.com/**",
-            "https://**cfapps.us20.hana.ondemand.com/my/logout",
+            "https://sapbtp-login.dev.mckesson.ca/oauth2/aushayeaerbghFdnw1d7/v1/logout",
             "https://*.applicationstudio.cloud.sap/**",
             "https://port5000-workspaces-ws-7hzlf.us20.applicationstudio.cloud.sap/"
         ]

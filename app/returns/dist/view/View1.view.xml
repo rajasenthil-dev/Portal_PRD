@@ -34,12 +34,29 @@
                     search="onSearch">
                     <sf:controlConfiguration>
                         <sf:ControlConfiguration id="_IDGenControlConfiguration1"
-							key="DATE_ENTERED_FKDAT_ANA"
+							key="ERDAT"
 							visibleInAdvancedArea="true"
 							conditionType="{
 								module: 'sap.ui.comp.config.condition.DateRangeType'
 							}"
 						/>
+                    </sf:controlConfiguration>
+                    <sf:controlConfiguration>
+                        <sf:ControlConfiguration id="customCurrentFilter"
+                            key="CURRENT"
+                            visibleInAdvancedArea="true"
+                            label="Current/Historical"
+                        >
+                            <sf:customControl>
+                                <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                    <items>
+                                        <core:Item id="_IDGenItem2" key="" text="All"/>
+                                        <core:Item id="_IDGenItem" key="YES" text="Current"/>
+                                        <core:Item id="_IDGenItem1" key="NO" text="Historical"/>
+                                    </items>
+                                </ComboBox>
+                            </sf:customControl>
+                        </sf:ControlConfiguration>
                     </sf:controlConfiguration>
                 </sf:SmartFilterBar>
                 <!--Added By Bryan Cash Removed sapMediumMarginBottom from Header Container, Added Panel with expanded=true and expandable=true and header text with app title + summary
@@ -86,28 +103,44 @@
                 enableAutoColumnWidth="true" 
                 class="sapUiResponsiveContentPadding">
                 <t:Table id="table" selectionMode="None" alternateRowColors="true">
+                    <t:Column id="_IDGenColumn11" width='7.813rem'>
+                        <t:customData>
+                            <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                        </t:customData>
+                        <Text id="_IDGenText31" text="Current/Historical"></Text>
+                        <t:template>
+                            <ObjectStatus id="_IDGenObjectStatus"
+                            core:require="{
+                                    Formatter: 'returns/model/formatter'
+                                }"
+                                icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                
+                                state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                text="{= ${CURRENT} === 'YES' ? 'Current' : 'Historical'}"/>
+                        </t:template>
+                    </t:Column>
                     <t:columns>
                         <t:Column id="_IDGenColumn" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "DATE_ENTERED_FKDAT_ANA", "leadingProperty": "DATE_ENTERED_FKDAT_ANA", "columnIndex": 0}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "ERDAT", "leadingProperty": "ERDAT", "columnIndex": 1}'/>
                             </t:customData>
                             <Text id="_IDGenText3" text="Date Entered"></Text>
                             <t:template>
-                                <Text id="enteredDate" text="{path: 'DATE_ENTERED_FKDAT_ANA', formatter: '._formatDate'}"/>
+                                <Text id="enteredDate" text="{path: 'ERDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                             </t:template>
                         </t:Column>
                         <t:Column id="_IDGenColumn1" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "CREDIT_DATE_ERDAT", "leadingProperty": "CREDIT_DATE_ERDAT", "columnIndex": 8}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "FKDAT_ANA", "leadingProperty": "FKDAT_ANA", "columnIndex": 9}'/>
                             </t:customData>
                             <Text id="_IDGenText5" text="Credit Date"></Text>
                             <t:template>
-                                <Text id="creditDate" text="{path: 'CREDIT_DATE_ERDAT', formatter: '._formatDate'}"/>
+                                <Text id="creditDate" text="{path: 'FKDAT_ANA', type: 'sap.ui.model.odata.type.Date'}"/>
                             </t:template>
                         </t:Column>
                         <t:Column id="_IDGenColumn2" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "CREDIT_AMT_NETWR", "leadingProperty": "CREDIT_AMT_NETWR", "columnIndex": 9}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "CREDIT_AMT_NETWR", "leadingProperty": "CREDIT_AMT_NETWR", "columnIndex": 10}'/>
                             </t:customData>
                             <Text id="_IDGenText4" text="Credit Amount"></Text>
                             <t:template>

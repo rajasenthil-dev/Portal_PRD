@@ -66,37 +66,51 @@ sap.ui.define([
             
             var fTotalOpenStock = 0;
             var fTotalQuarantine = 0;
-            var fTotalDamage= 0;
-            var fTotalQualityHold = 0;
             var fTotalRetains = 0;
+            var fTotalQualityHold = 0;
             var fTotalReturns = 0;
             var fTotalRecalls = 0;
+            var fTotalInventoryHold = 0;
+            var fTotalReLabel = 0;
+            var fTotalDamage= 0;
+            var fTotalSample = 0;
+
             
             aContexts.forEach(function (oContext) {
                 fTotalOpenStock += parseFloat(oContext.getProperty("OPEN_STOCK")) || 0;
                 fTotalQuarantine += parseFloat(oContext.getProperty("QUARANTINE")) || 0;
-                fTotalDamage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
-                //fTotalQualityHold += parseFloat(oContext.getProperty("MENGE")) || 0;
                 fTotalRetains += parseFloat(oContext.getProperty("RETAINS")) || 0;
+                fTotalQualityHold += parseFloat(oContext.getProperty("QUALITY_HOLD")) || 0;
                 fTotalReturns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
                 fTotalRecalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
+                fTotalInventoryHold += parseFloat(oContext.getProperty("INVENTORY_HOLD")) || 0;
+                fTotalReLabel += parseFloat(oContext.getProperty("RELABEL_QTY")) || 0;
+                fTotalDamage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
+                fTotalSample += parseFloat(oContext.getProperty("SAMPLE_QTY")) || 0;
                 
                 
             });
             var formattedOpenStock = this._formatNumber(fTotalOpenStock);
             var formattedQuarantine = this._formatNumber(fTotalQuarantine);
-            var formattedDamage = this._formatNumber(fTotalDamage);
             var formattedRetains = this._formatNumber(fTotalRetains);
+            var formattedQualityHold = this._formatNumber(fTotalQualityHold);
             var formattedReturns = this._formatNumber(fTotalReturns);
             var formattedRecalls = this._formatNumber(fTotalRecalls);
-
+            var formattedInventoryHold = this._formatNumber(fTotalInventoryHold);
+            var formattedReLabel = this._formatNumber(fTotalReLabel);
+            var formattedDamage = this._formatNumber(fTotalDamage);
+            var formattedSample = this._formatNumber(fTotalSample);
             // Update the model with calculated totals
             this.byId("footerText1").setText(formattedOpenStock);
             this.byId("footerText2").setText(formattedQuarantine);
-            this.byId("footerText3").setText(formattedDamage);
-            this.byId("footerText4").setText(formattedRetains);
-            this.byId("footerText6").setText(formattedReturns);
-            this.byId("footerText7").setText(formattedRecalls);
+            this.byId("footerText3").setText(formattedRetains);
+            this.byId("footerText4").setText(formattedQualityHold);
+            this.byId("footerText5").setText(formattedReturns);
+            this.byId("footerText6").setText(formattedRecalls);
+            this.byId("footerText7").setText(formattedInventoryHold);
+            this.byId("footerText8").setText(formattedReLabel);
+            this.byId("footerText9").setText(formattedDamage);
+            this.byId("footerText10").setText(formattedSample);
         },
         _formatNumber : function (value) {
             return new Intl.NumberFormat('en-US', {

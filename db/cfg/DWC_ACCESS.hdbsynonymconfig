@@ -26,7 +26,7 @@
     "SYNINVENTORYSNAPSHOTDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Inventory_Snapshot_C_View_V2"
+        "object": "REP_TPMMWM_INV_SNAPSHOT_01"
       }
     },
     "SYNINVENTORYBYLOTDOC": {
@@ -57,7 +57,7 @@
     "SYNSALESBYCURRENTDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Current_Historical_Sales_by_Customer_by_Product_UN"
+        "object": "REP_TPSDBL_SALE_BY_CUSTOMER"
       }
     },
     "SYNCUSTOMERMASTERDOC": {
@@ -87,7 +87,7 @@
     "SYNRETURNSDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Returns_Reports_View_V3"
+        "object": "REP_TPSDOR_RETURN"
       }
     },
     "SYNBACKORDERSDOC": {
@@ -105,7 +105,7 @@
     "SYNMAINPAGEINVENTORYDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Main_Page_Summary2_Agg_Cons"
+        "object": "REP_TPMMWM_INVENTORY_STATUS_IC"
       }
     },
     "SYNMAINPAGEUNITDOC": {

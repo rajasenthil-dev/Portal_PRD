@@ -64,6 +64,23 @@
                                 }"
                             />
                         </sf:controlConfiguration>
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="customCurrentFilter"
+                                key="CURRENT"
+                                visibleInAdvancedArea="true"
+                                label="Current/Historical"
+                            >
+                                <sf:customControl>
+                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                        <items>
+                                            <core:Item id="_IDGenItem2" key="" text="All"/>
+                                            <core:Item id="_IDGenItem" key="YES" text="Current"/>
+                                            <core:Item id="_IDGenItem1" key="NO" text="Historical"/>
+                                        </items>
+                                    </ComboBox>
+                                </sf:customControl>
+                            </sf:ControlConfiguration>
+                        </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                     <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
 
@@ -71,19 +88,19 @@
 
                             <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text="$181M"/>
+                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
-                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text="19K"/>
+                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
-                                <Text id="_IDGenNumericContent3" class="mck_TileContent" text="69K"/>
+                                <Text id="_IDGenNumericContent3" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>tileTitle4}"/>
-                                <Text id="_IDGenNumericContent4" class="mck_TileContent" text="6M"/>
+                                <Text id="_IDGenNumericContent4" class="mck_TileContent" text=""/>
                             </FlexBox>
 
                         </HeaderContainer>
@@ -117,15 +134,79 @@
                     <t:Table
                         selectionMode="None"
                         id="table"
-                        alternateRowColors="true">
+                        alternateRowColors="true"
+                        core:require="{
+                            TypeForODataV2DateOnly: 'sap/ui/model/odata/type/DateTime',
+                            TypeForODataV2Time: 'sap/ui/model/odata/type/Date',
+                            TypeForODataTimestamp: 'sap/ui/model/odata/type/DateTimeOffset'
+                        }">
+                        <t:rowSettingsTemplate>
+                            <t:RowSettings id="_IDGenRowSettings" highlight="{path:'CURRENT', formatter:'._formatRowHighlight'}" highlightText="{CURRENT}"/>
+                        </t:rowSettingsTemplate>
                         <t:columns>
                             <t:Column id="_IDGenColumn10" width='7.813rem'>
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_VBELN", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_VBELN", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 1}'/>
                                 </t:customData>
                                 <Text id="_IDGenText30" text="Invoice/Credit #"></Text>
                                 <t:template>
                                     <Link id="inviocecredir" text="{INVOICE_CREDIT_VBELN}" press=".onInvoiceClick"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn2" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_DATE_FKDAT", "leadingProperty": "INVOICE_DATE_FKDAT", "columnIndex": 2}'/>
+                                </t:customData>
+                                <Text id="_IDGenText5" text="Invoice Date"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate1" text="{path: 'INVOICE_DATE_FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn23" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU_MATNR", "leadingProperty": "SKU_MATNR", "columnIndex": 4}'/>
+                                </t:customData>
+                                <Text id="_IDGenText52" text="SKU"></Text>
+                                <t:template>
+                                    <Text id="sku111" 
+                                        core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }"
+                                        text="{path: 'SKU_MATNR', formatter: 'Formatter.removeLeadingZeros'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn11" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText31" text="Current"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                    core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }"
+                                        icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${CURRENT} === 'YES' ? 'Current' : 'Historical'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn20" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "EXPIRY_DATE_VFDAT", "leadingProperty": "EXPIRY_DATE_VFDAT", "columnIndex": 14}'/>
+                                </t:customData>
+                                <Text id="_IDGenText50" text="Expiry Date"></Text>
+                                <t:template>
+                                    <Text id="expiryDate1" text="{path: 'EXPIRY_DATE_VFDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn21" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELEVERY_DATE_VDATU", "leadingProperty": "DELEVERY_DATE_VDATU", "columnIndex": 31}'/>
+                                </t:customData>
+                                <Text id="_IDGenText51" text="Delivery Date"></Text>
+                                <t:template>
+                                    <Text id="DeliveryDate1" text="{path: 'DELEVERY_DATE_VDATU', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn" width='7.813rem'>
@@ -154,19 +235,6 @@
                                         text="{path: 'AMOUNT_NETWR', formatter: 'Formatter._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <!-- <t:Column id="_IDGenColumn2" width='7.813rem'>
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_DATE_FKDAT", "leadingProperty": "INVOICE_DATE_FKDAT", "columnIndex": 1}'/>
-                                </t:customData>
-                                <Text id="_IDGenText5" text="Invoice Date"></Text>
-                                <t:template>
-                                    <Text id="invoiceDate1" 
-                                        core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
-                                        }"
-                                        text="{path: 'INVOICE_DATE_FKDAT', formatter: 'Formatter._formatDate'}"/>
-                                </t:template>
-                            </t:Column> -->
                             <!-- <t:Column id="_IDGenColumn3" width='7.813rem'>
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "BUDAT", "leadingProperty": "BUDAT", "columnIndex": 10}'/>
@@ -192,11 +260,11 @@
                         <FlexBox id="_IDGenFlexBox11" >
                             <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                                <Text id="TotUnitsPriceText" class="footerText" text ="{ProductCollection>/TotUnitsPrice}"/>
+                                <Text id="FooterText1" class="footerText" text =""/>
                             </HBox>
                             <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                                <Text id="TotUnitsInStockText" class="footerText" text ="{ProductCollection>/TotUnitsInStock}"/>
+                                <Text id="FooterText2" class="footerText" text =""/>
                             </HBox>
                         </FlexBox>
                     </FlexBox>

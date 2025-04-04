@@ -109,16 +109,21 @@ sap.ui.define([
           const totalQtyFormatted = this.formatter.formatNumber(totals.totalUnitsBackOrdered);
 
           // Update UI elements (tiles)
-          this._updateTile("TileContent1", totals.totalBackOrders);
-          this._updateTile("TileContent2", impactedCustomersCount);
-          this._updateTile("TileContent3", totalItemsOnBackOrderCount);
-          this._updateTile("TileContent4", totals.totalUnitsBackOrdered);
-          this._updateTile("TileContent5", totals.totalUnitsToBeReceived);
+          this._updateTile("TileContent1", this.formatNumberWithCommas(totals.totalBackOrders));
+          this._updateTile("TileContent2", this.formatNumberWithCommas(impactedCustomersCount));
+          this._updateTile("TileContent3", this.formatNumberWithCommas(totalItemsOnBackOrderCount));
+          this._updateTile("TileContent4", this.formatNumberWithCommas(totals.totalUnitsBackOrdered));
+          this._updateTile("TileContent5", this.formatNumberWithCommas(totals.totalUnitsToBeReceived));
 
           // Update footer elements
           this._updateFooter("footerText1", totalQtyFormatted);
           this._updateFooter("footerText2", totalExtensionFormatted);
       },
+        formatNumberWithCommas: function(value) {
+            if (!value || isNaN(value)) return "0";
+        
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
 
       _updateTile: function (sTileId, value) {
           const oTile = this.byId(sTileId);

@@ -72,8 +72,11 @@ sap.ui.define([
                 }
             }.bind(this));
         },
-        removeLeadingZeros: function(sku) {
-            return sku ? String(parseInt(sku, 10)) : sku;   
+        removeLeadingZeros: function(value) {
+            if (typeof value === "string" && /^\d+$/.test(value)) {
+                return String(Number(value));
+            }
+            return value; 
         },
        
         // Added by Bryan Cash calculate totals for table. This code will need to be updated when backend is finished to refelct correct data
@@ -104,7 +107,7 @@ sap.ui.define([
                 // oTileCounts.Returns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
                 // oTileCounts.Recalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
                 fTotalDaysUntilExpiry += parseFloat(oContext.getProperty("DAYS_UNTIL_EXPIRY")) || 0;
-                fTotalQuantityOnHand += parseFloat(oContext.getProperty("QTY_ON_HAND")) || 0;
+                fTotalQuantityOnHand += parseFloat(oContext.getProperty("ON_HAND")) || 0;
             });
             var formattedQuantityOnHand = this._formatNumber(fTotalQuantityOnHand);
             var formattedDaysUntilExpiry = this._formatNumber(fTotalDaysUntilExpiry);

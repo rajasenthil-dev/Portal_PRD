@@ -78,10 +78,10 @@
                                 <Text id="_IDGenText6" text="Status"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus"
-                                text="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusText'}"
-                                inverted="true"
-                                icon="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusIcon'}"
-                                state="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusState'}" />
+                                        text="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusText'}"
+                                        inverted="true"
+                                        icon="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusIcon'}"
+                                        state="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusState'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns> 

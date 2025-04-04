@@ -44,31 +44,68 @@
                         <HeaderContainer id="summaryContainer" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
                             <FlexBox id="_IDGenFlexBox2" class="mck_Tile" direction="Column">
                                 <Title id="_IDGenTitle" class="mck_TileContentTitle" text="{i18n>backordersTileTitle}"/>
-                                <Text id="TileContent1" class="mck_TileContent" text="{path: 'backordersCount'}"/>
+                                <Text 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    id="TileContent1" class="mck_TileContent" text="{path: 'backordersCount', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox3" class="mck_Tile" direction="Column">
                                 <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>impactedCustomersTileTitle}"/>
-                                <Text id="TileContent2" class="mck_TileContent" text="{path: 'impactedCustomers'}"/>
+                                <Text 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    id="TileContent2" class="mck_TileContent" text="{path: 'impactedCustomers', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox4" class="mck_Tile" direction="Column">
                                 <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>itemsOnBackorderTileTitle}"/>
-                                <Text id="TileContent3" class="mck_TileContent" text="{path: 'itemsBackordered'}"/>
+                                <Text 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    id="TileContent3" class="mck_TileContent" text="{path: 'itemsBackordered', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox5" class="mck_Tile" direction="Column">
                                 <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>unitsBackorderedTileTitle}"/>
-                                <Text id="TileContent4" class="mck_TileContent" text="{path: 'unitsBackordered'}"/>
+                                <Text 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    id="TileContent4" class="mck_TileContent" text="{path: 'unitsBackordered', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox6" class="mck_Tile" direction="Column">
                                 <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>unitsToBeReceivedTileTitle}"/>
-                                <Text id="TileContent5" class="mck_TileContent" text="{path: 'unitsToBeReceived'}"/>
+                                <Text 
+                                    core:require="{
+                                        Formatter: 'bckorders/model/formatter'
+                                    }"
+                                    id="TileContent5" class="mck_TileContent" text="{path: 'unitsToBeReceived', type:'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: true , groupingSeperator : ','}}"/>
                             </FlexBox>
                         </HeaderContainer>
                     </Panel>
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <st:SmartTable id="table0" width="100%" tableType="Table" header="{i18n>tableTitle}" enableAutoBinding="true" smartFilterId="smartFilterBar" entitySet="BACKORDERS" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" showRowCount="true" persistencyKey="SmartTable_BACKORDERS" enableAutoColumnWidth="true" class="sapUiResponsiveContentPadding sapUiLargeMarginBottom">
-                    <t:Table id="table" selectionMode="None" alternateRowColors="true">
+                <st:SmartTable 
+                id="table0" 
+                width="100%" 
+                tableType="Table" 
+                header="{i18n>tableTitle}" 
+                enableAutoBinding="true" 
+                smartFilterId="smartFilterBar" 
+                entitySet="BACKORDERS" 
+                useExportToExcel="true" 
+                beforeExport="onBeforeExport" 
+                useVariantManagement="true" 
+                useTablePersonalisation="true" 
+                showRowCount="true" 
+                persistencyKey="SmartTable_BACKORDERS" 
+                enableAutoColumnWidth="true" 
+                class="sapUiResponsiveContentPadding sapUiLargeMarginBottom">
+                    <t:Table 
+                    id="table" 
+                    selectionMode="None" alternateRowColors="true">
                         <t:columns>
                             <t:Column id="_IDGenColumn1" width="7.813rem">
                                 <t:customData>
@@ -76,11 +113,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText1" text="Order Date"/>
                                 <t:template>
-                                    <Text 
-                                    core:require="{
-                                        Formatter: 'bckorders/model/formatter'
-                                    }"
-                                    id="_IDGenText2" text="{path: 'ERDAT', formatter: 'Formatter.formatDate.bind($controller)'}"/>
+                                    <Text id="_IDGenText2" text="{path: 'ERDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn2" width="7.813rem">
@@ -89,11 +122,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="Cancel Date"/>
                                 <t:template>
-                                    <Text 
-                                    core:require="{
-                                        Formatter: 'bckorders/model/formatter'
-                                    }"
-                                    id="_IDGenText4" text="{path: 'UDATE', formatter: 'Formatter.formatDate.bind($controller)'}"/>
+                                    <Text id="_IDGenText4" text="{path: 'UDATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn3" width="7.813rem">

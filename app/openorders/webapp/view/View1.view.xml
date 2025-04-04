@@ -92,11 +92,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText2" text="Order Date"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText4" 
-                                        core:require="{
-                                            Formatter: 'openorders/model/formatter'
-                                        }"
-                                        text="{path: 'ERDAT', formatter: 'Formatter._formatDate'}" />
+                                    <Text id="_IDGenText4" text="{path: 'ERDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn7">
@@ -105,11 +101,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="Delivery Date"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText5" 
-                                        core:require="{
-                                            Formatter: 'openorders/model/formatter'
-                                        }"
-                                        text="{path: 'VDATU', formatter: 'Formatter._formatDate'}" />
+                                    <Text id="_IDGenText5" text="{path: 'VDATU', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns>

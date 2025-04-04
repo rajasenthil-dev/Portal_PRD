@@ -25,7 +25,7 @@
   },
   "SYNINVENTORYSNAPSHOTDOC": {
 	"target": {
-      "object": "Inventory_Snapshot_C_View_V2",
+      "object": "REP_TPMMWM_INV_SNAPSHOT_01",
       "schema": "MCK_RQ2_300"
     }
   },
@@ -55,7 +55,7 @@
   },
   "SYNSALESBYCURRENTDOC": {
 	"target": {
-      "object": "Current_Historical_Sales_by_Customer_by_Product_UN",
+      "object": "REP_TPSDBL_SALE_BY_CUSTOMER",
       "schema": "MCK_RQ2_300"
     }
   },
@@ -86,7 +86,7 @@
   },
   "SYNRETURNSDOC": {
 	"target": {
-	  "object": "Returns_Reports_View_V3",
+	  "object": "REP_TPSDOR_RETURN",
 	  "schema": "MCK_RQ2_300"
 	}
   },
@@ -104,7 +104,7 @@
   },
   "SYNMAINPAGEINVENTORYDOC": {
     "target": {
-      "object": "Main_Page_Summary2_Agg_Cons",
+      "object": "REP_TPMMWM_INVENTORY_STATUS_IC",
       "schema": "MCK_RQ2_300"
     }
   },

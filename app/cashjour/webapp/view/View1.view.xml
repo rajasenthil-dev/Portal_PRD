@@ -101,7 +101,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="Invoice Date"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate" text="{path: 'FKDAT', formatter: '._formatDate'}"/>
+                                    <Text id="invoiceDate" text="{path: 'FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn1" width='7.813rem'>
@@ -128,7 +128,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText6" text="Deposit Date"></Text>
                                 <t:template>
-                                    <Text id="depositDate" text="{path: 'BUDAT', formatter: '._formatDate'}"/>
+                                    <Text id="depositDate" text="{path: 'BUDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                         </t:columns>
@@ -148,15 +148,15 @@
                             <FlexBox id="_IDGenFlexBox11" >
                                 <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
                                     <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                                    <Text id="TotUnitsPriceText" class="footerText" text ="{ProductCollection>/TotUnitsPrice}"/>
+                                    <Text id="TotUnitsPriceText" class="footerText" text =""/>
                                 </HBox>
                                 <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                                     <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                                    <Text id="TotUnitsInStockText" class="footerText" text ="{ProductCollection>/TotUnitsInStock}"/>
+                                    <Text id="TotUnitsInStockText" class="footerText" text =""/>
                                 </HBox>
                                 <HBox id="_IDGenHBox3" class="sapUiSmallMarginEnd">
                                     <Label id="_IDGenLabel3" text="{i18n>footerLabel3}:" class="cssLabelTotal"/>
-                                    <Text id="TotUnitsOnOrderText" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
+                                    <Text id="TotUnitsOnOrderText" class="footerText" text =""/>
                                 </HBox>	
                             </FlexBox>
                         </FlexBox>

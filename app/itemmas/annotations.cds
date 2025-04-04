@@ -28,21 +28,21 @@ Search.defaultSearchElement: true,
         LineItem  : [
             {
                 $Type : 'UI.DataField',
+                Value : PRODUCT,
+                Label : 'SKU',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : PRODUCTSTANDARDID,
-                Label : 'Product Id',
+                Label : 'Product Code',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCT,
-                Label : 'Product',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : PRODUCTDESCRIPTION_EN,
-                Label : 'Product Desc. 1',
+                Label : 'Product Desc.',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -65,15 +65,21 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : NARCOTIC_YN,
-                Label : 'Narcotic Y/N',
-                ![@HTML5.CssDefaults] : {width : '6.25rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : CATEGORY,
                 Label : 'Category',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : UNITS_PER_CASE,
+                Label : 'Units Per Case',
+                ![@HTML5.CssDefaults] : {width : '6.875rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : NARCOTIC_YN,
+                Label : 'Narcotic Y/N',
+                ![@HTML5.CssDefaults] : {width : '6.25rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -86,12 +92,6 @@ Search.defaultSearchElement: true,
                 Value : REFRIGERATED,
                 Label : 'Refridgerated',
                 ![@HTML5.CssDefaults] : {width : '6.25rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : UNITS_PER_CASE,
-                Label : 'Units Per Case',
-                ![@HTML5.CssDefaults] : {width : '6.875rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -125,10 +125,7 @@ Search.defaultSearchElement: true,
         ],
     },
 ){
-    PRODUCTSTANDARDID@(title: 'Product Id');
-    PRODUCT@(title: 'Product');
     PRODUCTDESCRIPTION_EN@(
-        title: 'Product Desc 1',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -145,12 +142,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    PRODUCTDESCRIPTION_FR@(title: 'Special Handling');
-    DIN@(title: 'DIN');
-    SIZEUOM@(title: 'SIZE/UOM');
-    NARCOTIC_YN@(title: 'Nacotic Y/N');
     CATEGORY@(
-        title: 'Category',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -167,13 +159,5 @@ Search.defaultSearchElement: true,
             },
         } 
         
-    );
-    LOT_CONTROL_YN@(title: 'Lot Control Y/N');
-    REFRIGERATED@(title: 'Refrigerated');
-    UNITS_PER_CASE@(title: 'Units per Case');
-    PST_APPLICABLE@(title: 'PST Applicable');
-    GST_APPLICABLE@(title: 'GST Applicable');
-    CREATIONDATE@(title: 'Created Date');
-    SALESORG@(title: 'Sales Org');
-    MANUFACTURERNUMBER@(title: 'Manufacturer Id');  
+    ); 
 };

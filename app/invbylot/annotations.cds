@@ -120,9 +120,8 @@ annotate INVENTORY.INVENTORYBYLOT with @(
 )
 
 {   
-    MATNR@(title: 'SKU');
+    
     MFRPN@(
-        title: 'Product Code',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -134,27 +133,20 @@ annotate INVENTORY.INVENTORYBYLOT with @(
                         $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'MFRPN',
                         ValueListProperty : 'MFRPN'
-                    },
-                    {
-                        $Type             : 'Common.ValueListParameterDisplayOnly', //Displays additional information from the entity set of the value help 
-                        ValueListProperty : 'MAKTX',
-                    },
+                    }
                     
                 ]
             },
         } 
     
     );
-    MAKTX@(title: 'Product Description');
-    SIZE@(title: 'Size');
+    
     CHARG@(
-        title: 'Batch Number',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTLOT',
-                Label : 'Batch Number',
+                Label : 'Lot Number',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -166,10 +158,8 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         } 
     
     );
-    VFDAT@(title: 'Shelf Life or Best-Before Date');
-    EAN11@(title: 'UPC');
+    
     WAREHOUSE_STATUS@(
-        title: 'Warehouse Status',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -187,13 +177,8 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         } 
     
     );
-    ON_HAND@(title: 'On Hand');
-    UNIT@(title: 'Base Unit of Measure');
-    DAYS_UNTIL_EXPIRY@(title: 'Report Date');
-    LGNUM@(title:'Warehouse Number');
-    DIN@(title: 'DIN');
-    PLANT@(title:'Plant');
-    VKBUR@(title: 'Sales Office',
+    
+    VKBUR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -211,7 +196,7 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         } 
     
     );
-    MFRNR@(title:'Manufacturer',
+    MFRNR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {

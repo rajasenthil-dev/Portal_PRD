@@ -3,8 +3,11 @@ sap.ui.define([
     "sap/m/Dialog",
     "sap/m/Button",
     "sap/m/Image",
-    "sap/m/MessageBox"
-], (Controller, Dialog, Button, Image, MessageBox) => {
+    "sap/m/MessageBox",
+    "sap/ui/core/Fragment",
+	"sap/ui/core/syncStyleClass",
+    "sap/m/MessageToast"
+], (Controller, Dialog, Button, Image, MessageBox,Fragment, syncStyleClass, MessageToast) => {
     "use strict";
 
     return Controller.extend("cashjour.controller.View1", {
@@ -57,14 +60,35 @@ sap.ui.define([
                 }
             }.bind(this));
         },
-        
+        onOpenDialog: function () {
+			// load BusyDialog fragment asynchronously
+			if (!this._pBusyDialog) {
+				this._pBusyDialog = Fragment.load({
+					name: "cashjour.view.BusyDialog",
+					controller: this
+				}).then(function (oBusyDialog) {
+					this.getView().addDependent(oBusyDialog);
+					syncStyleClass("sapUiSizeCompact", this.getView(), oBusyDialog);
+					return oBusyDialog;
+				}.bind(this));
+			}
+
+			this._pBusyDialog.then(function(oBusyDialog) {
+				oBusyDialog.open();
+			}.bind(this));
+		},
+        onCloseDialog: function () {
+            var oBusyDialog = this.getView().byId("busyDialog");
+            oBusyDialog.close();
+        },
         _calculateTotals: function (oEvent) {
-            var oTable = oEvent.getSource();
-            var oBinding = oTable.getBinding("rows");  // Get the rows binding
+            var oSmartTable = this.getView().byId("table0");
+            var oTable = oSmartTable.getTable();
+            var oBinding = oTable.getBinding("rows"); // For GridTable
+            var aContexts = oBinding.getContexts(0, oBinding.getLength()); // Get all contexts binding
             
             // Ensure that the binding exists and is set up
             if (oBinding) {
-                var aContexts = oBinding.getContexts();  // Get the data rows
                 var fTotalNetWr = 0;   // Total for NETWR (Invoice Amount)
                 var fTotalCashReceived = 0;  // Total for CAL_CASH_RECEIVED (Cash Received)
                 var fTotalDiscount = 0;  // Total for CAL_CASH_RECEIVED (Cash Received)
@@ -84,6 +108,7 @@ sap.ui.define([
                 this.byId("TotUnitsInStockText").setText(formattedCashReceived);
                 this.byId("TotUnitsOnOrderText").setText(formattedDiscount);
             }
+            
         },
         _debounce: function(func, wait) {
             let timeout;
@@ -92,6 +117,7 @@ sap.ui.define([
                 clearTimeout(timeout);
                 timeout = setTimeout(() => func.apply(context, args), wait);
             };
+            
         },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {

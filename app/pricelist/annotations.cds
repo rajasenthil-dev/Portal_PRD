@@ -37,7 +37,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VTEXT,
-                Label : 'Price Level Description'
+                Label : 'Price Level Desc.'
             },
             {
                 $Type : 'UI.DataField',
@@ -52,7 +52,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'Co.'
+                Label : 'Sales Org.'
             },
             {
                 $Type : 'UI.DataField',
@@ -62,10 +62,6 @@ Search.defaultSearchElement: true,
         ],
     },   
 ){
-    VKORG@(title:'Co.');
-    KBETR@(title:'Price');
-    KONWA@(title:'Currency');
-    KSCHL@(title:'Price Level Code');
     VTEXT@(
         title:'Price Level Description',
         Common: {
@@ -84,7 +80,6 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    MATNR@(title:'Product');
     MAKTX@(
         title:'Product Description',
         Common: {
@@ -103,5 +98,4 @@ Search.defaultSearchElement: true,
                 },
             }
         );
-    MFRNR@(title:'Manufacturer'); 
 }

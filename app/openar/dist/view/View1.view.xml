@@ -136,7 +136,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="Invoice Date"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate" text="{path: 'FKDAT', formatter: '._formatDate'}"/>
+                                    <Text id="invoiceDate" text="{path: 'FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn1" width='7.813rem'>
@@ -145,7 +145,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText" text="Due Date"></Text>
                                 <t:template>
-                                    <Text id="dueDate" text="{path: 'NETDT', formatter: '._formatDate'}"/>
+                                    <Text id="dueDate" text="{path: 'NETDT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn3"  width='7.813rem'>

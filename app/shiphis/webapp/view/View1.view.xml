@@ -106,7 +106,7 @@
                 class="sapUiResponsiveContentPadding">
                 <t:Table id="gridTable" selectionMode="None" alternateRowColors="true">
                     <t:columns>
-                        <t:Column id="_IDGenColumn">
+                        <t:Column id="_IDGenColumn" width="7.183rem">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "VBELN", "leadingProperty": "VBELN", "columnIndex": 0}'/>
                                 </t:customData>
@@ -115,7 +115,7 @@
                                 <Link id="_IDGenText9" press=".onInvoiceClick" text="{path: 'VBELN', formatter: '._removeLeadingZeros'}" />
                             </t:template>
                         </t:Column>
-                        <t:Column id="_IDGenColumn6">
+                        <t:Column id="_IDGenColumn6" width="7.183rem">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "KUNAG", "leadingProperty": "KUNAG", "columnIndex": 1}'/>
                                 </t:customData>
@@ -124,7 +124,7 @@
                                 <Text id="_IDGenText4" text="{path: 'KUNAG'}" />
                             </t:template>
                         </t:Column>
-                        <t:Column id="_IDGenColumn1">
+                        <t:Column id="_IDGenColumn1" width="7.183rem">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 2}'/>
                             </t:customData>
@@ -133,25 +133,25 @@
                                 <Text id="_IDGenText" text="{path: 'KUNNR'}" />
                             </t:template>
                         </t:Column>
-                        <t:Column id="_IDGenColumn2" >
+                        <t:Column id="_IDGenColumn2" width="7.183rem">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "WADAT_IST", "leadingProperty": "WADAT_IST", "columnIndex": 5}'/>
                             </t:customData>
                             <Text id="_IDGenText7"  text="Date Shipped"></Text>
                             <t:template>
-                                <Text id="_IDGenText11"  text="{path: 'WADAT_IST', formatter: '._formatDate'}" />
+                                <Text id="_IDGenText11"  text="{=${WADAT_IST}==='00000000' ? 'No Date' : ${path: 'WADAT_IST', type: 'sap.ui.model.odata.type.Date'}}" />
                             </t:template>
                         </t:Column>
-                        <t:Column id="_IDGenColumn3" >
+                        <t:Column id="_IDGenColumn3" width="7.183rem">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "LFDAT", "leadingProperty": "LFDAT", "columnIndex": 8}'/>
                             </t:customData>
                             <Text id="_IDGenText8"  text="Delivery Date"></Text>
                             <t:template>
-                                <Text id="_IDGenText12"  text="{path: 'LFDAT', formatter: '._formatDate'}" />
+                                <Text id="_IDGenText12"  text="{=${LFDAT}==='00000000' ? 'No Date' : ${path: 'LFDAT', type: 'sap.ui.model.odata.type.Date'}}" />
                             </t:template>
                         </t:Column>
-                        <t:Column id="_IDGenColumn4" >
+                        <t:Column id="_IDGenColumn4" width="7.183rem">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "LFUHR", "leadingProperty": "LFUHR", "columnIndex": 9}'/>
                             </t:customData>

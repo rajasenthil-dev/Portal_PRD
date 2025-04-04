@@ -66,6 +66,21 @@
                     class="sapUiResponsiveContentPadding"
                 >
                     <t:Table id="table" selectionMode="None">
+                    <t:columns>
+                            <t:Column id="_IDGenColumn1" width="7.813rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText7" text="Price"></Text>
+                                <t:template>
+                                    <Text
+                                        core:require="{
+                                        Formatter: 'pricelist/model/formatter'
+                                    }"
+                                        id="_IDGenText10" text="{path: 'MATNR', formatter: 'Formatter.removeLeadingZeros.bind($controller)'}" />
+                                </t:template>
+                            </t:Column>
+                        </t:columns>
                         <t:columns>
                             <t:Column id="_IDGenColumn" width="7.813rem">
                                 <t:customData>

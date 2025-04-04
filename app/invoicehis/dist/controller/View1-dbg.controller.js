@@ -9,207 +9,134 @@ sap.ui.define([
 ], (Controller, JSONModel, NumberFormat, Dialog, Button, Image, MessageBox) => {
     "use strict";
 
-    return Controller.extend("invoicehis.controller.View1", {
-        onInit: function () {
-            var oModel = this.getOwnerComponent().getModel();
-            const oSmartTable = this.getView().byId("table0");
-            const oTable = oSmartTable.getTable();
-            this.bAuthorizationErrorShown = false;
-            oModel.attachRequestFailed(function (oEvent) {
-                var oParams = oEvent.getParameters();
-                if (oParams.response.statusCode === "403") {
-                    oTable.setNoData("No data available due to authorization restrictions");
-                    oTable.setBusy(false)    
-                    if(!this.bAuthorizationErrorShown) {
-                        this.bAuthorizationErrorShown = true;
-                        MessageBox.error("You do not have the required permissions to access this report.", {
-                            title: "Unauthorized Access",
-                            id: "messageBoxId1",
-                            details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
-                            contentWidth: "100px",
-                        });
-                    
-                    }
-                }
-            });
-            var oTileCountsModel = new JSONModel({
-                counts: {
-                    "UniqueInvoices": 0,
-                    "TotalSales": 0,
-                    "TotalSalesFormatted": 0
-                }
-            });
-            var oFooterCountsModel = new JSONModel({
-                counts: {
-                    "TSL_AMOUNT": 0,
-                    "CAL_PST": 0,
-                    "CAL_GST": 0
-                    
-                }
-            });
-
-            this.getView().setModel(oTileCountsModel, "summaryCounts"); // GridTable
-            this.getView().setModel(oFooterCountsModel, "footerCounts");
-
-            
-            this.getView().byId("table").attachEvent("rowsUpdated", this.onTableScroll.bind(this));
-
-            var oModelLogo = this.getOwnerComponent().getModel("logo");
-            
+    const sResponsivePaddingClasses = "sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer";
+    const decimalProperties = ["TSL_AMOUNT", "CAL_PST", "CAL_GST"]; // Footer sums
+    const summarySalesProperty = "TSL_AMOUNT"; // Total sales for summary
+    const uniqueInvoiceProperty = "BELNR";
+  
+    return Controller.extend("invoicehistory.controller.View1", {
+  
+      onInit: function () {
+        const oModel = this.getOwnerComponent().getModel();
+        const oSmartTable = this.getView().byId("table0");
+        const oTable = oSmartTable.getTable();
+        this.bAuthorizationErrorShown = false;
+  
+        oModel.attachRequestFailed(this._handleAuthorizationError.bind(this, oTable));
+        oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+        var oModelLogo = this.getOwnerComponent().getModel("logo");
             // Bind to the MediaFile entity with a filter
-            var oBinding = oModelLogo.bindList("/MediaFile", undefined, undefined);
-        
-            // Fetch data
-            oBinding.requestContexts().then(function (aContexts) {
-                if (aContexts.length > 0) {
-                    var oData = aContexts[0].getObject();
-                    console.log("Manufacturer:", oData.MFGName);
-                    console.log("File URL:", oData.url);
-                    var sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0];
-                    if(sAppPath === ".") {
-                        sAppPath = "";
-                    }
-                    console.log("✅ Dynamic Base Path:", sAppPath);
-    
-                    var sSrcUrl = sAppPath + oData.url;
+        var oBinding = oModelLogo.bindList("/MediaFile");
+        // Fetch data
+        oBinding.requestContexts().then(function (aContexts) {
+            if (aContexts.length > 0) {
+                var oData = aContexts[0].getObject();
+                console.log("Manufacturer:", oData.MFGName);
+                console.log("File URL:", oData.url);
+                var sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0];
+                if(sAppPath === ".") {
+                    sAppPath = "";
+                }
+                console.log("✅ Dynamic Base Path:", sAppPath);
+
+                var sSrcUrl = sAppPath + oData.url;
                     // Example: Set the image source
-                    this.getView().byId("logoImage").setSrc(sSrcUrl);
-                } else {
+                this.getView().byId("logoImage").setSrc(sSrcUrl);
+            } else {
                     console.log("No media found for this manufacturer.");
-                }
-            }.bind(this));
-        },
-        // handleHistoricalChange: function (oEvent) {
-        //     // Get the selected key from the ComboBox
-        //     var sSelectedKey = oEvent.getSource().getSelectedKey();
-        
-        //     // Perform actions based on the selected key
-        //     switch (sSelectedKey) {
-        //         case "Y":
-        //             // Handle the "Current" selection
-        //             this._filterData("Y");
-        //             break;
-        //         case "N":
-        //             // Handle the "Historical" selection
-        //             this._filterData("N");
-        //             break;
-        //         default:
-        //             // Handle the "All" selection
-        //             this._filterData("");
-        //             break;
-        //     }
-        // },
-        
-        // _filterData: function (sFilterType) {
-        //     // Implement your logic to filter data based on the filter type
-        //     // For example, you can make an OData call to fetch the filtered data
-        //     var oModel = this.getView().getModel();
-        //     var sPath = "/INVOICEHISTORY";
-        //     var aFilters = [];
-        
-        //     if (sFilterType !== null) {
-        //         aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.EQ, sFilterType));
-        //     }
-        
-        //     oModel.read(sPath, {
-        //         filters: aFilters,
-        //         success: function (oData) {
-        //             // Handle the success scenario
-        //             console.log("Data fetched successfully:", oData);
-        //         },
-        //         error: function (oError) {
-        //             // Handle the error scenario
-        //             console.error("Error fetching data:", oError);
-        //         }
-        //     });
-        // },
-        // _fetchVisibleData: function () {
-        //     debugger
-        //     const oModel = this.getView().getModel(); // OData v2 model
-        //     const sPath = "/SalesSummary"; // Aggregation endpoint
-
-        //     oModel.read(sPath, {
-        //         success: (oData) => {
-        //             const { TotalSales, UniqueInvoices, TotalPST, TotalGST } = oData;
-
-        //             // Update summary panel
-        //             this.getView().setModel(new JSONModel({
-        //                 totalSales: this._formatLargeNumber(TotalSales),
-        //                 totalInvoices: this._formatLargeNumber(UniqueInvoices)
-        //             }), "summary");
-
-        //             // Update footer
-        //             this._updateFooter(TotalSales, TotalPST, TotalGST);
-        //         },
-        //         error: (oError) => {
-        //             console.error("Failed to fetch aggregated data", oError);
-        //         }
-        //     });
-        // },
-        onTableScroll: function () {
-            const table = this.getView().byId("table");
-            const data = table.getBinding("rows").getContexts().map(context => context.getObject());
-            this.updateCalculations(data);
-            
-        },
-        updateCalculations: function (data) {
-            
-            // Define properties for calculations
-            const decimalProperties = ["TSL_AMOUNT", "CAL_PST", "CAL_GST"]; // Footer sums
-            const summarySalesProperty = "TSL_AMOUNT"; // Total sales for summary
-            const uniqueInvoiceProperty = "BELNR"; // Unique invoice count
-        
-            const oFooterCountsModel = this.getView().getModel('footerCounts');
-            const oSummaryCountsModel = this.getView().getModel('summaryCounts');
-            const existingFooterCounts = oFooterCountsModel.getData();
-            const existingSummaryCounts = oSummaryCountsModel.getData();
-        
-            // Temporary storage for unique invoices
-            const uniqueInvoices = existingSummaryCounts._uniqueInvoices || new Set();
-        
-            // Process each row
-            data.forEach(row => {
-                // Sum footer values
-                decimalProperties.forEach(property => {
-                    const rowValue = typeof row[property] === "number" ? row[property] : parseFloat(row[property]) || 0;
-                    const existingValue = typeof existingFooterCounts[property] === "number" 
-                        ? existingFooterCounts[property] 
-                        : parseFloat(existingFooterCounts[property]) || 0;
-        
-                    existingFooterCounts[property] = parseFloat((existingValue + rowValue).toFixed(2));
-                });
-        
-                // Add invoice numbers to the unique set
-                if (row[uniqueInvoiceProperty]) {
-                    uniqueInvoices.add(row[uniqueInvoiceProperty]);
-                }
-        
-                // Sum for summary total sales
-                const rowSalesValue = typeof row[summarySalesProperty] === "number" 
-                    ? row[summarySalesProperty] 
-                    : parseFloat(row[summarySalesProperty]) || 0;
-                const existingSalesValue = typeof existingSummaryCounts["TotalSales"] === "number" 
-                    ? existingSummaryCounts["TotalSales"] 
-                    : parseFloat(existingSummaryCounts["TotalSales"]) || 0;
-        
-                existingSummaryCounts["TotalSales"] = parseFloat((existingSalesValue + rowSalesValue).toFixed(2));
+            }
+        }.bind(this));
+      },
+  
+      _handleAuthorizationError: function (oTable, oEvent) {
+        const oParams = oEvent.getParameters();
+        if (oParams.response.statusCode === "403") {
+          oTable.setNoData("No data available due to authorization restrictions");
+          oTable.setBusy(false);
+          if (!this.bAuthorizationErrorShown) {
+            this.bAuthorizationErrorShown = true;
+            MessageBox.error("You do not have the required permissions to access this report.", {
+              title: "Unauthorized Access",
+              id: "messageBoxId1",
+              details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+              contentWidth: "100px",
             });
-           // Set unique invoice count
-            existingSummaryCounts["UniqueInvoices"] = uniqueInvoices.size;
-
-            // Store the Set in the model for persistence
-            existingSummaryCounts._uniqueInvoices = uniqueInvoices;
-        
-            // Format summary sales value for display
-            existingSummaryCounts["TotalSalesFormatted"] = this.formatLargeNumber(existingSummaryCounts["TotalSales"]);
-        
-            // Update models
-            this.getView().getModel("footerCounts").setData(existingFooterCounts);
-            this.getView().getModel("summaryCounts").setData(existingSummaryCounts);
-        
-            console.log("Final footerCounts:", existingFooterCounts);
-            console.log("Final summaryCounts:", existingSummaryCounts);
-        },
+          }
+        }
+      },
+  
+      _calculateTotals: function () {
+        const oSmartTable = this.getView().byId("table0");
+        const oTable = oSmartTable.getTable();
+        const oBinding = oTable.getBinding("rows");
+  
+        if (!oBinding) {
+          console.warn("Table binding is missing.");
+          return;
+        }
+  
+        const aContexts = oBinding.getContexts(0, oBinding.getLength());
+        if (!aContexts) {
+          console.warn("Data is not available for calculation.");
+          return;
+        }
+  
+        const totals = aContexts.reduce((acc, oContext) => {
+          const oData = oContext.getObject();
+          if (!oData) return acc;
+  
+          acc.totalInvoices++;
+          acc.uniqueInvoices.add(oData[uniqueInvoiceProperty]);
+          decimalProperties.forEach(prop => {
+            acc[prop] += parseFloat(oData[prop] || 0);
+          });
+  
+          return acc;
+        }, {
+          totalInvoices: 0,
+          uniqueInvoices: new Set(),
+          TSL_AMOUNT: 0,
+          CAL_PST: 0,
+          CAL_GST: 0
+        });
+  
+        this._updateTile("TileContent1", this.formatLargeNumber(totals.TSL_AMOUNT));
+        this._updateTile("TileContent2", totals.uniqueInvoices.size);
+        this._updateTile("FooterContent1", this._formatCurrency(totals.TSL_AMOUNT, "USD"));
+        this._updateTile("FooterContent2", this._formatCurrency(totals.CAL_PST, "USD"));
+        this._updateTile("FooterContent3", this._formatCurrency(totals.CAL_GST, "USD"));
+      },
+  
+      _updateTile: function (sTileId, value) {
+        const oTile = this.byId(sTileId);
+        if (oTile) {
+          oTile.setText(value);
+        } else {
+          console.warn(`Tile with ID ${sTileId} not found.`);
+        }
+      },
+      onSearch: function () {
+        const oSmartFilterBar = this.getView().byId("smartFilterBar");
+        const oSmartTable = this.getView().byId("table0");
+        const oBinding = oSmartTable.getTable().getBinding("rows");
+    
+        if (!oBinding) {
+            console.warn("Table binding is missing.");
+            return;
+        }
+    
+        // Get selected value from the filter
+        let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+    
+        // Build the filter condition
+        let aFilters = [];
+        if (sCurrentStatus) {
+            aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+        }
+    
+        // Apply the filter
+        oBinding.filter(aFilters);
+    },
         
         /**
          * Format large numbers for summary panel.
@@ -223,29 +150,36 @@ sap.ui.define([
             }
             return `$${value.toFixed(2)}`;
         },
+        _formatRowHighlight: function (oValue) {
+			// Your logic for rowHighlight goes here
+			if (oValue === "N") {
+				return "Information";
+            }
+			return "Success";
+		},
         
-        onFilterChange: function () {
-            const table = this.getView().byId("table");
-            const data = table.getBinding("rows").getContexts().map(context => context.getObject());
+        // onFilterChange: function () {
+        //     const table = this.getView().byId("table");
+        //     const data = table.getBinding("rows").getContexts().map(context => context.getObject());
 
-            // Reset totals to 0
-            const oFooterCountsModel = this.getView().getModel('footerCounts');
-            const oTileCountsModel = this.getView().getModel('summaryCounts');
-            const resetFTotals = {
-                "UniqueInvoices": 0,
-                "TotalSales": 0,
-                "TotalSalesFormatted": 0
-            };
-            const resetSTotals = {
-                "TSL_AMOUNT": 0,
-                "CAL_PST": 0,
-                "CAL_GST": 0
-            };
-            oFooterCountsModel.setData(resetFTotals);
-            oTileCountsModel.setData(resetSTotals)
-            // Recalculate totals
-            this.updateCalculations(data);
-        },
+        //     // Reset totals to 0
+        //     const oFooterCountsModel = this.getView().getModel('footerCounts');
+        //     const oTileCountsModel = this.getView().getModel('summaryCounts');
+        //     const resetFTotals = {
+        //         "UniqueInvoices": 0,
+        //         "TotalSales": 0,
+        //         "TotalSalesFormatted": 0
+        //     };
+        //     const resetSTotals = {
+        //         "TSL_AMOUNT": 0,
+        //         "CAL_PST": 0,
+        //         "CAL_GST": 0
+        //     };
+        //     oFooterCountsModel.setData(resetFTotals);
+        //     oTileCountsModel.setData(resetSTotals)
+        //     // Recalculate totals
+        //     this.updateCalculations(data);
+        // },
         // _updateFooter: function (totalSales, totalPST, totalGST) {
         //     const oTable = this.byId("table");
         //     const oFooterData = {

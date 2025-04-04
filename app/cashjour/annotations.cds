@@ -153,7 +153,6 @@ Search.defaultSearchElement: true,
 
 {   
     BILL_TO@(
-        title:'Bill To',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -174,16 +173,8 @@ Search.defaultSearchElement: true,
             },
         }      
     );
-    NAME1@(title:'Bill To Name');
-    SHIP_TO@(title:'Ship To Code');
-    VBELN@(title:'Invoice #');
-    FKDAT@(title:'Invoice Date');
-    NETWR@(title:'Invoice Amount');
-    AUBEL@(title:'Reference');
-    CAL_CASH_RECEIVED@(title:'Cash Received');
-    CAL_DISCOUNT@(title:'Discount');
+    
     BLART@(
-        title:'Payment Type',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -200,14 +191,5 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    BUDAT@(title:'Deposit Date');
-    BSTKD@(title:'Customer PO');
-    BKTXT@(title:'Comment 1');
-    SGTXT@(title:'Comment 2');
-    VKORG@(title:'Co.');
-    BUKRS@(title:'Company Code');
-    BELNR@(title: 'Accounting Document');
-    PRCTR@(title: 'Profit Center');
-    GJAHR@(title: 'Fiscal Year');
-    MFRNR@(title: 'Manufacturer'); 
+     
 };

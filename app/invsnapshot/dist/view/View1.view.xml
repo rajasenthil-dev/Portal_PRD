@@ -2,6 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc"
 xmlns="sap.m"
 xmlns:f="sap.f"
+xmlns:my="invsnapshot.control" 
 xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf="sap.ui.comp.smartfilterbar" xmlns:st="sap.ui.comp.smarttable" xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" displayBlock="true">
     <App id="app">
         <f:DynamicPage id="dynamicPage" showFooter="true">
@@ -27,9 +28,9 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                             </GenericTile>
                         </HeaderContainer>
                     </FlexBox>
-                    <sf:SmartFilterBar id="bar0" entitySet="INVENTORYSNAPSHOT" useDateRangeType="true" persistencyKey="SmartFilterBar_INVETORYSNAPSHOT" smartVariant="pageVariant" liveMode="true" >
+                    <sf:SmartFilterBar id="bar0" entitySet="INVENTORYSNAPSHOT" persistencyKey="SmartFilterBar_INVETORYSNAPSHOT" smartVariant="pageVariant" liveMode="true" search="onSearch">
                         <sf:controlConfiguration>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration4"
                                 key="REPORT_DATE"
                                 visibleInAdvancedArea="true"
                                 conditionType="{
@@ -37,32 +38,42 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 }"
                             />
                         </sf:controlConfiguration>
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="customCurrentFilter"
+                                key="CURRENT"
+                                visibleInAdvancedArea="true"
+                                label="Current/Historical"
+                            >
+                                <sf:customControl>
+                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                        <items>
+                                            <core:Item id="_IDGenItem2" key="" text="All"/>
+                                            <core:Item id="_IDGenItem" key="YES" text="Current"/>
+                                            <core:Item id="_IDGenItem1" key="NO" text="Historical"/>
+                                        </items>
+                                    </ComboBox>
+                                </sf:customControl>
+                            </sf:ControlConfiguration>
+                        </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
 
                 <st:SmartTable
-                
-                    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-                    
+                    id="table0"
                     width="100%"
-                    direction="Column"
-                    fitContainer="true"
                     tableType="Table"
                     header="{i18n>tableTitle}"
                     enableAutoBinding="true"
-                    id="table0"
                     smartFilterId="bar0"
-                    cd:w5g.dt.context="/INVETORYSNAPSHOT"
                     entitySet="INVENTORYSNAPSHOT"
-                    placeToolbarInTable="true"
                     useExportToExcel="true"
                     beforeExport="onBeforeExport"
                     useVariantManagement="true"
                     useTablePersonalisation="true"
                     showRowCount="true"
-                    persistencyKey="SmartTableAnalytical_Explored"
+                    persistencyKey="SmartTable_INVETORYSNAPSHOT"
                     enableAutoColumnWidth="true"
                     class="sapUiResponsiveContentPadding"
                 >
@@ -71,17 +82,36 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                         selectionMode="None"
                         alternateRowColors="true"
                         >
+                        <t:rowSettingsTemplate>
+                            <t:RowSettings id="_IDGenRowSettings" highlight="{path:'DAYS_UNTIL_EXPIRY', formatter:'._formatRowHighlight'}" highlightText="{DAYS_UNTIL_EXPIRY}"/>
+                        </t:rowSettingsTemplate>
                         <t:columns>
+                            <t:Column id="_IDGenColumn11" width='7rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText31" text="Current"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                    core:require="{
+                                            Formatter: 'invsnapshot/model/formatter'
+                                        }"
+                                    icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                    inverted="true"
+                                    state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                    text="{= ${CURRENT} === 'YES' ? 'Current' : 'Historical'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn" width="7rem">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 1}'/>
                                     </t:customData>
                                 <Text id="_IDGenText6" text="SKU"></Text>
                                 <t:template>
                                 <Text id="_IDGenText9" text="{path: 'MATNR', formatter: '._removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width="10rem">
+                            <!-- <t:Column id="_IDGenColumn1" width="10rem">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "LGNUM", "leadingProperty": "LGNUM", "columnIndex": 7}'/>
                                 </t:customData>
@@ -89,14 +119,34 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <t:template>
                                     <Text id="_IDGenText2" text="{path: 'LGNUM'}" />
                                 </t:template>
-                            </t:Column>
+                            </t:Column> -->
                             <t:Column id="_IDGenColumn4" width="10rem">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 5}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 6}'/>
                                 </t:customData>
                                 <Text id="_IDGenText5" text="Shelf Life Expiration or Best-Before Date"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText" text="{path: 'VFDAT', formatter: '._formatDate'}" />
+                                    <Text id="_IDGenText" text="{path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn3" width='7.813rem'>
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DAYS_UNTIL_EXPIRY", "leadingProperty": "DAYS_UNTIL_EXPIRY", "columnIndex": 8}'/>
+                                </t:customData>
+                                <Text id="_IDGenText2" text="{i18n>daysUntilExpiry}"></Text>
+                                <t:template>
+                                    <HBox id="_IDGenHBox" height="2.5rem">
+                                        <my:SegmentedProgressBar id="_IDGenSegmentedProgressBar" value="{DAYS_UNTIL_EXPIRY}"/>
+                                    </HBox>
+                                </t:template>
+                            </t:Column>
+                             <t:Column id="_IDGenColumn41" width="10rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "REPORT_DATE", "leadingProperty": "REPORT_DATE", "columnIndex": 7}'/>
+                                </t:customData>
+                                <Text id="_IDGenText51" text="Report Date"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText111" text="{path: 'REPORT_DATE', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns>

@@ -28,7 +28,7 @@
                         <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
-                                    <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
+                                    <Text id="_IDGenText1" class="refreshText" text=""/>
                                 </TileContent>
                             </GenericTile>
                         </HeaderContainer>
@@ -104,7 +104,11 @@
                                     </t:customData>
                                 <Text id="_IDGenText6" text="SKU"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText9" text="{path: 'SKU_MATNR'}" />
+                                    <Text 
+                                        core:require="{
+                                            Formatter: 'invstatus/model/formatter'
+                                        }"
+                                        id="_IDGenText9" text="{path: 'SKU_MATNR', formatter:'Formatter.removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn6" width='7.813rem'>
@@ -132,28 +136,43 @@
                         <FlexBox id="_IDGenFlexBox11" wrap="Wrap">
                             <HBox id="_IDGenHBox22" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
-                                <Text id="footerText1" class="footerText" text ="{ProductCollection>/TotUnitsPrice}"/>
+                                <Text id="footerText1" class="footerText" text =""/>
                             </HBox>
                             <HBox id="_IDGenHBox2" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
-                                <Text id="footerText2" class="footerText" text ="{ProductCollection>/TotUnitsInStock}"/>
+                                <Text id="footerText2" class="footerText" text =""/>
                             </HBox>
                             <HBox id="_IDGenHBox31" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel31" text="{i18n>footerLabel3}:" class="cssLabelTotal"/>
-                                <Text id="footerText3" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
+                                <Text id="footerText3" class="footerText" text =""/>
                             </HBox>
                             <HBox id="_IDGenHBox32" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel32" text="{i18n>footerLabel4}:" class="cssLabelTotal"/>
-                                <Text id="footerText4" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
+                                <Text id="footerText4" class="footerText" text =""/>
                             </HBox>	
-                            
+                            <HBox id="_IDGenHBox325" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel325" text="{i18n>footerLabel5}:" class="cssLabelTotal"/>
+                                <Text id="footerText5" class="footerText" text =""/>
+                            </HBox>	
                             <HBox id="_IDGenHBox3" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel34" text="{i18n>footerLabel6}:" class="cssLabelTotal"/>
-                                <Text id="footerText6" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
+                                <Text id="footerText6" class="footerText" text =""/>
                             </HBox>	
                             <HBox id="_IDGenHBox35" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel35" text="{i18n>footerLabel7}:" class="cssLabelTotal"/>
-                                <Text id="footerText7" class="footerText" text ="{ProductCollection>/TotUnitsOnOrder}"/>
+                                <Text id="footerText7" class="footerText" text =""/>
+                            </HBox>	
+                            <HBox id="_IDGenHBox358" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel358" text="{i18n>footerLabel8}:" class="cssLabelTotal"/>
+                                <Text id="footerText8" class="footerText" text =""/>
+                            </HBox>	
+                            <HBox id="_IDGenHBox359" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel359" text="{i18n>footerLabel9}:" class="cssLabelTotal"/>
+                                <Text id="footerText9" class="footerText" text =""/>
+                            </HBox>	
+                            <HBox id="_IDGenHBox3510" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel3510" text="{i18n>footerLabel10}:" class="cssLabelTotal"/>
+                                <Text id="footerText10" class="footerText" text =""/>
                             </HBox>	
                         </FlexBox>
                     </FlexBox>

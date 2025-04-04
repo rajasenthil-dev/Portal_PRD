@@ -37,7 +37,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Desc',
+                Label : 'Product Desc.',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -91,17 +91,14 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer',
+                Label : 'Manufacturer Number',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
         ],
     },
 ){
-    VBELN@(title: 'Order #');
-    BSTKD@(title: 'Purchase Order');
-    MATNR@(title: 'Product');
     MAKTX@(
-        title: 'Product Desc',
+        title: 'Product Desc.',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -118,10 +115,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    KWMENG@(title: 'Quantity');
-    ERDAT@(title: 'Order Date');
-    VDATU@(title: 'Delivery By Date');
-    GBSTK@(title: 'Order Status');
+
     KUNNR@(
         title: 'Customer',
         Common: {
@@ -160,7 +154,6 @@ Search.defaultSearchElement: true,
         } 
     
     );
-    CAL_NAME@(title: 'Name');
     REGIO@(
         title: 'Province',
         Common: {
@@ -179,6 +172,5 @@ Search.defaultSearchElement: true,
             },
         } 
     
-    );
-    MFRNR@(title: 'Manufacturer');   
+    ); 
 };

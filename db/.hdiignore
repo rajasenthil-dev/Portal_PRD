@@ -69,6 +69,10 @@ src/gen/SHTRACKING.hdbview
 src/gen/PROCESSING.SHTRACKING.hdbview
 src/gen/SHSHIPTO.hdbview
 src/gen/PROCESSING.SHSHIPTO.hdbview
+src/gen/PROCESSING.SHMFRNR.hdbview
+src/gen/PROCESSING.SHVKORG.hdbview
+src/gen/SHMFRNR.hdbview
+src/gen/SHVKORG.hdbview
 
 src/gen/IATLOT.hdbview
 src/gen/IATWAREHOUSE.hdbview

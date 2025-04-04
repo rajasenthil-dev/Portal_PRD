@@ -31,7 +31,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'Material Number (SKU)',
+                Label : 'SKU',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
@@ -70,7 +70,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MEINS,
-                Label : 'Unit of Measure',
+                Label : 'Base Unit of Measure',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -93,7 +93,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : KUNNR,
-                Label : 'Customer/Supplier #',
+                Label : 'Customer/Supplier Number',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -105,7 +105,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : INV_MATDOC_ITEM,
-                Label : 'Inv/Adj/Receipt #',
+                Label : 'Inv/Adj/Receipt Number',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -123,7 +123,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer'
+                Label : 'Manufacturer Number'
             }
         ],
     },
@@ -131,9 +131,7 @@ Search.defaultSearchElement: true,
 )
 
 {   
-    MATNR@(title: 'Material Number (SKU)');
     MFRNR_PROD_CODE@(
-        title: 'Product Code',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -150,14 +148,8 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    MAKTX@(title: 'Product Description');
-    POSTING_DATE@(title: 'Date');
-    TRAN_TYPE@(title: 'Transaction Type');
-    MENGE@(title: 'Quantity');
     CHARG@(
-        title: 'Lot #',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IATLOT',
@@ -172,9 +164,7 @@ Search.defaultSearchElement: true,
             },
         }    
     );
-    VFDAT@(title: 'Expiry Date');
     WAREHOUSE_STATUS@(
-        title: 'Warehouse Status',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -192,7 +182,6 @@ Search.defaultSearchElement: true,
         }     
     );
     KUNNR@(
-        title: 'Customer/Supplier #',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -209,10 +198,4 @@ Search.defaultSearchElement: true,
             },
         }     
     );
-    CUSTOMER_NAME@(title: 'Customer/Supplier Name');
-    INV_MATDOC_ITEM@(title: 'Inv/Adj/Receipt #');
-    WERKS@(title: 'Plant');
-    NAME1_PLANT@(title: 'Plant Name');
-    LGORT@(title: 'Storage Location');
-    MFRNR@(title: 'Manufacturer'); 
 };
