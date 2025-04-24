@@ -26,7 +26,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           MATNR, MAKTX, KUNRE_ANA, KUNWE_ANA, NAME1, MFRNR, VKORG, MFRNR_NAME
+           MATNR, MAKTX, KUNRE_ANA, KUNWE_ANA, NAME1, MFRNR, MFRNR_NAME, VKORG
         ],
         LineItem  : [
             {
@@ -69,7 +69,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MAKTX,
                 Label : 'Product Description',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                ![@HTML5.CssDefaults] : {width : '15rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -125,8 +125,12 @@ Search.defaultSearchElement: true,
                 Value : MFRNR,
                 Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'},
-                
-                
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'},
             }
             
         ],

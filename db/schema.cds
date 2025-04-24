@@ -1027,7 +1027,7 @@ entity BACKORDERS
         UNIT_PRICE          : Decimal(30,2)         @title: 'Price'             @Org.OData.Measures.V1.ISOCurrency;	 
     key MATNR               : String(7)             @title: 'SKU';	
         MAKTX               : String(40)            @title: 'Product Desc.'; 
-        BACK_ORD_QTY        : Decimal(18,3)         @title: 'Quantity';	 
+        BACK_ORD_QTY        : Decimal(18,0)         @title: 'Quantity';	 
     key KUNWE_ANA           : String(10)            @title: 'Ship To #';	
         NAME1               : String(35)            @title: 'Ship To Name';	 
         MFRNR               : String(10)            @title: 'Manufacturer #';	 

@@ -19,6 +19,7 @@ Search.defaultSearchElement: true,
             MATNR,
             MAKTX,
             MFRNR,
+            MFRNR_NAME,
             VKBUR
         ],
         LineItem  : [
@@ -114,6 +115,11 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MFRNR,
                 Label : 'Manufacturer #'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name'
             }
         ],
     },
@@ -190,12 +196,27 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVVALMFRNR',
-                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        } 
+    );
+    MFRNR_NAME@(title: 'Manufacturer #',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVVALMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

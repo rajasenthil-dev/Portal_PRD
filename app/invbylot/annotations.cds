@@ -22,6 +22,7 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             CHARG,
             WAREHOUSE_STATUS,
             MFRNR,
+            MFRNR_NAME,
             VKBUR
             
         ],
@@ -114,6 +115,11 @@ annotate INVENTORY.INVENTORYBYLOT with @(
                 $Type : 'UI.DataField',
                 Value : MFRNR,
                 Label : 'Manufacturer #'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name'
             }
         ],
     },
@@ -128,7 +134,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTPRODUCTCODE',
-                Label : 'Product Code',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterInOut',
@@ -147,7 +152,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTLOT',
-                Label : 'Lot Number',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -166,7 +170,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTWAREHOUSE',
-                Label : 'Warehouse/Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -185,7 +188,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTVKBUR',
-                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -203,12 +205,28 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTMFRNR',
-                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        } 
+    
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVBYLOTMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

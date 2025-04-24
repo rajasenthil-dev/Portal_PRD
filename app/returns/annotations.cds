@@ -17,7 +17,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           VBELN_VBAK, CUSTOMER_KUNNR, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT, MFRNR, CO_VKORG, VKBUR
+           VBELN_VBAK, CUSTOMER_KUNNR, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT, MFRNR, MFRNR_NAME, CO_VKORG, VKBUR
         ],
         LineItem  : [
             {
@@ -104,6 +104,12 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MFRNR,
                 Label : 'Manufacturer #',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR,
+                Label : 'Manufacturer Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
             
@@ -224,6 +230,22 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }
+    );
+    MFRNR_NAME@(title: 'Manufacturer #',
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'RETMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

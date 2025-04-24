@@ -18,7 +18,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, MFRNR, VKORG
+            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, MFRNR, MFRNR_NAME, VKORG
 
         ],
         LineItem  : [
@@ -108,6 +108,11 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MFRNR,
                 Label : 'Manufacturer #'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name'
             }
         ],
     },   
@@ -132,7 +137,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHCUSTOMER',
-                Label : 'Customer',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -148,7 +152,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHSHIPTO',
-                Label : 'Ship To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -164,7 +167,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHSHIPTONAME',
-                Label : 'Ship To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -176,13 +178,11 @@ Search.defaultSearchElement: true,
         },  
     );
     CARRIER@(
-        title:'Carrier',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHCARRIER',
-                Label : 'Carrier',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -198,7 +198,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHTRACKING',
-                Label : 'Tracking #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -209,13 +208,12 @@ Search.defaultSearchElement: true,
             },
         }, 
     );
-    VKORG@(title:'Sales Org.',
+    VKORG@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHVKORG',
-                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -226,18 +224,33 @@ Search.defaultSearchElement: true,
             },
         }, 
     );
-    MFRNR@(title:'Manufacturer #',
+    MFRNR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHMFRNR',
-                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }, 
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

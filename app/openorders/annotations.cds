@@ -11,7 +11,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, MFRNR
+           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, MFRNR, MFRNR_NAME
         ],
         LineItem  : [
             {
@@ -36,6 +36,12 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : MFRPN,
+                Label : 'Product Code',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : MAKTX,
                 Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
@@ -54,14 +60,32 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : VDATU_ANA,
+                Label : 'Requested Delivery Date',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : VDATU,
                 Label : 'Delivery By Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
+                Value : GBSTA,
+                Label : 'Processing Status',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : GBSTK,
                 Label : 'Order Status',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : AUART_ANA,
+                Label : 'Sales Doc. Type',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -90,10 +114,22 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : PSTLZ,
+                Label : 'Postal Code',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : MFRNR,
                 Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            }
         ],
     },
 ){
@@ -102,7 +138,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOPROD',
-                Label: 'SKU',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -118,7 +153,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOPRODDESC',
-                Label: 'Product Description',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -135,7 +169,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOCUST',
-                Label: 'Customer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -152,7 +185,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOSHIPTO',
-                Label: 'Ship To #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -169,7 +201,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOSHIPTONAME',
-                Label: 'Ship To Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -209,6 +240,23 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        } 
+    
+    ); 
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OOMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

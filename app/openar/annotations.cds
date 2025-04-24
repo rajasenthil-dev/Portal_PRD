@@ -22,6 +22,7 @@ annotate FINANCE.OPENAR with @(
             NAME1,
             FKDAT,
             MFRNR,
+            MFRNR_NAME,
             VKORG
         ],
         
@@ -146,6 +147,12 @@ annotate FINANCE.OPENAR with @(
                 Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name',
+                ![@HTML5.CssDefaults] : {width : '5.813rem'}
+            }
 
         ],
     },
@@ -199,6 +206,23 @@ annotate FINANCE.OPENAR with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }    
+        
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OPENARMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

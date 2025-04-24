@@ -75,56 +75,56 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
                 Value : CREDIT_LIMIT,
                 Label : 'Credit Limit'
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : STRAS_BILLTO,
-            //     Label : 'Bill To Address 1'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : ORT01_BILLTO,
-            //     Label : 'Bill To City'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : PSTLZ_BILLTO,
-            //     Label : 'Bill To Postal Code'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : BEZEI_BILLTO,
-            //     Label : 'Bill To Province'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : STRAS_SHIPTO,
-            //     Label : 'Ship To Address 1'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : ORT01_SHIPTO,
-            //     Label : 'Ship To City'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : PSTLZ_SHIPTO,
-            //     Label : 'Ship To Postal Code'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : BEZEI_SHIPTO,
-            //     Label : 'Ship To Province'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : ERDAT_BILLTO,
-            //     Label : 'Bill To Created'
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : ERDAT_SHIPTO,
-            //     Label : 'Ship To Created'
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : STRAS_BILLTO,
+                Label : 'Bill To Address 1'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ORT01_BILLTO,
+                Label : 'Bill To City'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PSTLZ_BILLTO,
+                Label : 'Bill To Postal Code'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BEZEI_BILLTO,
+                Label : 'Bill To Province'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : STRAS_SHIPTO,
+                Label : 'Ship To Address 1'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ORT01_SHIPTO,
+                Label : 'Ship To City'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PSTLZ_SHIPTO,
+                Label : 'Ship To Postal Code'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BEZEI_SHIPTO,
+                Label : 'Ship To Province'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ERDAT_BILLTO,
+                Label : 'Bill To Created'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ERDAT_SHIPTO,
+                Label : 'Ship To Created'
+            },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,

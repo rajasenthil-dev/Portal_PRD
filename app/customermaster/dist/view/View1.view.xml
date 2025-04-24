@@ -85,9 +85,46 @@
                             <t:RowSettings id="_IDGenRowSettings" highlight="{path:'CAL_CUST_STATUS', formatter:'._formatRowHighlight'}" highlightText="{CAL_CUST_STATUS}"/>
                         </t:rowSettingsTemplate>
                         <t:columns>
-                            <t:Column id="_IDGenColumn3" width='7.813rem'>
+                            <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "CAL_CUST_STATUS", "leadingProperty": "CAL_CUST_STATUS", "columnIndex": 19}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNN2_BILLTO", "leadingProperty": "KUNN2_BILLTO", "columnIndex": 0}'/>
+                                </t:customData>
+                                    <Text id="_IDGenText" text="Bill To #"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText2" text="{KUNN2_BILLTO}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn2" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNN2_SHIPTO", "leadingProperty": "KUNN2_SHIPTO", "columnIndex": 2}'/>
+                                </t:customData>
+                                    <Text id="_IDGenText3" text="Ship To #"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText4" text="{KUNN2_SHIPTO}"/>
+                                </t:template>
+                            </t:Column>
+        
+                            <t:Column id="_IDGenColumn5" width='5rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CAL_TERM", "leadingProperty": "CAL_TERM", "columnIndex": 6}'/>
+                                </t:customData>
+                                    <Text id="_IDGenText8" text="Terms"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText9" text="{CAL_TERM}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn6" width='6rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 8}'/>
+                                </t:customData>
+                                    <Text id="_IDGenText10" text="Sales Org."></Text>
+                                <t:template>
+                                    <Text id="_IDGenText11" text="{VKORG}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="Center">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CAL_CUST_STATUS", "leadingProperty": "CAL_CUST_STATUS", "columnIndex": 9}'/>
                                 </t:customData>
                                 <Text id="_IDGenText6" text="Status"></Text>
                                 <t:template>
@@ -96,6 +133,24 @@
                                         inverted="true"
                                         icon="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusIcon'}"
                                         state="{path: 'CAL_CUST_STATUS', formatter: '._formatStatusState'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn4" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "ERDAT_BILLTO", "leadingProperty": "ERDAT_BILLTO", "columnIndex": 10}'/>
+                                </t:customData>
+                                    <Text id="_IDGenText5" text="Bill To Created"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText7" text="{path: 'ERDAT_BILLTO', type: 'sap.ui.model.odata.type.Date'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn7" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "ERDAT_SHIPTO", "leadingProperty": "ERDAT_SHIPTO", "columnIndex": 11}'/>
+                                </t:customData>
+                                    <Text id="_IDGenText12" text="Ship To Created"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText13" text="{path: 'ERDAT_SHIPTO', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                         </t:columns> 

@@ -43,6 +43,7 @@ Search.defaultSearchElement: true,
             DELEVERY_DATE_VDATU,
             CURRENT,
             MFRNR,
+            MFRNR_NAME,
             CO_VKORG,
             VKBUR
         ],
@@ -282,6 +283,12 @@ Search.defaultSearchElement: true,
                 Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : 'Manufacturer Name',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
         ],
     }, 
 ){
@@ -304,12 +311,10 @@ Search.defaultSearchElement: true,
         
     );
     PRODUCT_DESCRIPTION_MAKTX@(
-        title: 'Product Description',
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCPRODDESC',
-                Label : 'Product Description',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -322,12 +327,10 @@ Search.defaultSearchElement: true,
         
     );
     LOT_CHARG@(
-        title: 'Lot #',
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCLOT',
-                Label : 'Lot #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -339,14 +342,12 @@ Search.defaultSearchElement: true,
         }
         
     );
-    VTEXT_FKART@( 
-        title: 'Type',
+    VTEXT_FKART@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCTYPE',
-                Label : 'Type',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -363,7 +364,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCBILLTOID',
-                Label : 'Bill To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -375,12 +375,10 @@ Search.defaultSearchElement: true,
         }
     );
     BILL_TO_NAME@(
-        title: 'Bill To Name',
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCBILLTO',
-                Label : 'Bill To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -396,7 +394,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCSHIPTOID',
-                Label : 'Ship To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -408,12 +405,10 @@ Search.defaultSearchElement: true,
         }
     );
     SHIP_TO_NAME@(
-        title: 'Ship To Name',
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCSHIPTO',
-                Label : 'Ship To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -426,13 +421,11 @@ Search.defaultSearchElement: true,
         
     );
     WAREHOUSE@(
-        title: 'Warehouse',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCWAREHOUSE',
-                Label : 'Warehouse',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -450,12 +443,28 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCMFRNR',
-                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }
+        
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },
@@ -468,7 +477,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCSALESORG',
-                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -486,7 +494,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCSALESOFFICE',
-                Label : 'Sales Office',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
