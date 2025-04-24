@@ -6,14 +6,66 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/core/Fragment",
 	"sap/ui/core/syncStyleClass",
-    "sap/m/MessageToast"
-], (Controller, Dialog, Button, Image, MessageBox,Fragment, syncStyleClass, MessageToast) => {
+    "sap/m/MessageToast",
+    "sap/ui/model/resource/ResourceModel"
+], (Controller, Dialog, Button, Image, MessageBox,Fragment, syncStyleClass, MessageToast, ResourceModel) => {
     "use strict";
 
     return Controller.extend("cashjour.controller.View1", {
         onInit: function () {
             var oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             const oSmartTable = this.getView().byId("table0");
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            var oToolbar = oSmartTable.getToolbar();
+            var oCurrentStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("CASHJOURNAL.CURRENTTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                inverted:true,
+                tooltip: oBundle.getText("CASHJOURNAL.CURRENTTOOLTIP")
+            })
+            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            var oCurrentStatusText =  new sap.m.Text({
+                text: " | "
+            })
+            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegacyStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("CASHJOURNAL.LEGACYTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Information",
+                inverted:true,
+                tooltip: oBundle.getText("CASHJOURNAL.LEGACYTOOLTIP")
+            })
+            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            var oLegacyStatusText =  new sap.m.Text({
+                text: "Legacy Data"
+            })
+            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oLegendTitle = new sap.m.Text({
+                text: "Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oCurrentStatus,
+                    oCurrentStatusText,
+                    oLegacyStatus
+                    
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
+
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {
@@ -59,6 +111,28 @@ sap.ui.define([
                     console.log("No media found for this manufacturer.");
                 }
             }.bind(this));
+        },
+        onSearch: function () {
+            const oSmartFilterBar = this.getView().byId("smartFilterBar");
+            const oSmartTable = this.getView().byId("table0");
+            const oBinding = oSmartTable.getTable().getBinding("rows");
+        
+            if (!oBinding) {
+                console.warn("Table binding is missing.");
+                return;
+            }
+        
+            // Get selected value from the filter
+            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+        
+            // Build the filter condition
+            let aFilters = [];
+            if (sCurrentStatus) {
+                aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+            }
+        
+            // Apply the filter
+            oBinding.filter(aFilters);
         },
         onOpenDialog: function () {
 			// load BusyDialog fragment asynchronously

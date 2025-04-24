@@ -7,7 +7,14 @@ sap.ui.define([
     return Controller.extend("invstatus.controller.View1", {
         onInit() {
             
-
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             var oModelLogo = this.getOwnerComponent().getModel("logo");
             
             // Bind to the MediaFile entity with a filter

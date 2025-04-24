@@ -24,128 +24,156 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            BILL_TO, 
+            BILL_TO,
+            NAME1, 
             BUDAT,
-            BLART
+            BLART,
+            MFRNR,
+            VKORG,
+            PRCTR,
+            MFRNR_NAME
         ],
         
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : BILL_TO,
-                Label : 'Bill To',
+                Value : CURRENT,
+                Label : '{i18n>CASHJOURNAL.CURRENT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
             {
                 $Type : 'UI.DataField',
+                Value : BILL_TO,
+                Label : '{i18n>CASHJOURNAL.BILL_TO}',
+                ![@HTML5.CssDefaults] : {width : '12rem'}
+
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : NAME1,
-                Label : 'Bill To Name',
+                Label : '{i18n>CASHJOURNAL.NAME1}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO,
-                Label : 'Ship To Code'
+                Label : '{i18n>CASHJOURNAL.SHIP_TO}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VBELN,
-                Label : 'Invoice #'
+                Label : '{i18n>CASHJOURNAL.VBELN}'
             }, 
             {
                 $Type : 'UI.DataField',
                 Value : FKDAT,
-                Label : 'Invoice Date'
+                Label : '{i18n>CASHJOURNAL.FKDAT}'
             },  
             {
                 $Type : 'UI.DataField',
                 Value : NETWR,
-                Label : 'Invoice Amount',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                Label : '{i18n>CASHJOURNAL.NETWR}',
+                ![@HTML5.CssDefaults] : {width : '16rem'}
             },  
             {
                 $Type : 'UI.DataField',
                 Value : AUBEL,
-                Label : 'Reference',
+                Label : '{i18n>CASHJOURNAL.AUBEL}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },          
             {
                 $Type : 'UI.DataField',
                 Value : CAL_CASH_RECEIVED,
-                Label : 'Cash Recieved',
+                Label : '{i18n>CASHJOURNAL.CAL_CASH_RECEIVED}',
                 ![@HTML5.CssDefaults] : {width : '6.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_DISCOUNT,
-                Label : 'Discount',
+                Label : '{i18n>CASHJOURNAL.CAL_DISCOUNT}',
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BLART,
-                Label : 'Payment Type',
+                Label : '{i18n>CASHJOURNAL.BLART}',
                 ![@HTML5.CssDefaults] : {width : '6.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BUDAT,
-                Label : 'Deposit Date'
+                Label : '{i18n>CASHJOURNAL.BUDAT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : BUKRS,
-                Label : 'Company Code',
+                Label : '{i18n>CASHJOURNAL.BURKS}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BELNR,
-                Label : 'Accounting Document'
+                Label : '{i18n>CASHJOURNAL.BELNR}'
             },
             
             {
                 $Type : 'UI.DataField',
                 Value : GJAHR,
-                Label : 'Fiscal Year'
+                Label : '{i18n>CASHJOURNAL.GJAHR}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'Co.',
+                Label : '{i18n>CASHJOURNAL.VKORG}',
                 ![@HTML5.CssDefaults] : {width : '3rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BSTKD,
-                Label : 'Customer PO',
+                Label : '{i18n>CASHJOURNAL.BSTKD}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : BKTXT,
-                Label : 'Comment 1',
+                Label : '{i18n>CASHJOURNAL.BKTXT}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : SGTXT,
-                Label : 'Comment 2'
+                Label : '{i18n>CASHJOURNAL.SGTXT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer'
+                Label : '{i18n>CASHJOURNAL.MFRNR}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : PRCTR,
-                Label : 'Profit Center'
+                Label : '{i18n>CASHJOURNAL.PRCTR}'
             },
+            {
+                $Type : 'UI.DataField',
+                Value : BLDAT,
+                Label : '{i18n>CASHJOURNAL.BLDAT}'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : CAL_INV_AMOUNT,
+                Label : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : '{i18n>CASHJOURNAL.MFRNR_NAME}'
+            },
+
         ],
     },
     
@@ -154,11 +182,9 @@ Search.defaultSearchElement: true,
 {   
     BILL_TO@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'BILL_TOS',
-                Label : 'Bill To Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -173,19 +199,102 @@ Search.defaultSearchElement: true,
             },
         }      
     );
-    
+    NAME1@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'BILL_TONAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'NAME1',
+                        ValueListProperty : 'NAME1'
+                    },
+                    {
+                        $Type : 'Common.ValueListParameterDisplayOnly',
+                        ValueListProperty : 'NAME1'
+                    }
+                ]
+            },
+        }      
+    );
     BLART@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'BLARTS',
-                Label : 'Payment Type',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'BLART',
                         ValueListProperty : 'BLART'
+                    }
+                ]
+            },
+        } 
+    );
+    MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'FINCJMFRNR',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        } 
+    );
+    VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'FINCJSALESORG',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        } 
+    );
+    PRCTR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'FINCJPRCTR',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PRCTR',
+                        ValueListProperty : 'PRCTR'
+                    }
+                ]
+            },
+        } 
+    );
+    MFRNR_NAME@(
+        Common: {
+            
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                DistinctValuesSupported: true,
+                CollectionPath : 'FINCJMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

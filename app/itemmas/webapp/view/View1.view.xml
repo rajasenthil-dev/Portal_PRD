@@ -52,7 +52,6 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                
                 <st:SmartTable 
                     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
                     width="100%" 
@@ -77,102 +76,228 @@
                 >
                     <t:Table id="table" selectionMode="None">
                         <t:columns>
-                            <t:Column id="_IDGenColumn" width="7.813rem">
+                            <t:Column id="_IDGenColumn" width="7.813rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT", "leadingProperty": "PRODUCT", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText6" text="SKU"></Text>
+                                <Text id="_IDGenText6" text="{i18n>ITEMMASTER.PRODUCT}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText9" text="{path: 'PRODUCT', formatter: '._removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn11" width='6rem'>
+                            <t:Column id="_IDGenColumn01" width="7.813rem" hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "NARCOTIC_YN", "leadingProperty": "NARCOTIC_YN", "columnIndex": 8}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_PART_NUMBER", "leadingProperty": "MFRNR_PART_NUMBER", "columnIndex": 1}'/>
                                 </t:customData>
-                                <Text id="_IDGenText31" text="Narcotic Y/N"></Text>
+                                <Text id="_IDGenText06" text="{i18n>ITEMMASTER.MFRNR_PART_NUMBER}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText09" text="{path: 'MFRNR_PART_NUMBER'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn02" width="15rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCTDESCRIPTION_EN", "leadingProperty": "PRODUCTDESCRIPTION_EN", "columnIndex": 2}'/>
+                                </t:customData>
+                                <Text id="_IDGenText03" text="{i18n>ITEMMASTER.PRODUCTDESCRIPTION_EN}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText04" text="{path: 'PRODUCTDESCRIPTION_EN'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn03" width="7rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCTSTANDARDID", "leadingProperty": "PRODUCTSTANDARDID", "columnIndex": 3}'/>
+                                </t:customData>
+                                <Text id="_IDGenText05" text="{i18n>ITEMMASTER.PRODUCTSTANDARDID}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText07" text="{path: 'PRODUCTSTANDARDID'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn002" width="15rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCTDESCRIPTION_FR", "leadingProperty": "PRODUCTDESCRIPTION_FR", "columnIndex": 4}'/>
+                                </t:customData>
+                                <Text id="_IDGenText003" text="{i18n>ITEMMASTER.PRODUCTDESCRIPTION_FR}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText004" text="{path: 'PRODUCTDESCRIPTION_FR'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn2" width="5rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BWKEY", "leadingProperty": "BWKEY", "columnIndex": 5}'/>
+                                </t:customData>
+                                <Text id="_IDGenText" text="{i18n>ITEMMASTER.BWKEY}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText3" text="{path: 'BWKEY'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn3" width="7.813rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PLANT_NAME", "leadingProperty": "PLANT_NAME", "columnIndex": 6}'/>
+                                </t:customData>
+                                <Text id="_IDGenText5" text="{i18n>ITEMMASTER.PLANT_NAME}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText7" text="{path: 'PLANT_NAME'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn4" width="5rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "STPRS", "leadingProperty": "STPRS", "columnIndex": 7}'/>
+                                </t:customData>
+                                <Text id="_IDGenText8" text="{i18n>ITEMMASTER.STPRS}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText11" text="{path: 'STPRS'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn09" width="6rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 8}'/>
+                                </t:customData>
+                                <Text id="_IDGenText009" text="{i18n>ITEMMASTER.DIN}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText10" text="{path: 'DIN'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn19" width="5rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SIZEUOM", "leadingProperty": "SIZEUOM", "columnIndex": 9}'/>
+                                </t:customData>
+                                <Text id="_IDGenText19" text="{i18n>ITEMMASTER.SIZEUOM}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText20" text="{path: 'SIZEUOM'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn20" width="5.25rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CATEGORY", "leadingProperty": "CATEGORY", "columnIndex": 10}'/>
+                                </t:customData>
+                                <Text id="_IDGenText21" text="{i18n>ITEMMASTER.CATEGORY}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText22" text="{path: 'CATEGORY'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn11" width='6rem' hAlign="Center">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "NARCOTIC_YN", "leadingProperty": "NARCOTIC_YN", "columnIndex": 11}'/>
+                                </t:customData>
+                                <Text id="_IDGenText31" text="{i18n>ITEMMASTER.NARCOTIC_YN}"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus"
                                     core:require="{
                                             Formatter: 'itemmas/model/formatter'
                                         }"
                                         icon="{path: 'NARCOTIC_YN', formatter:'Formatter.yesNoIcon'}"
-                                        inverted="true"
+                                        
                                         state="{path: 'NARCOTIC_YN', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${NARCOTIC_YN} === 'Y' ? 'Yes' : 'No'}"/>
+                                        />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn111" width='7rem'>
+                            <t:Column id="_IDGenColumn111" width='7rem' hAlign="Center">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "LOT_CONTROL_YN", "leadingProperty": "LOT_CONTROL_YN", "columnIndex": 9}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "LOT_CONTROL_YN", "leadingProperty": "LOT_CONTROL_YN", "columnIndex": 12}'/>
                                 </t:customData>
-                                <Text id="_IDGenText311" text="Lot Control Y/N"></Text>
+                                <Text id="_IDGenText311" text="{i18n>ITEMMASTER.LOT_CONTROL_YN}"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus1"
                                     core:require="{
                                             Formatter: 'itemmas/model/formatter'
                                         }"
                                         icon="{path: 'LOT_CONTROL_YN', formatter:'Formatter.yesNoIcon'}"
-                                        inverted="true"
+                                        
                                         state="{path: 'LOT_CONTROL_YN', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${LOT_CONTROL_YN} === 'Y' ? 'Yes' : 'No'}"/>
+                                        />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn112" width='7rem'>
+                            <t:Column id="_IDGenColumn112" width='7rem' hAlign="Center">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "REFRIGERATED", "leadingProperty": "REFRIGERATED", "columnIndex": 10}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "REFRIGERATED", "leadingProperty": "REFRIGERATED", "columnIndex": 13}'/>
                                 </t:customData>
-                                <Text id="_IDGenText312" text="Refridgerated"></Text>
+                                <Text id="_IDGenText312" text="{i18n>ITEMMASTER.REFRIGERATED}"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus2"
                                     core:require="{
                                             Formatter: 'itemmas/model/formatter'
                                         }"
                                         icon="{path: 'REFRIGERATED', formatter:'Formatter.yesNoIcon'}"
-                                        inverted="true"
+                                        
                                         state="{path: 'REFRIGERATED', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${REFRIGERATED} === 'Y' ? 'Yes' : 'No'}"/>
+                                        />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn113" width='7rem'>
+                            <t:Column id="_IDGenColumn113" width='7rem' hAlign="Center">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PST_APPLICABLE", "leadingProperty": "PST_APPLICABLE", "columnIndex": 11}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PST_APPLICABLE", "leadingProperty": "PST_APPLICABLE", "columnIndex": 14}'/>
                                 </t:customData>
-                                <Text id="_IDGenText313" text="PST Applicable"></Text>
+                                <Text id="_IDGenText313" text="{i18n>ITEMMASTER.PST_APPLICABLE}"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus3"
                                     core:require="{
                                             Formatter: 'itemmas/model/formatter'
                                         }"
                                         icon="{path: 'PST_APPLICABLE', formatter:'Formatter.yesNoIcon'}"
-                                        inverted="true"
+                                        
                                         state="{path: 'PST_APPLICABLE', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${PST_APPLICABLE} === 'Y' ? 'Yes' : 'No'}"/>
+                                        />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn114" width='7rem'>
+                            <t:Column id="_IDGenColumn114" width='7rem' hAlign="Center">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "GST_APPLICABLE", "leadingProperty": "GST_APPLICABLE", "columnIndex": 12}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "GST_APPLICABLE", "leadingProperty": "GST_APPLICABLE", "columnIndex": 15}'/>
                                 </t:customData>
-                                <Text id="_IDGenText314" text="PST Applicable"></Text>
+                                <Text id="_IDGenText314" text="{i18n>ITEMMASTER.GST_APPLICABLE}"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus4"
                                     core:require="{
                                             Formatter: 'itemmas/model/formatter'
                                         }"
                                         icon="{path: 'GST_APPLICABLE', formatter:'Formatter.yesNoIcon'}"
-                                        inverted="true"
+                                        
                                         state="{path: 'GST_APPLICABLE', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${GST_APPLICABLE} === 'Y' ? 'Yes' : 'No'}"/>
+                                        />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width="7rem">
+                            <t:Column id="_IDGenColumn6" width="7rem" hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "CREATIONDATE", "leadingProperty": "CREATIONDATE", "columnIndex": 13}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CREATIONDATE", "leadingProperty": "CREATIONDATE", "columnIndex": 16}'/>
                                 </t:customData>
-                                <Text id="_IDGenText2" text="Creation Date"></Text>
+                                <Text id="_IDGenText2" text="{i18n>ITEMMASTER.CREATIONDATE}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText4" text="{path: 'CREATIONDATE', type: 'sap.ui.model.odata.type.Date'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn624" width="7rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "UNITS_PER_CASE", "leadingProperty": "UNITS_PER_CASE", "columnIndex": 17}'/>
+                                </t:customData>
+                                <Text id="_IDGenText233" text="{i18n>ITEMMASTER.UNITS_PER_CASE}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText42" text="{UNITS_PER_CASE}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn62" width="7rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SALESORG", "leadingProperty": "SALESORG", "columnIndex": 18}'/>
+                                </t:customData>
+                                <Text id="_IDGenText23" text="{i18n>ITEMMASTER.SALESORG}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText41" text="{path: 'SALESORG'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn621" width="7rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MANUFACTURERNUMBER", "leadingProperty": "MANUFACTURERNUMBER", "columnIndex": 19}'/>
+                                </t:customData>
+                                <Text id="_IDGenText231" text="{i18n>ITEMMASTER.MANUFACTURERNUMBER}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText411" text="{path: 'MANUFACTURERNUMBER'}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn626" width="12rem">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_NAME", "leadingProperty": "MFRNR_NAME", "columnIndex": 20}'/>
+                                </t:customData>
+                                <Text id="_IDGenText236" text="{i18n>ITEMMASTER.MFRNR_NAME}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText416" text="{path: 'MFRNR_NAME'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns>

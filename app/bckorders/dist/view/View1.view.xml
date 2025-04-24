@@ -36,8 +36,9 @@
                     <sf:SmartFilterBar id="smartFilterBar" entitySet="BACKORDERS" filterChange="onFilterBarFilterChange" useDateRangeType="true" persistencyKey="SmartFilterBar_BACKORDERS" smartVariant="pageVariant" liveMode="true" search="onSearch">
                         <sf:controlConfiguration>
                             <sf:ControlConfiguration id="_IDGenControlConfiguration" key="MAKTX" label="Product Description"/>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration1" key="KUNRE_ANA" label="Bill To"/>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration2" key="KUNWE_ANA" label="Ship To"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1" key="KUNRE_ANA" label="Bill To #"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration2" key="KUNWE_ANA" label="Ship To #"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration3" key="MFRNR" label="Manufacturer #"/>
                         </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                     <Panel id="summaryPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
@@ -107,7 +108,7 @@
                     id="table" 
                     selectionMode="None" alternateRowColors="true">
                         <t:columns>
-                            <t:Column id="_IDGenColumn1" width="7.813rem">
+                            <t:Column id="_IDGenColumn1" width="7.813rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='{"columnKey": "ERDAT", "leadingProperty": "ERDAT", "columnIndex": 2}'/>
                                 </t:customData>
@@ -116,7 +117,7 @@
                                     <Text id="_IDGenText2" text="{path: 'ERDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn2" width="7.813rem">
+                            <t:Column id="_IDGenColumn2" width="7.813rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='{"columnKey": "UDATE", "leadingProperty": "UDATE", "columnIndex": 4}'/>
                                 </t:customData>
@@ -125,7 +126,7 @@
                                     <Text id="_IDGenText4" text="{path: 'UDATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width="7.813rem">
+                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='{"columnKey": "UNIT_PRICE", "leadingProperty": "UNIT_PRICE", "columnIndex": 9}'/>
                                 </t:customData>
@@ -135,10 +136,10 @@
                                     core:require="{
                                         Formatter: 'bckorders/model/formatter'
                                     }"
-                                    id="_IDGenText6" text="{path: 'UNIT_PRICE', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
+                                    id="_IDGenText6" text="${path: 'UNIT_PRICE', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" width="7.813rem">
+                            <t:Column id="_IDGenColumn4" width="7.813rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='{"columnKey": "EXTENSION", "leadingProperty": "EXTENSION", "columnIndex": 10}'/>
                                 </t:customData>
@@ -148,7 +149,7 @@
                                     core:require="{
                                         Formatter: 'bckorders/model/formatter'
                                     }"
-                                    id="_IDGenText8" text="{path: 'EXTENSION', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
+                                    id="_IDGenText8" text="${path: 'EXTENSION', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
                                 </t:template>
                             </t:Column>
                         </t:columns>

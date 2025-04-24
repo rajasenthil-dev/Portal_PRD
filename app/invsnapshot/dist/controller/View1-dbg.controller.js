@@ -1,14 +1,106 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-], (Controller, MessageBox) => {
+    "sap/m/MessageBox",
+    "sap/ui/model/resource/ResourceModel"
+], (Controller, MessageBox, ResourceModel) => {
     "use strict";
 
     return Controller.extend("invsnapshot.controller.View1", {
         onInit: function () {
             
             var oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             const oSmartTable = this.getView().byId("table0");
+            var oToolbar = oSmartTable.getToolbar();
+            var oExpiryStatusGreen = new sap.m.ObjectStatus({
+                
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                tooltip: oBundle.getText("INVENTORYSNAPSHOT.EXPIRYSTATUSGREENTOOLTIP")
+            })
+            var oExpiryStatusGreenText = new sap.m.Text({
+                text: oBundle.getText("INVENTORYSNAPSHOT.EXPIRYSTATUSGREENTEXT"),
+                
+            })
+            oExpiryStatusGreenText.addStyleClass("text-bold sapUiTinyMarginEnd")
+
+            var oExpiryStatusYellow = new sap.m.ObjectStatus({
+                icon: "sap-icon://circle-task-2",
+                state: "Warning",
+                tooltip: oBundle.getText("INVENTORYSNAPSHOT.EXPIRYSTATUSGREENTOOLTIP")
+            })
+            var oExpiryStatusYellowText = new sap.m.Text({
+                text: oBundle.getText("INVENTORYSNAPSHOT.EXPIRYSTATUSYELLOWTEXT"),
+                
+            })
+            oExpiryStatusYellowText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oExpiryStatusRed = new sap.m.ObjectStatus({
+                icon: "sap-icon://circle-task-2",
+                state: "Error",
+                tooltip: oBundle.getText("INVENTORYSNAPSHOT.EXPIRYSTATUSGREENTOOLTIP")
+            })
+            var oExpiryStatusRedText = new sap.m.Text({
+                text: oBundle.getText("INVENTORYSNAPSHOT.EXPIRYSTATUSREDTEXT"),
+                
+            })
+            oExpiryStatusRedText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            
+            var oCurrentStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("INVENTORYSNAPSHOT.CURRENTTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                inverted:true,
+                tooltip: oBundle.getText("INVENTORYSNAPSHOT.CURRENTTOOLTIP")
+            })
+            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            var oCurrentStatusText =  new sap.m.Text({
+                text: " | "
+            })
+            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegacyStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("INVENTORYSNAPSHOT.LEGACYTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Information",
+                inverted:true,
+                tooltip: oBundle.getText("INVENTORYSNAPSHOT.LEGACYTOOLTIP")
+            })
+            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            var oLegacyStatusText =  new sap.m.Text({
+                text: "Legacy Data"
+            })
+            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oLegendTitle = new sap.m.Text({
+                text: "Table Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oLegendTitle,
+                    oExpiryStatusGreen,
+                    oExpiryStatusGreenText,
+                    oExpiryStatusYellow,
+                    oExpiryStatusYellowText,
+                    oExpiryStatusRed,
+                    oExpiryStatusRedText,
+                    oCurrentStatusText,
+                    oCurrentStatus,
+                    oLegacyStatus
+                    
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
+
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {

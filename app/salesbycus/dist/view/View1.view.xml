@@ -68,14 +68,14 @@
                             <sf:ControlConfiguration id="customCurrentFilter"
                                 key="CURRENT"
                                 visibleInAdvancedArea="true"
-                                label="Current/Historical"
+                                label="Current/Legacy"
                             >
                                 <sf:customControl>
                                     <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
                                         <items>
                                             <core:Item id="_IDGenItem2" key="" text="All"/>
                                             <core:Item id="_IDGenItem" key="YES" text="Current"/>
-                                            <core:Item id="_IDGenItem1" key="NO" text="Historical"/>
+                                            <core:Item id="_IDGenItem1" key="NO" text="Legacy"/>
                                         </items>
                                     </ComboBox>
                                 </sf:customControl>
@@ -102,7 +102,7 @@
                                 <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>tileTitle4}"/>
                                 <Text id="_IDGenNumericContent4" class="mck_TileContent" text=""/>
                             </FlexBox>
-
+                            
                         </HeaderContainer>
                     </Panel>
                 </f:DynamicPageHeader>
@@ -140,9 +140,6 @@
                             TypeForODataV2Time: 'sap/ui/model/odata/type/Date',
                             TypeForODataTimestamp: 'sap/ui/model/odata/type/DateTimeOffset'
                         }">
-                        <t:rowSettingsTemplate>
-                            <t:RowSettings id="_IDGenRowSettings" highlight="{path:'CURRENT', formatter:'._formatRowHighlight'}" highlightText="{CURRENT}"/>
-                        </t:rowSettingsTemplate>
                         <t:columns>
                             <t:Column id="_IDGenColumn10" width='7.813rem'>
                                 <t:customData>
@@ -179,7 +176,7 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText31" text="Current"></Text>
+                                <Text id="_IDGenText31" text="Current/Legacy"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus"
                                     core:require="{
@@ -188,7 +185,8 @@
                                         icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
                                         inverted="true"
                                         state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${CURRENT} === 'YES' ? 'Current' : 'Historical'}"/>
+                                        tooltip="{= ${CURRENT} === 'YES' ? 'Captured from the new system post-migration and is up-to-date.' : 'Pulled from the previous system before the upgrade/migration'}"
+                                        text="{= ${CURRENT} === 'YES' ? 'Current' : 'Legacy'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn20" width='7.813rem'>

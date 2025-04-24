@@ -71,7 +71,7 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText7" text="Price"></Text>
+                                <Text id="_IDGenText7" text="Product"></Text>
                                 <t:template>
                                     <Text
                                         core:require="{

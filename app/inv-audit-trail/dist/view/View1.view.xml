@@ -50,6 +50,23 @@
                                 }"
                             />
                         </sf:controlConfiguration>
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="customCurrentFilter"
+                                key="CURRENT"
+                                visibleInAdvancedArea="true"
+                                label="{i18n>INVENTORYAUDITTRAIL.CURRENT}"
+                            >
+                                <sf:customControl>
+                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                        <items>
+                                            <core:Item id="_IDGenItem2" key="" text="{i18n>INVENTORYAUDITTRAIL.ALLTEXT}"/>
+                                            <core:Item id="_IDGenItem" key="YES" text="{i18n>INVENTORYAUDITTRAIL.CURRENTTEXT}"/>
+                                            <core:Item id="_IDGenItem1" key="NO" text="{i18n>INVENTORYAUDITTRAIL.LEGACYTEXT}"/>
+                                        </items>
+                                    </ComboBox>
+                                </sf:customControl>
+                            </sf:ControlConfiguration>
+                        </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                     <Panel id="panel1" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
                         <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
@@ -104,22 +121,92 @@
                     >
                     <t:Table id="table" selectionMode="None" alternateRowColors="true">
                         <t:columns>
-                        <t:Column id="_IDGenColumn12" width='7.813rem'>
+                            <t:Column id="_IDGenColumn11" width='7.813rem'>
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText312" text="SKU"></Text>
+                                <Text id="_IDGenText31" text="{i18n>INVENTORYAUDITTRAIL.CURRENT}"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                    core:require="{
+                                            Formatter: 'invaudittrail/model/formatter'
+                                        }"
+                                        icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                        text="{= ${CURRENT} === 'YES' ? ${i18n>INVENTORYAUDITTRAIL.CURRENTTEXT} : ${i18n>INVENTORYAUDITTRAIL.LEGACYTEXT}}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn12" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 1}'/>
+                                </t:customData>
+                                <Text id="_IDGenText312" text="{i18n>INVENTORYAUDITTRAIL.MATNR}"></Text>
                                 <t:template>
                                     <Text id="sku" text="{path: 'MATNR', formatter: '.removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn" width='7.813rem'>
+                            <t:Column id="_IDGenColumn121" width='7.813rem' hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 8}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_PROD_CODE", "leadingProperty": "MFRNR_PROD_CODE", "columnIndex": 2}'/>
                                 </t:customData>
-                                <Text id="_IDGenText3" text="Expiry Date"></Text>
+                                <Text id="_IDGenText3121" text="{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate" text="{= ${VFDAT} === '00000000' ? ' ' : ${path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}}"/>
+                                    <Text id="sku1" text="{path: 'MFRNR_PROD_CODE'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHELF_LIFE_EXP_DT", "leadingProperty": "SHELF_LIFE_EXP_DT", "columnIndex": 9}'/>
+                                </t:customData>
+                                <Text id="_IDGenText3" text="{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate" text="{= ${SHELF_LIFE_EXP_DT} === '00000000' ? ' ' : ${path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn12121" width='10rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 11}'/>
+                                </t:customData>
+                                <Text id="_IDGenText32" text="{i18n>INVENTORYAUDITTRAIL.KUNNR}"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate2" text="{path: 'KUNNR'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn121213" width='10rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_MATDOC_ITEM", "leadingProperty": "INV_MATDOC_ITEM", "columnIndex": 13}'/>
+                                </t:customData>
+                                <Text id="_IDGenText323" text="{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate23" text="{path: 'INV_MATDOC_ITEM'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn23" width='5rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 14}'/>
+                                </t:customData>
+                                <Text id="_IDGenText322" text="{i18n>INVENTORYAUDITTRAIL.DIN}"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate22" text="{path: 'DIN'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn234" width='5rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 15}'/>
+                                </t:customData>
+                                <Text id="_IDGenText3224" text="{i18n>INVENTORYAUDITTRAIL.WERKS}"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate24" text="{path: 'WERKS'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn25" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 20}'/>
+                                </t:customData>
+                                <Text id="_IDGenText325" text="{i18n>INVENTORYAUDITTRAIL.MFRNR}"></Text>
+                                <t:template>
+                                    <Text id="invoiceDate25" text="{path: 'MFRNR'}"/>
                                 </t:template>
                             </t:Column>
                             <!-- <t:Column id="_IDGenColumn1" width='7.813rem'>

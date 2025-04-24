@@ -8,6 +8,14 @@ function (Controller, MessageBox) {
     return Controller.extend("itemmas.controller.View1", {
         onInit: function () {
             var oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             const oSmartTable = this.getView().byId("table0");
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;

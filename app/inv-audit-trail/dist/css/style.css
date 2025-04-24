@@ -84,3 +84,11 @@
     color: #fff!important;
     margin-right:5px;
 }
+
+.statusNew {
+    color: #4397D2;
+  }
+  
+  .statusOld {
+    color: #702C6A;
+  }

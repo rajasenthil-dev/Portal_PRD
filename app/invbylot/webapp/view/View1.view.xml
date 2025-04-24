@@ -91,7 +91,7 @@
                             <t:RowSettings id="_IDGenRowSettings" highlight="{path:'DAYS_UNTIL_EXPIRY', formatter:'._formatRowHighlight'}" highlightText="{DAYS_UNTIL_EXPIRY}"/>
                         </t:rowSettingsTemplate>
                         <t:columns>
-                        <t:Column id="_IDGenColumn11" autoResizable="true" width="10rem">
+                            <t:Column id="_IDGenColumn11" autoResizable="true" width="10rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                 </t:customData>
@@ -100,7 +100,7 @@
                                     <Text id="sku" text="{path: 'MATNR', formatter: '.removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width='7.813rem'>
+                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DAYS_UNTIL_EXPIRY", "leadingProperty": "DAYS_UNTIL_EXPIRY", "columnIndex": 5}'/>
                                 </t:customData>
@@ -111,7 +111,7 @@
                                     </HBox>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" autoResizable="true" width="10rem">
+                            <t:Column id="_IDGenColumn1" autoResizable="true" width="10rem" hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 4}'/>
                                 </t:customData>

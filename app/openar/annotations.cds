@@ -18,15 +18,18 @@ annotate FINANCE.OPENAR with @(
     },
     UI : {
         SelectionFields  : [
+            BILL_TO,
             NAME1,
-            FKDAT 
+            FKDAT,
+            MFRNR,
+            VKORG
         ],
         
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO,
-                Label : 'Customer',
+                Label : 'Customer #',
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
             {
@@ -140,7 +143,7 @@ annotate FINANCE.OPENAR with @(
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer',
+                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
 
@@ -151,9 +154,24 @@ annotate FINANCE.OPENAR with @(
 )
 
 {
+    BILL_TO@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OPENARCUSTOMERID',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'BILL_TO',
+                        ValueListProperty : 'BILL_TO'
+                    }
+                ]
+            },
+        }    
+        
+    );
     NAME1@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OPENARCUSTOMER',
@@ -163,6 +181,42 @@ annotate FINANCE.OPENAR with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'NAME1',
                         ValueListProperty : 'NAME1'
+                    }
+                ]
+            },
+        }    
+        
+    );
+    MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OPENARMFRNR',
+                Label : 'Manufacturer #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }    
+        
+    );
+    VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OPENARSALESORG',
+                Label : 'Lot #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
                     }
                 ]
             },

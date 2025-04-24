@@ -5,19 +5,28 @@ annotate PROCESSING.BACKORDERS with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-                KUNRE_ANA: true,
-                VKORG: true,	
-                BSTKD: true,	 
-                VBELN: true,
-                MATNR: true,
-                MAKTX: true,
-                NAME1: true,
-                MFRNR: true       
+            DATE_DIFF,
+            KUNRE_ANA,
+            UDATE,
+            VKORG,
+            BSTKD,
+            EXTENSION,
+            VBELN,
+            ERDAT,
+            UNIT_PRICE,
+            MATNR, 
+            MAKTX,
+            BACK_ORD_QTY,
+            KUNWE_ANA, 
+            NAME1,
+            MFRNR,
+            MEINS,
+            MFRNR_NAME    
         }
     },
     UI : {
         SelectionFields  : [
-           MAKTX, KUNRE_ANA, KUNWE_ANA
+           MATNR, MAKTX, KUNRE_ANA, KUNWE_ANA, NAME1, MFRNR, VKORG, MFRNR_NAME
         ],
         LineItem  : [
             {
@@ -53,13 +62,13 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'Product',
+                Label : 'SKU',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Desc',
+                Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -90,13 +99,13 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : KUNRE_ANA,
-                Label : 'Bill To',
+                Label : 'Bill To #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : KUNWE_ANA,
-                Label : 'Ship To',
+                Label : 'Ship To #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -114,39 +123,50 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                Label : 'Manufacturer #',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'},
+                
+                
             }
             
         ],
     },
 ){
     
-    MAKTX@(title: 'Product Desc',
-        Common: {
-            ValueListWithFixedValues,
-            ValueList : {
-                $Type : 'Common.ValueListType',
-                CollectionPath : 'BOPRODUCTDESC',
-                Label : 'Product Description',
+    MATNR@(
+        Common.ValueList : {
+                CollectionPath : 'BOPRODUCT',
+                SearchSupported: true,
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
+                        LocalDataProperty : 'MATNR',
+                        ValueListProperty : 'MATNR'
+                    }
+                ]
+            }
+        
+    );
+    MAKTX@(
+        Common.ValueList : {
+                CollectionPath : 'BOPRODUCTDESC',
+                SearchSupported: true,
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'MAKTX',
                         ValueListProperty : 'MAKTX'
                     }
                 ]
-            },
-        }
+            }
+        
     );
     
-    KUNRE_ANA@(title:'Bill To',
+    KUNRE_ANA@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'BOBILLTO',
-                Label : 'Bill To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -157,13 +177,11 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    KUNWE_ANA@(title: 'Ship To',
+    KUNWE_ANA@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'BOSHIPTO',
-                Label : 'Bill To Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -174,14 +192,28 @@ Search.defaultSearchElement: true,
             },
         }
     );
+    NAME1@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'BOSHIPTONAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'NAME1',
+                        ValueListProperty : 'NAME1'
+                    }
+                ]
+            },
+        }
+    );
     
-    VKORG@(title: 'Sales Org.',
+    VKORG@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'BOVKORG',
-                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -192,13 +224,12 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    MFRNR@(title: 'Manufacturer',
+    MFRNR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'BOMFRNR',
-                Label : 'Manufacturer',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -208,5 +239,21 @@ Search.defaultSearchElement: true,
                 ]
             },
         }
-    );   
+    );  
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'BOMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
+                    }
+                ]
+            },
+        }
+    );
 };

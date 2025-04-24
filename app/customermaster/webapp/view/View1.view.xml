@@ -34,7 +34,21 @@
                         liveMode="true" 
                         search="onSearch">
                         <sf:controlConfiguration>
-                            
+                            <sf:ControlConfiguration id="customCurrentFilter"
+                                key="CAL_CUST_STATUS"
+                                visibleInAdvancedArea="true"
+                                label="Status"
+                            >
+                                <sf:customControl>
+                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                        <items>
+                                            <core:Item id="_IDGenItem2" key="" text="All"/>
+                                            <core:Item id="_IDGenItem" key="A" text="Active"/>
+                                            <core:Item id="_IDGenItem1" key="I" text="Inactive"/>
+                                        </items>
+                                    </ComboBox>
+                                </sf:customControl>
+                            </sf:ControlConfiguration>
                         </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                 </f:DynamicPageHeader>

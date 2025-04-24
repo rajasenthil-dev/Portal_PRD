@@ -40,6 +40,7 @@ src/gen/VDSP.RETRGA.hdbview
 src/gen/VDSP.RETREASON.hdbview
 
 src/gen/PROCESSING.RETCUST.hdbview
+src/gen/PROCESSING.RETCUSTNAME.hdbview
 src/gen/PROCESSING.RETRGA.hdbview
 src/gen/PROCESSING.RETREASON.hdbview
 src/gen/PROCESSING.RETVKORG.hdbview
@@ -47,6 +48,7 @@ src/gen/PROCESSING.RETMFRNR.hdbview
 src/gen/PROCESSING.RETVKBUR.hdbview
 src/gen/PROCESSING.RETPRCTR.hdbview
 src/gen/RETCUST.hdbview
+src/gen/RETCUSTNAME.hdbview
 src/gen/RETRGA.hdbview
 src/gen/RETVKORG.hdbview
 src/gen/RETMFRNR.hdbview
@@ -69,6 +71,8 @@ src/gen/SHTRACKING.hdbview
 src/gen/PROCESSING.SHTRACKING.hdbview
 src/gen/SHSHIPTO.hdbview
 src/gen/PROCESSING.SHSHIPTO.hdbview
+src/gen/SHSHIPTONAME.hdbview
+src/gen/PROCESSING.SHSHIPTONAME.hdbview
 src/gen/PROCESSING.SHMFRNR.hdbview
 src/gen/PROCESSING.SHVKORG.hdbview
 src/gen/SHMFRNR.hdbview
@@ -78,10 +82,16 @@ src/gen/IATLOT.hdbview
 src/gen/IATWAREHOUSE.hdbview
 src/gen/IATPRODUCTCODE.hdbview
 src/gen/IATCUSTSUPP.hdbview
+src/gen/IATMFRNR.hdbview
 src/gen/INVENTORY.IATLOT.hdbview
+src/gen/INVENTORY.IATMFRNR.hdbview
+src/gen/INVENTORY.IATMFRNRNAME.hdbview
+src/gen/IATMFRNRNAME.hdbview
 src/gen/INVENTORY.IATWAREHOUSE.hdbview
 src/gen/INVENTORY.IATPRODUCTCODE.hdbview
 src/gen/INVENTORY.IATCUSTSUPP.hdbview
+src/gen/INVENTORY.IATCUSTSUPPNAME.hdbview
+src/gen/IATCUSTSUPPNAME.hdbview
 src/gen/INVENTORY.INVENTORYAUDITTRAIL.hdbview
 
 src/gen/INVBYLOTLOT.hdbview
@@ -92,6 +102,8 @@ src/gen/INVENTORY.INVBYLOTPRODUCTCODE.hdbview
 src/gen/INVENTORY.INVBYLOTWAREHOUSE.hdbview
 src/gen/INVENTORY.INVENTORYBYLOT.hdbview
 src/gen/INVENTORY.INVBYLOTMFRNR.hdbview
+src/gen/INVENTORY.INVBYLOTMFRNRNAME.hdbview
+src/gen/INVBYLOTMFRNRNAME.hdbview
 src/gen/INVENTORY.INVBYLOTVKBUR.hdbview
 src/gen/INVBYLOTMFRNR.hdbview
 src/gen/INVBYLOTVKBUR.hdbview
@@ -99,6 +111,8 @@ src/gen/INVBYLOTVKBUR.hdbview
 src/gen/INVSTATUSPRODUCTCODE.hdbview
 src/gen/INVENTORY.INVSTATUSPRODUCTCODE.hdbview
 src/gen/INVENTORY.INVSTATUSMFRNR.hdbview
+src/gen/INVENTORY.INVSTATUSMFRNRNAME.hdbview
+src/gen/INVSTATUSMFRNRNAME.hdbview
 src/gen/INVENTORY.INVSTATUSVKBUR.hdbview
 src/gen/INVENTORY.INVENTORYSTATUS.hdbview
 src/gen/INVSTATUSMFRNR.hdbview
@@ -107,7 +121,11 @@ src/gen/INVSTATUSVKBUR.hdbview
 src/gen/INVENTORY.INVSNAPWARESTAT.hdbview
 src/gen/INVENTORY.INVSNAPPRODDESC.hdbview
 src/gen/INVENTORY.INVSNAPPROD.hdbview
+src/gen/INVENTORY.INVSNAPPRODSKU.hdbview
+src/gen/INVSNAPPRODSKU.hdbview
 src/gen/INVENTORY.INVSNAPMFRNR.hdbview
+src/gen/INVENTORY.INVSNAPMFRNRNAME.hdbview
+src/gen/INVSNAPMFRNRNAME.hdbview
 src/gen/INVENTORY.INVSNAPVKORG.hdbview
 src/gen/INVENTORY.INVSNAPLOT.hdbview
 src/gen/INVENTORY.INVENTORYSNAPSHOT.hdbview
@@ -115,22 +133,54 @@ src/gen/INVENTORY.INVENTORYSNAPSHOT.hdbview
 src/gen/FINANCE.CASHJOURNAL.hdbview
 src/gen/FINANCE.BLARTS.hdbview
 src/gen/FINANCE.BILL_TOS.hdbview
+src/gen/FINANCE.BILL_TONAME.hdbview
+src/gen/BILL_TONAME.hdbview
+src/gen/FINANCE.FINCJMFRNR.hdbview
+src/gen/FINANCE.FINCJMFRNRNAME.hdbview
+src/gen/FINCJMFRNRNAME.hdbview
+src/gen/FINANCE.FINCJSALESORG.hdbview
+src/gen/FINANCE.FINCJPRCTR.hdbview
+src/gen/FINCJMFRNR.hdbview
+src/gen/FINCJSALESORG.hdbview
+src/gen/FINCJPRCTR.hdbview
+
 
 src/gen/FINANCE.OPENAR.hdbview
+src/gen/OPENAR.hdbview
 src/gen/FINANCE.OPENARCUSTOMER.hdbview
+src/gen/FINANCE.OPENARCUSTOMERID.hdbview
+src/gen/OPENARCUSTOMERID.hdbview
+src/gen/FINANCE.OPENARMFRNR.hdbview
+src/gen/FINANCE.OPENARSALESORG.hdbview
 src/gen/OPENARCUSTOMER.hdbview
+src/gen/OPENARMFRNR.hdbview
+src/gen/OPENARSALESORG.hdbview
 
 src/gen/CUSTOMERS.PRICINGPRODUCTDESC.hdbview
+src/gen/CUSTOMERS.PRICINGPRODUCT.hdbview
 src/gen/CUSTOMERS.PRICINGPRICEDESC.hdbview
+src/gen/CUSTOMERS.PRICINGMFRNR.hdbview
+src/gen/CUSTOMERS.PRICINGSALESORG.hdbview
+src/gen/PRICINGSALESORG.hdbview
+src/gen/PRICINGMFRNR.hdbview
 src/gen/CUSTOMERS.PRICING.hdbview
 src/gen/PRICINGPRODUCTDESC.hdbview
+src/gen/PRICINGPRODUCT.hdbview
 src/gen/PRICINGPRICEDESC.hdbview
 
 src/gen/CUSTOMERS.CUSTOMERMASTER.hdbview
 src/gen/CUSTOMERS.CAL_CUST_STATUS.hdbview
+src/gen/CUSTOMERS.CMSALESORG.hdbview
+src/gen/CMSALESORG.hdbview
 src/gen/CUSTOMERS.KUNN2_BILLTO.hdbview
 src/gen/CUSTOMERS.KUNN2_BILLTO.hdbview
 src/gen/CUSTOMERS.KUNN2_SHIPTO.hdbview
+src/gen/KUNN2_BILLTO.hdbview
+src/gen/KUNN2_SHIPTO.hdbview
+src/gen/CUSTOMERS.KUNN2_BILLTONAME.hdbview
+src/gen/CUSTOMERS.KUNN2_SHIPTONAME.hdbview
+src/gen/KUNN2_BILLTONAME.hdbview
+src/gen/KUNN2_SHIPTONAME.hdbview
 src/gen/CUSTOMERS.KUNN2_SHIPTO.hdbview
 
 src/gen/INVSNAPPRODDESC.hdbview
@@ -143,13 +193,17 @@ src/gen/INVSNAPVKORG.hdbview
 
 src/gen/PROCESSING.BACKORDERS.hdbview
 src/gen/PROCESSING.BOPRODUCTDESC.hdbview
+src/gen/PROCESSING.BOPRODUCT.hdbview
 src/gen/PROCESSING.BOBILLTO.hdbview
 src/gen/PROCESSING.BOSHIPTO.hdbview
+src/gen/PROCESSING.BOSHIPTONAME.hdbview
 src/gen/PROCESSING.BOMFRNR.hdbview
 src/gen/PROCESSING.BOVKORG.hdbview
 src/gen/BOPRODUCTDESC.hdbview
+src/gen/BOPRODUCT.hdbview
 src/gen/BOBILLTO.hdbview
 src/gen/BOSHIPTO.hdbview
+src/gen/BOSHIPTONAME.hdbview
 src/gen/BOMFRNR.hdbview
 src/gen/BOVKORG.hdbview
 
@@ -158,6 +212,8 @@ src/gen/INVENTORY.INVVALPRODDESC.hdbview
 src/gen/INVVALPRODDESC.hdbview
 src/gen/INVENTORY.INVVALPROD.hdbview
 src/gen/INVVALPROD.hdbview
+src/gen/INVENTORY.INVVALPRODSKU.hdbview
+src/gen/INVVALPRODSKU.hdbview
 src/gen/INVENTORY.INVVALMFRNR.hdbview
 src/gen/INVVALMFRNR.hdbview
 src/gen/INVENTORY.INVVALVKBUR.hdbview
@@ -165,18 +221,40 @@ src/gen/INVVALVKBUR.hdbview
 
 src/gen/INVENTORY.ITEMMASTER.hdbview
 src/gen/INVENTORY.ITEMMASPD.hdbview
+src/gen/INVENTORY.ITEMMASP.hdbview
+src/gen/INVENTORY.ITEMMASPSID.hdbview
 src/gen/INVENTORY.ITEMMASCATEGORY.hdbview
+src/gen/INVENTORY.ITEMMASMFRNR.hdbview
+src/gen/INVENTORY.ITEMMASMFRNR.hdbview
+src/gen/INVENTORY.ITEMMASMFNR.hdbview
+src/gen/INVENTORY.ITEMMASMFRNRNAME.hdbview
+src/gen/ITEMMASMFRNRNAME.hdbview
+src/gen/INVENTORY.ITEMMASSALESORG.hdbview
+src/gen/ITEMMASMFRNR.hdbview
+src/gen/ITEMMASSALESORG.hdbview
+src/gen/ITEMMASP.hdbview
 src/gen/ITEMMASPD.hdbview
+src/gen/ITEMMASPSID.hdbview
 src/gen/ITEMMASCATEGORY.hdbview
+src/gen/ITEMMASMFRNR.hdbview
+src/gen/ITEMMASSALESORG.hdbview
+src/gen/ITEMMASMFNR.hdbview
+
 
 src/gen/PROCESSING.OPENORDERS.hdbview
 src/gen/PROCESSING.OOPRODDESC.hdbview
+src/gen/PROCESSING.OOPROD.hdbview
 src/gen/PROCESSING.OOCUST.hdbview
+src/gen/PROCESSING.OOMFRNR.hdbview
 src/gen/PROCESSING.OOSHIPTO.hdbview
+src/gen/PROCESSING.OOSHIPTONAME.hdbview
 src/gen/PROCESSING.OOPROVINCE.hdbview
 src/gen/OOPRODDESC.hdbview
+src/gen/OOPROD.hdbview
 src/gen/OOCUST.hdbview
+src/gen/OOMFRNR.hdbview
 src/gen/OOSHIPTO.hdbview
+src/gen/OOSHIPTONAME.hdbview
 src/gen/OOPROVINCE.hdbview
 
 src/gen/SALES.INVOICEHISTORY.hdbview
@@ -187,6 +265,8 @@ src/gen/SALES.IHINVOICE.hdbview
 src/gen/SALES.IHPO.hdbview
 src/gen/SALES.IHTYPE.hdbview
 src/gen/SALES.IHPROVINCE.hdbview
+src/gen/SALES.IHMFRNR.hdbview
+src/gen/SALES.IHSALESORG.hdbview
 src/gen/IHCUSTOMER.hdbview
 src/gen/IHCUSTOMERID.hdbview
 src/gen/IHSHIPTO.hdbview
@@ -194,6 +274,8 @@ src/gen/IHINVOICE.hdbview
 src/gen/IHPO.hdbview
 src/gen/IHTYPE.hdbview
 src/gen/IHPROVINCE.hdbview
+src/gen/IHMFRNR.hdbview
+src/gen/IHSALESORG.hdbview
 
 src/gen/SALES.SALESBYCURRENT.hdbview
 src/gen/SALES.SBCINVOICE.hdbview
@@ -203,6 +285,11 @@ src/gen/SALES.SBCLOT.hdbview
 src/gen/SALES.SBCWAREHOUSE.hdbview
 src/gen/SALES.SBCBILLTO.hdbview
 src/gen/SALES.SBCSHIPTO.hdbview
+src/gen/SALES.SBCBILLTOID.hdbview
+src/gen/SALES.SBCSHIPTOID.hdbview
+src/gen/SALES.SBCMFRNR.hdbview
+src/gen/SALES.SBCSALESORG.hdbview
+src/gen/SALES.SBCSALESOFFICE.hdbview
 src/gen/SBCINVOICE.hdbview
 src/gen/SBCPRODDESC.hdbview
 src/gen/SBCTYPE.hdbview
@@ -210,6 +297,11 @@ src/gen/SBCLOT.hdbview
 src/gen/SBCWAREHOUSE.hdbview
 src/gen/SBCBILLTO.hdbview
 src/gen/SBCSHIPTO.hdbview
+src/gen/SBCBILLTOID.hdbview
+src/gen/SBCSHIPTOID.hdbview
+src/gen/SBCMFRNR.hdbview
+src/gen/SBCSALESOFFICE.hdbview
+src/gen/SBCSALESORG.hdbview
 
 src/gen/MAINPAGE.MAINPAGESUMMARY.hdbview
 src/gen/MAINPAGESUMMARY.hdbview

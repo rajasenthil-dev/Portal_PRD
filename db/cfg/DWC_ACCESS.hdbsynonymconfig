@@ -40,8 +40,7 @@
         "schema.configure": "UPS_DEMO_USER/schema",
         "object": "REP_TPFICJ_02"
       }
-    }
-    ,
+    },
     "SYNINVENTORYVALUATIONDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
@@ -81,7 +80,7 @@
     "SYNOPENORDERSDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "PRO_MFR_Openorders"
+        "object": "REP_TPSDOR_OPEN_02"
       }
     },
     "SYNRETURNSDOC": {
@@ -99,19 +98,13 @@
     "SYNMAINPAGESUMMARYDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Main_Page_Summary1_V4_Agg_Cons"
+        "object": "REP_TPSDBL_IC"
       }
     },
     "SYNMAINPAGEINVENTORYDOC": {
       "target": {
         "schema.configure": "UPS_DEMO_USER/schema",
         "object": "REP_TPMMWM_INVENTORY_STATUS_IC"
-      }
-    },
-    "SYNMAINPAGEUNITDOC": {
-      "target": {
-        "schema.configure": "UPS_DEMO_USER/schema",
-        "object": "Main_Page_Summary3_2"
       }
     }
 }

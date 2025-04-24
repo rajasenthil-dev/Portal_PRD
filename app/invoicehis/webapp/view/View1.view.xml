@@ -56,14 +56,14 @@
                             <sf:ControlConfiguration id="customCurrentFilter"
                                 key="CURRENT"
                                 visibleInAdvancedArea="true"
-                                label="Current/Historical"
+                                label="Current/Legacy"
                             >
                                 <sf:customControl>
                                     <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
                                         <items>
                                             <core:Item id="_IDGenItem2" key="" text="All"/>
                                             <core:Item id="_IDGenItem" key="Y" text="Current"/>
-                                            <core:Item id="_IDGenItem1" key="N" text="Historical"/>
+                                            <core:Item id="_IDGenItem1" key="N" text="Legacy"/>
                                         </items>
                                     </ComboBox>
                                 </sf:customControl>
@@ -140,9 +140,6 @@
                         id="table" 
                         selectionMode="None"
                         alternateRowColors="true" >
-                        <t:rowSettingsTemplate>
-                            <t:RowSettings id="_IDGenRowSettings" highlight="{path:'CURRENT', formatter:'._formatRowHighlight'}" highlightText="{CURRENT}"/>
-                        </t:rowSettingsTemplate>
                         <t:columns>
                             <t:Column id="_IDGenColumn10" width='7.813rem'>
                                 <t:customData>
@@ -162,7 +159,7 @@
                                     <Text id="_IDGenText9" text="{path: 'BUDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width='7rem'>
+                            <t:Column id="_IDGenColumn6" width='7rem' hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "TSL_AMOUNT", "leadingProperty": "TSL_AMOUNT", "columnIndex": 10}'/>
                                     </t:customData>
@@ -184,7 +181,7 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText31" text="Current/Historical"></Text>
+                                <Text id="_IDGenText31" text="Current/Legacy"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus"
                                     core:require="{
@@ -192,8 +189,9 @@
                                         }"
                                         icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
                                         inverted="true"
+                                        tooltip="{= ${CURRENT} === 'YES' ? 'Captured from the new system post-migration and is up-to-date.' : 'Pulled from the previous system before the upgrade/migration'}"
                                         state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${CURRENT} === 'Y' ? 'Current' : 'Historical'}"/>
+                                        text="{= ${CURRENT} === 'Y' ? 'Current' : 'Legacy'}"/>
                                 </t:template>
                             </t:Column>
 

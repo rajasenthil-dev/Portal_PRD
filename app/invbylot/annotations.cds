@@ -20,7 +20,9 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         SelectionFields  : [
             MFRPN, 
             CHARG,
-            WAREHOUSE_STATUS
+            WAREHOUSE_STATUS,
+            MFRNR,
+            VKBUR
             
         ],
         
@@ -106,12 +108,12 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR,
-                Label : 'Sales Office'
+                Label : 'Sales Org.'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer'
+                Label : 'Manufacturer #'
             }
         ],
     },
@@ -123,7 +125,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
     
     MFRPN@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTPRODUCTCODE',
@@ -184,7 +185,7 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTVKBUR',
-                Label : 'Sales Office',
+                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -202,7 +203,7 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVBYLOTMFRNR',
-                Label : 'Warehouse/Status',
+                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

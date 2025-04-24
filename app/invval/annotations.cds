@@ -16,7 +16,10 @@ Search.defaultSearchElement: true,
     UI : {
         SelectionFields  : [
             MFRPN,
-            MAKTX
+            MATNR,
+            MAKTX,
+            MFRNR,
+            VKBUR
         ],
         LineItem  : [
             {
@@ -105,21 +108,35 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR,
-                Label : 'Sales Office'
+                Label : 'Sales Org.'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Number'
+                Label : 'Manufacturer #'
             }
         ],
     },
 ){
-    MATNR@(title: 'SKU');
+    MATNR@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVVALPRODSKU',
+                Label : 'Product Description',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MATNR',
+                        ValueListProperty : 'MATNR'
+                    }
+                ]
+            },
+        } 
+    );
     MFRPN@( 
         title: 'Product Code',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVVALPROD',
@@ -136,7 +153,6 @@ Search.defaultSearchElement: true,
     MAKTX@(
         title: 'Product Description',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVVALPRODDESC',
@@ -151,26 +167,13 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    PLANT@(title: 'Plant');
-    UNIT_PRICE@(title: 'Unit Price');
-    TOTAL_COST@(title: 'Total Cost');
-    AVAILABLE_COST@(title: 'Open Stock');
-    QUARANTINE_COST@(title: 'Quarantine');
-    DAMAGE_DESTRUCTION_COST@(title: 'Damage/Destruction');
-    RETAINS_COST@(title: 'Retains');
-    RETURNS_COST@(title: 'Returns');
-    INVENTORY_HOLD_COST@(title: 'Inventory Hold');
-    QUALITY_HOLD_COST@(title: 'Returns');
-    RECALL_COST@(title: 'Recalls');
-    RELABEL_COST@(title: 'Re-Labels');
-    SAMPLE_COST@(title: 'Samples'); 
-    VKBUR@(title: 'Sales Office',
+    VKBUR@(title: 'Sales Org.',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVVALVKBUR',
-                Label : 'Product Description',
+                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -181,13 +184,13 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    MFRNR@(title: 'Manufacturer Number',
+    MFRNR@(title: 'Manufacturer #',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVVALMFRNR',
-                Label : 'Product Description',
+                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

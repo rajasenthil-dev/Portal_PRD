@@ -28,14 +28,17 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
         SelectionFields  : [
             KUNN2_BILLTO,
             KUNN2_SHIPTO,
-            CAL_CUST_STATUS
+            NAME1_BILLTO,
+            NAME1_SHIPTO,
+            CAL_CUST_STATUS,
+            VKORG
         ],
         
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : KUNN2_BILLTO,
-                Label : 'Bill To' 
+                Label : 'Bill To #' 
             },          
             {
                 $Type : 'UI.DataField',
@@ -45,7 +48,7 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             {
                 $Type : 'UI.DataField',
                 Value : KUNN2_SHIPTO,
-                Label : 'Ship To'
+                Label : 'Ship To #'
             },
             {
                 $Type : 'UI.DataField',
@@ -141,13 +144,11 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
 
 {   
     KUNN2_BILLTO@(
-        title: 'Bill To',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'KUNN2_BILLTO',
-                Label : 'Payment Type',
+                Label : 'Bill To #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -158,14 +159,28 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             },
         } 
     );
-    KUNN2_SHIPTO@(
-        title: 'Ship To',
+    NAME1_BILLTO@(
         Common: {
-            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'KUNN2_BILLTONAME',
+                Label : 'Bill To Name',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'NAME1_BILLTO',
+                        ValueListProperty : 'NAME1_BILLTO'
+                    }
+                ]
+            },
+        } 
+    );
+    KUNN2_SHIPTO@(
+        Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'KUNN2_SHIPTO',
-                Label : 'Payment Type',
+                Label : 'Ship To #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -176,8 +191,23 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             },
         } 
     );
+    NAME1_SHIPTO@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'KUNN2_SHIPTONAME',
+                Label : 'Ship To Name',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'NAME1_SHIPTO',
+                        ValueListProperty : 'NAME1_SHIPTO'
+                    }
+                ]
+            },
+        } 
+    );
     CAL_CUST_STATUS@(
-        title: 'Status',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -188,6 +218,23 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'CAL_CUST_STATUS',
                         ValueListProperty : 'CAL_CUST_STATUS'
+                    }
+                ]
+            },
+        } 
+        
+    );
+    VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'CMSALESORG',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
                     }
                 ]
             },

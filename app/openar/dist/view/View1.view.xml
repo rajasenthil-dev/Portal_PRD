@@ -5,6 +5,7 @@
     xmlns:c="sap.suite.ui.microchart"
     xmlns:t="sap.ui.table"
     xmlns:sf="sap.ui.comp.smartfilterbar" 
+    xmlns:mc="sap.suite.ui.microchart"
     xmlns:st="sap.ui.comp.smarttable"
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
     displayBlock="true"
@@ -87,6 +88,23 @@
                                     </c:InteractiveDonutChart>
                                 </items>
                             </FlexBox>
+                            <!-- <FlexBox id="_IDGenFlexBox2" width="30rem" height="6rem" direction="Column" class="mck_Tile">
+                                <items>
+                                    	<GenericTile press="press" header="Total Income Change"
+                                            subheader="By year" frameType="TwoByOne" state="Loaded">
+                                            <tileContent>
+                                                <TileContent unit="EUR" footer="Current vs previous"
+                                                    frameType="TwoByOne">
+                                                    <content>
+                                                        <mc:StackedBarMicroChart id="_IDGenStackedBarMicroChart" size="L" width="100%" bars="{microchart>/agingBuckets}">
+                                                            <mc:StackedBarMicroChartBar id="_IDGenStackedBarMicroChartBar" value="{microchart>amount}" color="{microchart>color}" />
+                                                        </mc:StackedBarMicroChart>
+                                                    </content>
+                                                </TileContent>
+                                            </tileContent>
+                                        </GenericTile>
+                                </items>
+                            </FlexBox> -->
                             
                         </HeaderContainer>
                     </Panel>

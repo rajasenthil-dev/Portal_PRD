@@ -62,6 +62,11 @@
     "service": {
       "path": "srv"
     },
+    "localization": {
+      "folders": ["app", "db", "webapp"],
+      "supportedLocales": ["en", "fr"],
+      "fallbackLocale": "en"
+    },
     "hana": {
       "deploy-format": "hdbtable",
       "skip-generation": {

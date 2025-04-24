@@ -25,13 +25,13 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            KUNNR, NAME1, SHIP_TO, BELNR, BSTKD, BUDAT, ORDER_TYPE, REGIO
+            KUNNR, NAME1, SHIP_TO, BELNR, BSTKD, BUDAT, ORDER_TYPE, REGIO, MFRNR, VKORG
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : KUNNR,
-                Label : 'Customer'
+                Label : 'Customer #'
             },
             {
                 $Type : 'UI.DataField',
@@ -56,7 +56,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO,
-                Label : 'Ship To'
+                Label : 'Ship To #'
             },
             {
                 $Type : 'UI.DataField',
@@ -116,29 +116,28 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CURRENT,
-                Label : 'Current/Historical'
+                Label : 'Current/Legacy'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'CO'
+                Label : 'Sales Org.'
             },
             
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer'
+                Label : 'Manufacturer #'
             },
         ],
     },
 ){
     KUNNR@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHCUSTOMERID',
-                Label : 'Customer',
+                Label : 'Customer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -151,11 +150,10 @@ Search.defaultSearchElement: true,
     );
     NAME1@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHCUSTOMER',
-                Label : 'Customer',
+                Label : 'Customer Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -186,7 +184,6 @@ Search.defaultSearchElement: true,
     );	    
     SHIP_TO@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHSHIPTO',
@@ -204,7 +201,6 @@ Search.defaultSearchElement: true,
     );    
     BSTKD@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHPO',
@@ -221,7 +217,6 @@ Search.defaultSearchElement: true,
     );	    
     BELNR@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHINVOICE',
@@ -248,6 +243,40 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'ORDER_TYPE',
                         ValueListProperty : 'ORDER_TYPE'
+                    }
+                ]
+            },
+        }    
+    );
+    MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IHMFRNR',
+                Label : 'Manufacturer #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }    
+    );
+    VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IHSALESORG',
+                Label : 'Sales Org.',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
                     }
                 ]
             },

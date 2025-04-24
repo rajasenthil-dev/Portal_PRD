@@ -20,11 +20,15 @@ Search.defaultSearchElement: true,
     UI : {
         SelectionFields  : [
             MFRPN,
+            MATNR,
             MAKTX, 
             CHARG,
             WAREHOUSE_STATUS, 
             REPORT_DATE,
-            CURRENT
+            CURRENT,
+            MFRNR,
+            VKORG,
+            MFRNR_NAME
             
         ],
         
@@ -32,103 +36,108 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CURRENT,
-                Label : 'Current/Historical'
+                Label : '{i18n>INVENTORYSNAPSHOT.MATNR}CURRENT'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'SKU'
+                Label : '{i18n>INVENTORYSNAPSHOT.MATNR}'
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRPN,
-                Label : 'Product Code'
+                Label : '{i18n>INVENTORYSNAPSHOT.MFRPN}'
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Description'
+                Label : '{i18n>INVENTORYSNAPSHOT.MAKTX}'
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : SIZE,
-                Label : 'Size',
+                Label : '{i18n>INVENTORYSNAPSHOT.SIZE}',
                 ![@HTML5.CssDefaults] : {width : '5rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CHARG,
-                Label : 'Lot Number'
+                Label : '{i18n>INVENTORYSNAPSHOT.CHARG}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VFDAT,
-                Label : 'Shelf Life Expiration or Best-Before Date'  
+                Label : 'VFDAT'  
             },
             {
                 $Type : 'UI.DataField',
                 Value : REPORT_DATE,
-                Label : 'Report Date'
+                Label : '{i18n>INVENTORYSNAPSHOT.REPORT_DATE}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : DAYS_UNTIL_EXPIRY,
-                Label : 'Days Until Expiry'
+                Label : '{i18n>INVENTORYSNAPSHOT.DAYS_UNTIL_EXPIRY}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : LGNUM,
-                Label : 'Warehouse Number/Warehouse Complex',
+                Label : '{i18n>INVENTORYSNAPSHOT.LGNUM}',
                 ![@HTML5.CssDefaults] : {width : '15rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : WAREHOUSE_STATUS,
-                Label : 'Warehouse Status'
+                Label : '{i18n>INVENTORYSNAPSHOT.WAREHOUSE_STATUS}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : ON_HAND,
-                Label : 'On Hand'
+                Label : '{i18n>INVENTORYSNAPSHOT.ON_HAND}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : UNIT,
-                Label : 'Base Unit of Measure',
+                Label : '{i18n>INVENTORYSNAPSHOT.UNIT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : EAN11,
-                Label : 'UPC'
+                Label : '{i18n>INVENTORYSNAPSHOT.EAN11}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : DIN,
-                Label : 'DIN'
+                Label : '{i18n>INVENTORYSNAPSHOT.DIN}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : RBTXT,
-                Label : 'Storage Conditions Desc.'
+                Label : '{i18n>INVENTORYSNAPSHOT.RBTXT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : TBTXT,
-                Label : 'Description of Temp. Conditions'
+                Label : '{i18n>INVENTORYSNAPSHOT.TBTXT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'Sales Org.'
+                Label : '{i18n>INVENTORYSNAPSHOT.VKORG}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer'
+                Label : '{i18n>INVENTORYSNAPSHOT.MFRNR}'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : '{i18n>INVENTORYSNAPSHOT.MFRNR_NAME}'
             }
         ],
     },
@@ -137,14 +146,26 @@ Search.defaultSearchElement: true,
 )
 
 {   
-    MATNR@(title: 'SKU');
-    MFRPN@(title: 'Product Code',
+    MATNR@(
         Common: {
-            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSNAPPRODSKU',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MATNR',
+                        ValueListProperty : 'MATNR'
+                    }
+                ]
+            },
+        }      
+    );
+    MFRPN@(
+        Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPPROD',
-                Label : 'Product Code',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -156,13 +177,10 @@ Search.defaultSearchElement: true,
         }      
     );
     MAKTX@(
-        title: 'Product Description',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPPRODDESC',
-                Label : 'Product Description',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -174,14 +192,11 @@ Search.defaultSearchElement: true,
         }      
         
     );
-    SIZE@(title: 'Size');
     CHARG@(
-        title: 'Lot Number',
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPLOT',
-                Label : 'Lot Number',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -193,16 +208,12 @@ Search.defaultSearchElement: true,
         }      
         
     );
-    VFDAT@(title: 'Shelf Life Expiration or Best-Before Date');
-    LGNUM@(title: 'Warehouse Number/Warehouse Complex');
     WAREHOUSE_STATUS@(
-        title: 'Warehouse Status',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPWARESTAT',
-                Label : 'Warehouse Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -214,19 +225,12 @@ Search.defaultSearchElement: true,
         }      
         
     );
-    ON_HAND@(title: 'On Hand');
-    UNIT@(title: 'Base Unit of Measure');
-    DAYS_UNTIL_EXPIRY@(title: 'Days Until Expiry');
-    REPORT_DATE@(title: 'Report Date');
-    EAN11@(title: 'UPC');
     VKORG@(
-        title: 'Sales Org.',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPVKORG',
-                Label : 'Sales Organization',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -239,18 +243,33 @@ Search.defaultSearchElement: true,
         
     );
     MFRNR@(
-        title: 'Manufacturer',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'INVSNAPMFRNR',
-                Label : 'Manufacturer',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }      
+        
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSNAPMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

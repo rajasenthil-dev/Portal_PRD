@@ -19,5 +19,5 @@ AS SELECT
     TRACKN,	    
     ORDER_TYPE,
     CURRENT,	    
-    MFRNR	    
+    MFRNR   
 FROM "SYNINVOICEHISTORYDOC"

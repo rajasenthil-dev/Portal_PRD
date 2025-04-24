@@ -98,11 +98,11 @@
                         id="table" 
                         selectionMode="None">
                         <t:columns>
-                            <t:Column id="_IDGenColumn" width='7.813rem'>
+                            <t:Column id="_IDGenColumn" width='5rem' hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SKU_MATNR", "leadingProperty": "SKU_MATNR", "columnIndex": 0}'/>
                                     </t:customData>
-                                <Text id="_IDGenText6" text="SKU"></Text>
+                                <Text id="_IDGenText6" text="{i18n>INVENTORYSTATUS.SKU_MATNR}"></Text>
                                 <t:template>
                                     <Text 
                                         core:require="{
@@ -111,15 +111,42 @@
                                         id="_IDGenText9" text="{path: 'SKU_MATNR', formatter:'Formatter.removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width='7.813rem'>
+                            <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT_CODE", "leadingProperty": "PRODUCT_CODE", "columnIndex": 1}'/>
                                     </t:customData>
-                                <Text id="_IDGenText2" text="Product Code"></Text>
+                                <Text id="_IDGenText2" text="{i18n>INVENTORYSTATUS.PRODUCT_CODE}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText4" text="{path: 'PRODUCT_CODE'}" />
                                 </t:template>
                             </t:Column>  
+                            <t:Column id="_IDGenColumn62" width='5rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SIZE", "leadingProperty": "SIZE", "columnIndex": 3}'/>
+                                    </t:customData>
+                                <Text id="_IDGenText22" text="{i18n>INVENTORYSTATUS.SIZE}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText42" text="{path: 'SIZE'}" />
+                                </t:template>
+                            </t:Column> 
+                            <t:Column id="_IDGenColumn63" width='5.25rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 15}'/>
+                                    </t:customData>
+                                <Text id="_IDGenText23" text="{i18n>INVENTORYSTATUS.VKBUR}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText43" text="{path: 'VKBUR'}" />
+                                </t:template>
+                            </t:Column> 
+                            <t:Column id="_IDGenColumn64" width='7.813rem' hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MANUFACTURER_MFRPN", "leadingProperty": "MANUFACTURER_MFRPN", "columnIndex": 16}'/>
+                                    </t:customData>
+                                <Text id="_IDGenText24" text="{i18n>INVENTORYSTATUS.MANUFACTURER_MFRPN}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText44" text="{path: 'MANUFACTURER_MFRPN'}" />
+                                </t:template>
+                            </t:Column> 
                         </t:columns> 
                     </t:Table>
                 </st:SmartTable>

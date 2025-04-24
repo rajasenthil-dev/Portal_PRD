@@ -61,10 +61,10 @@ sap.ui.define([], () => {
             const cleanValue = (value || "").trim().toUpperCase();
         
             if (cleanValue.includes("Y")) {
-                return "sap-icon://present"; // Checkmark for "Current"
+                return "sap-icon://circle-task-2"; // Checkmark for "Current"
             } 
             if (cleanValue.includes("N")) {
-                return "sap-icon://history"; // Cross for "Historical"
+                return "sap-icon://circle-task-2"; // Cross for "Historical"
             } 
             
             return ""; // No icon for undefined or invalid values

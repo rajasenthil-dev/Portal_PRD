@@ -58,6 +58,23 @@
 							}"
 						/>
                     </sf:controlConfiguration>
+                    <sf:controlConfiguration>
+                        <sf:ControlConfiguration id="customCurrentFilter"
+                            key="CURRENT"
+                            visibleInAdvancedArea="true"
+                            label="Current/Historical"
+                        >
+                            <sf:customControl>
+                                <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                    <items>
+                                        <core:Item id="_IDGenItem2" key="" text="All"/>
+                                        <core:Item id="_IDGenItem" key="YES" text="Current"/>
+                                        <core:Item id="_IDGenItem1" key="NO" text="Historical"/>
+                                    </items>
+                                </ComboBox>
+                            </sf:customControl>
+                        </sf:ControlConfiguration>
+                    </sf:controlConfiguration>
                 </sf:SmartFilterBar>
                 <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
 
@@ -106,9 +123,25 @@
                 class="sapUiResponsiveContentPadding">
                 <t:Table id="gridTable" selectionMode="None" alternateRowColors="true">
                     <t:columns>
-                        <t:Column id="_IDGenColumn" width="7.183rem">
+                         <t:Column id="_IDGenColumn11" width='7.813rem'>
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "VBELN", "leadingProperty": "VBELN", "columnIndex": 0}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                            </t:customData>
+                            <Text id="_IDGenText31" text="Current/Historical"></Text>
+                            <t:template>
+                                <ObjectStatus id="_IDGenObjectStatus"
+                                core:require="{
+                                        Formatter: 'shiphis/model/formatter'
+                                    }"
+                                    icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                    
+                                    state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                    text="{= ${CURRENT} === 'YES' ? 'Current' : 'Historical'}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="_IDGenColumn" width="7.183rem" hAlign="End">
+                            <t:customData>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "VBELN", "leadingProperty": "VBELN", "columnIndex": 1}'/>
                                 </t:customData>
                             <Text id="_IDGenText6" text="Invoice #"></Text>
                             <t:template>
@@ -117,7 +150,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn6" width="7.183rem">
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "KUNAG", "leadingProperty": "KUNAG", "columnIndex": 1}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "KUNAG", "leadingProperty": "KUNAG", "columnIndex": 2}'/>
                                 </t:customData>
                             <Text id="_IDGenText2" text="Customer"></Text>
                             <t:template>
@@ -126,7 +159,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn1" width="7.183rem">
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 2}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 3}'/>
                             </t:customData>
                             <Text id="_IDGenText3" text="Ship To"></Text>
                             <t:template>
@@ -135,7 +168,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn2" width="7.183rem">
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "WADAT_IST", "leadingProperty": "WADAT_IST", "columnIndex": 5}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "WADAT_IST", "leadingProperty": "WADAT_IST", "columnIndex": 6}'/>
                             </t:customData>
                             <Text id="_IDGenText7"  text="Date Shipped"></Text>
                             <t:template>
@@ -144,7 +177,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn3" width="7.183rem">
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "LFDAT", "leadingProperty": "LFDAT", "columnIndex": 8}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "LFDAT", "leadingProperty": "LFDAT", "columnIndex": 7}'/>
                             </t:customData>
                             <Text id="_IDGenText8"  text="Delivery Date"></Text>
                             <t:template>
@@ -153,7 +186,7 @@
                         </t:Column>
                         <t:Column id="_IDGenColumn4" width="7.183rem">
                             <t:customData>
-                                <core:CustomData key="p13nData" value='\{"columnKey": "LFUHR", "leadingProperty": "LFUHR", "columnIndex": 9}'/>
+                                <core:CustomData key="p13nData" value='\{"columnKey": "LFUHR", "leadingProperty": "LFUHR", "columnIndex": 10}'/>
                             </t:customData>
                             <Text id="_IDGenText10"  text="Delivery Time"></Text>
                             <t:template>

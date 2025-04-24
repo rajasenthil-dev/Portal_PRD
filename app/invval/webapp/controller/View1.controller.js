@@ -7,6 +7,14 @@ sap.ui.define([
 
     return Controller.extend("invval.controller.View1", {
         onInit: function () {
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             var oModelLogo = this.getOwnerComponent().getModel("logo");
             
             // Bind to the MediaFile entity with a filter
@@ -34,7 +42,6 @@ sap.ui.define([
            
             const oModel = this.getOwnerComponent().getModel();
             const oSmartTable = this.getView().byId("table0"); // Smart Table
-            const oSmartFilterBar = this.getView().byId("bar0"); // Smart Filter Bar
             const oTable = oSmartTable.getTable(); // Nested Grid Table
             this.bAuthorizationErrorShown = false;
             

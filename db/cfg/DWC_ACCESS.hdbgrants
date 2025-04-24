@@ -95,7 +95,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "PRO_MFR_Openorders",
+					"name": "REP_TPSDOR_OPEN_02",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]
@@ -130,7 +130,7 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Main_Page_Summary3_2",
+					"name": "REP_TPSDBL_IC",
 					"privileges_with_grant_option": [
 						"SELECT"
 					]

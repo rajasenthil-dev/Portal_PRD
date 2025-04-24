@@ -7,5 +7,6 @@ AS SELECT
     MATNR,
     MAKTX,
     MFRNR,
-    KONWA       
+    KONWA,
+    MFRNR_NAME       
 FROM "SYNPRICINGDOC"

@@ -3,13 +3,66 @@ sap.ui.define([
     "sap/m/Dialog",
     "sap/m/Button",
     "sap/m/Image",
-    "sap/m/MessageBox"
-], (Controller, Dialog, Button, Image, MessageBox) => {
+    "sap/m/MessageBox",
+    'sap/ui/core/BusyIndicator'
+], (Controller, Dialog, Button, Image, MessageBox, BusyIndicator) => {
     "use strict";
     return Controller.extend("salesbycus.controller.View1", {
         onInit: function () {
-            var oModel = this.getOwnerComponent().getModel();
+
+            const oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
+            
             const oSmartTable = this.getView().byId("table0");
+            var oToolbar = oSmartTable.getToolbar();
+            var oCurrentStatus = new sap.m.ObjectStatus({
+                text: "Current",
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                inverted:true,
+                tooltip:"Captured from the new system post-migration and is up-to-date."
+            })
+            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            var oCurrentStatusText =  new sap.m.Text({
+                text: " | "
+            })
+            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegacyStatus = new sap.m.ObjectStatus({
+                text: "Legacy",
+                icon: "sap-icon://circle-task-2",
+                state: "Information",
+                inverted:true,
+                tooltip:"Pulled from the previous system before the upgrade/migration.",
+            })
+            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            var oLegacyStatusText =  new sap.m.Text({
+                text: "Legacy Data"
+            })
+            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oLegendTitle = new sap.m.Text({
+                text: "Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oCurrentStatus,
+                    oCurrentStatusText,
+                    oLegacyStatus
+                    
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
+
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {

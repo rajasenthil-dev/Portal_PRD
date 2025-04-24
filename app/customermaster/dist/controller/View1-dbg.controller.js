@@ -7,6 +7,14 @@ sap.ui.define([
     return Controller.extend("customermaster.controller.View1", {
         onInit: function () {
             var oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             const oSmartTable = this.getView().byId("table0");
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
@@ -50,6 +58,28 @@ sap.ui.define([
                     console.log("No media found for this manufacturer.");
                 }
             }.bind(this));
+        },
+        onSearch: function () {
+            const oSmartFilterBar = this.getView().byId("smartFilterBar");
+            const oSmartTable = this.getView().byId("table0");
+            const oBinding = oSmartTable.getTable().getBinding("rows");
+        
+            if (!oBinding) {
+                console.warn("Table binding is missing.");
+                return;
+            }
+        
+            // Get selected value from the filter
+            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+        
+            // Build the filter condition
+            let aFilters = [];
+            if (sCurrentStatus) {
+                aFilters.push(new sap.ui.model.Filter("CAL_CUST_STATUS", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+            }
+        
+            // Apply the filter
+            oBinding.filter(aFilters);
         },
         onTableLayoutChange: function (oEvent) {
             var selectedItem = oEvent.getSource().aRBs[1].mProperties.text; // Get selected text

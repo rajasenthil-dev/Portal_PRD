@@ -18,10 +18,16 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            VBELN, KUNAG, KUNNR, WADAT_IST, LFDAT, TRACKN, CARRIER
+            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, MFRNR, VKORG
 
         ],
         LineItem  : [
+            {
+                $Type : 'UI.DataField',
+                Value : CURRENT,
+                Label : 'Current/Historical'
+
+            },
             {
                 $Type : 'UI.DataField',
                 Value : VBELN,
@@ -101,19 +107,16 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Number'
+                Label : 'Manufacturer #'
             }
         ],
     },   
 ){
     VBELN@(
-        title:'Invoice #',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHINVOICE',
-                Label : 'Customer',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -125,9 +128,7 @@ Search.defaultSearchElement: true,
         },
     );
     KUNAG@(
-        title:'Customer',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHCUSTOMER',
@@ -143,9 +144,7 @@ Search.defaultSearchElement: true,
         },
     );
     KUNNR@(
-        title:'Ship To',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHSHIPTO',
@@ -160,9 +159,22 @@ Search.defaultSearchElement: true,
             },
         },  
     );
-    NAME1@(title:'Ship To Name');
-    PSTLZ@(title:'Postal Code');
-    WADAT_IST@(title:'Date Shipped');
+    NAME1@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHSHIPTONAME',
+                Label : 'Ship To',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'NAME1',
+                        ValueListProperty : 'NAME1'
+                    }
+                ]
+            },
+        },  
+    );
     CARRIER@(
         title:'Carrier',
         Common: {
@@ -182,9 +194,7 @@ Search.defaultSearchElement: true,
         }, 
     ); 
     TRACKN@(
-        title:'Tracking #',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHTRACKING',
@@ -199,9 +209,6 @@ Search.defaultSearchElement: true,
             },
         }, 
     );
-    LFDAT@(title:'Delivery Date');
-    LFUHR@(title:'Delivery Time');
-    TRK_DLVTO@(title:'Received');
     VKORG@(title:'Sales Org.',
         Common: {
             ValueListWithFixedValues,
@@ -219,13 +226,13 @@ Search.defaultSearchElement: true,
             },
         }, 
     );
-    MFRNR@(title:'Manufacturer Number',
+    MFRNR@(title:'Manufacturer #',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SHMFRNR',
-                Label : 'Manufacturer Number',
+                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -236,7 +243,4 @@ Search.defaultSearchElement: true,
             },
         }, 
     );
-    CAL_BILL_ITM_COUNT@(title: 'Item Count');
-    FKIMG@(title: 'Invoiced Quanity');
-    MEINS@(title: 'Unit of Measure');
 }

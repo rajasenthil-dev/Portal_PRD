@@ -25,105 +25,144 @@ Search.defaultSearchElement: true,
             POSTING_DATE,
             CHARG, 
             WAREHOUSE_STATUS, 
-            KUNNR
+            KUNNR,
+            CUSTOMER_NAME,
+            MFRNR,
+            MFRNR_NAME
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
+                Value : CURRENT,
+                Label : '{i18n>INVENTORYAUDITTRAIL.CURRENT}',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'SKU',
+                Label : '{i18n>INVENTORYAUDITTRAIL.MATNR}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR_PROD_CODE,
-                Label : 'Product Code',
+                Label : '{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Description',
+                Label : '{i18n>INVENTORYAUDITTRAIL.MAKTX}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : POSTING_DATE,
-                Label : 'Date',
+                Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : TRAN_TYPE,
-                Label : 'Transaction Type',
+                Label : '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MENGE,
-                Label : 'Quantity',
+                Label : '{i18n>INVENTORYAUDITTRAIL.MENGE}',
                 ![@HTML5.CssDefaults] : {width : '6rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MEINS,
-                Label : 'Base Unit of Measure',
+                Label : '{i18n>INVENTORYAUDITTRAIL.MEINS}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CHARG,
-                Label : 'Lot #',
+                Label : '{i18n>INVENTORYAUDITTRAIL.CHARG}',
                 ![@HTML5.CssDefaults] : {width : '4rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : VFDAT,
-                Label : 'Expiry Date'
+                Value : SHELF_LIFE_EXP_DT,
+                Label : '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : WAREHOUSE_STATUS,
-                Label : 'Warehouse Status',
+                Label : '{i18n>INVENTORYAUDITTRAIL.WAREHOUSE_STATUS}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : KUNNR,
-                Label : 'Customer/Supplier Number',
+                Label : '{i18n>INVENTORYAUDITTRAIL.KUNNR}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CUSTOMER_NAME,
-                Label : 'Customer/Supplier Name',
+                Label : '{i18n>INVENTORYAUDITTRAIL.CUSTOMER_NAME}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : INV_MATDOC_ITEM,
-                Label : 'Inv/Adj/Receipt Number',
+                Label : '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : WERKS,
+                Label : '{i18n>INVENTORYAUDITTRAIL.WERKS}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : NAME1_PLANT,
-                Label : 'Plant Name',
+                Label : '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DIN,
+                Label : '{i18n>INVENTORYAUDITTRAIL.DIN}',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RBTXT,
+                Label : '{i18n>INVENTORYAUDITTRAIL.RBTXT}',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TBTXT,
+                Label : '{i18n>INVENTORYAUDITTRAIL.TBTXT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : LGORT,
-                Label : 'Storage Location',
+                Label : '{i18n>INVENTORYAUDITTRAIL.LGORT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Number'
+                Label : '{i18n>INVENTORYAUDITTRAIL.MFRNR}'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}'
             }
         ],
     },
@@ -133,11 +172,9 @@ Search.defaultSearchElement: true,
 {   
     MFRNR_PROD_CODE@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IATPRODUCTCODE',
-                Label : 'Product Code',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -153,7 +190,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IATLOT',
-                Label : 'Lot #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -170,7 +206,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IATWAREHOUSE',
-                Label : 'Warehouse/Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -183,16 +218,61 @@ Search.defaultSearchElement: true,
     );
     KUNNR@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IATCUSTSUPP',
-                Label : 'Customer/Supplier #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'KUNNR',
                         ValueListProperty : 'KUNNR'
+                    }
+                ]
+            },
+        }     
+    );
+    CUSTOMER_NAME@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IATCUSTSUPPNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'CUSTOMER_NAME',
+                        ValueListProperty : 'CUSTOMER_NAME'
+                    }
+                ]
+            },
+        }     
+    );
+    MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IATMFRNR',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }     
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IATMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
                     }
                 ]
             },

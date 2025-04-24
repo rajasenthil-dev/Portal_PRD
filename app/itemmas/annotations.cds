@@ -21,117 +21,199 @@ Search.defaultSearchElement: true,
                 MANUFACTURERNUMBER: true
         }
     },
+);
+annotate INVENTORY.ITEMMASTER with @(
     UI : {
+        HeaderInfo: {
+            TypeName: '{i18n>ITEMMASTER.TITLE}',
+            TypeNamePlural: '{i18n>ITEMMASTER.TITLE_PLURAL}',
+            Title: {
+                $Type: 'UI.DataField',
+                Value: PRODUCT
+            },
+            Description: {
+                $Type: 'UI.DataField',
+                Value: PRODUCTDESCRIPTION_EN
+            }
+        },
         SelectionFields  : [
-            PRODUCTDESCRIPTION_EN, CATEGORY
+            PRODUCT, 
+            MFRNR_PART_NUMBER, 
+            PRODUCTDESCRIPTION_EN, 
+            CATEGORY, 
+            MANUFACTURERNUMBER, 
+            SALESORG, 
+            MFRNR_NAME
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : PRODUCT,
-                Label : 'SKU',
+                Label : '{i18n>ITEMMASTER.PRODUCT}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : PRODUCTSTANDARDID,
-                Label : 'Product Code',
+                Value : MFRNR_PART_NUMBER,
+                Label : '{i18n>ITEMMASTER.MFRNR_PART_NUMBER}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : PRODUCTDESCRIPTION_EN,
-                Label : 'Product Desc.',
+                Label : '{i18n>ITEMMASTER.PRODUCTDESCRIPTION_EN}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
+                Value : PRODUCTSTANDARDID,
+                Label : '{i18n>ITEMMASTER.PRODUCTSTANDARDID}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : PRODUCTDESCRIPTION_FR,
-                Label : 'Special Handling',
+                Label : '{i18n>ITEMMASTER.PRODUCTDESCRIPTION_FR}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BWKEY,
+                Label : '{i18n>ITEMMASTER.BWKEY}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT_NAME,
+                Label : '{i18n>ITEMMASTER.PLANT_NAME}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : STPRS,
+                Label : '{i18n>ITEMMASTER.STPRS}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : DIN,
-                Label : 'DIN',
+                Label : '{i18n>ITEMMASTER.DIN}',
                 ![@HTML5.CssDefaults] : {width : '3.125rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : SIZEUOM,
-                Label : 'Size',
+                Label : '{i18n>ITEMMASTER.SIZEUOM}',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CATEGORY,
-                Label : 'Category',
+                Label : '{i18n>ITEMMASTER.CATEGORY}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : UNITS_PER_CASE,
-                Label : 'Units Per Case',
-                ![@HTML5.CssDefaults] : {width : '6.875rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : NARCOTIC_YN,
-                Label : 'Narcotic Y/N',
+                Label : '{i18n>ITEMMASTER.NARCOTIC_YN}',
                 ![@HTML5.CssDefaults] : {width : '6.25rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : LOT_CONTROL_YN,
-                Label : 'Lot Control Y/N',
+                Label : '{i18n>ITEMMASTER.LOT_CONTROL_YN}',
                 ![@HTML5.CssDefaults] : {width : '7.188rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : REFRIGERATED,
-                Label : 'Refridgerated',
+                Label : '{i18n>ITEMMASTER.REFRIGERATED}',
                 ![@HTML5.CssDefaults] : {width : '6.25rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PST_APPLICABLE,
-                Label : 'PST Applicable',
+                Label : '{i18n>ITEMMASTER.PST_APPLICABLE}',
                 ![@HTML5.CssDefaults] : {width : '6.875rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : GST_APPLICABLE,
-                Label : 'GST Applicable',
+                Label : '{i18n>ITEMMASTER.GST_APPLICABLE}',
                 ![@HTML5.CssDefaults] : {width : '7rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CREATIONDATE,
-                Label : 'Creation Date',
+                Label : '{i18n>ITEMMASTER.CREATIONDATE}',
                 ![@HTML5.CssDefaults] : {width : '7rem'}
-            },{
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : UNITS_PER_CASE,
+                Label : '{i18n>ITEMMASTER.UNITS_PER_CASE}',
+                ![@HTML5.CssDefaults] : {width : '6.875rem'}
+            },
+            {
                 $Type : 'UI.DataField',
                 Value : SALESORG,
-                Label : 'Sales Org.',
+                Label : '{i18n>ITEMMASTER.SALESORG}',
                 ![@HTML5.CssDefaults] : {width : '5rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MANUFACTURERNUMBER,
-                Label : 'Manufacturer Id',
+                Label : '{i18n>ITEMMASTER.MANUFACTURERNUMBER}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME,
+                Label : '{i18n>ITEMMASTER.MFRNR_NAME}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],
     },
-){
+)
+{
+    PRODUCT@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'ITEMMASP',
+                Label: '${i18n>ITEMMASTER.PRODUCT}',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PRODUCT',
+                        ValueListProperty : 'PRODUCT'
+                    }
+                ]
+            },
+        } 
+    );
+    MFRNR_PART_NUMBER@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'ITEMMASPSID',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_PART_NUMBER',
+                        ValueListProperty : 'MFRNR_PART_NUMBER'
+                    }
+                ]
+            },
+        } 
+    );
     PRODUCTDESCRIPTION_EN@(
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'ITEMMASPD',
-                Label : 'Warehouse/Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -148,7 +230,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'ITEMMASCATEGORY',
-                Label : 'Warehouse/Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -159,5 +240,55 @@ Search.defaultSearchElement: true,
             },
         } 
         
+    );
+    MANUFACTURERNUMBER@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'ITEMMASMFRNR',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MANUFACTURERNUMBER',
+                        ValueListProperty : 'MANUFACTURERNUMBER'
+                    }
+                ]
+            },
+        } 
+        
+    );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'ITEMMASMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
+                    }
+                ]
+            },
+        } 
+        
+    );
+    SALESORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'ITEMMASSALESORG',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'SALESORG',
+                        ValueListProperty : 'SALESORG'
+                    }
+                ]
+            },
+        }  
     ); 
 };

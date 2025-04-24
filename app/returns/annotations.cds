@@ -17,7 +17,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           VBELN_VBAK, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT
+           VBELN_VBAK, CUSTOMER_KUNNR, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT, MFRNR, CO_VKORG, VKBUR
         ],
         LineItem  : [
             {
@@ -36,7 +36,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CUSTOMER_KUNNR,
-                Label : 'Customer',
+                Label : 'Customer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
@@ -103,21 +103,35 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Number',
+                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
             
         ],
     },
 ){
-    
-    CUSTOMER_NAME_NAME1@(title: 'Name',
-        Common: {
-            ValueListWithFixedValues,
+    CUSTOMER_KUNNR@(
+         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETCUST',
-                Label : 'Customer',
+                Label : 'Customer #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'CUSTOMER_KUNNR',
+                        ValueListProperty : 'CUSTOMER_KUNNR'
+                    }
+                ]
+            },
+        }
+    );
+    CUSTOMER_NAME_NAME1@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'RETCUSTNAME',
+                Label : 'Customer Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -129,9 +143,7 @@ Search.defaultSearchElement: true,
         }
     );
     VBELN_VBAK@(
-        title: 'RGA #',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETRGA',
@@ -200,7 +212,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    MFRNR@(title: 'Manufacturer Number',
+    MFRNR@(title: 'Manufacturer #',
         Common: {
             ValueListWithFixedValues,
             ValueList : {

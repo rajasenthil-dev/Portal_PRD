@@ -14,14 +14,14 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            MAKTX, VTEXT
+            MATNR, MAKTX, VTEXT, MFRNR, VKORG
 
         ],
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'Product'
+                Label : 'SKU'
 
             },
             {
@@ -37,7 +37,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VTEXT,
-                Label : 'Price Level Desc.'
+                Label : 'Price Level Description'
             },
             {
                 $Type : 'UI.DataField',
@@ -57,7 +57,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer'
+                Label : 'Manufacturer #'
             }
         ],
     },   
@@ -80,19 +80,67 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    MAKTX@(
-        title:'Product Description',
+    MATNR@(
         Common: {
-                ValueListWithFixedValues,
+                ValueList : {
+                    $Type : 'Common.ValueListType',
+                    CollectionPath : 'PRICINGPRODUCT',
+                    Label: 'SKU',
+                    Parameters : [
+                        {
+                            $Type : 'Common.ValueListParameterOut',
+                            LocalDataProperty : 'MATNR',
+                            ValueListProperty : 'MATNR'
+                        }
+                    ]
+                },
+            }
+        );
+        MAKTX@(
+        Common: {
                 ValueList : {
                     $Type : 'Common.ValueListType',
                     CollectionPath : 'PRICINGPRODUCTDESC',
-                    Label : 'Product Description',
+                    Label: 'Product Description',
                     Parameters : [
                         {
                             $Type : 'Common.ValueListParameterOut',
                             LocalDataProperty : 'MAKTX',
                             ValueListProperty : 'MAKTX'
+                        }
+                    ]
+                },
+            }
+        );
+        MFRNR@(
+        Common: {
+                ValueListWithFixedValues,
+                ValueList : {
+                    $Type : 'Common.ValueListType',
+                    CollectionPath : 'PRICINGMFRNR',
+                    Label: 'Manufacturer #',
+                    Parameters : [
+                        {
+                            $Type : 'Common.ValueListParameterOut',
+                            LocalDataProperty : 'MFRNR',
+                            ValueListProperty : 'MFRNR'
+                        }
+                    ]
+                },
+            }
+        );
+        VKORG@(
+            Common: {
+                ValueListWithFixedValues,
+                ValueList : {
+                    $Type : 'Common.ValueListType',
+                    CollectionPath : 'PRICINGSALESORG',
+                    Label: 'Sales Org',
+                    Parameters : [
+                        {
+                            $Type : 'Common.ValueListParameterOut',
+                            LocalDataProperty : 'VKORG',
+                            ValueListProperty : 'VKORG'
                         }
                     ]
                 },

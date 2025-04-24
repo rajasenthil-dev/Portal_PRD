@@ -11,7 +11,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           KUNNR, KUNWE_ANA, REGIO, MAKTX
+           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, MFRNR
         ],
         LineItem  : [
             {
@@ -31,13 +31,13 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'Product',
+                Label : 'SKU',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Desc.',
+                Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -67,19 +67,19 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : KUNNR,
-                Label : 'Customer',
+                Label : 'Customer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : KUNWE_ANA,
-                Label : 'Ship To',
+                Label : 'Ship To #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_NAME,
-                Label : 'Name',
+                Label : 'Ship To Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -91,20 +91,34 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Number',
+                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
         ],
     },
 ){
-    MAKTX@(
-        title: 'Product Desc.',
+    MATNR@(
         Common: {
-            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OOPROD',
+                Label: 'SKU',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MATNR',
+                        ValueListProperty : 'MATNR'
+                    }
+                ]
+            },
+        } 
+    );
+    MAKTX@(
+        Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOPRODDESC',
-                Label : 'Warehouse/Status',
+                Label: 'Product Description',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -117,13 +131,11 @@ Search.defaultSearchElement: true,
     );
 
     KUNNR@(
-        title: 'Customer',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOCUST',
-                Label : 'Warehouse/Status',
+                Label: 'Customer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -136,13 +148,11 @@ Search.defaultSearchElement: true,
         
     );
     KUNWE_ANA@(
-        title: 'Ship To',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOSHIPTO',
-                Label : 'Warehouse/Status',
+                Label: 'Ship To #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -154,19 +164,51 @@ Search.defaultSearchElement: true,
         } 
     
     );
+    CAL_NAME@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OOSHIPTONAME',
+                Label: 'Ship To Name',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'CAL_NAME',
+                        ValueListProperty : 'CAL_NAME'
+                    }
+                ]
+            },
+        } 
+    
+    );
     REGIO@(
-        title: 'Province',
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'OOPROVINCE',
-                Label : 'Warehouse/Status',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'REGIO',
                         ValueListProperty : 'REGIO'
+                    }
+                ]
+            },
+        } 
+    
+    ); 
+    MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OOMFRNR',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
                     }
                 ]
             },

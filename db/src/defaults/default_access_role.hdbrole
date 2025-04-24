@@ -1,146 +1,146 @@
 {
-   "role":{
-		"name":"default_access_role",
-		"object_privileges": [
-			{
-				"type": "SYNONYM",
-				"name": "SYNREPMATERIALDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNINVENTORYSTATUSDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNINVENTORYAUDITTRAILDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNCASHJOURNALDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNINVENTORYSNAPSHOTDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNINVENTORYBYLOTDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNOPENARDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNINVENTORYVALUATIONDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNINVOICEHISTORYDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNSALESBYCURRENTDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNCUSTOMERMASTERDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNSHIPPINGHISTORYDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNPRICINGDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNOPENORDERSDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNRETURNSDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNBACKORDERSDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNMAINPAGESUMMARYDOC",
-				"privileges": [
-					"SELECT"
-				]
-			},
-			{
-				"type": "SYNONYM",
-				"name": "SYNMAINPAGEUNITDOC",
-				"privileges": [
-					"SELECT"
-				]
-			}
-		],
-		"schema_privileges":[
-			{
-				"privileges":[
-					"SELECT",
-					"INSERT",
-					"UPDATE",
-					"DELETE",
-					"EXECUTE",
-					"CREATE TEMPORARY TABLE",
-					"SELECT CDS METADATA"
-				]
-			}
-		]
-   }
+  "role": {
+    "name": "default_access_role",
+    "object_privileges": [
+      {
+        "name": "SYNREPMATERIALDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNINVENTORYSTATUSDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNINVENTORYAUDITTRAILDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNCASHJOURNALDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNINVENTORYSNAPSHOTDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNINVENTORYBYLOTDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNOPENARDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNINVENTORYVALUATIONDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNINVOICEHISTORYDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNSALESBYCURRENTDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNCUSTOMERMASTERDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNSHIPPINGHISTORYDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNPRICINGDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNOPENORDERSDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNRETURNSDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNBACKORDERSDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNMAINPAGESUMMARYDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      },
+      {
+        "name": "SYNMAINPAGEUNITDOC",
+        "type": "SYNONYM",
+        "privileges": [
+          "SELECT"
+        ]
+      }
+    ],
+    "schema_privileges": [
+      {
+        "privileges": [
+          "SELECT",
+          "INSERT",
+          "UPDATE",
+          "DELETE",
+          "EXECUTE",
+          "CREATE TEMPORARY TABLE",
+          "SELECT CDS METADATA"
+        ]
+      }
+    ]
+  }
 }

@@ -34,19 +34,24 @@ Search.defaultSearchElement: true,
             VTEXT_FKART,
             WAREHOUSE,
             LOT_CHARG,
+            BILL_TO_KUNRE_ANA,
             BILL_TO_NAME,
+            SHIP_TO_KUNWE_ANA,
             SHIP_TO_NAME,
             INVOICE_DATE_FKDAT,
             EXPIRY_DATE_VFDAT,
             DELEVERY_DATE_VDATU,
-            CURRENT
+            CURRENT,
+            MFRNR,
+            CO_VKORG,
+            VKBUR
         ],
         
         LineItem  : [
             {
                 $Type : 'UI.DataField',
                 Value : CURRENT,
-                Label : 'Current',
+                Label : 'Current/Legacy',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -148,13 +153,13 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO_KUNRE_ANA,
-                Label : 'Bill To',
+                Label : 'Bill To #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO_KUNWE_ANA,
-                Label : 'Ship To',
+                Label : 'Ship To #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -225,6 +230,12 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : PLANT_NAME,
+                Label : 'Plant Name',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : TRACKING_TRACKN,
                 Label : 'Tracking #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
@@ -256,7 +267,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CO_VKORG,
-                Label : 'CO.',
+                Label : 'Sales Org.',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -268,7 +279,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Number',
+                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
         ],
@@ -277,7 +288,6 @@ Search.defaultSearchElement: true,
     INVOICE_CREDIT_VBELN@(
         title: 'Invoice/Credit #',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCINVOICE',
@@ -296,7 +306,6 @@ Search.defaultSearchElement: true,
     PRODUCT_DESCRIPTION_MAKTX@(
         title: 'Product Description',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCPRODDESC',
@@ -349,10 +358,25 @@ Search.defaultSearchElement: true,
         }
         
     );
+    BILL_TO_KUNRE_ANA@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCBILLTOID',
+                Label : 'Bill To',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'BILL_TO_KUNRE_ANA',
+                        ValueListProperty : 'BILL_TO_KUNRE_ANA'
+                    }
+                ]
+            },
+        }
+    );
     BILL_TO_NAME@(
         title: 'Bill To Name',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCBILLTO',
@@ -367,10 +391,25 @@ Search.defaultSearchElement: true,
             },
         }
     );
+    SHIP_TO_KUNWE_ANA@(
+         Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCSHIPTOID',
+                Label : 'Ship To',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'SHIP_TO_KUNWE_ANA',
+                        ValueListProperty : 'SHIP_TO_KUNWE_ANA'
+                    }
+                ]
+            },
+        }
+    );
     SHIP_TO_NAME@(
         title: 'Ship To Name',
         Common: {
-            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCSHIPTO',
@@ -389,6 +428,7 @@ Search.defaultSearchElement: true,
     WAREHOUSE@(
         title: 'Warehouse',
         Common: {
+            ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'SBCWAREHOUSE',
@@ -398,6 +438,60 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'WAREHOUSE',
                         ValueListProperty : 'WAREHOUSE'
+                    }
+                ]
+            },
+        }
+        
+    );
+    MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCMFRNR',
+                Label : 'Manufacturer #',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR',
+                        ValueListProperty : 'MFRNR'
+                    }
+                ]
+            },
+        }
+        
+    );
+    CO_VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCSALESORG',
+                Label : 'Sales Org.',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'CO_VKORG',
+                        ValueListProperty : 'CO_VKORG'
+                    }
+                ]
+            },
+        }
+        
+    );
+    VKBUR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCSALESOFFICE',
+                Label : 'Sales Office',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKBUR',
+                        ValueListProperty : 'VKBUR'
                     }
                 ]
             },

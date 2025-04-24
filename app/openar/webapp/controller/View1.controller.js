@@ -10,6 +10,14 @@ sap.ui.define([
     return Controller.extend("openar.controller.View1", {
         onInit: function () {
             var oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             const oSmartTable = this.getView().byId("table0");
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
@@ -119,6 +127,17 @@ sap.ui.define([
             this._updateBalanceOwed(totals.fTotInvoice, totals.fTotAmountPaid);
             this._updateOpenInvoices(aContexts);
             this._updateAvgAge(oTable);
+            // Update MicroChart data model (for stacked bar)
+            var oChartModel = new sap.ui.model.json.JSONModel({
+                agingBuckets: [
+                    { amount: totals.fTotCurrent, color: "Good" },
+                    { amount: totals.fTot1to30, color: "Neutral" },
+                    { amount: totals.fTot31to60, color: "Neutral" },
+                    { amount: totals.fTot61to90, color: "Critical" },
+                    { amount: totals.fTotOver90, color: "Error" }
+                ]
+            });
+            this.getView().setModel(oChartModel, "microchart");
         },
 
         // Helper function to get value or return zero if undefined

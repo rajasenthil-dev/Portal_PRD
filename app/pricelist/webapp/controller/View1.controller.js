@@ -7,6 +7,14 @@ sap.ui.define([
     return Controller.extend("pricelist.controller.View1", {
         onInit() {
             var oModelLogo = this.getOwnerComponent().getModel("logo");
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
+        
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
             // Bind to the MediaFile entity with a filter
             var oBinding = oModelLogo.bindList("/MediaFile");
             // Fetch data
