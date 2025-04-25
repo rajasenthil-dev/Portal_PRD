@@ -5,8 +5,24 @@ Search.defaultSearchElement: true,
     odata: {
         filterable: {
                 VBELN: true,
+                KWMENG: true,
+                ERDAT: true,
+                KUNWE_ANA: true,
+                KUNNR: true,
+                VDATU: true,
+                REGIO: true,
+                CAL_NAME: true,
+                PSTLZ: true,
+                VDATU_ANA: true,
+                GBSTA: true,
+                AUART_ANA: true,
+                MAKTX: true,
+                MFRPN: true,
+                GBSTK: true,
+                MATNR: true,
                 BSTKD: true,
-                KUNWE_ANA: true,      
+                MFRNR: true,
+                MFRNR_NAME: true  
         }
     },
     UI : {
@@ -17,117 +33,98 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VBELN,
-                Label : 'Order #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : BSTKD,
-                Label : 'Purchase Order',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'SKU',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRPN,
-                Label : 'Product Code',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Description',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                ![@HTML5.CssDefaults] : {width : '15rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : KWMENG,
-                Label : 'Quantity',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : ERDAT,
-                Label : 'Order Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VDATU_ANA,
-                Label : 'Requested Delivery Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VDATU,
-                Label : 'Delivery By Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : GBSTA,
-                Label : 'Processing Status',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : GBSTK,
-                Label : 'Order Status',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : AUART_ANA,
-                Label : 'Sales Doc. Type',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : KUNNR,
-                Label : 'Customer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : KUNWE_ANA,
-                Label : 'Ship To #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_NAME,
-                Label : 'Ship To Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : REGIO,
-                Label : 'Province',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PSTLZ,
-                Label : 'Postal Code',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR_NAME,
-                Label : 'Manufacturer Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],

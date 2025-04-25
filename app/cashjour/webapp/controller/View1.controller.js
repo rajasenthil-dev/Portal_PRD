@@ -110,7 +110,7 @@ sap.ui.define([
                 } else {
                     console.log("No media found for this manufacturer.");
                 }
-            }.bind(this));
+            }.bind(this)); 
         },
         onSearch: function () {
             const oSmartFilterBar = this.getView().byId("smartFilterBar");

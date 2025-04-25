@@ -5,11 +5,14 @@ Search.defaultSearchElement: true,
     odata: {
         filterable: {
             VKORG: true,
+            KBETR: true,
             KSCHL: true,
             VTEXT: true,
             MATNR: true,
             MAKTX: true,
-            MFRNR: true
+            MFRNR: true,
+            KONWA: true,
+            MFRNR_NAME: true
         }
     },
     UI : {
@@ -21,48 +24,39 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MATNR,
-                Label : 'SKU'
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Description'
             },
             {
                 $Type : 'UI.DataField',
                 Value : KSCHL,
-                Label : 'Price Level Code'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VTEXT,
-                Label : 'Price Level Description'
             },
             {
                 $Type : 'UI.DataField',
                 Value : KBETR,
-                Label : 'Price'
             },
             {
                 $Type : 'UI.DataField',
                 Value : KONWA,
-                Label : 'Currency'
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : 'Sales Org.'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer #'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR_NAME,
-                Label : 'Manufacturer Name'
             }
         ],
     },   
@@ -90,7 +84,6 @@ Search.defaultSearchElement: true,
                 ValueList : {
                     $Type : 'Common.ValueListType',
                     CollectionPath : 'PRICINGPRODUCT',
-                    Label: 'SKU',
                     Parameters : [
                         {
                             $Type : 'Common.ValueListParameterOut',
@@ -106,7 +99,6 @@ Search.defaultSearchElement: true,
                 ValueList : {
                     $Type : 'Common.ValueListType',
                     CollectionPath : 'PRICINGPRODUCTDESC',
-                    Label: 'Product Description',
                     Parameters : [
                         {
                             $Type : 'Common.ValueListParameterOut',
@@ -123,7 +115,6 @@ Search.defaultSearchElement: true,
                 ValueList : {
                     $Type : 'Common.ValueListType',
                     CollectionPath : 'PRICINGMFRNR',
-                    Label: 'Manufacturer #',
                     Parameters : [
                         {
                             $Type : 'Common.ValueListParameterOut',
@@ -156,7 +147,6 @@ Search.defaultSearchElement: true,
                 ValueList : {
                     $Type : 'Common.ValueListType',
                     CollectionPath : 'PRICINGSALESORG',
-                    Label: 'Sales Org',
                     Parameters : [
                         {
                             $Type : 'Common.ValueListParameterOut',

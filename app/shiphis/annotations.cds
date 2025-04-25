@@ -21,98 +21,78 @@ Search.defaultSearchElement: true,
             VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, MFRNR, MFRNR_NAME, VKORG
 
         ],
-        LineItem  : [
+        LineItem : [
             {
                 $Type : 'UI.DataField',
-                Value : CURRENT,
-                Label : 'Current/Historical'
-
+                Value : CURRENT
             },
             {
                 $Type : 'UI.DataField',
-                Value : VBELN,
-                Label : 'Ivoince #'
-
+                Value : VBELN
             },
             {
                 $Type : 'UI.DataField',
-                Value : KUNAG,
-                Label : 'Customer'
+                Value : KUNAG
             },
             {
                 $Type : 'UI.DataField',
-                Value : KUNNR,
-                Label : 'Ship To'
+                Value : KUNNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : NAME1,
-                Label : 'Ship To Name'
+                Value : NAME1
             },
             {
                 $Type : 'UI.DataField',
-                Value : PSTLZ,
-                Label : 'Postal Code'
+                Value : PSTLZ
             },
             {
                 $Type : 'UI.DataField',
-                Value : WADAT_IST,
-                Label : 'Date Shipped'
+                Value : WADAT_IST
             },
             {
                 $Type : 'UI.DataField',
-                Value : CARRIER,
-                Label : 'Carrier'
+                Value : CARRIER
             },
             {
                 $Type : 'UI.DataField',
-                Value : TRACKN,
-                Label : 'Tracking #'
+                Value : TRACKN
             },
             {
                 $Type : 'UI.DataField',
-                Value : LFDAT,
-                Label : 'Delivery Date'
+                Value : LFDAT
             },
             {
                 $Type : 'UI.DataField',
-                Value : LFUHR,
-                Label : 'Delivery Time'
+                Value : LFUHR
             },
             {
                 $Type : 'UI.DataField',
-                Value : TRK_DLVTO,
-                Label : 'Recieved'
+                Value : TRK_DLVTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : CAL_BILL_ITM_COUNT,
-                Label : 'Item Count'
+                Value : CAL_BILL_ITM_COUNT
             },
             {
                 $Type : 'UI.DataField',
-                Value : FKIMG,
-                Label : 'Invoiced Quanity'
+                Value : FKIMG
             },
             {
                 $Type : 'UI.DataField',
-                Value : MEINS,
-                Label : 'Unit of Measure'
+                Value : MEINS
             },
             {
                 $Type : 'UI.DataField',
-                Value : VKORG,
-                Label : 'Sales Org.'
+                Value : VKORG
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR,
-                Label : 'Manufacturer #'
+                Value : MFRNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                Label : 'Manufacturer Name'
+                Value : MFRNR_NAME
             }
         ],
     },   
@@ -239,7 +219,7 @@ Search.defaultSearchElement: true,
                 ]
             },
         }, 
-    );
+    );  
     MFRNR_NAME@(
         Common: {
             ValueListWithFixedValues,

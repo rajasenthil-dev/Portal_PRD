@@ -6,10 +6,10 @@ sap.ui.define([], () => {
             const cleanValue = (value || "").trim().toUpperCase(); // Clean and normalize data
             
             if (cleanValue.includes("Y")) {
-                return "Information";  // Green for "Current"
+                return "Success";  // Green for "Current"
             } 
             if (cleanValue.includes("N")) {
-                return "Warning";    // Red for "Historical"
+                return "Information";    // Red for "Historical"
             } 
             
             return "None"; // Default state for unexpected values
@@ -19,10 +19,10 @@ sap.ui.define([], () => {
             const cleanValue = (value || "").trim().toUpperCase();
         
             if (cleanValue.includes("Y")) {
-                return "sap-icon://present"; // Checkmark for "Current"
+                return "sap-icon://circle-task-2"; // Checkmark for "Current"
             } 
             if (cleanValue.includes("N")) {
-                return "sap-icon://history"; // Cross for "Historical"
+                return "sap-icon://circle-task-2"; // Cross for "Historical"
             } 
             
             return ""; // No icon for undefined or invalid values

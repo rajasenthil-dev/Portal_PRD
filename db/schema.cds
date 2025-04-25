@@ -751,27 +751,28 @@ define view CMSALESORG as
     MFRNR
 }
 @cds.persistence.exists
-entity SHIPPINGHISTORY 
+entity SHIPPINGHISTORY
 {
-        TRK_DLVTO	        : String(40)        @title: 'Received By';
-    key VBELN	            : String(10)        @title: 'Invoice #';
-        KUNNR	            : String(10)        @title: 'Ship To #';
-        WADAT_IST	        : String(8)         @title: 'Date Shipped';
-        NAME1	            : String(35)        @title: 'Ship To Name';
-        VKORG	            : String(4)         @title: 'Sales Org.';
-        LFUHR	            : String(6)         @title: 'Delivery Time';
-        CARRIER	            : String(10)        @title: 'Carrier';
-        CAL_BILL_ITM_COUNT  : Integer           @title: 'Item Count';
-        KUNAG	            : String(10)        @title: 'Customer #';
-        FKIMG               : Decimal(18,3)     @title: 'Invoice Quantity';
-        MFRNR	            : String(10)        @title: 'Manufacturer #';
-        MEINS               : String(3)         @title: 'Base Unit of Measure'; 
-        PSTLZ	            : String(10)        @title: 'Postal Code';
-        LFDAT	            : String(8)         @title: 'Delivery Date';
-        TRACKN	            : String(35)        @title: 'Tracking #';
-        CURRENT             : String(3)         @title: 'Current/Historical';
-        MFRNR_NAME          : String(35)        @title: 'Manufacturer Name';
+    TRK_DLVTO            : String(40)    @title : '{i18n>SHIPPINGHISTORY.TRK_DLVTO}';
+key VBELN                : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
+    KUNNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNNR}';
+    WADAT_IST            : String(8)     @title : '{i18n>SHIPPINGHISTORY.WADAT_IST}';
+    NAME1                : String(35)    @title : '{i18n>SHIPPINGHISTORY.NAME1}';
+    VKORG                : String(4)     @title : '{i18n>SHIPPINGHISTORY.VKORG}';
+    LFUHR                : String(6)     @title : '{i18n>SHIPPINGHISTORY.LFUHR}';
+    CARRIER              : String(10)    @title : '{i18n>SHIPPINGHISTORY.CARRIER}';
+    CAL_BILL_ITM_COUNT   : Integer       @title : '{i18n>SHIPPINGHISTORY.CAL_BILL_ITM_COUNT}';
+    KUNAG                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNAG}';
+    FKIMG                : Decimal(18,0) @title : '{i18n>SHIPPINGHISTORY.FKIMG}';
+    MFRNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.MFRNR}';
+    MEINS                : String(3)     @title : '{i18n>SHIPPINGHISTORY.MEINS}';
+    PSTLZ                : String(10)    @title : '{i18n>SHIPPINGHISTORY.PSTLZ}';
+    LFDAT                : String(8)     @title : '{i18n>SHIPPINGHISTORY.LFDAT}';
+    TRACKN               : String(35)    @title : '{i18n>SHIPPINGHISTORY.TRACKN}';
+    CURRENT              : String(3)     @title : '{i18n>SHIPPINGHISTORY.CURRENT}';
+    MFRNR_NAME           : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
 }
+
 // Shipping History Invoice filter
 define view SHINVOICE as
     select from SHIPPINGHISTORY distinct {
@@ -827,17 +828,17 @@ define view SHVKORG as
     MFRNR
 }
 @cds.persistence.exists
-entity PRICING  
+entity PRICING
 {
-    key VKORG       : String(4)       @title: 'Sales Org.';
-        KBETR       : Decimal(11,2)   @title: 'Price';
-        KSCHL       : String(4)       @title: 'Price Level Code';
-        VTEXT       : String(20)      @title: 'Price Level Description';
-    key MATNR       : String(7)       @title: 'SKU';
-        MAKTX       : String(40)      @title: 'Product Description';
-        MFRNR       : String(10)      @title: 'Manufacturer #';	
-        KONWA       : String(5)       @title: 'Currency'; 
-        MFRNR_NAME  : String(35)      @title: 'Manufacturer Name';
+    key VKORG       : String(4)     @title : '{i18n>PRICING.VKORG}';
+        KBETR       : Decimal(11,2) @title : '{i18n>PRICING.KBETR}';
+        KSCHL       : String(4)     @title : '{i18n>PRICING.KSCHL}';
+        VTEXT       : String(20)    @title : '{i18n>PRICING.VTEXT}';
+    key MATNR       : String(7)     @title : '{i18n>PRICING.MATNR}';
+        MAKTX       : String(40)    @title : '{i18n>PRICING.MAKTX}';
+        MFRNR       : String(10)    @title : '{i18n>PRICING.MFRNR}';
+        KONWA       : String(5)     @title : '{i18n>PRICING.KONWA}';
+        MFRNR_NAME  : String(35)    @title : '{i18n>PRICING.MFRNR_NAME}';
 }
 // Shipping History Carrier filter
 define view PRICINGPRICEDESC as
@@ -883,27 +884,27 @@ define view PRICINGSALESORG as
     MFRNR
 }
 @cds.persistence.exists
-entity OPENORDERS 
+entity OPENORDERS
 {
-    key VBELN	        : String(10)        @title: 'Order #';
-        KWMENG	        : Decimal(20,3)     @title: 'Quantity';	 
-        ERDAT   	    : String(8)         @title: 'Order Date';	 
-        KUNWE_ANA	    : String(10)        @title: 'Ship To #';
-    key KUNNR	        : String(10)        @title: 'Customer #';
-        VDATU	        : String(10)        @title: 'Delivery By Date';
-        REGIO           : String(3)         @title: 'Province';
-        CAL_NAME        : String(70)        @title: 'Ship To Name';
-        PSTLZ           : String(10)        @title: 'Postal Code';
-        VDATU_ANA       : String(8)         @title: 'Requested Delivery Date';
-        GBSTA           : String(1)         @title: 'Processing Status';
-        AUART_ANA       : String(4)         @title: 'Sale Doc. Type';
-        MAKTX           : String(40)        @title: 'Product Description';
-        MFRPN           : String(40)        @title: 'Product Code';
-        GBSTK           : String(1)         @title: 'Order Status';
-    key MATNR           : String(7)         @title: 'SKU'; 
-        BSTKD           : String(35)        @title: 'Purchase Order';
-        MFRNR           : String(10)        @title: 'Manufacturer #';
-        MFRNR_NAME      : String(35)        @title: 'Manufacturer Name';
+    key VBELN       : String(10)    @title : '{i18n>OPENORDERS.VBELN}';
+        KWMENG      : Decimal(20,3) @title : '{i18n>OPENORDERS.KWMENG}';
+        ERDAT       : String(8)     @title : '{i18n>OPENORDERS.ERDAT}';
+        KUNWE_ANA   : String(10)    @title : '{i18n>OPENORDERS.KUNWE_ANA}';
+    key KUNNR       : String(10)    @title : '{i18n>OPENORDERS.KUNNR}';
+        VDATU       : String(10)    @title : '{i18n>OPENORDERS.VDATU}';
+        REGIO       : String(3)     @title : '{i18n>OPENORDERS.REGIO}';
+        CAL_NAME    : String(70)    @title : '{i18n>OPENORDERS.CAL_NAME}';
+        PSTLZ       : String(10)    @title : '{i18n>OPENORDERS.PSTLZ}';
+        VDATU_ANA   : String(8)     @title : '{i18n>OPENORDERS.VDATU_ANA}';
+        GBSTA       : String(1)     @title : '{i18n>OPENORDERS.GBSTA}';
+        AUART_ANA   : String(4)     @title : '{i18n>OPENORDERS.AUART_ANA}';
+        MAKTX       : String(40)    @title : '{i18n>OPENORDERS.MAKTX}';
+        MFRPN       : String(40)    @title : '{i18n>OPENORDERS.MFRPN}';
+        GBSTK       : String(1)     @title : '{i18n>OPENORDERS.GBSTK}';
+    key MATNR       : String(7)     @title : '{i18n>OPENORDERS.MATNR}';
+        BSTKD       : String(35)    @title : '{i18n>OPENORDERS.BSTKD}';
+        MFRNR       : String(10)    @title : '{i18n>OPENORDERS.MFRNR}';
+        MFRNR_NAME  : String(35)    @title : '{i18n>OPENORDERS.MFRNR_NAME}';
 }
 
 // Open Orders Product Description filter

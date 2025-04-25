@@ -3,8 +3,10 @@ sap.ui.define([
     "sap/m/Dialog",
     "sap/m/Button",
     "sap/m/Image",
-    "sap/m/MessageBox"
-], function (Controller, Dialog, Button, Image, MessageBox) {
+    "sap/m/MessageBox",
+    "sap/ui/model/resource/ResourceModel",
+    "sap/ui/core/format/NumberFormat" 
+], function (Controller, Dialog, Button, Image, MessageBox, ResourceModel, NumberFormat) {
     "use strict";
 
     return Controller.extend("shiphis.controller.View1", {
@@ -19,6 +21,49 @@ sap.ui.define([
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
             const oSmartTable = this.getView().byId("table0");
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            var oToolbar = oSmartTable.getToolbar();
+            var oCurrentStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("statusCurrent"),
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                inverted:true,
+                tooltip: oBundle.getText("SHIPPINGHISTORY.CURRENTTOOLTIP")
+            })
+            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            var oCurrentStatusText =  new sap.m.Text({
+                text: " | "
+            })
+            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegacyStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("statusLegacy"),
+                icon: "sap-icon://circle-task-2",
+                state: "Information",
+                inverted:true,
+                tooltip: oBundle.getText("SHIPPINGHISTORY.LEGACYTOOLTIP")
+            })
+            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            var oLegacyStatusText =  new sap.m.Text({
+                text: "Legacy Data"
+            })
+            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oLegendTitle = new sap.m.Text({
+                text: "Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oCurrentStatus,
+                    oCurrentStatusText,
+                    oLegacyStatus
+                    
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
+
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {
@@ -113,70 +158,101 @@ sap.ui.define([
          * Event-driven totals calculation for visible/filtered data.
          */
         _calculateTotals: function () {
-            debugger
+            // debugger // Keep or remove debugger as needed
             var oTable = this.byId("table0").getTable();
             var oBinding = oTable.getBinding("rows");
             var fTotalLinesShipped = 0;
-            fTotalLinesShipped = oBinding.getCount();
-             
         
             if (oBinding) {
-                // Get only the currently visible/filtered data
-                var aContexts = oBinding.getContexts(0, fTotalLinesShipped);
+                fTotalLinesShipped = oBinding.getCount(); // Get the count (this is a number)
+        
+                // Get contexts only if count > 0 to avoid unnecessary calls
+                var aContexts = [];
+                if (fTotalLinesShipped > 0) {
+                     aContexts = oBinding.getContexts(0, fTotalLinesShipped);
+                }
+        
                 var aFilteredData = aContexts.map(function (oContext) {
                     return oContext.getObject();
                 });
-                var formattedLinesShipped = fTotalLinesShipped.toString();
+        
+                // --- Formatting Added Here ---
+                // Get an integer formatter (handles thousand separators based on locale)
+                var oIntegerFormat = NumberFormat.getIntegerInstance({
+                    groupingEnabled: true
+                });
+                var formattedLinesShipped = oIntegerFormat.format(fTotalLinesShipped); // Format the number
+                // --- End Formatting ---
+        
+                // Set the formatted text
                 this.byId("_IDGenNumericContent2").setText(formattedLinesShipped);
+        
+                // Pass raw data to next function for further calculations
                 this._updateTotals(aFilteredData);
+        
+            } else {
+                 // Handle case where binding doesn't exist? Clear fields maybe?
+                 var oIntegerFormat = NumberFormat.getIntegerInstance({ groupingEnabled: true });
+                 this.byId("_IDGenNumericContent2").setText(oIntegerFormat.format(0));
+                 this._updateTotals([]); // Call update with empty data
             }
         },
         
-        /**
+         /**
          * Perform totals calculation and update UI elements.
          */
         _updateTotals: function (aData) {
-            var oTable = this.byId("table0").getTable();
-            var oBinding = oTable.getBinding("rows");
-            debugger
-            if (aData.length > 0) {
-                var fTotalOrdersShipped = 0;   // Total for Orders Shipped
-                
-                var fTotalItemAmount = 0;     // Total for Item Amount
-        
+            // debugger // Keep or remove debugger as needed
+
+            // --- Get Formatter Instances ---
+            var oIntegerFormat = NumberFormat.getIntegerInstance({
+                groupingEnabled: true
+            });
+            // Use Float instance for amounts that might have decimals
+            var oFloatFormat = NumberFormat.getFloatInstance({
+                groupingEnabled: true,
+                maxFractionDigits: 2 // Adjust max/minFractionDigits as needed for FKIMG
+                // minFractionDigits: 2 // Use if you always want two decimal places
+            });
+            // --- End Formatter Instances ---
+
+            if (aData && aData.length > 0) { // Check if aData is valid array
+                var fTotalOrdersShipped = 0;  // Total for Orders Shipped (Count)
+                var fTotalItemAmount = 0;     // Total for Item Amount (Sum)
                 var oUniqueInvoices = new Set(); // Track unique invoices
-                
+
                 // Iterate through the data
                 aData.forEach(function (oRowData) {
-                    var sInvoice = oRowData["VBELN"]; // Invoice number (adjust if necessary)
-                    var fItemAmount = parseFloat(oRowData["FKIMG"]) || 0; // Item amount (adjust if necessary)
-        
+                    var sInvoice = oRowData["VBELN"];
+                    // Ensure FKIMG is treated as a number, default to 0 if invalid/null
+                    var fItemAmount = parseFloat(oRowData["FKIMG"]) || 0;
+
                     if (sInvoice) {
                         oUniqueInvoices.add(sInvoice); // Track unique invoices
                     }
-        
-                    // Increment total lines shipped
-                    
-        
+
                     // Sum up item amount
                     fTotalItemAmount += fItemAmount;
                 });
-                
+
                 // Total unique invoices equals Orders Shipped
                 fTotalOrdersShipped = oUniqueInvoices.size;
-        
-                // Format totals (adjust formatting as needed)
-                var formattedOrdersShipped = fTotalOrdersShipped.toString();
-                var formattedItemAmount = fTotalItemAmount.toFixed(2); // Format as currency if needed
-        
-                // Bind the totals to respective UI elements
+
+                // --- Format Totals ---
+                var formattedOrdersShipped = oIntegerFormat.format(fTotalOrdersShipped);
+                var formattedItemAmount = oFloatFormat.format(fTotalItemAmount);
+                // --- End Formatting ---
+
+                // Bind the formatted totals to respective UI elements
                 this.byId("_IDGenNumericContent1").setText(formattedOrdersShipped); // Orders Shipped
-                  // Lines Shipped
-                this.byId("_IDGenNumericContent3").setText(formattedItemAmount);     // Item Amount
+                // _IDGenNumericContent2 (Lines Shipped) is set in _calculateTotals
+                this.byId("_IDGenNumericContent3").setText(formattedItemAmount);    // Item Amount
+
             } else {
-                // If no data, clear the UI fields
-                this.byId("_IDGenNumericContent1").setText("0");
-                this.byId("_IDGenNumericContent3").setText("0.00");
+                // If no data, clear the UI fields using formatted zero values
+                this.byId("_IDGenNumericContent1").setText(oIntegerFormat.format(0));
+                // _IDGenNumericContent2 is already handled if _calculateTotals passes empty data
+                this.byId("_IDGenNumericContent3").setText(oFloatFormat.format(0));
             }
         },
         _formatCurrency: function (value) {
