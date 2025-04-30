@@ -88,3 +88,8 @@
 .legendText {
     font-weight: 700;
 }
+
+.text-bold{
+    font-weight: 700;
+    margin-bottom: 4px!important;
+}

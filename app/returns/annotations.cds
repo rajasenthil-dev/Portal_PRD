@@ -23,93 +23,78 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CURRENT,
-                Label : 'Current/Historical',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : ERDAT,
-                Label : 'Date Entered',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : CUSTOMER_KUNNR,
-                Label : 'Customer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : CUSTOMER_NAME_NAME1,
-                Label : 'Customer Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PROVINCE_REGIO,
-                Label : 'Province',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VBELN_VBAK,
-                Label : 'RGA #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : REFERENCE_BSTKD,
-                Label : 'Reference #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : REASON_BEZEI,
-                Label : 'Reason',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VBELN_VBRK,
-                Label : 'Credit #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : FKDAT_ANA,
-                Label : 'Credit Date',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CREDIT_AMT_NETWR,
-                Label : 'Credit Amt $',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CO_VKORG,
-                Label : 'Sales Org.',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR,
-                Label : 'Sales Office',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer Name',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
             
@@ -137,7 +122,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETCUSTNAME',
-                Label : 'Customer Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -153,7 +137,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETRGA',
-                Label : 'RGA #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -172,7 +155,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETREASON',
-                Label : 'Reason',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -190,7 +172,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETVKORG',
-                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -207,7 +188,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETVKBUR',
-                Label : 'Sales Office',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -224,7 +204,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'RETMFRNR',
-                Label : 'Manufacturer',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

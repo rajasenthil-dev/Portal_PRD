@@ -60,7 +60,7 @@
                 <st:SmartTable xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" direction="Column" fitContainer="true" tableType="Table" header="{i18n>tableTitle}" enableAutoBinding="true" id="table0" smartFilterId="bar0" cd:w5g.dt.context="/CASHJOURNAL" entitySet="CASHJOURNAL" placeToolbarInTable="true" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" demandPopin="true" enableAutoColumnWidth="true" class="sapUiResponsiveContentPadding sapUiLargeMarginBottom">
                     <t:Table id="table" selectionMode="None" alternateRowColors="true">
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7.813rem'>
+                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>

@@ -30,104 +30,84 @@ Search.defaultSearchElement: true,
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : KUNNR,
-                Label : 'Customer #'
+                Value : KUNNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : NAME1,
-                Label : 'Customer Name'
+                Value : NAME1
             },
             {
                 $Type : 'UI.DataField',
-                Value : ORT01,
-                Label : 'City'
+                Value : ORT01
             },
             {
                 $Type : 'UI.DataField',
-                Value : REGIO,
-                Label : 'Province'
+                Value : REGIO
             },
             {
                 $Type : 'UI.DataField',
-                Value : PSTLZ,
-                Label : 'Postal Code'
+                Value : PSTLZ
             },
             {
                 $Type : 'UI.DataField',
-                Value : SHIP_TO,
-                Label : 'Ship To #'
+                Value : SHIP_TO
             },
             {
                 $Type : 'UI.DataField',
-                Value : BSTKD,
-                Label : 'Purchase Order'
+                Value : BSTKD
             },
             {
                 $Type : 'UI.DataField',
-                Value : AUBEL,
-                Label : 'Order #'
+                Value : AUBEL
             },
             {
                 $Type : 'UI.DataField',
-                Value : BELNR,
-                Label : 'Invoice #'
+                Value : BELNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : BUDAT,
-                Label : 'Invoice Date'
+                Value : BUDAT
             },
             {
                 $Type : 'UI.DataField',
-                Value : TSL_AMOUNT,
-                Label : '$ Amount'
+                Value : TSL_AMOUNT
             },
             {
                 $Type : 'UI.DataField',
-                Value : CAL_PST,
-                Label : 'P.S.T.'
+                Value : CAL_PST
             },
             {
                 $Type : 'UI.DataField',
-                Value : CAL_GST,
-                Label : 'G.S.T.'
+                Value : CAL_GST
             },
             {
                 $Type : 'UI.DataField',
-                Value : ORDER_TYPE,
-                Label : 'Type'
+                Value : ORDER_TYPE
             },
             {
                 $Type : 'UI.DataField',
-                Value : TRACKN,
-                Label : 'Tracking #'
+                Value : TRACKN
             },
             {
                 $Type : 'UI.DataField',
-                Value : LFDAT,
-                Label : 'Delivery Date'
+                Value : LFDAT
             },
             {
                 $Type : 'UI.DataField',
-                Value : BKTXT,
-                Label : 'Comment'
+                Value : BKTXT
             },
             {
                 $Type : 'UI.DataField',
-                Value : CURRENT,
-                Label : 'Current/Legacy'
+                Value : CURRENT
             },
             {
                 $Type : 'UI.DataField',
-                Value : VKORG,
-                Label : 'Sales Org.'
+                Value : VKORG
             },
             
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR,
-                Label : 'Manufacturer #'
+                Value : MFRNR
             },
         ],
     },
@@ -137,7 +117,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHCUSTOMERID',
-                Label : 'Customer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -153,7 +132,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHCUSTOMER',
-                Label : 'Customer Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -170,7 +148,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHPROVINCE',
-                Label : 'Province',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -187,7 +164,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHSHIPTO',
-                Label : 'Ship To',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -204,7 +180,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHPO',
-                Label : 'Purchase Order',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -220,7 +195,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHINVOICE',
-                Label : 'Invoice #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -237,7 +211,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHTYPE',
-                Label : 'Customer',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -254,7 +227,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHMFRNR',
-                Label : 'Manufacturer #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -271,7 +243,6 @@ Search.defaultSearchElement: true,
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'IHSALESORG',
-                Label : 'Sales Org.',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

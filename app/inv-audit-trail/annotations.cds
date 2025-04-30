@@ -14,7 +14,7 @@ Search.defaultSearchElement: true,
             CUSTOMER_NAME:true, 
             INV_MATDOC_ITEM:true, 
             WERKS:true, 
-            NAME1_PLANT: true,
+            PLANT_NAME: true,
             LGORT:true, 
             MFRNR:true
         }
@@ -126,7 +126,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : NAME1_PLANT,
+                Value : PLANT_NAME,
                 Label : '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },

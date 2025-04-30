@@ -37,103 +37,83 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : KUNN2_BILLTO,
-                Label : 'Bill To #' 
+                Value : KUNN2_BILLTO
             },          
             {
                 $Type : 'UI.DataField',
-                Value : NAME1_BILLTO,
-                Label : 'Bill To Name'
+                Value : NAME1_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : KUNN2_SHIPTO,
-                Label : 'Ship To #'
+                Value : KUNN2_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : NAME1_SHIPTO,
-                Label : 'Ship To Name'
+                Value : NAME1_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : KTEXT_BILLTO,
-                Label : 'Bill To Type'
+                Value : KTEXT_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : KTEXT_SHIPTO,
-                Label : 'Ship To Type'
+                Value : KTEXT_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : CAL_TERM,
-                Label : 'Terms'
+                Value : CAL_TERM
             },
             {
                 $Type : 'UI.DataField',
-                Value : CREDIT_LIMIT,
-                Label : 'Credit Limit'
+                Value : CREDIT_LIMIT
             },
             {
                 $Type : 'UI.DataField',
-                Value : STRAS_BILLTO,
-                Label : 'Bill To Address 1'
+                Value : STRAS_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : ORT01_BILLTO,
-                Label : 'Bill To City'
+                Value : ORT01_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : PSTLZ_BILLTO,
-                Label : 'Bill To Postal Code'
+                Value : PSTLZ_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : BEZEI_BILLTO,
-                Label : 'Bill To Province'
+                Value : BEZEI_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : STRAS_SHIPTO,
-                Label : 'Ship To Address 1'
+                Value : STRAS_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : ORT01_SHIPTO,
-                Label : 'Ship To City'
+                Value : ORT01_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : PSTLZ_SHIPTO,
-                Label : 'Ship To Postal Code'
+                Value : PSTLZ_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : BEZEI_SHIPTO,
-                Label : 'Ship To Province'
+                Value : BEZEI_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : ERDAT_BILLTO,
-                Label : 'Bill To Created'
+                Value : ERDAT_BILLTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : ERDAT_SHIPTO,
-                Label : 'Ship To Created'
+                Value : ERDAT_SHIPTO
             },
             {
                 $Type : 'UI.DataField',
-                Value : VKORG,
-                Label : 'Sales Org.'
+                Value : VKORG
             },
             {
                 $Type : 'UI.DataField',
-                Value : CAL_CUST_STATUS,
-                Label : 'Status'
+                Value : CAL_CUST_STATUS
             },
 
         ],
@@ -148,7 +128,6 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'KUNN2_BILLTO',
-                Label : 'Bill To #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -164,7 +143,6 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'KUNN2_BILLTONAME',
-                Label : 'Bill To Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -180,7 +158,6 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'KUNN2_SHIPTO',
-                Label : 'Ship To #',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
@@ -196,7 +173,6 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             ValueList : {
                 $Type : 'Common.ValueListType',
                 CollectionPath : 'KUNN2_SHIPTONAME',
-                Label : 'Ship To Name',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

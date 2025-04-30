@@ -10,13 +10,69 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
-        
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            const oSmartTable = this.getView().byId("table0");
+            var oToolbar = oSmartTable.getToolbar();
+            var oExpiryStatusGreen = new sap.m.ObjectStatus({
+                
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                tooltip: oBundle.getText("INVENTORYBYLOT.EXPIRYSTATUSGREENTOOLTIP")
+            })
+            var oExpiryStatusGreenText = new sap.m.Text({
+                text: oBundle.getText("INVENTORYBYLOT.EXPIRYSTATUSGREENTEXT"),
+                
+            })
+            oExpiryStatusGreenText.addStyleClass("text-bold sapUiTinyMarginEnd")
+
+            var oExpiryStatusYellow = new sap.m.ObjectStatus({
+                icon: "sap-icon://circle-task-2",
+                state: "Warning",
+                tooltip: oBundle.getText("INVENTORYBYLOT.EXPIRYSTATUSYELLOWTOOLTIP")
+            })
+            var oExpiryStatusYellowText = new sap.m.Text({
+                text: oBundle.getText("INVENTORYBYLOT.EXPIRYSTATUSYELLOWTEXT"),
+                
+            })
+            oExpiryStatusYellowText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oExpiryStatusRed = new sap.m.ObjectStatus({
+                icon: "sap-icon://circle-task-2",
+                state: "Error",
+                tooltip: oBundle.getText("INVENTORYBYLOT.EXPIRYSTATUSREDTOOLTIP")
+            })
+            var oExpiryStatusRedText = new sap.m.Text({
+                text: oBundle.getText("INVENTORYBYLOT.EXPIRYSTATUSREDTEXT"),
+                
+            })
+            oExpiryStatusRedText.addStyleClass("text-bold sapUiTinyMarginEnd")
+
+            var oLegendTitle = new sap.m.Text({
+                text: "Table Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oLegendTitle,
+                    oExpiryStatusGreen,
+                    oExpiryStatusGreenText,
+                    oExpiryStatusYellow,
+                    oExpiryStatusYellowText,
+                    oExpiryStatusRed,
+                    oExpiryStatusRedText,
+                    
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
+
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
             oView.setBusy(true);
         
             oSmartFilterBar.attachInitialized(function () {
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
-            const oSmartTable = this.getView().byId("table0");
+            
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {

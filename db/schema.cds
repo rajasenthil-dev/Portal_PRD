@@ -118,7 +118,7 @@ entity INVENTORYAUDITTRAIL
 {
   key MATNR               : String(7)     @title: '{i18n>INVENTORYAUDITTRAIL.MATNR}';
       MAKTX               : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MAKTX}';
-      MENGE               : Decimal(13,3) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
+      MENGE               : Decimal(13,0) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
       CHARG               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.CHARG}';
   key KUNNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.KUNNR}';
       CUSTOMER_NAME       : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.CUSTOMER_NAME}';
@@ -128,7 +128,7 @@ entity INVENTORYAUDITTRAIL
       LGORT               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
       MFRNR_PROD_CODE     : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}';
       MEINS               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.MEINS}';
-      NAME1_PLANT         : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
+      PLANT_NAME         : String(30)    @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
       TRAN_TYPE           : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}';
   key INV_MATDOC_ITEM     : String(15)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
       SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
@@ -292,23 +292,23 @@ define view INVSNAPVKORG as
 entity INVENTORYBYLOT 
 {
         
-    key MATNR                       : String(7)         @title : 'SKU';
-        WAREHOUSE_STATUS            : String(4)         @title : 'Warehouse Status';
-        EAN11                       : String(18)        @title : 'UPC';
-        ON_HAND                     : Decimal(38,2)     @title : 'On Hand';
-        MFRPN                       : String(40)        @title : 'Product Code';
-        DAYS_UNTIL_EXPIRY           : Integer           @title : 'Days Until Expiry';
-        LGNUM                       : String(4)         @title : 'Warehouse Number';
-        UNIT                        : String(3)         @title : 'Base Unit of Measure';
-        MFRNR                       : String(10)        @title : 'Manufacturer #';
-        MFRNR_NAME                  : String(35)        @title : 'Manufacturer Name';
-        SIZE                        : String(70)        @title : 'Size';
-        MAKTX                       : String(40)        @title : 'Product Desc.';
-        CHARG                       : String(10)        @title : 'Lot Number';
-        VFDAT                       : String(8)         @title : 'Shelf Life or Best-Before Date';
-        DIN                         : String(100)       @title : 'DIN';
-        PLANT                       : String(18)        @title : 'Plant';
-        VKBUR                       : String(4)         @title : 'Sales Org.';
+    key MATNR                       : String(7)         @title : '{i18n>INVENTORYBYLOT.MATNR}';
+    key WAREHOUSE_STATUS            : String(4)         @title : '{i18n>INVENTORYBYLOT.WAREHOUSE_STATUS}';
+        EAN11                       : String(18)        @title : '{i18n>INVENTORYBYLOT.EAN11}';
+        ON_HAND                     : Decimal(38,2)     @title : '{i18n>INVENTORYBYLOT.ON_HAND}';
+        MFRPN                       : String(40)        @title : '{i18n>INVENTORYBYLOT.MFRPN}';
+        DAYS_UNTIL_EXPIRY           : Integer           @title : '{i18n>INVENTORYBYLOT.DAYS_UNTIL_EXPIRY}';
+    key LGNUM                       : String(4)         @title : '{i18n>INVENTORYBYLOT.LGNUM}';
+        UNIT                        : String(3)         @title : '{i18n>INVENTORYBYLOT.UNIT}';
+        MFRNR                       : String(10)        @title : '{i18n>INVENTORYBYLOT.MFRNR}';
+        MFRNR_NAME                  : String(35)        @title : '{i18n>INVENTORYBYLOT.MFRNR_NAME}';
+        SIZE                        : String(70)        @title : '{i18n>INVENTORYBYLOT.SIZE}';
+        MAKTX                       : String(40)        @title : '{i18n>INVENTORYBYLOT.MAKTX}';
+    key CHARG                       : String(10)        @title : '{i18n>INVENTORYBYLOT.CHARG}';
+    key VFDAT                       : String(8)         @title : '{i18n>INVENTORYBYLOT.VFDAT}';
+        DIN                         : String(100)       @title : '{i18n>INVENTORYBYLOT.DIN}';
+        PLANT                       : String(18)        @title : '{i18n>INVENTORYBYLOT.PLANT}';
+    key VKBUR                       : String(4)         @title : '{i18n>INVENTORYBYLOT.VKBUR}';
 }
 
 define view INVBYLOTPRODUCTCODE as
@@ -341,27 +341,27 @@ define view INVBYLOTVKBUR as
 @cds.persistence.exists
 entity OPENAR 
 {
-        CAL_1_30            : Decimal(24,2)     @title : '1 to 30';
-        CAL_31_60           : Decimal(24,2)     @title : '31 to 60';
-        CAL_61_90           : Decimal(24,2)     @title : '61 to 90';
-        CAL_AGE             : Integer           @title : 'Age';
-        TSL                 : Decimal(23,2)     @title : 'Amount Paid';
-        VKORG               : String(4)         @title : 'Sales Org.';
-        CREDIT_LIMIT        : Decimal(15,2)     @title : 'Credit Limit';
-        CAL_CURRENT         : Decimal(23,2)     @title : 'Current';
-        BILL_TO             : String(10)        @title : 'Customer #';
-        NAME1               : String(35)        @title : 'Customer Name';
-        BSTKD               : String(35)        @title : 'Customer PO';
-        NETDT               : String(8)         @title : 'Due Date';
-    key BELNR               : String(10)        @title : 'Invoice #';
-        FKDAT               : String(8)         @title : 'Invoice Date';
-        ZTERM               : String(4)         @title : 'Invoice Terms';
-        NETWR               : Decimal(23,2)     @title : 'Invoiced Amount';
-        CAL_OVER_90         : Decimal(24,2)     @title : 'Over 90';
-        STORE_SHIP_TO       : String(10)        @title : 'Store';
-    key BLART               : String(2)         @title : 'Type';
-        MFRNR               : String(10)        @title : 'Manufacturer #';
-        MFRNR_NAME          : String(10)        @title : 'Manufacturer Name';
+        CAL_1_30            : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_1_30}';
+        CAL_31_60           : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_31_60}';
+        CAL_61_90           : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_61_90}';
+        CAL_AGE             : Integer           @title : '{i18n>OPENAR.CAL_AGE}';
+        TSL                 : Decimal(23,2)     @title : '{i18n>OPENAR.TSL}';
+        VKORG               : String(4)         @title : '{i18n>OPENAR.VKORG}';
+        CREDIT_LIMIT        : Decimal(15,2)     @title : '{i18n>OPENAR.CREDIT_LIMIT}';
+        CAL_CURRENT         : Decimal(23,2)     @title : '{i18n>OPENAR.CAL_CURRENT}';
+        BILL_TO             : String(10)        @title : '{i18n>OPENAR.BILL_TO}';
+        NAME1               : String(35)        @title : '{i18n>OPENAR.NAME1}';
+        BSTKD               : String(35)        @title : '{i18n>OPENAR.BSTKD}';
+        NETDT               : String(8)         @title : '{i18n>OPENAR.NETDT}';
+    key BELNR               : String(10)        @title : '{i18n>OPENAR.BELNR}';
+        FKDAT               : String(8)         @title : '{i18n>OPENAR.FKDAT}';
+        ZTERM               : String(4)         @title : '{i18n>OPENAR.ZTERM}';
+        NETWR               : Decimal(23,2)     @title : '{i18n>OPENAR.NETWR}';
+        CAL_OVER_90         : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_OVER_90}';
+        STORE_SHIP_TO       : String(10)        @title : '{i18n>OPENAR.STORE_SHIP_TO}';
+    key BLART               : String(2)         @title : '{i18n>OPENAR.BLART}';
+        MFRNR               : String(10)        @title : '{i18n>OPENAR.MFRNR}';
+        MFRNR_NAME          : String(10)        @title : '{i18n>OPENAR.MFRNR_NAME}';
 }
 define view OPENARCUSTOMER as
     select from OPENAR distinct {
@@ -387,31 +387,31 @@ define view OPENARSALESORG as
 @cds.persistence.exists
 entity INVENTORYVALUATION 
 {
-        PLANT                       : String(4)         @title : 'Plant';
-        LGNUM                       : String(4)         @title : 'Warehouse Number';
-        MATNR                       : String(7)         @title : 'SKU';
-        MAKTX                       : String(40)        @title : 'Product Desc.';
-    key MFRPN                       : String(40)        @title : 'Product Code';
-        DIN                         : String(100)       @title : 'DIN';
-        SIZE                        : String(70)        @title : 'Size';
-        VKBUR                       : String(10)        @title : 'Sales Org.';
-        MFRNR                       : String(10)        @title : 'Manufacturer #';
-        MFRNR_NAME                  : String(35)        @title : 'Manufacturer Name';
-        WAERS                       : String(5)         @title : 'Currency Key';
-        UNIT_PRICE                  : Decimal(11,2)     @title : 'Unit Price';
-        TOTAL_COST                  : Decimal(38,2)     @title : 'Total Cost';
-        AVAILABLE_COST              : Decimal(38,2)     @title : 'Open Stock';
-        QUARANTINE_COST             : Decimal(38,2)     @title : 'Quarantine';
-        RETAINS_COST                : Decimal(38,2)     @title : 'Retains';
-        QUALITY_HOLD_COST           : Decimal(38,2)     @title : 'Quality Hold';
-        RETURNS_COST                : Decimal(38,2)     @title : 'Returns';
-        RECALL_COST                 : Decimal(38,2)     @title : 'Recalls';
-        INVENTORY_HOLD_COST         : Decimal(38,2)     @title : 'Inventory Hold';
-        RELABEL_COST                : Decimal(38,2)     @title : 'Re-Label';
-        DAMAGE_DESTRUCTION_COST     : Decimal(38,2)     @title : 'Damage/Destruction';
-        SAMPLE_COST                 : Decimal(38,2)     @title : 'Samples';
-        UNIT                        : String(3)         @title : 'Base Unit of Measure';
-        QUAN                        : Decimal(38,2)     @title : 'Total Quantity';   
+        PLANT                       : String(4)         @title : '{i18n>INVENTORYVALUATION.PLANT}';
+        LGNUM                       : String(4)         @title : '{i18n>INVENTORYVALUATION.LGNUM}';
+        MATNR                       : String(7)         @title : '{i18n>INVENTORYVALUATION.MATNR}';
+        MAKTX                       : String(40)        @title : '{i18n>INVENTORYVALUATION.MAKTX}';
+    key MFRPN                       : String(40)        @title : '{i18n>INVENTORYVALUATION.MFRPN}';
+        DIN                         : String(100)       @title : '{i18n>INVENTORYVALUATION.DIN}';
+        SIZE                        : String(70)        @title : '{i18n>INVENTORYVALUATION.SIZE}';
+        VKBUR                       : String(10)        @title : '{i18n>INVENTORYVALUATION.VKBUR}';
+        MFRNR                       : String(10)        @title : '{i18n>INVENTORYVALUATION.MFRNR}';
+        MFRNR_NAME                  : String(35)        @title : '{i18n>INVENTORYVALUATION.MFRNR_NAME}';
+        WAERS                       : String(5)         @title : '{i18n>INVENTORYVALUATION.WAERS}';
+        UNIT_PRICE                  : Decimal(11,2)     @title : '{i18n>INVENTORYVALUATION.UNIT_PRICE}';
+        TOTAL_COST                  : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.TOTAL_COST}';
+        AVAILABLE_COST              : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.AVAILABLE_COST}';
+        QUARANTINE_COST             : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.QUARANTINE_COST}';
+        RETAINS_COST                : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.RETAINS_COST}';
+        QUALITY_HOLD_COST           : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.QUALITY_HOLD_COST}';
+        RETURNS_COST                : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.RETURNS_COST}';
+        RECALL_COST                 : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.RECALL_COST}';
+        INVENTORY_HOLD_COST         : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.INVENTORY_HOLD_COST}';
+        RELABEL_COST                : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.RELABEL_COST}';
+        DAMAGE_DESTRUCTION_COST     : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.DAMAGE_DESTRUCTION_COST}';
+        SAMPLE_COST                 : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.SAMPLE_COST}';
+        UNIT                        : String(3)         @title : '{i18n>INVENTORYVALUATION.UNIT}';
+        QUAN                        : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.QUAN}';   
 }
 
 define view INVVALPROD as
@@ -443,31 +443,33 @@ define view INVVALVKBUR as
 // Security attributes to match: ??
 @cds.search: { ORT01, VKORG, BKTXT, KUNNR, LFDAT, BELNR, BUDAT, NAME1, AUBEL, PSTLZ, REGIO, BSTKD, SHIP_TO, TRACKN, CURRENT, BLART, MFRNR }
 @cds.persistence.exists
-entity INVOICEHISTORY 
+entity INVOICEHISTORY
 {
-        @Aggregation.default: #SUM
-        @Semantics.amount.currencyCode: 'currency'
-        TSL_AMOUNT	: Decimal(23,2)     @title : '$ Amount';
-        ORT01	    : String(35)        @title : 'City';
-        VKORG	    : String(4)         @title : 'Sales Org.';
-        BKTXT	    : String(25)        @title : 'Comment';
-    key KUNNR       : String(10)        @title : 'Customer #';
-        LFDAT	    : String(8)         @title : 'Delivery Date';
-        CAL_GST	    : Decimal(23,2)     @title : 'G.S.T.';
-    key BELNR       : String(10)        @title : 'Invoice #';
-        BUDAT	    : String(8)         @title : 'Invoice Date';
-        NAME1	    : String(35)        @title : 'Customer Name';
-    key AUBEL       : String(10)        @title : 'Order Number';
-        PSTLZ	    : String(10)        @title : 'Postal Code';
-        REGIO	    : String(3)         @title : 'Province';
-        CAL_PST	    : Decimal(23,2)     @title : 'P.S.T.';
-        BSTKD	    : String(35)        @title : 'Purchase Order';
-        SHIP_TO	    : String(10)        @title : 'Ship To #';
-        TRACKN	    : String(35)        @title : 'Tracking Number';
-        ORDER_TYPE	: String(20)        @title : 'Type';
-        CURRENT     : String(1)         @title : 'Current/Historical';
-        MFRNR	    : String(10)        @title : 'Manufacturer #';
-        MFRNR_NAME  : String(35)        @title : 'Manufacturer Name';
+    @Aggregation.default : #SUM
+    @Semantics.amount.currencyCode : 'currency' // Assuming a 'currency' field exists or will be added for this annotation to work fully
+    TSL_AMOUNT   : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.TSL_AMOUNT}';
+    ORT01        : String(35)    @title : '{i18n>INVOICEHISTORY.ORT01}';
+    VKORG        : String(4)     @title : '{i18n>INVOICEHISTORY.VKORG}';
+    BKTXT        : String(25)    @title : '{i18n>INVOICEHISTORY.BKTXT}';
+key KUNNR        : String(10)    @title : '{i18n>INVOICEHISTORY.KUNNR}';
+    LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
+    CAL_GST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_GST}';
+key BELNR        : String(10)    @title : '{i18n>INVOICEHISTORY.BELNR}';
+    BUDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.BUDAT}';
+    NAME1        : String(35)    @title : '{i18n>INVOICEHISTORY.NAME1}';
+key AUBEL        : String(10)    @title : '{i18n>INVOICEHISTORY.AUBEL}';
+    PSTLZ        : String(10)    @title : '{i18n>INVOICEHISTORY.PSTLZ}';
+    REGIO        : String(3)     @title : '{i18n>INVOICEHISTORY.REGIO}';
+    CAL_PST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_PST}';
+    BSTKD        : String(35)    @title : '{i18n>INVOICEHISTORY.BSTKD}';
+    SHIP_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.SHIP_TO}';
+    TRACKN       : String(35)    @title : '{i18n>INVOICEHISTORY.TRACKN}';
+    ORDER_TYPE   : String(20)    @title : '{i18n>INVOICEHISTORY.ORDER_TYPE}';
+    CURRENT      : String(1)     @title : '{i18n>INVOICEHISTORY.CURRENT}';
+    MFRNR        : String(10)    @title : '{i18n>INVOICEHISTORY.MFRNR}';
+    MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
+    // You might need a currency field for the @Semantics annotation to work, e.g.:
+    // currency     : Currency;
 }
 define view IHCUSTOMERID as
     select from INVOICEHISTORY distinct {
@@ -542,48 +544,48 @@ define view IHSALESORG as
     CO_VKORG
 }
 @cds.persistence.exists
-entity SALESBYCURRENT 
-{   
-        ADDRESS_1                   : String(35)            @title: 'Address 1';
-        ADDRESS_2                   : String(40)            @title: 'Address 2';
-        AMOUNT_NETWR                : Decimal(20,2)         @title: '$Amount';
-        AUGRU_AUFT                  : String(3)             @title: 'Order Reason';
-        BILL_TO_KUNRE_ANA           : String(10)            @title: 'Bill To #';
-        BILL_TO_NAME                : String(70)            @title: 'Bill To Name';
-        CITY_ORT01                  : String(35)            @title: 'City';
-        CO_VKORG                    : String(4)             @title: 'Sales Org.';
-        COMMENT                     : String(13)            @title: 'Comment';
-        CURRENT                     : String(3)             @title: 'Current/Legacy';
-        DELEVERY_DATE_VDATU         : String(8)             @title: 'Delivery Date';
-        EXPIRY_DATE_VFDAT           : String(8)             @title: 'Expiry Date';
-    key INVOICE_CREDIT_VBELN        : String(10)            @title: 'Invoice/Credit #';
-        INVOICE_DATE_FKDAT          : String(8)             @title: 'Invoice Date';
-    key LOT_CHARG                   : String(10)            @title: 'Lot #';
-        MFRNR                       : String(10)            @title: 'Manufacturer #';
-        MFRPN                       : String(40)            @title: 'Manufacturer Part Number';
-        PATIENT_ID                  : String(20)            @title: 'Patient Id';
-        POSTAL_CODE_PSTLZ           : String(10)            @title: 'Postal Code';
-        PRICE_CAL_UNIT_COST         : Decimal(11,2)         @title: 'Price';
-        PRODUCT_DESCRIPTION_MAKTX   : String(40)            @title: 'Product Desctription';
-        PROVINCE_REGIO              : String(3)             @title: 'Province';
-        PURCHASE_ORDER_BSTKD        : String(35)            @title: 'Purchase Order';
-        QUANTITY_FKIMG              : Decimal(13,3)         @title: 'Quantity';
-        RBTXT                       : String(20)            @title: 'Storage Conditions';
-        SHIP_TO_KUNWE_ANA           : String(10)            @title: 'Ship To #';
-        SHIP_TO_NAME                : String(70)            @title: 'Ship To Name';
-    key SKU_MATNR                   : String(7)             @title: 'SKU';
-        TBTXT                       : String(60)            @title: 'Temp. Conditions';
-        TRACKING_TRACKN             : String(35)            @title: 'Tracking #';
-        UNIT_PRICE                  : Decimal(32,2)         @title: 'Unit Price';
-        UNITS_PER_CASE              : Integer               @title: 'Units Per Case';
-        UPC_EAN11                   : String(18)            @title: 'UPC';
-        VKBUR                       : String(4)             @title: 'Sales Office';
-        VTEXT_FKART                 : String(40)            @title: 'Type';      
-        WAERK                       : String(5)             @title: 'SD Document Currency';
-        WAREHOUSE                   : String(12)            @title: 'Warehouse';
-    key WERKS                       : String(4)             @title: 'Plant #';
-        PLANT_NAME                  : String(30)            @title: 'Plant Name';
-        MFRNR_NAME                  : String(35)            @title: 'Manufacturer Name';
+entity SALESBYCURRENT
+{
+    ADDRESS_1               : String(35)    @title : '{i18n>SALESBYCURRENT.ADDRESS_1}';
+    ADDRESS_2               : String(40)    @title : '{i18n>SALESBYCURRENT.ADDRESS_2}';
+    AMOUNT_NETWR            : Decimal(20,2) @title : '{i18n>SALESBYCURRENT.AMOUNT_NETWR}';
+    AUGRU_AUFT              : String(3)     @title : '{i18n>SALESBYCURRENT.AUGRU_AUFT}';
+    BILL_TO_KUNRE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.BILL_TO_KUNRE_ANA}';
+    BILL_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.BILL_TO_NAME}';
+    CITY_ORT01              : String(35)    @title : '{i18n>SALESBYCURRENT.CITY_ORT01}';
+    CO_VKORG                : String(4)     @title : '{i18n>SALESBYCURRENT.CO_VKORG}';
+    COMMENT                 : String(13)    @title : '{i18n>SALESBYCURRENT.COMMENT}';
+    CURRENT                 : String(3)     @title : '{i18n>SALESBYCURRENT.CURRENT}';
+    DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; // Note: Typo 'DELEVERY' kept in field name
+    EXPIRY_DATE_VFDAT       : String(8)     @title : '{i18n>SALESBYCURRENT.EXPIRY_DATE_VFDAT}';
+key INVOICE_CREDIT_VBELN    : String(10)    @title : '{i18n>SALESBYCURRENT.INVOICE_CREDIT_VBELN}';
+    INVOICE_DATE_FKDAT      : String(8)     @title : '{i18n>SALESBYCURRENT.INVOICE_DATE_FKDAT}';
+key LOT_CHARG               : String(10)    @title : '{i18n>SALESBYCURRENT.LOT_CHARG}';
+    MFRNR                   : String(10)    @title : '{i18n>SALESBYCURRENT.MFRNR}';
+    MFRPN                   : String(40)    @title : '{i18n>SALESBYCURRENT.MFRPN}';
+    PATIENT_ID              : String(20)    @title : '{i18n>SALESBYCURRENT.PATIENT_ID}';
+    POSTAL_CODE_PSTLZ       : String(10)    @title : '{i18n>SALESBYCURRENT.POSTAL_CODE_PSTLZ}';
+    PRICE_CAL_UNIT_COST     : Decimal(11,2) @title : '{i18n>SALESBYCURRENT.PRICE_CAL_UNIT_COST}';
+    PRODUCT_DESCRIPTION_MAKTX : String(40)    @title : '{i18n>SALESBYCURRENT.PRODUCT_DESCRIPTION_MAKTX}'; // Corrected typo in original title implicitly via key
+    PROVINCE_REGIO          : String(3)     @title : '{i18n>SALESBYCURRENT.PROVINCE_REGIO}';
+    PURCHASE_ORDER_BSTKD    : String(35)    @title : '{i18n>SALESBYCURRENT.PURCHASE_ORDER_BSTKD}';
+    QUANTITY_FKIMG          : Decimal(13,3) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
+    RBTXT                   : String(20)    @title : '{i18n>SALESBYCURRENT.RBTXT}';
+    SHIP_TO_KUNWE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_KUNWE_ANA}';
+    SHIP_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_NAME}';
+key SKU_MATNR               : String(7)     @title : '{i18n>SALESBYCURRENT.SKU_MATNR}';
+    TBTXT                   : String(60)    @title : '{i18n>SALESBYCURRENT.TBTXT}';
+    TRACKING_TRACKN         : String(35)    @title : '{i18n>SALESBYCURRENT.TRACKING_TRACKN}';
+    UNIT_PRICE              : Decimal(32,2) @title : '{i18n>SALESBYCURRENT.UNIT_PRICE}';
+    UNITS_PER_CASE          : Integer       @title : '{i18n>SALESBYCURRENT.UNITS_PER_CASE}';
+    UPC_EAN11               : String(18)    @title : '{i18n>SALESBYCURRENT.UPC_EAN11}';
+    VKBUR                   : String(4)     @title : '{i18n>SALESBYCURRENT.VKBUR}';
+    VTEXT_FKART             : String(40)    @title : '{i18n>SALESBYCURRENT.VTEXT_FKART}';
+    WAERK                   : String(5)     @title : '{i18n>SALESBYCURRENT.WAERK}';
+    WAREHOUSE               : String(12)    @title : '{i18n>SALESBYCURRENT.WAREHOUSE}';
+key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS}';
+    PLANT_NAME              : String(30)    @title : '{i18n>SALESBYCURRENT.PLANT_NAME}';
+    MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; // Corrected typo in original title implicitly via key
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -685,26 +687,26 @@ define view SBCSALESOFFICE as
 @cds.persistence.exists
 entity CUSTOMERMASTER 
 {
-    key KUNN2_BILLTO	: String(10)        @title: 'Bill To #';	
-        STRAS_BILLTO	: String(35)        @title: 'Bill To Address';     
-        ORT01_BILLTO	: String(35)        @title: 'Bill To City';	 
-        ERDAT_BILLTO	: String(8)         @title: 'Bill To Created';	 
-        NAME1_BILLTO	: String(35)        @title: 'Bill To Name';	 
-        PSTLZ_BILLTO	: String(10)        @title: 'Bill To Postal Code';  
-        BEZEI_BILLTO	: String(20)        @title: 'Bill To Province';	 
-        KTEXT_BILLTO	: String(20)        @title: 'Bill To Type';	 
-    key VKORG	        : String(4)         @title: 'Sales Org.';	
-        CREDIT_LIMIT	: Decimal(15,2)     @title: 'Credit Limit';	 
-    key KUNN2_SHIPTO	: String(10)        @title: 'Ship To #';	
-        STRAS_SHIPTO	: String(35)        @title: 'Ship To Address';	 
-        ORT01_SHIPTO	: String(35)        @title: 'Ship To City';	 
-        ERDAT_SHIPTO	: String(8)         @title: 'Ship To Created';	 
-        NAME1_SHIPTO	: String(35)        @title: 'Ship To Name';	 
-        PSTLZ_SHIPTO	: String(10)        @title: 'Ship To Postal Code';	 
-        BEZEI_SHIPTO	: String(20)        @title: 'Ship To Province';	 
-        KTEXT_SHIPTO	: String(20)        @title: 'Ship To Type';	 
-        CAL_CUST_STATUS	: String(1)         @title: 'Status';	 
-        CAL_TERM	    : String(4)         @title: 'Terms';	 
+    key KUNN2_BILLTO	: String(10)        @title: '{i18n>CUSTOMERMASTER.KUNN2_BILLTO}';	
+        STRAS_BILLTO	: String(35)        @title: '{i18n>CUSTOMERMASTER.STRAS_BILLTO}';     
+        ORT01_BILLTO	: String(35)        @title: '{i18n>CUSTOMERMASTER.ORT01_BILLTO}';	 
+        ERDAT_BILLTO	: String(8)         @title: '{i18n>CUSTOMERMASTER.ERDAT_BILLTO}';	 
+        NAME1_BILLTO	: String(35)        @title: '{i18n>CUSTOMERMASTER.NAME1_BILLTO}';	 
+        PSTLZ_BILLTO	: String(10)        @title: '{i18n>CUSTOMERMASTER.PSTLZ_BILLTO}';  
+        BEZEI_BILLTO	: String(20)        @title: '{i18n>CUSTOMERMASTER.BEZEI_BILLTO}';	 
+        KTEXT_BILLTO	: String(20)        @title: '{i18n>CUSTOMERMASTER.KTEXT_BILLTO}';	 
+    key VKORG	        : String(4)         @title: '{i18n>CUSTOMERMASTER.VKORG}';	
+        CREDIT_LIMIT	: Decimal(15,2)     @title: '{i18n>CUSTOMERMASTER.CREDIT_LIMIT}';	 
+    key KUNN2_SHIPTO	: String(10)        @title: '{i18n>CUSTOMERMASTER.KUNN2_SHIPTO}';	
+        STRAS_SHIPTO	: String(35)        @title: '{i18n>CUSTOMERMASTER.STRAS_SHIPTO}';	 
+        ORT01_SHIPTO	: String(35)        @title: '{i18n>CUSTOMERMASTER.ORT01_SHIPTO}';	 
+        ERDAT_SHIPTO	: String(8)         @title: '{i18n>CUSTOMERMASTER.ERDAT_SHIPTO}';	 
+        NAME1_SHIPTO	: String(35)        @title: '{i18n>CUSTOMERMASTER.NAME1_SHIPTO}';	 
+        PSTLZ_SHIPTO	: String(10)        @title: '{i18n>CUSTOMERMASTER.PSTLZ_SHIPTO}';	 
+        BEZEI_SHIPTO	: String(20)        @title: '{i18n>CUSTOMERMASTER.BEZEI_SHIPTO}';	 
+        KTEXT_SHIPTO	: String(20)        @title: '{i18n>CUSTOMERMASTER.KTEXT_SHIPTO}';	 
+        CAL_CUST_STATUS	: String(1)         @title: '{i18n>CUSTOMERMASTER.CAL_CUST_STATUS}';	 
+        CAL_TERM	    : String(4)         @title: '{i18n>CUSTOMERMASTER.CAL_TERM}';	 
 }
 // Customer Master Bill To filter
 define view KUNN2_BILLTO as
@@ -959,23 +961,23 @@ define view OOMFRNRNAME as
     PROFIT_CENTER_PRCTR
 }
 @cds.persistence.exists
-entity RETURNS 
+entity RETURNS
 {
-        ERDAT                   : String(8)         @title: 'Date Entered';
-    key CUSTOMER_KUNNR          : String(10)        @title: 'Customer #';
-        CUSTOMER_NAME_NAME1     : String(35)        @title: 'Customer Name';
-        PROVINCE_REGIO          : String(3)         @title: 'Province';
-    key VBELN_VBAK              : String(10)        @title: 'RGA #';
-        REASON_BEZEI            : String(40)        @title: 'Reason';
-        REFERENCE_BSTKD         : String(35)        @title: 'Reference #';
-    key VBELN_VBRK              : String(35)        @title: 'Credit #';
-        FKDAT_ANA               : String(8)         @title: 'Credit Date';
-        CREDIT_AMT_NETWR        : Decimal(15,2)     @title: 'Credit Amt $';
-        CO_VKORG                : String(4)         @title: 'Sales Org.';
-        MFRNR                   : String(10)        @title: 'Manufacturer #';
-        VKBUR                   : String(4)         @title: 'Sales Office';
-        CURRENT                 : String(10)        @title: 'Current/Historical'; 
-        MFRNR_NAME              : String(35)        @title: 'Manufacturer Name';
+    ERDAT                 : String(8)     @title : '{i18n>RETURNS.ERDAT}';
+key CUSTOMER_KUNNR        : String(10)    @title : '{i18n>RETURNS.CUSTOMER_KUNNR}';
+    CUSTOMER_NAME_NAME1   : String(35)    @title : '{i18n>RETURNS.CUSTOMER_NAME_NAME1}';
+    PROVINCE_REGIO        : String(3)     @title : '{i18n>RETURNS.PROVINCE_REGIO}';
+key VBELN_VBAK            : String(10)    @title : '{i18n>RETURNS.VBELN_VBAK}';
+    REASON_BEZEI          : String(40)    @title : '{i18n>RETURNS.REASON_BEZEI}';
+    REFERENCE_BSTKD       : String(35)    @title : '{i18n>RETURNS.REFERENCE_BSTKD}';
+key VBELN_VBRK            : String(35)    @title : '{i18n>RETURNS.VBELN_VBRK}';
+    FKDAT_ANA             : String(8)     @title : '{i18n>RETURNS.FKDAT_ANA}';
+    CREDIT_AMT_NETWR      : Decimal(15,2) @title : '{i18n>RETURNS.CREDIT_AMT_NETWR}';
+    CO_VKORG              : String(4)     @title : '{i18n>RETURNS.CO_VKORG}';
+    MFRNR                 : String(10)    @title : '{i18n>RETURNS.MFRNR}';
+    VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
+    CURRENT               : String(10)    @title : '{i18n>RETURNS.CURRENT}';
+    MFRNR_NAME            : String(35)    @title : '{i18n>RETURNS.MFRNR_NAME}';
 }
 //  Returns Customer filter
 define view RETCUST as
@@ -1015,25 +1017,27 @@ define view RETVKBUR as
 };
 @cds.search: { KUNRE_ANA, KUNWE_ANA, VKORG,	BSTKD, VBELN, MATNR, MAKTX, NAME1, MFRNR }
 @cds.persistence.exists
-entity BACKORDERS 
+entity BACKORDERS
 {
-        DATE_DIFF           : Integer               @title: 'Age';	 
-    key KUNRE_ANA           : String(10)            @title: 'Bill To #';	
-        UDATE               : String(8)             @title: 'Cancel Date';	 
-    key VKORG               : String(4)             @title: 'Sales Org.';	
-        BSTKD               : String(35)            @title: 'Customer PO';	 
-        EXTENSION           : Decimal(38,2)         @title: 'Extension'         @Org.OData.Measures.V1.ISOCurrency;	 
-    key VBELN               : String(10)            @title: 'Order #';	
-        ERDAT               : String(8)             @title: 'Order Date';	 
-        UNIT_PRICE          : Decimal(30,2)         @title: 'Price'             @Org.OData.Measures.V1.ISOCurrency;	 
-    key MATNR               : String(7)             @title: 'SKU';	
-        MAKTX               : String(40)            @title: 'Product Desc.'; 
-        BACK_ORD_QTY        : Decimal(18,0)         @title: 'Quantity';	 
-    key KUNWE_ANA           : String(10)            @title: 'Ship To #';	
-        NAME1               : String(35)            @title: 'Ship To Name';	 
-        MFRNR               : String(10)            @title: 'Manufacturer #';	 
-        MEINS               : String(3)             @title: 'Base Unit of Measure';
-        MFRNR_NAME          : String(35)            @title: 'Manufacter Name';
+    DATE_DIFF      : Integer       @title : '{i18n>BACKORDERS.DATE_DIFF}';
+key KUNRE_ANA      : String(10)    @title : '{i18n>BACKORDERS.KUNRE_ANA}';
+    UDATE          : String(8)     @title : '{i18n>BACKORDERS.UDATE}';
+key VKORG          : String(4)     @title : '{i18n>BACKORDERS.VKORG}';
+    BSTKD          : String(35)    @title : '{i18n>BACKORDERS.BSTKD}';
+    EXTENSION      : Decimal(38,2) @title : '{i18n>BACKORDERS.EXTENSION}' @Org.OData.Measures.V1.ISOCurrency; // Assuming currency field exists/added
+key VBELN          : String(10)    @title : '{i18n>BACKORDERS.VBELN}';
+    ERDAT          : String(8)     @title : '{i18n>BACKORDERS.ERDAT}';
+    UNIT_PRICE     : Decimal(30,2) @title : '{i18n>BACKORDERS.UNIT_PRICE}' @Org.OData.Measures.V1.ISOCurrency; // Assuming currency field exists/added
+key MATNR          : String(7)     @title : '{i18n>BACKORDERS.MATNR}';
+    MAKTX          : String(40)    @title : '{i18n>BACKORDERS.MAKTX}';
+    BACK_ORD_QTY   : Decimal(18,0) @title : '{i18n>BACKORDERS.BACK_ORD_QTY}';
+key KUNWE_ANA      : String(10)    @title : '{i18n>BACKORDERS.KUNWE_ANA}';
+    NAME1          : String(35)    @title : '{i18n>BACKORDERS.NAME1}';
+    MFRNR          : String(10)    @title : '{i18n>BACKORDERS.MFRNR}';
+    MEINS          : String(3)     @title : '{i18n>BACKORDERS.MEINS}';
+    MFRNR_NAME     : String(35)    @title : '{i18n>BACKORDERS.MFRNR_NAME}'; // Corrected typo implicitly via key
+    // You likely need a currency field for the ISOCurrency annotations, e.g.:
+    // currency     : Currency;
 }
 
 

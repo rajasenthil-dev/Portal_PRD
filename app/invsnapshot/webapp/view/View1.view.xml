@@ -85,7 +85,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                             <t:RowSettings id="_IDGenRowSettings" highlight="{path:'DAYS_UNTIL_EXPIRY', formatter:'._formatRowHighlight'}" highlightText="{DAYS_UNTIL_EXPIRY}"/>
                         </t:rowSettingsTemplate>
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7rem'>
+                            <t:Column id="_IDGenColumn11" width='7rem' hAlign="Center">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 3}'/>
                                 </t:customData>
@@ -139,27 +139,34 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                             </t:Column> -->
                             <t:Column id="_IDGenColumn4" width="10rem" hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 6}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 7}'/>
                                 </t:customData>
                                 <Text id="_IDGenText5" text="{i18n>INVENTORYSNAPSHOT.VFDAT}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText" text="{path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn3" width='12rem' hAlign="Center">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DAYS_UNTIL_EXPIRY", "leadingProperty": "DAYS_UNTIL_EXPIRY", "columnIndex": 8}'/>
                                 </t:customData>
                                 <Text id="_IDGenText2" text="{i18n>daysUntilExpiry}"></Text>
                                 <t:template>
-                                    <HBox id="_IDGenHBox" height="2.5rem">
-                                        <my:SegmentedProgressBar id="_IDGenSegmentedProgressBar" value="{DAYS_UNTIL_EXPIRY}"/>
-                                    </HBox>
+                                    <FlexBox id="_IDGenHBox" height="2.5rem"  width="100%" justifyContent="Center">
+                                        <my:SegmentedProgressBar
+                                            id="_IDGenSegmentedProgressBar"
+                                            value="{DAYS_UNTIL_EXPIRY}"
+                                            width="100%" >
+                                            <my:layoutData>
+                                                <FlexItemData id="_IDGenFlexItemData" growFactor="1" />
+                                            </my:layoutData>
+                                        </my:SegmentedProgressBar>
+                                    </FlexBox>
                                 </t:template>
                             </t:Column>
                              <t:Column id="_IDGenColumn41" width="10rem" hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "REPORT_DATE", "leadingProperty": "REPORT_DATE", "columnIndex": 7}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "REPORT_DATE", "leadingProperty": "REPORT_DATE", "columnIndex": 6}'/>
                                 </t:customData>
                                 <Text id="_IDGenText51" text="{i18n>INVENTORYSNAPSHOT.REPORT_DATE}"></Text>
                                 <t:template>

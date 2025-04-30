@@ -52,241 +52,201 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CURRENT,
-                Label : 'Current/Legacy',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : INVOICE_CREDIT_VBELN,
-                Label : 'Invoice/Credit #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : INVOICE_DATE_FKDAT,
-                Label : 'Invoice Date',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PURCHASE_ORDER_BSTKD,
-                Label : 'Purchase Order',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : SKU_MATNR,
-                Label : 'SKU #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PRODUCT_DESCRIPTION_MAKTX,
-                Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : UNITS_PER_CASE,
-                Label : 'Units Per Case',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : QUANTITY_FKIMG,
-                Label : 'Quantity',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : RBTXT,
-                Label : 'Storage Conditions',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PRICE_CAL_UNIT_COST,
-                Label : 'Price',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : UNIT_PRICE,
-                Label : 'Unit Price',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : AMOUNT_NETWR,
-                Label : '$ Amount',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : WAERK,
-                Label : 'SD Document Currency',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : AUGRU_AUFT,
-                Label : 'Order Reason',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : LOT_CHARG,
-                Label : 'Lot #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : EXPIRY_DATE_VFDAT,
-                Label : 'Expiry Date',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VTEXT_FKART,
-                Label : 'Type',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO_KUNRE_ANA,
-                Label : 'Bill To #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO_KUNWE_ANA,
-                Label : 'Ship To #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO_NAME,
-                Label : 'Bill To Name',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO_NAME,
-                Label : 'Ship To Name',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : ADDRESS_1,
-                Label : 'Address 1',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : ADDRESS_2,
-                Label : 'Address 2',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CITY_ORT01,
-                Label : 'City',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : POSTAL_CODE_PSTLZ,
-                Label : 'Postal Code',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PROVINCE_REGIO,
-                Label : 'Province',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : TBTXT,
-                Label : 'Temp. Conditions',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : UPC_EAN11,
-                Label : 'UPC',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : WAREHOUSE,
-                Label : 'Warehouse',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : WERKS,
-                Label : 'Plant',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PLANT_NAME,
-                Label : 'Plant Name',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : TRACKING_TRACKN,
-                Label : 'Tracking #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : DELEVERY_DATE_VDATU,
-                Label : 'Delivery Date',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : PATIENT_ID,
-                Label : 'Patient Id',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRPN,
-                Label : 'Manufacturer Part Number',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : COMMENT,
-                Label : 'Comment',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CO_VKORG,
-                Label : 'Sales Org.',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR,
-                Label : 'Sales Office',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : 'Manufacturer #',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR_NAME,
-                Label : 'Manufacturer Name',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
         ],

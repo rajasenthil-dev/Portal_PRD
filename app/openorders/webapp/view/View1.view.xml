@@ -40,7 +40,8 @@
                         persistencyKey="SmartFilterBar_OPENORDERS"
                         smartVariant="pageVariant"
                         liveMode="true"
-                        search="onSearch">
+                        search="onSearch"
+                        initialise=".onFilterBarInitialised">
                         <sf:controlConfiguration>
                             </sf:controlConfiguration>
                     </sf:SmartFilterBar>

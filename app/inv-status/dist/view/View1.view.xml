@@ -138,15 +138,6 @@
                                     <Text id="_IDGenText43" text="{path: 'VKBUR'}" />
                                 </t:template>
                             </t:Column> 
-                            <t:Column id="_IDGenColumn64" width='7.813rem' hAlign="End">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MANUFACTURER_MFRPN", "leadingProperty": "MANUFACTURER_MFRPN", "columnIndex": 16}'/>
-                                    </t:customData>
-                                <Text id="_IDGenText24" text="{i18n>INVENTORYSTATUS.MANUFACTURER_MFRPN}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText44" text="{path: 'MANUFACTURER_MFRPN'}" />
-                                </t:template>
-                            </t:Column> 
                         </t:columns> 
                     </t:Table>
                 </st:SmartTable>

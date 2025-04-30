@@ -121,7 +121,7 @@
                     >
                     <t:Table id="table" selectionMode="None" alternateRowColors="true">
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7.813rem'>
+                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>

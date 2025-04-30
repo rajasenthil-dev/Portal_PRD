@@ -3,17 +3,23 @@ using INVENTORY as service from '../../srv/service';
 annotate INVENTORY.INVENTORYBYLOT with @(
     odata: {
         filterable: {
-            MATNR: true, 
-            WAREHOUSE_STATUS: true, 
-            EAN11: true, 
-            MFRPN: true, 
-            LGNUM: true, 
-            MFRNR: true, 
-            MAKTX: true, 
-            CHARG: true, 
-            PLANT: true, 
-            DIN: true, 
-            VKBUR: true
+            MATNR: true,
+            WAREHOUSE_STATUS: true,
+            EAN11: true,
+            ON_HAND: true,
+            MFRPN: true,
+            DAYS_UNTIL_EXPIRY : true,
+            LGNUM: true,
+            UNIT: true,
+            MFRNR: true,
+            MFRNR_NAME: true,
+            SIZE: true,
+            MAKTX: true,
+            CHARG: true,
+            VFDAT: true,
+            DIN: true,
+            PLANT: true,
+            VKBUR: true 
         }
     },
     UI : {
@@ -30,96 +36,76 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         LineItem  : [
             {
                 $Type : 'UI.DataField',
-                Value : MATNR,
-                Label : 'SKU',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-
+                Value : MATNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRPN,
-                Label : 'Product Code',
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+                Value : MFRPN
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : MAKTX,
-                Label : 'Product Description',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
-                Value : SIZE,
-                Label : 'Size',
+                Value : SIZE
             },
             {
                 $Type : 'UI.DataField',
-                Value : CHARG,
-                Label : 'Batch Number',
+                Value : CHARG
             },
             {
                 $Type : 'UI.DataField',
-                Value : VFDAT,
-                Label : 'Shelf Life or Best-Before Date',
+                Value : VFDAT
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : WAREHOUSE_STATUS,
-                Label : 'Warehouse Status'
+                ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : EAN11,
-                Label : 'UPC'
+                Value : EAN11
             },
             {
                 $Type : 'UI.DataField',
-                Value : ON_HAND,
-                Label : 'Qty On Hand'
+                Value : ON_HAND
             },
             {
                 $Type : 'UI.DataField',
-                Value : UNIT,
-                Label : 'Base Unit of Measure'
+                Value : UNIT
             },
             {
                 $Type : 'UI.DataField',
-                Value : DAYS_UNTIL_EXPIRY,
-                Label : 'Days Until Expiry',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+                Value : DAYS_UNTIL_EXPIRY
             },
             {
                 $Type : 'UI.DataField',
-                Value : LGNUM,
-                Label : 'Warehouse Number'
+                Value : LGNUM
             },
             {
                 $Type : 'UI.DataField',
-                Value : DIN,
-                Label : 'DIN'
+                Value : DIN
             },
             {
                 $Type : 'UI.DataField',
-                Value : PLANT,
-                Label : 'Plant'
+                Value : PLANT
             },
             {
                 $Type : 'UI.DataField',
-                Value : VKBUR,
-                Label : 'Sales Org.'
+                Value : VKBUR
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR,
-                Label : 'Manufacturer #'
+                Value : MFRNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                Label : 'Manufacturer Name'
+                Value : MFRNR_NAME
             }
         ],
     },

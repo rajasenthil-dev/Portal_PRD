@@ -16,7 +16,7 @@ sap.ui.define([
         
             oSmartFilterBar.attachInitialized(function () {
                 oView.setBusy(false); // Once filter bar + value helps are ready
-            });
+            }); 
             var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             const oSmartTable = this.getView().byId("table0");
             var oToolbar = oSmartTable.getToolbar();
