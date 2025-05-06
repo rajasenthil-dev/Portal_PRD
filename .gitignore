@@ -82,3 +82,6 @@ db/.env
 
 # added by cds
 .cdsrc-private.json
+
+# auto generated wildcard
+gen/db/.env

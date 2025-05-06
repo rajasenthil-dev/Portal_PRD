@@ -294,7 +294,7 @@
                                         text="{path: 'TRACKING_TRACKN'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End" visible="{= !${userPermissions>/shouldHidePatientId} }">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PATIENT_ID", "leadingProperty": "PATIENT_ID", "columnIndex": 34}'/>
                                 </t:customData>

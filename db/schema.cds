@@ -42,7 +42,7 @@ entity ITEMMASTER
         MFRNR_PART_NUMBER     : String(40)    @title: '{i18n>ITEMMASTER.MFRNR_PART_NUMBER}';
         MFRNR_NAME            : String(35)    @title: '{i18n>ITEMMASTER.MFRNR_NAME}';
         PLANT_NAME            : String(30)    @title: '{i18n>ITEMMASTER.PLANT_NAME}';
-        BWKEY                 : String(4)     @title: '{i18n>ITEMMASTER.BWKEY}';
+    key BWKEY                 : String(4)     @title: '{i18n>ITEMMASTER.BWKEY}';
         STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';
 }
 define view ITEMMASPD as
@@ -77,24 +77,24 @@ define view ITEMMASSALESORG as
 @cds.persistence.exists
 entity INVENTORYSTATUS 
 {
-  key SKU_MATNR            : String(7)      @title: '{i18n>INVENTORYSTATUS.SKU_MATNR}';
-      PRODUCT_CODE         : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_CODE}';
-      SIZE                 : String(70)     @title: '{i18n>INVENTORYSTATUS.SIZE}';
-      PRODUCT_DESCRIPTION  : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_DESCRIPTION}';
-      OPEN_STOCK           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
-      QUARANTINE           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
-      DAMAGE_DESTRUCTION   : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
-      RETAINS              : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RETAINS}';
-      QUALITY_HOLD         : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.QUALITY_HOLD}';
-      RETURNS_CAL          : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RETURNS_CAL}';
-      RECALLS              : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RECALLS}';
-      INVENTORY_HOLD       : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
-      RELABEL_QTY          : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
-      SAMPLE_QTY           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
-      UNIT                 : String(3)      @title: '{i18n>INVENTORYSTATUS.UNIT}';
-      VKBUR                : String(4)      @title: '{i18n>INVENTORYSTATUS.VKBUR}';
-      MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
-      MFRNR_NAME           : String(35)     @title: '{i18n>INVENTORYSTATUS.MFRNR_NAME}';
+    key SKU_MATNR            : String(7)      @title: '{i18n>INVENTORYSTATUS.SKU_MATNR}';
+        PRODUCT_CODE         : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_CODE}';
+        SIZE                 : String(70)     @title: '{i18n>INVENTORYSTATUS.SIZE}';
+        PRODUCT_DESCRIPTION  : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_DESCRIPTION}';
+        OPEN_STOCK           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
+        QUARANTINE           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
+        DAMAGE_DESTRUCTION   : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
+        RETAINS              : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RETAINS}';
+        QUALITY_HOLD         : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.QUALITY_HOLD}';
+        RETURNS_CAL          : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RETURNS_CAL}';
+        RECALLS              : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RECALLS}';
+        INVENTORY_HOLD       : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
+        RELABEL_QTY          : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
+        SAMPLE_QTY           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
+        UNIT                 : String(3)      @title: '{i18n>INVENTORYSTATUS.UNIT}';
+    key VKBUR                : String(4)      @title: '{i18n>INVENTORYSTATUS.VKBUR}';
+        MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
+        MFRNR_NAME           : String(35)     @title: '{i18n>INVENTORYSTATUS.MFRNR_NAME}';
 }
 define view INVSTATUSPRODUCTCODE as
     select from INVENTORYSTATUS distinct {
@@ -116,28 +116,28 @@ define view INVSTATUSVKBUR as
 @cds.persistence.exists
 entity INVENTORYAUDITTRAIL 
 {
-  key MATNR               : String(7)     @title: '{i18n>INVENTORYAUDITTRAIL.MATNR}';
-      MAKTX               : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MAKTX}';
-      MENGE               : Decimal(13,0) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
-      CHARG               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.CHARG}';
-  key KUNNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.KUNNR}';
-      CUSTOMER_NAME       : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.CUSTOMER_NAME}';
-      MFRNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR}';
-      WAREHOUSE_STATUS    : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.WAREHOUSE_STATUS}';
-  key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
-      LGORT               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
-      MFRNR_PROD_CODE     : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}';
-      MEINS               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.MEINS}';
-      PLANT_NAME         : String(30)    @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
-      TRAN_TYPE           : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}';
-  key INV_MATDOC_ITEM     : String(15)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
-      SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
-      CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
-      DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
-      POSTING_DATE        : Date          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
-      RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
-      TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
-      MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
+    key MATNR               : String(7)     @title: '{i18n>INVENTORYAUDITTRAIL.MATNR}';
+        MAKTX               : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MAKTX}';
+        MENGE               : Decimal(13,0) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
+    key CHARG               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.CHARG}';
+    key KUNNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.KUNNR}';
+        CUSTOMER_NAME       : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.CUSTOMER_NAME}';
+        MFRNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR}';
+    key WAREHOUSE_STATUS    : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.WAREHOUSE_STATUS}';
+    key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
+        LGORT               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
+        MFRNR_PROD_CODE     : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}';
+        MEINS               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.MEINS}';
+        PLANT_NAME         : String(30)     @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
+        TRAN_TYPE           : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}';
+    key INV_MATDOC_ITEM     : String(15)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
+        SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
+        CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
+        DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
+        POSTING_DATE        : Date          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+        RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
+        TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
+        MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
 }
 define view IATPRODUCTCODE as
     select from INVENTORYAUDITTRAIL distinct {
@@ -177,7 +177,7 @@ entity CASHJOURNAL
 {
         BILL_TO             : String(10)        @title : '{i18n>CASHJOURNAL.BILL_TO}';
         SHIP_TO             : String(10)        @title : '{i18n>CASHJOURNAL.SHIP_TO}';
-        VKORG               : String(4)         @title : '{i18n>CASHJOURNAL.VKORG}';
+    key VKORG               : String(4)         @title : '{i18n>CASHJOURNAL.VKORG}';
         BKTXT               : String(25)        @title : '{i18n>CASHJOURNAL.BKTXT}';
         SGTXT               : String(50)        @title : '{i18n>CASHJOURNAL.SGTXT}';
         CAL_DISCOUNT        : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_DISCOUNT}';
@@ -194,7 +194,7 @@ entity CASHJOURNAL
     key GJAHR               : String(4)         @title : '{i18n>CASHJOURNAL.GJAHR';
         BSTKD               : String(35)        @title : '{i18n>CASHJOURNAL.BSTKD}';
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
-        AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
+    key AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
         BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
         CURRENT             : String(3)         @title : '{i18n>CASHJOURNAL.CURRENT}';
         CAL_INV_AMOUNT      : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}';
@@ -307,7 +307,7 @@ entity INVENTORYBYLOT
     key CHARG                       : String(10)        @title : '{i18n>INVENTORYBYLOT.CHARG}';
     key VFDAT                       : String(8)         @title : '{i18n>INVENTORYBYLOT.VFDAT}';
         DIN                         : String(100)       @title : '{i18n>INVENTORYBYLOT.DIN}';
-        PLANT                       : String(18)        @title : '{i18n>INVENTORYBYLOT.PLANT}';
+    key PLANT                       : String(18)        @title : '{i18n>INVENTORYBYLOT.PLANT}';
     key VKBUR                       : String(4)         @title : '{i18n>INVENTORYBYLOT.VKBUR}';
 }
 
@@ -346,10 +346,10 @@ entity OPENAR
         CAL_61_90           : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_61_90}';
         CAL_AGE             : Integer           @title : '{i18n>OPENAR.CAL_AGE}';
         TSL                 : Decimal(23,2)     @title : '{i18n>OPENAR.TSL}';
-        VKORG               : String(4)         @title : '{i18n>OPENAR.VKORG}';
+    key VKORG               : String(4)         @title : '{i18n>OPENAR.VKORG}';
         CREDIT_LIMIT        : Decimal(15,2)     @title : '{i18n>OPENAR.CREDIT_LIMIT}';
         CAL_CURRENT         : Decimal(23,2)     @title : '{i18n>OPENAR.CAL_CURRENT}';
-        BILL_TO             : String(10)        @title : '{i18n>OPENAR.BILL_TO}';
+    key BILL_TO             : String(10)        @title : '{i18n>OPENAR.BILL_TO}';
         NAME1               : String(35)        @title : '{i18n>OPENAR.NAME1}';
         BSTKD               : String(35)        @title : '{i18n>OPENAR.BSTKD}';
         NETDT               : String(8)         @title : '{i18n>OPENAR.NETDT}';
@@ -358,8 +358,8 @@ entity OPENAR
         ZTERM               : String(4)         @title : '{i18n>OPENAR.ZTERM}';
         NETWR               : Decimal(23,2)     @title : '{i18n>OPENAR.NETWR}';
         CAL_OVER_90         : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_OVER_90}';
-        STORE_SHIP_TO       : String(10)        @title : '{i18n>OPENAR.STORE_SHIP_TO}';
-    key BLART               : String(2)         @title : '{i18n>OPENAR.BLART}';
+    key STORE_SHIP_TO       : String(10)        @title : '{i18n>OPENAR.STORE_SHIP_TO}';
+        BLART               : String(2)         @title : '{i18n>OPENAR.BLART}';
         MFRNR               : String(10)        @title : '{i18n>OPENAR.MFRNR}';
         MFRNR_NAME          : String(10)        @title : '{i18n>OPENAR.MFRNR_NAME}';
 }
@@ -387,14 +387,14 @@ define view OPENARSALESORG as
 @cds.persistence.exists
 entity INVENTORYVALUATION 
 {
-        PLANT                       : String(4)         @title : '{i18n>INVENTORYVALUATION.PLANT}';
-        LGNUM                       : String(4)         @title : '{i18n>INVENTORYVALUATION.LGNUM}';
-        MATNR                       : String(7)         @title : '{i18n>INVENTORYVALUATION.MATNR}';
+    key PLANT                       : String(4)         @title : '{i18n>INVENTORYVALUATION.PLANT}';
+    key LGNUM                       : String(4)         @title : '{i18n>INVENTORYVALUATION.LGNUM}';
+    key MATNR                       : String(7)         @title : '{i18n>INVENTORYVALUATION.MATNR}';
         MAKTX                       : String(40)        @title : '{i18n>INVENTORYVALUATION.MAKTX}';
-    key MFRPN                       : String(40)        @title : '{i18n>INVENTORYVALUATION.MFRPN}';
+        MFRPN                       : String(40)        @title : '{i18n>INVENTORYVALUATION.MFRPN}';
         DIN                         : String(100)       @title : '{i18n>INVENTORYVALUATION.DIN}';
         SIZE                        : String(70)        @title : '{i18n>INVENTORYVALUATION.SIZE}';
-        VKBUR                       : String(10)        @title : '{i18n>INVENTORYVALUATION.VKBUR}';
+    key VKBUR                       : String(10)        @title : '{i18n>INVENTORYVALUATION.VKBUR}';
         MFRNR                       : String(10)        @title : '{i18n>INVENTORYVALUATION.MFRNR}';
         MFRNR_NAME                  : String(35)        @title : '{i18n>INVENTORYVALUATION.MFRNR_NAME}';
         WAERS                       : String(5)         @title : '{i18n>INVENTORYVALUATION.WAERS}';
@@ -445,31 +445,37 @@ define view INVVALVKBUR as
 @cds.persistence.exists
 entity INVOICEHISTORY
 {
-    @Aggregation.default : #SUM
-    @Semantics.amount.currencyCode : 'currency' // Assuming a 'currency' field exists or will be added for this annotation to work fully
-    TSL_AMOUNT   : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.TSL_AMOUNT}';
-    ORT01        : String(35)    @title : '{i18n>INVOICEHISTORY.ORT01}';
-    VKORG        : String(4)     @title : '{i18n>INVOICEHISTORY.VKORG}';
-    BKTXT        : String(25)    @title : '{i18n>INVOICEHISTORY.BKTXT}';
-key KUNNR        : String(10)    @title : '{i18n>INVOICEHISTORY.KUNNR}';
-    LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
-    CAL_GST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_GST}';
-key BELNR        : String(10)    @title : '{i18n>INVOICEHISTORY.BELNR}';
-    BUDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.BUDAT}';
-    NAME1        : String(35)    @title : '{i18n>INVOICEHISTORY.NAME1}';
-key AUBEL        : String(10)    @title : '{i18n>INVOICEHISTORY.AUBEL}';
-    PSTLZ        : String(10)    @title : '{i18n>INVOICEHISTORY.PSTLZ}';
-    REGIO        : String(3)     @title : '{i18n>INVOICEHISTORY.REGIO}';
-    CAL_PST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_PST}';
-    BSTKD        : String(35)    @title : '{i18n>INVOICEHISTORY.BSTKD}';
-    SHIP_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.SHIP_TO}';
-    TRACKN       : String(35)    @title : '{i18n>INVOICEHISTORY.TRACKN}';
-    ORDER_TYPE   : String(20)    @title : '{i18n>INVOICEHISTORY.ORDER_TYPE}';
-    CURRENT      : String(1)     @title : '{i18n>INVOICEHISTORY.CURRENT}';
-    MFRNR        : String(10)    @title : '{i18n>INVOICEHISTORY.MFRNR}';
-    MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
-    // You might need a currency field for the @Semantics annotation to work, e.g.:
-    // currency     : Currency;
+        @Aggregation.default : #SUM
+        @Semantics.amount.currencyCode : 'currency' // Assuming a 'currency' field exists or will be added for this annotation to work fully
+    key BELNR        : String(10)    @title : '{i18n>INVOICEHISTORY.BELNR}';
+        BKTXT        : String(25)    @title : '{i18n>INVOICEHISTORY.BKTXT}';
+        LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
+        CAL_GST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_GST}';
+        CAL_PST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_PST}';
+        ORT01        : String(35)    @title : '{i18n>INVOICEHISTORY.ORT01}';
+    key MFRNR        : String(10)    @title : '{i18n>INVOICEHISTORY.MFRNR}';
+    key VKORG        : String(4)     @title : '{i18n>INVOICEHISTORY.VKORG}';
+    key SHIP_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.SHIP_TO}';
+        TSL_AMOUNT   : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.TSL_AMOUNT}';
+        BUDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.BUDAT}';
+    key KUNNR        : String(10)    @title : '{i18n>INVOICEHISTORY.KUNNR}';
+        NAME1        : String(35)    @title : '{i18n>INVOICEHISTORY.NAME1}';
+        BSTKD        : String(35)    @title : '{i18n>INVOICEHISTORY.BSTKD}';
+        PSTLZ        : String(10)    @title : '{i18n>INVOICEHISTORY.PSTLZ}';
+        REGIO        : String(3)     @title : '{i18n>INVOICEHISTORY.REGIO}';
+    key AUBEL        : String(10)    @title : '{i18n>INVOICEHISTORY.AUBEL}';
+        TRACKN       : String(35)    @title : '{i18n>INVOICEHISTORY.TRACKN}';
+
+    key BILL_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.BILL_TO}';
+    key RBUKRS       : String(4)     @title : '{i18n>INVOICEHISTORY.RBUKRS}';
+        WAERK        : String(5)     @title : '{i18n>INVOICEHISTORY.WAERK}';
+    key VKBUR        : String(4)     @title : '{i18n>INVOICEHISTORY.VKBUR}';
+
+        CURRENT      : String(1)     @title : '{i18n>INVOICEHISTORY.CURRENT}';
+        ORDER_TYPE   : String(20)    @title : '{i18n>INVOICEHISTORY.ORDER_TYPE}';
+        MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
+        // You might need a currency field for the @Semantics annotation to work, e.g.:
+        // currency     : Currency;
 }
 define view IHCUSTOMERID as
     select from INVOICEHISTORY distinct {
@@ -553,7 +559,7 @@ entity SALESBYCURRENT
     BILL_TO_KUNRE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.BILL_TO_KUNRE_ANA}';
     BILL_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.BILL_TO_NAME}';
     CITY_ORT01              : String(35)    @title : '{i18n>SALESBYCURRENT.CITY_ORT01}';
-    CO_VKORG                : String(4)     @title : '{i18n>SALESBYCURRENT.CO_VKORG}';
+key CO_VKORG                : String(4)     @title : '{i18n>SALESBYCURRENT.CO_VKORG}';
     COMMENT                 : String(13)    @title : '{i18n>SALESBYCURRENT.COMMENT}';
     CURRENT                 : String(3)     @title : '{i18n>SALESBYCURRENT.CURRENT}';
     DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; // Note: Typo 'DELEVERY' kept in field name
@@ -579,13 +585,13 @@ key SKU_MATNR               : String(7)     @title : '{i18n>SALESBYCURRENT.SKU_M
     UNIT_PRICE              : Decimal(32,2) @title : '{i18n>SALESBYCURRENT.UNIT_PRICE}';
     UNITS_PER_CASE          : Integer       @title : '{i18n>SALESBYCURRENT.UNITS_PER_CASE}';
     UPC_EAN11               : String(18)    @title : '{i18n>SALESBYCURRENT.UPC_EAN11}';
-    VKBUR                   : String(4)     @title : '{i18n>SALESBYCURRENT.VKBUR}';
+key VKBUR                   : String(4)     @title : '{i18n>SALESBYCURRENT.VKBUR}';
     VTEXT_FKART             : String(40)    @title : '{i18n>SALESBYCURRENT.VTEXT_FKART}';
     WAERK                   : String(5)     @title : '{i18n>SALESBYCURRENT.WAERK}';
     WAREHOUSE               : String(12)    @title : '{i18n>SALESBYCURRENT.WAREHOUSE}';
 key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS}';
     PLANT_NAME              : String(30)    @title : '{i18n>SALESBYCURRENT.PLANT_NAME}';
-    MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; // Corrected typo in original title implicitly via key
+    MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; 
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -755,24 +761,24 @@ define view CMSALESORG as
 @cds.persistence.exists
 entity SHIPPINGHISTORY
 {
-    TRK_DLVTO            : String(40)    @title : '{i18n>SHIPPINGHISTORY.TRK_DLVTO}';
-key VBELN                : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
-    KUNNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNNR}';
-    WADAT_IST            : String(8)     @title : '{i18n>SHIPPINGHISTORY.WADAT_IST}';
-    NAME1                : String(35)    @title : '{i18n>SHIPPINGHISTORY.NAME1}';
-    VKORG                : String(4)     @title : '{i18n>SHIPPINGHISTORY.VKORG}';
-    LFUHR                : String(6)     @title : '{i18n>SHIPPINGHISTORY.LFUHR}';
-    CARRIER              : String(10)    @title : '{i18n>SHIPPINGHISTORY.CARRIER}';
-    CAL_BILL_ITM_COUNT   : Integer       @title : '{i18n>SHIPPINGHISTORY.CAL_BILL_ITM_COUNT}';
-    KUNAG                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNAG}';
-    FKIMG                : Decimal(18,0) @title : '{i18n>SHIPPINGHISTORY.FKIMG}';
-    MFRNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.MFRNR}';
-    MEINS                : String(3)     @title : '{i18n>SHIPPINGHISTORY.MEINS}';
-    PSTLZ                : String(10)    @title : '{i18n>SHIPPINGHISTORY.PSTLZ}';
-    LFDAT                : String(8)     @title : '{i18n>SHIPPINGHISTORY.LFDAT}';
-    TRACKN               : String(35)    @title : '{i18n>SHIPPINGHISTORY.TRACKN}';
-    CURRENT              : String(3)     @title : '{i18n>SHIPPINGHISTORY.CURRENT}';
-    MFRNR_NAME           : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
+        TRK_DLVTO            : String(40)    @title : '{i18n>SHIPPINGHISTORY.TRK_DLVTO}';
+    key VBELN                : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
+    key KUNNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNNR}';
+        WADAT_IST            : String(8)     @title : '{i18n>SHIPPINGHISTORY.WADAT_IST}';
+        NAME1                : String(35)    @title : '{i18n>SHIPPINGHISTORY.NAME1}';
+    key VKORG                : String(4)     @title : '{i18n>SHIPPINGHISTORY.VKORG}';
+        LFUHR                : String(6)     @title : '{i18n>SHIPPINGHISTORY.LFUHR}';
+        CARRIER              : String(10)    @title : '{i18n>SHIPPINGHISTORY.CARRIER}';
+        CAL_BILL_ITM_COUNT   : Integer       @title : '{i18n>SHIPPINGHISTORY.CAL_BILL_ITM_COUNT}';
+    key KUNAG                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNAG}';
+        FKIMG                : Decimal(18,0) @title : '{i18n>SHIPPINGHISTORY.FKIMG}';
+        MFRNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.MFRNR}';
+        MEINS                : String(3)     @title : '{i18n>SHIPPINGHISTORY.MEINS}';
+        PSTLZ                : String(10)    @title : '{i18n>SHIPPINGHISTORY.PSTLZ}';
+        LFDAT                : String(8)     @title : '{i18n>SHIPPINGHISTORY.LFDAT}';
+        TRACKN               : String(35)    @title : '{i18n>SHIPPINGHISTORY.TRACKN}';
+        CURRENT              : String(3)     @title : '{i18n>SHIPPINGHISTORY.CURRENT}';
+        MFRNR_NAME           : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
 }
 
 // Shipping History Invoice filter
@@ -834,7 +840,7 @@ entity PRICING
 {
     key VKORG       : String(4)     @title : '{i18n>PRICING.VKORG}';
         KBETR       : Decimal(11,2) @title : '{i18n>PRICING.KBETR}';
-        KSCHL       : String(4)     @title : '{i18n>PRICING.KSCHL}';
+    key KSCHL       : String(4)     @title : '{i18n>PRICING.KSCHL}';
         VTEXT       : String(20)    @title : '{i18n>PRICING.VTEXT}';
     key MATNR       : String(7)     @title : '{i18n>PRICING.MATNR}';
         MAKTX       : String(40)    @title : '{i18n>PRICING.MAKTX}';
@@ -907,6 +913,7 @@ entity OPENORDERS
         BSTKD       : String(35)    @title : '{i18n>OPENORDERS.BSTKD}';
         MFRNR       : String(10)    @title : '{i18n>OPENORDERS.MFRNR}';
         MFRNR_NAME  : String(35)    @title : '{i18n>OPENORDERS.MFRNR_NAME}';
+    key VKORG       : String(4)     @title : '{i18n>OPENORDERS.VKORG}';
 }
 
 // Open Orders Product Description filter
@@ -936,6 +943,10 @@ define view OOSHIPTONAME as
 define view OOPROVINCE as
     select from OPENORDERS distinct {
         key REGIO
+};
+define view OOVKORG as
+    select from OPENORDERS distinct {
+        key VKORG
 };
 define view OOMFRNR as
     select from OPENORDERS distinct {
@@ -973,9 +984,9 @@ key VBELN_VBAK            : String(10)    @title : '{i18n>RETURNS.VBELN_VBAK}';
 key VBELN_VBRK            : String(35)    @title : '{i18n>RETURNS.VBELN_VBRK}';
     FKDAT_ANA             : String(8)     @title : '{i18n>RETURNS.FKDAT_ANA}';
     CREDIT_AMT_NETWR      : Decimal(15,2) @title : '{i18n>RETURNS.CREDIT_AMT_NETWR}';
-    CO_VKORG              : String(4)     @title : '{i18n>RETURNS.CO_VKORG}';
+key CO_VKORG              : String(4)     @title : '{i18n>RETURNS.CO_VKORG}';
     MFRNR                 : String(10)    @title : '{i18n>RETURNS.MFRNR}';
-    VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
+key VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
     CURRENT               : String(10)    @title : '{i18n>RETURNS.CURRENT}';
     MFRNR_NAME            : String(35)    @title : '{i18n>RETURNS.MFRNR_NAME}';
 }

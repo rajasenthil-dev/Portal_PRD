@@ -260,6 +260,8 @@ src/gen/PROCESSING.OOPRODDESC.hdbview
 src/gen/PROCESSING.OOPROD.hdbview
 src/gen/PROCESSING.OOCUST.hdbview
 src/gen/PROCESSING.OOMFRNR.hdbview
+src/gen/PROCESSING.OOVKORG.hdbview
+src/gen/OOVKORG.hdbview
 src/gen/PROCESSING.OOMFRNRNAME.hdbview
 src/gen/PROCESSING.OOSHIPTO.hdbview
 src/gen/PROCESSING.OOSHIPTONAME.hdbview
@@ -282,6 +284,8 @@ src/gen/SALES.IHPO.hdbview
 src/gen/SALES.IHTYPE.hdbview
 src/gen/SALES.IHPROVINCE.hdbview
 src/gen/SALES.IHMFRNR.hdbview
+src/gen/SALES.IHMFRNRNAME.hdbview
+src/gen/IHMFRNRNAME.hdbview
 src/gen/SALES.IHSALESORG.hdbview
 src/gen/IHCUSTOMER.hdbview
 src/gen/IHCUSTOMERID.hdbview

@@ -6,10 +6,10 @@ sap.ui.define([], () => {
             const cleanValue = (value || "").trim().toUpperCase(); // Clean and normalize data
             
             if (cleanValue.includes("Y")) {
-                return "Information";  // Green for "Current"
+                return "Success";  // Green for "Current"
             } 
             if (cleanValue.includes("N")) {
-                return "Warning";    // Red for "Historical"
+                return "Information";    // Red for "Historical"
             } 
             
             return "None"; // Default state for unexpected values

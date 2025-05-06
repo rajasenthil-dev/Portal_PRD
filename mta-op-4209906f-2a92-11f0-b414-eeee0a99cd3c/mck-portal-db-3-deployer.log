@@ -1,0 +1,954 @@
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:08.149869] Uploading app package for app with guid c644411b-db25-469a-95f3-744b48f54eec (STDOUT, API)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:08.403717] Updated app with guid c644411b-db25-469a-95f3-744b48f54eec ({"environment_variables"=>"[PRIVATE DATA HIDDEN]"}) (STDOUT, API)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.573354] Creating build for app with guid c644411b-db25-469a-95f3-744b48f54eec (STDOUT, API)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.743986] Downloading nodejs_buildpack... (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.761824] Downloaded nodejs_buildpack (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.761903] Cell b09315eb-f652-4637-906b-5c1abf821245 creating container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.189804] Security group rules were updated (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.242661] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully created container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.507637] Downloading build artifacts cache... (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.507701] Downloading app package... (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.534043] Downloaded build artifacts cache (228B) (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.329885] Downloaded app package (63.6M) (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.399984] -----> Nodejs Buildpack version 1.8.34 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.830019] -----> Bootstrapping python (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.830050] -----> Installing python 3.11.11 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.830078] Copy [/tmp/buildpacks/d6533c66903f0a84/dependencies/00d386870e328b0996c36828a42dbaba/python_3.11.11_linux_x64_cflinuxfs4_bf6747f7.tgz] (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431373] -----> Installing binaries (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431564] engines.node (package.json): unspecified (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431568] engines.npm (package.json): unspecified (use default) (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431590] [31;1m**WARNING**[0m Node version not specified in package.json or .nvmrc. See: http://docs.cloudfoundry.org/buildpacks/node/node-tips.html (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431691] -----> Installing node 18.20.6 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431903] Copy [/tmp/buildpacks/d6533c66903f0a84/dependencies/fa802d9d5a4da12762cda9936d492d65/node_18.20.6_linux_x64_cflinuxfs4_7ef6b71f.tgz] (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.533067] [31;1m**WARNING**[0m node 18.x.x will no longer be available in new buildpacks released after 2025-04-30. (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.533089] See: https://github.com/nodejs/Release (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.233317] Using default npm version: 10.8.2 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.233335] -----> Installing yarn 1.22.19 (STDOUT, STG)#
+#2025 05 06 15:55:26.538#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7229#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.233551] Copy [/tmp/buildpacks/d6533c66903f0a84/dependencies/0f06052381cbcef1593bd279ca3d9458/yarn_1.22.19_linux_noarch_any-stack_32d0e82e.tgz] (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.536410] Installed yarn 1.22.19 (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.536428] -----> Creating runtime environment (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538027] NODE_ENV=production (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538040] NODE_HOME=/tmp/contents4142992056/deps/0/node (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538043] NODE_MODULES_CACHE=true (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538047] NODE_VERBOSE=false (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538051] NPM_CONFIG_LOGLEVEL=error (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538054] NPM_CONFIG_PRODUCTION=true (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538072] -----> Building dependencies (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538076] Prebuild detected (node_modules already exists) (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538125] Rebuilding any native modules (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.160894] rebuilt dependencies successfully (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162182] npm notice (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162199] npm notice New major version of npm available! 10.8.2 -> 11.3.0 (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162207] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0 (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162212] npm notice To update run: npm install -g npm@11.3.0 (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162215] npm notice (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.176246] Installing any new modules (package.json + package-lock.json) (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.655756] up to date in 396ms (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.655806] 3 packages are looking for funding (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.655810] run `npm fund` for details (STDOUT, STG)#
+#2025 05 06 15:55:36.437#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14664#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:28.602991] Contrast Security no credentials found. Will not write environment files. (STDOUT, STG)#
+#2025 05 06 15:55:46.535#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7242#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186453] Exit status 0 (STDOUT, STG)#
+#2025 05 06 15:55:46.535#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7242#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186530] Uploading droplet, build artifacts cache... (STDOUT, STG)#
+#2025 05 06 15:55:46.535#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7242#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186611] Uploading droplet... (STDOUT, STG)#
+#2025 05 06 15:55:46.535#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7242#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186686] Uploading build artifacts cache... (STDOUT, STG)#
+#2025 05 06 15:55:46.535#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7242#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.221396] Uploaded build artifacts cache (225B) (STDOUT, STG)#
+#2025 05 06 15:55:46.535#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-7242#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:45.972463] Creating droplet for app with guid c644411b-db25-469a-95f3-744b48f54eec (STDOUT, API)#
+#2025 05 06 15:55:56.602#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21860#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.095808] Uploaded droplet (106.8M) (STDOUT, STG)#
+#2025 05 06 15:55:56.602#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21860#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.131541] Uploading complete (STDOUT, STG)#
+#2025 05 06 15:55:56.602#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21860#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.434741] Cell b09315eb-f652-4637-906b-5c1abf821245 stopping instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:55:56.602#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21860#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.434804] Cell b09315eb-f652-4637-906b-5c1abf821245 destroying container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:55:56.602#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21860#
+[PollStageAppStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:50.737715] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully destroyed container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:08.149869] Uploading app package for app with guid c644411b-db25-469a-95f3-744b48f54eec (STDOUT, API)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:08.403717] Updated app with guid c644411b-db25-469a-95f3-744b48f54eec ({"environment_variables"=>"[PRIVATE DATA HIDDEN]"}) (STDOUT, API)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.573354] Creating build for app with guid c644411b-db25-469a-95f3-744b48f54eec (STDOUT, API)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.743986] Downloading nodejs_buildpack... (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.761824] Downloaded nodejs_buildpack (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:16.761903] Cell b09315eb-f652-4637-906b-5c1abf821245 creating container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.189804] Security group rules were updated (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.242661] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully created container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.507637] Downloading build artifacts cache... (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.507701] Downloading app package... (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:17.534043] Downloaded build artifacts cache (228B) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.329885] Downloaded app package (63.6M) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.399984] -----> Nodejs Buildpack version 1.8.34 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.830019] -----> Bootstrapping python (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.830050] -----> Installing python 3.11.11 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:20.830078] Copy [/tmp/buildpacks/d6533c66903f0a84/dependencies/00d386870e328b0996c36828a42dbaba/python_3.11.11_linux_x64_cflinuxfs4_bf6747f7.tgz] (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431373] -----> Installing binaries (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431564] engines.node (package.json): unspecified (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431568] engines.npm (package.json): unspecified (use default) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431590] [31;1m**WARNING**[0m Node version not specified in package.json or .nvmrc. See: http://docs.cloudfoundry.org/buildpacks/node/node-tips.html (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431691] -----> Installing node 18.20.6 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.431903] Copy [/tmp/buildpacks/d6533c66903f0a84/dependencies/fa802d9d5a4da12762cda9936d492d65/node_18.20.6_linux_x64_cflinuxfs4_7ef6b71f.tgz] (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.533067] [31;1m**WARNING**[0m node 18.x.x will no longer be available in new buildpacks released after 2025-04-30. (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:24.533089] See: https://github.com/nodejs/Release (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.233317] Using default npm version: 10.8.2 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.233335] -----> Installing yarn 1.22.19 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.233551] Copy [/tmp/buildpacks/d6533c66903f0a84/dependencies/0f06052381cbcef1593bd279ca3d9458/yarn_1.22.19_linux_noarch_any-stack_32d0e82e.tgz] (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.536410] Installed yarn 1.22.19 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.536428] -----> Creating runtime environment (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538027] NODE_ENV=production (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538040] NODE_HOME=/tmp/contents4142992056/deps/0/node (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538043] NODE_MODULES_CACHE=true (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538047] NODE_VERBOSE=false (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538051] NPM_CONFIG_LOGLEVEL=error (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538054] NPM_CONFIG_PRODUCTION=true (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538072] -----> Building dependencies (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538076] Prebuild detected (node_modules already exists) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:26.538125] Rebuilding any native modules (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.160894] rebuilt dependencies successfully (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162182] npm notice (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162199] npm notice New major version of npm available! 10.8.2 -> 11.3.0 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162207] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162212] npm notice To update run: npm install -g npm@11.3.0 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.162215] npm notice (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.176246] Installing any new modules (package.json + package-lock.json) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.655756] up to date in 396ms (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.655806] 3 packages are looking for funding (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:27.655810] run `npm fund` for details (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:28.602991] Contrast Security no credentials found. Will not write environment files. (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186453] Exit status 0 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186530] Uploading droplet, build artifacts cache... (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186611] Uploading droplet... (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.186686] Uploading build artifacts cache... (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:44.221396] Uploaded build artifacts cache (225B) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:45.972463] Creating droplet for app with guid c644411b-db25-469a-95f3-744b48f54eec (STDOUT, API)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.095808] Uploaded droplet (106.8M) (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.131541] Uploading complete (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.434741] Cell b09315eb-f652-4637-906b-5c1abf821245 stopping instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:48.434804] Cell b09315eb-f652-4637-906b-5c1abf821245 destroying container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:50.737715] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully destroyed container for instance d355927e-a2a4-4f85-8ffb-cb2490004944 (STDOUT, STG)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:56.680475] Updated app with guid c644411b-db25-469a-95f3-744b48f54eec ({:droplet_guid=>"f4a9e3c6-7db9-40e1-9c68-672dd55a2964"}) (STDOUT, API)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:57.141226] Cell b09315eb-f652-4637-906b-5c1abf821245 creating container for instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:57.582215] Security group rules were updated (STDOUT, CELL)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:55:57.643268] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully created container for instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:03.284894] Invoking pre-start scripts. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:03.469346] Invoking start command. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:03.849098] > start (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:03.849114] > node node_modules/@sap/hdi-deploy/deploy.js --auto-undeploy (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:03.969511] VCAP_SERVICES: { (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.053978] "hana": [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.053997] { (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054001] "label": "hana", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054003] "provider": null, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054007] "plan": "hdi-shared", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054010] "name": "mck-portal-ds-db-3", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054017] "tags": [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054019] "hana", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054022] "database", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054025] "relational" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054027] ], (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054031] "instance_guid": "74adf04a-158b-4661-a04b-6b645b54f784", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054033] "instance_name": "mck-portal-ds-db-3", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054036] "binding_guid": "63d07119-24e1-4642-b78c-c0c975ba2d43", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054038] "binding_name": null, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054043] "credentials": { (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054047] "database_id": "451e8954-27cd-4d2f-9402-3ca1944484c7", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054050] "host": "451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054052] "port": "443", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054054] "driver": "com.sap.db.jdbc.Driver", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054060] "url": "jdbc:sap://451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443?encrypt=true&validateCertificate=true&currentschema=MCK_RQ2_300_1", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054062] "schema": "MCK_RQ2_300_1", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054112] "certificate": "-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\nQTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB\nCSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97\nnh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt\n43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P\nT19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4\ngdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO\nBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR\nTLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw\nDQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr\nhMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg\n06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF\nPnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls\nYSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk\nCAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIDjjCCAnagAwIBAgIQAzrx5qcRqaC7KGSxHQn65TANBgkqhkiG9w0BAQsFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBH\nMjAeFw0xMzA4MDExMjAwMDBaFw0zODAxMTUxMjAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IEcyMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuzfNNNx7a8myaJCtSnX/RrohCgiN9RlUyfuI\n2/Ou8jqJkTx65qsGGmvPrC3oXgkkRLpimn7Wo6h+4FR1IAWsULecYxpsMNzaHxmx\n1x7e/dfgy5SDN67sH0NO3Xss0r0upS/kqbitOtSZpLYl6ZtrAGCSYP9PIUkY92eQ\nq2EGnI/yuum06ZIya7XzV+hdG82MHauVBJVJ8zUtluNJbd134/tJS7SsVQepj5Wz\ntCO7TG1F8PapspUwtP1MVYwnSlcUfIKdzXOS0xZKBgyMUNGPHgm+F6HmIcr9g+UQ\nvIOlCsRnKPZzFBQ9RnbDhxSJITRNrw9FDKZJobq7nMWxM4MphQIDAQABo0IwQDAP\nBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBhjAdBgNVHQ4EFgQUTiJUIBiV\n5uNu5g/6+rkS7QYXjzkwDQYJKoZIhvcNAQELBQADggEBAGBnKJRvDkhj6zHd6mcY\n1Yl9PMWLSn/pvtsrF9+wX3N3KjITOYFnQoQj8kVnNeyIv/iPsGEMNKSuIEyExtv4\nNeF22d+mQrvHRAiGfzZ0JFrabA0UWTW98kndth/Jsw1HKj2ZL7tcu7XUIOGZX1NG\nFdtom/DzMNU+MeKNhJ7jitralj41E6Vf8PlwUHBHQRFXGU7Aj64GxJUTFy8bJZ91\n8rGOmaFvE7FBcf6IKshPECBV1/MUReXgRPTqh5Uykw7+U0b6LJ3/iyK5S9kJRaTe\npLiaWN0bfVKfjllDiIGknibVb63dDcY3fe0Dkhvld1927jyNxF1WW6LZZm6zNTfl\nMrY=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIICGTCCAZ+gAwIBAgIQCeCTZaz32ci5PhwLBCou8zAKBggqhkjOPQQDAzBOMQsw\nCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xJjAkBgNVBAMTHURp\nZ2lDZXJ0IFRMUyBFQ0MgUDM4NCBSb290IEc1MB4XDTIxMDExNTAwMDAwMFoXDTQ2\nMDExNDIzNTk1OVowTjELMAkGA1UEBhMCVVMxFzAVBgNVBAoTDkRpZ2lDZXJ0LCBJ\nbmMuMSYwJAYDVQQDEx1EaWdpQ2VydCBUTFMgRUNDIFAzODQgUm9vdCBHNTB2MBAG\nByqGSM49AgEGBSuBBAAiA2IABMFEoc8Rl1Ca3iOCNQfN0MsYndLxf3c1TzvdlHJS\n7cI7+Oz6e2tYIOyZrsn8aLN1udsJ7MgT9U7GCh1mMEy7H0cKPGEQQil8pQgO4CLp\n0zVozptjn4S1mU1YoI71VOeVyaNCMEAwHQYDVR0OBBYEFMFRRVBZqz7nLFr6ICIS\nB4CIfBFqMA4GA1UdDwEB/wQEAwIBhjAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49\nBAMDA2gAMGUCMQCJao1H5+z8blUD2WdsJk6Dxv3J+ysTvLd6jLRl0mlpYxNjOyZQ\nLgGheQaRnUi/wr4CMEfDFXuxoJGZSZOoPHzoRgaLLPIxAJSdYsiJvRmEFOml+wG4\nDXZDjC5Ty3zfDBeWUA==\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFZjCCA06gAwIBAgIQCPm0eKj6ftpqMzeJ3nzPijANBgkqhkiG9w0BAQwFADBN\nMQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xJTAjBgNVBAMT\nHERpZ2lDZXJ0IFRMUyBSU0E0MDk2IFJvb3QgRzUwHhcNMjEwMTE1MDAwMDAwWhcN\nNDYwMTE0MjM1OTU5WjBNMQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQs\nIEluYy4xJTAjBgNVBAMTHERpZ2lDZXJ0IFRMUyBSU0E0MDk2IFJvb3QgRzUwggIi\nMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCz0PTJeRGd/fxmgefM1eS87IE+\najWOLrfn3q/5B03PMJ3qCQuZvWxX2hhKuHisOjmopkisLnLlvevxGs3npAOpPxG0\n2C+JFvuUAT27L/gTBaF4HI4o4EXgg/RZG5Wzrn4DReW+wkL+7vI8toUTmDKdFqgp\nwgscONyfMXdcvyej/Cestyu9dJsXLfKB2l2w4SMXPohKEiPQ6s+d3gMXsUJKoBZM\npG2T6T867jp8nVid9E6P/DsjyG244gXazOvswzH016cpVIDPRFtMbzCe88zdH5RD\nnU1/cHAN1DrRN/BsnZvAFJNY781BOHW8EwOVfH/jXOnVDdXifBBiqmvwPXbzP6Po\nsMH976pXTayGpxi0KcEsDr9kvimM2AItzVwv8n/vFfQMFawKsPHTDU9qTXeXAaDx\nZre3zu/O7Oyldcqs4+Fj97ihBMi8ez9dLRYiVu1ISf6nL3kwJZu6ay0/nTvEF+cd\nLvvyz6b84xQslpghjLSR6Rlgg/IwKwZzUNWYOwbpx4oMYIwo+FKbbuH2TbsGJJvX\nKyY//SovcfXWJL5/MZ4PbeiPT02jP/816t9JXkGPhvnxd3lLG7SjXi/7RgLQZhNe\nXoVPzthwiHvOAbWWl9fNff2C+MIkwcoBOU+NosEUQB+cZtUMCUbW8tDRSHZWOkPL\ntgoRObqME2wGtZ7P6wIDAQABo0IwQDAdBgNVHQ4EFgQUUTMc7TZArxfTJc1paPKv\nTiM+s0EwDgYDVR0PAQH/BAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcN\nAQEMBQADggIBAGCmr1tfV9qJ20tQqcQjNSH/0GEwhJG3PxDPJY7Jv0Y02cEhJhxw\nGXIeo8mH/qlDZJY6yFMECrZBu8RHANmfGBg7sg7zNOok992vIGCukihfNudd5N7H\nPNtQOa27PShNlnx2xlv0wdsUpasZYgcYQF+Xkdycx6u1UQ3maVNVzDl92sURVXLF\nO4uJ+DQtpBflF+aZfTCIITfNMBc9uPK8qHWgQ9w+iUuQrm0D4ByjoJYJu32jtyoQ\nREtGBzRj7TG5BO6jm5qu5jF49OokYTurWGT/u4cnYiWB39yhL/btp/96j1EuMPik\nAdKFOV8BmZZvWltwGUb+hmA+rYAQCd05JS9Yf7vSdPD3Rh9GOUrYU9DzLjtxpdRv\n/PNn5AeP3SYZ4Y1b+qOTEZvpyDrDVWiakuFSdjjo4bq9+0/V77PnSIMx8IIh47a+\np6tv75/fTM8BuGJqIz3nCU2AG3swpMPdB380vqQmsvZB6Akd4yCYqjdP//fx4ilw\nMUc/dNAUFvohigLVigmUdy7yWSiLfFCSCmZ4OIN1xLVaqBHG5cGdZlXPU8Sv13WF\nqUITVuwhd4GTWgzqltlJyqEI8pc7bZsEGCREjnwB8twl2F6GmrE52/WRMmrRpnCK\novfepEWFJqgejF0pW8hL2JpqA15w8oVPbEtoL8pU9ozaMv7Da4M/OMZ+\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/\nMSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT\nDkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB\nAQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC\nov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL\nwYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D\nLtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK\n4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5\nbHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y\nsR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ\nXmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4\nFQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc\nSLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql\nPRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND\nTwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw\nSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1\nc3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx\n+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB\nATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu\nb3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E\nU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu\nMA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC\n5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW\n9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG\nWCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O\nhe8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC\nDfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5\n-----END CERTIFICATE-----", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054122] "hdi_user": "MCK_RQ2_300_1_ES7MQ4HABEQWOB5Z3DNZAWEJH_DT", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054124] "hdi_p[...] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054126] "user": "MCK_RQ2_300_1_ES7MQ4HABEQWOB5Z3DNZAWEJH_RT", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054129] "p[...] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054131] }, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054135] "syslog_drain_url": null, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054138] "volume_mounts": [] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.706#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054140] } (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054142] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.054145] } (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.895323] @sap/hdi-deploy, version 5.3.2 (mode default), server version 4.00.000.00.1742293347 (4.0.0.0), cloud version 2025.2.6, node version 18.20.6, HDI version 1016, container API version 1007 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.895608] Deployment started at 2025-05-06 15:56:04 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.895805] Using @sap/hana-client@undefined for connection (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.895818] Using service replacements from environment variable "SERVICE_REPLACEMENTS" with 1 replacements (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.927242] Ignore file found at "/home/vcap/app/.hdiignore". Found 330 lines. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.927848] Collecting files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.944869] Collecting files... ok (0s 17ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.944883] 6 directories collected (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.944886] 154 files collected (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.944889] 0 reusable modules collected (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:04.944986] Target service: mck-portal-ds-db-3 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.243671] Session variable APPLICATION is set to "SAP_HDI/Datasphere_Dev/McKesson Corporation_discovery-sunrise". (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.587207] Previous build with request ID 11202 finished at 2025-05-02 16:12:35.564878000 with status Canceled and message: Make failed (3 errors, 0 warnings): tried to deploy 1 files, undeploy 0 files, redeploy 0 dependent files. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.587259] Processing revoke files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.587397] Processing revoke files... ok (0s 0ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.587505] Processing grants files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.587728] Processing "cfg/DWC_ACCESS.hdbgrants"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:05.588771] Using grantor service "UPS_DEMO_USER" of type "procedure" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.321059] Processing "cfg/DWC_ACCESS.hdbgrants"... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.321076] Processing grants files... ok (0s 734ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.322908] Preprocessing files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.323596] Preprocessing files... ok (0s 1ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:06.707#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-14680#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.323673] Connecting to the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.520163] Connecting to the container "MCK_RQ2_300_1"... ok (0s 196ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.520185] Locking the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.939079] Locking the container "MCK_RQ2_300_1"... ok (0s 419ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.939094] Synchronizing files with the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.939101] Deleting files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:07.434910] Deleting files... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:07.434927] Writing files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.505034] Writing files... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.505059] Synchronizing files with the container "MCK_RQ2_300_1"... ok (1s 566ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804843] added files: [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804869] "src/models/SALES_IHMFRNRNAME.hdbview" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804872] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804875] modified files: [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804877] "src/models/SALES_INVOICEHISTORY.hdbview" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804881] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804883] deleted files: [] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804899] 2 modified or added files are scheduled for deploy based on delta detection (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805160] 0 deleted files are scheduled for undeploy based on delta detection (filtered by undeploy allowlist) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805198] 0 files are scheduled for deploy based on explicit specification (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805204] 0 files are scheduled for undeploy based on explicit specification (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805474] Deploying to the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.562028] Polling messages for request id: 11207 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593857] Starting make in the container "MCK_RQ2_300_1" with 2 files to deploy, 0 files to undeploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593866] Disabling table replication for the container schema "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593868] Disabling table replication for the container schema "MCK_RQ2_300_1"... ok (0s 11ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593891] Migrating libraries... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594148] Migrating libraries... ok (0s 129ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594164] Making... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594167] Preparing... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594169] Preparing the make transaction... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459194] Preparing the make transaction... ok (0s 575ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459222] Adding "src/models/SALES_IHMFRNRNAME.hdbview" for deploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459225] Adding "src/models/SALES_IHMFRNRNAME.hdbview" for deploy... ok (0s 132ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459228] Adding "src/models/SALES_INVOICEHISTORY.hdbview" for deploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459230] Adding "src/models/SALES_INVOICEHISTORY.hdbview" for deploy... ok (0s 1ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459237] Preparing... ok (0s 796ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459240] Calculating dependencies... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459243] Expanding... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459245] Expanding "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459248] Expanding "src/models/SALES_IHMFRNRNAME.hdbview"... ok (0s 13ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459250] Expanding "src/models/SALES_INVOICEHISTORY.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459252] Expanding "src/models/SALES_INVOICEHISTORY.hdbview"... ok (0s 4ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459254] Expanding... ok (0s 87ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459256] Precompiling... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459266] Precompiling "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459329] Precompiling "src/models/SALES_IHMFRNRNAME.hdbview"... ok (0s 6ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459513] Precompiling "src/models/SALES_INVOICEHISTORY.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459546] Precompiling "src/models/SALES_INVOICEHISTORY.hdbview"... ok (0s 4ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459552] Precompiling... ok (0s 22ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459557] Merging... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459561] Merging... ok (0s 41ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459565] Calculating dependencies... ok (0s 290ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459568] Processing work list... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459591] Deploying "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459653] Error: com.sap.hana.di.view: Could not create the database object [8250005] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459668] at "src/models/SALES_IHMFRNRNAME.hdbview" (3:1) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459677] Error: com.sap.hana.di.view: Database error 260: invalid column name: MFRNR_NAME: line 4 col 1 (at pos 55) [8201003] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459679] at "src/models/SALES_IHMFRNRNAME.hdbview" (3:1) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459682] Error: Worker 0 has encountered an error; all remaining jobs will be canceled [8214600] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459689] Make failed (4 errors, 0 warnings): tried to deploy 2 files, undeploy 0 files, redeploy 0 dependent files (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459690] Error: Processing work list... failed [8212102] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459740] Error: Making... failed [8211605] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459744] Error: Starting make in the container "MCK_RQ2_300_1" with 2 files to deploy, 0 files to undeploy... failed [8214168] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.460116] Deployment to container MCK_RQ2_300_1 failed - error: HDI make failed [Deployment ID: none]. (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.461039] Deployment ended at 2025-05-06 15:56:10 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.461070] Error: HDI make failed (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.461658] (6s 568ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480226] npm notice (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480244] npm notice New major version of npm available! 10.8.2 -> 11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480251] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480255] npm notice To update run: npm install -g npm@11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480259] npm notice (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.501560] Exit status 1 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.863821] Cell b09315eb-f652-4637-906b-5c1abf821245 stopping instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.863860] Cell b09315eb-f652-4637-906b-5c1abf821245 destroying container for instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:16.752#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21869#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:13.079091] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully destroyed container for instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.520163] Connecting to the container "MCK_RQ2_300_1"... ok (0s 196ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.520185] Locking the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.939079] Locking the container "MCK_RQ2_300_1"... ok (0s 419ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.939094] Synchronizing files with the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:06.939101] Deleting files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:07.434910] Deleting files... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:07.434927] Writing files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.505034] Writing files... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.505059] Synchronizing files with the container "MCK_RQ2_300_1"... ok (1s 566ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804843] added files: [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804869] "src/models/SALES_IHMFRNRNAME.hdbview" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804872] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804875] modified files: [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804877] "src/models/SALES_INVOICEHISTORY.hdbview" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804881] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804883] deleted files: [] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.804899] 2 modified or added files are scheduled for deploy based on delta detection (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805160] 0 deleted files are scheduled for undeploy based on delta detection (filtered by undeploy allowlist) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805198] 0 files are scheduled for deploy based on explicit specification (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805204] 0 files are scheduled for undeploy based on explicit specification (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:08.805474] Deploying to the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.562028] Polling messages for request id: 11207 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593857] Starting make in the container "MCK_RQ2_300_1" with 2 files to deploy, 0 files to undeploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593866] Disabling table replication for the container schema "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593868] Disabling table replication for the container schema "MCK_RQ2_300_1"... ok (0s 11ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.593891] Migrating libraries... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594148] Migrating libraries... ok (0s 129ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594164] Making... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594167] Preparing... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:09.594169] Preparing the make transaction... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459194] Preparing the make transaction... ok (0s 575ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459222] Adding "src/models/SALES_IHMFRNRNAME.hdbview" for deploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459225] Adding "src/models/SALES_IHMFRNRNAME.hdbview" for deploy... ok (0s 132ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459228] Adding "src/models/SALES_INVOICEHISTORY.hdbview" for deploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459230] Adding "src/models/SALES_INVOICEHISTORY.hdbview" for deploy... ok (0s 1ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459237] Preparing... ok (0s 796ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459240] Calculating dependencies... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459243] Expanding... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459245] Expanding "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459248] Expanding "src/models/SALES_IHMFRNRNAME.hdbview"... ok (0s 13ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459250] Expanding "src/models/SALES_INVOICEHISTORY.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459252] Expanding "src/models/SALES_INVOICEHISTORY.hdbview"... ok (0s 4ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459254] Expanding... ok (0s 87ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459256] Precompiling... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459266] Precompiling "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459329] Precompiling "src/models/SALES_IHMFRNRNAME.hdbview"... ok (0s 6ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459513] Precompiling "src/models/SALES_INVOICEHISTORY.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459546] Precompiling "src/models/SALES_INVOICEHISTORY.hdbview"... ok (0s 4ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459552] Precompiling... ok (0s 22ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459557] Merging... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459561] Merging... ok (0s 41ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459565] Calculating dependencies... ok (0s 290ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459568] Processing work list... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459591] Deploying "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459653] Error: com.sap.hana.di.view: Could not create the database object [8250005] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459668] at "src/models/SALES_IHMFRNRNAME.hdbview" (3:1) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459677] Error: com.sap.hana.di.view: Database error 260: invalid column name: MFRNR_NAME: line 4 col 1 (at pos 55) [8201003] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459679] at "src/models/SALES_IHMFRNRNAME.hdbview" (3:1) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459682] Error: Worker 0 has encountered an error; all remaining jobs will be canceled [8214600] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459689] Make failed (4 errors, 0 warnings): tried to deploy 2 files, undeploy 0 files, redeploy 0 dependent files (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459690] Error: Processing work list... failed [8212102] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459740] Error: Making... failed [8211605] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.459744] Error: Starting make in the container "MCK_RQ2_300_1" with 2 files to deploy, 0 files to undeploy... failed [8214168] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.460116] Deployment to container MCK_RQ2_300_1 failed - error: HDI make failed [Deployment ID: none]. (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.461039] Deployment ended at 2025-05-06 15:56:10 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.461070] Error: HDI make failed (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.461658] (6s 568ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480226] npm notice (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480244] npm notice New major version of npm available! 10.8.2 -> 11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480251] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480255] npm notice To update run: npm install -g npm@11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.480259] npm notice (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.501560] Exit status 1 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.863821] Cell b09315eb-f652-4637-906b-5c1abf821245 stopping instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:10.863860] Cell b09315eb-f652-4637-906b-5c1abf821245 destroying container for instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:13.079091] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully destroyed container for instance 83bebfa5-a65d-4d72-8db8-3a87c9944c79 (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:17.735958] Cell b09315eb-f652-4637-906b-5c1abf821245 creating container for instance 39059fc3-6469-4129-ac36-10e7130e4e5e (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:18.141722] Security group rules were updated (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:18.213172] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully created container for instance 39059fc3-6469-4129-ac36-10e7130e4e5e (STDOUT, CELL)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:24.190993] Invoking pre-start scripts. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:24.377219] Invoking start command. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:24.759556] > start (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:24.759584] > node node_modules/@sap/hdi-deploy/deploy.js --auto-undeploy (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:24.923582] VCAP_SERVICES: { (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007636] "hana": [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007682] { (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007687] "label": "hana", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007689] "provider": null, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007693] "plan": "hdi-shared", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007698] "name": "mck-portal-ds-db-3", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007701] "tags": [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007705] "hana", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007720] "database", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007723] "relational" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007725] ], (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007730] "instance_guid": "74adf04a-158b-4661-a04b-6b645b54f784", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007733] "instance_name": "mck-portal-ds-db-3", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007737] "binding_guid": "63d07119-24e1-4642-b78c-c0c975ba2d43", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007740] "binding_name": null, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007746] "credentials": { (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007752] "database_id": "451e8954-27cd-4d2f-9402-3ca1944484c7", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007756] "host": "451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007759] "port": "443", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007762] "driver": "com.sap.db.jdbc.Driver", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007768] "url": "jdbc:sap://451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443?encrypt=true&validateCertificate=true&currentschema=MCK_RQ2_300_1", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007772] "schema": "MCK_RQ2_300_1", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007835] "certificate": "-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\nQTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB\nCSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97\nnh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt\n43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P\nT19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4\ngdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO\nBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR\nTLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw\nDQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr\nhMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg\n06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF\nPnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls\nYSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk\nCAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIDjjCCAnagAwIBAgIQAzrx5qcRqaC7KGSxHQn65TANBgkqhkiG9w0BAQsFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBH\nMjAeFw0xMzA4MDExMjAwMDBaFw0zODAxMTUxMjAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IEcyMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuzfNNNx7a8myaJCtSnX/RrohCgiN9RlUyfuI\n2/Ou8jqJkTx65qsGGmvPrC3oXgkkRLpimn7Wo6h+4FR1IAWsULecYxpsMNzaHxmx\n1x7e/dfgy5SDN67sH0NO3Xss0r0upS/kqbitOtSZpLYl6ZtrAGCSYP9PIUkY92eQ\nq2EGnI/yuum06ZIya7XzV+hdG82MHauVBJVJ8zUtluNJbd134/tJS7SsVQepj5Wz\ntCO7TG1F8PapspUwtP1MVYwnSlcUfIKdzXOS0xZKBgyMUNGPHgm+F6HmIcr9g+UQ\nvIOlCsRnKPZzFBQ9RnbDhxSJITRNrw9FDKZJobq7nMWxM4MphQIDAQABo0IwQDAP\nBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBhjAdBgNVHQ4EFgQUTiJUIBiV\n5uNu5g/6+rkS7QYXjzkwDQYJKoZIhvcNAQELBQADggEBAGBnKJRvDkhj6zHd6mcY\n1Yl9PMWLSn/pvtsrF9+wX3N3KjITOYFnQoQj8kVnNeyIv/iPsGEMNKSuIEyExtv4\nNeF22d+mQrvHRAiGfzZ0JFrabA0UWTW98kndth/Jsw1HKj2ZL7tcu7XUIOGZX1NG\nFdtom/DzMNU+MeKNhJ7jitralj41E6Vf8PlwUHBHQRFXGU7Aj64GxJUTFy8bJZ91\n8rGOmaFvE7FBcf6IKshPECBV1/MUReXgRPTqh5Uykw7+U0b6LJ3/iyK5S9kJRaTe\npLiaWN0bfVKfjllDiIGknibVb63dDcY3fe0Dkhvld1927jyNxF1WW6LZZm6zNTfl\nMrY=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIICGTCCAZ+gAwIBAgIQCeCTZaz32ci5PhwLBCou8zAKBggqhkjOPQQDAzBOMQsw\nCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xJjAkBgNVBAMTHURp\nZ2lDZXJ0IFRMUyBFQ0MgUDM4NCBSb290IEc1MB4XDTIxMDExNTAwMDAwMFoXDTQ2\nMDExNDIzNTk1OVowTjELMAkGA1UEBhMCVVMxFzAVBgNVBAoTDkRpZ2lDZXJ0LCBJ\nbmMuMSYwJAYDVQQDEx1EaWdpQ2VydCBUTFMgRUNDIFAzODQgUm9vdCBHNTB2MBAG\nByqGSM49AgEGBSuBBAAiA2IABMFEoc8Rl1Ca3iOCNQfN0MsYndLxf3c1TzvdlHJS\n7cI7+Oz6e2tYIOyZrsn8aLN1udsJ7MgT9U7GCh1mMEy7H0cKPGEQQil8pQgO4CLp\n0zVozptjn4S1mU1YoI71VOeVyaNCMEAwHQYDVR0OBBYEFMFRRVBZqz7nLFr6ICIS\nB4CIfBFqMA4GA1UdDwEB/wQEAwIBhjAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49\nBAMDA2gAMGUCMQCJao1H5+z8blUD2WdsJk6Dxv3J+ysTvLd6jLRl0mlpYxNjOyZQ\nLgGheQaRnUi/wr4CMEfDFXuxoJGZSZOoPHzoRgaLLPIxAJSdYsiJvRmEFOml+wG4\nDXZDjC5Ty3zfDBeWUA==\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFZjCCA06gAwIBAgIQCPm0eKj6ftpqMzeJ3nzPijANBgkqhkiG9w0BAQwFADBN\nMQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQsIEluYy4xJTAjBgNVBAMT\nHERpZ2lDZXJ0IFRMUyBSU0E0MDk2IFJvb3QgRzUwHhcNMjEwMTE1MDAwMDAwWhcN\nNDYwMTE0MjM1OTU5WjBNMQswCQYDVQQGEwJVUzEXMBUGA1UEChMORGlnaUNlcnQs\nIEluYy4xJTAjBgNVBAMTHERpZ2lDZXJ0IFRMUyBSU0E0MDk2IFJvb3QgRzUwggIi\nMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCz0PTJeRGd/fxmgefM1eS87IE+\najWOLrfn3q/5B03PMJ3qCQuZvWxX2hhKuHisOjmopkisLnLlvevxGs3npAOpPxG0\n2C+JFvuUAT27L/gTBaF4HI4o4EXgg/RZG5Wzrn4DReW+wkL+7vI8toUTmDKdFqgp\nwgscONyfMXdcvyej/Cestyu9dJsXLfKB2l2w4SMXPohKEiPQ6s+d3gMXsUJKoBZM\npG2T6T867jp8nVid9E6P/DsjyG244gXazOvswzH016cpVIDPRFtMbzCe88zdH5RD\nnU1/cHAN1DrRN/BsnZvAFJNY781BOHW8EwOVfH/jXOnVDdXifBBiqmvwPXbzP6Po\nsMH976pXTayGpxi0KcEsDr9kvimM2AItzVwv8n/vFfQMFawKsPHTDU9qTXeXAaDx\nZre3zu/O7Oyldcqs4+Fj97ihBMi8ez9dLRYiVu1ISf6nL3kwJZu6ay0/nTvEF+cd\nLvvyz6b84xQslpghjLSR6Rlgg/IwKwZzUNWYOwbpx4oMYIwo+FKbbuH2TbsGJJvX\nKyY//SovcfXWJL5/MZ4PbeiPT02jP/816t9JXkGPhvnxd3lLG7SjXi/7RgLQZhNe\nXoVPzthwiHvOAbWWl9fNff2C+MIkwcoBOU+NosEUQB+cZtUMCUbW8tDRSHZWOkPL\ntgoRObqME2wGtZ7P6wIDAQABo0IwQDAdBgNVHQ4EFgQUUTMc7TZArxfTJc1paPKv\nTiM+s0EwDgYDVR0PAQH/BAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcN\nAQEMBQADggIBAGCmr1tfV9qJ20tQqcQjNSH/0GEwhJG3PxDPJY7Jv0Y02cEhJhxw\nGXIeo8mH/qlDZJY6yFMECrZBu8RHANmfGBg7sg7zNOok992vIGCukihfNudd5N7H\nPNtQOa27PShNlnx2xlv0wdsUpasZYgcYQF+Xkdycx6u1UQ3maVNVzDl92sURVXLF\nO4uJ+DQtpBflF+aZfTCIITfNMBc9uPK8qHWgQ9w+iUuQrm0D4ByjoJYJu32jtyoQ\nREtGBzRj7TG5BO6jm5qu5jF49OokYTurWGT/u4cnYiWB39yhL/btp/96j1EuMPik\nAdKFOV8BmZZvWltwGUb+hmA+rYAQCd05JS9Yf7vSdPD3Rh9GOUrYU9DzLjtxpdRv\n/PNn5AeP3SYZ4Y1b+qOTEZvpyDrDVWiakuFSdjjo4bq9+0/V77PnSIMx8IIh47a+\np6tv75/fTM8BuGJqIz3nCU2AG3swpMPdB380vqQmsvZB6Akd4yCYqjdP//fx4ilw\nMUc/dNAUFvohigLVigmUdy7yWSiLfFCSCmZ4OIN1xLVaqBHG5cGdZlXPU8Sv13WF\nqUITVuwhd4GTWgzqltlJyqEI8pc7bZsEGCREjnwB8twl2F6GmrE52/WRMmrRpnCK\novfepEWFJqgejF0pW8hL2JpqA15w8oVPbEtoL8pU9ozaMv7Da4M/OMZ+\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/\nMSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT\nDkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB\nAQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC\nov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL\nwYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D\nLtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK\n4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5\nbHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y\nsR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ\nXmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4\nFQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc\nSLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql\nPRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND\nTwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw\nSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1\nc3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx\n+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB\nATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu\nb3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E\nU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu\nMA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC\n5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW\n9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG\nWCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O\nhe8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC\nDfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5\n-----END CERTIFICATE-----", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007848] "hdi_user": "MCK_RQ2_300_1_ES7MQ4HABEQWOB5Z3DNZAWEJH_DT", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007851] "hdi_p[...] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007854] "user": "MCK_RQ2_300_1_ES7MQ4HABEQWOB5Z3DNZAWEJH_RT", (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007857] "p[...] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007860] }, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007863] "syslog_drain_url": null, (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007874] "volume_mounts": [] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007877] } (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007880] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.007883] } (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.774872] @sap/hdi-deploy, version 5.3.2 (mode default), server version 4.00.000.00.1742293347 (4.0.0.0), cloud version 2025.2.6, node version 18.20.6, HDI version 1016, container API version 1007 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.775076] Deployment started at 2025-05-06 15:56:25 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.775271] Using @sap/hana-client@undefined for connection (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.775296] Using service replacements from environment variable "SERVICE_REPLACEMENTS" with 1 replacements (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.811062] Ignore file found at "/home/vcap/app/.hdiignore". Found 330 lines. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.811879] Collecting files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.829760] Collecting files... ok (0s 18ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.829778] 6 directories collected (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.829923] 154 files collected (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.829937] 0 reusable modules collected (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:25.829940] Target service: mck-portal-ds-db-3 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.096267] Session variable APPLICATION is set to "SAP_HDI/Datasphere_Dev/McKesson Corporation_discovery-sunrise". (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.309736] Previous build with request ID 11207 finished at 2025-05-06 15:56:10.403178000 with status Canceled and message: Make failed (4 errors, 0 warnings): tried to deploy 2 files, undeploy 0 files, redeploy 0 dependent files. (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.309845] Processing revoke files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.309942] Processing revoke files... ok (0s 0ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.310057] Processing grants files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.310277] Processing "cfg/DWC_ACCESS.hdbgrants"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:26.814#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21875#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.311391] Using grantor service "UPS_DEMO_USER" of type "procedure" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.779177] Processing "cfg/DWC_ACCESS.hdbgrants"... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.779209] Processing grants files... ok (0s 469ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.780994] Preprocessing files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.781552] Preprocessing files... ok (0s 0ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.781622] Connecting to the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.969864] Connecting to the container "MCK_RQ2_300_1"... ok (0s 188ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:26.969893] Locking the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:27.205921] Locking the container "MCK_RQ2_300_1"... ok (0s 236ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:27.205948] Synchronizing files with the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:27.205967] Deleting files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:27.392685] Deleting files... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:27.392707] Writing files... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.352547] Writing files... ok (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.352663] Synchronizing files with the container "MCK_RQ2_300_1"... ok (1s 147ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529100] added files: [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529131] "src/models/SALES_IHMFRNRNAME.hdbview" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529137] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529153] modified files: [ (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529156] "src/models/SALES_INVOICEHISTORY.hdbview" (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529158] ] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529161] deleted files: [] (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529166] 2 modified or added files are scheduled for deploy based on delta detection (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529317] 0 deleted files are scheduled for undeploy based on delta detection (filtered by undeploy allowlist) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529456] 0 files are scheduled for deploy based on explicit specification (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529467] 0 files are scheduled for undeploy based on explicit specification (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.529739] Deploying to the container "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.747807] Polling messages for request id: 11212 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752374] Starting make in the container "MCK_RQ2_300_1" with 2 files to deploy, 0 files to undeploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752392] Disabling table replication for the container schema "MCK_RQ2_300_1"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752396] Disabling table replication for the container schema "MCK_RQ2_300_1"... ok (0s 13ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752399] Migrating libraries... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752442] Migrating libraries... ok (0s 13ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752450] Making... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.752452] Preparing... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973444] Adding "src/models/SALES_IHMFRNRNAME.hdbview" for deploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973584] Adding "src/models/SALES_IHMFRNRNAME.hdbview" for deploy... ok (0s 8ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973599] Adding "src/models/SALES_INVOICEHISTORY.hdbview" for deploy... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973603] Adding "src/models/SALES_INVOICEHISTORY.hdbview" for deploy... ok (0s 0ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973611] Preparing... ok (0s 29ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973619] Preparing the make transaction... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973624] Preparing the make transaction... ok (0s 18ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973628] Calculating dependencies... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973632] Expanding... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973636] Expanding "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973639] Expanding "src/models/SALES_IHMFRNRNAME.hdbview"... ok (0s 7ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973671] Expanding "src/models/SALES_INVOICEHISTORY.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973678] Expanding "src/models/SALES_INVOICEHISTORY.hdbview"... ok (0s 7ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973681] Expanding... ok (0s 35ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973685] Precompiling... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973689] Precompiling "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973692] Precompiling "src/models/SALES_IHMFRNRNAME.hdbview"... ok (0s 7ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973920] Precompiling "src/models/SALES_INVOICEHISTORY.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973943] Precompiling "src/models/SALES_INVOICEHISTORY.hdbview"... ok (0s 5ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973947] Precompiling... ok (0s 26ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973954] Merging... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973956] Merging... ok (0s 8ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973961] Calculating dependencies... ok (0s 109ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973964] Processing work list... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.973970] Deploying "src/models/SALES_IHMFRNRNAME.hdbview"... (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974098] Error: com.sap.hana.di.view: Could not create the database object [8250005] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974113] Error: com.sap.hana.di.view: Database error 260: invalid column name: MFRNR_NAME: line 4 col 1 (at pos 55) [8201003] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974127] Error: Worker 0 has encountered an error; all remaining jobs will be canceled [8214600] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974137] Error: Processing work list... failed [8212102] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974152] Error: Making... failed [8211605] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974155] Error: Starting make in the container "MCK_RQ2_300_1" with 2 files to deploy, 0 files to undeploy... failed [8214168] (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974186] at "src/models/SALES_IHMFRNRNAME.hdbview" (3:1) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974206] at "src/models/SALES_IHMFRNRNAME.hdbview" (3:1) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974212] Make failed (4 errors, 0 warnings): tried to deploy 2 files, undeploy 0 files, redeploy 0 dependent files (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.974557] Deployment to container MCK_RQ2_300_1 failed - error: HDI make failed [Deployment ID: none]. (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.975563] Error: HDI make failed (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.975588] Deployment ended at 2025-05-06 15:56:28 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.976208] (4s 166ms) (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.996293] npm notice (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.996312] npm notice New major version of npm available! 10.8.2 -> 11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.996321] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.996324] npm notice To update run: npm install -g npm@11.3.0 (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:28.996327] npm notice (STDERR, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:29.018736] Exit status 1 (STDOUT, APP/TASK/deploy)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:29.229386] Cell b09315eb-f652-4637-906b-5c1abf821245 stopping instance 39059fc3-6469-4129-ac36-10e7130e4e5e (STDOUT, CELL)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:29.229438] Cell b09315eb-f652-4637-906b-5c1abf821245 destroying container for instance 39059fc3-6469-4129-ac36-10e7130e4e5e (STDOUT, CELL)#
+#2025 05 06 15:56:36.788#Z#DEBUG#4209906f-2a92-11f0-b414-eeee0a99cd3c.mck-portal-db-3-deployer#flowable-async-job-executor-thread-21885#
+[PollExecuteTaskStatusExecution] c644411b-db25-469a-95f3-744b48f54eec [2025-05-06T15:56:31.521014] Cell b09315eb-f652-4637-906b-5c1abf821245 successfully destroyed container for instance 39059fc3-6469-4129-ac36-10e7130e4e5e (STDOUT, CELL)#

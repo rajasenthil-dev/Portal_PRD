@@ -161,7 +161,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate" text="{= ${SHELF_LIFE_EXP_DT} === '00000000' ? ' ' : ${path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}}"/>
+                                    <Text id="invoiceDate" text="{= ${SHELF_LIFE_EXP_DT} === '00000000' ? ' ' : ${path: 'SHELF_LIFE_EXP_DT', type: 'sap.ui.model.odata.type.Date'}}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn12121" width='10rem' hAlign="End">

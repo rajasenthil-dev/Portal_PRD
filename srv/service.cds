@@ -39,6 +39,7 @@ using OOSHIPTO as ENTOOSHIPTO from '../db/schema';
 using OOSHIPTONAME as ENTOOSHIPTONAME from '../db/schema';
 using OOPROVINCE as ENTOOPROVINCE from '../db/schema';
 using OOMFRNR as ENTOOMFRNR from '../db/schema';
+using OOVKORG as ENTOOVKORG from '../db/schema';
 using OOMFRNRNAME as ENTOOMFRNRNAME from '../db/schema';
 
 
@@ -211,6 +212,7 @@ service PROCESSING {
     entity OOCUST as projection on ENTOOCUST;
     entity OOPROVINCE as projection on ENTOOPROVINCE;
     entity OOMFRNR as projection on ENTOOMFRNR;
+    entity OOVKORG as projection on ENTOOVKORG;
     entity OOMFRNRNAME as projection on ENTOOMFRNRNAME;
 
 
@@ -589,6 +591,7 @@ using IHPO as ENTIHPO from '../db/schema';
 using IHTYPE as ENTIHTYPE from '../db/schema';
 using IHPROVINCE as ENTIHPROVINCE from '../db/schema';
 using IHMFRNR as ENTIHMFRNR from '../db/schema';
+using IHMFRNRNAME as ENTIHMFRNRNAME from '../db/schema';
 using IHSALESORG as ENTIHSALESORG from '../db/schema';
 
 using SALESBYCURRENT as ENTSALESBYCURRENT from '../db/schema';
@@ -623,6 +626,7 @@ service SALES {
     entity IHTYPE as projection on ENTIHTYPE;
     entity IHPROVINCE as projection on ENTIHPROVINCE;
     entity IHMFRNR as projection on ENTIHMFRNR;
+    entity IHMFRNRNAME as projection on ENTIHMFRNRNAME;
     entity IHSALESORG as projection on ENTIHSALESORG;
 
 

@@ -94,7 +94,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR,
+                Value : MFRNR_NAME,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
             
@@ -149,7 +149,7 @@ Search.defaultSearchElement: true,
 
     );
     REASON_BEZEI@(
-        title: 'Reason',
+        
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -166,7 +166,7 @@ Search.defaultSearchElement: true,
         }
 
     );
-    CO_VKORG@(title: 'Sales Org.',
+    CO_VKORG@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -182,7 +182,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    VKBUR@(title: 'Sales Office',
+    VKBUR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -198,7 +198,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    MFRNR@(title: 'Manufacturer #',
+    MFRNR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -214,7 +214,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    MFRNR_NAME@(title: 'Manufacturer #',
+    MFRNR_NAME@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {

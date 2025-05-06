@@ -119,6 +119,11 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : VKORG,
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : MFRNR,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
@@ -220,6 +225,23 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'REGIO',
                         ValueListProperty : 'REGIO'
+                    }
+                ]
+            },
+        } 
+    
+    ); 
+    VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OOVKORG',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
                     }
                 ]
             },

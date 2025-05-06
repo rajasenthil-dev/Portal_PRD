@@ -121,7 +121,7 @@ Search.defaultSearchElement: true,
         } 
     );
     MFRPN@( 
-        title: 'Product Code',
+        
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -136,7 +136,7 @@ Search.defaultSearchElement: true,
             },
         } );
     MAKTX@(
-        title: 'Product Description',
+        
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -151,7 +151,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    VKBUR@(title: 'Sales Org.',
+    VKBUR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -167,7 +167,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    MFRNR@(title: 'Manufacturer #',
+    MFRNR@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -183,7 +183,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    MFRNR_NAME@(title: 'Manufacturer #',
+    MFRNR_NAME@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {

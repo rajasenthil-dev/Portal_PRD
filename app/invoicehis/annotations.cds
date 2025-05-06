@@ -108,7 +108,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR
-            },
+            }
         ],
     },
 ){
@@ -237,6 +237,7 @@ Search.defaultSearchElement: true,
             },
         }    
     );
+    
     VKORG@(
         Common: {
             ValueListWithFixedValues,
