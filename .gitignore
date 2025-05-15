@@ -91,7 +91,7 @@ db/cfg/DWC_ACCESS.hdbgrants
 db/cfg/DWC_ACCESS.hdbsynonymconfig
 db/cfg/DWC_CONSUMPTION_ROLE_G.hdbrole
 db/cfg/DWC_CONSUMPTION_ROLE.hdbrole
-db/src/default_access_role.hdbrole
+db/src/defaults/default_access_role.hdbrole
 db/src/DWC/DWC_ACCESS.hdbsynonym
 mta.yaml
 mta.yaml
