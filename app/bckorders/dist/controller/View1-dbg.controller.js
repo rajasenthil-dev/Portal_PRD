@@ -70,85 +70,154 @@ sap.ui.define([
         const oSmartTable = this.getView().byId("table0");
         const oTable = oSmartTable.getTable();
         const oBinding = oTable.getBinding("rows");
-
-          if (!oBinding) {
-              console.warn("Table binding is missing.");
-              return;
-          }
-
-          const aContexts = oBinding.getContexts(0, oBinding.getLength());
-          if (!aContexts) {
-              console.warn("Data is not available for calculation.");
-              return;
-          }
-
-          // Use reduce for consolidated calculations
-          const totals = aContexts.reduce((acc, oContext) => {
-              const oData = oContext.getObject();
-              if (!oData) return acc;
-
-              acc.totalBackOrders++;
-              acc.impactedCustomers.add(oData.KUNRE_ANA);
-              acc.totalItemsOnBackOrder.add(oData.MATNR);
-              acc.totalUnitsBackOrdered += parseFloat(oData.BACK_ORD_QTY || 0);
-              acc.totalExtension += parseFloat(oData.EXTENSION || 0);
-
-              // Logic for units to be received (if applicable)
-              if (oData.DATE_DIFF > 0 && !oData.UDATE) {
-                  acc.totalUnitsToBeReceived += parseFloat(oData.BACK_ORD_QTY || 0);
-              }
-
-              return acc;
-          }, {
-              totalBackOrders: 0,
-              impactedCustomers: new Set(),
-              totalItemsOnBackOrder: new Set(),
-              totalUnitsBackOrdered: 0,
-              totalUnitsToBeReceived: 0,
-              totalExtension: 0
-          });
-
-          // Calculate unique counts
-          const impactedCustomersCount = totals.impactedCustomers.size;
-          const totalItemsOnBackOrderCount = totals.totalItemsOnBackOrder.size;
-
-          // Format values
-          const totalExtensionFormatted = this.formatter.formatCurrency(totals.totalExtension, "USD");
-          const totalQtyFormatted = this.formatter.formatNumber(totals.totalUnitsBackOrdered);
-
-          // Update UI elements (tiles)
-          this._updateTile("TileContent1", this.formatNumberWithCommas(totals.totalBackOrders));
-          this._updateTile("TileContent2", this.formatNumberWithCommas(impactedCustomersCount));
-          this._updateTile("TileContent3", this.formatNumberWithCommas(totalItemsOnBackOrderCount));
-          this._updateTile("TileContent4", this.formatNumberWithCommas(totals.totalUnitsBackOrdered));
-          this._updateTile("TileContent5", this.formatNumberWithCommas(totals.totalUnitsToBeReceived));
-
-          // Update footer elements
-          this._updateFooter("footerText1", totalQtyFormatted);
-          this._updateFooter("footerText2", totalExtensionFormatted);
-      },
+    
+        if (!oBinding) {
+            console.warn("Table binding is missing.");
+            // Optionally clear tiles/footers if no binding
+            this._updateTile("TileContent1", "0");
+            this._updateTile("TileContent2", "0");
+            this._updateTile("TileContent3", "0");
+            this._updateTile("TileContent4", "0");
+            this._updateTile("TileContent5", "0");
+            this._updateFooter("footerText1", "0");
+            this._updateFooter("footerText2", "0");
+            return;
+        }
+    
+        const aContexts = oBinding.getContexts(0, oBinding.getLength());
+        if (!aContexts || aContexts.length === 0) { // Also check if contexts array is empty
+            console.warn("Data is not available for calculation.");
+            // Clear tiles/footers if no data
+            this._updateTile("TileContent1", "0");
+            this._updateTile("TileContent2", "0");
+            this._updateTile("TileContent3", "0");
+            this._updateTile("TileContent4", "0");
+            this._updateTile("TileContent5", "0");
+            this._updateFooter("footerText1", "0");
+            this._updateFooter("footerText2", "0");
+            return;
+        }
+    
+        // Use reduce for consolidated calculations
+        const totals = aContexts.reduce((acc, oContext) => {
+            const oData = oContext.getObject();
+            if (!oData) return acc;
+    
+            // Add VBELN to the Set for unique back order count
+            if (oData.VBELN) {
+                acc.uniqueBackOrders.add(oData.VBELN);
+            }
+    
+            // Add KUNRE_ANA to the Set for unique impacted customers
+            if (oData.KUNRE_ANA) {
+                 acc.impactedCustomers.add(oData.KUNRE_ANA);
+            }
+    
+            // Add MATNR to the Set for unique items on back order
+            if (oData.MATNR) {
+                 acc.totalItemsOnBackOrder.add(oData.MATNR);
+            }
+    
+    
+            // Sum total units back ordered
+            acc.totalUnitsBackOrdered += parseFloat(oData.BACK_ORD_QTY || 0);
+    
+            // Sum total extension
+            acc.totalExtension += parseFloat(oData.EXTENSION || 0);
+    
+            // Logic for units to be received (if applicable)
+            if (oData.DATE_DIFF > 0 && !oData.UDATE) {
+                acc.totalUnitsToBeReceived += parseFloat(oData.BACK_ORD_QTY || 0);
+            }
+    
+            return acc;
+        }, {
+            uniqueBackOrders: new Set(), // Use a Set for unique VBELN
+            impactedCustomers: new Set(),
+            totalItemsOnBackOrder: new Set(),
+            totalUnitsBackOrdered: 0,
+            totalUnitsToBeReceived: 0,
+            totalExtension: 0
+        });
+    
+        // Calculate unique counts from the Sets
+        const uniqueBackOrdersCount = totals.uniqueBackOrders.size; // Get the size of the Set
+        const impactedCustomersCount = totals.impactedCustomers.size;
+        const totalItemsOnBackOrderCount = totals.totalItemsOnBackOrder.size;
+    
+        // Format values
+        // Ensure formatter and formatNumberWithCommas are available in your controller
+        const totalExtensionFormatted = this.formatter ? (this.formatter.formatCurrency ? this.formatter.formatCurrency(totals.totalExtension, "USD") : totals.totalExtension) : totals.totalExtension; // Basic check for formatter
+        const totalQtyFormatted = this.formatter ? (this.formatter.formatNumber ? this.formatter.formatNumber(totals.totalUnitsBackOrdered) : totals.totalUnitsBackOrdered) : totals.totalUnitsBackOrdered; // Basic check for formatter
+    
+        // Update UI elements (tiles)
+        // Update TileContent1 with the unique back order count
+        this._updateTile("TileContent1", this.formatNumberWithCommas ? this.formatNumberWithCommas(uniqueBackOrdersCount) : uniqueBackOrdersCount); // Use unique count
+        this._updateTile("TileContent2", this.formatNumberWithCommas ? this.formatNumberWithCommas(impactedCustomersCount) : impactedCustomersCount);
+        this._updateTile("TileContent3", this.formatNumberWithCommas ? this.formatNumberWithCommas(totalItemsOnBackOrderCount) : totalItemsOnBackOrderCount);
+        this._updateTile("TileContent4", this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.totalUnitsBackOrdered) : totals.totalUnitsBackOrdered);
+        this._updateTile("TileContent5", this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.totalUnitsToBeReceived) : totals.totalUnitsToBeReceived);
+    
+        // Update footer elements
+        this._updateFooter("footerText1", totalQtyFormatted);
+        this._updateFooter("footerText2", totalExtensionFormatted);
+    },
+    
+    // Assuming these helper functions exist in your controller or a formatter file
+    // Example placeholder for _updateTile
+    _updateTile: function(sTileId, sText) {
+        const oTile = this.getView().byId(sTileId);
+        if (oTile && oTile.getContent()) {
+            // Assuming the tile content has a setText method, adjust if needed
+            if (oTile.getContent().setText) {
+                oTile.getContent().setText(sText);
+            } else if (oTile.setText) { // Some tiles might have setText directly
+                oTile.setText(sText);
+            }
+        } else {
+            console.warn("Tile or Tile Content not found:", sTileId);
+        }
+    },
+    
+        // Example placeholder for _updateFooter
+        _updateFooter: function(sFooterId, sText) {
+            const oFooterElement = this.getView().byId(sFooterId);
+            if (oFooterElement && oFooterElement.setText) {
+                oFooterElement.setText(sText);
+            } else {
+                console.warn("Footer element not found:", sFooterId);
+            }
+        },
+    
+        // Example placeholder for formatNumberWithCommas (if not using a dedicated formatter)
+        formatNumberWithCommas: function(number) {
+            if (number === null || number === undefined) {
+                return "";
+            }
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
         formatNumberWithCommas: function(value) {
             if (!value || isNaN(value)) return "0";
         
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
 
-      _updateTile: function (sTileId, value) {
-          const oTile = this.byId(sTileId);
-          if (oTile) {
-              oTile.setText(value);
-          } else {
-              console.warn(`Tile with ID ${sTileId} not found.`);
-          }
-      },
+    _updateTile: function (sTileId, value) {
+        const oTile = this.byId(sTileId);
+        if (oTile) {
+            oTile.setText(value);
+        } else {
+            console.warn(`Tile with ID ${sTileId} not found.`);
+        }
+    },
 
-      _updateFooter: function (sFooterId, value) {
-          const oFooter = this.byId(sFooterId);
-          if (oFooter) {
-              oFooter.setText(value);
-          } else {
-              console.warn(`Footer with ID ${sFooterId} not found.`);
-          }
-      }
+    _updateFooter: function (sFooterId, value) {
+        const oFooter = this.byId(sFooterId);
+        if (oFooter) {
+            oFooter.setText(value);
+        } else {
+            console.warn(`Footer with ID ${sFooterId} not found.`);
+        }
+    }
   });
 });

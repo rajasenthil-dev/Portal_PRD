@@ -308,6 +308,8 @@ src/gen/SALES.SBCSHIPTO.hdbview
 src/gen/SALES.SBCBILLTOID.hdbview
 src/gen/SALES.SBCSHIPTOID.hdbview
 src/gen/SALES.SBCMFRNR.hdbview
+src/gen/SALES.SBCYEAR.hdbview
+src/gen/SBCYEAR.hdbview
 src/gen/SALES.SBCMFRNRNAME.hdbview
 src/gen/SALES.SBCSALESORG.hdbview
 src/gen/SALES.SBCSALESOFFICE.hdbview
@@ -336,7 +338,13 @@ src/gen/MAINPAGE.MPUYEAR.hdbview
 src/gen/MPUYEAR.hdbview
 src/gen/MAINPAGE.MPSYEAR.hdbview
 src/gen/MPSYEAR.hdbview
+src/gen/MAINPAGE.MPSMONTH.hdbview
+src/gen/MPSMONTH.hdbview
+src/gen/MAINPAGE.MPSMFRNR.hdbview
+src/gen/MPSMFRNR.hdbview
 
+src/gen/INVENTORY.IATSALESORG.hdbview
+src/gen/IATSALESORG.hdbview
 src/gen/OPENARMFRNRNAME.hdbview
 src/gen/OOMFRNRNAME.hdbview
 src/gen/PRICINGMFRNRNAME.hdbview
@@ -352,6 +360,16 @@ src/gen/PROCESSING.SHMFRNRNAME.hdbview
 
 src/gen/INVSNAPMFRNR.hdbview
 src/gen/IHMFRNRNAME.hdbview
+
+src/gen/SALES.IHBEZEI.hdbview
+src/gen/IHBEZEI.hdbview
+
+src/gen/SALES.SBCBEZEI.hdbview
+src/gen/SBCBEZEI.hdbview
+
+src/gen/INVENTORY.IATTRANTYPE.hdbview
+src/gen/IATTRANTYPE.hdbview
+
 
 
 

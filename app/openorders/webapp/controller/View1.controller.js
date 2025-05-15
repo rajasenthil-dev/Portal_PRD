@@ -148,7 +148,7 @@ sap.ui.define([
                         fTotalKWMENG += parseFloat(vKwmen) || 0; // Accumulate sum
         
                         // Assuming MAKTX contains the value to determine unique "lines"
-                        var vMaktx = oContext.getProperty("MAKTX");
+                        var vMaktx = oContext.getProperty("VBELN");
                         if (vMaktx !== null && vMaktx !== undefined) {
                              fTotalOpenOrders.add(vMaktx);
                         }

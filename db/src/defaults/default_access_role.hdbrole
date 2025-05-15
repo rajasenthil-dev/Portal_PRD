@@ -122,7 +122,7 @@
         ]
       },
       {
-        "name": "SYNMAINPAGEUNITDOC",
+        "name": "SYNMAINPAGEINVENTORYDOC",
         "type": "SYNONYM",
         "privileges": [
           "SELECT"

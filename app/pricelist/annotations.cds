@@ -48,6 +48,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : DATAB,
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : VKORG,
             },
             {

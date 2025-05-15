@@ -96,6 +96,16 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MFRNR_NAME,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : LFGSK,
+                ![@HTML5.CssDefaults] : {width : '4rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VBTYP,
+                ![@HTML5.CssDefaults] : {width : '4rem'}
             }
             
         ],

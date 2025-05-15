@@ -138,7 +138,14 @@ entity INVENTORYAUDITTRAIL
         RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
+        SALES_ORG           : String(4)     @title: 'Sales Org.';
+        
 }
+define view IATTRANTYPE as
+    select from INVENTORYAUDITTRAIL distinct {
+        key TRAN_TYPE
+};
+
 define view IATPRODUCTCODE as
     select from INVENTORYAUDITTRAIL distinct {
         key MFRNR_PROD_CODE
@@ -147,6 +154,10 @@ define view IATPRODUCTCODE as
 define view IATLOT as
     select from INVENTORYAUDITTRAIL distinct {
         key CHARG
+};
+define view IATSALESORG as
+    select from INVENTORYAUDITTRAIL distinct {
+        key SALES_ORG
 };
 
 define view IATWAREHOUSE as
@@ -189,9 +200,9 @@ entity CASHJOURNAL
         FKDAT               : String(8)         @title : '{i18n>CASHJOURNAL.FKDAT}';
         BLART               : String(2)         @title : '{i18n>CASHJOURNAL.BLART}';
         MFRNR               : String(10)        @title : '{i18n>CASHJOURNAL.MFRNR}';
-    key BUKRS               : String(4)         @title : '{i18n>CASHJOURNAL.BURKS';
+    key BUKRS               : String(4)         @title : '{i18n>CASHJOURNAL.BUKRS}';
     key BELNR               : String(10)        @title : '{i18n>CASHJOURNAL.BELNR}';
-    key GJAHR               : String(4)         @title : '{i18n>CASHJOURNAL.GJAHR';
+    key GJAHR               : String(4)         @title : '{i18n>CASHJOURNAL.GJAHR}';
         BSTKD               : String(35)        @title : '{i18n>CASHJOURNAL.BSTKD}';
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
     key AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
@@ -254,6 +265,9 @@ entity INVENTORYSNAPSHOT
         TBTXT               : String(60)    @title: '{i18n>INVENTORYSNAPSHOT.TBTXT}';
         CURRENT             : String(3)     @title: '{i18n>INVENTORYSNAPSHOT.CURRENT}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYSNAPSHOT.MFRNR_NAME}';
+    key WERKS               : String(4)     @title: 'Plant #';
+        PLANT_NAME          : String(30)     @title: 'Plant Name';
+
 }
 define view INVSNAPPROD as
     select from INVENTORYSNAPSHOT distinct {
@@ -411,7 +425,8 @@ entity INVENTORYVALUATION
         DAMAGE_DESTRUCTION_COST     : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.DAMAGE_DESTRUCTION_COST}';
         SAMPLE_COST                 : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.SAMPLE_COST}';
         UNIT                        : String(3)         @title : '{i18n>INVENTORYVALUATION.UNIT}';
-        QUAN                        : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.QUAN}';   
+        QUAN                        : Decimal(38,2)     @title : '{i18n>INVENTORYVALUATION.QUAN}'; 
+        PLANT_NAME                  : String(30)        @title : '{i18n>INVENTORYVALUATION.PLANT_NAME}';  
 }
 
 define view INVVALPROD as
@@ -447,7 +462,6 @@ entity INVOICEHISTORY
 {
         @Aggregation.default : #SUM
         @Semantics.amount.currencyCode : 'currency' // Assuming a 'currency' field exists or will be added for this annotation to work fully
-    key BELNR        : String(10)    @title : '{i18n>INVOICEHISTORY.BELNR}';
         BKTXT        : String(25)    @title : '{i18n>INVOICEHISTORY.BKTXT}';
         LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
         CAL_GST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_GST}';
@@ -457,30 +471,28 @@ entity INVOICEHISTORY
     key VKORG        : String(4)     @title : '{i18n>INVOICEHISTORY.VKORG}';
     key SHIP_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.SHIP_TO}';
         TSL_AMOUNT   : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.TSL_AMOUNT}';
-        BUDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.BUDAT}';
-    key KUNNR        : String(10)    @title : '{i18n>INVOICEHISTORY.KUNNR}';
         NAME1        : String(35)    @title : '{i18n>INVOICEHISTORY.NAME1}';
         BSTKD        : String(35)    @title : '{i18n>INVOICEHISTORY.BSTKD}';
         PSTLZ        : String(10)    @title : '{i18n>INVOICEHISTORY.PSTLZ}';
         REGIO        : String(3)     @title : '{i18n>INVOICEHISTORY.REGIO}';
     key AUBEL        : String(10)    @title : '{i18n>INVOICEHISTORY.AUBEL}';
         TRACKN       : String(35)    @title : '{i18n>INVOICEHISTORY.TRACKN}';
-
     key BILL_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.BILL_TO}';
-    key RBUKRS       : String(4)     @title : '{i18n>INVOICEHISTORY.RBUKRS}';
         WAERK        : String(5)     @title : '{i18n>INVOICEHISTORY.WAERK}';
-    key VKBUR        : String(4)     @title : '{i18n>INVOICEHISTORY.VKBUR}';
-
+    key VBELN        : String(10)    @title : '{i18n>INVOICEHISTORY.VBELN}';
         CURRENT      : String(1)     @title : '{i18n>INVOICEHISTORY.CURRENT}';
         ORDER_TYPE   : String(20)    @title : '{i18n>INVOICEHISTORY.ORDER_TYPE}';
+        FKDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.FKDAT}';
+        PATIENT_ID   : String(15)    @title : '{i18n>INVOICEHISTORY.PATIENT_ID}';
+        AUGRU_AUFT   : String(3)     @title : '{i18n>INVOICEHISTORY.AUGRU_AUFT}';
+        PLANT_NAME   : String(30)    @title : '{i18n>INVOICEHISTORY.PLANT_NAME}';
+        WERKS        : String(4)     @title : '{i18n>INVOICEHISTORY.WERKS}';
+        BEZEI        : String(40)    @title : '{i18n>INVOICEHISTORY.BEZEI}';
         MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
         // You might need a currency field for the @Semantics annotation to work, e.g.:
         // currency     : Currency;
 }
-define view IHCUSTOMERID as
-    select from INVOICEHISTORY distinct {
-        key KUNNR
-};
+
 // Invoice History Customer filter
 define view IHCUSTOMER as
     select from INVOICEHISTORY distinct {
@@ -491,10 +503,14 @@ define view IHSHIPTO as
     select from INVOICEHISTORY distinct {
         key SHIP_TO
 };
-// Invoice History Invoice # filter
+define view IHBEZEI as
+    select from INVOICEHISTORY distinct {
+        key BEZEI
+};
+//Invoice History Invoice # filter
 define view IHINVOICE as
     select from INVOICEHISTORY distinct {
-        key BELNR
+        key VBELN
 };
 // Invoice History Purchase Order filter
 define view IHPO as
@@ -572,7 +588,7 @@ key LOT_CHARG               : String(10)    @title : '{i18n>SALESBYCURRENT.LOT_C
     PATIENT_ID              : String(20)    @title : '{i18n>SALESBYCURRENT.PATIENT_ID}';
     POSTAL_CODE_PSTLZ       : String(10)    @title : '{i18n>SALESBYCURRENT.POSTAL_CODE_PSTLZ}';
     PRICE_CAL_UNIT_COST     : Decimal(11,2) @title : '{i18n>SALESBYCURRENT.PRICE_CAL_UNIT_COST}';
-    PRODUCT_DESCRIPTION_MAKTX : String(40)    @title : '{i18n>SALESBYCURRENT.PRODUCT_DESCRIPTION_MAKTX}'; // Corrected typo in original title implicitly via key
+    PRODUCT_DESCRIPTION_MAKTX : String(40)  @title : '{i18n>SALESBYCURRENT.PRODUCT_DESCRIPTION_MAKTX}'; // Corrected typo in original title implicitly via key
     PROVINCE_REGIO          : String(3)     @title : '{i18n>SALESBYCURRENT.PROVINCE_REGIO}';
     PURCHASE_ORDER_BSTKD    : String(35)    @title : '{i18n>SALESBYCURRENT.PURCHASE_ORDER_BSTKD}';
     QUANTITY_FKIMG          : Decimal(13,3) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
@@ -582,6 +598,7 @@ key LOT_CHARG               : String(10)    @title : '{i18n>SALESBYCURRENT.LOT_C
 key SKU_MATNR               : String(7)     @title : '{i18n>SALESBYCURRENT.SKU_MATNR}';
     TBTXT                   : String(60)    @title : '{i18n>SALESBYCURRENT.TBTXT}';
     TRACKING_TRACKN         : String(35)    @title : '{i18n>SALESBYCURRENT.TRACKING_TRACKN}';
+    MWSBP                   : Decimal(18,2) @title : 'Tax Amount';
     UNIT_PRICE              : Decimal(32,2) @title : '{i18n>SALESBYCURRENT.UNIT_PRICE}';
     UNITS_PER_CASE          : Integer       @title : '{i18n>SALESBYCURRENT.UNITS_PER_CASE}';
     UPC_EAN11               : String(18)    @title : '{i18n>SALESBYCURRENT.UPC_EAN11}';
@@ -592,10 +609,16 @@ key VKBUR                   : String(4)     @title : '{i18n>SALESBYCURRENT.VKBUR
 key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS}';
     PLANT_NAME              : String(30)    @title : '{i18n>SALESBYCURRENT.PLANT_NAME}';
     MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; 
+    INV_YEAR                : String(4)     @title : 'Year';
+    BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
         key INVOICE_CREDIT_VBELN
+};
+define view SBCBEZEI as
+    select from SALESBYCURRENT distinct {
+        key BEZEI
 };
 define view SBCPRODDESC as
     select from SALESBYCURRENT distinct {
@@ -644,6 +667,10 @@ define view SBCSALESORG as
 define view SBCSALESOFFICE as
     select from SALESBYCURRENT distinct {
         key VKBUR
+};
+define view SBCYEAR as
+    select from SALESBYCURRENT distinct {
+        key INV_YEAR
 };
 // Sales by Product/Customer
 // Security attributes to match: ??
@@ -712,7 +739,8 @@ entity CUSTOMERMASTER
         BEZEI_SHIPTO	: String(20)        @title: '{i18n>CUSTOMERMASTER.BEZEI_SHIPTO}';	 
         KTEXT_SHIPTO	: String(20)        @title: '{i18n>CUSTOMERMASTER.KTEXT_SHIPTO}';	 
         CAL_CUST_STATUS	: String(1)         @title: '{i18n>CUSTOMERMASTER.CAL_CUST_STATUS}';	 
-        CAL_TERM	    : String(4)         @title: '{i18n>CUSTOMERMASTER.CAL_TERM}';	 
+        CAL_TERM	    : String(4)         @title: '{i18n>CUSTOMERMASTER.CAL_TERM}';
+        VTEXT           : String(30)	    @title: '{i18n>CUSTOMERMASTER.VTEXT}';
 }
 // Customer Master Bill To filter
 define view KUNN2_BILLTO as
@@ -847,6 +875,7 @@ entity PRICING
         MFRNR       : String(10)    @title : '{i18n>PRICING.MFRNR}';
         KONWA       : String(5)     @title : '{i18n>PRICING.KONWA}';
         MFRNR_NAME  : String(35)    @title : '{i18n>PRICING.MFRNR_NAME}';
+        DATAB       : String(8)     @title : '{i18n>PRICING.DATAB}';
 }
 // Shipping History Carrier filter
 define view PRICINGPRICEDESC as
@@ -989,6 +1018,8 @@ key CO_VKORG              : String(4)     @title : '{i18n>RETURNS.CO_VKORG}';
 key VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
     CURRENT               : String(10)    @title : '{i18n>RETURNS.CURRENT}';
     MFRNR_NAME            : String(35)    @title : '{i18n>RETURNS.MFRNR_NAME}';
+    LFGSK                 : String(1)     @title : 'Overall Delivery Status';
+    VBTYP                 : String(1)     @title : 'Sales Document Category';
 }
 //  Returns Customer filter
 define view RETCUST as
@@ -1106,13 +1137,22 @@ entity MAINPAGESUMMARY
         INV_COUNT       : Integer;
         QTY_DIFF        : Decimal(23, 2);
         PERCENTAGE_DIFF : Decimal(34, 0);
-        MONTH_NAME      : String(8);
-    
+        MONTH_NAME      : String(8); 
 }
 
 define view MPSYEAR as
     select from MAINPAGESUMMARY distinct {
         key CALYEAR
+};
+
+define view MPSMONTH as
+    select from MAINPAGESUMMARY distinct {
+        key MONTH_NAME
+};
+
+define view MPSMFRNR as
+    select from MAINPAGESUMMARY distinct {
+        key MFRNR
 };
 
 @cds.persistence.exists

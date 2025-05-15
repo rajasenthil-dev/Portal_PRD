@@ -97,19 +97,13 @@
   },
   "SYNMAINPAGESUMMARYDOC": {
     "target": {
-      "object": "Main_Page_Summary1_V4_Agg_Cons",
+      "object": "REP_TPSDBL_IC",
       "schema": "MCK_RQ2_300"
     }
   },
   "SYNMAINPAGEINVENTORYDOC": {
     "target": {
       "object": "REP_TPMMWM_INVENTORY_STATUS_IC",
-      "schema": "MCK_RQ2_300"
-    }
-  },
-  "SYNMAINPAGEUNITDOC": {
-    "target": {
-      "object": "REP_TPSDBL_IC",
       "schema": "MCK_RQ2_300"
     }
   }

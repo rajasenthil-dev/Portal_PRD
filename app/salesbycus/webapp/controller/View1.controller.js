@@ -8,7 +8,7 @@ sap.ui.define([
 ], (Controller, Dialog, Button, Image, MessageBox, BusyIndicator) => {
     "use strict";
     return Controller.extend("salesbycus.controller.View1", {
-        onInit: function () {
+        onInit: function () { 
 
             const oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
@@ -34,15 +34,15 @@ sap.ui.define([
             oSmartFilterBar.attachInitialized(function () {
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
-            
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             const oSmartTable = this.getView().byId("table0");
             var oToolbar = oSmartTable.getToolbar();
             var oCurrentStatus = new sap.m.ObjectStatus({
-                text: "Current",
+                text: oBundle.getText("SALESBYCURRENT.CURRENTTEXT"),
                 icon: "sap-icon://circle-task-2",
                 state: "Success",
                 inverted:true,
-                tooltip:"Captured from the new system post-migration and is up-to-date."
+                tooltip:oBundle.getText("SALESBYCURRENT.CURRENTTOOLTIP"),
             })
             oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
             var oCurrentStatusText =  new sap.m.Text({
@@ -50,11 +50,11 @@ sap.ui.define([
             })
             oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
             var oLegacyStatus = new sap.m.ObjectStatus({
-                text: "Legacy",
+                text: oBundle.getText("SALESBYCURRENT.LEGACYTEXT"),
                 icon: "sap-icon://circle-task-2",
                 state: "Information",
                 inverted:true,
-                tooltip:"Pulled from the previous system before the upgrade/migration.",
+                tooltip:oBundle.getText("SALESBYCURRENT.LEGACYTOOLTIP"),
             })
             oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
             var oLegacyStatusText =  new sap.m.Text({
@@ -128,65 +128,111 @@ sap.ui.define([
         
             if (!oBinding) {
                 console.warn("Table binding is missing.");
+                // Optionally clear tiles/footers if no binding
+                this._updateTile("_IDGenNumericContent1", "0");
+                this._updateTile("_IDGenNumericContent2", "0");
+                this._updateTile("_IDGenNumericContent3", "0");
+                this._updateTile("_IDGenNumericContent4", "0");
+                this._updateTile("FooterText1", "0");
+                this._updateTile("FooterText2", "0"); // Assuming FooterText2 is also updated by _updateTile
                 return;
             }
         
             const aContexts = oBinding.getContexts(0, oBinding.getLength());
-            if (!aContexts) {
+            // Check if contexts array is available and not empty
+            if (!aContexts || aContexts.length === 0) {
                 console.warn("Data is not available for calculation.");
+                // Clear tiles/footers if no data
+                this._updateTile("_IDGenNumericContent1", "0");
+                this._updateTile("_IDGenNumericContent2", "0");
+                this._updateTile("_IDGenNumericContent3", "0");
+                this._updateTile("_IDGenNumericContent4", "0");
+                this._updateTile("FooterText1", "0");
+                this._updateTile("FooterText2", "0"); // Assuming FooterText2 is also updated by _updateTile
                 return;
             }
         
-            // Initialize totals
+            // Initialize totals and sets
             const totals = aContexts.reduce((acc, oContext) => {
                 const oData = oContext.getObject();
                 if (!oData) return acc;
         
-                // Sales & Amount Calculation
+                // Sales & Amount Calculation (Applied to all rows)
                 acc.salesTotal += parseFloat(oData.AMOUNT_NETWR || 0);
-        
-                // Invoices Calculation (Count only 'Invoice' types)
-                if (oData.VTEXT_FKART === "Invoice") {
-                    acc.invoiceCount++;
-                }
         
                 // Lines Calculation (Count every row)
                 acc.lineCount++;
         
-                // Units Calculation (Units per case * Quantity)
+                // Units Calculation (Units per case * Quantity - Applied to all rows)
                 const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
                 const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
                 acc.unitsTotal += unitsPerCase * quantity;
         
-                // Footer Quantity Calculation (Sum QUANTITY_FKIMG)
+                // Footer Quantity Calculation (Sum QUANTITY_FKIMG - Applied to all rows)
                 acc.quantityTotal += quantity;
+        
+                // --- New Logic for Unique Invoice Count ---
+                // Only process if the type is "Invoice"
+                if (oData.VTEXT_FKART === "Invoice") {
+                    // Add the invoice number to the Set for unique count if it exists
+                    if (oData.INVOICE_CREDIT_VBELN) {
+                        acc.uniqueInvoiceNumbers.add(oData.INVOICE_CREDIT_VBELN);
+                    }
+                    // Note: The previous 'invoiceCount' which counted rows with type "Invoice"
+                    // is removed as the requirement is for the unique invoice number count.
+                }
+                // --- End New Logic ---
         
                 return acc;
             }, {
                 salesTotal: 0,
-                invoiceCount: 0,
+                // invoiceCount: 0, // Removed as we are now counting unique numbers
                 lineCount: 0,
                 unitsTotal: 0,
-                quantityTotal: 0
+                quantityTotal: 0,
+                uniqueInvoiceNumbers: new Set() // Set to store unique invoice numbers
             });
         
-            // Update Tiles
-            this._updateTile("_IDGenNumericContent1", this.formatLargeNumber(totals.salesTotal)); // Sales
-            this._updateTile("_IDGenNumericContent2", this.formatNumberWithCommas(totals.invoiceCount)); // Invoices
-            this._updateTile("_IDGenNumericContent3", this.formatNumberWithCommas(totals.lineCount)); // Lines
-            this._updateTile("_IDGenNumericContent4", this.formatNumberWithCommas(totals.unitsTotal)); // Units
+            // Calculate unique counts from the Sets
+            const uniqueInvoiceCount = totals.uniqueInvoiceNumbers.size; // Get the size of the Set
+        
+            // Format values
+            // Ensure formatter, formatLargeNumber, formatNumberWithCommas, and formatCurrency are available
+            // Added basic checks for formatter and functions
+            const salesTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.salesTotal) : totals.salesTotal;
+            const lineCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.lineCount) : totals.lineCount;
+            const unitsTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.unitsTotal) : totals.unitsTotal;
+            const quantityTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.quantityTotal) : totals.quantityTotal;
+            const salesAmountFormatted = this.formatCurrency ? this.formatCurrency(totals.salesTotal, "USD") : totals.salesTotal;
+        
+        
+            // Update UI elements (tiles)
+            this._updateTile("_IDGenNumericContent1", salesTotalFormatted); // Sales
+            // Update TileContent2 with the unique invoice count
+            this._updateTile("_IDGenNumericContent2", this.formatNumberWithCommas ? this.formatNumberWithCommas(uniqueInvoiceCount) : uniqueInvoiceCount); // Unique Invoices
+            this._updateTile("_IDGenNumericContent3", lineCountFormatted); // Lines
+            this._updateTile("_IDGenNumericContent4", unitsTotalFormatted); // Units
         
             // Update Footer
-            this._updateTile("FooterText1", this.formatNumberWithCommas(totals.quantityTotal)); // Quantity
-            this._updateTile("FooterText2", this.formatCurrency(totals.salesTotal, "USD")); // Amount (Same as Sales)
+            this._updateTile("FooterText1", quantityTotalFormatted); // Quantity (Assuming FooterText1 is updated by _updateTile)
+            this._updateTile("FooterText2", salesAmountFormatted); // Amount (Same as Sales) (Assuming FooterText2 is updated by _updateTile)
         },
         
-        _updateTile: function (sTileId, value) {
-            const oTile = this.byId(sTileId);
+        // Assuming these helper functions exist in your controller or a formatter file
+        // Example placeholder for _updateTile
+        _updateTile: function(sTileId, sText) {
+            const oTile = this.getView().byId(sTileId);
             if (oTile) {
-                oTile.setText(value);
+                // Assuming the tile has a setText method or a content with setText
+                if (oTile.setText) {
+                    oTile.setText(sText);
+                } else if (oTile.getContent && oTile.getContent() && oTile.getContent().setText) {
+                    oTile.getContent().setText(sText);
+                } else {
+                    console.warn("Tile or its content does not have a setText method:", sTileId);
+                }
             } else {
-                console.warn(`Tile with ID ${sTileId} not found.`);
+                console.warn("Tile not found:", sTileId);
             }
         },
         onSearch: function () {

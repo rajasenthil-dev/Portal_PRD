@@ -28,14 +28,16 @@ sap.ui.define([
         oSmartFilterBar.attachInitialized(function () {
             oView.setBusy(false); // Once filter bar + value helps are ready
         });
-        const oSmartTable = this.getView().byId("table0");
+        const oSmartTable = this.getView().byId("table0"); 
+        var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
         var oToolbar = oSmartTable.getToolbar();
         var oCurrentStatus = new sap.m.ObjectStatus({
-            text: "Current",
+            text: oBundle.getText("INVOICEHISTORY.CURRENTTEXT"),
             icon: "sap-icon://circle-task-2",
             state: "Success",
             inverted:true,
-            tooltip:"Captured from the new system post-migration and is up-to-date."
+            tooltip: oBundle.getText("INVOICEHISTORY.CURRENTTOOLTIP")
+            //tooltip:"Captured from the new system post-migration and is up-to-date."
         })
         oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
         var oCurrentStatusText =  new sap.m.Text({
@@ -43,11 +45,11 @@ sap.ui.define([
         })
         oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
         var oLegacyStatus = new sap.m.ObjectStatus({
-            text: "Legacy",
+            text: oBundle.getText("INVOICEHISTORY.LEGACYTEXT"),
             icon: "sap-icon://circle-task-2",
             state: "Information",
             inverted:true,
-            tooltip:"Pulled from the previous system before the upgrade/migration.",
+            tooltip: oBundle.getText("INVOICEHISTORY.LEGACYTOOLTIP")
         })
         oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
         var oLegacyStatusText =  new sap.m.Text({

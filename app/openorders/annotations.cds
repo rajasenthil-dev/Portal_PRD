@@ -27,7 +27,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, MFRNR, MFRNR_NAME
+           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, VKORG, MFRNR, MFRNR_NAME
         ],
         LineItem  : [
             {

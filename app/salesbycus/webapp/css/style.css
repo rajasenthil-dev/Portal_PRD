@@ -76,7 +76,9 @@
     box-shadow: none;
     color:#fff;
 }
-
+.footerPadding {
+    padding-bottom: 3rem;
+}
 .footerTitle .sapMObjectIdentifierTitle .sapMText {
     color: #fff!important;
 }

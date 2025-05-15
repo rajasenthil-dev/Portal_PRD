@@ -101,7 +101,16 @@
                 persistencyKey="SmartTableAnalytical_Explored"
                 enableAutoColumnWidth="true" 
                 class="sapUiResponsiveContentPadding">
-                <t:Table id="table" selectionMode="None" alternateRowColors="true">
+                <t:Table id="table" 
+                    selectionMode="None" 
+                    alternateRowColors="true"
+                    rows="{
+                        path: '/RETURNS',
+                        parameters: {
+                            '$select': 'VBELN_VBAK,LFGSK,VBELN_VBRK,CREDIT_AMT_NETWR'
+                        }
+                    }"
+                >
                     <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center">
                         <t:customData>
                             <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>

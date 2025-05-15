@@ -200,9 +200,18 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText15" text="{path: 'DIN'}" />
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn1" width="7rem" hAlign="End">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 17}'/>
+                                    </t:customData>
+                                <Text id="_IDGenText21" text="{i18n>INVENTORYSNAPSHOT.WERKS}"></Text>
+                                <t:template>
+                                <Text id="_IDGenText22" text="{path: 'VKORG'}" />
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn9" width="7rem" hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 17}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 19}'/>
                                     </t:customData>
                                 <Text id="_IDGenText16" text="{i18n>INVENTORYSNAPSHOT.VKORG}"></Text>
                                 <t:template>
@@ -211,7 +220,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                             </t:Column>
                             <t:Column id="_IDGenColumn10" width="7rem" hAlign="End">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 18}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 20}'/>
                                     </t:customData>
                                 <Text id="_IDGenText18" text="{i18n>INVENTORYSNAPSHOT.MFRNR}"></Text>
                                 <t:template>

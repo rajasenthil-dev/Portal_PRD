@@ -116,13 +116,6 @@
 				},
 				{
 					"type": "VIEW",
-					"name": "Main_Page_Summary1_V4_Agg_Cons",
-					"privileges_with_grant_option": [
-						"SELECT"
-					]
-				},
-				{
-					"type": "VIEW",
 					"name": "REP_TPMMWM_INVENTORY_STATUS_IC",
 					"privileges_with_grant_option": [
 						"SELECT"

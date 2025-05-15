@@ -27,8 +27,10 @@ Search.defaultSearchElement: true,
             WAREHOUSE_STATUS, 
             KUNNR,
             CUSTOMER_NAME,
+            TRAN_TYPE,
             MFRNR,
-            MFRNR_NAME
+            MFRNR_NAME,
+            SALES_ORG
         ],
         LineItem  : [
             {
@@ -163,6 +165,10 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MFRNR_NAME,
                 Label : '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}'
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SALES_ORG
             }
         ],
     },
@@ -246,6 +252,22 @@ Search.defaultSearchElement: true,
             },
         }     
     );
+    TRAN_TYPE@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IATTRANTYPE',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'TRAN_TYPE',
+                        ValueListProperty : 'TRAN_TYPE'
+                    }
+                ]
+            },
+        }     
+    );
     MFRNR@(
         Common: {
             ValueListWithFixedValues,
@@ -273,6 +295,22 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR_NAME',
                         ValueListProperty : 'MFRNR_NAME'
+                    }
+                ]
+            },
+        }     
+    );
+    SALES_ORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IATSALESORG',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'SALES_ORG',
+                        ValueListProperty : 'SALES_ORG'
                     }
                 ]
             },

@@ -4,34 +4,40 @@ annotate SALES.INVOICEHISTORY with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-            ORT01:true, 
-            VKORG:true,
-            BKTXT:true,
-            KUNNR:true,
-            LFDAT:true,
-            BELNR:true,
-            BUDAT:true,
-            NAME1:true,
-            AUBEL:true,
-            PSTLZ:true,
-            REGIO:true,
-            BSTKD:true,
-            SHIP_TO:true,
-            TRACKN:true,
-            ORDER_TYPE:true,
-            MFRNR:true,
-            CURRENT:true
+            BKTXT: true,
+            LFDAT: true,
+            CAL_GST: true,
+            CAL_PST: true,
+            ORT01: true,
+            MFRNR: true,
+            VKORG: true,
+            SHIP_TO: true,
+            TSL_AMOUNT: true,
+            NAME1: true,
+            BSTKD: true,
+            PSTLZ: true,
+            REGIO: true,
+            AUBEL: true,
+            TRACKN: true,
+            BILL_TO: true,
+            WAERK: true,
+            VBELN: true,
+            CURRENT: true,
+            ORDER_TYPE: true,
+            FKDAT: true,
+            PATIENT_ID: true,
+            AUGRU_AUFT: true,
+            PLANT_NAME: true,
+            WERKS: true,
+            BEZEI: true,
+            MFRNR_NAME: true
         }
     },
     UI : {
         SelectionFields  : [
-            KUNNR, NAME1, SHIP_TO, BELNR, BSTKD, BUDAT, ORDER_TYPE, REGIO, MFRNR, VKORG
+             NAME1, SHIP_TO, VBELN, BSTKD, FKDAT, ORDER_TYPE, REGIO, MFRNR, VKORG, BEZEI
         ],
         LineItem  : [
-            {
-                $Type : 'UI.DataField',
-                Value : KUNNR
-            },
             {
                 $Type : 'UI.DataField',
                 Value : NAME1
@@ -62,11 +68,11 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : BELNR
+                Value : VBELN
             },
             {
                 $Type : 'UI.DataField',
-                Value : BUDAT
+                Value : FKDAT
             },
             {
                 $Type : 'UI.DataField',
@@ -98,35 +104,35 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : BEZEI
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PATIENT_ID
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT_NAME
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : CURRENT
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG
             },
-            
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_NAME
             }
         ],
     },
 ){
-    KUNNR@(
-        Common: {
-            ValueList : {
-                $Type : 'Common.ValueListType',
-                CollectionPath : 'IHCUSTOMERID',
-                Parameters : [
-                    {
-                        $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'KUNNR',
-                        ValueListProperty : 'KUNNR'
-                    }
-                ]
-            },
-        } 
-    );
     NAME1@(
         Common: {
             ValueList : {
@@ -190,7 +196,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );	    
-    BELNR@(
+    VBELN@(
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -198,8 +204,8 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'BELNR',
-                        ValueListProperty : 'BELNR'
+                        LocalDataProperty : 'VBELN',
+                        ValueListProperty : 'VBELN'
                     }
                 ]
             },
@@ -237,6 +243,22 @@ Search.defaultSearchElement: true,
             },
         }    
     );
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IHMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
+                    }
+                ]
+            },
+        }    
+    );
     
     VKORG@(
         Common: {
@@ -249,6 +271,22 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'VKORG',
                         ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        }    
+    );
+    BEZEI@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IHBEZEI',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'BEZEI',
+                        ValueListProperty : 'BEZEI'
                     }
                 ]
             },

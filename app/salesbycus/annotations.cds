@@ -64,7 +64,8 @@ Search.defaultSearchElement: true,
             MFRNR,
             MFRNR_NAME,
             CO_VKORG,
-            VKBUR
+            VKBUR,
+            BEZEI
         ],
         
         LineItem  : [
@@ -245,6 +246,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : BEZEI
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : COMMENT,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
@@ -272,7 +277,6 @@ Search.defaultSearchElement: true,
     }, 
 ){
     INVOICE_CREDIT_VBELN@(
-        title: 'Invoice/Credit #',
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -478,6 +482,23 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'VKBUR',
                         ValueListProperty : 'VKBUR'
+                    }
+                ]
+            },
+        }
+        
+    );
+    BEZEI@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCBEZEI',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'BEZEI',
+                        ValueListProperty : 'BEZEI'
                     }
                 ]
             },

@@ -269,11 +269,13 @@ service PROCESSING {
 using INVENTORYAUDITTRAIL as ENTINVENTORYAUDITTRAIL from '../db/schema';
 using IATPRODUCTCODE as ENTIATPRODUCTCODE from '../db/schema';
 using IATLOT as ENTIATLOT from '../db/schema';
+using IATSALESORG as ENTIATSALESORG from '../db/schema';
 using IATWAREHOUSE as ENTIATWAREHOUSE from '../db/schema';
 using IATCUSTSUPP as ENTIATCUSTSUPP from '../db/schema';
 using IATCUSTSUPPNAME as ENTIATCUSTSUPPNAME from '../db/schema';
 using IATMFRNR as ENTIATMFRNR from '../db/schema';
 using IATMFRNRNAME as ENTIATMFRNRNAME from '../db/schema';
+using IATTRANTYPE as ENTIATTRANTYPE from '../db/schema';
 
 // Inventory Status
 using INVENTORYSTATUS as ENTINVENTORYSTATUS from '../db/schema';
@@ -338,6 +340,8 @@ service INVENTORY {
     entity IATCUSTSUPPNAME as projection on ENTIATCUSTSUPPNAME;
     entity IATMFRNR as projection on ENTIATMFRNR;
     entity IATMFRNRNAME as projection on ENTIATMFRNRNAME;
+    entity IATSALESORG as projection on ENTIATSALESORG;
+    entity IATTRANTYPE as projection on ENTIATTRANTYPE;
 
 
 
@@ -584,7 +588,6 @@ service INVENTORY {
 
 using INVOICEHISTORY as ENTINVOICEHISTORY from '../db/schema';
 using IHCUSTOMER as ENTIHCUSTOMER from '../db/schema';
-using IHCUSTOMERID as ENTIHCUSTOMERID from '../db/schema';
 using IHSHIPTO as ENTIHSHIPTO from '../db/schema';
 using IHINVOICE as ENTIHINVOICE from '../db/schema';
 using IHPO as ENTIHPO from '../db/schema';
@@ -593,6 +596,7 @@ using IHPROVINCE as ENTIHPROVINCE from '../db/schema';
 using IHMFRNR as ENTIHMFRNR from '../db/schema';
 using IHMFRNRNAME as ENTIHMFRNRNAME from '../db/schema';
 using IHSALESORG as ENTIHSALESORG from '../db/schema';
+using IHBEZEI as ENTIHBEZEI from '../db/schema';
 
 using SALESBYCURRENT as ENTSALESBYCURRENT from '../db/schema';
 using SBCINVOICE as ENTSBCINVOICE from '../db/schema';
@@ -608,6 +612,8 @@ using SBCMFRNR as ENTSBCMFRNR from '../db/schema';
 using SBCMFRNRNAME as ENTSBCMFRNRNAME from '../db/schema';
 using SBCSALESORG as ENTSBCSALESORG from '../db/schema';
 using SBCSALESOFFICE as ENTSBCSALESOFFICE from '../db/schema';
+using SBCYEAR as ENTSBCYEAR from '../db/schema';
+using SBCBEZEI as ENTSBCBEZEI from '../db/schema';
 
 service SALES {
     // ℹ️ Ivoice History Related Entities
@@ -618,7 +624,6 @@ service SALES {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVOICEHISTORY as projection on ENTINVOICEHISTORY;
-    entity IHCUSTOMERID as projection on ENTIHCUSTOMERID;
     entity IHCUSTOMER as projection on ENTIHCUSTOMER;
     entity IHSHIPTO as projection on ENTIHSHIPTO;
     entity IHINVOICE as projection on ENTIHINVOICE;
@@ -628,6 +633,7 @@ service SALES {
     entity IHMFRNR as projection on ENTIHMFRNR;
     entity IHMFRNRNAME as projection on ENTIHMFRNRNAME;
     entity IHSALESORG as projection on ENTIHSALESORG;
+    entity IHBEZEI as projection on ENTIHBEZEI;
 
 
 
@@ -652,6 +658,8 @@ service SALES {
     entity SBCMFRNRNAME as projection on ENTSBCMFRNRNAME;
     entity SBCSALESORG as projection on ENTSBCSALESORG;
     entity SBCSALESOFFICE as projection on ENTSBCSALESOFFICE;
+    entity SBCYEAR as projection on ENTSBCYEAR;
+    entity SBCBEZEI as projection on ENTSBCBEZEI;
 }
 
 using CUSTOMERMASTER as ENTCUSTOMERMASTER from '../db/schema';
@@ -758,12 +766,16 @@ service FINANCE {
 
 using MAINPAGESUMMARY as ENTMAINPAGESUMMARY from '../db/schema';
 using MPSYEAR as ENTMPSYEAR from '../db/schema';
+using MPSMONTH as ENTMPSMONTH from '../db/schema';
+using MPSMFRNR as ENTMPSMFRNR from '../db/schema';
 using MAINPAGEINVENTORY as ENTMAINPAGEINVENTORY from '../db/schema';
 
 service MAINPAGE {
     // ⚠️ CDS Authorization Pending
     entity MAINPAGESUMMARY as projection on ENTMAINPAGESUMMARY;
     entity MPSYEAR as projection on ENTMPSYEAR;
+    entity MPSMONTH as projection on ENTMPSMONTH;
+    entity MPSMFRNR as projection on ENTMPSMFRNR;
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [

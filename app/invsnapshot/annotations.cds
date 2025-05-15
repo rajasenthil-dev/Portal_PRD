@@ -124,6 +124,15 @@ Search.defaultSearchElement: true,
                 Value : TBTXT,
                 Label : '{i18n>INVENTORYSNAPSHOT.TBTXT}'
             },
+             {
+                $Type : 'UI.DataField',
+                Value : WERKS,
+            },
+             {
+                $Type : 'UI.DataField',
+                Value : PLANT_NAME,
+                
+            },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,

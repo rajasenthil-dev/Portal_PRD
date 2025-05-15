@@ -8,5 +8,6 @@ AS SELECT
     MAKTX,
     MFRNR,
     KONWA,
-    MFRNR_NAME       
+    MFRNR_NAME,
+    DATAB     
 FROM "SYNPRICINGDOC"

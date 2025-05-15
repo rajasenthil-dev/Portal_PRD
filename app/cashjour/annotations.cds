@@ -38,140 +38,116 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CURRENT,
-                Label : '{i18n>CASHJOURNAL.CURRENT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO,
-                Label : '{i18n>CASHJOURNAL.BILL_TO}',
                 ![@HTML5.CssDefaults] : {width : '12rem'}
 
             },
             {
                 $Type : 'UI.DataField',
                 Value : NAME1,
-                Label : '{i18n>CASHJOURNAL.NAME1}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
-                Value : SHIP_TO,
-                Label : '{i18n>CASHJOURNAL.SHIP_TO}'
+                Value : SHIP_TO
             },
             {
                 $Type : 'UI.DataField',
-                Value : VBELN,
-                Label : '{i18n>CASHJOURNAL.VBELN}'
+                Value : VBELN
             }, 
             {
                 $Type : 'UI.DataField',
-                Value : FKDAT,
-                Label : '{i18n>CASHJOURNAL.FKDAT}'
+                Value : FKDAT
             },  
             {
                 $Type : 'UI.DataField',
                 Value : NETWR,
-                Label : '{i18n>CASHJOURNAL.NETWR}',
                 ![@HTML5.CssDefaults] : {width : '16rem'}
             },  
             {
                 $Type : 'UI.DataField',
                 Value : AUBEL,
-                Label : '{i18n>CASHJOURNAL.AUBEL}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },          
             {
                 $Type : 'UI.DataField',
                 Value : CAL_CASH_RECEIVED,
-                Label : '{i18n>CASHJOURNAL.CAL_CASH_RECEIVED}',
                 ![@HTML5.CssDefaults] : {width : '6.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_DISCOUNT,
-                Label : '{i18n>CASHJOURNAL.CAL_DISCOUNT}',
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BLART,
-                Label : '{i18n>CASHJOURNAL.BLART}',
                 ![@HTML5.CssDefaults] : {width : '6.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : BUDAT,
-                Label : '{i18n>CASHJOURNAL.BUDAT}'
+                Value : BUDAT
             },
             {
                 $Type : 'UI.DataField',
                 Value : BUKRS,
-                Label : '{i18n>CASHJOURNAL.BURKS}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BELNR,
-                Label : '{i18n>CASHJOURNAL.BELNR}'
             },
             
             {
                 $Type : 'UI.DataField',
-                Value : GJAHR,
-                Label : '{i18n>CASHJOURNAL.GJAHR}'
+                Value : GJAHR
             },
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                Label : '{i18n>CASHJOURNAL.VKORG}',
                 ![@HTML5.CssDefaults] : {width : '3rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : BSTKD,
-                Label : '{i18n>CASHJOURNAL.BSTKD}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
                 Value : BKTXT,
-                Label : '{i18n>CASHJOURNAL.BKTXT}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
                 
             },
             {
                 $Type : 'UI.DataField',
-                Value : SGTXT,
-                Label : '{i18n>CASHJOURNAL.SGTXT}'
+                Value : SGTXT
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR,
-                Label : '{i18n>CASHJOURNAL.MFRNR}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : PRCTR,
-                Label : '{i18n>CASHJOURNAL.PRCTR}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : BLDAT,
-                Label : '{i18n>CASHJOURNAL.BLDAT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_INV_AMOUNT,
-                Label : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}'
             },
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR_NAME,
-                Label : '{i18n>CASHJOURNAL.MFRNR_NAME}'
             },
 
         ],

@@ -160,6 +160,13 @@
                                 <Label id="_IDGenLabel2" text="{i18n>footerLabel2}:" class="cssLabelTotal"/>
                                 <Text id="footerText2" class="footerText" text =""/>
                             </HBox>
+                            <HBox id="_IDGenHBox359" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel359" text="{i18n>footerLabel9}:" class="cssLabelTotal"/>
+                                <Text id="footerText9" class="footerText" text =""/>
+                            </HBox>	
+
+
+
                             <HBox id="_IDGenHBox31" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel31" text="{i18n>footerLabel3}:" class="cssLabelTotal"/>
                                 <Text id="footerText3" class="footerText" text =""/>
@@ -184,10 +191,7 @@
                                 <Label id="_IDGenLabel358" text="{i18n>footerLabel8}:" class="cssLabelTotal"/>
                                 <Text id="footerText8" class="footerText" text =""/>
                             </HBox>	
-                            <HBox id="_IDGenHBox359" class="sapUiSmallMarginEnd">
-                                <Label id="_IDGenLabel359" text="{i18n>footerLabel9}:" class="cssLabelTotal"/>
-                                <Text id="footerText9" class="footerText" text =""/>
-                            </HBox>	
+                            
                             <HBox id="_IDGenHBox3510" class="sapUiSmallMarginEnd">
                                 <Label id="_IDGenLabel3510" text="{i18n>footerLabel10}:" class="cssLabelTotal"/>
                                 <Text id="footerText10" class="footerText" text =""/>

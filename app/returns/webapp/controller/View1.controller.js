@@ -127,37 +127,179 @@ sap.ui.define([
             // Apply the filter
             oBinding.filter(aFilters);
         },
+        // calculateRgaCounts: function(aData) {
+        //     let iOpenRgaCount = 0;
+        //     let iClosedRgaCount = 0;
+        //     let iCreditAmountNotNullCount = 0;
+        
+        //     // Use a Set to track unique VBELN_VBAK for open RGAs
+        //     const uniqueOpenRgas = new Set();
+        
+        //     if (aData && Array.isArray(aData)) {
+        //         aData.forEach(oItem => {
+        //             // Count 1: Unique count of VBELN_VBAK for open RGA (LFGDK is not 'C')
+        //             if (oItem.LFGSK !== 'C' && oItem.VBELN_VBAK) {
+        //                 uniqueOpenRgas.add(oItem.VBELN_VBAK);
+        //             }
+        
+        //             // Count 2: Count of LFGDK where LFGDK = 'C' for closed RGA
+        //             if (oItem.LFGSK === 'C') {
+        //                 iClosedRgaCount++;
+        //             }
+        
+        //             // Count 3: Count of all CREDIT_AMT_NETWR where CREDIT_AMT_NETWR is not null
+        //             // We check for undefined, null, and empty string, and also ensure it's not 0 if 0 is considered null in this context
+        //             if (oItem.CREDIT_AMT_NETWR !== undefined && oItem.CREDIT_AMT_NETWR !== null && oItem.CREDIT_AMT_NETWR !== '') {
+        //                  // You might want to add a check for 0 depending on your data's representation of 'null' credit
+        //                  // if (parseFloat(oItem.CREDIT_AMT_NETWR) !== 0) {
+        //                      iCreditAmountNotNullCount++;
+        //                  // }
+        //             }
+        //         });
+        
+        //         // The unique open RGA count is the size of the Set
+        //         iOpenRgaCount = uniqueOpenRgas.size;
+        //     }
+        
+        //     return {
+        //         openRgaCount: iOpenRgaCount,
+        //         closedRgaCount: iClosedRgaCount,
+        //         creditAmountNotNullCount: iCreditAmountNotNullCount
+        //     };
+        // },
         _calculateTotals: function (oEvent) {
+            // Get the table and its rows binding from the event source
             var oTable = oEvent.getSource();
-            var oBinding = oTable.getBinding("rows");  // Get the rows binding
-            var aContexts = oBinding.getContexts(0, oBinding.getLength());
-            // Ensure that the binding exists and is set up
-            if (oBinding) { // Get the data rows
-                var fTotalNetWr = 0;
-                let credited = new Set();   // Total for NETWR (Invoice Amount)
-                var fTotalCredited = 0;  
-                var fTotalOpenRGA = 0;  // Total for CAL_CASH_RECEIVED (Cash Received)
-                var fTotalClosedRGA = 0;
+            var oBinding = oTable.getBinding("rows");
+        
+            // Ensure the binding exists and has data contexts
+            if (oBinding && oBinding.getLength() > 0) {
+                // Get all data contexts from the binding
+                var aContexts = oBinding.getContexts(0, oBinding.getLength());
+        
+                // Map contexts to plain JavaScript objects for easier access
                 var aData = aContexts.map(oContext => oContext.getObject());
-                fTotalClosedRGA = aData.filter(item => item.AUDAT).length
-                fTotalOpenRGA = aData.filter(item => !item.AUDAT).length
-                // Iterate through the rows to sum the values
-                aContexts.forEach(function (oContext) {
-                    var oData = oContext.getObject();
-                    fTotalNetWr += parseFloat(oContext.getProperty("NETWR")) || 0;
-                    credited.add(oData.VBELN);
+        
+                // --- Initialize counters and sets for calculations ---
+        
+                // Total for CREDIT_AMT_NETWR (keeping existing logic for footer)
+                var fTotalCreditAmountNetWr = 0; // Renamed for clarity
+        
+                // Set to store distinct VBAK-VBELN where VBTYP = 'H' (Total Returns)
+                const uniqueTotalReturnsVBELN_VBAK = new Set();
+        
+                // Set to store distinct VBAK-VBELN where VBTYP = 'H' and LFGSK = 'C' (Closed RGA)
+                const uniqueClosedRgaVBELN_VBAK = new Set();
+        
+                // Set to store unique VBELN_VBRK for all credited RGAs (where VBELN_VBRK exists)
+                const uniqueCreditedRgasVBELN_VBRK = new Set(); // Re-introduced Set for unique VBELN_VBRK for credited
+        
+                // --- Iterate through the data to perform calculations ---
+                aData.forEach(function (oItem) {
+                    // Calculate Total CREDIT_AMT_NETWR for footer
+                    // Using CREDIT_AMT_NETWR based on your provided code snippet
+                    fTotalCreditAmountNetWr += parseFloat(oItem.CREDIT_AMT_NETWR || 0);
+        
+                    // Check if the item is a Return (VBTYP === 'H')
+                    if (oItem.VBTYP === 'H' && oItem.VBELN_VBAK) {
+                        // Add to the set for total returns count
+                        uniqueTotalReturnsVBELN_VBAK.add(oItem.VBELN_VBAK);
+        
+                        // Check if it's also a Closed RGA (LFGSK === 'C')
+                        if (oItem.LFGSK === 'C') {
+                            // Add to the set for closed RGA count
+                            uniqueClosedRgaVBELN_VBAK.add(oItem.VBELN_VBAK);
+                        }
+                    }
+        
+                    // Add VBELN_VBRK to the set for all credited RGAs if VBELN_VBRK exists
+                    // This is separate from the Open/Closed RGA logic
+                    if (oItem.VBELN_VBRK !== undefined && oItem.VBELN_VBRK !== null && oItem.VBELN_VBRK !== '') {
+                         uniqueCreditedRgasVBELN_VBRK.add(oItem.VBELN_VBRK);
+                    }
                 });
-                var formattedNetWr = this._formatCurrency(fTotalNetWr);
-                const creditedCount = credited.size;
-                // Update footer with the calculated totals
-                
-                this.byId("TotUnitsPriceText").setText(formattedNetWr);
-                this.byId("summaryTile1").setText(creditedCount);
-                this.byId("summaryTile2").setText(fTotalOpenRGA);
-                this.byId("summaryTile3").setText(fTotalClosedRGA);
-                
+        
+                // --- Finalize counts based on new logic ---
+        
+                // Count 1: Distinct count of VBAK-VBELN where VBTYP = 'H' (Total Returns)
+                const iTotalReturnsCount = uniqueTotalReturnsVBELN_VBAK.size;
+        
+                // Count 2: Distinct count of VBAK-VBELN where VBTYP = 'H' and LFGSK = 'C' (Closed RGA)
+                const iClosedRgaCount = uniqueClosedRgaVBELN_VBAK.size;
+        
+                // Count 3: Open RGA = Total Returns - Closed RGA
+                const iOpenRgaCount = iTotalReturnsCount - iClosedRgaCount;
+        
+                // Count 4: Unique Credited RGA Count (Distinct VBELN_VBRK where VBELN_VBRK exists)
+                const iUniqueCreditedRgaCount = uniqueCreditedRgasVBELN_VBRK.size; // Get the size of the credited set
+        
+                // --- Update UI elements with calculated totals and counts ---
+        
+                // Update footer with formatted Total CREDIT_AMT_NETWR
+                // Assuming _formatCurrency is available in your controller
+                var formattedCreditAmountNetWr = this._formatCurrency ? this._formatCurrency(fTotalCreditAmountNetWr) : fTotalCreditAmountNetWr;
+                this.byId("TotUnitsPriceText").setText(formattedCreditAmountNetWr);
+        
+                // Update summary tiles based on the new requirements:
+                // Assuming mapping based on the new RGA calculation logic and re-added credited count:
+                // summaryTile1: Unique Credited RGA Count (Distinct VBELN_VBRK where VBELN_VBRK exists)
+                // summaryTile2: Total Returns Count (Distinct VBAK-VBELN where VBTYP = 'H')
+                // summaryTile3: Closed RGA Count (Distinct VBAK-VBELN where VBTYP = 'H' and LFGSK = 'C')
+                // summaryTile4: Open RGA Count (Total Returns - Closed RGA)
+                // Note: Adjusted tile mapping based on typical placement and re-addition of credited count.
+                // You might need to adjust the tile IDs (summaryTile1, summaryTile2, etc.)
+                // based on which tile you want each count to appear in.
+                this.byId("summaryTile1").setText(iUniqueCreditedRgaCount); // Credited RGA Count
+                this.byId("summaryTile2").setText(iOpenRgaCount); // Total Returns Count
+                this.byId("summaryTile3").setText(iClosedRgaCount); // Closed RGA Count
+                // If you have a fourth tile, you could display Open RGA there:
+                // this.byId("summaryTile4").setText(iOpenRgaCount);
+                // Or you can choose to display Open RGA in one of the existing tiles if you prefer.
+                // For now, I'll map Total, Closed, and Credited to 1, 2, and 3.
+        
+            } else {
+                // Handle case where binding is not available or has no data
+                console.warn("Table binding not available or no data found.");
+                // Optionally clear the tile texts and footer if no data
+                this.byId("TotUnitsPriceText").setText("0"); // Assuming this is the footer ID
+                this.byId("summaryTile1").setText("0");
+                this.byId("summaryTile2").setText("0");
+                this.byId("summaryTile3").setText("0");
+                // If summaryTile4 exists:
+                // this.byId("summaryTile4").setText("0");
             }
         },
+        // _calculateTotals: function (oEvent) {
+        //     var oTable = oEvent.getSource();
+        //     var oBinding = oTable.getBinding("rows");  // Get the rows binding
+        //     var aContexts = oBinding.getContexts(0, oBinding.getLength());
+        //     // Ensure that the binding exists and is set up
+        //     if (oBinding) { // Get the data rows
+        //         var fTotalNetWr = 0;
+        //         let credited = new Set();   // Total for NETWR (Invoice Amount)
+        //         var fTotalCredited = 0;  
+        //         var fTotalOpenRGA = 0;  // Total for CAL_CASH_RECEIVED (Cash Received)
+        //         var fTotalClosedRGA = 0;
+        //         var aData = aContexts.map(oContext => oContext.getObject());
+        //         fTotalClosedRGA = aData.filter(item => item.AUDAT).length
+        //         fTotalOpenRGA = aData.filter(item => !item.AUDAT).length
+        //         // Iterate through the rows to sum the values
+        //         aContexts.forEach(function (oContext) {
+        //             var oData = oContext.getObject();
+        //             fTotalNetWr += parseFloat(oContext.getProperty("NETWR")) || 0;
+        //             credited.add(oData.VBELN);
+        //         });
+        //         var formattedNetWr = this._formatCurrency(fTotalNetWr);
+        //         const creditedCount = credited.size;
+        //         // Update footer with the calculated totals
+                
+        //         this.byId("TotUnitsPriceText").setText(formattedNetWr);
+        //         this.byId("summaryTile1").setText(creditedCount);
+        //         this.byId("summaryTile2").setText(fTotalOpenRGA);
+        //         this.byId("summaryTile3").setText(fTotalClosedRGA);
+                
+        //     }
+        // },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {
             return "";

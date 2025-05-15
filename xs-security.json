@@ -10,14 +10,12 @@
         {
             "name": "$XSAPPNAME.Viewer",
             "description": "Viewer",
-            "grant-as-authority-to-apps": ["mck-portal"],
-            "attributes": ["groups"]
+            "grant-as-authority-to-apps": ["mck-portal"]
         },
         {
             "name": "$XSAPPNAME.Internal",
             "description": "Internal User",
-            "grant-as-authority-to-apps": ["mck-portal"],
-            "attributes": ["groups"]
+            "grant-as-authority-to-apps": ["mck-portal"]
         }
     ],
     "attributes": [

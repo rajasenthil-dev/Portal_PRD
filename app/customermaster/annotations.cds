@@ -109,6 +109,10 @@ annotate CUSTOMERS.CUSTOMERMASTER with @(
             },
             {
                 $Type : 'UI.DataField',
+                Value : VTEXT
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : VKORG
             },
             {

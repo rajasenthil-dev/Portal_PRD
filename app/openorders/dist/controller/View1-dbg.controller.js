@@ -134,9 +134,9 @@ sap.ui.define([
                 var iLength = oBinding.getLength(); // Get the length of currently bound/filtered data
                 var aContexts = oBinding.getContexts(0, iLength);
         
-                var fTotalOpenOrders = iLength; // Represents total lines displayed/bound
+                var fTotalOpenLines = iLength; // Represents total lines displayed/bound
                 var fTotalKWMENG = 0;
-                var fTotalOpenLines = new Set(); // Consider renaming if it's unique descriptions
+                var fTotalOpenOrders = new Set(); // Consider renaming if it's unique descriptions
         
                 // Check if there are contexts to iterate over
                 if (aContexts && aContexts.length > 0) {
@@ -148,27 +148,27 @@ sap.ui.define([
                         fTotalKWMENG += parseFloat(vKwmen) || 0; // Accumulate sum
         
                         // Assuming MAKTX contains the value to determine unique "lines"
-                        var vMaktx = oContext.getProperty("MAKTX");
+                        var vMaktx = oContext.getProperty("VBELN");
                         if (vMaktx !== null && vMaktx !== undefined) {
-                             fTotalOpenLines.add(vMaktx);
+                             fTotalOpenOrders.add(vMaktx);
                         }
                     });
                 }
         
                 // Use .size for Set count
-                var fTotalOpenLinesCount = fTotalOpenLines.size;
+                var fTotalOpenOrdersCount = fTotalOpenOrders.size;
         
                 // --- Format the calculated numbers ---
-                var sFormattedTotalOpenOrders = oIntegerFormat.format(fTotalOpenOrders);
-                var sFormattedTotalOpenLinesCount = oIntegerFormat.format(fTotalOpenLinesCount);
+                var sFormattedTotalOpenLines = oIntegerFormat.format(fTotalOpenLines);
+                var sFormattedTotalOpenOrdersCount = oIntegerFormat.format(fTotalOpenOrdersCount);
                 var sFormattedTotalKWMENG = oQuantityFormat.format(fTotalKWMENG);
                 // --- End Formatting ---
         
                 // --- Update UI with formatted strings ---
                 // Consider renaming fTotalOpenOrders variable if it means lines
-                this.byId("_IDGenNumericContent1").setText(sFormattedTotalOpenOrders);
+                this.byId("_IDGenNumericContent1").setText(sFormattedTotalOpenLines);
                 // Consider renaming fTotalOpenLinesCount variable if it means unique descriptions
-                this.byId("_IDGenNumericContent2").setText(sFormattedTotalOpenLinesCount);
+                this.byId("_IDGenNumericContent2").setText(sFormattedTotalOpenOrdersCount);
                 this.byId("footerText1").setText(sFormattedTotalKWMENG);
                 // --- End UI Update ---
         
