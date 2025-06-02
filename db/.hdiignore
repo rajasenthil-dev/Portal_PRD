@@ -369,7 +369,34 @@ src/gen/SBCBEZEI.hdbview
 
 src/gen/INVENTORY.IATTRANTYPE.hdbview
 src/gen/IATTRANTYPE.hdbview
+src/gen/PROCESSING.OOVBELN.hdbview
+src/gen/OOVBELN.hdbview
 
+src/gen/ITEMMASPLANTNAME.hdbview
+src/gen/INVENTORY.ITEMMASPLANTNAME.hdbview
 
+src/gen/INVENTORY.INVSTATUSPLANTNAME.hdbview
+src/gen/INVSTATUSPLANTNAME.hdbview
+
+src/gen/INVENTORY.IATPLANTNAME.hdbview
+src/gen/IATPLANTNAME.hdbview
+
+src/gen/INVENTORY.INVSNAPPLANTNAME.hdbview
+src/gen/INVSNAPPLANTNAME.hdbview
+
+src/gen/SALES.SALESBYCURRENTWOPID.hdbview
+src/gen/SALESBYCURRENTWOPID.hdbview
+
+src/gen/INVENTORY.INVBYLOTPLANTNAME.hdbview
+src/gen/INVBYLOTPLANTNAME.hdbview
+
+src/gen/INVENTORY.INVVALPLANTNAME.hdbview
+src/gen/INVVALPLANTNAME.hdbview
+
+src/gen/SALES.IHPLANTNAME.hdbview
+src/gen/IHPLANTNAME.hdbview
+
+src/gen/SALES.SBCPLANTNAME.hdbview
+src/gen/SBCPLANTNAME.hdbview
 
 

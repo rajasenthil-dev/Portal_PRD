@@ -63,6 +63,13 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : NARCOTICS_IND,
+                Label : '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}',
+                ![@HTML5.CssDefaults] : {width : '4rem'}
+                
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : POSTING_DATE,
                 Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
@@ -263,6 +270,22 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'TRAN_TYPE',
                         ValueListProperty : 'TRAN_TYPE'
+                    }
+                ]
+            },
+        }     
+    );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IATPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
                     }
                 ]
             },

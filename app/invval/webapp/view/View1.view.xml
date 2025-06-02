@@ -16,13 +16,13 @@
                                 </FlexBox>
                             </FlexBox>  
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     <sf:SmartFilterBar 
                         id="bar0" 
@@ -101,7 +101,7 @@
                 >
                     <t:Table id="table" alternateRowColors="true" selectionMode="None">
                         <t:columns>
-                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End" sortProperty="MATNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                 </t:customData>
@@ -110,7 +110,7 @@
                                     <Text id="sku" text="{path: 'MATNR', formatter: '._removeLeadingZeros'}"/>
                                 </t:template>     
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn4" width='7.813rem' hAlign="End" sortProperty="MFRPN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 1}'/>
                                 </t:customData>
@@ -119,7 +119,7 @@
                                     <Text id="productCode" text="{path: 'MFRPN', formatter: '._removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn2" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn2" width='7.813rem' hAlign="End" sortProperty="PLANT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PLANT", "leadingProperty": "PLANT", "columnIndex": 3}'/>
                                 </t:customData>
@@ -128,7 +128,7 @@
                                     <Text id="_IDGenText2" text="{path: 'PLANT'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="End" sortProperty="VKBUR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 16}'/>
                                 </t:customData>
@@ -137,7 +137,7 @@
                                     <Text id="_IDGenText6" text="{path: 'VKBUR'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End" sortProperty="MFRNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 16}'/>
                                 </t:customData>

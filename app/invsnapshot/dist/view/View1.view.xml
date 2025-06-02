@@ -20,13 +20,13 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 </FlexBox>
                             </FlexBox>
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     <sf:SmartFilterBar id="bar0" entitySet="INVENTORYSNAPSHOT" persistencyKey="SmartFilterBar_INVETORYSNAPSHOT" smartVariant="pageVariant" liveMode="true" search="onSearch">
                         <sf:controlConfiguration>
@@ -85,7 +85,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                             <t:RowSettings id="_IDGenRowSettings" highlight="{path:'DAYS_UNTIL_EXPIRY', formatter:'._formatRowHighlight'}" highlightText="{DAYS_UNTIL_EXPIRY}"/>
                         </t:rowSettingsTemplate>
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn11" width='7rem' hAlign="Center" sortProperty="CURRENT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 3}'/>
                                 </t:customData>
@@ -101,7 +101,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                     text="{= ${CURRENT} === 'YES' ? ${i18n>INVENTORYSNAPSHOT.CURRENTTEXT} : ${i18n>INVENTORYSNAPSHOT.LEGACYTEXT}}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn" width="7rem" hAlign="End" sortProperty="MATNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                     </t:customData>
@@ -110,7 +110,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText9" text="{path: 'MATNR', formatter: '._removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn2" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn2" width="7rem" hAlign="End" sortProperty="MFRNPN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 1}'/>
                                     </t:customData>
@@ -119,7 +119,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText4" text="{path: 'MFRPN'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn5" width="7rem" hAlign="End" sortProperty="SIZE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SIZE", "leadingProperty": "SIZE", "columnIndex": 4}'/>
                                     </t:customData>
@@ -137,7 +137,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                     <Text id="_IDGenText2" text="{path: 'LGNUM'}" />
                                 </t:template>
                             </t:Column> -->
-                            <t:Column id="_IDGenColumn4" width="10rem" hAlign="End">
+                            <t:Column id="_IDGenColumn4" width="10rem" hAlign="End" sortProperty="VFDAT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 7}'/>
                                 </t:customData>
@@ -146,11 +146,11 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                     <Text id="_IDGenText" text="{path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width='12rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn3" width='12rem' hAlign="Center" sortProperty="DAYS_UNTIL_EXPIRY">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DAYS_UNTIL_EXPIRY", "leadingProperty": "DAYS_UNTIL_EXPIRY", "columnIndex": 8}'/>
                                 </t:customData>
-                                <Text id="_IDGenText2" text="{i18n>daysUntilExpiry}"></Text>
+                                <Text id="_IDGenText2" text="{i18n>INVENTORYSNAPSHOT.DAYS_UNTIL_EXPIRY}"></Text>
                                 <t:template>
                                     <FlexBox id="_IDGenHBox" height="2.5rem"  width="100%" justifyContent="Center">
                                         <my:SegmentedProgressBar
@@ -164,7 +164,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                     </FlexBox>
                                 </t:template>
                             </t:Column>
-                             <t:Column id="_IDGenColumn41" width="10rem" hAlign="End">
+                             <t:Column id="_IDGenColumn41" width="10rem" hAlign="End" sortProperty="REPORT_DATE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "REPORT_DATE", "leadingProperty": "REPORT_DATE", "columnIndex": 6}'/>
                                 </t:customData>
@@ -173,7 +173,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                     <Text id="_IDGenText111" text="{path: 'REPORT_DATE', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width="15rem" hAlign="End">
+                            <t:Column id="_IDGenColumn6" width="15rem" hAlign="End" sortProperty="LGNUM">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "LGNUM", "leadingProperty": "LGNUM", "columnIndex": 9}'/>
                                     </t:customData>
@@ -182,7 +182,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText11" text="{path: 'LGNUM'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn7" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn7" width="7rem" hAlign="End" sortProperty="EAN11">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "EAN11", "leadingProperty": "EAN11", "columnIndex": 13}'/>
                                     </t:customData>
@@ -191,7 +191,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText13" text="{path: 'EAN11'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn8" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn8" width="7rem" hAlign="End" sortProperty="DIN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 14}'/>
                                     </t:customData>
@@ -200,16 +200,16 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText15" text="{path: 'DIN'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn1" width="7rem" hAlign="End" sortProperty="WERKS">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 17}'/>
                                     </t:customData>
-                                <Text id="_IDGenText21" text="{i18n>INVENTORYSNAPSHOT.WERKS}"></Text>
+                                <Text id="_IDGenText21" text="{i18n>INVENTORYSNAPSHOT.PLANT}"></Text>
                                 <t:template>
                                 <Text id="_IDGenText22" text="{path: 'VKORG'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn9" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn9" width="7rem" hAlign="End" sortProperty="VKORG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 19}'/>
                                     </t:customData>
@@ -218,7 +218,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText17" text="{path: 'VKORG'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn10" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn10" width="7rem" hAlign="End" sortProperty="MFRNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 20}'/>
                                     </t:customData>

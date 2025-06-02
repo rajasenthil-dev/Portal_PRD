@@ -1,0 +1,229 @@
+<mvc:View controllerName="pivottable.controller.View1"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:f="sap.f" 
+    xmlns:core="sap.ui.core" 
+    xmlns:sf="sap.ui.comp.smartfilterbar" 
+    height="100%">
+    <f:DynamicPage id="dynamicPage" showFooter="true">
+            <f:header>
+                <f:DynamicPageHeader id="dynamicPageHeader" class="noPadding">
+            <m:FlexBox id="headerFlexBox" width="100%" direction="Row" wrap="Wrap" justifyContent="SpaceBetween" class="headerPadding sapUiMediumMarginBottom borderBottom">
+                <m:HeaderContainer id="logoContainer" scrollStep="200" height="100px">
+                    <m:FlexBox id="_IDGenFlexBox" alignItems="Center" height="100px">
+                        <m:FlexBox id="_IDGenFlexBox1" alignItems="Center" height="75px" class="imgBG">
+                            <m:Image 
+                            core:require="{
+                                Formatter: 'pivottable/model/formatter'
+                            }"
+                            src="{path: 'logo>url', formatter: 'Formatter.formatUrl.bind($controller)'}"
+                            id="logoImage" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo"/>
+                        </m:FlexBox>
+                    </m:FlexBox>
+                </m:HeaderContainer>
+                <!-- <m:HeaderContainer id="refreshContainer" scrollStep="200">
+                    <m:GenericTile id="refreshTile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="{path: 'refreshTime'}" frameType="OneByHalf">
+                        <m:TileContent id="_IDGenTileContent" class="refreshTitle" footer="Footer Text">
+                            <m:Text id="_IDGenText" class="refreshText" text="{path: 'refreshTime'}"/>
+                        </m:TileContent>
+                    </m:GenericTile>
+                </m:HeaderContainer> -->
+            </m:FlexBox>
+            <sf:SmartFilterBar id="smartFilterBar" entitySet="" filterChange="onFilterBarFilterChange" useDateRangeType="true" persistencyKey="SmartFilterBar_BACKORDERS" smartVariant="pageVariant" liveMode="true" search="onSearch">
+                <sf:controlConfiguration>
+                    <sf:ControlConfiguration id="_IDGenControlConfiguration" label="Company" />
+                    <sf:ControlConfiguration id="_IDGenControlConfiguration1" label="Customer" />
+                    <sf:ControlConfiguration id="_IDGenControlConfiguration2" label="Products" />
+                    <sf:ControlConfiguration id="_IDGenControlConfiguration3" label="Date" />
+                    <sf:ControlConfiguration id="_IDGenControlConfiguration4" label="Type" />
+                </sf:controlConfiguration>
+            </sf:SmartFilterBar>
+            <m:Panel id="summaryPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+                <m:HeaderContainer id="summaryContainer" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
+                    <m:FlexBox id="_IDGenFlexBox2" class="mck_Tile" direction="Column">
+                        <m:Title id="_IDGenTitle" class="mck_TileContentTitle" text="{i18n>backordersTileTitle}"/>
+                        <m:Text 
+                            core:require="{
+                                Formatter: 'pivottable/model/formatter'
+                            }"
+                            id="TileContent1" class="mck_TileContent" text="{path: 'backordersCount', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
+                    </m:FlexBox>
+                    <m:FlexBox id="_IDGenFlexBox3" class="mck_Tile" direction="Column">
+                        <m:Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>impactedCustomersTileTitle}"/>
+                        <m:Text 
+                            core:require="{
+                                Formatter: 'pivottable/model/formatter'
+                            }"
+                            id="TileContent2" class="mck_TileContent" text="{path: 'impactedCustomers', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
+                    </m:FlexBox>
+                    <m:FlexBox id="_IDGenFlexBox4" class="mck_Tile" direction="Column">
+                        <m:Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>itemsOnBackorderTileTitle}"/>
+                        <m:Text 
+                            core:require="{
+                                Formatter: 'pivottable/model/formatter'
+                            }"
+                            id="TileContent3" class="mck_TileContent" text="{path: 'itemsBackordered', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
+                    </m:FlexBox>
+                    <m:FlexBox id="_IDGenFlexBox5" class="mck_Tile" direction="Column">
+                        <m:Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>unitsBackorderedTileTitle}"/>
+                        <m:Text 
+                            core:require="{
+                                Formatter: 'pivottable/model/formatter'
+                            }"
+                            id="TileContent4" class="mck_TileContent" text="{path: 'unitsBackordered', formatter: 'Formatter.formatCurrency.bind($controller)'}"/>
+                    </m:FlexBox>
+                    <m:FlexBox id="_IDGenFlexBox6" class="mck_Tile" direction="Column">
+                        <m:Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>unitsToBeReceivedTileTitle}"/>
+                        <m:Text 
+                            core:require="{
+                                Formatter: 'pivottable/model/formatter'
+                            }"
+                            id="TileContent5" class="mck_TileContent" text="{path: 'unitsToBeReceived', type:'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: true , groupingSeperator : ','}}"/>
+                    </m:FlexBox>
+                </m:HeaderContainer>
+            </m:Panel>
+            </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+            <TreeTable
+                id="salesTreeTable"
+                rows="{path: 'salesModel>/salesData', parameters: {arrayNames: ['children']}}"
+                selectionMode="MultiToggle"
+                enableColumnReordering="true"
+                expandFirstLevel="false"
+                ariaLabelledBy="title"
+                visibleRowCountMode="Auto"
+                minAutoRowCount="10"
+                fixedColumnCount="1"
+                showColumnVisibilityMenu="true"
+                class="sapUiResponsiveMargin">
+
+                <extension>
+                    <m:OverflowToolbar id="_IDGenOverflowToolbar" design="Transparent">
+                        <m:Title id="title" text="Sales Data by Province Customer (Mock Data)"/>
+                    </m:OverflowToolbar>
+                </extension>
+
+                <columns>
+                    <Column id="_IDGenColumn" width="18rem">
+                        <m:Label id="_IDGenLabel" text="Province/Customer" />
+                        <template>
+                            <m:Text id="_IDGenText1" text="{salesModel>name}" wrapping="false" />
+                        </template>
+                        </Column>
+                    <Column id="_IDGenColumn1" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel1" text="January" />
+                        <template>
+                            <m:Text id="_IDGenText2" text="{path: 'salesModel>jan', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn2" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel2" text="February" />
+                        <template>
+                            <m:Text id="_IDGenText3" text="{path: 'salesModel>feb', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn3" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel3" text="March" />
+                        <template>
+                            <m:Text id="_IDGenText4" text="{path: 'salesModel>mar', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn4" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel4" text="April" />
+                        <template>
+                            <m:Text id="_IDGenText5" text="{path: 'salesModel>apr', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn5" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel5" text="May" />
+                        <template>
+                            <m:Text id="_IDGenText6" text="{path: 'salesModel>may', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn6" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel6" text="June" />
+                        <template>
+                            <m:Text id="_IDGenText7" text="{path: 'salesModel>jun', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn7" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel7" text="July" />
+                        <template>
+                            <m:Text id="_IDGenText8" text="{path: 'salesModel>jul', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn8" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel8" text="August" />
+                        <template>
+                            <m:Text id="_IDGenText9" text="{path: 'salesModel>aug', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn9" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel9" text="September" />
+                        <template>
+                            <m:Text id="_IDGenText10" text="{path: 'salesModel>sep', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn10" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel10" text="October" />
+                        <template>
+                            <m:Text id="_IDGenText11" text="{path: 'salesModel>oct', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn11" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel11" text="November" />
+                        <template>
+                            <m:Text id="_IDGenText12" text="{path: 'salesModel>nov', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn12" width="7rem" hAlign="End">
+                        <m:Label id="_IDGenLabel12" text="December" />
+                        <template>
+                            <m:Text id="_IDGenText13" text="{path: 'salesModel>dec', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column id="_IDGenColumn13" width="8rem" hAlign="End">
+                        <m:Label id="_IDGenLabel13" text="Total" />
+                        <template>
+                            <m:Text id="_IDGenText14" text="{path: 'salesModel>total', type: 'sap.ui.model.type.Integer'}" wrapping="false" />
+                        </template>
+                    </Column>
+                </columns>
+            </TreeTable>
+        </f:content>
+        <f:footer>
+            <m:OverflowToolbar id="_IDGenOverflowToolbar1">
+                <m:Label id="_IDGenLabel14" text="Totals:" class="sapMtkLabelBold sapUiTinyMarginEnd"/>
+                <m:Label id="_IDGenLabel15" text="Jan:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText15" text="{path: 'salesModel>/footerTotals/jan', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel16" text="Feb:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText16" text="{path: 'salesModel>/footerTotals/feb', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel17" text="Mar:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText17" text="{path: 'salesModel>/footerTotals/mar', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel18" text="Apr:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText18" text="{path: 'salesModel>/footerTotals/apr', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel19" text="May:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText19" text="{path: 'salesModel>/footerTotals/may', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel20" text="Jun:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText20" text="{path: 'salesModel>/footerTotals/jun', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel21" text="Jul:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText21" text="{path: 'salesModel>/footerTotals/jul', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel22" text="Aug:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText22" text="{path: 'salesModel>/footerTotals/aug', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel23" text="Sep:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText23" text="{path: 'salesModel>/footerTotals/sep', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel24" text="Oct:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText24" text="{path: 'salesModel>/footerTotals/oct', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel25" text="Nov:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText25" text="{path: 'salesModel>/footerTotals/nov', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:Label id="_IDGenLabel26" text="Dec:" class="sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText26" text="{path: 'salesModel>/footerTotals/dec', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold sapUiSmallMarginEnd"/>
+                <m:ToolbarSpacer id="_IDGenToolbarSpacer" />
+                <m:Label id="_IDGenLabel27" text="Grand Total:" class="sapMtkLabelBold sapUiTinyMarginEnd"/>
+                <m:Text id="_IDGenText27" text="{path: 'salesModel>/footerTotals/grandTotal', type: 'sap.ui.model.type.Integer'}" class="sapMtkTextBold"/>
+            </m:OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

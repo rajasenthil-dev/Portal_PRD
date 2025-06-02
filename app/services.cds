@@ -36,3 +36,7 @@ using from './bckorders/annotations';
 using from './admindash/annotations';
 
 using from './logo/annotations';
+
+using from './pivottable/annotations';
+
+using from './salesbycuswopid/annotations';

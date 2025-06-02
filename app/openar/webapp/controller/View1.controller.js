@@ -15,7 +15,29 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
+            var oModelLogo = this.getOwnerComponent().getModel("logo");
+            // Bind to the MediaFile entity with a filter
+            var oBinding = oModelLogo.bindList("/MediaFile");
+            // Fetch data
+            oBinding.requestContexts().then(function (aContexts) {
+                if (aContexts.length > 0) {
+                    var oData = aContexts[0].getObject();
+                    console.log("Manufacturer:", oData.MFGName);
+                    console.log("File URL:", oData.url);
+                    var sAppPath = sap.ui.require.toUrl("openar").split("/resources")[0];
+                    if(sAppPath === ".") {
+                        sAppPath = "";
+                    }
+                    console.log("✅ Dynamic Base Path:", sAppPath);
 
+                    var sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                    var sSrcUrl = sAppPath + sCleanUrl;
+                        // Example: Set the image source
+                    this.getView().byId("logoImage").setSrc(sSrcUrl);
+                } else {
+                        console.log("No media found for this manufacturer.");
+                }
+            }.bind(this));
             oView.setBusy(true);
 
             // Filter Bar Initialization
@@ -65,46 +87,6 @@ sap.ui.define([
                       }
 
 
-                      // Logo Handling
-                      var oModelLogo = this.getOwnerComponent().getModel("logo");
-                      if (oModelLogo) {
-                         var oBindingLogo = oModelLogo.bindList("/MediaFile"); // Corrected binding path if needed
-                         oBindingLogo.requestContexts().then((aContexts) => { // Use arrow function
-                              if (aContexts.length > 0) {
-                                 var oData = aContexts[0].getObject();
-                                 console.log("Manufacturer:", oData.MFGName);
-                                 console.log("File URL:", oData.url);
-
-                                 // Calculate base path robustly
-                                 var sAppPath = "";
-                                 try {
-                                      // sap.ui.require.toUrl might not work reliably in all deployment scenarios for root path.
-                                      // Consider using sap.ui.loader.config({paths: {"your/namespace": "/path/to/your/app"}}) in manifest
-                                      // Or use relative paths if the logo URL from the service is absolute or root-relative.
-                                      sAppPath = sap.ui.require.toUrl("openar").replace('/resources/openar', ''); // Adjust if needed
-                                      if (sAppPath === ".") sAppPath = "";
-                                      console.log("✅ Dynamic Base Path:", sAppPath);
-                                 } catch (e) {
-                                      console.warn("Could not determine application base path via sap.ui.require.toUrl. Using relative path.");
-                                 }
-
-                                 var sSrcUrl = (oData.url && oData.url.startsWith('/')) ? oData.url : sAppPath + (oData.url || ''); // Prefer absolute if available
-
-                                 var oLogoImage = this.getView().byId("logoImage");
-                                 if (oLogoImage) {
-                                      oLogoImage.setSrc(sSrcUrl);
-                                 } else {
-                                      console.error("Image control with ID 'logoImage' not found.");
-                                 }
-                              } else {
-                                 console.log("No media found for this manufacturer.");
-                              }
-                         }).catch(function(oError) { // Add error handling for logo fetch
-                                console.error("Error fetching logo:", oError);
-                         });
-                      } else {
-                           console.warn("Logo model 'logo' not found.");
-                      }
 
                       // Set main model ONLY on the inner table if using SmartTable features
                       // oTable.setModel(oModel); // Often not needed; SmartTable handles model propagation. Remove if SmartTable binds itself.
@@ -185,14 +167,14 @@ sap.ui.define([
                      }
                 }
             }, this);
-
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle(); 
             // --- Prepare and Set Data for VizFrame Pie Chart ---
             var aPieChartData = [
-                { BucketName: "Current",   Amount: totals.fTotCurrent },
-                { BucketName: "1-30 Days", Amount: totals.fTot1to30 },
-                { BucketName: "31-60 Days",Amount: totals.fTot31to60 },
-                { BucketName: "61-90 Days",Amount: totals.fTot61to90 },
-                { BucketName: "Over 90",   Amount: totals.fTotOver90 }
+                { BucketName: oBundle.getText("OPENAR.CURRENTGRAPH"), Amount: totals.fTotCurrent },
+                { BucketName: oBundle.getText("OPENAR.1_to_30"), Amount: totals.fTot1to30 },
+                { BucketName: oBundle.getText("OPENAR.31_to_60"),Amount: totals.fTot31to60 },
+                { BucketName: oBundle.getText("OPENAR.61_to_90"),Amount: totals.fTot61to90 },
+                { BucketName: oBundle.getText("OPENAR.OVER_90"),   Amount: totals.fTotOver90 }
             ];
 
             // Filter out zero values if desired (optional)

@@ -29,13 +29,13 @@
                                 </FlexBox>
                             </FlexBox>  
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     
                     <sf:SmartFilterBar id="bar0" 
@@ -194,7 +194,7 @@
                 >
                     <t:Table id="table" alternateRowColors="true" selectionMode="None">
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="End" sortProperty="BILL_TO">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "BILL_TO", "leadingProperty": "BILL_TO", "columnIndex": 0}'/>
                                 </t:customData>
@@ -203,7 +203,7 @@
                                     <Text id="_IDGenText12" text="{BILL_TO}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn20" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn20" width='7.813rem' hAlign="End" sortProperty="BELNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "BELNR", "leadingProperty": "BELNR", "columnIndex": 2}'/>
                                 </t:customData>
@@ -212,7 +212,7 @@
                                     <Link id="invoice" text="{BELNR}" press=".onInvoiceClick"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End" sortProperty="FKDAT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "FKDAT", "leadingProperty": "FKDAT", "columnIndex": 4}'/>
                                 </t:customData>
@@ -221,7 +221,7 @@
                                     <Text id="invoiceDate" text="{path: 'FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End" sortProperty="NETDT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "NETDT", "leadingProperty": "NETDT", "columnIndex": 5}'/>
                                 </t:customData>
@@ -230,7 +230,7 @@
                                     <Text id="dueDate" text="{path: 'NETDT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn12" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn12" width='7.813rem' hAlign="End" sortProperty="STORE_SHIP_TO">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "STORE_SHIP_TO", "leadingProperty": "STORE_SHIP_TO", "columnIndex": 7}'/>
                                 </t:customData>
@@ -239,7 +239,7 @@
                                     <Text id="_IDGenText14" text="{STORE_SHIP_TO}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn3"  width='7.813rem' hAlign="End" sortProperty="CAL_CURRENT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CAL_CURRENT", "leadingProperty": "CAL_CURRENT", "columnIndex": 9}'/>
                                 </t:customData>
@@ -248,7 +248,7 @@
                                     <Text id="current" text="{path: 'CAL_CURRENT', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn4"  width='7.813rem' hAlign="End" sortProperty="CAL_1_30">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CAL_1_30", "leadingProperty": "CAL_1_30", "columnIndex": 10}'/>
                                 </t:customData>
@@ -257,7 +257,7 @@
                                     <Text id="1to30" text="{path: 'CAL_1_30', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End" sortProperty="CAL_31_60">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CAL_31_60", "leadingProperty": "CAL_31_60", "columnIndex": 11}'/>
                                 </t:customData>
@@ -266,7 +266,7 @@
                                     <Text id="31to60" text="{path: 'CAL_31_60', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn6"  width='7.813rem' hAlign="End" sortProperty="CAL_61_90">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CAL_61_90", "leadingProperty": "CAL_61_90", "columnIndex": 12}'/>
                                 </t:customData>
@@ -275,7 +275,7 @@
                                     <Text id="61to90" text="{path: 'CAL_61_90', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn7"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn7"  width='7.813rem' hAlign="End" sortProperty="CAL_OVER_()">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CAL_OVER_90", "leadingProperty": "CAL_OVER_90", "columnIndex": 13}'/>
                                 </t:customData>
@@ -284,7 +284,7 @@
                                     <Text id="over90" text="{path: 'CAL_OVER_90', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn8"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn8"  width='7.813rem' hAlign="End" sortProperty="NETWR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "NETWR", "leadingProperty": "NETWR", "columnIndex": 14}'/>
                                 </t:customData>
@@ -293,7 +293,7 @@
                                     <Text id="invoiceAmount" text="{path: 'NETWR', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn9"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn9"  width='7.813rem' hAlign="End" sortProperty="TSL">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "TSL", "leadingProperty": "TSL", "columnIndex": 15}'/>
                                 </t:customData>
@@ -302,7 +302,7 @@
                                     <Text id="amountPaid" text="{path: 'TSL', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn13"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn13"  width='7.813rem' hAlign="End" sortProperty="ZTERM">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "ZTERM", "leadingProperty": "ZTERM", "columnIndex": 16}'/>
                                 </t:customData>
@@ -311,7 +311,7 @@
                                     <Text id="_IDGenText16" text="{path: 'ZTERM'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn10"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn10"  width='7.813rem' hAlign="End" sortProperty="VKORG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 18}'/>
                                 </t:customData>
@@ -320,7 +320,7 @@
                                     <Text id="creditAmount" text="{path: 'VKORG'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn14"  width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn14"  width='7.813rem' hAlign="End" sortProperty="MFRNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 19}'/>
                                 </t:customData>

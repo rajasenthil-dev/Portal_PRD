@@ -27,13 +27,13 @@
                                 </FlexBox>
                             </FlexBox>  
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     <sf:SmartFilterBar 
                         id="bar0" 
@@ -44,10 +44,7 @@
                         smartVariant="pageVariant" 
                         liveMode="true" 
                         search="onSearch">
-                        <sf:controlConfiguration>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration" key="Product" label="Product" filterType="multiple"/>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration2" key="Category" label="Category" filterType="multiple"/>
-                        </sf:controlConfiguration>
+                        
                     </sf:SmartFilterBar>
                 </f:DynamicPageHeader>
             </f:header>
@@ -76,7 +73,7 @@
                 >
                     <t:Table id="table" selectionMode="None">
                         <t:columns>
-                            <t:Column id="_IDGenColumn" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn" width="7.813rem" hAlign="End" sortProperty="PRODUCT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT", "leadingProperty": "PRODUCT", "columnIndex": 0}'/>
                                 </t:customData>
@@ -85,7 +82,7 @@
                                     <Text id="_IDGenText9" text="{path: 'PRODUCT', formatter: '._removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn01" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn01" width="7.813rem" hAlign="End" sortProperty="MFRNR_PART_NUMBER">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_PART_NUMBER", "leadingProperty": "MFRNR_PART_NUMBER", "columnIndex": 1}'/>
                                 </t:customData>
@@ -94,7 +91,7 @@
                                     <Text id="_IDGenText09" text="{path: 'MFRNR_PART_NUMBER'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn02" width="15rem">
+                            <t:Column id="_IDGenColumn02" width="15rem" sortProperty="PRODUCTDESCRIPTION_EN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCTDESCRIPTION_EN", "leadingProperty": "PRODUCTDESCRIPTION_EN", "columnIndex": 2}'/>
                                 </t:customData>
@@ -103,7 +100,7 @@
                                     <Text id="_IDGenText04" text="{path: 'PRODUCTDESCRIPTION_EN'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn03" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn03" width="7rem" hAlign="End" sortProperty="PRODUCTSTANDARDID">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCTSTANDARDID", "leadingProperty": "PRODUCTSTANDARDID", "columnIndex": 3}'/>
                                 </t:customData>
@@ -112,7 +109,7 @@
                                     <Text id="_IDGenText07" text="{path: 'PRODUCTSTANDARDID'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn002" width="15rem">
+                            <t:Column id="_IDGenColumn002" width="15rem" sortProperty="PRODUCTDESCRIPTION_FR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCTDESCRIPTION_FR", "leadingProperty": "PRODUCTDESCRIPTION_FR", "columnIndex": 4}'/>
                                 </t:customData>
@@ -121,7 +118,7 @@
                                     <Text id="_IDGenText004" text="{path: 'PRODUCTDESCRIPTION_FR'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn2" width="5rem" hAlign="End">
+                            <t:Column id="_IDGenColumn2" width="5rem" hAlign="End" sortProperty="BWKEY">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "BWKEY", "leadingProperty": "BWKEY", "columnIndex": 5}'/>
                                 </t:customData>
@@ -130,7 +127,7 @@
                                     <Text id="_IDGenText3" text="{path: 'BWKEY'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width="7.813rem">
+                            <t:Column id="_IDGenColumn3" width="7.813rem" sortProperty="PLANT_NAME">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PLANT_NAME", "leadingProperty": "PLANT_NAME", "columnIndex": 6}'/>
                                 </t:customData>
@@ -139,7 +136,7 @@
                                     <Text id="_IDGenText7" text="{path: 'PLANT_NAME'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" width="5rem" hAlign="End">
+                            <t:Column id="_IDGenColumn4" width="5rem" hAlign="End" sortProperty="STPRS">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "STPRS", "leadingProperty": "STPRS", "columnIndex": 7}'/>
                                 </t:customData>
@@ -148,7 +145,7 @@
                                     <Text id="_IDGenText11" text="{path: 'STPRS'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn09" width="6rem" hAlign="End">
+                            <t:Column id="_IDGenColumn09" width="6rem" hAlign="End" sortProperty="DIN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 8}'/>
                                 </t:customData>
@@ -157,7 +154,7 @@
                                     <Text id="_IDGenText10" text="{path: 'DIN'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn19" width="5rem" hAlign="End">
+                            <t:Column id="_IDGenColumn19" width="5rem" hAlign="End" sortProperty="SIZEUOM">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SIZEUOM", "leadingProperty": "SIZEUOM", "columnIndex": 9}'/>
                                 </t:customData>
@@ -166,7 +163,7 @@
                                     <Text id="_IDGenText20" text="{path: 'SIZEUOM'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn20" width="5.25rem">
+                            <t:Column id="_IDGenColumn20" width="5.25rem" sortProperty="CATEGORY">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CATEGORY", "leadingProperty": "CATEGORY", "columnIndex": 10}'/>
                                 </t:customData>
@@ -175,7 +172,7 @@
                                     <Text id="_IDGenText22" text="{path: 'CATEGORY'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn11" width='6rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn11" width='6rem' hAlign="Center" sortProperty="NARCOTIC_YN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "NARCOTIC_YN", "leadingProperty": "NARCOTIC_YN", "columnIndex": 11}'/>
                                 </t:customData>
@@ -191,7 +188,7 @@
                                         />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn111" width='7rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn111" width='7rem' hAlign="Center" sortProperty="LOT_CONTROL_YN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "LOT_CONTROL_YN", "leadingProperty": "LOT_CONTROL_YN", "columnIndex": 12}'/>
                                 </t:customData>
@@ -207,7 +204,7 @@
                                         />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn112" width='7rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn112" width='7rem' hAlign="Center" sortProperty="REFRIGERATED">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "REFRIGERATED", "leadingProperty": "REFRIGERATED", "columnIndex": 13}'/>
                                 </t:customData>
@@ -223,7 +220,7 @@
                                         />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn113" width='7rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn113" width='7rem' hAlign="Center" sortProperty="PST_APPLICABLE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PST_APPLICABLE", "leadingProperty": "PST_APPLICABLE", "columnIndex": 14}'/>
                                 </t:customData>
@@ -239,7 +236,7 @@
                                         />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn114" width='7rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn114" width='7rem' hAlign="Center" sortProperty="GST_APPLICABLE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "GST_APPLICABLE", "leadingProperty": "GST_APPLICABLE", "columnIndex": 15}'/>
                                 </t:customData>
@@ -255,7 +252,7 @@
                                         />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn6" width="7rem" hAlign="End" sortProperty="CREATIONDATE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CREATIONDATE", "leadingProperty": "CREATIONDATE", "columnIndex": 16}'/>
                                 </t:customData>
@@ -264,7 +261,7 @@
                                     <Text id="_IDGenText4" text="{path: 'CREATIONDATE', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn624" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn624" width="7rem" hAlign="End" sortProperty="UNITS_PER_CASE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "UNITS_PER_CASE", "leadingProperty": "UNITS_PER_CASE", "columnIndex": 17}'/>
                                 </t:customData>
@@ -273,7 +270,7 @@
                                     <Text id="_IDGenText42" text="{UNITS_PER_CASE}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn62" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn62" width="7rem" hAlign="End" sortProperty="SALESORG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SALESORG", "leadingProperty": "SALESORG", "columnIndex": 18}'/>
                                 </t:customData>
@@ -282,7 +279,7 @@
                                     <Text id="_IDGenText41" text="{path: 'SALESORG'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn621" width="7rem" hAlign="End">
+                            <t:Column id="_IDGenColumn621" width="7rem" hAlign="End" sortProperty="MANUFACTURERNUMBER">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MANUFACTURERNUMBER", "leadingProperty": "MANUFACTURERNUMBER", "columnIndex": 19}'/>
                                 </t:customData>
@@ -291,7 +288,7 @@
                                     <Text id="_IDGenText411" text="{path: 'MANUFACTURERNUMBER'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn626" width="12rem">
+                            <t:Column id="_IDGenColumn626" width="12rem" sortProperty="MFRNR_NAME">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_NAME", "leadingProperty": "MFRNR_NAME", "columnIndex": 20}'/>
                                 </t:customData>

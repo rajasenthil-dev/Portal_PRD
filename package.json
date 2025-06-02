@@ -58,7 +58,9 @@
     "watch-test1245": "cds watch --open test1245/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-backorders1": "cds watch --open backorders1/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-admindash": "cds watch --open admindash/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-logo": "cds watch --open logo/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-logo": "cds watch --open logo/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-pivottable": "cds watch --open pivottable/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-salesbycuswopid": "cds watch --open salesbycuswopid/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "service": {

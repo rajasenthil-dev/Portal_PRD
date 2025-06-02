@@ -13,7 +13,7 @@ sap.ui.define([
     const sResponsivePaddingClasses = "sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer";
     const decimalProperties = ["TSL_AMOUNT", "CAL_PST", "CAL_GST"]; // Footer sums
     const summarySalesProperty = "TSL_AMOUNT"; // Total sales for summary
-    const uniqueInvoiceProperty = "BELNR";
+    const uniqueInvoiceProperty = "VBELN";
   
     return Controller.extend("invoicehistory.controller.View1", {
   
@@ -29,7 +29,7 @@ sap.ui.define([
             oView.setBusy(false); // Once filter bar + value helps are ready
         });
         const oSmartTable = this.getView().byId("table0"); 
-        var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+        var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle(); 
         var oToolbar = oSmartTable.getToolbar();
         var oCurrentStatus = new sap.m.ObjectStatus({
             text: oBundle.getText("INVOICEHISTORY.CURRENTTEXT"),
@@ -93,7 +93,8 @@ sap.ui.define([
                 }
                 console.log("✅ Dynamic Base Path:", sAppPath);
 
-                var sSrcUrl = sAppPath + oData.url;
+                var sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                var sSrcUrl = sAppPath + sCleanUrl;
                     // Example: Set the image source
                 this.getView().byId("logoImage").setSrc(sSrcUrl);
             } else {
@@ -135,7 +136,6 @@ sap.ui.define([
           console.warn("Data is not available for calculation.");
           return;
         }
-  
         const totals = aContexts.reduce((acc, oContext) => {
           const oData = oContext.getObject();
           if (!oData) return acc;

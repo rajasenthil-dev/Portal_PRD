@@ -78,7 +78,7 @@ sap.ui.define([
             })
             oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
             var oLegendTitle = new sap.m.Text({
-                text: "Table Legend:"
+                text: oBundle.getText("INVENTORYSNAPSHOT.LEGENDTITLE")
             })
             oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
             var oLegendBox = new sap.m.HBox({
@@ -140,7 +140,8 @@ sap.ui.define([
                     }
                     console.log("✅ Dynamic Base Path:", sAppPath);
     
-                    var sSrcUrl = sAppPath + oData.url;
+                    var sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                    var sSrcUrl = sAppPath + sCleanUrl;
                     // Example: Set the image source
                     this.getView().byId("logoImage").setSrc(sSrcUrl);
                 } else {

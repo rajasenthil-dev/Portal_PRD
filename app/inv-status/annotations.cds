@@ -161,6 +161,21 @@ Search.defaultSearchElement: true,
             },
         } 
     );
+     PLANT_NAME@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSTATUSPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
+                    }
+                ]
+            },
+        } 
+    );
     VKBUR@(
         Common: {
             ValueListWithFixedValues,

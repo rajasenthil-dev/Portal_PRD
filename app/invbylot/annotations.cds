@@ -19,6 +19,7 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             VFDAT: true,
             DIN: true,
             PLANT: true,
+            PLANT_NAME: true,
             VKBUR: true 
         }
     },
@@ -97,6 +98,10 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             },
             {
                 $Type : 'UI.DataField',
+                Value : PLANT_NAME
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : VKBUR
             },
             {
@@ -167,7 +172,23 @@ annotate INVENTORY.INVENTORYBYLOT with @(
         } 
     
     );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVBYLOTPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
+                    }
+                ]
+            },
+        } 
     
+    );
     VKBUR@(
         Common: {
             ValueListWithFixedValues,

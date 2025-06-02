@@ -66,7 +66,6 @@ Search.defaultSearchElement: true,
     },   
 ){
     VTEXT@(
-        title:'Price Level Description',
         Common: {
             ValueListWithFixedValues,
             ValueList : {

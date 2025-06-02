@@ -1,4 +1,4 @@
-using INVENTORY as service from '../../srv/service';
+using INVENTORY.INVENTORYSNAPSHOT as service from '../../srv/service';
 
 annotate INVENTORY.INVENTORYSNAPSHOT with @(
 Search.defaultSearchElement: true,
@@ -234,6 +234,25 @@ Search.defaultSearchElement: true,
         }      
         
     );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSNAPPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
+                    }
+                ]
+            },
+        }      
+        
+    );
+
+    
     VKORG@(
         Common: {
             ValueListWithFixedValues,

@@ -44,6 +44,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : PLANT_NAME,
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : UNIT_PRICE,
             },
             {
@@ -146,6 +150,22 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MAKTX',
                         ValueListProperty : 'MAKTX'
+                    }
+                ]
+            },
+        } 
+    );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVVALPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
                     }
                 ]
             },

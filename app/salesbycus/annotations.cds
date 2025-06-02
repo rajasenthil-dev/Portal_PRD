@@ -23,7 +23,6 @@ Search.defaultSearchElement: true,
             MFRPN                   : true,
             PATIENT_ID              : true,
             POSTAL_CODE_PSTLZ       : true,
-            PRICE_CAL_UNIT_COST     : true,
             PRODUCT_DESCRIPTION_MAKTX : true,
             PROVINCE_REGIO          : true,
             PURCHASE_ORDER_BSTKD    : true,
@@ -112,11 +111,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : RBTXT,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : PRICE_CAL_UNIT_COST,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -499,6 +493,23 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'BEZEI',
                         ValueListProperty : 'BEZEI'
+                    }
+                ]
+            },
+        }
+        
+    );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
                     }
                 ]
             },

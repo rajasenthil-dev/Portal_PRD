@@ -2,6 +2,31 @@ sap.ui.define([], () => {
 	"use strict";
 
 	return {
+        yesNoIconColorN: function (value) {
+            const cleanValue = (value || "").trim().toUpperCase(); // Clean and normalize data
+            
+            if (cleanValue.includes("Y")) {
+                return "Success";  // Green for "Current"
+            } 
+            if (cleanValue.includes("N")) {
+                return "Error";    // Red for "Historical"
+            } 
+            
+            return "None"; // Default state for unexpected values
+        },
+        
+        yesNoIconN: function (value) {
+            const cleanValue = (value || "").trim().toUpperCase();
+        
+            if (cleanValue.includes("Y")) {
+                return "sap-icon://sys-enter-2"; // Checkmark for "Current"
+            } 
+            if (cleanValue.includes("N")) {
+                return "sap-icon://sys-cancel-2"; // Cross for "Historical"
+            } 
+            
+            return ""; // No icon for undefined or invalid values
+        }, 
         yesNoIconColor: function (value) {
             const cleanValue = (value || "").trim().toUpperCase(); // Clean and normalize data
             

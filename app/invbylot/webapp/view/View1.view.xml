@@ -26,13 +26,13 @@
                                 </FlexBox>
                             </FlexBox>  
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     <sf:SmartFilterBar id="bar0" entitySet="INVENTORYBYLOT" useDateRangeType="true" persistencyKey="SmartFilterBar_INVENTORYBYLOT" smartVariant="pageVariant" liveMode="true" search="onSearch">
                         <sf:controlConfiguration>
@@ -91,7 +91,7 @@
                             <t:RowSettings id="_IDGenRowSettings" highlight="{path:'DAYS_UNTIL_EXPIRY', formatter:'._formatRowHighlight'}" highlightText="{DAYS_UNTIL_EXPIRY}"/>
                         </t:rowSettingsTemplate>
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" autoResizable="true" width="5rem" hAlign="End">
+                            <t:Column id="_IDGenColumn11" autoResizable="true" width="5rem" hAlign="End" sortProperty="MATNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 0}'/>
                                 </t:customData>
@@ -100,7 +100,7 @@
                                     <Text id="sku" text="{path: 'MATNR', formatter: '.removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="MFRPN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 1}'/>
                                 </t:customData>
@@ -109,7 +109,7 @@
                                     <Text id="_IDGenText5" text="{path: 'MFRPN'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn2" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn2" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="SIZE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SIZE", "leadingProperty": "SIZE", "columnIndex": 3}'/>
                                 </t:customData>
@@ -118,11 +118,11 @@
                                     <Text id="_IDGenText7" text="{path: 'SIZE'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width='12rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn3" width='12rem' hAlign="Center" sortProperty="DAYS_UNTIL_EXPIRY">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DAYS_UNTIL_EXPIRY", "leadingProperty": "DAYS_UNTIL_EXPIRY", "columnIndex": 5}'/>
                                 </t:customData>
-                                <Text id="_IDGenText2" text="{i18n>daysUntilExpiry}"></Text>
+                                <Text id="_IDGenText2" text="{i18n>INVENTORYBYLOT.DAYS_UNTIL_EXPIRY}"></Text>
                                 <t:template>
                                     <FlexBox id="_IDGenHBox" height="2.5rem"  width="100%" justifyContent="Center">
                                         <my:SegmentedProgressBar
@@ -136,16 +136,16 @@
                                     </FlexBox>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" autoResizable="true" width="10rem" hAlign="End">
+                            <t:Column id="_IDGenColumn1" autoResizable="true" width="10rem" hAlign="End" sortProperty="VFDAT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VFDAT", "leadingProperty": "VFDAT", "columnIndex": 4}'/>
                                 </t:customData>
-                                <Text id="_IDGenText4" text="Shelf Life or Best-Before Date"></Text>
+                                <Text id="_IDGenText4" text="{i18n>INVENTORYBYLOT.VFDAT}"></Text>
                                 <t:template>
                                     <Text id="exipryDate" text="{path: 'VFDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn5" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="CHARG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CHARG", "leadingProperty": "CHARG", "columnIndex": 6}'/>
                                 </t:customData>
@@ -154,7 +154,7 @@
                                     <Text id="_IDGenText8" text="{path: 'CHARG'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn6" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="EAN11">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "EAN11", "leadingProperty": "EAN11", "columnIndex": 8}'/>
                                 </t:customData>
@@ -163,7 +163,7 @@
                                     <Text id="_IDGenText10" text="{path: 'EAN11'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn4" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="LGNUM">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "LGNUM", "leadingProperty": "LGNUM", "columnIndex": 11}'/>
                                 </t:customData>
@@ -172,7 +172,7 @@
                                     <Text id="_IDGenText13" text="{path: 'LGNUM'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn7" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn7" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="DIN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 12}'/>
                                 </t:customData>
@@ -181,7 +181,7 @@
                                     <Text id="_IDGenText16" text="{path: 'DIN'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn8" autoResizable="true" width="6rem" hAlign="End">
+                            <t:Column id="_IDGenColumn8" autoResizable="true" width="6rem" hAlign="End" sortProperty="PLANT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PLANT", "leadingProperty": "PLANT", "columnIndex": 13}'/>
                                 </t:customData>
@@ -190,18 +190,18 @@
                                     <Text id="_IDGenText18" text="{path: 'PLANT'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn9" autoResizable="true" width="6rem" hAlign="End">
+                            <t:Column id="_IDGenColumn9" autoResizable="true" width="6rem" hAlign="End" sortProperty="VKBUR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 14}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 15}'/>
                                 </t:customData>
                                 <Text id="_IDGenText19" text="{i18n>INVENTORYBYLOT.VKBUR}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText20" text="{path: 'VKBUR'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn10" autoResizable="true" width="7.813rem" hAlign="End">
+                            <t:Column id="_IDGenColumn10" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="MFRNR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 15}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 16}'/>
                                 </t:customData>
                                 <Text id="_IDGenText21" text="{i18n>INVENTORYBYLOT.MFRNR}"></Text>
                                 <t:template>

@@ -40,7 +40,8 @@ annotate INVENTORY.ITEMMASTER with @(
             PRODUCT, 
             MFRNR_PART_NUMBER, 
             PRODUCTDESCRIPTION_EN, 
-            CATEGORY, 
+            CATEGORY,
+            PLANT_NAME, 
             MANUFACTURERNUMBER, 
             SALESORG, 
             MFRNR_NAME
@@ -235,6 +236,23 @@ annotate INVENTORY.ITEMMASTER with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'CATEGORY',
                         ValueListProperty : 'CATEGORY'
+                    }
+                ]
+            },
+        } 
+        
+    );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'ITEMMASPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
                     }
                 ]
             },

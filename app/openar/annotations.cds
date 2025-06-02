@@ -74,6 +74,10 @@ annotate FINANCE.OPENAR with @(
             },
             {
                 $Type : 'UI.DataField',
+                Value : VTEXT_ZTERM
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : STORE_SHIP_TO,
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },

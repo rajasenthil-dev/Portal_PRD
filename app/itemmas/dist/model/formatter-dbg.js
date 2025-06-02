@@ -26,7 +26,7 @@ sap.ui.define([], () => {
             } 
             
             return ""; // No icon for undefined or invalid values
-        },
+        }, 
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {
               return "";

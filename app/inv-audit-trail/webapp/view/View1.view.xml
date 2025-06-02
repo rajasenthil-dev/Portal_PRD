@@ -25,13 +25,13 @@
                                 </FlexBox>
                             </FlexBox>  
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     <sf:SmartFilterBar 
                         id="bar0" 
@@ -121,7 +121,7 @@
                     >
                     <t:Table id="table" selectionMode="None" alternateRowColors="true">
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center">
+                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center" sortProperty="CURRENT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>
@@ -137,7 +137,7 @@
                                         text="{= ${CURRENT} === 'YES' ? ${i18n>INVENTORYAUDITTRAIL.CURRENTTEXT} : ${i18n>INVENTORYAUDITTRAIL.LEGACYTEXT}}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn12" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn12" width='7.813rem' hAlign="End" sortProperty="MATNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MATNR", "leadingProperty": "MATNR", "columnIndex": 1}'/>
                                 </t:customData>
@@ -146,7 +146,7 @@
                                     <Text id="sku" text="{path: 'MATNR', formatter: '.removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn121" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn121" width='7.813rem' hAlign="End" sortProperty="MFRNR_PROD_CODE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_PROD_CODE", "leadingProperty": "MFRNR_PROD_CODE", "columnIndex": 2}'/>
                                 </t:customData>
@@ -155,54 +155,70 @@
                                     <Text id="sku1" text="{path: 'MFRNR_PROD_CODE'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn2" width='6rem' hAlign="Center" sortProperty="NARCOTICS_IND">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHELF_LIFE_EXP_DT", "leadingProperty": "SHELF_LIFE_EXP_DT", "columnIndex": 9}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "NARCOTICS_IND", "leadingProperty": "NARCOTICS_IND", "columnIndex": 3}'/>
+                                </t:customData>
+                                <Text id="_IDGenText" text="{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus1"
+                                    core:require="{
+                                            Formatter: 'invaudittrail/model/formatter'
+                                        }"
+                                        icon="{path: 'NARCOTICS_IND', formatter:'Formatter.yesNoIconN'}"
+                                        
+                                        state="{path: 'NARCOTICS_IND', formatter: 'Formatter.yesNoIconColorN'}"
+                                        />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End" sortProperty="SHELF_LIFE_EXP_DT">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHELF_LIFE_EXP_DT", "leadingProperty": "SHELF_LIFE_EXP_DT", "columnIndex": 10}'/>
                                 </t:customData>
                                 <Text id="_IDGenText3" text="{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate" text="{= ${SHELF_LIFE_EXP_DT} === '00000000' ? ' ' : ${path: 'SHELF_LIFE_EXP_DT', type: 'sap.ui.model.odata.type.Date'}}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn12121" width='10rem' hAlign="End">
+                            <t:Column id="_IDGenColumn12121" width='10rem' hAlign="End" sortProperty="KUNNR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 11}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 12}'/>
                                 </t:customData>
                                 <Text id="_IDGenText32" text="{i18n>INVENTORYAUDITTRAIL.KUNNR}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate2" text="{path: 'KUNNR'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn121213" width='10rem' hAlign="End">
+                            <t:Column id="_IDGenColumn121213" width='10rem' hAlign="End" sortProperty="INV_MATDOC_ITEM">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_MATDOC_ITEM", "leadingProperty": "INV_MATDOC_ITEM", "columnIndex": 13}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_MATDOC_ITEM", "leadingProperty": "INV_MATDOC_ITEM", "columnIndex": 14}'/>
                                 </t:customData>
                                 <Text id="_IDGenText323" text="{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate23" text="{path: 'INV_MATDOC_ITEM'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn23" width='5rem' hAlign="End">
+                            <t:Column id="_IDGenColumn23" width='5rem' hAlign="End" sortProperty="DIN">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 14}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 15}'/>
                                 </t:customData>
                                 <Text id="_IDGenText322" text="{i18n>INVENTORYAUDITTRAIL.DIN}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate22" text="{path: 'DIN'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn234" width='5rem' hAlign="End">
+                            <t:Column id="_IDGenColumn234" width='5rem' hAlign="End" sortProperty="WERKS">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 15}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 16}'/>
                                 </t:customData>
                                 <Text id="_IDGenText3224" text="{i18n>INVENTORYAUDITTRAIL.WERKS}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate24" text="{path: 'WERKS'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn25" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn25" width='7.813rem' hAlign="End" sortProperty="MFRNR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 20}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 21}'/>
                                 </t:customData>
                                 <Text id="_IDGenText325" text="{i18n>INVENTORYAUDITTRAIL.MFRNR}"></Text>
                                 <t:template>

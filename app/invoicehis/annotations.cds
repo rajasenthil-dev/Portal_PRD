@@ -21,7 +21,36 @@ Search.defaultSearchElement: true,
             TRACKN: true,
             BILL_TO: true,
             WAERK: true,
-            VBELN: true,
+            VBELN: true, 
+            CURRENT: true,
+            ORDER_TYPE: true,
+            FKDAT: true,
+            PATIENT_ID: true,
+            AUGRU_AUFT: true,
+            PLANT_NAME: true,
+            WERKS: true,
+            BEZEI: true,
+            MFRNR_NAME: true
+        },
+        sortable: {
+            BKTXT: true,
+            LFDAT: true,
+            CAL_GST: true,
+            CAL_PST: true,
+            ORT01: true,
+            MFRNR: true,
+            VKORG: true,
+            SHIP_TO: true,
+            TSL_AMOUNT: true,
+            NAME1: true,
+            BSTKD: true,
+            PSTLZ: true,
+            REGIO: true,
+            AUBEL: true,
+            TRACKN: true,
+            BILL_TO: true,
+            WAERK: true,
+            VBELN: true, 
             CURRENT: true,
             ORDER_TYPE: true,
             FKDAT: true,
@@ -76,7 +105,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : TSL_AMOUNT
+                Value : TSL_AMOUNT,
             },
             {
                 $Type : 'UI.DataField',
@@ -287,6 +316,22 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'BEZEI',
                         ValueListProperty : 'BEZEI'
+                    }
+                ]
+            },
+        }    
+    );
+    PLANT_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'IHPLANTNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PLANT_NAME',
+                        ValueListProperty : 'PLANT_NAME'
                     }
                 ]
             },

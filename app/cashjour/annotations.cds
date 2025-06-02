@@ -92,6 +92,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : VTEXT_ZTERM
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : BUDAT
             },
             {

@@ -41,7 +41,7 @@ using OOPROVINCE as ENTOOPROVINCE from '../db/schema';
 using OOMFRNR as ENTOOMFRNR from '../db/schema';
 using OOVKORG as ENTOOVKORG from '../db/schema';
 using OOMFRNRNAME as ENTOOMFRNRNAME from '../db/schema';
-
+using OOVBELN as ENTOOVBELN from '../db/schema';
 
 service PROCESSING {
     // ℹ️ Returns Related Entities
@@ -214,6 +214,7 @@ service PROCESSING {
     entity OOMFRNR as projection on ENTOOMFRNR;
     entity OOVKORG as projection on ENTOOVKORG;
     entity OOMFRNRNAME as projection on ENTOOMFRNRNAME;
+    entity OOVBELN as projection on ENTOOVBELN;
 
 
 
@@ -276,6 +277,7 @@ using IATCUSTSUPPNAME as ENTIATCUSTSUPPNAME from '../db/schema';
 using IATMFRNR as ENTIATMFRNR from '../db/schema';
 using IATMFRNRNAME as ENTIATMFRNRNAME from '../db/schema';
 using IATTRANTYPE as ENTIATTRANTYPE from '../db/schema';
+using IATPLANTNAME as ENTIATPLANTNAME from '../db/schema';
 
 // Inventory Status
 using INVENTORYSTATUS as ENTINVENTORYSTATUS from '../db/schema';
@@ -283,6 +285,7 @@ using INVSTATUSPRODUCTCODE as ENTINVSTATUSPRODUCTCODE from '../db/schema';
 using INVSTATUSMFRNR as ENTINVSTATUSMFRNR from '../db/schema';
 using INVSTATUSMFRNRNAME as ENTINVSTATUSMFRNRNAME from '../db/schema';
 using INVSTATUSVKBUR as ENTINVSTATUSVKBUR from '../db/schema';
+using INVSTATUSPLANTNAME as ENTINVSTATUSPLANTNAME from '../db/schema';
 
 // Inventory By Lot
 using INVENTORYBYLOT as ENTINVENTORYBYLOT from '../db/schema';
@@ -292,6 +295,7 @@ using INVBYLOTWAREHOUSE as ENTINVBYLOTWAREHOUSE from '../db/schema';
 using INVBYLOTMFRNR as ENTINVBYLOTMFRNR from '../db/schema';
 using INVBYLOTMFRNRNAME as ENTINVBYLOTMFRNRNAME from '../db/schema';
 using INVBYLOTVKBUR as ENTINVBYLOTVKBUR from '../db/schema';
+using INVBYLOTPLANTNAME as ENTINVBYLOTPLANTNAME from '../db/schema';
 
 // Inventory Snapshot
 using INVENTORYSNAPSHOT as ENTINVENTORYSNAPSHOT from '../db/schema';
@@ -303,6 +307,7 @@ using INVSNAPMFRNRNAME as ENTINVSNAPMFRNRNAME from '../db/schema';
 using INVSNAPVKORG as ENTINVSNAPVKORG from '../db/schema';
 using INVSNAPLOT as ENTINVSNAPLOT from '../db/schema';
 using INVSNAPWARESTAT as ENTINVSNAPWARESTAT from '../db/schema';
+using INVSNAPPLANTNAME as ENTINVSNAPPLANTNAME from '../db/schema';
 
 // Inventory Valuation
 using INVENTORYVALUATION as ENTINVENTORYVALUATION from '../db/schema';
@@ -312,6 +317,7 @@ using INVVALPRODSKU as ENTINVVALPRODSKU from '../db/schema';
 using INVVALMFRNR as ENTINVVALMFRNR from '../db/schema';
 using INVVALMFRNRNAME as ENTINVVALMFRNRNAME from '../db/schema';
 using INVVALVKBUR as ENTINVVALVKBUR from '../db/schema';
+using INVVALPLANTNAME as ENTINVVALPLANTNAME from '../db/schema';
 
 // Item Master
 using ITEMMASTER as ENTITEMMASTER from '../db/schema';
@@ -322,6 +328,7 @@ using ITEMMASCATEGORY as ENTITEMMASCATEGORY from '../db/schema';
 using ITEMMASMFRNR as ENTITEMMASMFRNR from '../db/schema';
 using ITEMMASMFRNRNAME as ENTITEMMASMFRNRNAME from '../db/schema';
 using ITEMMASSALESORG as ENTITEMMASSALESORG from '../db/schema';
+using ITEMMASPLANTNAME as ENTITEMMASPLANTNAME from '../db/schema';
 
 // Inventory Service
 service INVENTORY {
@@ -342,6 +349,7 @@ service INVENTORY {
     entity IATMFRNRNAME as projection on ENTIATMFRNRNAME;
     entity IATSALESORG as projection on ENTIATSALESORG;
     entity IATTRANTYPE as projection on ENTIATTRANTYPE;
+    entity IATPLANTNAME as projection on ENTIATPLANTNAME;
 
 
 
@@ -403,6 +411,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVVALVKBUR as projection on ENTINVVALVKBUR;
+    entity INVVALPLANTNAME as projection on ENTINVVALPLANTNAME;
 
 
 
@@ -447,7 +456,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVSTATUSVKBUR as projection on ENTINVSTATUSVKBUR;
-
+    entity INVSTATUSPLANTNAME as projection on ENTINVSTATUSPLANTNAME;
 
 
 
@@ -524,6 +533,7 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVBYLOTVKBUR as projection on ENTINVBYLOTVKBUR;
+    entity INVBYLOTPLANTNAME as projection on ENTINVBYLOTPLANTNAME;
 
 
 
@@ -542,6 +552,7 @@ service INVENTORY {
     entity ITEMMASMFRNR as projection on ENTITEMMASMFRNR;
     entity ITEMMASMFRNRNAME as projection on ENTITEMMASMFRNRNAME;
     entity ITEMMASSALESORG as projection on ENTITEMMASSALESORG;
+    entity ITEMMASPLANTNAME as projection on ENTITEMMASPLANTNAME;
 
 
 
@@ -568,6 +579,7 @@ service INVENTORY {
 
    
     entity INVSNAPVKORG as projection on ENTINVSNAPVKORG;
+    entity INVSNAPPLANTNAME as projection on ENTINVSNAPPLANTNAME;
 
     // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
@@ -597,7 +609,9 @@ using IHMFRNR as ENTIHMFRNR from '../db/schema';
 using IHMFRNRNAME as ENTIHMFRNRNAME from '../db/schema';
 using IHSALESORG as ENTIHSALESORG from '../db/schema';
 using IHBEZEI as ENTIHBEZEI from '../db/schema';
+using IHPLANTNAME as ENTIHPLANTNAME from '../db/schema';
 
+using SALESBYCURRENTWOPID as ENTSALESBYCURRENTWOPID from '../db/schema';
 using SALESBYCURRENT as ENTSALESBYCURRENT from '../db/schema';
 using SBCINVOICE as ENTSBCINVOICE from '../db/schema';
 using SBCPRODDESC as ENTSBCPRODDESC from '../db/schema';
@@ -614,6 +628,7 @@ using SBCSALESORG as ENTSBCSALESORG from '../db/schema';
 using SBCSALESOFFICE as ENTSBCSALESOFFICE from '../db/schema';
 using SBCYEAR as ENTSBCYEAR from '../db/schema';
 using SBCBEZEI as ENTSBCBEZEI from '../db/schema';
+using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
 
 service SALES {
     // ℹ️ Ivoice History Related Entities
@@ -634,6 +649,7 @@ service SALES {
     entity IHMFRNRNAME as projection on ENTIHMFRNRNAME;
     entity IHSALESORG as projection on ENTIHSALESORG;
     entity IHBEZEI as projection on ENTIHBEZEI;
+    entity IHPLANTNAME as projection on ENTIHPLANTNAME;
 
 
 
@@ -645,6 +661,12 @@ service SALES {
         { grant: 'READ', to: 'Internal' }
     ]
     entity SALESBYCURRENT as projection on ENTSALESBYCURRENT;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = CO_VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SALESBYCURRENTWOPID as projection on ENTSALESBYCURRENTWOPID;
     entity SBCINVOICE as projection on ENTSBCINVOICE;
     entity SBCPRODDESC as projection on ENTSBCPRODDESC;
     entity SBCTYPE as projection on ENTSBCTYPE;
@@ -660,6 +682,7 @@ service SALES {
     entity SBCSALESOFFICE as projection on ENTSBCSALESOFFICE;
     entity SBCYEAR as projection on ENTSBCYEAR;
     entity SBCBEZEI as projection on ENTSBCBEZEI;
+    entity SBCPLANTNAME as projection on ENTSBCPLANTNAME;
 }
 
 using CUSTOMERMASTER as ENTCUSTOMERMASTER from '../db/schema';
@@ -798,11 +821,14 @@ service CatalogService {
     }  
 }
 
+
 using MediaFile as ENTMediaFile from '../db/schema';
 service Media {
     entity MediaFile as projection on ENTMediaFile
 }
 annotate Media.MediaFile with @odata.draft.enabled: true;
+
+
 
 
 

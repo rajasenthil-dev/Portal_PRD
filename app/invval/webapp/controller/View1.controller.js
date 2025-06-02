@@ -32,7 +32,8 @@ sap.ui.define([
                     }
                     console.log("✅ Dynamic Base Path:", sAppPath);
     
-                    var sSrcUrl = sAppPath + oData.url;
+                    var sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                    var sSrcUrl = sAppPath + sCleanUrl;
                     // Example: Set the image source
                     this.getView().byId("logoImage").setSrc(sSrcUrl);
                 } else {

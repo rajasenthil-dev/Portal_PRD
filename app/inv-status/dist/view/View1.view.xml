@@ -25,13 +25,13 @@
                                 </FlexBox>
                             </FlexBox>  
                         </HeaderContainer>
-                        <HeaderContainer id="container2" scrollStep="200">
+                        <!-- <HeaderContainer id="container2" scrollStep="200">
                             <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
                                 <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="Footer Text">
                                     <Text id="_IDGenText1" class="refreshText" text=""/>
                                 </TileContent>
                             </GenericTile>
-                        </HeaderContainer>
+                        </HeaderContainer> -->
                     </FlexBox>
                     <sf:SmartFilterBar 
                         id="bar0" 
@@ -41,9 +41,7 @@
                         smartVariant="pageVariant" 
                         liveMode="true" 
                         search="onSearch">
-                        <sf:controlConfiguration>
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration" key="Product" label="Product" filterType="multiple"/>
-                        </sf:controlConfiguration>
+                        
                     </sf:SmartFilterBar>
                 <!--   <Panel expandable="true" expanded="true" headerText="Sales By Customer By Product Summary">
 
@@ -98,7 +96,7 @@
                         id="table" 
                         selectionMode="None">
                         <t:columns>
-                            <t:Column id="_IDGenColumn" width='5rem' hAlign="End">
+                            <t:Column id="_IDGenColumn" width='5rem' hAlign="End" sortProperty="SKU_MATNR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SKU_MATNR", "leadingProperty": "SKU_MATNR", "columnIndex": 0}'/>
                                     </t:customData>
@@ -111,7 +109,7 @@
                                         id="_IDGenText9" text="{path: 'SKU_MATNR', formatter:'Formatter.removeLeadingZeros'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End">
+                            <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End" sortProperty="PRODUCT_CODE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "PRODUCT_CODE", "leadingProperty": "PRODUCT_CODE", "columnIndex": 1}'/>
                                     </t:customData>
@@ -120,7 +118,7 @@
                                     <Text id="_IDGenText4" text="{path: 'PRODUCT_CODE'}" />
                                 </t:template>
                             </t:Column>  
-                            <t:Column id="_IDGenColumn62" width='5rem' hAlign="End">
+                            <t:Column id="_IDGenColumn62" width='5rem' hAlign="End" sortProperty="SIZE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SIZE", "leadingProperty": "SIZE", "columnIndex": 3}'/>
                                     </t:customData>
@@ -129,7 +127,7 @@
                                     <Text id="_IDGenText42" text="{path: 'SIZE'}" />
                                 </t:template>
                             </t:Column> 
-                            <t:Column id="_IDGenColumn63" width='5.25rem' hAlign="End">
+                            <t:Column id="_IDGenColumn63" width='5.25rem' hAlign="End" sortProperty="VKBUR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 15}'/>
                                     </t:customData>
