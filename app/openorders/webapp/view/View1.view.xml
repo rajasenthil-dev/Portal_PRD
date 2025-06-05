@@ -72,7 +72,6 @@
                     cd:w5g.dt.context="/OPENORDERS"
                     entitySet="OPENORDERS"
                     placeToolbarInTable="true"
-                    useExportToExcel="true"
                     beforeExport="onBeforeExport"
                     useVariantManagement="true"
                     useTablePersonalisation="true"

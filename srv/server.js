@@ -153,8 +153,3 @@ cds.on('bootstrap', async (app) => {
 
 // Bootstrapping the CAP service
 module.exports = cds.server;
-
-
-
-
-

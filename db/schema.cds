@@ -1237,6 +1237,19 @@ define view BOVKORG as
 };
 
 @cds.persistence.exists
+entity SHIPPINGSTATUS
+{
+    key OBD_NO_DOCNO_C                              : String(10);
+        OBD_ITEM_NO_ITEMNO                          : String(10);
+        OBD_TIMESTAMP_LAST_STATUS_TIME_CST_TSTTO_TS : Timestamp;
+        OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp;
+        PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27);
+        SO_NO_REFDOCNO                              : String(35);
+        CUSTOMER_PO_BSTNK                           : String(20);
+        STORAGE_CONDITIONS_STOKEY1                  : String(5);
+        WAREHOUSE_NAME_LNUMT                        : String(40);  
+}
+@cds.persistence.exists
 entity MAINPAGESUMMARY 
 {       
     key MFRNR           : String(10);
@@ -1290,18 +1303,24 @@ entity MAINPAGEINVENTORY
 
 
 
-using {cuid} from '@sap/cds/common';
-entity MediaFile : cuid {
-        @Core.ContentDisposition.Filename : fileName
-        @Core.MediaType                   : mediaType
-        content                           : LargeBinary;
-        fileName                          : String;
-        @Core.IsMediaType                 : true
-        mediaType                         : String;
-        url                               : String;
-        manufacturerNumber                : String(50);
-        MFGName                           : String(255);
+using { cuid, managed } from '@sap/cds/common';
+
+// Optional: Define a namespace if you haven't already
+// namespace com.yourcompany.media;
+
+entity MediaFile : cuid, managed { // 'cuid' provides 'ID: UUID' as the key. 'managed' provides audit fields.
+                                 // No need to explicitly define 'ID' again.
+    @Core.MediaType : mediaType
+    @Core.ContentDisposition.Filename : fileName
+    content            : LargeBinary;
+    fileName           : String;
+    mediaType          : String @Core.IsMediaType;
+    url                : String;
+    manufacturerNumber : String(50);
+    MFGName            : String(255);
 }
+
+
 
 
 

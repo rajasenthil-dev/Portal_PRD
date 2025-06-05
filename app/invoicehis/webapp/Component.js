@@ -21,6 +21,21 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
+            // const oUserModel = new sap.ui.model.json.JSONModel();
+            // this.setModel(oUserModel, "user");
+
+            // // Load user info from App Router's user-api
+            // $.ajax({
+            //     url: "/services/user-api/currentUser",
+            //     method: "GET",
+            //     success: function (oData) {
+            //     console.log("🔐 User info:", oData);
+            //     oUserModel.setData(oData);
+            //     },
+            //     error: function (err) {
+            //     console.error("❌ Failed to fetch user info", err);
+            //     }
+            // });
         }
     });
 });

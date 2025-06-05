@@ -23,6 +23,23 @@
           "annotations": [],
           "odataVersion": "4.0"
         }
+      },
+      "logoService": {
+        "uri": "/odata/v4/media/",
+        "type":"OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      },
+      "UserApi": {
+        "uri": "/user-api/attributes",
+        "type": "JSON",
+        "settings": {
+          "useBatch": false,
+          "json": true
+        }
+
       }
     },
     "crossNavigation": {
@@ -83,6 +100,20 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "logo": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "dataSource": "logoService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "userModel": {
+        "dataSource": "UserApi",
+        "settings": {}
       }
     },
     "resources": {
@@ -101,8 +132,7 @@
         "type": "View",
         "viewType": "XML",
         "path": "pivottable.view",
-        "async": true,
-        "viewPath": "pivottable.view"
+        "async": true
       },
       "routes": [
         {

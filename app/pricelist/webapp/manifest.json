@@ -31,6 +31,15 @@
           "annotations": [],
           "odataVersion": "4.0"
         }
+      },
+      "UserApi": {
+        "uri": "/user-api/attributes",
+        "type": "JSON",
+        "settings": {
+          "useBatch": false,
+          "json": true
+        }
+
       }
     },
     "crossNavigation": {
@@ -97,6 +106,7 @@
         }
       },
       "logo": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
         "dataSource": "logoService",
         "preload": true,
         "settings": {
@@ -104,6 +114,10 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "userModel": {
+        "dataSource": "UserApi",
+        "settings": {}
       }
     },
     "resources": {

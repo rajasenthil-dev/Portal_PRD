@@ -6,8 +6,10 @@ sap.ui.define([
     "sap/m/Button",
     "sap/m/Image",
     "sap/m/MessageBox",
-    'sap/ui/core/BusyIndicator'
-], (Controller, JSONModel, NumberFormat, Dialog, Button, Image, MessageBox, BusyIndicator) => {
+    'sap/ui/core/BusyIndicator',
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+], (Controller, JSONModel, NumberFormat, Dialog, Button, Image, MessageBox, BusyIndicator, Filter, FilterOperator) => {
     "use strict";
 
     const sResponsivePaddingClasses = "sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer";
@@ -17,92 +19,107 @@ sap.ui.define([
   
     return Controller.extend("invoicehistory.controller.View1", {
   
-      onInit: function () {
-        BusyIndicator.show();
-        const oModel = this.getOwnerComponent().getModel();
-        const oView = this.getView();
-        const oSmartFilterBar = oView.byId("bar0");
+        onInit: async function () {
+            BusyIndicator.show();
+            const oModel = this.getOwnerComponent().getModel();
+            const oView = this.getView();
+            const oSmartFilterBar = oView.byId("bar0");
+        
+            oView.setBusy(true);
     
-        oView.setBusy(true);
-    
-        oSmartFilterBar.attachInitialized(function () {
-            oView.setBusy(false); // Once filter bar + value helps are ready
-        });
-        const oSmartTable = this.getView().byId("table0"); 
-        var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle(); 
-        var oToolbar = oSmartTable.getToolbar();
-        var oCurrentStatus = new sap.m.ObjectStatus({
-            text: oBundle.getText("INVOICEHISTORY.CURRENTTEXT"),
-            icon: "sap-icon://circle-task-2",
-            state: "Success",
-            inverted:true,
-            tooltip: oBundle.getText("INVOICEHISTORY.CURRENTTOOLTIP")
-            //tooltip:"Captured from the new system post-migration and is up-to-date."
-        })
-        oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
-        var oCurrentStatusText =  new sap.m.Text({
-            text: " | "
-        })
-        oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
-        var oLegacyStatus = new sap.m.ObjectStatus({
-            text: oBundle.getText("INVOICEHISTORY.LEGACYTEXT"),
-            icon: "sap-icon://circle-task-2",
-            state: "Information",
-            inverted:true,
-            tooltip: oBundle.getText("INVOICEHISTORY.LEGACYTOOLTIP")
-        })
-        oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
-        var oLegacyStatusText =  new sap.m.Text({
-            text: "Legacy Data"
-        })
-        oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
-        var oLegendTitle = new sap.m.Text({
-            text: "Legend:"
-        })
-        oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
-        var oLegendBox = new sap.m.HBox({
-            items: [
-                oCurrentStatus,
-                oCurrentStatusText,
-                oLegacyStatus
-                
-            ],
-            alignItems: "Center",
-            justifyContent: "End"
-        });
+            oSmartFilterBar.attachInitialized(function () {
+                oView.setBusy(false); // Once filter bar + value helps are ready
+            });
+            const oSmartTable = this.getView().byId("table0"); 
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle(); 
+            var oToolbar = oSmartTable.getToolbar();
+            var oCurrentStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("INVOICEHISTORY.CURRENTTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                inverted:true,
+                tooltip: oBundle.getText("INVOICEHISTORY.CURRENTTOOLTIP")
+                //tooltip:"Captured from the new system post-migration and is up-to-date."
+            })
+            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            var oCurrentStatusText =  new sap.m.Text({
+                text: " | "
+            })
+            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegacyStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("INVOICEHISTORY.LEGACYTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Information",
+                inverted:true,
+                tooltip: oBundle.getText("INVOICEHISTORY.LEGACYTOOLTIP")
+            })
+            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            var oLegacyStatusText =  new sap.m.Text({
+                text: "Legacy Data"
+            })
+            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oLegendTitle = new sap.m.Text({
+                text: "Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oCurrentStatus,
+                    oCurrentStatusText,
+                    oLegacyStatus
+                    
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
 
-        oToolbar.addContent(new sap.m.ToolbarSpacer());
-        oToolbar.addContent(oLegendBox);
-        const oTable = oSmartTable.getTable();
-        this.bAuthorizationErrorShown = false;
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
+            const oTable = oSmartTable.getTable();
+            this.bAuthorizationErrorShown = false;
   
-        oModel.attachRequestFailed(this._handleAuthorizationError.bind(this, oTable));
-        oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
-        var oModelLogo = this.getOwnerComponent().getModel("logo");
-            // Bind to the MediaFile entity with a filter
-        var oBinding = oModelLogo.bindList("/MediaFile");
-        // Fetch data
-        oBinding.requestContexts().then(function (aContexts) {
-            if (aContexts.length > 0) {
-                var oData = aContexts[0].getObject();
-                console.log("Manufacturer:", oData.MFGName);
-                console.log("File URL:", oData.url);
-                var sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0];
-                if(sAppPath === ".") {
-                    sAppPath = "";
-                }
-                console.log("✅ Dynamic Base Path:", sAppPath);
+            oModel.attachRequestFailed(this._handleAuthorizationError.bind(this, oTable));
+            oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+        
+            // Fetch User Data and Logo
+            const oUserModel = this.getOwnerComponent().getModel("userModel");
+            const userData = oUserModel ? oUserModel.getData() : {};
+            const mfgNumber = userData.ManufacturerNumber;
 
-                var sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
-                var sSrcUrl = sAppPath + sCleanUrl;
-                    // Example: Set the image source
-                this.getView().byId("logoImage").setSrc(sSrcUrl);
-            } else {
-                    console.log("No media found for this manufacturer.");
+            const oLogoModel = this.getOwnerComponent().getModel("logo");
+
+            const sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0] === "." 
+                ? "" 
+                : sap.ui.require.toUrl("invoicehis").split("/resources")[0];
+            const sFallbackImage = sAppPath + "./images/MCKCAN1.jpg";
+
+            if (!mfgNumber) {
+                console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
+                oView.byId("logoImage").setSrc(sFallbackImage);
+                return;
             }
-        }.bind(this));
-      },
-  
+
+            //const paddedMfg = mfgNumber.padStart(9, "0");
+
+            const oFilter = new sap.ui.model.Filter("manufacturerNumber", "EQ", mfgNumber);
+            const oListBinding = oLogoModel.bindList("/MediaFile", undefined, undefined, [oFilter]);
+
+            oListBinding.requestContexts().then(function (aContexts) {
+                if (aContexts && aContexts.length > 0) {
+                const oData = aContexts[0].getObject();
+                const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                const sSrcUrl = sAppPath + sCleanUrl;
+                oView.byId("logoImage").setSrc(sSrcUrl);
+                } else {
+                console.warn("No matching logo found. Fallback image used.");
+                oView.byId("logoImage").setSrc(sFallbackImage);
+                }
+            }.bind(this)).catch(function (err) {
+                console.error("Binding error:", err);
+                oView.byId("logoImage").setSrc(sFallbackImage);
+            }.bind(this));
+    },          
+        
       _handleAuthorizationError: function (oTable, oEvent) {
         const oParams = oEvent.getParameters();
         if (oParams.response.statusCode === "403") {

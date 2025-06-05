@@ -61,6 +61,8 @@ src/gen/PROCESSING.RETURNS.hdbview
 src/gen/PROCESSING.Returns.hdbview
 src/gen/PROCESSING.RETURNSSUMMARY.hdbview
 
+src/gen/PROCESSING.SHIPPINGSTATUS.hdbview
+src/gen/SHIPPINGSTATUS.hdbview
 
 src/gen/PROCESSING.SHINVOICE.hdbview
 src/gen/PROCESSING.SHIPPINGHISTORY.hdbview

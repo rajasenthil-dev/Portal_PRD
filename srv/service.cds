@@ -43,6 +43,8 @@ using OOVKORG as ENTOOVKORG from '../db/schema';
 using OOMFRNRNAME as ENTOOMFRNRNAME from '../db/schema';
 using OOVBELN as ENTOOVBELN from '../db/schema';
 
+using SHIPPINGSTATUS as ENTSHIPPINGSTATUS from '../db/schema';
+
 service PROCESSING {
     // ℹ️ Returns Related Entities
     // ✅ CDS Authorization Complete
@@ -264,6 +266,15 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity BOVKORG as projection on ENTBOVKORG;
+
+    // ℹ️ Shipping Status Related Entities
+    // ✅ CDS Authorization Complete
+    // @requires: 'authenticated-user'
+    // @restrict: [
+    //     { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+    //     { grant: 'READ', to: 'Internal' }
+    // ]
+    entity SHIPPINGSTATUS as projection on ENTSHIPPINGSTATUS;
 }
 
 // Inventory Audit Trail
@@ -635,7 +646,7 @@ service SALES {
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVOICEHISTORY as projection on ENTINVOICEHISTORY;
@@ -821,22 +832,30 @@ service CatalogService {
     }  
 }
 
-
 using MediaFile as ENTMediaFile from '../db/schema';
+
 service Media {
-    entity MediaFile as projection on ENTMediaFile
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '($user.ManufacturerNumber = manufacturerNumber)' },
+        { grant: ['READ', 'WRITE'], to: 'Internal' }
+    ]
+
+    entity MediaFile as projection on ENTMediaFile {
+        ID,
+        fileName,
+        manufacturerNumber,
+        MFGName,
+        mediaType,
+        content,
+        createdAt,    // <<<<<<< ADD THIS LINE
+        modifiedAt,
+        createdBy, // Optional: add if you need to display these
+        modifiedBy, // Optional: add if you need to display these
+        url
+    };
 }
+
 annotate Media.MediaFile with @odata.draft.enabled: true;
 
 
-
-
-
-
-
-
-
-
-
-    
-    

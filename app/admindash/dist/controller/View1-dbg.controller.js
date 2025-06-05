@@ -1,3 +1,4 @@
+
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
@@ -8,7 +9,7 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("admindash.controller.View1", {
-        onInit: function () {
+        onInit: async function () {
             this.oUploadSet = this.byId("fileUploader");
             this._oModel = this.getOwnerComponent().getModel();
             this.getView().setModel(new JSONModel({
@@ -127,7 +128,8 @@ sap.ui.define([
             }
             return fetch(sAppPath + "/odata/v4/media/", {
                 method: "GET",
-                headers: { "X-CSRF-Token": "Fetch" }
+                headers: { "X-CSRF-Token": "Fetch" },
+                credentials: "include"
             })
             .then(response => {
                 if (!response.ok) throw new Error('Failed to fetch CSRF token');
@@ -162,6 +164,7 @@ sap.ui.define([
             return fetch(sAppPath + "/odata/v4/media/MediaFile", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "X-CSRF-Token": csrfToken },
+                credentials: "include",
                 body: JSON.stringify({ manufacturerNumber, MFGName: mfgName, fileName, mediaType: fileType })
             })
             .then(response => response.json())
@@ -178,6 +181,7 @@ sap.ui.define([
                         "Content-Type": sFileType,
                         "slug": sFileName
                     },
+                    credentials: "include",
                     body: oFile
                 });
         
@@ -222,6 +226,7 @@ sap.ui.define([
                         "X-CSRF-Token": sToken,
                         "Content-Type": "application/json"
                     },
+                    credentials: "include",
                     body: JSON.stringify({ url: fileUrl })
                 });
         
@@ -253,7 +258,11 @@ sap.ui.define([
             }
             return fetch(`${sAppPath}/odata/v4/media${sPath}/Media.draftActivate`, {
                 method: "POST",
-                headers: { "X-CSRF-Token": csrfToken, "Content-Type": "application/json" }
+                headers: {
+                    "X-CSRF-Token": csrfToken,
+                    "Content-Type": "application/json"
+                },
+                credentials: "include"
             })
             .then(response => { if (!response.ok) throw new Error("Failed to activate draft"); })
             .catch(error => { throw new Error("Error activating draft: " + error.message); });

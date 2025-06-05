@@ -5,7 +5,7 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("customermaster.controller.View1", {
-        onInit: function () {
+        onInit: async function () {
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
@@ -36,28 +36,42 @@ sap.ui.define([
                 }
             });
             
-            var oModelLogo = this.getOwnerComponent().getModel("logo");
-            // Bind to the MediaFile entity with a filter
-            var oBinding = oModelLogo.bindList("/MediaFile");
-            // Fetch data
-             oBinding.requestContexts().then(function (aContexts) {
-                if (aContexts.length > 0) {
-                    var oData = aContexts[0].getObject();
-                    console.log("Manufacturer:", oData.MFGName);
-                    console.log("File URL:", oData.url);
-                    var sAppPath = sap.ui.require.toUrl("customermaster").split("/resources")[0];
-                    if(sAppPath === ".") {
-                        sAppPath = "";
-                    }
-                    console.log("✅ Dynamic Base Path:", sAppPath);
-    
-                    var sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
-                    var sSrcUrl = sAppPath + sCleanUrl;
-                    // Example: Set the image source
-                    this.getView().byId("logoImage").setSrc(sSrcUrl);
+            // Fetch User Data and Logo
+            const oUserModel = this.getOwnerComponent().getModel("userModel");
+            const userData = oUserModel ? oUserModel.getData() : {};
+            const mfgNumber = userData.ManufacturerNumber;
+
+            const oLogoModel = this.getOwnerComponent().getModel("logo");
+
+            const sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0] === "." 
+                ? "" 
+                : sap.ui.require.toUrl("invoicehis").split("/resources")[0];
+            const sFallbackImage = sAppPath + "./images/MCKCAN1.jpg";
+
+            if (!mfgNumber) {
+                console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
+                oView.byId("logoImage").setSrc(sFallbackImage);
+                return;
+            }
+
+            //const paddedMfg = mfgNumber.padStart(9, "0");
+
+            const oFilter = new sap.ui.model.Filter("manufacturerNumber", "EQ", mfgNumber);
+            const oListBinding = oLogoModel.bindList("/MediaFile", undefined, undefined, [oFilter]);
+
+            oListBinding.requestContexts().then(function (aContexts) {
+                if (aContexts && aContexts.length > 0) {
+                const oData = aContexts[0].getObject();
+                const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                const sSrcUrl = sAppPath + sCleanUrl;
+                oView.byId("logoImage").setSrc(sSrcUrl);
                 } else {
-                    console.log("No media found for this manufacturer.");
+                console.warn("No matching logo found. Fallback image used.");
+                oView.byId("logoImage").setSrc(sFallbackImage);
                 }
+            }.bind(this)).catch(function (err) {
+                console.error("Binding error:", err);
+                oView.byId("logoImage").setSrc(sFallbackImage);
             }.bind(this));
         },
         onSearch: function () {
