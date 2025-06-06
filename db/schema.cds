@@ -517,7 +517,8 @@ AUGRU_AUFT,
 PLANT_NAME,
 WERKS,
 BEZEI,
-MFRNR_NAME }
+MFRNR_NAME,
+MFRNR_7CH }
 @cds.persistence.exists
 entity INVOICEHISTORY
 {
@@ -548,6 +549,7 @@ entity INVOICEHISTORY
         WERKS        : String(4)     @title : '{i18n>INVOICEHISTORY.WERKS}';
         BEZEI        : String(40)    @title : '{i18n>INVOICEHISTORY.BEZEI}';
         MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
+        MFRNR_7CH    : String(7)     @title : '{i18n>INVOICEHISTORY.MFRNR}'
         // You might need a currency field for the @Semantics annotation to work, e.g.:
         // currency     : Currency;
 }

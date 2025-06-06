@@ -1,0 +1,3750 @@
+#2025 06 06 18:33:52.903#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#http-nio-0.0.0.0-8080-exec-17#
+[XS2StartProcessListener] Operation ID: cbf1b1e8-4304-11f0-82f6-eeee0a9e2896#
+#2025 06 06 18:33:52.940#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#http-nio-0.0.0.0-8080-exec-17#
+[XS2StartProcessListener] Process environment: {
+  "SKIP_SSL_VALIDATION" : "false",
+  "FLOWABLE_JOB_EXECUTOR_MAX_THREADS" : "32",
+  "VERSION" : "2.24.0",
+  "BASIC_AUTH_ENABLED" : "true",
+  "FLOWABLE_JOB_EXECUTOR_QUEUE_CAPACITY" : "16",
+  "FLOWABLE_JOB_EXECUTOR_CORE_THREADS" : "8"
+}#
+#2025 06 06 18:33:52.940#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#http-nio-0.0.0.0-8080-exec-17#
+[XS2StartProcessListener] Current user: bryan.cash@mckesson.com#
+#2025 06 06 18:33:52.940#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#http-nio-0.0.0.0-8080-exec-17#
+[XS2StartProcessListener] Client space: Datasphere_Dev#
+#2025 06 06 18:33:52.940#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#http-nio-0.0.0.0-8080-exec-17#
+[XS2StartProcessListener] Client organization: McKesson Corporation_discovery-sunrise#
+#2025 06 06 18:33:52.940#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#http-nio-0.0.0.0-8080-exec-17#
+[XS2StartProcessListener] Process variables: {
+  "abortOnError" : false,
+  "mtaId" : "mck-portal",
+  "keepFiles" : false,
+  "noFailOnMissingPermissions" : false,
+  "skipAppDigestCalculation" : false,
+  "deleteServiceBrokers" : false,
+  "appArchiveId" : "bd818c0f-0bff-443e-b8fe-a939bee1d4ea",
+  "deleteServiceKeys" : false,
+  "noRestartSubscribedApps" : false,
+  "noStart" : false,
+  "deleteServices" : false
+}#
+#2025 06 06 18:33:53.008#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ValidateDeployParametersStep] Executing task "validateParametersTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:53.008#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ValidateDeployParametersStep] Validating parameters...#
+#2025 06 06 18:33:53.009#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ValidateDeployParametersStep] Size of mtars is 151,844,167 and size of extension descriptors is 0#
+#2025 06 06 18:33:53.010#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ValidateDeployParametersStep] Archive was not split! Total size in bytes: 151,844,167#
+#2025 06 06 18:33:53.010#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ValidateDeployParametersStep] Deploying in org "McKesson Corporation_discovery-sunrise" and space "Datasphere_Dev"#
+#2025 06 06 18:33:53.017#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ValidateDeployParametersStep] Parameters validated#
+#2025 06 06 18:33:53.017#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+Step "Validate Parameters" finished#
+#2025 06 06 18:33:53.051#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[DeleteRemainingFileParts] Executing task "deleteRemainingFileParts" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:53.051#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+Step "Delete Remaining File Parts" finished#
+#2025 06 06 18:33:53.081#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] Executing task "processArchiveTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:53.082#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] Processing MTA archive...#
+#2025 06 06 18:33:53.082#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] MTA Archive ID: bd818c0f-0bff-443e-b8fe-a939bee1d4ea#
+#2025 06 06 18:33:57.348#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] MTA Descriptor length: 5,476#
+#2025 06 06 18:33:57.348#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] MTA Archive Modules: [mck-portal, mck-portal-db-3-deployer, mck-portal-app-deployer, mck-portal-srv]#
+#2025 06 06 18:33:57.348#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] MTA Archive Requires: []#
+#2025 06 06 18:33:57.348#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] MTA Archive Resources: [mck-portal-auth]#
+#2025 06 06 18:33:57.361#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[XS2ProcessMtaArchiveStep] MTA archive processed#
+#2025 06 06 18:33:57.361#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+Step "Process Archive" finished#
+#2025 06 06 18:33:57.400#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[ProcessMtaExtensionDescriptorsStep] Executing task "processExtensionDescriptorsTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:57.401#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[ProcessMtaExtensionDescriptorsStep] Processing MTA extension descriptors...#
+#2025 06 06 18:33:57.402#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[ProcessMtaExtensionDescriptorsStep] Provided extension descriptors: [ ]#
+#2025 06 06 18:33:57.402#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[ProcessMtaExtensionDescriptorsStep] No extension descriptors in use#
+#2025 06 06 18:33:57.402#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[ProcessMtaExtensionDescriptorsStep] MTA extension descriptors processed#
+#2025 06 06 18:33:57.402#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+Step "Process Extension Descriptors" finished#
+#2025 06 06 18:33:57.433#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetectMtaSchemaVersionStep] Executing task "detectSchemaVersionTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:57.434#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetectMtaSchemaVersionStep] Detecting MTA major schema version...#
+#2025 06 06 18:33:57.437#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetectMtaSchemaVersionStep] Detected MTA schema version: "3"#
+#2025 06 06 18:33:57.445#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+Step "Detect Schema Version" finished#
+#2025 06 06 18:33:57.476#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[MergeDescriptorsStep] Executing task "mergeDescriptorsTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:57.477#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[MergeDescriptorsStep] Validating and merging descriptors...#
+#2025 06 06 18:33:57.482#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[MergeDescriptorsStep] Merged deployment descriptor: {
+  "majorSchemaVersion" : 3,
+  "schemaVersion" : "3.3.0",
+  "id" : "mck-portal",
+  "version" : "1.0.2",
+  "modules" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-srv",
+    "type" : "javascript.nodejs",
+    "path" : "mck-portal-srv",
+    "properties" : { },
+    "parameters" : {
+      "readiness-health-check-http-endpoint" : "/health",
+      "readiness-health-check-type" : "http",
+      "buildpack" : "nodejs_buildpack"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-ds-db-3",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "cross-container-service-1",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "isPublic" : false,
+      "properties" : {
+        "srv-url" : "${default-url}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-srv",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-db-3-deployer",
+    "type" : "com.sap.xs.hdi",
+    "path" : "mck-portal-db-3-deployer",
+    "properties" : {
+      "EXIT" : 1
+    },
+    "parameters" : {
+      "memory" : "256M",
+      "no-route" : true,
+      "dependency-type" : "hard",
+      "buildpack" : "nodejs_buildpack",
+      "tasks" : [ {
+        "name" : "deploy",
+        "memory" : "256M",
+        "command" : "npm start"
+      } ],
+      "no-start" : true
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-ds-db-3",
+      "properties" : {
+        "TARGET_CONTAINER" : "~{hdi-service-name}"
+      },
+      "parameters" : {
+        "disk-quota" : "256M",
+        "memory" : "256M"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "cross-container-service-1",
+      "group" : "SERVICE_REPLACEMENTS",
+      "properties" : {
+        "key" : "********",
+        "service" : "~{the-service-name}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-db-3-deployer",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-app-deployer",
+    "type" : "com.sap.application.content",
+    "path" : "mck-portal-app-deployer",
+    "properties" : { },
+    "parameters" : { },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-repo-host",
+      "properties" : { },
+      "parameters" : {
+        "content-target" : true
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-app-deployer",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-content",
+    "type" : "com.sap.application.content",
+    "properties" : { },
+    "parameters" : {
+      "content" : {
+        "instance" : {
+          "destinations" : [ {
+            "Name" : "mck_portal_html_repo_host",
+            "ServiceInstanceName" : "mck-portal-html5-srv",
+            "ServiceKeyName" : "********",
+            "sap.cloud.service" : "mck.portal"
+          }, {
+            "Authentication" : "********",
+            "Name" : "********",
+            "ServiceInstanceName" : "********",
+            "ServiceKeyName" : "********",
+            "sap.cloud.service" : "mck.portal"
+          } ],
+          "existing_destinations_policy" : "ignore"
+        }
+      }
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : {
+        "content-target" : true
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-repo-host",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-content",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal",
+    "type" : "javascript.nodejs",
+    "path" : "mck-portal",
+    "properties" : { },
+    "parameters" : {
+      "memory" : "256M",
+      "disk-quota" : "256M",
+      "keep-existing-routes" : true
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "group" : "destinations",
+      "properties" : {
+        "name" : "srv-api",
+        "forwardAuthToken" : "********",
+        "url" : "~{srv-url}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-runtime",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "app-api",
+      "isPublic" : false,
+      "properties" : {
+        "app-protocol" : "${protocol}",
+        "app-uri" : "${default-uri}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  } ],
+  "resources" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "path" : "./xs-security.json",
+      "service-name" : "********",
+      "service-plan" : "application",
+      "service" : "xsuaa",
+      "type" : "managed-service",
+      "config" : {
+        "tenant-mode" : "dedicated",
+        "xsappname" : "mck-portal"
+      }
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-ds-db-3",
+    "type" : "com.sap.xs.hdi-container",
+    "properties" : {
+      "hdi-service-name" : "${service-name}"
+    },
+    "parameters" : {
+      "service-plan" : "hdi-shared",
+      "type" : "managed-service",
+      "config" : {
+        "database_id" : "451e8954-27cd-4d2f-9402-3ca1944484c7",
+        "schema" : "MCK_RQ2_300"
+      },
+      "service" : "hana"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-1",
+    "type" : "org.cloudfoundry.existing-service",
+    "properties" : {
+      "the-service-name" : "${service-name}"
+    },
+    "parameters" : {
+      "type" : "existing-service",
+      "service-name" : "********"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-service",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "service-name" : "mck-portal-destination-service",
+      "service-plan" : "lite",
+      "type" : "managed-service",
+      "config" : {
+        "HTML5Runtime_enabled" : true,
+        "init_data" : {
+          "instance" : {
+            "destinations" : [ {
+              "Authentication" : "********",
+              "HTML5.DynamicDestination" : true,
+              "HTML5.ForwardAuthToken" : "********",
+              "HTML5.Timeout" : 600000001,
+              "Name" : "srv-api",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "~{srv-api/srv-url}"
+            }, {
+              "Authentication" : "********",
+              "Name" : "ui5",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "https://ui5.sap.com"
+            }, {
+              "Authentication" : "********",
+              "HTML5.DynamicDestination" : true,
+              "HTML5.ForwardAuthToken" : "********",
+              "Name" : "mck-portal-srv-api",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "~{srv-api/srv-url}"
+            } ],
+            "existing_destinations_policy" : "update"
+          },
+          "subaccount" : {
+            "destinations" : [ {
+              "Authentication" : "********",
+              "Name" : "srv-api",
+              "TokenServiceInstanceName" : "********",
+              "TokenServiceKeyName" : "********",
+              "URL" : "~{srv-api/srv-url}"
+            } ],
+            "existing_destinations_policy" : "update"
+          }
+        },
+        "version" : "1.0.0"
+      },
+      "service" : "destination"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-repo-host",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "service-name" : "mck-portal-html5-srv",
+      "service-plan" : "app-host",
+      "type" : "managed-service",
+      "service" : "html5-apps-repo"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-runtime",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "service-plan" : "app-runtime",
+      "type" : "managed-service",
+      "service" : "html5-apps-repo"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-2",
+    "type" : "org.cloudfoundry.existing-service",
+    "properties" : {
+      "the-service-name" : "${service-name}"
+    },
+    "parameters" : {
+      "type" : "existing-service",
+      "service-name" : "mck-portal-ds-db-3"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  } ],
+  "parameters" : {
+    "enable-parallel-deployments" : true,
+    "deploy_mode" : "html5-repo"
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  }
+}#
+#2025 06 06 18:33:57.486#Z#WARN#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[MergeDescriptorsStep] Parameter(s) "{mck-portal-db-3-deployer#mck-portal-ds-db-3=[disk-quota, memory], mck-portal-srv=[readiness-health-check-http-endpoint, readiness-health-check-type]}" are not supported in the specified scope, or referenced by any other entities. These parameters will not be processed and can be lost after the operation completes.#
+#2025 06 06 18:33:57.493#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[MergeDescriptorsStep] Descriptors validated and merged#
+#2025 06 06 18:33:57.493#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+Step "Merge Descriptors" finished#
+#2025 06 06 18:33:57.529#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Executing task "detectDeployedMtaTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:57.530#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Detecting deployed MTA...#
+#2025 06 06 18:33:57.530#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Detecting MTA by id mck-portal and namespace null#
+#2025 06 06 18:33:57.530#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Getting applications by metadata label selector "mta_id=dbd0339fb603fb24b7637c83543b02cf,!mta_namespace"...#
+#2025 06 06 18:33:57.572#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Getting service instances by metadata label selector "mta_id=dbd0339fb603fb24b7637c83543b02cf,!mta_namespace"...#
+#2025 06 06 18:33:57.699#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Deployed MTA: {
+  "metadata" : {
+    "id" : "mck-portal",
+    "version" : "1.0.2"
+  },
+  "applications" : [ ],
+  "services" : [ {
+    "name" : "mck-portal-destination-service",
+    "metadata" : {
+      "guid" : "a18aa14c-3e2e-492d-b961-c299b2287373",
+      "createdAt" : [ 2025, 6, 6, 18, 26, 56 ],
+      "updatedAt" : [ 2025, 6, 6, 18, 27, 1 ]
+    },
+    "v3Metadata" : {
+      "annotations" : {
+        "mta_id" : "mck-portal",
+        "mta_version" : "1.0.2",
+        "mta_resource" : "{\"name\":\"mck-portal-destination-service\"}"
+      },
+      "labels" : {
+        "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+      }
+    },
+    "label" : "destination",
+    "plan" : "lite",
+    "credentials" : "********",
+    "tags" : [ ],
+    "type" : "managed",
+    "lastOperation" : {
+      "type" : "UPDATE",
+      "description" : "",
+      "state" : "SUCCEEDED"
+    },
+    "resourceName" : "mck-portal-destination-service"
+  }, {
+    "name" : "mck-portal-html5-srv",
+    "metadata" : {
+      "guid" : "ad704bff-e8a3-4fdd-ad62-5d930039b8bf",
+      "createdAt" : [ 2025, 6, 6, 18, 27, 1 ],
+      "updatedAt" : [ 2025, 6, 6, 18, 27, 2 ]
+    },
+    "v3Metadata" : {
+      "annotations" : {
+        "mta_id" : "mck-portal",
+        "mta_version" : "1.0.2",
+        "mta_resource" : "{\"name\":\"mck-portal-html5-repo-host\"}"
+      },
+      "labels" : {
+        "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+      }
+    },
+    "label" : "html5-apps-repo",
+    "plan" : "app-host",
+    "credentials" : "********",
+    "tags" : [ ],
+    "type" : "managed",
+    "lastOperation" : {
+      "type" : "CREATE",
+      "description" : "",
+      "state" : "SUCCEEDED"
+    },
+    "resourceName" : "mck-portal-html5-repo-host"
+  }, {
+    "name" : "mck-portal-html5-runtime",
+    "metadata" : {
+      "guid" : "85b14396-8116-4963-8ae5-f7ffb446a112",
+      "createdAt" : [ 2025, 6, 6, 18, 26, 59 ],
+      "updatedAt" : [ 2025, 6, 6, 18, 27, 2 ]
+    },
+    "v3Metadata" : {
+      "annotations" : {
+        "mta_id" : "mck-portal",
+        "mta_version" : "1.0.2",
+        "mta_resource" : "{\"name\":\"mck-portal-html5-runtime\"}"
+      },
+      "labels" : {
+        "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+      }
+    },
+    "label" : "html5-apps-repo",
+    "plan" : "app-runtime",
+    "credentials" : "********",
+    "tags" : [ ],
+    "type" : "managed",
+    "lastOperation" : {
+      "type" : "CREATE",
+      "description" : "",
+      "state" : "SUCCEEDED"
+    },
+    "resourceName" : "mck-portal-html5-runtime"
+  } ]
+}#
+#2025 06 06 18:33:57.699#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Detected deployed MTA with ID "mck-portal" and version "1.0.2"#
+#2025 06 06 18:33:57.708#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Detecting backup mta by id "mck-portal" and namespace "null"#
+#2025 06 06 18:33:57.708#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Getting applications by metadata label selector "mta_id=dbd0339fb603fb24b7637c83543b02cf,mta_namespace=b698114a0995e936895b9598a6c19a2c"...#
+#2025 06 06 18:33:57.748#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Getting service instances by metadata label selector "mta_id=dbd0339fb603fb24b7637c83543b02cf,mta_namespace=b698114a0995e936895b9598a6c19a2c"...#
+#2025 06 06 18:33:57.810#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+[DetectDeployedMtaStep] Deployed MTA service keys: [ ]#
+#2025 06 06 18:33:57.810#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3847#
+Step "Detect Deployed MTA" finished#
+#2025 06 06 18:33:57.847#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Executing task "collectSystemParametersTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:57.848#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Collecting system parameters...#
+#2025 06 06 18:33:57.848#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Getting default domain...#
+#2025 06 06 18:33:57.881#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Default domain: cfapps.us20.hana.ondemand.com#
+#2025 06 06 18:33:57.884#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Checking for overwriting read-only parameters for mta with id: "mck-portal"#
+#2025 06 06 18:33:57.884#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] No read-only parameters are overwritten#
+#2025 06 06 18:33:57.922#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Descriptor with system parameters: {
+  "majorSchemaVersion" : 3,
+  "schemaVersion" : "3.3.0",
+  "id" : "mck-portal",
+  "version" : "1.0.2",
+  "modules" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-srv",
+    "type" : "javascript.nodejs",
+    "path" : "mck-portal-srv",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "${protocol}://${default-uri}",
+      "default-app-name" : "mck-portal-srv",
+      "generated-password" : "********",
+      "default-live-url" : "${protocol}://${default-live-uri}",
+      "default-uri" : "${host}.${domain}",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+      "instances" : "${default-instances}",
+      "readiness-health-check-http-endpoint" : "/health",
+      "readiness-health-check-type" : "http",
+      "buildpack" : "nodejs_buildpack",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+      "app-name" : "${default-app-name}",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.${domain}",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-srv",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "domain" : "${default-domain}",
+      "host" : "${default-host}",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-ds-db-3",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "cross-container-service-1",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "isPublic" : false,
+      "properties" : {
+        "srv-url" : "${default-url}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-srv",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-db-3-deployer",
+    "type" : "com.sap.xs.hdi",
+    "path" : "mck-portal-db-3-deployer",
+    "properties" : {
+      "EXIT" : 1
+    },
+    "parameters" : {
+      "default-url" : "${protocol}://${default-uri}",
+      "default-app-name" : "mck-portal-db-3-deployer",
+      "generated-password" : "********",
+      "default-live-url" : "${protocol}://${default-live-uri}",
+      "default-uri" : "${host}.${domain}",
+      "memory" : "256M",
+      "default-instances" : 1,
+      "no-route" : true,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+      "instances" : "${default-instances}",
+      "buildpack" : "nodejs_buildpack",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+      "app-name" : "${default-app-name}",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.${domain}",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-db-3-deployer",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "dependency-type" : "hard",
+      "domain" : "${default-domain}",
+      "host" : "${default-host}",
+      "generated-user" : "********",
+      "tasks" : [ {
+        "name" : "deploy",
+        "memory" : "256M",
+        "command" : "npm start"
+      } ],
+      "no-start" : true
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-ds-db-3",
+      "properties" : {
+        "TARGET_CONTAINER" : "~{hdi-service-name}"
+      },
+      "parameters" : {
+        "disk-quota" : "256M",
+        "memory" : "256M"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "cross-container-service-1",
+      "group" : "SERVICE_REPLACEMENTS",
+      "properties" : {
+        "key" : "********",
+        "service" : "~{the-service-name}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-db-3-deployer",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-app-deployer",
+    "type" : "com.sap.application.content",
+    "path" : "mck-portal-app-deployer",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "${protocol}://${default-uri}",
+      "default-app-name" : "mck-portal-app-deployer",
+      "generated-password" : "********",
+      "default-live-url" : "${protocol}://${default-live-uri}",
+      "default-uri" : "${host}.${domain}",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+      "instances" : "${default-instances}",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+      "app-name" : "${default-app-name}",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.${domain}",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-app-deployer",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "domain" : "${default-domain}",
+      "host" : "${default-host}",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-repo-host",
+      "properties" : { },
+      "parameters" : {
+        "content-target" : true
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-app-deployer",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-content",
+    "type" : "com.sap.application.content",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "${protocol}://${default-uri}",
+      "default-app-name" : "mck-portal-destination-content",
+      "generated-password" : "********",
+      "default-live-url" : "${protocol}://${default-live-uri}",
+      "default-uri" : "${host}.${domain}",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+      "instances" : "${default-instances}",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+      "content" : {
+        "instance" : {
+          "destinations" : [ {
+            "Name" : "mck_portal_html_repo_host",
+            "ServiceInstanceName" : "mck-portal-html5-srv",
+            "ServiceKeyName" : "********",
+            "sap.cloud.service" : "mck.portal"
+          }, {
+            "Authentication" : "********",
+            "Name" : "********",
+            "ServiceInstanceName" : "********",
+            "ServiceKeyName" : "********",
+            "sap.cloud.service" : "mck.portal"
+          } ],
+          "existing_destinations_policy" : "ignore"
+        }
+      },
+      "app-name" : "${default-app-name}",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.${domain}",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-destination-content",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "domain" : "${default-domain}",
+      "host" : "${default-host}",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : {
+        "content-target" : true
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-repo-host",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-content",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal",
+    "type" : "javascript.nodejs",
+    "path" : "mck-portal",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "${protocol}://${default-uri}",
+      "default-app-name" : "mck-portal",
+      "generated-password" : "********",
+      "default-live-url" : "${protocol}://${default-live-uri}",
+      "default-uri" : "${host}.${domain}",
+      "memory" : "256M",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+      "instances" : "${default-instances}",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+      "keep-existing-routes" : true,
+      "app-name" : "${default-app-name}",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.${domain}",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "disk-quota" : "256M",
+      "domain" : "${default-domain}",
+      "host" : "${default-host}",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "group" : "destinations",
+      "properties" : {
+        "name" : "srv-api",
+        "forwardAuthToken" : "********",
+        "url" : "~{srv-url}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-runtime",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "app-api",
+      "isPublic" : false,
+      "properties" : {
+        "app-protocol" : "${protocol}",
+        "app-uri" : "${default-uri}"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  } ],
+  "resources" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "path" : "./xs-security.json",
+      "service-name" : "********",
+      "service-plan" : "application",
+      "service" : "xsuaa",
+      "generated-user" : "********",
+      "default-xsappname" : "********",
+      "type" : "managed-service",
+      "config" : {
+        "tenant-mode" : "dedicated",
+        "xsappname" : "mck-portal"
+      },
+      "default-service-name" : "********",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC51334EA1"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-ds-db-3",
+    "type" : "com.sap.xs.hdi-container",
+    "properties" : {
+      "hdi-service-name" : "${service-name}"
+    },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "${default-service-name}",
+      "service-plan" : "hdi-shared",
+      "service" : "hana",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-ds-db-3",
+      "type" : "managed-service",
+      "config" : {
+        "database_id" : "451e8954-27cd-4d2f-9402-3ca1944484c7",
+        "schema" : "MCK_RQ2_300"
+      },
+      "default-service-name" : "mck-portal-ds-db-3",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC3A38134B"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-1",
+    "type" : "org.cloudfoundry.existing-service",
+    "properties" : {
+      "the-service-name" : "${service-name}"
+    },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "********",
+      "generated-user" : "********",
+      "default-xsappname" : "cross-container-service-1",
+      "type" : "existing-service",
+      "default-service-name" : "cross-container-service-1",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_CRO8D6E1E8"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-service",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-destination-service",
+      "service-plan" : "lite",
+      "service" : "destination",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-destination-service",
+      "type" : "managed-service",
+      "config" : {
+        "HTML5Runtime_enabled" : true,
+        "init_data" : {
+          "instance" : {
+            "destinations" : [ {
+              "Authentication" : "********",
+              "HTML5.DynamicDestination" : true,
+              "HTML5.ForwardAuthToken" : "********",
+              "HTML5.Timeout" : 600000001,
+              "Name" : "srv-api",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "~{srv-api/srv-url}"
+            }, {
+              "Authentication" : "********",
+              "Name" : "ui5",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "https://ui5.sap.com"
+            }, {
+              "Authentication" : "********",
+              "HTML5.DynamicDestination" : true,
+              "HTML5.ForwardAuthToken" : "********",
+              "Name" : "mck-portal-srv-api",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "~{srv-api/srv-url}"
+            } ],
+            "existing_destinations_policy" : "update"
+          },
+          "subaccount" : {
+            "destinations" : [ {
+              "Authentication" : "********",
+              "Name" : "srv-api",
+              "TokenServiceInstanceName" : "********",
+              "TokenServiceKeyName" : "********",
+              "URL" : "~{srv-api/srv-url}"
+            } ],
+            "existing_destinations_policy" : "update"
+          }
+        },
+        "version" : "1.0.0"
+      },
+      "default-service-name" : "mck-portal-destination-service",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MCKA5762AD"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-repo-host",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-html5-srv",
+      "service-plan" : "app-host",
+      "service" : "html5-apps-repo",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-html5-repo-host",
+      "type" : "managed-service",
+      "default-service-name" : "mck-portal-html5-repo-host",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC409F3A29"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-runtime",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "${default-service-name}",
+      "service-plan" : "app-runtime",
+      "service" : "html5-apps-repo",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-html5-runtime",
+      "type" : "managed-service",
+      "default-service-name" : "mck-portal-html5-runtime",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC58142F74"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-2",
+    "type" : "org.cloudfoundry.existing-service",
+    "properties" : {
+      "the-service-name" : "${service-name}"
+    },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-ds-db-3",
+      "generated-user" : "********",
+      "default-xsappname" : "cross-container-service-2",
+      "type" : "existing-service",
+      "default-service-name" : "cross-container-service-2",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_CRO8D6E1E7"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  } ],
+  "parameters" : {
+    "deploy_mode" : "html5-repo",
+    "mta-id" : "mck-portal",
+    "authorization-url" : "********",
+    "org-guid" : "557795fb-ec02-41f6-b249-2b9c73ac8438",
+    "org" : "McKesson Corporation_discovery-sunrise",
+    "deploy-target" : "McKesson Corporation_discovery-sunrise Datasphere_Dev",
+    "enable-parallel-deployments" : true,
+    "space" : "Datasphere_Dev",
+    "xs-api-url" : "https://api.cf.us20.hana.ondemand.com",
+    "deploy-url" : "deploy-service.cfapps.us20.hana.ondemand.com",
+    "xs-type" : "CF",
+    "default-domain" : "cfapps.us20.hana.ondemand.com",
+    "mta-version" : "1.0.2",
+    "xs-auth-url" : "********",
+    "space-guid" : "2742a945-aac7-4753-a013-50fdd526e1db",
+    "user" : "********",
+    "controller-url" : "https://api.cf.us20.hana.ondemand.com",
+    "timestamp" : "20250606183352"
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  }
+}#
+#2025 06 06 18:33:57.924#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Version rule: SAME_HIGHER#
+#2025 06 06 18:33:57.924#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Detected new MTA version: "1.0.2"#
+#2025 06 06 18:33:57.931#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] Deployed MTA version: "1.0.2"#
+#2025 06 06 18:33:57.939#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] MTA accepted for deployment#
+#2025 06 06 18:33:57.940#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[XS2CollectSystemParametersStep] System parameters collected#
+#2025 06 06 18:33:57.941#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+Step "Collect System Parameters" finished#
+#2025 06 06 18:33:57.979#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ProcessDescriptorStep] Executing task "processDescriptorTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:57.980#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ProcessDescriptorStep] Resolving properties and parameters in merged descriptor...#
+#2025 06 06 18:33:57.987#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ProcessDescriptorStep] Subscriptions: [ ]#
+#2025 06 06 18:33:57.988#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ProcessDescriptorStep] MTA modules: [mck-portal, mck-portal-db-3-deployer, mck-portal-app-deployer, mck-portal-destination-content, mck-portal-srv]#
+#2025 06 06 18:33:57.990#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ProcessDescriptorStep] Resolved deployment descriptor: {
+  "majorSchemaVersion" : 3,
+  "schemaVersion" : "3.3.0",
+  "id" : "mck-portal",
+  "version" : "1.0.2",
+  "modules" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-srv",
+    "type" : "javascript.nodejs",
+    "path" : "mck-portal-srv",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+      "default-app-name" : "mck-portal-srv",
+      "generated-password" : "********",
+      "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+      "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+      "instances" : 1,
+      "readiness-health-check-http-endpoint" : "/health",
+      "readiness-health-check-type" : "http",
+      "buildpack" : "nodejs_buildpack",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+      "app-name" : "mck-portal-srv",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-srv",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "domain" : "cfapps.us20.hana.ondemand.com",
+      "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-ds-db-3",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "cross-container-service-1",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "isPublic" : false,
+      "properties" : {
+        "srv-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-srv",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-db-3-deployer",
+    "type" : "com.sap.xs.hdi",
+    "path" : "mck-portal-db-3-deployer",
+    "properties" : {
+      "EXIT" : 1
+    },
+    "parameters" : {
+      "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+      "default-app-name" : "mck-portal-db-3-deployer",
+      "generated-password" : "********",
+      "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+      "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+      "memory" : "256M",
+      "default-instances" : 1,
+      "no-route" : true,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+      "instances" : 1,
+      "buildpack" : "nodejs_buildpack",
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+      "app-name" : "mck-portal-db-3-deployer",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-db-3-deployer",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "dependency-type" : "hard",
+      "domain" : "cfapps.us20.hana.ondemand.com",
+      "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+      "generated-user" : "********",
+      "tasks" : [ {
+        "command" : "npm start",
+        "memory" : "256M",
+        "name" : "deploy"
+      } ],
+      "no-start" : true
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-ds-db-3",
+      "properties" : {
+        "TARGET_CONTAINER" : "mck-portal-ds-db-3"
+      },
+      "parameters" : {
+        "disk-quota" : "256M",
+        "memory" : "256M"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "cross-container-service-1",
+      "group" : "SERVICE_REPLACEMENTS",
+      "properties" : {
+        "key" : "********",
+        "service" : "********"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-db-3-deployer",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-app-deployer",
+    "type" : "com.sap.application.content",
+    "path" : "mck-portal-app-deployer",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+      "default-app-name" : "mck-portal-app-deployer",
+      "generated-password" : "********",
+      "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+      "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+      "instances" : 1,
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+      "app-name" : "mck-portal-app-deployer",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-app-deployer",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "domain" : "cfapps.us20.hana.ondemand.com",
+      "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-repo-host",
+      "properties" : { },
+      "parameters" : {
+        "content-target" : true
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-app-deployer",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-content",
+    "type" : "com.sap.application.content",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+      "default-app-name" : "mck-portal-destination-content",
+      "generated-password" : "********",
+      "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+      "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+      "instances" : 1,
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+      "content" : {
+        "instance" : {
+          "destinations" : [ {
+            "Name" : "mck_portal_html_repo_host",
+            "ServiceInstanceName" : "mck-portal-html5-srv",
+            "ServiceKeyName" : "********",
+            "sap.cloud.service" : "mck.portal"
+          }, {
+            "Authentication" : "********",
+            "Name" : "********",
+            "ServiceInstanceName" : "********",
+            "ServiceKeyName" : "********",
+            "sap.cloud.service" : "mck.portal"
+          } ],
+          "existing_destinations_policy" : "ignore"
+        }
+      },
+      "app-name" : "mck-portal-destination-content",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal-destination-content",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "domain" : "cfapps.us20.hana.ondemand.com",
+      "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : {
+        "content-target" : true
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-repo-host",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : {
+        "service-key" : "********"
+      },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-content",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal",
+    "type" : "javascript.nodejs",
+    "path" : "mck-portal",
+    "properties" : { },
+    "parameters" : {
+      "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+      "default-app-name" : "mck-portal",
+      "generated-password" : "********",
+      "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+      "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+      "memory" : "256M",
+      "default-instances" : 1,
+      "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+      "instances" : 1,
+      "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+      "keep-existing-routes" : true,
+      "app-name" : "mck-portal",
+      "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+      "protocol" : "https",
+      "default-live-app-name" : "mck-portal",
+      "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+      "disk-quota" : "256M",
+      "domain" : "cfapps.us20.hana.ondemand.com",
+      "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+      "generated-user" : "********"
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "group" : "destinations",
+      "properties" : {
+        "name" : "srv-api",
+        "forwardAuthToken" : "********",
+        "url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "********",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-destination-service",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal-html5-runtime",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "providedDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "app-api",
+      "isPublic" : false,
+      "properties" : {
+        "app-protocol" : "https",
+        "app-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com"
+      },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    }, {
+      "majorSchemaVersion" : 3,
+      "name" : "mck-portal",
+      "isPublic" : false,
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "hooks" : [ ]
+  } ],
+  "resources" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "path" : "./xs-security.json",
+      "service-name" : "********",
+      "service-plan" : "application",
+      "service" : "xsuaa",
+      "generated-user" : "********",
+      "default-xsappname" : "********",
+      "type" : "managed-service",
+      "config" : {
+        "tenant-mode" : "dedicated",
+        "xsappname" : "mck-portal"
+      },
+      "default-service-name" : "********",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC51334EA1"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-ds-db-3",
+    "type" : "com.sap.xs.hdi-container",
+    "properties" : {
+      "hdi-service-name" : "mck-portal-ds-db-3"
+    },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-ds-db-3",
+      "service-plan" : "hdi-shared",
+      "service" : "hana",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-ds-db-3",
+      "type" : "managed-service",
+      "config" : {
+        "database_id" : "451e8954-27cd-4d2f-9402-3ca1944484c7",
+        "schema" : "MCK_RQ2_300"
+      },
+      "default-service-name" : "mck-portal-ds-db-3",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC3A38134B"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-1",
+    "type" : "org.cloudfoundry.existing-service",
+    "properties" : {
+      "the-service-name" : "********"
+    },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "********",
+      "generated-user" : "********",
+      "default-xsappname" : "cross-container-service-1",
+      "type" : "existing-service",
+      "default-service-name" : "cross-container-service-1",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_CRO8D6E1E8"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-service",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-destination-service",
+      "service-plan" : "lite",
+      "service" : "destination",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-destination-service",
+      "type" : "managed-service",
+      "config" : {
+        "HTML5Runtime_enabled" : true,
+        "init_data" : {
+          "instance" : {
+            "destinations" : [ {
+              "Authentication" : "********",
+              "HTML5.DynamicDestination" : true,
+              "HTML5.ForwardAuthToken" : "********",
+              "HTML5.Timeout" : 600000001,
+              "Name" : "srv-api",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+            }, {
+              "Authentication" : "********",
+              "Name" : "ui5",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "https://ui5.sap.com"
+            }, {
+              "Authentication" : "********",
+              "HTML5.DynamicDestination" : true,
+              "HTML5.ForwardAuthToken" : "********",
+              "Name" : "mck-portal-srv-api",
+              "ProxyType" : "Internet",
+              "Type" : "HTTP",
+              "URL" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+            } ],
+            "existing_destinations_policy" : "update"
+          },
+          "subaccount" : {
+            "destinations" : [ {
+              "Authentication" : "********",
+              "Name" : "srv-api",
+              "TokenServiceInstanceName" : "********",
+              "TokenServiceKeyName" : "********",
+              "URL" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+            } ],
+            "existing_destinations_policy" : "update"
+          }
+        },
+        "version" : "1.0.0"
+      },
+      "default-service-name" : "mck-portal-destination-service",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MCKA5762AD"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ {
+      "majorSchemaVersion" : 3,
+      "name" : "srv-api",
+      "properties" : { },
+      "parameters" : { },
+      "propertiesMetadata" : {
+        "metadata" : { }
+      },
+      "parametersMetadata" : {
+        "metadata" : { }
+      }
+    } ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-repo-host",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-html5-srv",
+      "service-plan" : "app-host",
+      "service" : "html5-apps-repo",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-html5-repo-host",
+      "type" : "managed-service",
+      "default-service-name" : "mck-portal-html5-repo-host",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC409F3A29"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-runtime",
+    "type" : "org.cloudfoundry.managed-service",
+    "properties" : { },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-html5-runtime",
+      "service-plan" : "app-runtime",
+      "service" : "html5-apps-repo",
+      "generated-user" : "********",
+      "default-xsappname" : "mck-portal-html5-runtime",
+      "type" : "managed-service",
+      "default-service-name" : "mck-portal-html5-runtime",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_MC58142F74"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-2",
+    "type" : "org.cloudfoundry.existing-service",
+    "properties" : {
+      "the-service-name" : "mck-portal-ds-db-3"
+    },
+    "parameters" : {
+      "generated-password" : "********",
+      "service-name" : "mck-portal-ds-db-3",
+      "generated-user" : "********",
+      "default-xsappname" : "cross-container-service-2",
+      "type" : "existing-service",
+      "default-service-name" : "cross-container-service-2",
+      "default-container-name" : "MCKESSON_CORPORATION_DISCOVERY_SUNRISE_DATASPHERE_DEV_CRO8D6E1E7"
+    },
+    "isActive" : true,
+    "isOptional" : false,
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    },
+    "requiredDependencies" : [ ],
+    "processedAfter" : [ ]
+  } ],
+  "parameters" : {
+    "deploy_mode" : "html5-repo",
+    "mta-id" : "mck-portal",
+    "authorization-url" : "********",
+    "org-guid" : "557795fb-ec02-41f6-b249-2b9c73ac8438",
+    "org" : "McKesson Corporation_discovery-sunrise",
+    "deploy-target" : "McKesson Corporation_discovery-sunrise Datasphere_Dev",
+    "enable-parallel-deployments" : true,
+    "region-primary-domain" : "us20.hana.ondemand.com",
+    "space" : "Datasphere_Dev",
+    "xs-api-url" : "https://api.cf.us20.hana.ondemand.com",
+    "deploy-url" : "deploy-service.cfapps.us20.hana.ondemand.com",
+    "xs-type" : "CF",
+    "default-domain" : "cfapps.us20.hana.ondemand.com",
+    "mta-version" : "1.0.2",
+    "xs-auth-url" : "********",
+    "space-guid" : "2742a945-aac7-4753-a013-50fdd526e1db",
+    "user" : "********",
+    "controller-url" : "https://api.cf.us20.hana.ondemand.com",
+    "timestamp" : "20250606183352"
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  }
+}#
+#2025 06 06 18:33:57.991#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+[ProcessDescriptorStep] Merged descriptor properties and parameters resolved#
+#2025 06 06 18:33:57.991#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3841#
+Step "Process Descriptor Step" finished#
+#2025 06 06 18:33:58.029#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Executing task "buildDeployModelTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.033#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Service keys defined for content deployment grouped by service name: {
+  "mck-portal-destination-service" : [ {
+    "name" : "********",
+    "v3Metadata" : {
+      "annotations" : {
+        "mta_id" : "mck-portal",
+        "mta_version" : "1.0.2"
+      },
+      "labels" : {
+        "mta_id" : "dbd0339fb603fb24b7637c83543b02cf",
+        "space_guid" : "2742a945-aac7-4753-a013-50fdd526e1db"
+      }
+    },
+    "credentials" : "********",
+    "moduleName" : "mck-portal-destination-content",
+    "resourceName" : "mck-portal-destination-service",
+    "serviceInstance" : {
+      "isOptional" : false,
+      "isManaged" : false,
+      "name" : "mck-portal-destination-service",
+      "credentials" : "********",
+      "tags" : [ ],
+      "shouldSkipParametersUpdate" : false,
+      "shouldSkipPlanUpdate" : false,
+      "shouldSkipTagsUpdate" : false,
+      "shouldSkipSyslogUrlUpdate" : false,
+      "shouldFailOnParametersUpdateFailure" : false,
+      "shouldFailOnPlanUpdateFailure" : false,
+      "shouldFailOnTagsUpdateFailure" : false
+    },
+    "shouldDeleteServiceKeyAfterDeploy" : "********",
+    "resourceType" : "org.cloudfoundry.managed-service"
+  } ],
+  "mck-portal-html5-repo-host" : [ {
+    "name" : "********",
+    "v3Metadata" : {
+      "annotations" : {
+        "mta_id" : "mck-portal",
+        "mta_version" : "1.0.2"
+      },
+      "labels" : {
+        "mta_id" : "dbd0339fb603fb24b7637c83543b02cf",
+        "space_guid" : "2742a945-aac7-4753-a013-50fdd526e1db"
+      }
+    },
+    "credentials" : "********",
+    "moduleName" : "mck-portal-app-deployer",
+    "resourceName" : "mck-portal-html5-repo-host",
+    "serviceInstance" : {
+      "isOptional" : false,
+      "isManaged" : false,
+      "name" : "mck-portal-html5-srv",
+      "credentials" : "********",
+      "tags" : [ ],
+      "shouldSkipParametersUpdate" : false,
+      "shouldSkipPlanUpdate" : false,
+      "shouldSkipTagsUpdate" : false,
+      "shouldSkipSyslogUrlUpdate" : false,
+      "shouldFailOnParametersUpdateFailure" : false,
+      "shouldFailOnPlanUpdateFailure" : false,
+      "shouldFailOnTagsUpdateFailure" : false
+    },
+    "shouldDeleteServiceKeyAfterDeploy" : "********",
+    "resourceType" : "org.cloudfoundry.managed-service"
+  }, {
+    "name" : "********",
+    "v3Metadata" : {
+      "annotations" : {
+        "mta_id" : "mck-portal",
+        "mta_version" : "1.0.2"
+      },
+      "labels" : {
+        "mta_id" : "dbd0339fb603fb24b7637c83543b02cf",
+        "space_guid" : "2742a945-aac7-4753-a013-50fdd526e1db"
+      }
+    },
+    "credentials" : "********",
+    "moduleName" : "mck-portal-destination-content",
+    "resourceName" : "mck-portal-html5-repo-host",
+    "serviceInstance" : {
+      "isOptional" : false,
+      "isManaged" : false,
+      "name" : "mck-portal-html5-srv",
+      "credentials" : "********",
+      "tags" : [ ],
+      "shouldSkipParametersUpdate" : false,
+      "shouldSkipPlanUpdate" : false,
+      "shouldSkipTagsUpdate" : false,
+      "shouldSkipSyslogUrlUpdate" : false,
+      "shouldFailOnParametersUpdateFailure" : false,
+      "shouldFailOnPlanUpdateFailure" : false,
+      "shouldFailOnTagsUpdateFailure" : false
+    },
+    "shouldDeleteServiceKeyAfterDeploy" : "********",
+    "resourceType" : "org.cloudfoundry.managed-service"
+  } ],
+  "mck-portal-auth" : "********"
+}#
+#2025 06 06 18:33:58.033#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Building cloud deployment model...#
+#2025 06 06 18:33:58.036#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] MTA archive modules: [mck-portal, mck-portal-db-3-deployer, mck-portal-app-deployer, mck-portal-srv]#
+#2025 06 06 18:33:58.036#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Deployed modules: []#
+#2025 06 06 18:33:58.037#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] MTA modules: [mck-portal, mck-portal-db-3-deployer, mck-portal-app-deployer, mck-portal-destination-content, mck-portal-srv]#
+#2025 06 06 18:33:58.037#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Service keys to create: {
+  "mck-portal-ds-db-3" : [ ],
+  "cross-container-service-1" : [ ],
+  "cross-container-service-2" : [ ],
+  "mck-portal-destination-service" : [ ],
+  "mck-portal-html5-repo-host" : [ ],
+  "mck-portal-auth" : "********",
+  "mck-portal-html5-runtime" : [ ]
+}#
+#2025 06 06 18:33:58.040#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Modules to deploy: [{
+  "majorSchemaVersion" : 3,
+  "name" : "mck-portal-srv",
+  "type" : "javascript.nodejs",
+  "path" : "mck-portal-srv",
+  "properties" : { },
+  "parameters" : {
+    "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+    "default-app-name" : "mck-portal-srv",
+    "generated-password" : "********",
+    "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+    "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+    "default-instances" : 1,
+    "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+    "instances" : 1,
+    "readiness-health-check-http-endpoint" : "/health",
+    "readiness-health-check-type" : "http",
+    "buildpack" : "nodejs_buildpack",
+    "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+    "app-name" : "mck-portal-srv",
+    "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com",
+    "protocol" : "https",
+    "default-live-app-name" : "mck-portal-srv",
+    "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+    "dependency-type" : "soft",
+    "domain" : "cfapps.us20.hana.ondemand.com",
+    "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4",
+    "generated-user" : "********"
+  },
+  "requiredDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-ds-db-3",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-1",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-service",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "providedDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "srv-api",
+    "isPublic" : false,
+    "properties" : {
+      "srv-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+    },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-srv",
+    "isPublic" : false,
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "propertiesMetadata" : {
+    "metadata" : { }
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  },
+  "deployedAfter" : [ ],
+  "hooks" : [ ]
+}, {
+  "majorSchemaVersion" : 3,
+  "name" : "mck-portal-db-3-deployer",
+  "type" : "com.sap.xs.hdi",
+  "path" : "mck-portal-db-3-deployer",
+  "properties" : {
+    "EXIT" : 1
+  },
+  "parameters" : {
+    "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+    "default-app-name" : "mck-portal-db-3-deployer",
+    "generated-password" : "********",
+    "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+    "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+    "memory" : "256M",
+    "default-instances" : 1,
+    "no-route" : true,
+    "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+    "instances" : 1,
+    "buildpack" : "nodejs_buildpack",
+    "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+    "app-name" : "mck-portal-db-3-deployer",
+    "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6.cfapps.us20.hana.ondemand.com",
+    "protocol" : "https",
+    "default-live-app-name" : "mck-portal-db-3-deployer",
+    "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+    "dependency-type" : "hard",
+    "domain" : "cfapps.us20.hana.ondemand.com",
+    "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m3d2a28b6",
+    "generated-user" : "********",
+    "tasks" : [ {
+      "command" : "npm start",
+      "memory" : "256M",
+      "name" : "deploy"
+    } ],
+    "no-start" : true
+  },
+  "requiredDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-ds-db-3",
+    "properties" : {
+      "TARGET_CONTAINER" : "mck-portal-ds-db-3"
+    },
+    "parameters" : {
+      "disk-quota" : "256M",
+      "memory" : "256M"
+    },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "cross-container-service-1",
+    "group" : "SERVICE_REPLACEMENTS",
+    "properties" : {
+      "key" : "********",
+      "service" : "********"
+    },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "providedDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-db-3-deployer",
+    "isPublic" : false,
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "propertiesMetadata" : {
+    "metadata" : { }
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  },
+  "deployedAfter" : [ ],
+  "hooks" : [ ]
+}, {
+  "majorSchemaVersion" : 3,
+  "name" : "mck-portal-app-deployer",
+  "type" : "com.sap.application.content",
+  "path" : "mck-portal-app-deployer",
+  "properties" : { },
+  "parameters" : {
+    "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+    "default-app-name" : "mck-portal-app-deployer",
+    "generated-password" : "********",
+    "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+    "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+    "default-instances" : 1,
+    "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+    "instances" : 1,
+    "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+    "app-name" : "mck-portal-app-deployer",
+    "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d.cfapps.us20.hana.ondemand.com",
+    "protocol" : "https",
+    "default-live-app-name" : "mck-portal-app-deployer",
+    "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+    "dependency-type" : "soft",
+    "domain" : "cfapps.us20.hana.ondemand.com",
+    "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m61f7ea0d",
+    "generated-user" : "********"
+  },
+  "requiredDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "properties" : { },
+    "parameters" : {
+      "service-key" : "********"
+    },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-repo-host",
+    "properties" : { },
+    "parameters" : {
+      "content-target" : true
+    },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "providedDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-app-deployer",
+    "isPublic" : false,
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "propertiesMetadata" : {
+    "metadata" : { }
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  },
+  "deployedAfter" : [ ],
+  "hooks" : [ ]
+}, {
+  "majorSchemaVersion" : 3,
+  "name" : "mck-portal-destination-content",
+  "type" : "com.sap.application.content",
+  "properties" : { },
+  "parameters" : {
+    "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+    "default-app-name" : "mck-portal-destination-content",
+    "generated-password" : "********",
+    "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+    "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+    "default-instances" : 1,
+    "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+    "instances" : 1,
+    "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+    "content" : {
+      "instance" : {
+        "destinations" : [ {
+          "Name" : "mck_portal_html_repo_host",
+          "ServiceInstanceName" : "mck-portal-html5-srv",
+          "ServiceKeyName" : "********",
+          "sap.cloud.service" : "mck.portal"
+        }, {
+          "Authentication" : "********",
+          "Name" : "********",
+          "ServiceInstanceName" : "********",
+          "ServiceKeyName" : "********",
+          "sap.cloud.service" : "mck.portal"
+        } ],
+        "existing_destinations_policy" : "ignore"
+      }
+    },
+    "app-name" : "mck-portal-destination-content",
+    "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199.cfapps.us20.hana.ondemand.com",
+    "protocol" : "https",
+    "default-live-app-name" : "mck-portal-destination-content",
+    "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+    "dependency-type" : "soft",
+    "domain" : "cfapps.us20.hana.ondemand.com",
+    "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-mce473199",
+    "generated-user" : "********"
+  },
+  "requiredDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-service",
+    "properties" : { },
+    "parameters" : {
+      "content-target" : true
+    },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-repo-host",
+    "properties" : { },
+    "parameters" : {
+      "service-key" : "********"
+    },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "properties" : { },
+    "parameters" : {
+      "service-key" : "********"
+    },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "srv-api",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "providedDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-content",
+    "isPublic" : false,
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "propertiesMetadata" : {
+    "metadata" : { }
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  },
+  "deployedAfter" : [ ],
+  "hooks" : [ ]
+}, {
+  "majorSchemaVersion" : 3,
+  "name" : "mck-portal",
+  "type" : "javascript.nodejs",
+  "path" : "mck-portal",
+  "properties" : { },
+  "parameters" : {
+    "default-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+    "default-app-name" : "mck-portal",
+    "generated-password" : "********",
+    "default-live-url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+    "default-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+    "memory" : "256M",
+    "default-instances" : 1,
+    "default-live-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+    "instances" : 1,
+    "default-host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+    "keep-existing-routes" : true,
+    "app-name" : "mck-portal",
+    "default-live-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com",
+    "protocol" : "https",
+    "default-live-app-name" : "mck-portal",
+    "default-live-domain" : "cfapps.us20.hana.ondemand.com",
+    "disk-quota" : "256M",
+    "dependency-type" : "soft",
+    "domain" : "cfapps.us20.hana.ondemand.com",
+    "host" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06",
+    "generated-user" : "********"
+  },
+  "requiredDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "srv-api",
+    "group" : "destinations",
+    "properties" : {
+      "name" : "srv-api",
+      "forwardAuthToken" : "********",
+      "url" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+    },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "********",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-destination-service",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal-html5-runtime",
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "providedDependencies" : [ {
+    "majorSchemaVersion" : 3,
+    "name" : "app-api",
+    "isPublic" : false,
+    "properties" : {
+      "app-protocol" : "https",
+      "app-uri" : "mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com"
+    },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  }, {
+    "majorSchemaVersion" : 3,
+    "name" : "mck-portal",
+    "isPublic" : false,
+    "properties" : { },
+    "parameters" : { },
+    "propertiesMetadata" : {
+      "metadata" : { }
+    },
+    "parametersMetadata" : {
+      "metadata" : { }
+    }
+  } ],
+  "propertiesMetadata" : {
+    "metadata" : { }
+  },
+  "parametersMetadata" : {
+    "metadata" : { }
+  },
+  "deployedAfter" : [ ],
+  "hooks" : [ ]
+}]#
+#2025 06 06 18:33:58.042#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Custom domains: []#
+#2025 06 06 18:33:58.043#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Calculating resource batches...#
+#2025 06 06 18:33:58.044#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Calculating resource batches completed.#
+#2025 06 06 18:33:58.044#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+[XS2BuildCloudDeployModelStep] Cloud deployment model built#
+#2025 06 06 18:33:58.044#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3842#
+Step "Build Deploy Model" finished#
+#2025 06 06 18:33:58.088#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Executing task "buildUndeployModelTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.089#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Building cloud undeployment model...#
+#2025 06 06 18:33:58.094#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] MTA modules: [mck-portal, mck-portal-db-3-deployer, mck-portal-app-deployer, mck-portal-destination-content, mck-portal-srv]#
+#2025 06 06 18:33:58.095#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Modules to undeploy: [ ]#
+#2025 06 06 18:33:58.095#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Modules that won't be changed: [ ]#
+#2025 06 06 18:33:58.096#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Subscriptions to delete: [ ]#
+#2025 06 06 18:33:58.099#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Cloud services to delete: []#
+#2025 06 06 18:33:58.099#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Detecting service keys to delete.#
+#2025 06 06 18:33:58.100#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] No deployed service keys detected!#
+#2025 06 06 18:33:58.100#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Detected service keys to delete "[]"#
+#2025 06 06 18:33:58.100#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Cloud applications to undeploy: [ ]#
+#2025 06 06 18:33:58.103#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[BuildCloudUndeployModelStep] Cloud undeployment model built#
+#2025 06 06 18:33:58.103#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+Step "Build Undeploy Model" finished#
+#2025 06 06 18:33:58.141#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[AddDomainsStep] Executing task "addDomainsTask" of process "cbf1b20a-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.142#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[AddDomainsStep] Custom domains: []#
+#2025 06 06 18:33:58.142#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+Step "Add Domains" finished#
+#2025 06 06 18:33:58.280#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[ExtractBatchedServicesWithResolvedDynamicParametersStep] Executing task "prepareModulesDeploymentTask" of process "cf1ade82-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.280#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[ExtractBatchedServicesWithResolvedDynamicParametersStep] Extracting services and resolving dynamic parameters from batch#
+#2025 06 06 18:33:58.283#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+[ExtractBatchedServicesWithResolvedDynamicParametersStep] Services to create: [ {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "********",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "********"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "xsuaa",
+  "plan" : "application",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "********",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}, {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "mck-portal-ds-db-3",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-ds-db-3\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "hana",
+  "plan" : "hdi-shared",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "mck-portal-ds-db-3",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}, {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "mck-portal-destination-service",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-destination-service\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "destination",
+  "plan" : "lite",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "mck-portal-destination-service",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}, {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "mck-portal-html5-srv",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-html5-repo-host\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "html5-apps-repo",
+  "plan" : "app-host",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "mck-portal-html5-repo-host",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}, {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "mck-portal-html5-runtime",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-html5-runtime\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "html5-apps-repo",
+  "plan" : "app-runtime",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "mck-portal-html5-runtime",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+} ]#
+#2025 06 06 18:33:58.284#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3846#
+Step "Extract Services with Resolved Dynamic parameters from batch" finished#
+#2025 06 06 18:33:58.391#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[CheckServiceOperationStateStep] Executing task "CheckServiceOperationStateTask" of process "cf3089ac-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.391#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+[CheckServiceOperationStateStep] Getting service instance "mck-portal-ds-db-3"...#
+#2025 06 06 18:33:58.417#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3844#
+Step "Check for service operations in Progress" finished#
+#2025 06 06 18:33:58.450#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetermineServiceCreateUpdateServiceActionsStep] Executing task "DetermineServiceCreateUpdateActionsTask" of process "cf3089ac-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.451#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetermineServiceCreateUpdateServiceActionsStep] Processing service "mck-portal-ds-db-3"...#
+#2025 06 06 18:33:58.459#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetermineServiceCreateUpdateServiceActionsStep] Getting service instance "mck-portal-ds-db-3"...#
+#2025 06 06 18:33:58.502#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+[DetermineServiceCreateUpdateServiceActionsStep] Service should be created#
+#2025 06 06 18:33:58.506#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3845#
+Step "Determine update actions" finished#
+#2025 06 06 18:33:58.554#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[CreateServiceStep] Executing task "CreateServiceTask" of process "cf3089ac-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:58.556#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[CreateServiceStep] Creating service "mck-portal-ds-db-3" from MTA resource "mck-portal-ds-db-3"...#
+#2025 06 06 18:33:58.563#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[CreateServiceStep] Creating service instance: {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "mck-portal-ds-db-3",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-ds-db-3\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "hana",
+  "plan" : "hdi-shared",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "mck-portal-ds-db-3",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}#
+#2025 06 06 18:33:58.750#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[CreateServiceStep] Service "mck-portal-ds-db-3" created#
+#2025 06 06 18:33:58.750#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+[CreateServiceStep] Triggered service operations: {
+  "mck-portal-ds-db-3" : "CREATE"
+}#
+#2025 06 06 18:33:58.751#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3843#
+Step "Create" finished#
+#2025 06 06 18:33:58.859#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CheckServiceOperationStateStep] Executing task "CheckServiceOperationStateTask" of process "cf7840f7-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:33:58.860#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CheckServiceOperationStateStep] Getting service instance "mck-portal-auth"...#
+#2025 06 06 18:33:58.900#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+Step "Check for service operations in Progress" finished#
+#2025 06 06 18:33:58.925#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[DetermineServiceCreateUpdateServiceActionsStep] Executing task "DetermineServiceCreateUpdateActionsTask" of process "cf7840f7-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:33:58.926#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[DetermineServiceCreateUpdateServiceActionsStep] Processing service "mck-portal-auth"...#
+#2025 06 06 18:33:58.935#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[DetermineServiceCreateUpdateServiceActionsStep] Getting service instance "mck-portal-auth"...#
+#2025 06 06 18:33:58.969#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[DetermineServiceCreateUpdateServiceActionsStep] Setting service "mck-portal-auth" parameters from "xs-security.json"#
+#2025 06 06 18:33:59.012#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[DetermineServiceCreateUpdateServiceActionsStep] Service should be created#
+#2025 06 06 18:33:59.014#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+Step "Determine update actions" finished#
+#2025 06 06 18:33:59.010#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[CheckServiceOperationStateStep] Executing task "CheckServiceOperationStateTask" of process "cf8e8774-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:59.010#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[CheckServiceOperationStateStep] Getting service instance "mck-portal-html5-runtime"...#
+#2025 06 06 18:33:59.118#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+Step "Check for service operations in Progress" finished#
+#2025 06 06 18:33:59.149#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[DetermineServiceCreateUpdateServiceActionsStep] Executing task "DetermineServiceCreateUpdateActionsTask" of process "cf8e8774-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:59.150#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[DetermineServiceCreateUpdateServiceActionsStep] Processing service "mck-portal-html5-runtime"...#
+#2025 06 06 18:33:59.157#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[DetermineServiceCreateUpdateServiceActionsStep] Getting service instance "mck-portal-html5-runtime"...#
+#2025 06 06 18:33:59.276#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[DetermineServiceCreateUpdateServiceActionsStep] Existing service: {
+  "name" : "mck-portal-html5-runtime",
+  "metadata" : {
+    "guid" : "85b14396-8116-4963-8ae5-f7ffb446a112",
+    "createdAt" : [ 2025, 6, 6, 18, 26, 59 ],
+    "updatedAt" : [ 2025, 6, 6, 18, 27, 2 ]
+  },
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-html5-runtime\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "html5-apps-repo",
+  "plan" : "app-runtime",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "lastOperation" : {
+    "type" : "CREATE",
+    "description" : "",
+    "state" : "SUCCEEDED"
+  }
+}#
+#2025 06 06 18:33:59.276#Z#WARN#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[DetermineServiceCreateUpdateServiceActionsStep] Service parameters for service "mck-portal-html5-runtime" will not be updated, as the parameters are not defined or empty.#
+#2025 06 06 18:33:59.277#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+Step "Determine update actions" finished#
+#2025 06 06 18:33:59.054#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CreateServiceStep] Executing task "CreateServiceTask" of process "cf7840f7-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:33:59.056#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CreateServiceStep] Creating service "mck-portal-auth" from MTA resource "mck-portal-auth"...#
+#2025 06 06 18:33:59.062#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CreateServiceStep] Creating service instance: {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "********",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "********"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "xsuaa",
+  "plan" : "application",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "********",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}#
+#2025 06 06 18:33:59.291#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CreateServiceStep] Service "mck-portal-auth" created#
+#2025 06 06 18:33:59.291#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+[CreateServiceStep] Triggered service operations: {
+  "mck-portal-auth" : "CREATE"
+}#
+#2025 06 06 18:33:59.292#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10717#
+Step "Create" finished#
+#2025 06 06 18:33:59.324#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+[CheckForServiceBindingOrKeyOperationStep] Executing task "CheckForServiceBindingOrKeyCreation" of process "cf8e8774-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:33:59.325#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3848#
+Step "Check for service binding or key creation" finished#
+#2025 06 06 18:33:59.421#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5860#
+[CheckServiceOperationStateStep] Executing task "CheckServiceOperationStateTask" of process "cfccf093-4304-11f0-9b57-eeee0a9c32ec"...#
+#2025 06 06 18:33:59.421#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5860#
+[CheckServiceOperationStateStep] Getting service instance "mck-portal-destination-service"...#
+#2025 06 06 18:33:59.521#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5860#
+Step "Check for service operations in Progress" finished#
+#2025 06 06 18:33:59.555#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+[DetermineServiceCreateUpdateServiceActionsStep] Executing task "DetermineServiceCreateUpdateActionsTask" of process "cfccf093-4304-11f0-9b57-eeee0a9c32ec"...#
+#2025 06 06 18:33:59.556#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+[DetermineServiceCreateUpdateServiceActionsStep] Processing service "mck-portal-destination-service"...#
+#2025 06 06 18:33:59.564#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+[DetermineServiceCreateUpdateServiceActionsStep] Getting service instance "mck-portal-destination-service"...#
+#2025 06 06 18:33:59.710#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+[DetermineServiceCreateUpdateServiceActionsStep] Existing service: {
+  "name" : "mck-portal-destination-service",
+  "metadata" : {
+    "guid" : "a18aa14c-3e2e-492d-b961-c299b2287373",
+    "createdAt" : [ 2025, 6, 6, 18, 26, 56 ],
+    "updatedAt" : [ 2025, 6, 6, 18, 27, 1 ]
+  },
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-destination-service\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "destination",
+  "plan" : "lite",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "lastOperation" : {
+    "type" : "UPDATE",
+    "description" : "",
+    "state" : "SUCCEEDED"
+  }
+}#
+#2025 06 06 18:33:59.710#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+[DetermineServiceCreateUpdateServiceActionsStep] Service parameters will be updated#
+#2025 06 06 18:33:59.711#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+[DetermineServiceCreateUpdateServiceActionsStep] New parameters: {
+  "HTML5Runtime_enabled" : true,
+  "init_data" : {
+    "instance" : {
+      "destinations" : [ {
+        "Authentication" : "********",
+        "HTML5.DynamicDestination" : true,
+        "HTML5.ForwardAuthToken" : "********",
+        "HTML5.Timeout" : 600000001,
+        "Name" : "srv-api",
+        "ProxyType" : "Internet",
+        "Type" : "HTTP",
+        "URL" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+      }, {
+        "Authentication" : "********",
+        "Name" : "ui5",
+        "ProxyType" : "Internet",
+        "Type" : "HTTP",
+        "URL" : "https://ui5.sap.com"
+      }, {
+        "Authentication" : "********",
+        "HTML5.DynamicDestination" : true,
+        "HTML5.ForwardAuthToken" : "********",
+        "Name" : "mck-portal-srv-api",
+        "ProxyType" : "Internet",
+        "Type" : "HTTP",
+        "URL" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+      } ],
+      "existing_destinations_policy" : "update"
+    },
+    "subaccount" : {
+      "destinations" : [ {
+        "Authentication" : "********",
+        "Name" : "srv-api",
+        "TokenServiceInstanceName" : "********",
+        "TokenServiceKeyName" : "********",
+        "URL" : "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m379718a4.cfapps.us20.hana.ondemand.com"
+      } ],
+      "existing_destinations_policy" : "update"
+    }
+  },
+  "version" : "1.0.0"
+}#
+#2025 06 06 18:33:59.711#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5861#
+Step "Determine update actions" finished#
+#2025 06 06 18:33:59.764#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5862#
+[CheckForServiceBindingOrKeyOperationStep] Executing task "CheckForServiceBindingOrKeyCreation" of process "cfccf093-4304-11f0-9b57-eeee0a9c32ec"...#
+#2025 06 06 18:33:59.766#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5862#
+Step "Check for service binding or key creation" finished#
+#2025 06 06 18:33:59.805#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5863#
+[UpdateServiceParametersStep] Executing task "UpdateServiceParametersTask" of process "cfccf093-4304-11f0-9b57-eeee0a9c32ec"...#
+#2025 06 06 18:33:59.807#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5863#
+[UpdateServiceParametersStep] Updating service "mck-portal-destination-service"...#
+#2025 06 06 18:33:59.813#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5863#
+[UpdateServiceParametersStep] Updating service parameters for service "mck-portal-destination-service"...#
+#2025 06 06 18:33:59.925#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5863#
+[UpdateServiceParametersStep] Service "mck-portal-destination-service" updated#
+#2025 06 06 18:33:59.925#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5863#
+[UpdateServiceParametersStep] Triggered service operations: {
+  "mck-portal-destination-service" : "UPDATE"
+}#
+#2025 06 06 18:33:59.926#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-5863#
+Step "Update parameters" finished#
+#2025 06 06 18:34:01.902#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[CheckServiceOperationStateStep] Executing task "CheckServiceOperationStateTask" of process "d148456c-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:34:01.902#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[CheckServiceOperationStateStep] Getting service instance "mck-portal-html5-srv"...#
+#2025 06 06 18:34:02.062#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+Step "Check for service operations in Progress" finished#
+#2025 06 06 18:34:02.089#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[DetermineServiceCreateUpdateServiceActionsStep] Executing task "DetermineServiceCreateUpdateActionsTask" of process "d148456c-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:34:02.090#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[DetermineServiceCreateUpdateServiceActionsStep] Processing service "mck-portal-html5-srv"...#
+#2025 06 06 18:34:02.095#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[DetermineServiceCreateUpdateServiceActionsStep] Getting service instance "mck-portal-html5-srv"...#
+#2025 06 06 18:34:02.227#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[DetermineServiceCreateUpdateServiceActionsStep] Existing service: {
+  "name" : "mck-portal-html5-srv",
+  "metadata" : {
+    "guid" : "ad704bff-e8a3-4fdd-ad62-5d930039b8bf",
+    "createdAt" : [ 2025, 6, 6, 18, 27, 1 ],
+    "updatedAt" : [ 2025, 6, 6, 18, 27, 2 ]
+  },
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-html5-repo-host\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "html5-apps-repo",
+  "plan" : "app-host",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "lastOperation" : {
+    "type" : "CREATE",
+    "description" : "",
+    "state" : "SUCCEEDED"
+  }
+}#
+#2025 06 06 18:34:02.227#Z#WARN#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[DetermineServiceCreateUpdateServiceActionsStep] Service parameters for service "mck-portal-html5-srv" will not be updated, as the parameters are not defined or empty.#
+#2025 06 06 18:34:02.228#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+Step "Determine update actions" finished#
+#2025 06 06 18:34:02.261#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+[CheckForServiceBindingOrKeyOperationStep] Executing task "CheckForServiceBindingOrKeyCreation" of process "d148456c-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:34:02.262#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10713#
+Step "Check for service binding or key creation" finished#
+#2025 06 06 18:34:08.569#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10725#
+[CreateServiceStep] Executing task "CreateServiceTask" of process "cf3089ac-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:34:08.570#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10725#
+[CreateServiceStep] Polling service operations...#
+#2025 06 06 18:34:08.572#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10725#
+[CreateServiceStep] Getting service instance "mck-portal-ds-db-3"...#
+#2025 06 06 18:34:08.591#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] Executing task "CreateServiceTask" of process "cf7840f7-4304-11f0-a6b5-eeee0a9c31af"...#
+#2025 06 06 18:34:08.592#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] Polling service operations...#
+#2025 06 06 18:34:08.593#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] Getting service instance "mck-portal-auth"...#
+#2025 06 06 18:34:08.683#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10725#
+[CreateServiceStep] Last operation for service "mck-portal-ds-db-3": {
+  "type" : "CREATE",
+  "description" : "Failed to create HDI container '2b8d0800-b0fa-4c13-8ed2-8a36dddf9d2a' on database '451e8954-27cd-4d2f-9402-3ca1944484c7' (451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443), because of: Call to HANA DI failed, requestId 12284, because of: Could not create the container \"MCK_RQ2_300\" (8211042), because of: Could not create the RTC \"MCK_RQ2_300\" (8211015), because of: \"MCK_RQ2_300\": the runtime container user already exists (8207005), because of: Database error 331: user name already exists: MCK_RQ2_300: line 1 col 24 (at pos 23) (8201003), because of: Creating the container \"MCK_RQ2_300\"... failed (8214129)",
+  "state" : "FAILED"
+}#
+#2025 06 06 18:34:08.684#Z#ERROR#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10725#
+Exception caught#
+org.cloudfoundry.multiapps.common.SLException: Error monitoring creation or update of services: Error creating service "mck-portal-ds-db-3" from offering "hana" and plan "hdi-shared": Failed to create HDI container '2b8d0800-b0fa-4c13-8ed2-8a36dddf9d2a' on database '451e8954-27cd-4d2f-9402-3ca1944484c7' (451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443), because of: Call to HANA DI failed, requestId 12284, because of: Could not create the container "MCK_RQ2_300" (8211042), because of: Could not create the RTC "MCK_RQ2_300" (8211015), because of: "MCK_RQ2_300": the runtime container user already exists (8207005), because of: Database error 331: user name already exists: MCK_RQ2_300: line 1 col 24 (at pos 23) (8201003), because of: Creating the container "MCK_RQ2_300"... failed (8214129) 
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.processException(SyncFlowableStep.java:132) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.AsyncFlowableStep.executeStepExecution(AsyncFlowableStep.java:28) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.AsyncFlowableStep.executeStep(AsyncFlowableStep.java:15) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.executeInternal(SyncFlowableStep.java:76) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.lambda$execute$0(SyncFlowableStep.java:66) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.core.util.LoggingUtil.logWithCorrelationId(LoggingUtil.java:14) ~[multiapps-controller-core-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.execute(SyncFlowableStep.java:66) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.flowable.engine.impl.delegate.invocation.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:35) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.delegate.invocation.DelegateInvocation.proceed(DelegateInvocation.java:32) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.delegate.invocation.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:26) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior.execute(ServiceTaskDelegateExpressionActivityBehavior.java:161) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeActivityBehavior(ContinueProcessOperation.java:298) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeSynchronous(ContinueProcessOperation.java:175) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.continueThroughFlowNode(ContinueProcessOperation.java:125) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.run(ContinueProcessOperation.java:88) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.AbstractEngineConfiguration.lambda$new$0(AbstractEngineConfiguration.java:195) ~[flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:130) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:114) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:72) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.BpmnOverrideContextInterceptor.execute(BpmnOverrideContextInterceptor.java:26) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:53) ~[flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:105) ~[flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.spring.SpringTransactionInterceptor.lambda$execute$0(SpringTransactionInterceptor.java:57) ~[flowable-spring-common-6.8.0.jar:6.8.0]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) [spring-tx-6.2.4.jar:6.2.4]
+	at org.flowable.common.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:57) [flowable-spring-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:30) [flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:56) [flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:51) [flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.job.service.impl.asyncexecutor.ExecuteAsyncRunnable.executeJob(ExecuteAsyncRunnable.java:127) [flowable-job-service-6.8.0.jar:6.8.0]
+	at org.flowable.job.service.impl.asyncexecutor.ExecuteAsyncRunnable.run(ExecuteAsyncRunnable.java:115) [flowable-job-service-6.8.0.jar:6.8.0]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: org.cloudfoundry.multiapps.common.SLException: Error creating service "mck-portal-ds-db-3" from offering "hana" and plan "hdi-shared": Failed to create HDI container '2b8d0800-b0fa-4c13-8ed2-8a36dddf9d2a' on database '451e8954-27cd-4d2f-9402-3ca1944484c7' (451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443), because of: Call to HANA DI failed, requestId 12284, because of: Could not create the container "MCK_RQ2_300" (8211042), because of: Could not create the RTC "MCK_RQ2_300" (8211015), because of: "MCK_RQ2_300": the runtime container user already exists (8207005), because of: Database error 331: user name already exists: MCK_RQ2_300: line 1 col 24 (at pos 23) (8201003), because of: Creating the container "MCK_RQ2_300"... failed (8214129)
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceCreateOrUpdateOperationsExecution.handleFailedState(PollServiceCreateOrUpdateOperationsExecution.java:98) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceCreateOrUpdateOperationsExecution.reportServiceState(PollServiceCreateOrUpdateOperationsExecution.java:79) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceOperationsExecution.reportDetailedServicesStates(PollServiceOperationsExecution.java:124) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceOperationsExecution.execute(PollServiceOperationsExecution.java:57) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.AsyncFlowableStep.executeStepExecution(AsyncFlowableStep.java:25) ~[multiapps-controller-process-1.190.0.jar:?]
+	... 31 more
+#2025 06 06 18:34:08.692#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10725#
+Step "Create" finished#
+#2025 06 06 18:34:08.592#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] Executing task "UpdateServiceParametersTask" of process "cfccf093-4304-11f0-9b57-eeee0a9c32ec"...#
+#2025 06 06 18:34:08.594#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] Polling service operations...#
+#2025 06 06 18:34:08.596#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] Getting service instance "mck-portal-destination-service"...#
+#2025 06 06 18:34:08.716#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] Last operation for service "mck-portal-destination-service": {
+  "type" : "UPDATE",
+  "description" : "",
+  "state" : "SUCCEEDED"
+}#
+#2025 06 06 18:34:08.716#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] Service "mck-portal-destination-service" updated#
+#2025 06 06 18:34:08.717#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] 1 of 1 done#
+#2025 06 06 18:34:08.723#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+[UpdateServiceParametersStep] Remaining services to poll: [ ]#
+#2025 06 06 18:34:08.723#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10726#
+Step "Update parameters" finished#
+#2025 06 06 18:34:08.721#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] Last operation for service "mck-portal-auth": {
+  "type" : "CREATE",
+  "description" : "",
+  "state" : "SUCCEEDED"
+}#
+#2025 06 06 18:34:08.721#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] Service "mck-portal-auth" created#
+#2025 06 06 18:34:08.721#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] 1 of 1 done#
+#2025 06 06 18:34:08.726#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+[CreateServiceStep] Remaining services to poll: [ ]#
+#2025 06 06 18:34:08.727#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10724#
+Step "Create" finished#
+#2025 06 06 18:34:11.260#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3849#
+[CreateServiceStep] Executing task "CreateServiceTask" of process "cf3089ac-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:34:11.262#Z#INFO#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3849#
+[CreateServiceStep] Creating service "mck-portal-ds-db-3" from MTA resource "mck-portal-ds-db-3"...#
+#2025 06 06 18:34:11.274#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3849#
+[CreateServiceStep] Creating service instance: {
+  "isOptional" : false,
+  "isManaged" : true,
+  "name" : "mck-portal-ds-db-3",
+  "v3Metadata" : {
+    "annotations" : {
+      "mta_id" : "mck-portal",
+      "mta_version" : "1.0.2",
+      "mta_resource" : "{\"name\":\"mck-portal-ds-db-3\"}"
+    },
+    "labels" : {
+      "mta_id" : "dbd0339fb603fb24b7637c83543b02cf"
+    }
+  },
+  "label" : "hana",
+  "plan" : "hdi-shared",
+  "credentials" : "********",
+  "tags" : [ ],
+  "type" : "managed",
+  "resourceName" : "mck-portal-ds-db-3",
+  "shouldSkipParametersUpdate" : false,
+  "shouldSkipPlanUpdate" : false,
+  "shouldSkipTagsUpdate" : false,
+  "shouldSkipSyslogUrlUpdate" : false,
+  "shouldFailOnParametersUpdateFailure" : false,
+  "shouldFailOnPlanUpdateFailure" : false,
+  "shouldFailOnTagsUpdateFailure" : false
+}#
+#2025 06 06 18:34:11.482#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3849#
+[CreateServiceStep] Service "mck-portal-ds-db-3" created#
+#2025 06 06 18:34:11.482#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3849#
+[CreateServiceStep] Triggered service operations: {
+  "mck-portal-ds-db-3" : "CREATE"
+}#
+#2025 06 06 18:34:11.486#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-3849#
+Step "Create" finished#
+#2025 06 06 18:34:18.609#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10732#
+[CreateServiceStep] Executing task "CreateServiceTask" of process "cf3089ac-4304-11f0-82f6-eeee0a9e2896"...#
+#2025 06 06 18:34:18.610#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10732#
+[CreateServiceStep] Polling service operations...#
+#2025 06 06 18:34:18.680#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10732#
+[CreateServiceStep] Getting service instance "mck-portal-ds-db-3"...#
+#2025 06 06 18:34:18.815#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10732#
+[CreateServiceStep] Last operation for service "mck-portal-ds-db-3": {
+  "type" : "CREATE",
+  "description" : "Failed to create HDI container 'd08ada98-93e1-47b2-b2c3-c5824d8762a1' on database '451e8954-27cd-4d2f-9402-3ca1944484c7' (451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443), because of: Call to HANA DI failed, requestId 12285, because of: Could not create the container \"MCK_RQ2_300\" (8211042), because of: Could not create the RTC \"MCK_RQ2_300\" (8211015), because of: \"MCK_RQ2_300\": the runtime container user already exists (8207005), because of: Database error 331: user name already exists: MCK_RQ2_300: line 1 col 24 (at pos 23) (8201003), because of: Creating the container \"MCK_RQ2_300\"... failed (8214129)",
+  "state" : "FAILED"
+}#
+#2025 06 06 18:34:18.816#Z#ERROR#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10732#
+Exception caught#
+org.cloudfoundry.multiapps.common.SLException: Error monitoring creation or update of services: Error creating service "mck-portal-ds-db-3" from offering "hana" and plan "hdi-shared": Failed to create HDI container 'd08ada98-93e1-47b2-b2c3-c5824d8762a1' on database '451e8954-27cd-4d2f-9402-3ca1944484c7' (451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443), because of: Call to HANA DI failed, requestId 12285, because of: Could not create the container "MCK_RQ2_300" (8211042), because of: Could not create the RTC "MCK_RQ2_300" (8211015), because of: "MCK_RQ2_300": the runtime container user already exists (8207005), because of: Database error 331: user name already exists: MCK_RQ2_300: line 1 col 24 (at pos 23) (8201003), because of: Creating the container "MCK_RQ2_300"... failed (8214129) 
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.processException(SyncFlowableStep.java:132) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.AsyncFlowableStep.executeStepExecution(AsyncFlowableStep.java:28) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.AsyncFlowableStep.executeStep(AsyncFlowableStep.java:15) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.executeInternal(SyncFlowableStep.java:76) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.lambda$execute$0(SyncFlowableStep.java:66) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.core.util.LoggingUtil.logWithCorrelationId(LoggingUtil.java:14) ~[multiapps-controller-core-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.SyncFlowableStep.execute(SyncFlowableStep.java:66) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.flowable.engine.impl.delegate.invocation.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:35) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.delegate.invocation.DelegateInvocation.proceed(DelegateInvocation.java:32) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.delegate.invocation.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:26) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior.execute(ServiceTaskDelegateExpressionActivityBehavior.java:161) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeActivityBehavior(ContinueProcessOperation.java:298) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeSynchronous(ContinueProcessOperation.java:175) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.continueThroughFlowNode(ContinueProcessOperation.java:125) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.run(ContinueProcessOperation.java:88) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.AbstractEngineConfiguration.lambda$new$0(AbstractEngineConfiguration.java:195) ~[flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:130) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:114) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:72) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.engine.impl.interceptor.BpmnOverrideContextInterceptor.execute(BpmnOverrideContextInterceptor.java:26) ~[flowable-engine-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:53) ~[flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:105) ~[flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.spring.SpringTransactionInterceptor.lambda$execute$0(SpringTransactionInterceptor.java:57) ~[flowable-spring-common-6.8.0.jar:6.8.0]
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140) [spring-tx-6.2.4.jar:6.2.4]
+	at org.flowable.common.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:57) [flowable-spring-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:30) [flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:56) [flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:51) [flowable-engine-common-6.8.0.jar:6.8.0]
+	at org.flowable.job.service.impl.asyncexecutor.ExecuteAsyncRunnable.executeJob(ExecuteAsyncRunnable.java:127) [flowable-job-service-6.8.0.jar:6.8.0]
+	at org.flowable.job.service.impl.asyncexecutor.ExecuteAsyncRunnable.run(ExecuteAsyncRunnable.java:115) [flowable-job-service-6.8.0.jar:6.8.0]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: org.cloudfoundry.multiapps.common.SLException: Error creating service "mck-portal-ds-db-3" from offering "hana" and plan "hdi-shared": Failed to create HDI container 'd08ada98-93e1-47b2-b2c3-c5824d8762a1' on database '451e8954-27cd-4d2f-9402-3ca1944484c7' (451e8954-27cd-4d2f-9402-3ca1944484c7.hana.prod-us20.hanacloud.ondemand.com:443), because of: Call to HANA DI failed, requestId 12285, because of: Could not create the container "MCK_RQ2_300" (8211042), because of: Could not create the RTC "MCK_RQ2_300" (8211015), because of: "MCK_RQ2_300": the runtime container user already exists (8207005), because of: Database error 331: user name already exists: MCK_RQ2_300: line 1 col 24 (at pos 23) (8201003), because of: Creating the container "MCK_RQ2_300"... failed (8214129)
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceCreateOrUpdateOperationsExecution.handleFailedState(PollServiceCreateOrUpdateOperationsExecution.java:98) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceCreateOrUpdateOperationsExecution.reportServiceState(PollServiceCreateOrUpdateOperationsExecution.java:79) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceOperationsExecution.reportDetailedServicesStates(PollServiceOperationsExecution.java:124) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.PollServiceOperationsExecution.execute(PollServiceOperationsExecution.java:57) ~[multiapps-controller-process-1.190.0.jar:?]
+	at org.cloudfoundry.multiapps.controller.process.steps.AsyncFlowableStep.executeStepExecution(AsyncFlowableStep.java:25) ~[multiapps-controller-process-1.190.0.jar:?]
+	... 31 more
+#2025 06 06 18:34:18.829#Z#DEBUG#cbf1b1e8-4304-11f0-82f6-eeee0a9e2896.OPERATION#flowable-async-job-executor-thread-10732#
+Step "Create" finished#

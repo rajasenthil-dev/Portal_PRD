@@ -30,7 +30,8 @@ Search.defaultSearchElement: true,
             PLANT_NAME: true,
             WERKS: true,
             BEZEI: true,
-            MFRNR_NAME: true
+            MFRNR_NAME: true,
+            MFRNR_7CH
         },
         sortable: {
             BKTXT: true,
@@ -59,12 +60,13 @@ Search.defaultSearchElement: true,
             PLANT_NAME: true,
             WERKS: true,
             BEZEI: true,
-            MFRNR_NAME: true
+            MFRNR_NAME: true,
+            MFRNR_7CH
         }
     },
     UI : {
         SelectionFields  : [
-             NAME1, SHIP_TO, VBELN, BSTKD, FKDAT, ORDER_TYPE, REGIO, MFRNR, VKORG, BEZEI
+             NAME1, SHIP_TO, VBELN, BSTKD, FKDAT, ORDER_TYPE, REGIO, MFRNR, VKORG, BEZEI, MFRNR_7CH
         ],
         LineItem  : [
             {
@@ -154,6 +156,10 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MFRNR
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MFRNR_7CH
             },
             {
                 $Type : 'UI.DataField',

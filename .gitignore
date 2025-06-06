@@ -97,3 +97,6 @@ mta.yaml
 mta.yaml
 db/cfg/.hdiconfig
 db/cfg/DWC_ACCESS.hdbgrants
+
+# added by cds
+.cdsrc-private.json

@@ -30,6 +30,20 @@
         "vcap": {
           "name": "auth"
         }
+      },
+      "mck-portal-ds-db-4": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.us20.hana.ondemand.com",
+          "org": "McKesson Corporation_discovery-sunrise",
+          "space": "Datasphere_Dev",
+          "instance": "mck-portal-auth",
+          "key": "mck-portal-auth-key"
+        },
+        "kind": "xsuaa-auth",
+        "vcap": {
+          "name": "mck-portal-ds-db-4"
+        }
       }
     }
   }
