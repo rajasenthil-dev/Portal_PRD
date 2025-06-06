@@ -23,6 +23,13 @@
       "service": "sap-approuter-userapi"
     },
     {
+      "source": "^/content-repository/v2/cards/[^/]+/[^/]+/odata/v4/(.*)$",
+      "target": "/odata/v4/$1",
+      "destination": "PortalCardsDestination1",
+      "csrfProtection": false,
+      "authenticationType": "xsuaa"
+    },
+    {
       "source": "^/(.*)$",
       "target": "$1",
       "destination": "srv-api",

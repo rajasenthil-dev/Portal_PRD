@@ -88,7 +88,21 @@ cds.on('bootstrap', async (app) => {
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Authorization', 'Content-Type']
     }));
-
+    app.get('/userInfo', (req, res) => {
+        if (!req.user) {
+          return res.status(401).json({ error: 'Unauthorized' });
+        }
+    
+        const user = req.user;
+        res.json({
+          id: user.id,
+          email: user.email,
+          ManufacturerNumber: user.attr?.ManufacturerNumber || '',
+          SalesOrg: user.attr?.SalesOrg || '',
+          roles: user.roles || []
+        });
+        console.log(email)
+      });
     // ✅ File Serving Route
     app.get('/media/serve/:id/:fileName', async (req, res) => {
         const { id, fileName } = req.params;

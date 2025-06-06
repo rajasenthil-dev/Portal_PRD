@@ -6,7 +6,7 @@ sap.ui.define([
 
     return Controller.extend("pricelist.controller.View1", {
         onInit: async function () {
-            
+
             // Fetch User Data and Logo
             const oView = this.getView();
             const oUserModel = this.getOwnerComponent().getModel("userModel");
@@ -18,7 +18,7 @@ sap.ui.define([
             const sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0] === "." 
                 ? "" 
                 : sap.ui.require.toUrl("invoicehis").split("/resources")[0];
-            const sFallbackImage = sAppPath + "./images/MCKCAN1.jpg";
+            const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
 
             if (!mfgNumber) {
                 console.warn("No ManufacturerNumber in user model. Showing fallback logo.");

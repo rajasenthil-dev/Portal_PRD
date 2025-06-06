@@ -99,7 +99,7 @@ sap.ui.define([
             const sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0] === "." 
                 ? "" 
                 : sap.ui.require.toUrl("invoicehis").split("/resources")[0];
-            const sFallbackImage = sAppPath + "./images/MCKCAN1.jpg";
+            const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
 
             if (!mfgNumber) {
                 console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
