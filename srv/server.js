@@ -164,6 +164,34 @@ cds.on('bootstrap', async (app) => {
         console.error("Error calling updateMediaFile in bootstrap:", error);
     }
 });
-
+// ✅ Normalize user attributes for CAP @restrict
+// cds.on('served', async () => {
+//     for (const serviceName in cds.services) {
+//       const service = cds.services[serviceName];
+  
+//       service.before('*', req => {
+//         const attr = req.user?.attr;
+  
+//         if (attr?.ManufacturerNumber?.length) {
+//           req.user.ManufacturerNumber = attr.ManufacturerNumber[0];
+//         }
+  
+//         if (attr?.SalesOrg?.length) {
+//           req.user.SalesOrg = attr.SalesOrg[0];
+//         }
+  
+//         if (attr?.ProfitCentre?.length) {
+//           req.user.ProfitCentre = attr.ProfitCentre[0];
+//         }
+  
+//         if (attr?.SalesOffice?.length) {
+//           req.user.SalesOffice = attr.SalesOffice[0];
+//         }
+  
+//         console.log(`[AUTH-NORMALIZER] ${req.user.id} - MFR: ${req.user.ManufacturerNumber}`);
+//       });
+//     }
+//   });
+  
 // Bootstrapping the CAP service
 module.exports = cds.server;

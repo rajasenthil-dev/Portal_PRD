@@ -639,6 +639,7 @@ using SBCSALESORG as ENTSBCSALESORG from '../db/schema';
 using SBCSALESOFFICE as ENTSBCSALESOFFICE from '../db/schema';
 using SBCYEAR as ENTSBCYEAR from '../db/schema';
 using SBCBEZEI as ENTSBCBEZEI from '../db/schema';
+using SBCBEZEIAUART as ENTSBCBEZEIAUART from '../db/schema';
 using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
 
 service SALES {
@@ -646,7 +647,7 @@ service SALES {
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR_7CH' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVOICEHISTORY as projection on ENTINVOICEHISTORY;
@@ -668,7 +669,7 @@ service SALES {
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.SalesOrg = CO_VKORG' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR or $user.SalesOrg = CO_VKORG' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity SALESBYCURRENT as projection on ENTSALESBYCURRENT;
@@ -693,6 +694,7 @@ service SALES {
     entity SBCSALESOFFICE as projection on ENTSBCSALESOFFICE;
     entity SBCYEAR as projection on ENTSBCYEAR;
     entity SBCBEZEI as projection on ENTSBCBEZEI;
+    entity SBCBEZEIAUART as projection on ENTSBCBEZEIAUART;
     entity SBCPLANTNAME as projection on ENTSBCPLANTNAME;
 }
 

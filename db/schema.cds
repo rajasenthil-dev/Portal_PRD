@@ -674,6 +674,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; 
     INV_YEAR                : String(4)     @title : '{i18n>SALESBYCURRENT.INV_YEAR}';
     BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
+    AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
+    BEZEI_AUART             : String(20)     @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -719,6 +721,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; 
     INV_YEAR                : String(4)     @title : '{i18n>SALESBYCURRENT.INV_YEAR}';
     BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
+    AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
+    BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -727,6 +731,10 @@ define view SBCINVOICE as
 define view SBCBEZEI as
     select from SALESBYCURRENT distinct {
         key BEZEI
+};
+define view SBCBEZEIAUART as
+    select from SALESBYCURRENT distinct {
+        key BEZEI_AUART
 };
 define view SBCPLANTNAME as
     select from SALESBYCURRENT distinct {

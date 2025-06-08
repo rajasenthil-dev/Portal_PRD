@@ -17,24 +17,24 @@ sap.ui.define([
             var oUserPermissionsModel = new sap.ui.model.json.JSONModel();
             this.getView().setModel(oUserPermissionsModel, "userPermissions"); // Use Component for Component-wide access
             var oDataModel = this.getOwnerComponent().getModel()
-            // OData V2 Example (might need $format=json in URL or specific call method):
-            oDataModel.callFunction("/getUserPermissions", {
-                method: "GET",
-                success: function(oData, response) {
-                    // The actual result might be nested under a property named after the function
-                    oUserPermissionsModel.setData(oData.getUserPermissions || oData);
-                    console.log("User Permissions:", oUserPermissionsModel.getData());
-                }.bind(this),
-                error: function(oError) {
-                    console.error("Error fetching user permissions:", oError);
-                    oUserPermissionsModel.setData({ shouldHidePatientId: false });
-                }.bind(this)
-            });
-            oView.setBusy(true);
+            // // OData V2 Example (might need $format=json in URL or specific call method):
+            // oDataModel.callFunction("/getUserPermissions", {
+            //     method: "GET",
+            //     success: function(oData, response) {
+            //         // The actual result might be nested under a property named after the function
+            //         oUserPermissionsModel.setData(oData.getUserPermissions || oData);
+            //         console.log("User Permissions:", oUserPermissionsModel.getData());
+            //     }.bind(this),
+            //     error: function(oError) {
+            //         console.error("Error fetching user permissions:", oError);
+            //         oUserPermissionsModel.setData({ shouldHidePatientId: false });
+            //     }.bind(this)
+            // });
+            // oView.setBusy(true);
         
-            oSmartFilterBar.attachInitialized(function () {
-                oView.setBusy(false); // Once filter bar + value helps are ready
-            });
+            // oSmartFilterBar.attachInitialized(function () {
+            //     oView.setBusy(false); // Once filter bar + value helps are ready
+            // });
             var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             const oSmartTable = this.getView().byId("table0");
             var oToolbar = oSmartTable.getToolbar();
@@ -106,9 +106,10 @@ sap.ui.define([
 
             const oLogoModel = this.getOwnerComponent().getModel("logo");
 
-            const sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0] === "." 
-                ? "" 
-                : sap.ui.require.toUrl("invoicehis").split("/resources")[0];
+            var sAppPath = sap.ui.require.toUrl("salesbycuswopid").split("/resources")[0];
+            if(sAppPath === ".") {
+                sAppPath = "";
+            }
             const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
 
             if (!mfgNumber) {

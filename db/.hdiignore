@@ -311,6 +311,7 @@ src/gen/SALES.SBCBILLTOID.hdbview
 src/gen/SALES.SBCSHIPTOID.hdbview
 src/gen/SALES.SBCMFRNR.hdbview
 src/gen/SALES.SBCYEAR.hdbview
+src/gen/SALES.SBCBEZEIAUART.hdbview
 src/gen/SBCYEAR.hdbview
 src/gen/SALES.SBCMFRNRNAME.hdbview
 src/gen/SALES.SBCSALESORG.hdbview
@@ -319,6 +320,7 @@ src/gen/SBCINVOICE.hdbview
 src/gen/SBCPRODDESC.hdbview
 src/gen/SBCTYPE.hdbview
 src/gen/SBCLOT.hdbview
+src/gen/SBCBEZEIAUART.hdbview
 src/gen/SBCWAREHOUSE.hdbview
 src/gen/SBCBILLTO.hdbview
 src/gen/SBCSHIPTO.hdbview

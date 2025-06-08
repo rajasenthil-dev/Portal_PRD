@@ -90,9 +90,10 @@ sap.ui.define([
 
             const oLogoModel = this.getOwnerComponent().getModel("logo");
 
-            const sAppPath = sap.ui.require.toUrl("invoicehis").split("/resources")[0] === "." 
-                ? "" 
-                : sap.ui.require.toUrl("invoicehis").split("/resources")[0];
+            var sAppPath = sap.ui.require.toUrl("shiphis").split("/resources")[0];
+            if(sAppPath === ".") {
+                sAppPath = "";
+            }
             const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
 
             if (!mfgNumber) {

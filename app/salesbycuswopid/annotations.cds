@@ -42,7 +42,9 @@ Search.defaultSearchElement: true,
             WAREHOUSE               : true,
             WERKS                   : true,
             PLANT_NAME              : true,
-            MFRNR_NAME              : true
+            MFRNR_NAME              : true,
+            BEZEI_AUART             : true,
+            AUART                   :true
         }
     },
     UI : {
@@ -64,7 +66,8 @@ Search.defaultSearchElement: true,
             MFRNR_NAME,
             CO_VKORG,
             VKBUR,
-            BEZEI
+            BEZEI,
+            BEZEI_AUART
         ],
         
         LineItem  : [
@@ -232,6 +235,10 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : MFRPN,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BEZEI_AUART
             },
             {
                 $Type : 'UI.DataField',
@@ -488,6 +495,23 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'BEZEI',
                         ValueListProperty : 'BEZEI'
+                    }
+                ]
+            },
+        }
+        
+    );
+    BEZEI_AUART@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCBEZEIAUART',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'BEZEI_AUART',
+                        ValueListProperty : 'BEZEI_AUART'
                     }
                 ]
             },
