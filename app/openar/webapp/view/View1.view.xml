@@ -320,7 +320,7 @@
                                     <Text id="creditAmount" text="{path: 'VKORG'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn14"  width='7.813rem' hAlign="End" sortProperty="MFRNR">
+                            <t:Column id="_IDGenColumn14"  width='7.813rem' hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 19}'/>
                                 </t:customData>

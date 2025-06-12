@@ -218,7 +218,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                 <Text id="_IDGenText17" text="{path: 'VKORG'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn10" width="7rem" hAlign="End" sortProperty="MFRNR">
+                            <t:Column id="_IDGenColumn10" width="7rem" hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 20}'/>
                                     </t:customData>

@@ -8,7 +8,7 @@ sap.ui.define([
 ], (Controller, Dialog, Button, Image, MessageBox, BusyIndicator) => {
     "use strict";
     return Controller.extend("salesbycus.controller.View1", {
-        onInit: async function () { 
+        onInit: function () { 
 
             const oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
@@ -17,18 +17,18 @@ sap.ui.define([
             this.getView().setModel(oUserPermissionsModel, "userPermissions"); // Use Component for Component-wide access
             var oDataModel = this.getOwnerComponent().getModel()
             // OData V2 Example (might need $format=json in URL or specific call method):
-            oDataModel.callFunction("/getUserPermissions", {
-                method: "GET",
-                success: function(oData, response) {
-                    // The actual result might be nested under a property named after the function
-                    oUserPermissionsModel.setData(oData.getUserPermissions || oData);
-                    console.log("User Permissions:", oUserPermissionsModel.getData());
-                }.bind(this),
-                error: function(oError) {
-                    console.error("Error fetching user permissions:", oError);
-                    oUserPermissionsModel.setData({ shouldHidePatientId: false });
-                }.bind(this)
-            });
+            // oDataModel.callFunction("/getUserPermissions", {
+            //     method: "GET",
+            //     success: function(oData, response) {
+            //         // The actual result might be nested under a property named after the function
+            //         oUserPermissionsModel.setData(oData.getUserPermissions || oData);
+            //         console.log("User Permissions:", oUserPermissionsModel.getData());
+            //     }.bind(this),
+            //     error: function(oError) {
+            //         console.error("Error fetching user permissions:", oError);
+            //         oUserPermissionsModel.setData({ shouldHidePatientId: false });
+            //     }.bind(this)
+            // });
             oView.setBusy(true);
         
             oSmartFilterBar.attachInitialized(function () {

@@ -18,7 +18,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, MFRNR, MFRNR_NAME, VKORG
+            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, VKORG
 
         ],
         LineItem : [
@@ -85,14 +85,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKORG
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME
             }
         ],
     },   

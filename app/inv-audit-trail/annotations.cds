@@ -28,8 +28,6 @@ Search.defaultSearchElement: true,
             KUNNR,
             CUSTOMER_NAME,
             TRAN_TYPE,
-            MFRNR,
-            MFRNR_NAME,
             SALES_ORG
         ],
         LineItem  : [
@@ -162,16 +160,6 @@ Search.defaultSearchElement: true,
                 Value : LGORT,
                 Label : '{i18n>INVENTORYAUDITTRAIL.LGORT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                Label : '{i18n>INVENTORYAUDITTRAIL.MFRNR}'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                Label : '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}'
             },
             {
                 $Type : 'UI.DataField',

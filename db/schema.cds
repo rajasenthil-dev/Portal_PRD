@@ -47,29 +47,35 @@ entity ITEMMASTER
 }
 define view ITEMMASPD as
     select from ITEMMASTER distinct {
-        key PRODUCTDESCRIPTION_EN
+        key PRODUCTDESCRIPTION_EN,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 define view ITEMMASP as
     select from ITEMMASTER distinct {
-        key PRODUCT
+        key PRODUCT,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 
 define view ITEMMASPLANTNAME as
     select from ITEMMASTER distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 
 define view ITEMMASMFRNRNAME as
     select from ITEMMASTER distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 define view ITEMMASPSID as
     select from ITEMMASTER distinct {
-        key MFRNR_PART_NUMBER
+        key MFRNR_PART_NUMBER,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 define view ITEMMASCATEGORY as
     select from ITEMMASTER distinct {
-        key CATEGORY
+        key CATEGORY,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 define view ITEMMASMFRNR as
     select from ITEMMASTER distinct {
@@ -77,7 +83,8 @@ define view ITEMMASMFRNR as
 };
 define view ITEMMASSALESORG as
     select from ITEMMASTER distinct {
-        key SALESORG
+        key SALESORG,
+        MANUFACTURERNUMBER @UI.Hidden
 };
 @cds.search: { SKU_MATNR, PRODUCT_CODE, SIZE, MANUFACTURER_MFRPN, PRODUCT_DESCRIPTION, VKBUR }
 @cds.persistence.exists
@@ -107,7 +114,8 @@ entity INVENTORYSTATUS
 }
 define view INVSTATUSPRODUCTCODE as
     select from INVENTORYSTATUS distinct {
-        key PRODUCT_CODE
+        key PRODUCT_CODE,
+        MANUFACTURER_MFRNR @UI.Hidden
 };
 define view INVSTATUSMFRNR as
     select from INVENTORYSTATUS distinct {
@@ -116,15 +124,18 @@ define view INVSTATUSMFRNR as
 
 define view INVSTATUSPLANTNAME as
     select from INVENTORYSTATUS distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MANUFACTURER_MFRNR @UI.Hidden
 };
 define view INVSTATUSMFRNRNAME as
     select from INVENTORYSTATUS distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MANUFACTURER_MFRNR @UI.Hidden
 };
 define view INVSTATUSVKBUR as
     select from INVENTORYSTATUS distinct {
-        key VKBUR
+        key VKBUR,
+        MANUFACTURER_MFRNR @UI.Hidden
 };
 @cds.search: { MATNR, MAKTX, POSTING_DATE, CHARG, WAREHOUSE_STATUS, KUNNR, CUSTOMER_NAME, INV_MATDOC_ITEM, WERKS, LGORT, MFRNR, NAME1_PLANT }
 @cds.persistence.exists
@@ -159,39 +170,47 @@ entity INVENTORYAUDITTRAIL
 
 define view IATPLANTNAME as
     select from INVENTORYAUDITTRAIL distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MFRNR @UI.Hidden
 };
 define view IATTRANTYPE as
     select from INVENTORYAUDITTRAIL distinct {
-        key TRAN_TYPE
+        key TRAN_TYPE,
+        MFRNR @UI.Hidden
 };
 
 define view IATPRODUCTCODE as
     select from INVENTORYAUDITTRAIL distinct {
-        key MFRNR_PROD_CODE
+        key MFRNR_PROD_CODE,
+        MFRNR @UI.Hidden
 };
 
 define view IATLOT as
     select from INVENTORYAUDITTRAIL distinct {
-        key CHARG
+        key CHARG,
+        MFRNR @UI.Hidden
 };
 define view IATSALESORG as
     select from INVENTORYAUDITTRAIL distinct {
-        key SALES_ORG
+        key SALES_ORG,
+        MFRNR @UI.Hidden
 };
 
 define view IATWAREHOUSE as
     select from INVENTORYAUDITTRAIL distinct {
-        key WAREHOUSE_STATUS
+        key WAREHOUSE_STATUS,
+        MFRNR @UI.Hidden
 };
 
 define view IATCUSTSUPP as
     select from INVENTORYAUDITTRAIL distinct {
-        key KUNNR
+        key KUNNR,
+        MFRNR @UI.Hidden
 };
 define view IATCUSTSUPPNAME as
     select from INVENTORYAUDITTRAIL distinct {
-        key CUSTOMER_NAME
+        key CUSTOMER_NAME,
+        MFRNR @UI.Hidden
 };
 define view IATMFRNR as
     select from INVENTORYAUDITTRAIL distinct {
@@ -199,7 +218,8 @@ define view IATMFRNR as
 };
 define view IATMFRNRNAME as
     select from INVENTORYAUDITTRAIL distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 
 @cds.search: { BILL_TO, NAME1, VKORG, BKTXT, SGTXT, BUDAT, VBELN, FKDAT, BLART, AUBEL, SHIP_TO, BUKRS, MFRNR, BELNR, PRCTR, GJAHR, BSTKD }
@@ -234,15 +254,18 @@ entity CASHJOURNAL
 }
 define view BLARTS as
     select from CASHJOURNAL distinct {
-        key BLART
+        key BLART,
+        MFRNR @UI.Hidden
 };
 define view BILL_TOS as
     select from CASHJOURNAL distinct {
-        key BILL_TO
+        key BILL_TO,
+        MFRNR @UI.Hidden
 };
 define view BILL_TONAME as
     select from CASHJOURNAL distinct {
-        key NAME1
+        key NAME1,
+        MFRNR @UI.Hidden
 };
 define view FINCJMFRNR as
     select from CASHJOURNAL distinct {
@@ -250,15 +273,18 @@ define view FINCJMFRNR as
 };
 define view FINCJMFRNRNAME as
     select from CASHJOURNAL distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view FINCJPRCTR as
     select from CASHJOURNAL distinct {
-        key PRCTR
+        key PRCTR,
+        MFRNR @UI.Hidden
 };
 define view FINCJSALESORG as
     select from CASHJOURNAL distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 
 
@@ -292,27 +318,33 @@ entity INVENTORYSNAPSHOT
 }
 define view INVSNAPPLANTNAME as
     select from INVENTORYSNAPSHOT distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPPROD as
     select from INVENTORYSNAPSHOT distinct {
-        key MFRPN
+        key MFRPN,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPPRODSKU as
     select from INVENTORYSNAPSHOT distinct {
-        key MATNR
+        key MATNR,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPPRODDESC as
     select from INVENTORYSNAPSHOT distinct {
-        key MAKTX
+        key MAKTX,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPLOT as
     select from INVENTORYSNAPSHOT distinct {
-        key CHARG
+        key CHARG,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPWARESTAT as
     select from INVENTORYSNAPSHOT distinct {
-        key WAREHOUSE_STATUS
+        key WAREHOUSE_STATUS,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPMFRNR as
     select from INVENTORYSNAPSHOT distinct {
@@ -320,11 +352,13 @@ define view INVSNAPMFRNR as
 };
 define view INVSNAPMFRNRNAME as
     select from INVENTORYSNAPSHOT distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view INVSNAPVKORG as
     select from INVENTORYSNAPSHOT distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 @cds.search: { MATNR, WAREHOUSE_STATUS, EAN11, MFRPN, LGNUM, MFRNR, MAKTX, CHARG, PLANT, DIN, VKBUR }
 @cds.persistence.exists
@@ -353,20 +387,24 @@ entity INVENTORYBYLOT
 
 define view INVBYLOTPLANTNAME as
     select from INVENTORYBYLOT distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MFRNR @UI.Hidden
 };
 define view INVBYLOTPRODUCTCODE as
     select from INVENTORYBYLOT distinct {
-        key MFRPN
+        key MFRPN,
+        MFRNR @UI.Hidden
 };
 define view INVBYLOTLOT as
     select from INVENTORYBYLOT distinct {
-        key CHARG
+        key CHARG,
+        MFRNR @UI.Hidden
 };
 
 define view INVBYLOTWAREHOUSE as
     select from INVENTORYBYLOT distinct {
-        key WAREHOUSE_STATUS
+        key WAREHOUSE_STATUS,
+        MFRNR @UI.Hidden
 };
 define view INVBYLOTMFRNR as
     select from INVENTORYBYLOT distinct {
@@ -374,11 +412,13 @@ define view INVBYLOTMFRNR as
 };
 define view INVBYLOTMFRNRNAME as
     select from INVENTORYBYLOT distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view INVBYLOTVKBUR as
     select from INVENTORYBYLOT distinct {
-        key VKBUR
+        key VKBUR,
+        MFRNR @UI.Hidden
 };
 
 @cds.search: { VKORG, BILL_TO, NAME1, BSTKD, BELNR, ZTERM, STORE_SHIP_TO, BLART, MFRNR }
@@ -410,11 +450,13 @@ entity OPENAR
 }
 define view OPENARCUSTOMER as
     select from OPENAR distinct {
-        key NAME1
+        key NAME1,
+        MFRNR @UI.Hidden
 };
 define view OPENARCUSTOMERID as
     select from OPENAR distinct {
-        key BILL_TO
+        key BILL_TO,
+        MFRNR @UI.Hidden
 };
 define view OPENARMFRNR as
     select from OPENAR distinct {
@@ -422,11 +464,13 @@ define view OPENARMFRNR as
 };
 define view OPENARMFRNRNAME as
     select from OPENAR distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view OPENARSALESORG as
     select from OPENAR distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 @cds.search: { PLANT, LGNUM, MATNR, MAKTX, MFRPN,VKBUR,MFRNR }
 @cds.persistence.exists
@@ -462,19 +506,23 @@ entity INVENTORYVALUATION
 
 define view INVVALPLANTNAME as
     select from INVENTORYVALUATION distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MFRNR @UI.Hidden
 };
 define view INVVALPROD as
     select from INVENTORYVALUATION distinct {
-        key MFRPN
+        key MFRPN,
+        MFRNR @UI.Hidden
 };
 define view INVVALPRODDESC as
     select from INVENTORYVALUATION distinct {
-        key MAKTX
+        key MAKTX,
+        MFRNR @UI.Hidden
 };
 define view INVVALPRODSKU as
     select from INVENTORYVALUATION distinct {
-        key MATNR
+        key MATNR,
+        MFRNR @UI.Hidden
 };
 define view INVVALMFRNR as
     select from INVENTORYVALUATION distinct {
@@ -482,11 +530,13 @@ define view INVVALMFRNR as
 };
 define view INVVALMFRNRNAME as
     select from INVENTORYVALUATION distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view INVVALVKBUR as
     select from INVENTORYVALUATION distinct {
-        key VKBUR
+        key VKBUR,
+        MFRNR @UI.Hidden
 };
 
 // Invoice History
@@ -549,59 +599,71 @@ entity INVOICEHISTORY
         WERKS        : String(4)     @title : '{i18n>INVOICEHISTORY.WERKS}';
         BEZEI        : String(40)    @title : '{i18n>INVOICEHISTORY.BEZEI}';
         MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
-        MFRNR_7CH    : String(7)     @title : '{i18n>INVOICEHISTORY.MFRNR}'
-        // You might need a currency field for the @Semantics annotation to work, e.g.:
-        // currency     : Currency;
+        
+        
+        
 }
 define view IHPLANTNAME as
     select from INVOICEHISTORY distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MFRNR @UI.Hidden
 };
 // Invoice History Customer filter
 define view IHCUSTOMER as
     select from INVOICEHISTORY distinct {
-        key NAME1
+        key NAME1,
+        MFRNR @UI.Hidden
 };
 // Invoice History Ship To filter
 define view IHSHIPTO as
     select from INVOICEHISTORY distinct {
-        key SHIP_TO
+        key SHIP_TO,
+        MFRNR @UI.Hidden
 };
 define view IHBEZEI as
     select from INVOICEHISTORY distinct {
-        key BEZEI
+        key BEZEI,
+        MFRNR @UI.Hidden
 };
 //Invoice History Invoice # filter
 define view IHINVOICE as
     select from INVOICEHISTORY distinct {
-        key VBELN
+        key VBELN,
+        MFRNR @UI.Hidden
 };
 // Invoice History Purchase Order filter
 define view IHPO as
     select from INVOICEHISTORY distinct {
-        key BSTKD
+        key BSTKD,
+        MFRNR @UI.Hidden
 };
 // Invoice History Type filter
 define view IHTYPE as
     select from INVOICEHISTORY distinct {
-        key ORDER_TYPE
+        key ORDER_TYPE,
+        MFRNR @UI.Hidden
 };
 // Invoice History Province filter
 define view IHPROVINCE as
     select from INVOICEHISTORY distinct {
-        key REGIO
+        key REGIO,
+        MFRNR @UI.Hidden
 };
 define view IHMFRNR as
     select from INVOICEHISTORY distinct {
         key MFRNR
 };
+
 define view IHMFRNRNAME as
     select from INVOICEHISTORY distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+         MFRNR @UI.Hidden
 };
+        
 define view IHSALESORG as
     select from INVOICEHISTORY distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 
 // Sales by Product/Customer
@@ -676,6 +738,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
     BEZEI_AUART             : String(20)     @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
+
+    virtual isMfrnrHidden : Boolean @UI.HiddenFilter: true;
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -726,51 +790,63 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
-        key INVOICE_CREDIT_VBELN
+        key INVOICE_CREDIT_VBELN,
+        MFRNR @UI.Hidden
 };
 define view SBCBEZEI as
     select from SALESBYCURRENT distinct {
-        key BEZEI
+        key BEZEI,
+        MFRNR @UI.Hidden
 };
 define view SBCBEZEIAUART as
     select from SALESBYCURRENT distinct {
-        key BEZEI_AUART
+        key BEZEI_AUART,
+        MFRNR @UI.Hidden
 };
 define view SBCPLANTNAME as
     select from SALESBYCURRENT distinct {
-        key PLANT_NAME
+        key PLANT_NAME,
+        MFRNR @UI.Hidden
 };
 define view SBCPRODDESC as
     select from SALESBYCURRENT distinct {
-        key PRODUCT_DESCRIPTION_MAKTX
+        key PRODUCT_DESCRIPTION_MAKTX,
+        MFRNR @UI.Hidden
 };
 define view SBCTYPE as
     select from SALESBYCURRENT distinct {
-        key VTEXT_FKART
+        key VTEXT_FKART,
+        MFRNR @UI.Hidden
 };
 define view SBCWAREHOUSE as
     select from SALESBYCURRENT distinct {
-        key WAREHOUSE
+        key WAREHOUSE,
+        MFRNR @UI.Hidden
 };
 define view SBCLOT as
     select from SALESBYCURRENT distinct {
-        key LOT_CHARG
+        key LOT_CHARG,
+        MFRNR @UI.Hidden
 };
 define view SBCBILLTO as
     select from SALESBYCURRENT distinct {
-        key BILL_TO_NAME
+        key BILL_TO_NAME,
+        MFRNR @UI.Hidden
 };
 define view SBCBILLTOID as
     select from SALESBYCURRENT distinct {
-        key BILL_TO_KUNRE_ANA
+        key BILL_TO_KUNRE_ANA,
+        MFRNR @UI.Hidden
 };
 define view SBCSHIPTOID as
     select from SALESBYCURRENT distinct {
-        key SHIP_TO_KUNWE_ANA
+        key SHIP_TO_KUNWE_ANA,
+        MFRNR @UI.Hidden
 };
 define view SBCSHIPTO as
     select from SALESBYCURRENT distinct {
-        key SHIP_TO_NAME
+        key SHIP_TO_NAME,
+        MFRNR @UI.Hidden
 };
 define view SBCMFRNR as
     select from SALESBYCURRENT distinct {
@@ -778,19 +854,23 @@ define view SBCMFRNR as
 };
 define view SBCMFRNRNAME as
     select from SALESBYCURRENT distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view SBCSALESORG as
     select from SALESBYCURRENT distinct {
-        key CO_VKORG
+        key CO_VKORG,
+        MFRNR @UI.Hidden
 };
 define view SBCSALESOFFICE as
     select from SALESBYCURRENT distinct {
-        key VKBUR
+        key VKBUR,
+        MFRNR @UI.Hidden
 };
 define view SBCYEAR as
     select from SALESBYCURRENT distinct {
-        key INV_YEAR
+        key INV_YEAR,
+        MFRNR @UI.Hidden
 };
 // Sales by Product/Customer
 // Security attributes to match: ??
@@ -932,31 +1012,37 @@ entity SHIPPINGHISTORY
 // Shipping History Invoice filter
 define view SHINVOICE as
     select from SHIPPINGHISTORY distinct {
-        key VBELN
+        key VBELN,
+        MFRNR @UI.Hidden
 };
 // Shipping History Customer filter
 define view SHCUSTOMER as
     select from SHIPPINGHISTORY distinct {
-        key KUNAG
+        key KUNAG,
+        MFRNR @UI.Hidden
 };
 // Shipping History Ship To filter
 define view SHSHIPTO as
     select from SHIPPINGHISTORY distinct {
-        key KUNNR
+        key KUNNR,
+        MFRNR @UI.Hidden
 };
 define view SHSHIPTONAME as
     select from SHIPPINGHISTORY distinct {
-        key NAME1
+        key NAME1,
+        MFRNR @UI.Hidden
 };
 // Shipping History Carrier filter
 define view SHCARRIER as
     select from SHIPPINGHISTORY distinct {
-        key CARRIER
+        key CARRIER,
+        MFRNR @UI.Hidden
 };
 // Shipping History Tracking # filter
 define view SHTRACKING as
     select from SHIPPINGHISTORY distinct {
-        key TRACKN
+        key TRACKN,
+        MFRNR @UI.Hidden
 };
 
 define view SHMFRNR as
@@ -966,12 +1052,14 @@ define view SHMFRNR as
 
 define view SHMFRNRNAME as
     select from SHIPPINGHISTORY distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 
 define view SHVKORG as
     select from SHIPPINGHISTORY distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 
 // Pricing
@@ -992,6 +1080,7 @@ entity PRICING
         VTEXT       : String(20)    @title : '{i18n>PRICING.VTEXT}';
     key MATNR       : String(7)     @title : '{i18n>PRICING.MATNR}';
         MAKTX       : String(40)    @title : '{i18n>PRICING.MAKTX}';
+        REGIO       : String(3)     @title : '{i18n>PRICING.REGIO}';
         MFRNR       : String(10)    @title : '{i18n>PRICING.MFRNR}';
         KONWA       : String(5)     @title : '{i18n>PRICING.KONWA}';
         MFRNR_NAME  : String(35)    @title : '{i18n>PRICING.MFRNR_NAME}';
@@ -1000,16 +1089,19 @@ entity PRICING
 // Shipping History Carrier filter
 define view PRICINGPRICEDESC as
     select from PRICING distinct {
-        key VTEXT
+        key VTEXT,
+        MFRNR @UI.Hidden
 };
 // Shipping History Tracking # filter
 define view PRICINGPRODUCTDESC as
     select from PRICING distinct {
-        key MAKTX
+        key MAKTX,
+        MFRNR @UI.Hidden
 };
 define view PRICINGPRODUCT as
     select from PRICING distinct {
-        key MATNR
+        key MATNR,
+        MFRNR @UI.Hidden
 };
 define view PRICINGMFRNR as
     select from PRICING distinct {
@@ -1018,12 +1110,14 @@ define view PRICINGMFRNR as
 
 define view PRICINGMFRNRNAME as
     select from PRICING distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 
 define view PRICINGSALESORG as
     select from PRICING distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 
 // Open Orders
@@ -1067,39 +1161,47 @@ entity OPENORDERS
 
 define view OOVBELN as
     select from OPENORDERS distinct {
-        key VBELN
+        key VBELN,
+        MFRNR @UI.Hidden
 } where VBELN is not null and VBELN != '';
 // Open Orders Product Description filter
 define view OOPRODDESC as
     select from OPENORDERS distinct {
-        key MAKTX
+        key MAKTX,
+        MFRNR @UI.Hidden
 };
 define view OOPROD as
     select from OPENORDERS distinct {
-        key MATNR
+        key MATNR,
+        MFRNR @UI.Hidden
 };
 // Open Orders Customer filter
 define view OOCUST as
     select from OPENORDERS distinct {
-        key KUNNR
+        key KUNNR,
+        MFRNR @UI.Hidden
 };
 // Open Orders Ship To filter
 define view OOSHIPTO as
     select from OPENORDERS distinct {
-        key KUNWE_ANA
+        key KUNWE_ANA,
+        MFRNR @UI.Hidden
 };
 define view OOSHIPTONAME as
     select from OPENORDERS distinct {
-        key CAL_NAME
+        key CAL_NAME,
+        MFRNR @UI.Hidden
 };
 // Open Orders Province filter
 define view OOPROVINCE as
     select from OPENORDERS distinct {
-        key REGIO
+        key REGIO,
+        MFRNR @UI.Hidden
 };
 define view OOVKORG as
     select from OPENORDERS distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 define view OOMFRNR as
     select from OPENORDERS distinct {
@@ -1107,7 +1209,8 @@ define view OOMFRNR as
 };
 define view OOMFRNRNAME as
     select from OPENORDERS distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 
 // Returns
@@ -1148,25 +1251,30 @@ key VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
 //  Returns Customer filter
 define view RETCUST as
     select from RETURNS distinct {
-        key CUSTOMER_KUNNR
+        key CUSTOMER_KUNNR,
+        MFRNR @UI.Hidden
 };
 define view RETCUSTNAME as
     select from RETURNS distinct {
-        key CUSTOMER_NAME_NAME1
+        key CUSTOMER_NAME_NAME1,
+        MFRNR @UI.Hidden
 };
 //  Returns Reason filter
 define view RETREASON as
     select from RETURNS distinct {
-        key REASON_BEZEI
+        key REASON_BEZEI,
+        MFRNR @UI.Hidden
 };
 //  Returns RGA filter
 define view RETRGA as
     select from RETURNS distinct {
-        key VBELN_VBAK
+        key VBELN_VBAK,
+        MFRNR @UI.Hidden
 };
 define view RETVKORG as
     select from RETURNS distinct {
-        key CO_VKORG
+        key CO_VKORG,
+        MFRNR @UI.Hidden
 };
 define view RETMFRNR as
     select from RETURNS distinct {
@@ -1175,11 +1283,13 @@ define view RETMFRNR as
 
 define view RETMFRNRNAME as
     select from RETURNS distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view RETVKBUR as
     select from RETURNS distinct {
-        key VKBUR
+        key VKBUR,
+        MFRNR @UI.Hidden
 };
 @cds.search: { KUNRE_ANA, KUNWE_ANA, VKORG,	BSTKD, VBELN, MATNR, MAKTX, NAME1, MFRNR }
 @cds.persistence.exists
@@ -1210,27 +1320,32 @@ key KUNWE_ANA      : String(10)    @title : '{i18n>BACKORDERS.KUNWE_ANA}';
 //  Back Orders Product Name filter
 define view BOPRODUCTDESC as
     select from BACKORDERS distinct {
-        key MAKTX @(DataField:{Label:'Description'})
+        key MAKTX @(DataField:{Label:'Description'}),
+        MFRNR @UI.Hidden
 };
 define view BOPRODUCT as
     select from BACKORDERS distinct {
-        key MATNR @(DataField:{Label:'SKU'})
+        key MATNR @(DataField:{Label:'SKU'}),
+        MFRNR @UI.Hidden
 };
 
 //  Back Orders Bill To filter
 define view BOBILLTO as
     select from BACKORDERS distinct {
-        key KUNRE_ANA
+        key KUNRE_ANA,
+        MFRNR @UI.Hidden
 
 };
 //  Back Orders Ship To filter
 define view BOSHIPTO as
     select from BACKORDERS distinct {
-        key KUNWE_ANA
+        key KUNWE_ANA,
+        MFRNR @UI.Hidden
 };
 define view BOSHIPTONAME as
     select from BACKORDERS distinct {
-        key NAME1
+        key NAME1,
+        MFRNR @UI.Hidden
 };
 define view BOMFRNR as
     select from BACKORDERS distinct {
@@ -1239,11 +1354,13 @@ define view BOMFRNR as
 
 define view BOMFRNRNAME as
     select from BACKORDERS distinct {
-        key MFRNR_NAME
+        key MFRNR_NAME,
+        MFRNR @UI.Hidden
 };
 define view BOVKORG as
     select from BACKORDERS distinct {
-        key VKORG
+        key VKORG,
+        MFRNR @UI.Hidden
 };
 
 @cds.persistence.exists
@@ -1279,12 +1396,14 @@ entity MAINPAGESUMMARY
 
 define view MPSYEAR as
     select from MAINPAGESUMMARY distinct {
-        key CALYEAR
+        key CALYEAR,
+        MFRNR @UI.Hidden
 };
 
 define view MPSMONTH as
     select from MAINPAGESUMMARY distinct {
-        key MONTH_NAME
+        key MONTH_NAME,
+        MFRNR @UI.Hidden
 };
 
 define view MPSMFRNR as

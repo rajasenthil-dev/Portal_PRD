@@ -66,7 +66,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-             NAME1, SHIP_TO, VBELN, BSTKD, FKDAT, ORDER_TYPE, REGIO, MFRNR, VKORG, BEZEI, MFRNR_7CH
+             NAME1, SHIP_TO, VBELN, BSTKD, FKDAT, ORDER_TYPE, REGIO, VKORG, BEZEI
         ],
         LineItem  : [
             {
@@ -152,18 +152,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKORG
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_7CH
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME
             }
         ],
     },
@@ -262,6 +250,7 @@ Search.defaultSearchElement: true,
             },
         }    
     );
+    // --- START: Added Annotation to hide MFRNR based on virtual element ---
     MFRNR@(
         Common: {
             ValueListWithFixedValues,
@@ -276,8 +265,11 @@ Search.defaultSearchElement: true,
                     }
                 ]
             },
-        }    
+        },
+        // This line links the visibility to the virtual field from your service.js
+        
     );
+    // --- END: Added Annotation ---
     MFRNR_NAME@(
         Common: {
             ValueListWithFixedValues,

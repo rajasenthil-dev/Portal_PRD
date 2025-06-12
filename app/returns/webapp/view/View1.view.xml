@@ -192,7 +192,7 @@
                                 <Text id="_IDGenText11" text="{path: 'CO_VKORG'}"/>
                             </t:template>
                         </t:Column>
-                        <t:Column id="_IDGenColumn8" width='7.813rem' hAlign="End" sortProperty="MFRNR">
+                        <t:Column id="_IDGenColumn8" width='7.813rem' hAlign="End" sortProperty="MFRNR" visible="false">
                             <t:customData>
                                 <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 13}'/>
                             </t:customData>

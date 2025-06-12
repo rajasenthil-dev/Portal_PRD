@@ -203,7 +203,7 @@
                                     <Text id="_IDGenText7" text="{path: 'PRCTR'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn32" width="7.813rem" hAlign="End" sortProperty="MFRNR">
+                            <t:Column id="_IDGenColumn32" width="7.813rem" hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 23}'/>
                                 </t:customData>

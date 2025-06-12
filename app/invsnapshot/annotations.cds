@@ -26,9 +26,7 @@ Search.defaultSearchElement: true,
             WAREHOUSE_STATUS, 
             REPORT_DATE,
             CURRENT,
-            MFRNR,
-            VKORG,
-            MFRNR_NAME
+            VKORG
             
         ],
         
@@ -137,16 +135,6 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VKORG,
                 Label : '{i18n>INVENTORYSNAPSHOT.VKORG}'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                Label : '{i18n>INVENTORYSNAPSHOT.MFRNR}'
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                Label : '{i18n>INVENTORYSNAPSHOT.MFRNR_NAME}'
             }
         ],
     },

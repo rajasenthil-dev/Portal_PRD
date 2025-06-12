@@ -42,9 +42,7 @@ annotate INVENTORY.ITEMMASTER with @(
             PRODUCTDESCRIPTION_EN, 
             CATEGORY,
             PLANT_NAME, 
-            MANUFACTURERNUMBER, 
-            SALESORG, 
-            MFRNR_NAME
+            SALESORG
         ],
         LineItem  : [
             {
@@ -162,18 +160,6 @@ annotate INVENTORY.ITEMMASTER with @(
                 Value : SALESORG,
                 Label : '{i18n>ITEMMASTER.SALESORG}',
                 ![@HTML5.CssDefaults] : {width : '5rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MANUFACTURERNUMBER,
-                Label : '{i18n>ITEMMASTER.MANUFACTURERNUMBER}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                Label : '{i18n>ITEMMASTER.MFRNR_NAME}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],
     },

@@ -15,9 +15,7 @@ Search.defaultSearchElement: true,
     UI : {
         SelectionFields  : [
             PRODUCT_CODE,
-            MANUFACTURER_MFRNR,
-            VKBUR,
-            MFRNR_NAME
+            VKBUR
             
         ],
         LineItem  : [
@@ -129,19 +127,6 @@ Search.defaultSearchElement: true,
                 Value : VKBUR,
                 Label : '{i18n>INVENTORYSTATUS.VKBUR}',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MANUFACTURER_MFRNR,
-                Label : '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            }
-            ,
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                Label : '{i18n>INVENTORYSTATUS.MFRNR_NAME}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],
     },

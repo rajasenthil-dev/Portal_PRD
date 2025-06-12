@@ -28,10 +28,8 @@ Search.defaultSearchElement: true,
             NAME1, 
             BUDAT,
             BLART,
-            MFRNR,
             VKORG,
-            PRCTR,
-            MFRNR_NAME
+            PRCTR
         ],
         
         LineItem  : [
@@ -135,10 +133,6 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : MFRNR,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : PRCTR,
             },
             {
@@ -148,11 +142,7 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : CAL_INV_AMOUNT,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-            },
+            }
 
         ],
     },

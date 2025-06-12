@@ -42,9 +42,9 @@ Search.defaultSearchElement: true,
             WAREHOUSE               : true,
             WERKS                   : true,
             PLANT_NAME              : true,
-            MFRNR_NAME              : true,          
-            AUART                   : true,
+            MFRNR_NAME              : true,
             BEZEI_AUART             : true,
+            AUART                   :true
         }
     },
     UI : {
@@ -62,8 +62,6 @@ Search.defaultSearchElement: true,
             EXPIRY_DATE_VFDAT,
             DELEVERY_DATE_VDATU,
             CURRENT,
-            MFRNR,
-            MFRNR_NAME,
             CO_VKORG,
             VKBUR,
             BEZEI,
@@ -233,11 +231,6 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : PATIENT_ID,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : MFRPN,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
@@ -249,7 +242,6 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : BEZEI
             },
-            
             {
                 $Type : 'UI.DataField',
                 Value : COMMENT,
@@ -264,17 +256,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VKBUR,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
+            }
         ],
     }, 
 ){

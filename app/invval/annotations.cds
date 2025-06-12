@@ -18,8 +18,6 @@ Search.defaultSearchElement: true,
             MFRPN,
             MATNR,
             MAKTX,
-            MFRNR,
-            MFRNR_NAME,
             VKBUR
         ],
         LineItem  : [
@@ -97,14 +95,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
             }
         ],
     },

@@ -62,8 +62,6 @@ Search.defaultSearchElement: true,
             EXPIRY_DATE_VFDAT,
             DELEVERY_DATE_VDATU,
             CURRENT,
-            MFRNR,
-            MFRNR_NAME,
             CO_VKORG,
             VKBUR,
             BEZEI,
@@ -258,17 +256,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VKBUR,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
+            }
         ],
     }, 
 ){

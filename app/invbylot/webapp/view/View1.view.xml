@@ -199,7 +199,7 @@
                                     <Text id="_IDGenText20" text="{path: 'VKBUR'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn10" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="MFRNR">
+                            <t:Column id="_IDGenColumn10" autoResizable="true" width="7.813rem" hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 16}'/>
                                 </t:customData>

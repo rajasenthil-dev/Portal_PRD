@@ -28,8 +28,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             MFRPN, 
             CHARG,
             WAREHOUSE_STATUS,
-            MFRNR,
-            MFRNR_NAME,
             VKBUR
             
         ],
@@ -103,14 +101,6 @@ annotate INVENTORY.INVENTORYBYLOT with @(
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME
             }
         ],
     },

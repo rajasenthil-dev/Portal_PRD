@@ -17,7 +17,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            MATNR, MAKTX, VTEXT, MFRNR, MFRNR_NAME, VKORG
+            MATNR, MAKTX, VTEXT, VKORG
 
         ],
         LineItem  : [
@@ -40,6 +40,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : REGIO,
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : KBETR,
             },
             {
@@ -53,14 +57,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
             }
         ],
     },   

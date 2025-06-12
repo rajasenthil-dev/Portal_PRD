@@ -17,7 +17,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           VBELN_VBAK, CUSTOMER_KUNNR, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT, MFRNR, MFRNR_NAME, CO_VKORG, VKBUR
+           VBELN_VBAK, CUSTOMER_KUNNR, CUSTOMER_NAME_NAME1, REASON_BEZEI, ERDAT, CO_VKORG, VKBUR
         ],
         LineItem  : [
             {
@@ -85,16 +85,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKBUR,
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {

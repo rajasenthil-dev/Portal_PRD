@@ -65,7 +65,7 @@ sap.ui.define([
                  oView.setBusy(false); // Still release busy state
             }
 
-
+            debugger
             // Smart Table and Inner Table Setup
             const oSmartTable = oView.byId("table0");
             if (oSmartTable) {

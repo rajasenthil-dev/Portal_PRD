@@ -279,22 +279,13 @@
                                     <Text id="_IDGenText41" text="{path: 'SALESORG'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn621" width="7rem" hAlign="End" sortProperty="MANUFACTURERNUMBER">
+                            <t:Column id="_IDGenColumn621" width="7rem" hAlign="End" sortProperty="MANUFACTURERNUMBER" visible="false">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MANUFACTURERNUMBER", "leadingProperty": "MANUFACTURERNUMBER", "columnIndex": 19}'/>
                                 </t:customData>
                                 <Text id="_IDGenText231" text="{i18n>ITEMMASTER.MANUFACTURERNUMBER}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText411" text="{path: 'MANUFACTURERNUMBER'}" />
-                                </t:template>
-                            </t:Column>
-                            <t:Column id="_IDGenColumn626" width="12rem" sortProperty="MFRNR_NAME">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR_NAME", "leadingProperty": "MFRNR_NAME", "columnIndex": 20}'/>
-                                </t:customData>
-                                <Text id="_IDGenText236" text="{i18n>ITEMMASTER.MFRNR_NAME}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText416" text="{path: 'MFRNR_NAME'}" />
                                 </t:template>
                             </t:Column>
                         </t:columns>

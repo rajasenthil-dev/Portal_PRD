@@ -27,7 +27,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, VKORG, MFRNR, MFRNR_NAME
+           KUNNR, KUNWE_ANA, CAL_NAME, REGIO, MATNR, MAKTX, VKORG
         ],
         LineItem  : [
             {
@@ -120,16 +120,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VKORG,
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
         ],

@@ -31,8 +31,6 @@ annotate FINANCE.OPENAR with @(
             BILL_TO,
             NAME1,
             FKDAT,
-            MFRNR,
-            MFRNR_NAME,
             VKORG
         ],
         
@@ -135,16 +133,6 @@ annotate FINANCE.OPENAR with @(
                 $Type : 'UI.DataField',
                 Value : VKORG,
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR,
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : MFRNR_NAME,
-                ![@HTML5.CssDefaults] : {width : '12rem'}
             }
 
         ],
