@@ -1147,11 +1147,11 @@ entity OPENORDERS
         CAL_NAME    : String(70)    @title : '{i18n>OPENORDERS.CAL_NAME}';
         PSTLZ       : String(10)    @title : '{i18n>OPENORDERS.PSTLZ}';
         VDATU_ANA   : String(8)     @title : '{i18n>OPENORDERS.VDATU_ANA}';
-        GBSTA       : String(1)     @title : '{i18n>OPENORDERS.GBSTA}';
+        //GBSTA       : String(1)     @title : '{i18n>OPENORDERS.GBSTA}';
         AUART_ANA   : String(4)     @title : '{i18n>OPENORDERS.AUART_ANA}';
         MAKTX       : String(40)    @title : '{i18n>OPENORDERS.MAKTX}';
         MFRPN       : String(40)    @title : '{i18n>OPENORDERS.MFRPN}';
-        GBSTK       : String(1)     @title : '{i18n>OPENORDERS.GBSTK}';
+        //GBSTK       : String(1)     @title : '{i18n>OPENORDERS.GBSTK}';
     key MATNR       : String(7)     @title : '{i18n>OPENORDERS.MATNR}';
         BSTKD       : String(35)    @title : '{i18n>OPENORDERS.BSTKD}';
         MFRNR       : String(10)    @title : '{i18n>OPENORDERS.MFRNR}';
@@ -1396,8 +1396,7 @@ entity MAINPAGESUMMARY
 
 define view MPSYEAR as
     select from MAINPAGESUMMARY distinct {
-        key CALYEAR,
-        MFRNR @UI.Hidden
+        key CALYEAR
 };
 
 define view MPSMONTH as

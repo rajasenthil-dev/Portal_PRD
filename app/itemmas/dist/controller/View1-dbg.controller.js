@@ -6,7 +6,7 @@ function (Controller, MessageBox) {
     "use strict";
 
     return Controller.extend("itemmas.controller.View1", {
-        onInit: async function () {
+        onInit: function () {
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");

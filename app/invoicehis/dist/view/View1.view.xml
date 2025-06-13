@@ -261,7 +261,7 @@
                                         inverted="true"
                                         tooltip="{= ${CURRENT} === 'YES' ? ${i18n>INVOICEHISTORY.CURRENTTOOLTIP} : ${i18n>INVOICEHISTORY.LEGACYTOOLTIP}}"
                                         state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
-                                        text="{= ${CURRENT} === 'Y' ? ${i18n>INVOICEHISTORY.CURRENTTEXT}: ${i18n>INVOICEHISTORY.LEGACYTEXT}}"/>
+                                        text="{= ${CURRENT} === 'YES' ? ${i18n>INVOICEHISTORY.CURRENTTEXT}: ${i18n>INVOICEHISTORY.LEGACYTEXT}}"/>
                                 </t:template>
                             </t:Column>
 
