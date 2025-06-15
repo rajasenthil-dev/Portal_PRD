@@ -45,6 +45,9 @@ entity ITEMMASTER
     key BWKEY                 : String(4)     @title: '{i18n>ITEMMASTER.BWKEY}';
         STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';
 }
+
+
+
 define view ITEMMASPD as
     select from ITEMMASTER distinct {
         key PRODUCTDESCRIPTION_EN,

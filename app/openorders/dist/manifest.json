@@ -133,7 +133,7 @@
             "config": {
                 "routerClass": "sap.m.routing.Router",
                 "controlAggregation": "pages",
-                "controlId": "View1",
+                "controlId": "app",
                 "transition": "slide",
                 "type": "View",
                 "viewType": "XML",
@@ -142,7 +142,7 @@
             "routes": [
                 {
                     "name": "RouteView1",
-                    "pattern": ":?query:",
+                    "pattern": "",
                     "target": [
                         "TargetView1"
                     ]

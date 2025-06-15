@@ -13,6 +13,8 @@ sap.ui.define([
 
     return Controller.extend("cashjour.controller.View1", {
         onInit: async function () {
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.getRoute("RouteView1").attachPatternMatched(this._onPatternMatched, this);
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
@@ -89,44 +91,44 @@ sap.ui.define([
             
             this._debouncedCalculateTotals = this._debounce(this._calculateTotals.bind(this), 300);
             oTable.attachEvent("rowsUpdated", this._debouncedCalculateTotals);
-            // Fetch User Data and Logo
-            const oUserModel = this.getOwnerComponent().getModel("userModel");
-            const userData = oUserModel ? oUserModel.getData() : {};
-            const mfgNumber = userData.ManufacturerNumber;
+            // // Fetch User Data and Logo
+            // const oUserModel = this.getOwnerComponent().getModel("userModel");
+            // const userData = oUserModel ? oUserModel.getData() : {};
+            // const mfgNumber = userData.ManufacturerNumber;
 
-            const oLogoModel = this.getOwnerComponent().getModel("logo");
+            // const oLogoModel = this.getOwnerComponent().getModel("logo");
 
-            var sAppPath = sap.ui.require.toUrl("cashjour").split("/resources")[0];
-            if(sAppPath === ".") {
-                sAppPath = "";
-            }
-            const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
+            // var sAppPath = sap.ui.require.toUrl("cashjour").split("/resources")[0];
+            // if(sAppPath === ".") {
+            //     sAppPath = "";
+            // }
+            // const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
 
-            if (!mfgNumber) {
-                console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
-                oView.byId("logoImage").setSrc(sFallbackImage);
-                return;
-            }
+            // if (!mfgNumber) {
+            //     console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
+            //     oView.byId("logoImage").setSrc(sFallbackImage);
+            //     return;
+            // }
 
-            //const paddedMfg = mfgNumber.padStart(9, "0");
+            // //const paddedMfg = mfgNumber.padStart(9, "0");
 
-            const oFilter = new sap.ui.model.Filter("manufacturerNumber", "EQ", mfgNumber);
-            const oListBinding = oLogoModel.bindList("/MediaFile", undefined, undefined, [oFilter]);
+            // const oFilter = new sap.ui.model.Filter("manufacturerNumber", "EQ", mfgNumber);
+            // const oListBinding = oLogoModel.bindList("/MediaFile", undefined, undefined, [oFilter]);
 
-            oListBinding.requestContexts().then(function (aContexts) {
-                if (aContexts && aContexts.length > 0) {
-                const oData = aContexts[0].getObject();
-                const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
-                const sSrcUrl = sAppPath + sCleanUrl;
-                oView.byId("logoImage").setSrc(sSrcUrl);
-                } else {
-                console.warn("No matching logo found. Fallback image used.");
-                oView.byId("logoImage").setSrc(sFallbackImage);
-                }
-            }.bind(this)).catch(function (err) {
-                console.error("Binding error:", err);
-                oView.byId("logoImage").setSrc(sFallbackImage);
-            }.bind(this)); 
+            // oListBinding.requestContexts().then(function (aContexts) {
+            //     if (aContexts && aContexts.length > 0) {
+            //     const oData = aContexts[0].getObject();
+            //     const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+            //     const sSrcUrl = sAppPath + sCleanUrl;
+            //     oView.byId("logoImage").setSrc(sSrcUrl);
+            //     } else {
+            //     console.warn("No matching logo found. Fallback image used.");
+            //     oView.byId("logoImage").setSrc(sFallbackImage);
+            //     }
+            // }.bind(this)).catch(function (err) {
+            //     console.error("Binding error:", err);
+            //     oView.byId("logoImage").setSrc(sFallbackImage);
+            // }.bind(this)); 
         },
         _refreshUserModel: async function () {
             const oUserModel = this.getOwnerComponent().getModel("userModel");
