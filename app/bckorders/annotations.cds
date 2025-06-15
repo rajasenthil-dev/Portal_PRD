@@ -21,7 +21,9 @@ Search.defaultSearchElement: true,
             NAME1,
             MFRNR,
             MEINS,
-            MFRNR_NAME    
+            MFRNR_NAME,
+            PLANT,
+            PLANT_NAME    
         }
     },
     UI : {
@@ -104,7 +106,18 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VKORG,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT,
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT_NAME,
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             }
+
             
         ],
     },

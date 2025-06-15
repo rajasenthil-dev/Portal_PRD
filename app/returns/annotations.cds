@@ -96,6 +96,16 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VBTYP,
                 ![@HTML5.CssDefaults] : {width : '4rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT,
+                ![@HTML5.CssDefaults] : {width : '4rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT_NAME,
+                ![@HTML5.CssDefaults] : {width : '4rem'}
             }
             
         ],

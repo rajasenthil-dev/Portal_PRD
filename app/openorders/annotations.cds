@@ -79,12 +79,12 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : GBSTA,
+                Value : PLANT,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : GBSTK,
+                Value : PLANT_NAME,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {

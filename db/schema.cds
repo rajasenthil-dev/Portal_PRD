@@ -1160,6 +1160,8 @@ entity OPENORDERS
         MFRNR       : String(10)    @title : '{i18n>OPENORDERS.MFRNR}';
         MFRNR_NAME  : String(35)    @title : '{i18n>OPENORDERS.MFRNR_NAME}';
     key VKORG       : String(4)     @title : '{i18n>OPENORDERS.VKORG}';
+        PLANT_NAME  : String(35)    @title : '{i18n>OPENORDERS.PLANT_NAME}';   
+        PLANT       : String(3)     @title : '{i18n>OPENORDERS.PLANT}';
 }
 
 define view OOVBELN as
@@ -1250,6 +1252,8 @@ key VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
     MFRNR_NAME            : String(35)    @title : '{i18n>RETURNS.MFRNR_NAME}';
     LFGSK                 : String(1)     @title : '{i18n>RETURNS.LFGSK}';
     VBTYP                 : String(1)     @title : '{i18n>RETURNS.VBTYP}';
+    PLANT                 : String(3)     @title : '{i18n>RETURNS.PLANT}';
+    PLANT_NAME            : String(35)    @title : '{i18n>RETURNS.PLANT_NAME}';   
 }
 //  Returns Customer filter
 define view RETCUST as
@@ -1314,9 +1318,9 @@ key KUNWE_ANA      : String(10)    @title : '{i18n>BACKORDERS.KUNWE_ANA}';
     NAME1          : String(35)    @title : '{i18n>BACKORDERS.NAME1}';
     MFRNR          : String(10)    @title : '{i18n>BACKORDERS.MFRNR}';
     MEINS          : String(3)     @title : '{i18n>BACKORDERS.MEINS}';
-    MFRNR_NAME     : String(35)    @title : '{i18n>BACKORDERS.MFRNR_NAME}'; // Corrected typo implicitly via key
-    // You likely need a currency field for the ISOCurrency annotations, e.g.:
-    // currency     : Currency;
+    MFRNR_NAME     : String(35)    @title : '{i18n>BACKORDERS.MFRNR_NAME}'; 
+    PLANT          : String(3)     @title : '{i18n>BACKORDERS.PLANT}';
+    PLANT_NAME     : String(35)    @title : '{i18n>BACKORDERS.PLANT_NAME}';   
 }
 
 
