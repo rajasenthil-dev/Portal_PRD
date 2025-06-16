@@ -188,6 +188,7 @@ sap.ui.define([
         // Calculate Footer and Summary Panel (INCLUDING PIE CHART DATA)
         _calculateFooterAndSummary: function () {
             // **Important:** Get the inner table from the SmartTable
+            
             var oSmartTable = this.byId("table0");
             if (!oSmartTable) {
                  console.error("SmartTable 'table0' not found in _calculateFooterAndSummary.");
