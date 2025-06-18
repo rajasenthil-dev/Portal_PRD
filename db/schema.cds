@@ -742,8 +742,6 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
     BEZEI_AUART             : String(20)     @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
-
-    virtual isMfrnrHidden : Boolean @UI.HiddenFilter: true;
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
