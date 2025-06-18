@@ -89,7 +89,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : AUART_ANA,
+                Value : BEZEI,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {

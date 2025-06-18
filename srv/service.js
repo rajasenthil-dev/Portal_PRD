@@ -1,33 +1,76 @@
 const cds = require('@sap/cds');
 
 /**
- * Implementation of your SALES service.
+ * Implementation of ALL services.
  */
 module.exports = cds.service.impl(function() {
 
     /**
      * This 'before' handler runs before any operation on any entity in this service.
      * It's the perfect place to prepare the user object for authorization by ensuring
-     * the ManufacturerNumber is always an array. This handler is correct.
+     * the ManufacturerNumber is always an array.
      */
-    this.before('*', (req) => {
-        // Safely check if the user and their attributes exist.
-        if (!req.user || !req.user.attr) {
-            return; // Exit if no user or attributes object.
-        }
-
-        // Get the ManufacturerNumber attribute from the user's claims.
-        const mfrnr = req.user.attr.ManufacturerNumber;
-
-        // --- Start of Normalization Logic ---
-
-        // Check if the attribute exists and if it is NOT an array.
+    this.before('*', async (req) => {
+        // Normalization logic 
+        const mfrnr = req.user?.attr?.ManufacturerNumber;
         if (mfrnr && !Array.isArray(mfrnr)) {
-            // If it's a single string value, wrap it in an array.
             req.user.attr.ManufacturerNumber = [mfrnr];
             console.log(`Normalized ManufacturerNumber to array:`, req.user.attr.ManufacturerNumber);
         }
-        // --- End of Normalization Logic ---
+    
+    //     // NEW: Only do filter for READ events
+    //     if (req.event === 'READ') {
+    //         const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+    //         console.log(`Global READ handler - ManufacturerNumber: ${userManufacturer}`);
+    
+    //         if (userManufacturer === '0001000024') {
+    //             console.log(`Applying exclusion filter for user 0001000024`);
+    
+    //             try {
+    //                 req.query.where(`(CO_VKORG <> '1000' AND WERKS <> '1010')`);
+    //             } catch (e) {
+    //                 console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
+    //             }
+    //         }
+    //     }
+    });
+
+    /**
+     * This 'before READ' handler applies additional query filters for SALESBYCURRENT
+     * based on user ManufacturerNumber.
+     */
+    this.before('READ', 'SALESBYCURRENT', 'SBCSALESORG', async (req) => {
+        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+        console.log(`SALESBYCURRENT READ handler - ManufacturerNumber: ${userManufacturer}`);
+
+        if (userManufacturer === '0001000024') {
+            console.log(`Applying exclusion filter for user 0001000024 on SALESBYCURRENT`);
+
+            try {
+                req.query.where(`(CO_VKORG <> '1000' AND WERKS <> '1010')`);
+            } catch (e) {
+                console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
+            }
+        }
+    });
+
+    /**
+     * This 'before READ' handler applies additional query filters for SALESBYCURRENT
+     * based on user ManufacturerNumber.
+     */
+    this.before('READ', 'INVOICEHISTORY', 'IHSALESORG', async (req) => {
+        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+        console.log(`INVOICEHISTORY READ handler - ManufacturerNumber: ${userManufacturer}`);
+
+        if (userManufacturer === '0001000024') {
+            console.log(`Applying exclusion filter for user 0001000024 on SALESBYCURRENT`);
+
+            try {
+                req.query.where(`(VKORG <> '1000' AND WERKS <> '1010')`);
+            } catch (e) {
+                console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
+            }
+        }
     });
 
     // --- START: Refactored logic for role-based field visibility ---
@@ -63,11 +106,11 @@ module.exports = cds.service.impl(function() {
         });
     };
 
-    // 3. Apply the corrected handler to all 'READ' operations for the specified entities.
+    // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 
     // --- END: Refactored logic ---
-
+    
 
     // You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
 });

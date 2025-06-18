@@ -244,9 +244,9 @@ sap.ui.define([
                 acc.lineCount++;
         
                 // Units Calculation (Units per case * Quantity - Applied to all rows)
-                const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
+                //const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
                 const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
-                acc.unitsTotal += unitsPerCase * quantity;
+                acc.unitsTotal += quantity;
         
                 // Footer Quantity Calculation (Sum QUANTITY_FKIMG - Applied to all rows)
                 acc.quantityTotal += quantity;

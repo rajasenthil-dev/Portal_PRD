@@ -920,7 +920,6 @@ service SALES {
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
-        // { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.ManufacturerNumber = ''0001000019'' and WERKS != ''1010'' and SALESORG != ''1000''' },
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -928,8 +927,7 @@ service SALES {
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.ManufacturerNumber = ''0001000019'' and WERKS != ''1010'' and SALESORG != ''1000''' },
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.ManufacturerNumber != ''0001000019''' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity SALESBYCURRENTWOPID as projection on ENTSALESBYCURRENTWOPID;

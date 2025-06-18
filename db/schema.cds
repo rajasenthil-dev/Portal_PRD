@@ -741,6 +741,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
     BEZEI_AUART             : String(20)     @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
+    VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
 
     virtual isMfrnrHidden : Boolean @UI.HiddenFilter: true;
 }
@@ -790,6 +791,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
     BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
+    VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -1162,6 +1164,7 @@ entity OPENORDERS
     key VKORG       : String(4)     @title : '{i18n>OPENORDERS.VKORG}';
         PLANT_NAME  : String(35)    @title : '{i18n>OPENORDERS.PLANT_NAME}';   
         PLANT       : String(3)     @title : '{i18n>OPENORDERS.PLANT}';
+        BEZEI       : String(20)    @title : '{i18n>OPENORDERS.BEZEI}';
 }
 
 define view OOVBELN as

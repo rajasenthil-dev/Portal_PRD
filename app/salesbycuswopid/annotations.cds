@@ -226,6 +226,11 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : VGBEL,
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : DELEVERY_DATE_VDATU,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
