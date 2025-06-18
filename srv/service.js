@@ -39,15 +39,29 @@ module.exports = cds.service.impl(function() {
      * This 'before READ' handler applies additional query filters for SALESBYCURRENT
      * based on user ManufacturerNumber.
      */
-    this.before('READ', 'SALESBYCURRENT', 'SBCSALESORG', async (req) => {
+    this.before('READ', 'SALESBYCURRENT', async (req) => {
         const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
         console.log(`SALESBYCURRENT READ handler - ManufacturerNumber: ${userManufacturer}`);
 
-        if (userManufacturer === '0001000024') {
-            console.log(`Applying exclusion filter for user 0001000024 on SALESBYCURRENT`);
+        if (userManufacturer === '0001000019') {
+            console.log(`Applying exclusion filter for user 0001000019 on SALESBYCURRENT`);
 
             try {
                 req.query.where(`(CO_VKORG <> '1000' AND WERKS <> '1010')`);
+            } catch (e) {
+                console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
+            }
+        }
+    });
+    this.before('READ', 'SBCSALESORG', async (req) => {
+        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+        console.log(`SBCSALESORG READ handler - ManufacturerNumber: ${userManufacturer}`);
+
+        if (userManufacturer === '0001000019') {
+            console.log(`Applying exclusion filter for user 0001000019 on SALESBYCURRENT`);
+
+            try {
+                req.query.where(`(CO_VKORG <> '1000')`);
             } catch (e) {
                 console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
             }
@@ -58,15 +72,30 @@ module.exports = cds.service.impl(function() {
      * This 'before READ' handler applies additional query filters for SALESBYCURRENT
      * based on user ManufacturerNumber.
      */
-    this.before('READ', 'INVOICEHISTORY', 'IHSALESORG', async (req) => {
+    this.before('READ', 'INVOICEHISTORY', async (req) => {
         const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
         console.log(`INVOICEHISTORY READ handler - ManufacturerNumber: ${userManufacturer}`);
 
-        if (userManufacturer === '0001000024') {
-            console.log(`Applying exclusion filter for user 0001000024 on SALESBYCURRENT`);
+        if (userManufacturer === '0001000019') {
+            console.log(`Applying exclusion filter for user 0001000019 on SALESBYCURRENT`);
 
             try {
                 req.query.where(`(VKORG <> '1000' AND WERKS <> '1010')`);
+            } catch (e) {
+                console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
+            }
+        }
+    });
+
+    this.before('READ', 'IHSALESORG', async (req) => {
+        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+        console.log(`IHSALESORG READ handler - ManufacturerNumber: ${userManufacturer}`);
+
+        if (userManufacturer === '0001000019') {
+            console.log(`Applying exclusion filter for user 0001000019 on SALESBYCURRENT`);
+
+            try {
+                req.query.where(`(VKORG <> '1000')`);
             } catch (e) {
                 console.warn(`Entity ${req.target.name} does not support SalesOrg/Plant filtering`);
             }
