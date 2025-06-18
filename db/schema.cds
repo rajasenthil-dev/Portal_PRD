@@ -740,7 +740,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     INV_YEAR                : String(4)     @title : '{i18n>SALESBYCURRENT.INV_YEAR}';
     BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
-    BEZEI_AUART             : String(20)     @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
+    BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
 }
 @cds.persistence.exists
