@@ -210,7 +210,7 @@
                                     core:require="{
                                             Formatter: 'salesbycus/model/formatter'
                                         }"
-                                    text="{path: 'UNIT_PRICE', formatter: 'Formatter._formatCurrency'}"/>
+                                    text="{path: 'UNIT_PRICE', formatter: 'Formatter.formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End" sortProperty="AMOUNT_NETWR">
@@ -218,12 +218,12 @@
                                     <core:CustomData key="p13nData" value='\{"columnKey": "AMOUNT_NETWR", "leadingProperty": "AMOUNT_NETWR", "columnIndex": 9}'/>
                                 </t:customData>
                                 <Text id="_IDGenText4" text="{i18n>SALESBYCURRENT.AMOUNT_NETWR}"></Text>
-                                <t:template>
+                                <t:template> 
                                     <Text id="invoiceAmount" 
                                         core:require="{
                                             Formatter: 'salesbycus/model/formatter'
                                         }"
-                                        text="{path: 'AMOUNT_NETWR', formatter: 'Formatter._formatCurrency'}"/>
+                                        text="{path: 'AMOUNT_NETWR', formatter: 'Formatter.formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn17" width='5rem' sortProperty="WAERK">

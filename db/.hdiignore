@@ -256,7 +256,6 @@ src/gen/ITEMMASMFRNR.hdbview
 src/gen/ITEMMASSALESORG.hdbview
 src/gen/ITEMMASMFNR.hdbview
 
-
 src/gen/PROCESSING.OPENORDERS.hdbview
 src/gen/PROCESSING.OOPRODDESC.hdbview
 src/gen/PROCESSING.OOPROD.hdbview
@@ -330,6 +329,9 @@ src/gen/SBCMFRNR.hdbview
 src/gen/SBCMFRNRNAME.hdbview
 src/gen/SBCSALESOFFICE.hdbview
 src/gen/SBCSALESORG.hdbview
+src/gen/SALES_SALESTOTALS.hdvview
+src/gen/SALESTOTALS.hdbview
+src/gen/SALES.SalesTotals.hdbview
 
 src/gen/MAINPAGE.MAINPAGESUMMARY.hdbview
 src/gen/MAINPAGESUMMARY.hdbview
@@ -402,5 +404,8 @@ src/gen/IHPLANTNAME.hdbview
 
 src/gen/SALES.SBCPLANTNAME.hdbview
 src/gen/SBCPLANTNAME.hdbview
+
+src/gen/PROCESSING.SHIPPINGSTATUS.hdbview
+src/gen/SHIPPINGSTATUS.hdbview
 
 

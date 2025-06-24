@@ -14,6 +14,15 @@ sap.ui.define([
             const oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
+            oModel.read('/SalesTotals', {
+                success: (oData) => {
+                    console.log('SalesTotals data:', oData);
+                    this.getView().getModel('local').setProperty('/salesTotals', oData.value); // save locally
+                },
+                error: (oError) => {
+                    console.error('Error loading SalesTotals:', oError);
+                }
+            });
             var oUserPermissionsModel = new sap.ui.model.json.JSONModel();
             this.getView().setModel(oUserPermissionsModel, "userPermissions"); // Use Component for Component-wide access
             var oDataModel = this.getOwnerComponent().getModel()
@@ -244,7 +253,7 @@ sap.ui.define([
                 acc.lineCount++;
         
                 // Units Calculation (Units per case * Quantity - Applied to all rows)
-                //const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
+                // const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
                 const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
                 acc.unitsTotal += quantity;
         
@@ -406,8 +415,11 @@ sap.ui.define([
         
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
-        formatCurrency: function(value, currency = "USD") {
-            return new Intl.NumberFormat('en-US', {
+        formatCurrency: function(value, currency = "CAD") {
+            if (value === null || value === undefined || value === "") {
+                return "--";
+            }
+            return new Intl.NumberFormat('en-CA', {
                 style: 'currency',
                 currency: currency,
                 minimumFractionDigits: 2,

@@ -41,7 +41,6 @@ annotate INVENTORY.ITEMMASTER with @(
             MFRNR_PART_NUMBER, 
             PRODUCTDESCRIPTION_EN, 
             CATEGORY,
-            PLANT_NAME, 
             SALESORG
         ],
         LineItem  : [
@@ -75,18 +74,6 @@ annotate INVENTORY.ITEMMASTER with @(
                 $Type : 'UI.DataField',
                 Value : PRODUCTDESCRIPTION_FR,
                 Label : '{i18n>ITEMMASTER.PRODUCTDESCRIPTION_FR}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : BWKEY,
-                Label : '{i18n>ITEMMASTER.BWKEY}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : PLANT_NAME,
-                Label : '{i18n>ITEMMASTER.PLANT_NAME}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
@@ -222,23 +209,6 @@ annotate INVENTORY.ITEMMASTER with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'CATEGORY',
                         ValueListProperty : 'CATEGORY'
-                    }
-                ]
-            },
-        } 
-        
-    );
-    PLANT_NAME@(
-        Common: {
-            ValueListWithFixedValues,
-            ValueList : {
-                $Type : 'Common.ValueListType',
-                CollectionPath : 'ITEMMASPLANTNAME',
-                Parameters : [
-                    {
-                        $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'PLANT_NAME',
-                        ValueListProperty : 'PLANT_NAME'
                     }
                 ]
             },

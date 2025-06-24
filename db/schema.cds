@@ -41,8 +41,6 @@ entity ITEMMASTER
         MANUFACTURERNUMBER    : String(10)    @title: '{i18n>ITEMMASTER.MANUFACTURERNUMBER}';
         MFRNR_PART_NUMBER     : String(40)    @title: '{i18n>ITEMMASTER.MFRNR_PART_NUMBER}';
         MFRNR_NAME            : String(35)    @title: '{i18n>ITEMMASTER.MFRNR_NAME}';
-        PLANT_NAME            : String(30)    @title: '{i18n>ITEMMASTER.PLANT_NAME}';
-    key BWKEY                 : String(4)     @title: '{i18n>ITEMMASTER.BWKEY}';
         STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';
 }
 
@@ -51,18 +49,12 @@ entity ITEMMASTER
 define view ITEMMASPD as
     select from ITEMMASTER distinct {
         key PRODUCTDESCRIPTION_EN,
-        MANUFACTURERNUMBER @UI.Hidden
+        MANUFACTURERNUMBER
 };
 define view ITEMMASP as
     select from ITEMMASTER distinct {
         key PRODUCT,
-        MANUFACTURERNUMBER @UI.Hidden
-};
-
-define view ITEMMASPLANTNAME as
-    select from ITEMMASTER distinct {
-        key PLANT_NAME,
-        MANUFACTURERNUMBER @UI.Hidden
+        MANUFACTURERNUMBER 
 };
 
 define view ITEMMASMFRNRNAME as
@@ -97,29 +89,29 @@ entity INVENTORYSTATUS
         PRODUCT_CODE         : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_CODE}';
         SIZE                 : String(70)     @title: '{i18n>INVENTORYSTATUS.SIZE}';
         PRODUCT_DESCRIPTION  : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_DESCRIPTION}';
-        OPEN_STOCK           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
-        QUARANTINE           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
-        DAMAGE_DESTRUCTION   : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
-        RETAINS              : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RETAINS}';
-        QUALITY_HOLD         : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.QUALITY_HOLD}';
-        RETURNS_CAL          : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RETURNS_CAL}';
-        RECALLS              : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RECALLS}';
-        INVENTORY_HOLD       : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
-        RELABEL_QTY          : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
-        SAMPLE_QTY           : Decimal(36,2)  @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
+        OPEN_STOCK           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
+        QUARANTINE           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
+        DAMAGE_DESTRUCTION   : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
+        RETAINS              : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RETAINS}';
+        QUALITY_HOLD         : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.QUALITY_HOLD}';
+        RETURNS_CAL          : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RETURNS_CAL}';
+        RECALLS              : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RECALLS}';
+        INVENTORY_HOLD       : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
+        RELABEL_QTY          : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
+        SAMPLE_QTY           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
         UNIT                 : String(3)      @title: '{i18n>INVENTORYSTATUS.UNIT}';
     key VKBUR                : String(4)      @title: '{i18n>INVENTORYSTATUS.VKBUR}';
         MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
         MFRNR_NAME           : String(35)     @title: '{i18n>INVENTORYSTATUS.MFRNR_NAME}';
-        PLANT                : String(4)      @title: '{i18n>INVENTORYSTATUS.PLANT}';
+    key PLANT                : String(4)      @title: '{i18n>INVENTORYSTATUS.PLANT}';
         PLANT_NAME           : String(30)     @title: '{i18n>INVENTORYSTATUS.PLANT_NAME}';
 
 }
 define view INVSTATUSPRODUCTCODE as
     select from INVENTORYSTATUS distinct {
         key PRODUCT_CODE,
-        MANUFACTURER_MFRNR @UI.Hidden
-};
+        MANUFACTURER_MFRNR
+    };
 define view INVSTATUSMFRNR as
     select from INVENTORYSTATUS distinct {
         key MANUFACTURER_MFRNR
@@ -128,17 +120,17 @@ define view INVSTATUSMFRNR as
 define view INVSTATUSPLANTNAME as
     select from INVENTORYSTATUS distinct {
         key PLANT_NAME,
-        MANUFACTURER_MFRNR @UI.Hidden
+        MANUFACTURER_MFRNR
 };
 define view INVSTATUSMFRNRNAME as
     select from INVENTORYSTATUS distinct {
         key MFRNR_NAME,
-        MANUFACTURER_MFRNR @UI.Hidden
+        MANUFACTURER_MFRNR 
 };
 define view INVSTATUSVKBUR as
     select from INVENTORYSTATUS distinct {
         key VKBUR,
-        MANUFACTURER_MFRNR @UI.Hidden
+        MANUFACTURER_MFRNR
 };
 @cds.search: { MATNR, MAKTX, POSTING_DATE, CHARG, WAREHOUSE_STATUS, KUNNR, CUSTOMER_NAME, INV_MATDOC_ITEM, WERKS, LGORT, MFRNR, NAME1_PLANT }
 @cds.persistence.exists
@@ -174,7 +166,7 @@ entity INVENTORYAUDITTRAIL
 define view IATPLANTNAME as
     select from INVENTORYAUDITTRAIL distinct {
         key PLANT_NAME,
-        MFRNR @UI.Hidden
+        MFRNR 
 };
 define view IATTRANTYPE as
     select from INVENTORYAUDITTRAIL distinct {
@@ -1374,15 +1366,23 @@ define view BOVKORG as
 @cds.persistence.exists
 entity SHIPPINGSTATUS
 {
-    key OBD_NO_DOCNO_C                              : String(10);
-        OBD_ITEM_NO_ITEMNO                          : String(10);
-        OBD_TIMESTAMP_LAST_STATUS_TIME_CST_TSTTO_TS : Timestamp;
-        OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp;
-        PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27);
-        SO_NO_REFDOCNO                              : String(35);
-        CUSTOMER_PO_BSTNK                           : String(20);
-        STORAGE_CONDITIONS_STOKEY1                  : String(5);
-        WAREHOUSE_NAME_LNUMT                        : String(40);  
+        OBD_NO_DOCNO_C                              : String(10)        @title: 'Delivery #';
+    key OBD_ITEM_NO_ITEMNO                          : String(10)        @title: 'SKU';
+        OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp         @title: 'Plant Time';
+        PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27)        @title: 'Warehouse Status';
+        SO_NO_REFDOCNO                              : String(35)        @title: 'Sales Order #';
+        CUSTOMER_PO_BSTNK                           : String(20)        @title: 'Customer PO'; 
+        STORAGE_CONDITIONS_STOKEY1                  : String(5)         @title: 'Storage Condition';
+        WAREHOUSE_NAME_LNUMT                        : String(40)        @title: 'Plant'; 
+        WAREHOUSE_TIME_ZONE                         : String(6)         @title: 'Time Zone';
+        VKORG                                       : String(4)         @title: 'Sales Org';
+        QUANTITY_ORDERED_QTY                        : Decimal(31,14)    @title: 'Quantity Ordered';
+        PRODUCT_DESCRIPTION_MAKTX                   : String(40)        @title: 'Product Description';
+        REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Requested Delivery Date';
+        SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
+        SHIP_TO_NAME_PARTNER                        : String(10)        @title: 'Ship To Name';
+        MANUFACTURER_NAME_MC_NAME1                  : String(35)        @title: 'Manufacturer Name';
+        MANUFACTURER_MFRNR                          : String(10)        @title: 'Manufacturer #'
 }
 @cds.persistence.exists
 entity MAINPAGESUMMARY 

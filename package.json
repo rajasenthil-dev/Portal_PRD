@@ -60,7 +60,9 @@
     "watch-admindash": "cds watch --open admindash/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-logo": "cds watch --open logo/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-pivottable": "cds watch --open pivottable/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-salesbycuswopid": "cds watch --open salesbycuswopid/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-salesbycuswopid": "cds watch --open salesbycuswopid/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-shipstatus": "cds watch --open shipstatus/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-shipstatus1": "cds watch --open shipstatus1/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "service": {
@@ -106,5 +108,9 @@
       },
       "html5-repo": true
     }
-  }
+  },
+  "sapux": [
+    "app/shipstatus",
+    "app/shipstatus1"
+  ]
 }

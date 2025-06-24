@@ -118,24 +118,7 @@
                                     <Text id="_IDGenText004" text="{path: 'PRODUCTDESCRIPTION_FR'}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn2" width="5rem" hAlign="End" sortProperty="BWKEY">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BWKEY", "leadingProperty": "BWKEY", "columnIndex": 5}'/>
-                                </t:customData>
-                                <Text id="_IDGenText" text="{i18n>ITEMMASTER.BWKEY}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText3" text="{path: 'BWKEY'}" />
-                                </t:template>
-                            </t:Column>
-                            <t:Column id="_IDGenColumn3" width="7.813rem" sortProperty="PLANT_NAME">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PLANT_NAME", "leadingProperty": "PLANT_NAME", "columnIndex": 6}'/>
-                                </t:customData>
-                                <Text id="_IDGenText5" text="{i18n>ITEMMASTER.PLANT_NAME}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText7" text="{path: 'PLANT_NAME'}" />
-                                </t:template>
-                            </t:Column>
+                            
                             <t:Column id="_IDGenColumn4" width="5rem" hAlign="End" sortProperty="STPRS">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "STPRS", "leadingProperty": "STPRS", "columnIndex": 7}'/>

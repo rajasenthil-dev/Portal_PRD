@@ -273,7 +273,7 @@ Search.defaultSearchElement: true,
                 Label : 'Invoice #',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'INVOICE_CREDIT_VBELN',
                         ValueListProperty : 'INVOICE_CREDIT_VBELN'
                     }
@@ -305,7 +305,7 @@ Search.defaultSearchElement: true,
                 CollectionPath : 'SBCLOT',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'LOT_CHARG',
                         ValueListProperty : 'LOT_CHARG'
                     }
@@ -322,7 +322,7 @@ Search.defaultSearchElement: true,
                 CollectionPath : 'SBCTYPE',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'VTEXT_FKART',
                         ValueListProperty : 'VTEXT_FKART'
                     }
@@ -383,7 +383,7 @@ Search.defaultSearchElement: true,
                 CollectionPath : 'SBCSHIPTO',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'SHIP_TO_NAME',
                         ValueListProperty : 'SHIP_TO_NAME'
                     }
@@ -400,7 +400,7 @@ Search.defaultSearchElement: true,
                 CollectionPath : 'SBCWAREHOUSE',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'WAREHOUSE',
                         ValueListProperty : 'WAREHOUSE'
                     }
@@ -417,7 +417,7 @@ Search.defaultSearchElement: true,
                 CollectionPath : 'SBCMFRNR',
                 Parameters : [
                     {
-                        $Type : 'Common.ValueListParameterOut',
+                        $Type : 'Common.ValueListParameterInOut',
                         LocalDataProperty : 'MFRNR',
                         ValueListProperty : 'MFRNR'
                     }

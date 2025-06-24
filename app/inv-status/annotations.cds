@@ -1,7 +1,7 @@
 using INVENTORY as service from '../../srv/service';
 
 annotate INVENTORY.INVENTORYSTATUS with @(
-Search.defaultSearchElement: true,
+    Search.defaultSearchElement: true,
     odata: {
         filterable: {
             SKU_MATNR: true,
@@ -16,7 +16,7 @@ Search.defaultSearchElement: true,
         SelectionFields  : [
             PRODUCT_CODE,
             VKBUR
-            
+
         ],
         LineItem  : [
             {
@@ -31,7 +31,7 @@ Search.defaultSearchElement: true,
                 Value : PRODUCT_CODE,
                 Label : '{i18n>INVENTORYSTATUS.PRODUCT_CODE}',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
@@ -50,77 +50,77 @@ Search.defaultSearchElement: true,
                 Value : OPEN_STOCK,
                 Label : '{i18n>INVENTORYSTATUS.OPEN_STOCK}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : QUARANTINE,
                 Label : '{i18n>INVENTORYSTATUS.QUARANTINE}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : DAMAGE_DESTRUCTION,
                 Label : '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : RETAINS,
                 Label : '{i18n>INVENTORYSTATUS.RETAINS}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : QUALITY_HOLD,
                 Label : '{i18n>INVENTORYSTATUS.QUALITY_HOLD}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : RETURNS_CAL,
                 Label : '{i18n>INVENTORYSTATUS.RETURNS_CAL}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : RECALLS,
                 Label : '{i18n>INVENTORYSTATUS.RECALLS}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : INVENTORY_HOLD,
                 Label : '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : RELABEL_QTY,
                 Label : '{i18n>INVENTORYSTATUS.RELABEL_QTY}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : SAMPLE_QTY,
                 Label : '{i18n>INVENTORYSTATUS.SAMPLE_QTY}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
                 Value : UNIT,
                 Label : '{i18n>INVENTORYSTATUS.UNIT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
-                
+
             },
             {
                 $Type : 'UI.DataField',
@@ -144,7 +144,7 @@ Search.defaultSearchElement: true,
                     }
                 ]
             },
-        } 
+        }
     );
      PLANT_NAME@(
         Common: {
@@ -159,7 +159,7 @@ Search.defaultSearchElement: true,
                     }
                 ]
             },
-        } 
+        }
     );
     VKBUR@(
         Common: {
@@ -192,7 +192,7 @@ Search.defaultSearchElement: true,
                 ]
             },
         }
-    ); 
+    );
     MFRNR_NAME@(
         Common: {
             ValueListWithFixedValues,
@@ -208,5 +208,49 @@ Search.defaultSearchElement: true,
                 ]
             },
         }
-    ); 
+    );
+    // <--- UPDATED: Use Aggregation.default for aggregation method
+    OPEN_STOCK @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    QUARANTINE @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    DAMAGE_DESTRUCTION @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    RETAINS @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    QUALITY_HOLD @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    RETURNS_CAL @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    RECALLS @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    INVENTORY_HOLD @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    RELABEL_QTY @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    SAMPLE_QTY @(
+        Analytics.Measure: true,
+        Aggregation.default: #SUM
+    );
+    // <--- END OF ANALYTICS ANNOTATIONS
 };
+
+

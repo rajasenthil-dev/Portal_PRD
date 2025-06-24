@@ -401,7 +401,6 @@ using ITEMMASCATEGORY as ENTITEMMASCATEGORY from '../db/schema';
 using ITEMMASMFRNR as ENTITEMMASMFRNR from '../db/schema';
 using ITEMMASMFRNRNAME as ENTITEMMASMFRNRNAME from '../db/schema';
 using ITEMMASSALESORG as ENTITEMMASSALESORG from '../db/schema';
-using ITEMMASPLANTNAME as ENTITEMMASPLANTNAME from '../db/schema';
 
 // Inventory Service
 service INVENTORY {
@@ -539,7 +538,18 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVENTORYSTATUS as projection on ENTINVENTORYSTATUS;
-
+    function calculateInventoryTotals(plant: String, dateFrom: Date, dateTo: Date) returns {
+        TotalOpenStock       : Decimal(15,3);
+        TotalQuarantine      : Decimal(15,3);
+        TotalRetains         : Decimal(15,3);
+        TotalQualityHold     : Decimal(15,3);
+        TotalReturns         : Decimal(15,3);
+        TotalRecalls         : Decimal(15,3);
+        TotalInventoryHold   : Decimal(15,3);
+        TotalReLabel         : Decimal(15,3);
+        TotalDamage          : Decimal(15,3);
+        TotalSample          : Decimal(15,3);
+    };
     @restrict: [
         {   
             grant: 'READ', 
@@ -548,7 +558,10 @@ service INVENTORY {
         },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity INVSTATUSPRODUCTCODE as projection on ENTINVSTATUSPRODUCTCODE;
+    entity INVSTATUSPRODUCTCODE as projection on ENTINVSTATUSPRODUCTCODE{
+        PRODUCT_CODE
+    }
+    group by PRODUCT_CODE;
 
     // ✅ CDS Authorization Complete
     @requires: 'authenticated-user'
@@ -570,7 +583,10 @@ service INVENTORY {
         },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity INVSTATUSMFRNRNAME as projection on ENTINVSTATUSMFRNRNAME;
+    entity INVSTATUSMFRNRNAME as projection on ENTINVSTATUSMFRNRNAME{
+        MFRNR_NAME
+    }
+    group by MFRNR_NAME;
 
     @restrict: [
         {   
@@ -580,7 +596,10 @@ service INVENTORY {
         },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity INVSTATUSVKBUR as projection on ENTINVSTATUSVKBUR;
+    entity INVSTATUSVKBUR as projection on ENTINVSTATUSVKBUR{
+        VKBUR
+    }
+    group by VKBUR;
 
     @restrict: [
         {   
@@ -590,7 +609,10 @@ service INVENTORY {
         },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity INVSTATUSPLANTNAME as projection on ENTINVSTATUSPLANTNAME;
+    entity INVSTATUSPLANTNAME as projection on ENTINVSTATUSPLANTNAME{
+        PLANT_NAME
+    }
+    group by PLANT_NAME;
 
     // ℹ️ Inventory By Lot Related Entities
     // ✅ CDS Authorization Complete
@@ -727,12 +749,6 @@ service INVENTORY {
     ]
     entity ITEMMASSALESORG as projection on ENTITEMMASSALESORG;
 
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURERNUMBER' },
-        { grant: 'READ', to: 'Internal' }
-    ]
-    entity ITEMMASPLANTNAME as projection on ENTITEMMASPLANTNAME;
 
     // ℹ️ Lot Inventory Snapshot Related Entities 
     // ✅ CDS Authorization Complete
@@ -838,6 +854,7 @@ using SBCYEAR as ENTSBCYEAR from '../db/schema';
 using SBCBEZEI as ENTSBCBEZEI from '../db/schema';
 using SBCBEZEIAUART as ENTSBCBEZEIAUART from '../db/schema';
 using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
+using SalesTotals as ENTSalesTotals from '../db/salesTotals';
 
 service SALES {
     // ℹ️ Ivoice History Related Entities
@@ -918,6 +935,12 @@ service SALES {
 
     // ℹ️ Sales By Product/Customer Related Entities
     // ⚠️ CDS Authorization Pending
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SalesTotals as projection on ENTSalesTotals;
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },

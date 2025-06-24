@@ -1,206 +1,164 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-], (Controller, MessageBox) => {
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter"
+], (Controller, MessageBox, Filter) => {
     "use strict";
 
     return Controller.extend("invstatus.controller.View1", {
-        onInit: function () {
+        
+        onInit() {
+            this._attachRouterPatternMatched();
+            this._initSmartFilterBar();
+            this._initModelErrorHandling();
+            this._attachTableEvents();
+        },
+
+        _attachRouterPatternMatched() {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("RouteView1").attachPatternMatched(this._onPatternMatched, this);
+        },
+
+        _initSmartFilterBar() {
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
-        
+
             oView.setBusy(true);
-        
-            oSmartFilterBar.attachInitialized(function () {
-                oView.setBusy(false); // Once filter bar + value helps are ready
+
+            oSmartFilterBar.attachInitialized(() => {
+                oView.setBusy(false);
             });
-            // // Fetch User Data and Logo
-            // const oUserModel = this.getOwnerComponent().getModel("userModel");
-            // const userData = oUserModel ? oUserModel.getData() : {};
-            // const mfgNumber = userData.ManufacturerNumber;
+        },
 
-            // const oLogoModel = this.getOwnerComponent().getModel("logo");
-
-            // var sAppPath = sap.ui.require.toUrl("invstatus").split("/resources")[0];
-            // if(sAppPath === ".") {
-            //     sAppPath = "";
-            // }
-            // const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
-
-            // if (!mfgNumber) {
-            //     console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
-            //     oView.byId("logoImage").setSrc(sFallbackImage);
-            //     return;
-            // }
-
-            // //const paddedMfg = mfgNumber.padStart(9, "0");
-
-            // const oFilter = new sap.ui.model.Filter("manufacturerNumber", "EQ", mfgNumber);
-            // const oListBinding = oLogoModel.bindList("/MediaFile", undefined, undefined, [oFilter]);
-
-            // oListBinding.requestContexts().then(function (aContexts) {
-            //     if (aContexts && aContexts.length > 0) {
-            //     const oData = aContexts[0].getObject();
-            //     const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
-            //     const sSrcUrl = sAppPath + sCleanUrl;
-            //     oView.byId("logoImage").setSrc(sSrcUrl);
-            //     } else {
-            //     console.warn("No matching logo found. Fallback image used.");
-            //     oView.byId("logoImage").setSrc(sFallbackImage);
-            //     }
-            // }.bind(this)).catch(function (err) {
-            //     console.error("Binding error:", err);
-            //     oView.byId("logoImage").setSrc(sFallbackImage);
-            // }.bind(this));
-            
-            var oModel = this.getOwnerComponent().getModel();
-            const oSmartTable = this.getView().byId("table0");
-            const oTable = oSmartTable.getTable();
+        _initModelErrorHandling() {
+            const oModel = this.getOwnerComponent().getModel();
+            const oTable = this.getView().byId("table0").getTable();
             this.bAuthorizationErrorShown = false;
-            oModel.attachRequestFailed(function (oEvent) {
-                var oParams = oEvent.getParameters();
-                if (oParams.response.statusCode === "403") {
+
+            oModel.attachRequestFailed((oEvent) => {
+                const { statusCode } = oEvent.getParameters().response;
+
+                if (statusCode === "403") {
                     oTable.setNoData("No data available due to authorization restrictions");
-                    oTable.setBusy(false); 
-                    if(!this.bAuthorizationErrorShown) {
+                    oTable.setBusy(false);
+
+                    if (!this.bAuthorizationErrorShown) {
                         this.bAuthorizationErrorShown = true;
                         MessageBox.error("You do not have the required permissions to access this report.", {
                             title: "Unauthorized Access",
                             id: "messageBoxId1",
                             details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
-                            contentWidth: "100px",
+                            contentWidth: "100px"
                         });
                     }
                 }
             });
-
-            oTable.attachEvent("rowsUpdated",this.calculateTotals.bind(this));// For GridTable
-            
         },
-        _refreshUserModel: async function () {
+
+        _attachTableEvents() {
+            const oTable = this.getView().byId("table0").getTable();
+            oTable.attachEvent("rowsUpdated", this.calculateTotals.bind(this));
+        },
+
+        async _refreshUserModel() {
             const oUserModel = this.getOwnerComponent().getModel("userModel");
-            var sAppPath = sap.ui.require.toUrl("invstatus").split("/resources")[0];
-            if(sAppPath === ".") {
-                sAppPath = "";
-            }
-            const url = sAppPath + "/user-api/attributes"
+            let sAppPath = sap.ui.require.toUrl("invstatus").split("/resources")[0];
+            sAppPath = (sAppPath === ".") ? "" : sAppPath;
+
+            const url = `${sAppPath}/user-api/attributes`;
+
             try {
-                const oResponse = await fetch(url); // or /me or /currentUser
+                const oResponse = await fetch(url);
                 const oUserData = await oResponse.json();
-        
+
                 oUserModel.setData(oUserData);
                 console.log("✅ User model refreshed:", oUserData);
             } catch (err) {
                 console.error("❌ Failed to fetch user info", err);
             }
-        },     
-        _fetchAndSetLogo: function () {
+        },
+
+        _fetchAndSetLogo() {
             const oView = this.getView();
             const oUserModel = this.getOwnerComponent().getModel("userModel");
-            const userData = oUserModel ? oUserModel.getData() : {};
+            const userData = oUserModel?.getData() || {};
             const mfgNumber = userData.ManufacturerNumber;
             const oLogoImage = oView.byId("logoImage");
-        
-            var sAppPath = sap.ui.require.toUrl("invstatus").split("/resources")[0];
-            if (sAppPath === ".") {
-                sAppPath = "";
-            }
-            
-            const sFallbackImage = sAppPath + "/images/MCKCAN1.jpg";
-        
+
+            let sAppPath = sap.ui.require.toUrl("invstatus").split("/resources")[0];
+            sAppPath = (sAppPath === ".") ? "" : sAppPath;
+
+            const sFallbackImage = `${sAppPath}/images/MCKCAN1.jpg`;
+
             if (!mfgNumber) {
                 console.warn("No ManufacturerNumber in user model. Showing fallback logo.");
                 oLogoImage.setSrc(sFallbackImage);
                 return;
             }
-        
+
             const oLogoModel = this.getOwnerComponent().getModel("logo");
-            const oFilter = new sap.ui.model.Filter("manufacturerNumber", "EQ", mfgNumber);
+            const oFilter = new Filter("manufacturerNumber", "EQ", mfgNumber);
             const oListBinding = oLogoModel.bindList("/MediaFile", undefined, undefined, [oFilter]);
-        
-            oListBinding.requestContexts().then(function (aContexts) {
-                if (aContexts && aContexts.length > 0) {
-                    const oData = aContexts[0].getObject();
-                    const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
-                    const sSrcUrl = sAppPath + sCleanUrl;
-                    oLogoImage.setSrc(sSrcUrl);
-                } else {
-                    console.warn("No matching logo found. Fallback image used.");
+
+            oListBinding.requestContexts()
+                .then((aContexts) => {
+                    if (aContexts?.length > 0) {
+                        const oData = aContexts[0].getObject();
+                        const sCleanUrl = oData.url.replace(/^.*(?=\/odata\/v4\/media)/, "");
+                        const sSrcUrl = `${sAppPath}${sCleanUrl}`;
+                        oLogoImage.setSrc(sSrcUrl);
+                    } else {
+                        console.warn("No matching logo found. Fallback image used.");
+                        oLogoImage.setSrc(sFallbackImage);
+                    }
+                })
+                .catch((err) => {
+                    console.error("Binding error:", err);
                     oLogoImage.setSrc(sFallbackImage);
-                }
-            }.bind(this)).catch(function (err) {
-                console.error("Binding error:", err);
-                oLogoImage.setSrc(sFallbackImage);
-            }.bind(this));
-        }, 
-        _onPatternMatched: async function () {
-            await this._refreshUserModel(); 
-            // This function runs every time the route matching this view is hit.
-            // Call the logo fetching logic here to ensure it's always up-to-date.
+                });
+        },
+
+        async _onPatternMatched() {
+            await this._refreshUserModel();
             console.log("RouteView1 pattern matched – fetching logo...");
             this._fetchAndSetLogo();
         },
-        calculateTotals: function () {
-            var oSmartTable = this.getView().byId("table0");
-            var oTable = oSmartTable.getTable();
-            var oBinding = oTable.getBinding("rows"); // For GridTable
-            var aContexts = oBinding.getContexts(0, oBinding.getLength()); // Get all contexts
-            
-            var fTotalOpenStock = 0;
-            var fTotalQuarantine = 0;
-            var fTotalRetains = 0;
-            var fTotalQualityHold = 0;
-            var fTotalReturns = 0;
-            var fTotalRecalls = 0;
-            var fTotalInventoryHold = 0;
-            var fTotalReLabel = 0;
-            var fTotalDamage= 0;
-            var fTotalSample = 0;
 
-            
-            aContexts.forEach(function (oContext) {
-                fTotalOpenStock += parseFloat(oContext.getProperty("OPEN_STOCK")) || 0;
-                fTotalQuarantine += parseFloat(oContext.getProperty("QUARANTINE")) || 0;
-                fTotalRetains += parseFloat(oContext.getProperty("RETAINS")) || 0;
-                fTotalQualityHold += parseFloat(oContext.getProperty("QUALITY_HOLD")) || 0;
-                fTotalReturns += parseFloat(oContext.getProperty("RETURNS_CAL")) || 0;
-                fTotalRecalls += parseFloat(oContext.getProperty("RECALLS")) || 0;
-                fTotalInventoryHold += parseFloat(oContext.getProperty("INVENTORY_HOLD")) || 0;
-                fTotalReLabel += parseFloat(oContext.getProperty("RELABEL_QTY")) || 0;
-                fTotalDamage += parseFloat(oContext.getProperty("DAMAGE_DESTRUCTION")) || 0;
-                fTotalSample += parseFloat(oContext.getProperty("SAMPLE_QTY")) || 0;
-                
-                
+        calculateTotals() {
+            const oTable = this.getView().byId("table0").getTable();
+            const oBinding = oTable.getBinding("rows");
+            const aContexts = oBinding.getContexts(0, oBinding.getLength());
+
+            const fields = [
+                { prop: "OPEN_STOCK", footerId: "footerText1" },
+                { prop: "QUARANTINE", footerId: "footerText2" },
+                { prop: "RETAINS", footerId: "footerText3" },
+                { prop: "QUALITY_HOLD", footerId: "footerText4" },
+                { prop: "RETURNS_CAL", footerId: "footerText5" },
+                { prop: "RECALLS", footerId: "footerText6" },
+                { prop: "INVENTORY_HOLD", footerId: "footerText7" },
+                { prop: "RELABEL_QTY", footerId: "footerText8" },
+                { prop: "DAMAGE_DESTRUCTION", footerId: "footerText9" },
+                { prop: "SAMPLE_QTY", footerId: "footerText10" }
+            ];
+
+            const totals = fields.map(field => {
+                return aContexts.reduce((sum, oContext) => {
+                    return sum + (parseFloat(oContext.getProperty(field.prop)) || 0);
+                }, 0);
             });
-            var formattedOpenStock = this._formatNumber(fTotalOpenStock);
-            var formattedQuarantine = this._formatNumber(fTotalQuarantine);
-            var formattedRetains = this._formatNumber(fTotalRetains);
-            var formattedQualityHold = this._formatNumber(fTotalQualityHold);
-            var formattedReturns = this._formatNumber(fTotalReturns);
-            var formattedRecalls = this._formatNumber(fTotalRecalls);
-            var formattedInventoryHold = this._formatNumber(fTotalInventoryHold);
-            var formattedReLabel = this._formatNumber(fTotalReLabel);
-            var formattedDamage = this._formatNumber(fTotalDamage);
-            var formattedSample = this._formatNumber(fTotalSample);
-            // Update the model with calculated totals
-            this.byId("footerText1").setText(formattedOpenStock);
-            this.byId("footerText2").setText(formattedQuarantine);
-            this.byId("footerText3").setText(formattedRetains);
-            this.byId("footerText4").setText(formattedQualityHold);
-            this.byId("footerText5").setText(formattedReturns);
-            this.byId("footerText6").setText(formattedRecalls);
-            this.byId("footerText7").setText(formattedInventoryHold);
-            this.byId("footerText8").setText(formattedReLabel);
-            this.byId("footerText9").setText(formattedDamage);
-            this.byId("footerText10").setText(formattedSample);
+
+            fields.forEach((field, index) => {
+                const formattedValue = this._formatNumber(totals[index]);
+                this.byId(field.footerId).setText(formattedValue);
+            });
         },
-        _formatNumber : function (value) {
-            return new Intl.NumberFormat('en-US', {
+
+        _formatNumber(value) {
+            return new Intl.NumberFormat("en-US", {
                 maximumFractionDigits: 0
             }).format(value);
+        }
 
-        },
     });
 });
