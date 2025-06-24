@@ -291,7 +291,7 @@ sap.ui.define([
             const salesTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.salesTotal) : totals.salesTotal;
             const lineCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.lineCount) : totals.lineCount;
             const unitsTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.unitsTotal) : totals.unitsTotal;
-            const quantityTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.quantityTotal) : totals.quantityTotal;
+            const quantityTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.quantityTotal) : totals.quantityTotal;
             const salesAmountFormatted = this.formatCurrency ? this.formatCurrency(totals.salesTotal, "USD") : totals.salesTotal;
         
         
@@ -416,15 +416,20 @@ sap.ui.define([
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
         formatCurrency: function(value) {
-            if (value === null || value === undefined || value === ".00") {
+            if (value === null || value === undefined || value === "") {
                 return "--";
             }
-            const formattedNumber = new Intl.NumberFormat('en-US', {
-                style: 'decimal',
+            const numericValue = parseFloat(value);
+            if (isNaN(numericValue)) {
+                return "--"; // Or handle non-numeric values as appropriate
+            }
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                currencyDisplay: 'narrowSymbol', // forces just $
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
-            }).format(value);
-            return formattedNumber;
+            }).format(numericValue);
         },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {

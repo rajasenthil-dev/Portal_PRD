@@ -8,7 +8,8 @@
     xmlns:sf="sap.ui.comp.smartfilterbar"
     xmlns:st="sap.ui.comp.smarttable"
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-    displayBlock="true">
+    displayBlock="true"
+    core:require="{CurrencyType: 'sap/ui/model/type/Currency'}">
     <App id="app">
         <f:DynamicPage id="dynamicPage" showFooter="true">
             <f:header>
@@ -207,10 +208,14 @@
                                 <Text id="_IDGenText24" text="{i18n>SALESBYCURRENT.UNIT_PRICE}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText25" 
-                                    core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
+                                        text="{
+                                            parts: ['UNIT_PRICE', 'WAERK'],
+                                            type: 'CurrencyType',
+                                            formatOptions: {
+                                                currencyCode : false
+                                            }
                                         }"
-                                    text="{path: 'UNIT_PRICE', formatter: 'Formatter.formatCurrency'}"/>
+                                    />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End" sortProperty="AMOUNT_NETWR">
@@ -220,10 +225,13 @@
                                 <Text id="_IDGenText4" text="{i18n>SALESBYCURRENT.AMOUNT_NETWR}"></Text>
                                 <t:template> 
                                     <Text id="invoiceAmount" 
-                                        core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
-                                        }"
-                                        text="{path: 'AMOUNT_NETWR', formatter: 'Formatter.formatCurrency'}"/>
+                                        text="{
+                                            parts: ['AMOUNT_NETWR', 'WAERK'],
+                                            type: 'CurrencyType',
+                                            formatOptions: {
+                                                currencyCode : false
+                                            }
+                                        }"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn17" width='5rem' sortProperty="WAERK">
