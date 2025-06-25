@@ -105,11 +105,17 @@ entity INVENTORYSTATUS
         MFRNR_NAME           : String(35)     @title: '{i18n>INVENTORYSTATUS.MFRNR_NAME}';
     key PLANT                : String(4)      @title: '{i18n>INVENTORYSTATUS.PLANT}';
         PLANT_NAME           : String(30)     @title: '{i18n>INVENTORYSTATUS.PLANT_NAME}';
+        WAREHOUSE_STATUS     : String(30)     @title: '{i18n>INVENTORYSTATUS.WAREHOUSE_STATUS}';
 
 }
 define view INVSTATUSPRODUCTCODE as
     select from INVENTORYSTATUS distinct {
         key PRODUCT_CODE,
+        MANUFACTURER_MFRNR
+    };
+define view INVSTATUSWAREHOUSESTATUS as
+    select from INVENTORYSTATUS distinct {
+        key WAREHOUSE_STATUS,
         MANUFACTURER_MFRNR
     };
 define view INVSTATUSMFRNR as
@@ -734,6 +740,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
     BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
+    VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -782,6 +789,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
     BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
+    VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -970,16 +978,24 @@ define view CMSALESORG as
 // Shipping History
 // Security attributes to match: ??
 @cds.search: { 
-    CARRIER,
-    VKORG,
-    KUNAG,
-    VBELN,
-    PSTLZ,
     TRK_DLVTO,
+    VBELN,
     KUNNR,
+    WADAT_IST,
     NAME1,
+    VKORG,
+    LFUHR,
+    CARRIER,
+    CAL_BILL_ITM_COUNT,
+    KUNAG,
+    FKIMG,
+    MFRNR,
+    MEINS,
+    PSTLZ,
+    LFDAT,
     TRACKN,
-    MFRNR
+    CURRENT,
+    MFRNR_NAME,
 }
 @cds.persistence.exists
 entity SHIPPINGHISTORY

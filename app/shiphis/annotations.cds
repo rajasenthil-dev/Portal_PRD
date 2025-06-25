@@ -4,16 +4,24 @@ annotate PROCESSING.SHIPPINGHISTORY with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
-            CARRIER: true,
-            VKORG: true,
-            KUNAG: true,
-            VBELN: true,
-            PSTLZ: true,
             TRK_DLVTO: true,
+            VBELN: true,
             KUNNR: true,
+            WADAT_IST: true,
             NAME1: true,
+            VKORG: true,
+            LFUHR: true,
+            CARRIER: true,
+            CAL_BILL_ITM_COUNT: true,
+            KUNAG: true,
+            FKIMG: true,
+            MFRNR: true,
+            MEINS: true,
+            PSTLZ: true,
+            LFDAT: true,
             TRACKN: true,
-            MFRNR: true
+            CURRENT: true,
+            MFRNR_NAME: true
         }
     },
     UI : {

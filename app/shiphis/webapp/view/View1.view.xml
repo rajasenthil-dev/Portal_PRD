@@ -110,6 +110,7 @@
                     showRowCount="true"
                     persistencyKey="SmartTableAnalytical_Explored"
                     demandPopin="true"
+                    customData:p13nDialogSettings='{filter:{visible:false}}'
                     enableAutoColumnWidth="true"
                     class="sapUiResponsiveContentPadding">
                     <t:Table id="gridTable" selectionMode="None" alternateRowColors="true">
@@ -170,6 +171,15 @@
                                 <Text id="_IDGenText5" text="{i18n>SHIPPINGHISTORY.TRACKN}"/>
                                 <t:template>
                                     <Text id="_IDGenText14" text="{TRACKN}" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn71" width="7.813rem" hAlign="End" sortProperty="PSTLZ">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PSTLZ", "leadingProperty": "PSTLZ", "columnIndex": 10}'/>
+                                </t:customData>
+                                <Text id="_IDGenText51" text="{i18n>SHIPPINGHISTORY.PSTLZ}"/>
+                                <t:template>
+                                    <Text id="_IDGenText141" text="{PSTLZ}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="LFDAT">

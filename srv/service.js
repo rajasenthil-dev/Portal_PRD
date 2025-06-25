@@ -307,6 +307,7 @@ module.exports = cds.service.impl(function() {
         'INVSTATUSMFRNRNAME': 'MFRNR_NAME',
         'INVSTATUSPRODUCTCODE': 'PRODUCT_CODE',
         'INVSTATUSVKBUR': 'VKBUR',
+        'INVSTATUSWAREHOUSESTATUS': 'WAREHOUSE_STATUS',
         'INVSTATUSPLANTNAME': 'PLANT_NAME',
         'IATPLANTNAME': 'PLANT_NAME',
         'IATTRANTYPE': 'TRAN_TYPE',
@@ -473,11 +474,82 @@ module.exports = cds.service.impl(function() {
         });
     };
 
+
     // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 
     // --- END: Refactored logic ---
+    // this.on('calculateOverallTotals', async (req) => {
+    //     // Access the filters applied to the SalesAnalytics entity from the UI.
+    //     // The req.query.SELECT.where clause will contain the filters from the SmartTable/SmartFilterBar.
+    //     const filterClause = req.query.SELECT.where;
+
+    //     // Build a CQN query to perform aggregations on the original SALESBYCURRENT table,
+    //     // applying the same filters as the main table display.
+    //     const cqn = SELECT.one`
+    //         sum(AMOUNT_NETWR) as salesTotal,
+    //         count(*) as lineCount,
+    //         sum(QUANTITY_FKIMG) as unitsTotal,
+    //         sum(QUANTITY_FKIMG) as quantityTotal,
+    //         count(distinct case when VTEXT_FKART = 'Invoice' then INVOICE_CREDIT_VBELN end) as uniqueInvoiceCount
+    //     `.from('SALESBYCURRENT'); // Query the original entity for overall totals
+
+    //     // Apply the filters if they exist in the request.
+    //     if (filterClause) {
+    //         cqn.where(filterClause);
+    //     }
+
+    //     try {
+    //         // Execute the query against the database
+    //         const result = await cds.run(cqn);
+
+    //         // Return the aggregated values. Use fallback to 0 for null results.
+    //         return {
+    //             salesTotal: result.salesTotal || 0,
+    //             lineCount: result.lineCount || 0,
+    //             unitsTotal: result.unitsTotal || 0,
+    //             quantityTotal: result.quantityTotal || 0,
+    //             uniqueInvoiceCount: result.uniqueInvoiceCount || 0,
+    //         };
+    //     } catch (error) {
+    //         console.error("Error calculating overall totals:", error);
+    //         // Re-throw the error or return default values if calculation fails
+    //         throw new Error("Failed to calculate overall totals.");
+    //     }
+    // });
     
 
-    // You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
+    this.after('READ', 'MediaFile', (data, req) => {
+        // If no data or not an array (e.g., single result, already handled or error), return as is.
+        if (!Array.isArray(data)) {
+            console.log('[MediaFile] Data is not an array or is null/undefined. Returning as is.');
+            return data;
+        }
+
+        // Check if the user is an internal user.
+        const isInternalUser = req.user.is('Internal');
+
+        // If there's only one result, or if it's not an internal user, pass through.
+        if (data.length === 1 || !isInternalUser) {
+            console.log(`[MediaFile] Single result found or not an Internal user (${isInternalUser}). Returning as is.`);
+            return data;
+        }
+
+        // Fallback case for Internal users when multiple results are found
+        console.log('[MediaFile] Multiple results found for Internal user, applying fallback.');
+        return [{
+            ID: 'fallback-id',
+            MFGName: "Internal User",
+            url: null, // Make sure this path is served publicly
+            fileName: null,
+            manufacturerNumber: null,
+            mediaType: null,
+            content: null,
+            createdAt: null,
+            modifiedAt: null,
+            createdBy: null,
+            modifiedBy: null
+        }];
+    });
+    //You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
 });

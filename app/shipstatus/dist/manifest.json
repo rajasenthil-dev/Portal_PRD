@@ -11,17 +11,33 @@
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
-      "id": "@sap/generator-fiori:lrop",
+      "id": "@sap/generator-fiori:basic",
       "version": "1.18.0",
-      "toolsId": "305f798a-5d25-4421-91fe-a413f9639e6a"
+      "toolsId": "a6376ae5-1b48-4272-9be0-5938b6c47918"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/processing/",
+        "uri": "/odata/v2/processing/",
         "type": "OData",
         "settings": {
           "annotations": [],
+          "odataVersion": "2.0"
+        }
+      },
+      "logoService": {
+        "uri": "/odata/v4/media/",
+        "type":"OData",
+        "settings": {
+          "annotations": [],
           "odataVersion": "4.0"
+        }
+      },
+      "UserApi": {
+        "uri": "/user-api/attributes",
+        "type": "JSON",
+        "settings": {
+          "useBatch": false,
+          "json": true
         }
       }
     },
@@ -61,8 +77,7 @@
       "minUI5Version": "1.136.2",
       "libs": {
         "sap.m": {},
-        "sap.ui.core": {},
-        "sap.fe.templates": {}
+        "sap.ui.core": {}
       }
     },
     "contentDensities": {
@@ -85,74 +100,62 @@
           "earlyRequests": true
         }
       },
-      "@i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
+      "logo": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "dataSource": "logoService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "userModel": {
+        "dataSource": "UserApi",
+        "settings": {}
       }
     },
     "resources": {
-      "css": []
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
     },
     "routing": {
-      "config": {},
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "shipstatus.view",
+        "async": true,
+        "viewPath": "shipstatus.view"
+      },
       "routes": [
         {
+          "name": "RouteView1",
           "pattern": ":?query:",
-          "name": "SHIPPINGSTATUSList",
-          "target": "SHIPPINGSTATUSList"
+          "target": [
+            "TargetView1"
+          ]
         }
       ],
       "targets": {
-        "SHIPPINGSTATUSList": {
-          "type": "Component",
-          "id": "SHIPPINGSTATUSList",
-          "name": "sap.fe.templates.ListReport",
-          "options": {
-            "settings": {
-              "contextPath": "/SHIPPINGSTATUS",
-              "variantManagement": "Page",
-              "navigation": {},
-              "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "tableSettings": {
-                    "type": "GridTable",
-                    "disableCopyToClipboard": true,
-                    "enableExport": true
-                  }
-                }
-              },
-              "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
-              "views": {
-                "paths": [
-                  {
-                    "key": "tableView",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
-                  }
-                ],
-                "showCounts": true
-              }
-            }
-          }
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
         }
       }
     },
-    "extends": {
-      "extensions": {
-        "sap.ui.viewExtensions": {
-          "sap.fe.templates.ListReport.ListReport|SHIPPINGSTATUS": {
-            "AfterHeader": {
-              "className": "sap.ui.core.mvc.View",
-              "viewName": "shipstatus.ext.ListReportAfterHeader",
-              "type": "XML"
-            }
-          }
-        }
-      }
+    "rootView": {
+      "viewName": "shipstatus.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
     }
-  },
-  "sap.fiori": {
-    "registrationIds": [],
-    "archeType": "transactional"
   },
   "sap.cloud": {
     "public": true,

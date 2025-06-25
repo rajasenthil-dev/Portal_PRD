@@ -359,6 +359,7 @@ using INVSTATUSMFRNR as ENTINVSTATUSMFRNR from '../db/schema';
 using INVSTATUSMFRNRNAME as ENTINVSTATUSMFRNRNAME from '../db/schema';
 using INVSTATUSVKBUR as ENTINVSTATUSVKBUR from '../db/schema';
 using INVSTATUSPLANTNAME as ENTINVSTATUSPLANTNAME from '../db/schema';
+using INVSTATUSWAREHOUSESTATUS as ENTINVSTATUSWAREHOUSESTATUS from '../db/schema';
 
 // Inventory By Lot
 using INVENTORYBYLOT as ENTINVENTORYBYLOT from '../db/schema';
@@ -587,7 +588,15 @@ service INVENTORY {
         MFRNR_NAME
     }
     group by MFRNR_NAME;
-
+    @restrict: [
+        {   
+            grant: 'READ', 
+            to: 'Viewer', 
+            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+        },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity INVSTATUSWAREHOUSESTATUS as projection on ENTINVSTATUSWAREHOUSESTATUS;
     @restrict: [
         {   
             grant: 'READ', 
@@ -854,7 +863,7 @@ using SBCYEAR as ENTSBCYEAR from '../db/schema';
 using SBCBEZEI as ENTSBCBEZEI from '../db/schema';
 using SBCBEZEIAUART as ENTSBCBEZEIAUART from '../db/schema';
 using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
-using SalesTotals as ENTSalesTotals from '../db/salesTotals';
+
 
 service SALES {
     // ℹ️ Ivoice History Related Entities
@@ -940,12 +949,12 @@ service SALES {
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity SalesTotals as projection on ENTSalesTotals;
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
-        { grant: 'READ', to: 'Internal' }
-    ]
+    // entity SalesTotals as projection on ENTSalesTotals;
+    // @requires: 'authenticated-user'
+    // @restrict: [
+    //     { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+    //     { grant: 'READ', to: 'Internal' }
+    // ]
     entity SALESBYCURRENT as projection on ENTSALESBYCURRENT;
 
     @requires: 'authenticated-user'
@@ -1402,5 +1411,4 @@ service Media {
 }
 
 annotate Media.MediaFile with @odata.draft.enabled: true;
-
 

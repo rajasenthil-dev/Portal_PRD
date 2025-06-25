@@ -15,7 +15,8 @@ annotate INVENTORY.INVENTORYSTATUS with @(
     UI : {
         SelectionFields  : [
             PRODUCT_CODE,
-            VKBUR
+            VKBUR,
+            WAREHOUSE_STATUS
 
         ],
         LineItem  : [
@@ -44,6 +45,11 @@ annotate INVENTORY.INVENTORYSTATUS with @(
                 Value : SIZE,
                 Label : '{i18n>INVENTORYSTATUS.SIZE}',
                 ![@HTML5.CssDefaults] : {width : '4.688rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : WAREHOUSE_STATUS,
+                Label : '{i18n>INVENTORYSTATUS.WAREHOUSE_STATUS}',
             },
             {
                 $Type : 'UI.DataField',
@@ -204,6 +210,22 @@ annotate INVENTORY.INVENTORYSTATUS with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'MFRNR_NAME',
                         ValueListProperty : 'MFRNR_NAME'
+                    }
+                ]
+            },
+        }
+    );
+    WAREHOUSE_STATUS@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'INVSTATUSWAREHOUSESTATUS',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'WAREHOUSE_STATUS',
+                        ValueListProperty : 'WAREHOUSE_STATUS'
                     }
                 ]
             },

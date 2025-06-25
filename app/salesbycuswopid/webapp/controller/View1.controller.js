@@ -407,16 +407,13 @@ sap.ui.define([
         
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
-        formatCurrency: function(value) {
-            if (value === null || value === undefined || value === "") {
-                return "--";
-            }
-            const formattedNumber = new Intl.NumberFormat('en-CA', {
-                style: 'decimal',
+        formatCurrency: function(value, currency = "USD") {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currency,
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             }).format(value);
-            return `$${formattedNumber}`;
         },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {

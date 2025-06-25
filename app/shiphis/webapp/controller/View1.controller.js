@@ -12,7 +12,7 @@ sap.ui.define([
     return Controller.extend("shiphis.controller.View1", {
         onInit: function () {
             const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.getRoute("RouteView1").attachPatternMatched(this._onPatternMatched, this);
+            oRouter.getRoute("RouteView1").attachPatternMatched(this._onPatternMatched, this); 
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
@@ -23,6 +23,7 @@ sap.ui.define([
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
             const oSmartTable = this.getView().byId("table0");
+
             var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             var oToolbar = oSmartTable.getToolbar();
             var oCurrentStatus = new sap.m.ObjectStatus({

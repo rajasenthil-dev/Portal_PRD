@@ -101,6 +101,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : VBELN_VBAK,
+            },
+            { 
+                $Type : 'UI.DataField',
                 Value : UNITS_PER_CASE,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },

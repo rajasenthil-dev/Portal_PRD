@@ -1,60 +1,77 @@
 using PROCESSING as service from '../../srv/service';
-annotate service.SHIPPINGSTATUS with @(
-    UI.SelectionPresentationVariant #tableView : {
-        $Type : 'UI.SelectionPresentationVariantType',
-        PresentationVariant : {
-            $Type : 'UI.PresentationVariantType',
-            Visualizations : [
-                '@UI.LineItem',
-            ],
-            SortOrder : [
-                {
-                    $Type : 'Common.SortOrderType',
-                    Property : OBD_ITEM_NO_ITEMNO,
-                    Descending : false,
-                },
-            ],
-        },
-        SelectionVariant : {
-            $Type : 'UI.SelectionVariantType',
-            SelectOptions : [
-            ],
-        },
-        Text : 'Table View',
-    },
-    UI.LineItem #tableView : [
-    ],
-    UI.SelectionPresentationVariant #tableView1 : {
-        $Type : 'UI.SelectionPresentationVariantType',
-        PresentationVariant : {
-            $Type : 'UI.PresentationVariantType',
-            Visualizations : [
-                '@UI.LineItem#tableView',
-            ],
-        },
-        SelectionVariant : {
-            $Type : 'UI.SelectionVariantType',
-            SelectOptions : [
-            ],
-        },
-        Text : 'Table View 1',
-    },
-    UI.LineItem #tableView1 : [
-    ],
-    UI.SelectionPresentationVariant #tableView2 : {
-        $Type : 'UI.SelectionPresentationVariantType',
-        PresentationVariant : {
-            $Type : 'UI.PresentationVariantType',
-            Visualizations : [
-                '@UI.LineItem#tableView1',
-            ],
-        },
-        SelectionVariant : {
-            $Type : 'UI.SelectionVariantType',
-            SelectOptions : [
-            ],
-        },
-        Text : 'Table View 2',
-    },
-);
 
+annotate PROCESSING.SHIPPINGSTATUS with @(
+    Search.defaultSearchElement: true,
+    UI : {
+        SelectionFields  : [
+            OBD_ITEM_NO_ITEMNO,
+            CUSTOMER_PO_BSTNK,
+            PRODUCT_DESCRIPTION_MAKTX,
+            PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS,
+            VKORG
+
+        ],
+        LineItem : [
+            {
+                $Type : 'UI.DataField',
+                Value : CUSTOMER_PO_BSTNK
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : OBD_ITEM_NO_ITEMNO
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : OBD_NO_DOCNO_C
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PRODUCT_DESCRIPTION_MAKTX
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : QUANTITY_ORDERED_QTY
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : REQUESTED_DELIVERY_DATE_VDATU
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SHIP_TO_NAME_PARTNER
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SHIP_TO_PARTYNO
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SO_NO_REFDOCNO
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : STORAGE_CONDITIONS_STOKEY1
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : WAREHOUSE_NAME_LNUMT
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : WAREHOUSE_TIME_ZONE
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VKORG
+            }
+        ]
+    } 
+);

@@ -1,11 +1,11 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Mon Jun 23 2025 14:15:24 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Tue Jun 24 2025 18:26:32 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>SAP Fiori Application Generator|
 |**App Generator Version**<br>1.18.0|
 |**Generation Platform**<br>SAP Business Application Studio|
-|**Template Used**<br>List Report Page V4|
+|**Template Used**<br>Basic V4|
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/odata/v4/processing/|
 |**Module Name**<br>shipstatus|
@@ -16,7 +16,6 @@
 |**Enable Code Assist Libraries**<br>False|
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
-|**Main Entity**<br>SHIPPINGSTATUS|
 
 ## shipstatus
 

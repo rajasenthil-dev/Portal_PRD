@@ -189,6 +189,15 @@
                                         text="{path: 'SKU_MATNR', formatter: 'Formatter.removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn231" width='7.813rem' hAlign="End" sortProperty="VBELN_VBAK">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VBELN_VBAK", "leadingProperty": "SVBELN_VBAK"}'/>
+                                </t:customData>
+                                <Text id="_IDGenText521" text="{i18n>SALESBYCURRENTWOPID.VBELN_VBAK}"></Text>
+                                <t:template>
+                                    <Text id="sku1111" text="{path: 'VBELN_VBAK'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn7" width='7.813rem' hAlign="End" sortProperty="MFRPN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 5}'/>
@@ -204,26 +213,33 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "UNIT_PRICE", "leadingProperty": "UNIT_PRICE", "columnIndex": 8}'/>
                                 </t:customData>
-                                <Text id="_IDGenText24" text="{i18n>SALESBYCURRENTWOPID.UNIT_PRICE}"></Text>
+                                <Text id="_IDGenText24" text="{i18n>SALESBYCURRENT.UNIT_PRICE}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText25" 
-                                    core:require="{
-                                            Formatter: 'salesbycuswopid/model/formatter'
+                                        text="{
+                                            parts: ['UNIT_PRICE', 'WAERK'],
+                                            type: 'CurrencyType',
+                                            formatOptions: {
+                                                currencyCode : false
+                                            }
                                         }"
-                                    text="{path: 'UNIT_PRICE', formatter: 'Formatter._formatCurrency'}"/>
+                                    />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End" sortProperty="AMOUNT_NETWR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "AMOUNT_NETWR", "leadingProperty": "AMOUNT_NETWR", "columnIndex": 9}'/>
                                 </t:customData>
-                                <Text id="_IDGenText4" text="{i18n>SALESBYCURRENTWOPID.AMOUNT_NETWR}"></Text>
-                                <t:template>
+                                <Text id="_IDGenText4" text="{i18n>SALESBYCURRENT.AMOUNT_NETWR}"></Text>
+                                <t:template> 
                                     <Text id="invoiceAmount" 
-                                        core:require="{
-                                            Formatter: 'salesbycuswopid/model/formatter'
-                                        }"
-                                        text="{path: 'AMOUNT_NETWR', formatter: 'Formatter._formatCurrency'}"/>
+                                        text="{
+                                            parts: ['AMOUNT_NETWR', 'WAERK'],
+                                            type: 'CurrencyType',
+                                            formatOptions: {
+                                                currencyCode : false
+                                            }
+                                        }"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn17" width='5rem' sortProperty="WAERK">

@@ -189,6 +189,15 @@
                                         text="{path: 'SKU_MATNR', formatter: 'Formatter.removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn231" width='7.813rem' hAlign="End" sortProperty="VBELN_VBAK">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VBELN_VBAK", "leadingProperty": "SVBELN_VBAK"}'/>
+                                </t:customData>
+                                <Text id="_IDGenText521" text="{i18n>SALESBYCURRENTWOPID.VBELN_VBAK}"></Text>
+                                <t:template>
+                                    <Text id="sku1111" text="{path: 'VBELN_VBAK'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn7" width='7.813rem' hAlign="End" sortProperty="MFRPN">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 5}'/>

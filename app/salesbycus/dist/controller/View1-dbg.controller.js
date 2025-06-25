@@ -14,15 +14,15 @@ sap.ui.define([
             const oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
-            oModel.read('/SalesTotals', {
-                success: (oData) => {
-                    console.log('SalesTotals data:', oData);
-                    this.getView().getModel('local').setProperty('/salesTotals', oData.value); // save locally
-                },
-                error: (oError) => {
-                    console.error('Error loading SalesTotals:', oError);
-                }
-            });
+            // oModel.read('/SalesTotals', {
+            //     success: (oData) => {
+            //         console.log('SalesTotals data:', oData);
+            //         this.getView().getModel('local').setProperty('/salesTotals', oData.value); // save locally
+            //     },
+            //     error: (oError) => {
+            //         console.error('Error loading SalesTotals:', oError);
+            //     }
+            // });
             var oUserPermissionsModel = new sap.ui.model.json.JSONModel();
             this.getView().setModel(oUserPermissionsModel, "userPermissions"); // Use Component for Component-wide access
             var oDataModel = this.getOwnerComponent().getModel()
@@ -291,7 +291,7 @@ sap.ui.define([
             const salesTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.salesTotal) : totals.salesTotal;
             const lineCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.lineCount) : totals.lineCount;
             const unitsTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.unitsTotal) : totals.unitsTotal;
-            const quantityTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.quantityTotal) : totals.quantityTotal;
+            const quantityTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.quantityTotal) : totals.quantityTotal;
             const salesAmountFormatted = this.formatCurrency ? this.formatCurrency(totals.salesTotal, "USD") : totals.salesTotal;
         
         
@@ -415,20 +415,25 @@ sap.ui.define([
         
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
-        formatCurrency: function(value, currency = "CAD") {
+        formatCurrency: function(value) {
             if (value === null || value === undefined || value === "") {
                 return "--";
             }
-            return new Intl.NumberFormat('en-CA', {
+            const numericValue = parseFloat(value);
+            if (isNaN(numericValue)) {
+                return "--"; // Or handle non-numeric values as appropriate
+            }
+            return new Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency: currency,
+                currency: 'USD',
+                currencyDisplay: 'narrowSymbol', // forces just $
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
-            }).format(value);
+            }).format(numericValue);
         },
         _formatCurrency: function (value) {
             if (value == null || value === undefined) {
-            return "";
+            return "--";
             }
         
             // Get the locale

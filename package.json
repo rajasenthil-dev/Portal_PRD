@@ -111,6 +111,7 @@
   },
   "sapux": [
     "app/shipstatus",
-    "app/shipstatus1"
+    "app/shipstatus1",
+    "app/shipstatus"
   ]
 }
