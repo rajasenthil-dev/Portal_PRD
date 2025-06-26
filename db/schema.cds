@@ -90,22 +90,24 @@ entity INVENTORYSTATUS
         SIZE                 : String(70)     @title: '{i18n>INVENTORYSTATUS.SIZE}';
         PRODUCT_DESCRIPTION  : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_DESCRIPTION}';
         OPEN_STOCK           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
-        QUARANTINE           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
-        DAMAGE_DESTRUCTION   : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
-        RETAINS              : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RETAINS}';
-        QUALITY_HOLD         : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.QUALITY_HOLD}';
-        RETURNS_CAL          : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RETURNS_CAL}';
-        RECALLS              : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RECALLS}';
-        INVENTORY_HOLD       : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
-        RELABEL_QTY          : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
-        SAMPLE_QTY           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
+        QUARANTINE           : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
+        DAMAGE_DESTRUCTION   : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
+        RETAINS              : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RETAINS}';
+        QUALITY_HOLD         : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.QUALITY_HOLD}';
+        RETURNS_CAL          : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RETURNS_CAL}';
+        RECALLS              : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RECALLS}';
+        INVENTORY_HOLD       : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
+        RELABEL_QTY          : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
+        SAMPLE_QTY           : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
         UNIT                 : String(3)      @title: '{i18n>INVENTORYSTATUS.UNIT}';
     key VKBUR                : String(4)      @title: '{i18n>INVENTORYSTATUS.VKBUR}';
         MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
         MFRNR_NAME           : String(35)     @title: '{i18n>INVENTORYSTATUS.MFRNR_NAME}';
     key PLANT                : String(4)      @title: '{i18n>INVENTORYSTATUS.PLANT}';
         PLANT_NAME           : String(30)     @title: '{i18n>INVENTORYSTATUS.PLANT_NAME}';
-        WAREHOUSE_STATUS     : String(30)     @title: '{i18n>INVENTORYSTATUS.WAREHOUSE_STATUS}';
+        //WAREHOUSE_STATUS     : String(30)     @title: '{i18n>INVENTORYSTATUS.WAREHOUSE_STATUS}';
+        IN_PROCESS           : Decimal(36,0)  @title: '{i18n>INVENTORYSTATUS.IN_PROCESS}';
+        TOTAL_QTY            : Decimal(38,0)  @title: '{i18n>INVENTORYSTATUS.TOTAL_QTY}';
 
 }
 define view INVSTATUSPRODUCTCODE as
@@ -113,11 +115,11 @@ define view INVSTATUSPRODUCTCODE as
         key PRODUCT_CODE,
         MANUFACTURER_MFRNR
     };
-define view INVSTATUSWAREHOUSESTATUS as
-    select from INVENTORYSTATUS distinct {
-        key WAREHOUSE_STATUS,
-        MANUFACTURER_MFRNR
-    };
+// define view INVSTATUSWAREHOUSESTATUS as
+//     select from INVENTORYSTATUS distinct {
+//         key WAREHOUSE_STATUS,
+//         MANUFACTURER_MFRNR
+//     };
 define view INVSTATUSMFRNR as
     select from INVENTORYSTATUS distinct {
         key MANUFACTURER_MFRNR

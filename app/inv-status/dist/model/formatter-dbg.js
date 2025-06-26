@@ -10,6 +10,15 @@ sap.ui.define([
                 return String(Number(value));
             }
             return value; 
-        }
+        },
+        // formatStockWithUnit: function(stock, unit) {
+        //     if (stock == null || stock === "") return "N/A";
+          
+        //     // Convert to integer and format with commas
+        //     const formattedStock = parseInt(stock, 10).toLocaleString();
+          
+        //     // Append unit (if available)
+        //     return `${formattedStock} ${unit || ""}`.trim();
+        //   }
     };
 });

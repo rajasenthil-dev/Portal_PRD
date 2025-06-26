@@ -153,6 +153,7 @@
                     beforeExport="onBeforeExport"
                     useVariantManagement="true"
                     useTablePersonalisation="true"
+                    customData:p13nDialogSettings='{filter:{visible:false}}'
                     showRowCount="true"
                     persistencyKey="SmartTableAnalytical_Explored"
                     demandPopin="true"
@@ -184,11 +185,7 @@
 
                                 <t:template>
                                     <Text
-                                        core:require="{
-
-Formatter: 'invstatus/model/formatter'
-
-}"
+                                        core:require="{ Formatter: 'invstatus/model/formatter'}"
                                         id="_IDGenText9"
                                         text="{path: 'SKU_MATNR', formatter:'Formatter.removeLeadingZeros'}"
                                     />
@@ -225,27 +222,42 @@ Formatter: 'invstatus/model/formatter'
                                 id="_IDGenColumn62"
                                 width='5rem'
                                 hAlign="End"
-                                sortProperty="SIZE"
-                            >
+                                sortProperty="SIZE">
                                 <t:customData>
                                     <core:CustomData
                                         key="p13nData"
                                         value='\{"columnKey": "SIZE", "leadingProperty": "SIZE", "columnIndex": 3}'
                                     />
                                 </t:customData>
-
-                                <Text
-                                    id="_IDGenText22"
-                                    text="{i18n>INVENTORYSTATUS.SIZE}"
-                                />
-
+                                <Text id="_IDGenText22" text="{i18n>INVENTORYSTATUS.SIZE}"/>
                                 <t:template>
-                                    <Text
-                                        id="_IDGenText42"
-                                        text="{path: 'SIZE'}"
-                                    />
+                                    <Text id="_IDGenText42" text="{path: 'SIZE'}"/>
                                 </t:template>
                             </t:Column>
+                            <!-- <t:Column
+                                id="_IDGenColumn621"
+                                width='7rem'
+                                hAlign="End"
+                                sortProperty="OPEN_STOCK">
+                                <t:customData>
+                                    <core:CustomData
+                                        key="p13nData"
+                                        value='\{"columnKey": "OPEN_STOCK", "leadingProperty": "OPEN_STOCK", "columnIndex": 6}'
+                                    />
+                                </t:customData>
+                                <Text id="_IDGenText221" text="{i18n>INVENTORYSTATUS.OPEN_STOCK}"/>
+                                <t:template>
+                                    <Text 
+                                        core:require="{ Formatter: 'invstatus/model/formatter'}"
+                                        id="_IDGenText421" 
+                                        text="{
+                                         parts: [
+                                            { path: 'OPEN_STOCK' },
+                                            { path: 'UNIT' }
+                                        ],
+                                        formatter:'Formatter.formatStockWithUnit'}"/>
+                                </t:template>
+                            </t:Column> -->
 
                             <t:Column
                                 id="_IDGenColumn63"

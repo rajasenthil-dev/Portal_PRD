@@ -15,8 +15,7 @@ annotate INVENTORY.INVENTORYSTATUS with @(
     UI : {
         SelectionFields  : [
             PRODUCT_CODE,
-            VKBUR,
-            WAREHOUSE_STATUS
+            VKBUR
 
         ],
         LineItem  : [
@@ -48,9 +47,13 @@ annotate INVENTORY.INVENTORYSTATUS with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : WAREHOUSE_STATUS,
-                Label : '{i18n>INVENTORYSTATUS.WAREHOUSE_STATUS}',
+                Value : PLANT
             },
+            {
+                $Type : 'UI.DataField',
+                Value : PLANT_NAME
+            },
+            
             {
                 $Type : 'UI.DataField',
                 Value : OPEN_STOCK,
@@ -120,6 +123,14 @@ annotate INVENTORY.INVENTORYSTATUS with @(
                 Label : '{i18n>INVENTORYSTATUS.SAMPLE_QTY}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : IN_PROCESS
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TOTAL_QTY
             },
             {
                 $Type : 'UI.DataField',

@@ -307,7 +307,6 @@ module.exports = cds.service.impl(function() {
         'INVSTATUSMFRNRNAME': 'MFRNR_NAME',
         'INVSTATUSPRODUCTCODE': 'PRODUCT_CODE',
         'INVSTATUSVKBUR': 'VKBUR',
-        'INVSTATUSWAREHOUSESTATUS': 'WAREHOUSE_STATUS',
         'INVSTATUSPLANTNAME': 'PLANT_NAME',
         'IATPLANTNAME': 'PLANT_NAME',
         'IATTRANTYPE': 'TRAN_TYPE',
@@ -440,6 +439,39 @@ module.exports = cds.service.impl(function() {
     
         deduplicateForInternal(req, columnName);
     });
+
+    // this.before('READ', 'MediaFile', (data, req) => {
+    //     // If no data or not an array (e.g., single result, already handled or error), return as is.
+    //     if (!Array.isArray(data)) {
+    //         console.log('[MediaFile] Data is not an array or is null/undefined. Returning as is.');
+    //         return data;
+    //     }
+
+    //     // Check if the user is an internal user.
+    //     const isInternalUser = req.user.is('Internal');
+
+    //     // If there's only one result, or if it's not an internal user, pass through.
+    //     if (data.length === 1 || !isInternalUser) {
+    //         console.log(`[MediaFile] Single result found or not an Internal user (${isInternalUser}). Returning as is.`);
+    //         return data;
+    //     }
+
+    //     // Fallback case for Internal users when multiple results are found
+    //     console.log('[MediaFile] Multiple results found for Internal user, applying fallback.');
+    //     return [{
+    //         ID: 'fallback-id',
+    //         MFGName: "Internal User",
+    //         url: null, // Make sure this path is served publicly
+    //         fileName: null,
+    //         manufacturerNumber: null,
+    //         mediaType: null,
+    //         content: null,
+    //         createdAt: null,
+    //         modifiedAt: null,
+    //         createdBy: null,
+    //         modifiedBy: null
+    //     }];
+    // });
     
     // --- START: Refactored logic for role-based field visibility ---
 
@@ -519,37 +551,6 @@ module.exports = cds.service.impl(function() {
     // });
     
 
-    this.after('READ', 'MediaFile', (data, req) => {
-        // If no data or not an array (e.g., single result, already handled or error), return as is.
-        if (!Array.isArray(data)) {
-            console.log('[MediaFile] Data is not an array or is null/undefined. Returning as is.');
-            return data;
-        }
-
-        // Check if the user is an internal user.
-        const isInternalUser = req.user.is('Internal');
-
-        // If there's only one result, or if it's not an internal user, pass through.
-        if (data.length === 1 || !isInternalUser) {
-            console.log(`[MediaFile] Single result found or not an Internal user (${isInternalUser}). Returning as is.`);
-            return data;
-        }
-
-        // Fallback case for Internal users when multiple results are found
-        console.log('[MediaFile] Multiple results found for Internal user, applying fallback.');
-        return [{
-            ID: 'fallback-id',
-            MFGName: "Internal User",
-            url: null, // Make sure this path is served publicly
-            fileName: null,
-            manufacturerNumber: null,
-            mediaType: null,
-            content: null,
-            createdAt: null,
-            modifiedAt: null,
-            createdBy: null,
-            modifiedBy: null
-        }];
-    });
+    
     //You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
 });

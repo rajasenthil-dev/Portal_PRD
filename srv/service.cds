@@ -359,7 +359,7 @@ using INVSTATUSMFRNR as ENTINVSTATUSMFRNR from '../db/schema';
 using INVSTATUSMFRNRNAME as ENTINVSTATUSMFRNRNAME from '../db/schema';
 using INVSTATUSVKBUR as ENTINVSTATUSVKBUR from '../db/schema';
 using INVSTATUSPLANTNAME as ENTINVSTATUSPLANTNAME from '../db/schema';
-using INVSTATUSWAREHOUSESTATUS as ENTINVSTATUSWAREHOUSESTATUS from '../db/schema';
+//using INVSTATUSWAREHOUSESTATUS as ENTINVSTATUSWAREHOUSESTATUS from '../db/schema';
 
 // Inventory By Lot
 using INVENTORYBYLOT as ENTINVENTORYBYLOT from '../db/schema';
@@ -588,15 +588,15 @@ service INVENTORY {
         MFRNR_NAME
     }
     group by MFRNR_NAME;
-    @restrict: [
-        {   
-            grant: 'READ', 
-            to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
-        },
-        { grant: 'READ', to: 'Internal' }
-    ]
-    entity INVSTATUSWAREHOUSESTATUS as projection on ENTINVSTATUSWAREHOUSESTATUS;
+    // @restrict: [
+    //     {   
+    //         grant: 'READ', 
+    //         to: 'Viewer', 
+    //         where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+    //     },
+    //     { grant: 'READ', to: 'Internal' }
+    // ]
+    // entity INVSTATUSWAREHOUSESTATUS as projection on ENTINVSTATUSWAREHOUSESTATUS;
     @restrict: [
         {   
             grant: 'READ', 
