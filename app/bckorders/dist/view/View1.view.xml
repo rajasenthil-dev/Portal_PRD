@@ -7,6 +7,7 @@
     xmlns:t="sap.ui.table"
     xmlns:sf="sap.ui.comp.smartfilterbar" 
     xmlns:st="sap.ui.comp.smarttable" 
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     displayBlock="true">
     <App id="app">
         <f:DynamicPage id="dynamicPage" showFooter="true">
@@ -100,6 +101,7 @@
                 beforeExport="onBeforeExport" 
                 useVariantManagement="true" 
                 useTablePersonalisation="true" 
+                customData:p13nDialogSettings='{filter:{visible:false}}'
                 showRowCount="true" 
                 persistencyKey="SmartTable_BACKORDERS" 
                 enableAutoColumnWidth="true" 

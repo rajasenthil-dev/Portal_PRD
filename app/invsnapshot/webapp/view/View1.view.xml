@@ -71,6 +71,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                     beforeExport="onBeforeExport"
                     useVariantManagement="true"
                     useTablePersonalisation="true"
+                    customData:p13nDialogSettings='{filter:{visible:false}}'
                     showRowCount="true"
                     persistencyKey="SmartTable_INVETORYSNAPSHOT"
                     enableAutoColumnWidth="true"

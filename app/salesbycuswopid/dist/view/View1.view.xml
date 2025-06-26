@@ -124,7 +124,8 @@
                     useExportToExcel="true" 
                     beforeExport="onBeforeExport" 
                     useVariantManagement="true" 
-                    useTablePersonalisation="true" 
+                    useTablePersonalisation="true"
+                    customData:p13nDialogSettings='{filter:{visible:false}}' 
                     showRowCount="true" 
                     persistencyKey="SmartTableAnalytical_Explored"
                     enableAutoColumnWidth="true" 

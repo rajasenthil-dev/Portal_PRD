@@ -186,6 +186,7 @@
                     beforeExport="onBeforeExport" 
                     useVariantManagement="true" 
                     useTablePersonalisation="true" 
+                    customData:p13nDialogSettings='{filter:{visible:false}}'
                     showRowCount="true" 
                     persistencyKey="SmartTableAnalytical_Explored" 
                     demandPopin="true" 
