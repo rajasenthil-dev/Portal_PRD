@@ -44,6 +44,12 @@ using OOMFRNRNAME as ENTOOMFRNRNAME from '../db/schema';
 using OOVBELN as ENTOOVBELN from '../db/schema';
 
 using SHIPPINGSTATUS as ENTSHIPPINGSTATUS from '../db/schema';
+using SHIPSTATUSSKU as ENTSHIPSTATUSSKU from '../db/schema';
+using SHIPSTATUSCUSTPO as ENTSHIPSTATUSCUSTPO from '../db/schema';
+using SHIPSTATUSPRODDESC as ENTSHIPSTATUSPRODDESC from '../db/schema';
+using SHIPSTATUSWHSTATUS as ENTSHIPSTATUSWHSTATUS from '../db/schema';
+using SHIPSTATUSVKORG as ENTSHIPSTATUSVKORG from '../db/schema';
+using SHIPSTATUSMFRNR as ENTSHIPSTATUSMFRNR from '../db/schema';
 
 service PROCESSING {
     // ℹ️ Returns Related Entities
@@ -329,15 +335,59 @@ service PROCESSING {
     ]
     entity BOVKORG as projection on ENTBOVKORG;
 
-    // ℹ️ Shipping Status Related Entities
-    // ✅ CDS Authorization Complete
-    // @requires: 'authenticated-user'
-    // @restrict: [
-    //     { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR and $user.SalesOrg = VKORG' },
-    //     { grant: 'READ', to: 'Internal' }
-    // ]
+    //ℹ️ Shipping Status Related Entities
+    //✅ CDS Authorization Complete
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SHIPPINGSTATUS as projection on ENTSHIPPINGSTATUS;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSSKU as projection on ENTSHIPSTATUSSKU; 
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSCUSTPO as projection on ENTSHIPSTATUSCUSTPO;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSPRODDESC as projection on ENTSHIPSTATUSPRODDESC;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSWHSTATUS as projection on ENTSHIPSTATUSWHSTATUS;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSVKORG as projection on ENTSHIPSTATUSVKORG;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSMFRNR as projection on ENTSHIPSTATUSMFRNR;
 }
+
+
 
 // Inventory Audit Trail
 using INVENTORYAUDITTRAIL as ENTINVENTORYAUDITTRAIL from '../db/schema';

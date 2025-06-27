@@ -74,4 +74,99 @@ annotate PROCESSING.SHIPPINGSTATUS with @(
             }
         ]
     } 
-);
+){
+    OBD_ITEM_NO_ITEMNO@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSSKU',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'OBD_ITEM_NO_ITEMNO',
+                        ValueListProperty : 'OBD_ITEM_NO_ITEMNO'
+                    }
+                ]
+            },
+        },
+    );
+    CUSTOMER_PO_BSTNK@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSCUSTPO',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'CUSTOMER_PO_BSTNK',
+                        ValueListProperty : 'CUSTOMER_PO_BSTNK'
+                    }
+                ]
+            },
+        },
+    );
+    PRODUCT_DESCRIPTION_MAKTX@(
+        Common: {
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSPRODDESC',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PRODUCT_DESCRIPTION_MAKTX',
+                        ValueListProperty : 'PRODUCT_DESCRIPTION_MAKTX'
+                    }
+                ]
+            },
+        },  
+    );
+    PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSWHSTATUS',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS',
+                        ValueListProperty : 'PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS'
+                    }
+                ]
+            },
+        },  
+    );
+    VKORG@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSVKORG',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'VKORG',
+                        ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        }, 
+    ); 
+    
+    MANUFACTURER_MFRNR@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSMFRNR',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MANUFACTURER_MFRNR',
+                        ValueListProperty : 'MANUFACTURER_MFRNR'
+                    }
+                ]
+            },
+        }, 
+    );  
+};

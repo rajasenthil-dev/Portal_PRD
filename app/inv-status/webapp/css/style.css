@@ -85,3 +85,8 @@
     color: #fff!important;
     margin-right:5px;
 }
+.customPanelBackground>.sapMPanelBGTranslucent {
+    background-color: #E6EBF1;  
+    padding: 1rem;              
+    border-radius: 4px;         
+}

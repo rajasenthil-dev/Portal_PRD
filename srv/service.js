@@ -20,7 +20,11 @@ module.exports = cds.service.impl(function() {
     });
 
     // --- Mappings of entity to filters ---
-    const entityFilterMap = {
+    /**
+     * Entity → Filter map for manufacturer 0001000019
+     * (Sales Org 1000 and Plant 1010 excluded)
+    */
+    const entityFilterMapFor0001000019 = {
         SALESBYCURRENT: `(CO_VKORG <> '1000' AND WERKS <> '1010')`,
         SALESBYCURRENTWOPID: `(CO_VKORG <> '1000' AND WERKS <> '1010')`,
         SBCSALESORG: `(CO_VKORG <> '1000')`,
@@ -50,27 +54,78 @@ module.exports = cds.service.impl(function() {
         INVOICEHISTORY: `(VKORG <> '1000' AND WERKS <> '1010')`,
         OPENORDERS: `(VKORG <> '1000' AND PLANT <> '1010')`,
         BACKORDERS: `(VKORG <> '1000' AND PLANT <> '1010')`,
-        RETURNS: `(CO_VKORG <> '1000' AND PLANT <> '1010')`
+        RETURNS: `(CO_VKORG <> '1000' AND PLANT <> '1010')`,
+        SHIPPINGSTATUS: `(VKORG <> '1000' AND WAREHOUSE_NAME_LNUMT <> '1010')`,
+        SHIPSTATUSVKORG: `(VKORG <> '1000')`
     };
+    
+    /**
+     * Entity → Filter map for manufacturer 0001000005
+     * (Sales Org 1000 excluded ONLY, allow Plant 1010)
+     */
+    const entityFilterMapFor0001000005 = {
+        SALESBYCURRENT: `(CO_VKORG <> '1000')`,
+        SALESBYCURRENTWOPID: `(CO_VKORG <> '1000')`,
+        SBCSALESORG: `(CO_VKORG <> '1000')`,
+        RETVKORG: `(CO_VKORG <> '1000')`,
+        ITEMMASTER: `(SALESORG <> '1000')`,
+        ITEMMASSALESORG: `(SALESORG <> '1000')`,
+        INVENTORYSTATUS: `(VKBUR <> '1000')`,
+        INVSTATUSVKBUR: `(VKBUR <> '1000')`,
+        INVENTORYBYLOT: `(VKBUR <> '1000')`,
+        INVENTORYVALUATION: `(VKBUR <> '1000')`,
+        INVENTORYAUDITTRAIL: `(SALES_ORG <> '1000')`,
+        IATSALESORG: `(SALES_ORG <> '1000')`,
+        CASHJOURNAL: `(VKORG <> '1000')`,
+        INVENTORYSNAPSHOT: `(VKORG <> '1000')`,
+        FINCJSALESORG: `(VKORG <> '1000')`,
+        IHSALESORG: `(VKORG <> '1000')`,
+        OPENAR: `(VKORG <> '1000')`,
+        OPENARSALESORG: `(VKORG <> '1000')`,
+        CUSTOMERMASTER: `(VKORG <> '1000')`,
+        CMSALESORG: `(VKORG <> '1000')`,
+        SHIPPINGHISTORY: `(VKORG <> '1000')`,
+        SHVKORG: `(VKORG <> '1000')`,
+        PRICING: `(VKORG <> '1000')`,
+        PRICINGSALESORG: `(VKORG <> '1000')`,
+        OOVKORG: `(VKORG <> '1000')`,
+        BOVKORG: `(VKORG <> '1000')`,
+        INVOICEHISTORY: `(VKORG <> '1000')`,
+        OPENORDERS: `(VKORG <> '1000')`,
+        BACKORDERS: `(VKORG <> '1000')`,
+        RETURNS: `(CO_VKORG <> '1000')`,
+        SHIPPINGSTATUS: `(VKORG <> '1000')`,
+        SHIPSTATUSVKORG: `(VKORG <> '1000')`
+    };
+    
+    /**
+     * Manufacturer → Entity Filter Map
+     */
+    const manufacturerFilterMap = {
+        '0001000019': entityFilterMapFor0001000019,
+        '0001000005': entityFilterMapFor0001000005
+    };
+    
     // --- Generic 'before READ' Handler ---
     this.before('READ', (req) => {
         const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
         const fullEntityName = req.target?.name;
         const entityName = fullEntityName?.split('.').pop();
-
+    
         console.log(`READ handler for ${entityName} - ManufacturerNumber: ${userManufacturer}`);
-
-        if (userManufacturer === '0001000024') {
-            console.log(`Applying exclusion filter for user 0001000019 on entity: ${entityName}`);
-
+    
+        if (manufacturerFilterMap[userManufacturer]) {
+        const entityFilters = manufacturerFilterMap[userManufacturer];
+        const filter = entityFilters[entityName];
+    
+        if (filter) {
+            console.log(`Applying exclusion filter for manufacturer ${userManufacturer} on entity: ${entityName}`);
             try {
-                const filter = entityFilterMap[entityName];
-                if (filter) {
-                    req.query.where(filter);
-                }
+            req.query.where(filter);
             } catch (e) {
-                console.warn(`Entity ${entityName} does not support filtering`);
+            console.warn(`Entity ${entityName} does not support filtering`);
             }
+        }
         }
     });
     /**
@@ -416,9 +471,11 @@ module.exports = cds.service.impl(function() {
         'BOVKORG': 'VKORG',
         'MPSYEAR': 'CALYEAR',
         'MPSMONTH': 'MONTH_NAME',
-        
-
-
+        "SHIPSTATUSSKU": "OBD_ITEM_NO_ITEMNO",
+        "SHIPSTATUSCUSTPO": "CUSTOMER_PO_BSTNK",
+        "SHIPSTATUSPRODDESC": "PRODUCT_DESCRIPTION_MAKTX",
+        "SHIPSTATUSWHSTATUS": "PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS",
+        "SHIPSTATUSVKORG": "VKORG"
         // Add more here easily:
         // 'ANOTHERENTITY': 'ANOTHERCOLUMN'
     };
@@ -506,7 +563,28 @@ module.exports = cds.service.impl(function() {
         });
     };
 
+    this.on('READ', 'MediaFile', async (req, next) => {
+        const user = req.user;
 
+        // define internal user detection logic
+        const isInternal = req.user.is('Internal')
+
+        if (isInternal) {
+            // Option 1: hard reject
+            //req.reject(403, 'Internal users cannot list all manufacturers. Showing fallback instead.');
+
+            //Option 2: return a fallback instead of rejecting
+            return [{
+                        MFGName: "McKesson Canada"
+                    }];
+
+            // just comment/uncomment which strategy you want
+            //return;
+        }
+        return next();
+
+        
+    });
     // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 

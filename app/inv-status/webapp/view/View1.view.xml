@@ -88,50 +88,62 @@
                         liveMode="true"
                         search="onSearch"
                     />
-
+                    <Panel id="_IDGenPanel"
+                        headerText="{i18n>panelHeader}"
+                        expandable="true"
+                        expanded="true"
+                        class="customPanelBackground sapUiSmallMarginTop"
+                    >
+                        <f:GridList
+                            id="totalsGridList"
+                            growing="false"
+                            items="{totals>/}"
+                            xmlns:f="sap.f"
+                        >
+                            <f:items>
+                                <f:GridListItem id="_IDGenGridListItem1">
+                                    <VBox id="_IDGenVBox" class="sapUiSmallMargin sapUiSizeCompact sapUiNoContentPadding">
+                                        <core:Icon id="_IDGenIcon"
+                                            src="{totals>icon}"
+                                            size="2rem"
+                                            color="{totals>color}"
+                                            class="sapUiTinyMarginBottom"
+                                        />
+                                        <Text id="_IDGenText"
+                                            text="{totals>label}"
+                                            class="sapUiTinyMarginTop sapUiTinyMarginBottom"
+                                            wrapping="true"
+                                        />
+                                        <ObjectNumber id="_IDGenObjectNumber"
+                                            number="{totals>value}"
+                                            emphasized="true"
+                                        />
+                                    </VBox>
+                                </f:GridListItem>
+                            </f:items>
+                        </f:GridList>
+                    </Panel>
                     <!-- <Panel expandable="true" expanded="true" headerText="Sales By Customer By Product Summary">
+                        <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
+                            <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="Sales"/>
+                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text="$181M"/>
+                            </FlexBox>
 
-
-
-<HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
-
-
-<FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
-
-<Title id="_IDGenTitle1" class="mck_TileContentTitle" text="Sales"/>
-
-<Text id="_IDGenNumericContent1" class="mck_TileContent" text="$181M"/>
-
-</FlexBox>
-
-<FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
-
-<Title id="_IDGenTitle2" class="mck_TileContentTitle" text="Invoice"/>
-
-<Text id="_IDGenNumericContent2" class="mck_TileContent" text="19K"/>
-
-</FlexBox>
-
-<FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
-
-<Title id="_IDGenTitle3" class="mck_TileContentTitle" text="Lines"/>
-
-<Text id="_IDGenNumericContent3" class="mck_TileContent" text="69K"/>
-
-</FlexBox>
-
-<FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
-
-<Title id="_IDGenTitle4" class="mck_TileContentTitle" text="Units"/>
-
-<Text id="_IDGenNumericContent4" class="mck_TileContent" text="6M"/>
-
-</FlexBox>
-
-
-</HeaderContainer>
-
-</Panel> -->
+                            <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="Invoice"/>
+                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text="19K"/>
+                            </FlexBox>
+                            <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="Lines"/>
+                                <Text id="_IDGenNumericContent3" class="mck_TileContent" text="69K"/>
+                            </FlexBox>
+                            <FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
+                                <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="Units"/>
+                                <Text id="_IDGenNumericContent4" class="mck_TileContent" text="6M"/>
+                            </FlexBox>
+                        </HeaderContainer>
+                    </Panel> -->
                 </f:DynamicPageHeader>
             </f:header>
 
@@ -268,7 +280,7 @@
                                 <t:customData>
                                     <core:CustomData
                                         key="p13nData"
-                                        value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 15}'
+                                        value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 19}'
                                     />
                                 </t:customData>
 
@@ -289,13 +301,13 @@
                 </st:SmartTable>
             </f:content>
 
-            <f:footer>
-                <OverflowToolbar
+            <!-- <f:footer>
+                 <OverflowToolbar
                     id="_IDGenOverflowToolbar1"
                     height="auto"
                     class="footer"
                 >
-                    <!-- Added by Bryan Cash in order to make the footer fully responsive for mobile devices -->
+                    
 
                     <FlexBox
                         id="_IDGenFlexBox32"
@@ -487,7 +499,7 @@
                         </FlexBox>
                     </FlexBox>
                 </OverflowToolbar>
-            </f:footer>
+            </f:footer> -->
         </f:DynamicPage>
     </App>
 </mvc:View>

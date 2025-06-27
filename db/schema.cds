@@ -89,7 +89,7 @@ entity INVENTORYSTATUS
         PRODUCT_CODE         : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_CODE}';
         SIZE                 : String(70)     @title: '{i18n>INVENTORYSTATUS.SIZE}';
         PRODUCT_DESCRIPTION  : String(40)     @title: '{i18n>INVENTORYSTATUS.PRODUCT_DESCRIPTION}';
-        OPEN_STOCK           : Decimal(38,2)        @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
+        OPEN_STOCK           : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.OPEN_STOCK}';
         QUARANTINE           : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.QUARANTINE}';
         DAMAGE_DESTRUCTION   : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.DAMAGE_DESTRUCTION}';
         RETAINS              : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RETAINS}';
@@ -1384,24 +1384,54 @@ define view BOVKORG as
 @cds.persistence.exists
 entity SHIPPINGSTATUS
 {
-        OBD_NO_DOCNO_C                              : String(10)        @title: 'Delivery #';
+    key OBD_NO_DOCNO_C                              : String(10)        @title: 'Delivery #';
     key OBD_ITEM_NO_ITEMNO                          : String(10)        @title: 'SKU';
         OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp         @title: 'Plant Time';
-        PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27)        @title: 'Warehouse Status';
+    key PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27)        @title: 'Warehouse Status';
         SO_NO_REFDOCNO                              : String(35)        @title: 'Sales Order #';
         CUSTOMER_PO_BSTNK                           : String(20)        @title: 'Customer PO'; 
-        STORAGE_CONDITIONS_STOKEY1                  : String(5)         @title: 'Storage Condition';
-        WAREHOUSE_NAME_LNUMT                        : String(40)        @title: 'Plant'; 
+    key STORAGE_CONDITIONS_STOKEY1                  : String(5)         @title: 'Storage Condition';
+    key WAREHOUSE_NAME_LNUMT                        : String(40)        @title: 'Plant'; 
         WAREHOUSE_TIME_ZONE                         : String(6)         @title: 'Time Zone';
-        VKORG                                       : String(4)         @title: 'Sales Org';
-        QUANTITY_ORDERED_QTY                        : Decimal(31,14)    @title: 'Quantity Ordered';
+    key VKORG                                       : String(4)         @title: 'Sales Org';
+        QUANTITY_ORDERED_QTY                        : Decimal(31,0)     @title: 'Quantity Ordered';
         PRODUCT_DESCRIPTION_MAKTX                   : String(40)        @title: 'Product Description';
         REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Requested Delivery Date';
-        SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
+    key SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
         SHIP_TO_NAME_PARTNER                        : String(10)        @title: 'Ship To Name';
         MANUFACTURER_NAME_MC_NAME1                  : String(35)        @title: 'Manufacturer Name';
         MANUFACTURER_MFRNR                          : String(10)        @title: 'Manufacturer #'
 }
+define view SHIPSTATUSSKU as
+    select from SHIPPINGSTATUS distinct {
+        key OBD_ITEM_NO_ITEMNO,
+        MANUFACTURER_MFRNR @UI.Hidden
+};
+define view SHIPSTATUSCUSTPO as
+    select from SHIPPINGSTATUS distinct {
+        key CUSTOMER_PO_BSTNK,
+        MANUFACTURER_MFRNR @UI.Hidden
+};
+define view SHIPSTATUSPRODDESC as
+    select from SHIPPINGSTATUS distinct {
+        key PRODUCT_DESCRIPTION_MAKTX,
+        MANUFACTURER_MFRNR @UI.Hidden
+};
+define view SHIPSTATUSWHSTATUS as
+    select from SHIPPINGSTATUS distinct {
+        key PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS,
+        MANUFACTURER_MFRNR @UI.Hidden
+};
+define view SHIPSTATUSVKORG as
+    select from SHIPPINGSTATUS distinct {
+        key VKORG,
+        MANUFACTURER_MFRNR @UI.Hidden
+};
+define view SHIPSTATUSMFRNR as
+    select from SHIPPINGSTATUS distinct {
+        key MANUFACTURER_MFRNR
+};
+
 @cds.persistence.exists
 entity MAINPAGESUMMARY 
 {       

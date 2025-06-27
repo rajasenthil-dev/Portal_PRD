@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
-    "sap/ui/model/Filter"
+    "sap/ui/model/Filter",
+    "sap/ui/model/json/JSONModel",
 ], (Controller, MessageBox, Filter) => {
     "use strict";
 
@@ -124,36 +125,93 @@ sap.ui.define([
             this._fetchAndSetLogo();
         },
 
-        calculateTotals() {
+        calculateTotals: function() {
             const oTable = this.getView().byId("table0").getTable();
             const oBinding = oTable.getBinding("rows");
             const aContexts = oBinding.getContexts(0, oBinding.getLength());
-
+        
+            const oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+        
             const fields = [
-                { prop: "OPEN_STOCK", footerId: "footerText1" },
-                { prop: "QUARANTINE", footerId: "footerText2" },
-                { prop: "RETAINS", footerId: "footerText3" },
-                { prop: "QUALITY_HOLD", footerId: "footerText4" },
-                { prop: "RETURNS_CAL", footerId: "footerText5" },
-                { prop: "RECALLS", footerId: "footerText6" },
-                { prop: "INVENTORY_HOLD", footerId: "footerText7" },
-                { prop: "RELABEL_QTY", footerId: "footerText8" },
-                { prop: "DAMAGE_DESTRUCTION", footerId: "footerText9" },
-                { prop: "SAMPLE_QTY", footerId: "footerText10" }
+                {
+                    prop: "OPEN_STOCK",
+                    icon: "sap-icon://inventory",
+                    color: "Positive"
+                },
+                {
+                    prop: "QUARANTINE",
+                    icon: "sap-icon://alert",
+                    color: "Critical"
+                },
+                {
+                    prop: "RETAINS",
+                    icon: "sap-icon://save",
+                    color: "Neutral"
+                },
+                {
+                    prop: "QUALITY_HOLD",
+                    icon: "sap-icon://synchronize",
+                    color: "Critical"
+                },
+                {
+                    prop: "RETURNS_CAL",
+                    icon: "sap-icon://undo",
+                    color: "Neutral"
+                },
+                {
+                    prop: "RECALLS",
+                    icon: "sap-icon://reset",
+                    color: "Negative"
+                },
+                {
+                    prop: "INVENTORY_HOLD",
+                    icon: "sap-icon://shelf",
+                    color: "Critical"
+                },
+                {
+                    prop: "RELABEL_QTY",
+                    icon: "sap-icon://tag",
+                    color: "Neutral"
+                },
+                {
+                    prop: "DAMAGE_DESTRUCTION",
+                    icon: "sap-icon://delete",
+                    color: "Negative"
+                },
+                {
+                    prop: "SAMPLE_QTY",
+                    icon: "sap-icon://lab",
+                    color: "Neutral"
+                },
+                {
+                    prop: "IN_PROCESS",
+                    icon: "sap-icon://process",
+                    color: "Positive"
+                },
+                {
+                    prop: "TOTAL_QTY",
+                    icon: "sap-icon://sum",
+                    color: "Positive"
+                }
             ];
-
-            const totals = fields.map(field => {
-                return aContexts.reduce((sum, oContext) => {
-                    return sum + (parseFloat(oContext.getProperty(field.prop)) || 0);
+        
+            const totalsData = fields.map(field => {
+                const sum = aContexts.reduce((acc, ctx) => {
+                    return acc + (parseFloat(ctx.getProperty(field.prop)) || 0);
                 }, 0);
+        
+                return {
+                    key: field.prop,
+                    label: oResourceBundle.getText(field.prop), // expects you to have i18n keys like OPEN_STOCK=Open Stock
+                    value: this._formatNumber(sum),
+                    icon: field.icon,
+                    color: field.color
+                };
             });
-
-            fields.forEach((field, index) => {
-                const formattedValue = this._formatNumber(totals[index]);
-                this.byId(field.footerId).setText(formattedValue);
-            });
+        
+            const oTotalsModel = new sap.ui.model.json.JSONModel(totalsData);
+            this.getView().setModel(oTotalsModel, "totals");
         },
-
         _formatNumber(value) {
             return new Intl.NumberFormat("en-US", {
                 maximumFractionDigits: 0
