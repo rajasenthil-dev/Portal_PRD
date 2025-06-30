@@ -195,7 +195,7 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VBELN_VBAK", "leadingProperty": "SVBELN_VBAK"}'/>
                                 </t:customData>
-                                <Text id="_IDGenText521" text="{i18n>SALESBYCURRENTWOPID.VBELN_VBAK}"></Text>
+                                <Text id="_IDGenText521" text="{i18n>SALESBYCURRENT.VBELN_VBAK}"></Text>
                                 <t:template>
                                     <Text id="sku1111" text="{path: 'VBELN_VBAK'}"/>
                                 </t:template>
@@ -217,13 +217,13 @@
                                 </t:customData>
                                 <Text id="_IDGenText24" text="{i18n>SALESBYCURRENT.UNIT_PRICE}"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText25" 
+                                    <Text id="_IDGenText25"
+                                        core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }" 
                                         text="{
-                                            parts: ['UNIT_PRICE', 'WAERK'],
-                                            type: 'CurrencyType',
-                                            formatOptions: {
-                                                currencyCode : false
-                                            }
+                                            parts: [{path:'UNIT_PRICE'}, {path:'WAERK'}],
+                                            formatter: 'Formatter._formatCurrency'
                                         }"
                                     />
                                 </t:template>
@@ -235,26 +235,16 @@
                                 <Text id="_IDGenText4" text="{i18n>SALESBYCURRENT.AMOUNT_NETWR}"></Text>
                                 <t:template> 
                                     <Text id="invoiceAmount" 
-                                        text="{
-                                            parts: ['AMOUNT_NETWR', 'WAERK'],
-                                            type: 'CurrencyType',
-                                            formatOptions: {
-                                                currencyCode : false
-                                            }
-                                        }"/>
-                                </t:template>
-                            </t:Column>
-                            <t:Column id="_IDGenColumn17" width='5rem' sortProperty="WAERK">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "WAERK", "leadingProperty": "WAERK", "columnIndex": 10}'/>
-                                </t:customData>
-                                <Text id="_IDGenText26" text="{i18n>SALESBYCURRENT.WAERK}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText27" 
                                         core:require="{
                                             Formatter: 'salesbycus/model/formatter'
                                         }"
-                                        text="{path: 'WAERK'}"/>
+                                        text="{
+                                            parts: [
+                                                { path: 'AMOUNT_NETWR' },
+                                                { path: 'WAERK' }
+                                            ],
+                                            formatter:'Formatter._formatCurrency'
+                                        }"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn20" width='7.813rem' hAlign="End" sortProperty="EXPIRY_DATE_VFDAT">

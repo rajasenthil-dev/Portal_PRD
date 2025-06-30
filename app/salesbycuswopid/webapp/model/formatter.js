@@ -75,44 +75,22 @@ sap.ui.define([], () => {
             
             return ""; // No icon for undefined or invalid values
         },
-        _formatCurrency: function (value) {
-            if (value == null || value === undefined) {
-              return "";
+        _formatCurrency: function(price, suffix) {
+            if (price === null || price === undefined) {
+                return "--";
             }
-          
-            // Get the locale
-            var sLocale = sap.ui.getCore().getConfiguration().getLocale().getLanguage();
-            var sCurrencyCode;
-          
-            switch (sLocale) {
-                case "en-US":
-                    sCurrencyCode = "USD";
-                    break;
-                case "en-CA":
-                    sCurrencyCode = "CAD";
-                    break;
-                case "fr-CA":
-                    sCurrencyCode = "CAD";
-                    break;
-              // Add more cases as needed for other languages/regions
-                default:
-                    sCurrencyCode = "USD"; // Default currency code
-                    break;
-            }
-          
-            // Create a NumberFormat instance with currency type
-            var oNumberFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance({
-              "currencyCode": false,
-              "customCurrencies": {
-                "MyDollar": {
-                    "isoCode": sCurrencyCode,
-                    "decimals": 2
-                }
-              },
-              groupingEnabled: true,
-              showMeasure: true
+            const oNumberFormat = sap.ui.core.format.NumberFormat.getFloatInstance({
+                groupingEnabled: true,
+                groupingSeparator: ",",
+                decimalSeparator: ".",
+                minFractionDigits: 0,
+                maxFractionDigits: 2
             });
-            return oNumberFormat.format(value, "MyDollar");
+            let formattedPrice = "$" + oNumberFormat.format(price);
+            if (suffix) {
+                formattedPrice += " " + suffix;
+            }
+            return formattedPrice;
         }
 	};
 });

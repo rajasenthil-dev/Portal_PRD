@@ -130,11 +130,6 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : WAERK,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : AUGRU_AUFT,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
