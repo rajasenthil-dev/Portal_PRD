@@ -41,7 +41,7 @@ entity ITEMMASTER
         MANUFACTURERNUMBER    : String(10)    @title: '{i18n>ITEMMASTER.MANUFACTURERNUMBER}';
         MFRNR_PART_NUMBER     : String(40)    @title: '{i18n>ITEMMASTER.MFRNR_PART_NUMBER}';
         MFRNR_NAME            : String(35)    @title: '{i18n>ITEMMASTER.MFRNR_NAME}';
-        STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';
+        
 }
 
 
@@ -168,6 +168,8 @@ entity INVENTORYAUDITTRAIL
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
         NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}';
+        BWART               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.BWART}';
+        BTEXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.BTEXT}'
         
 }
 
@@ -1427,10 +1429,16 @@ define view SHIPSTATUSVKORG as
         key VKORG,
         MANUFACTURER_MFRNR @UI.Hidden
 };
+define view SHIPSTATUSMFRNRNAME as
+    select from SHIPPINGSTATUS distinct {
+        key MANUFACTURER_NAME_MC_NAME1,
+        MANUFACTURER_MFRNR @UI.Hidden
+};
 define view SHIPSTATUSMFRNR as
     select from SHIPPINGSTATUS distinct {
         key MANUFACTURER_MFRNR
 };
+
 
 @cds.persistence.exists
 entity MAINPAGESUMMARY 

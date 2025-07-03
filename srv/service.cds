@@ -50,6 +50,7 @@ using SHIPSTATUSPRODDESC as ENTSHIPSTATUSPRODDESC from '../db/schema';
 using SHIPSTATUSWHSTATUS as ENTSHIPSTATUSWHSTATUS from '../db/schema';
 using SHIPSTATUSVKORG as ENTSHIPSTATUSVKORG from '../db/schema';
 using SHIPSTATUSMFRNR as ENTSHIPSTATUSMFRNR from '../db/schema';
+using SHIPSTATUSMFRNRNAME as ENTSHIPSTATUSMFRNRNAME from '../db/schema';
 
 service PROCESSING {
     // ℹ️ Returns Related Entities
@@ -378,6 +379,12 @@ service PROCESSING {
         { grant: 'READ', to: 'Internal' }
     ]
     entity SHIPSTATUSVKORG as projection on ENTSHIPSTATUSVKORG;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR and $user.SalesOrg = VKORG' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SHIPSTATUSMFRNRNAME as projection on ENTSHIPSTATUSMFRNRNAME;
 
     @requires: 'authenticated-user'
     @restrict: [

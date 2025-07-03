@@ -28,6 +28,7 @@ Search.defaultSearchElement: true,
             KUNNR,
             CUSTOMER_NAME,
             TRAN_TYPE,
+            BTEXT,
             SALES_ORG
         ],
         LineItem  : [
@@ -76,6 +77,11 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : TRAN_TYPE,
                 Label : '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BTEXT,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {

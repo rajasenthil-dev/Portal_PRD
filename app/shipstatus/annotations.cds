@@ -169,4 +169,20 @@ annotate PROCESSING.SHIPPINGSTATUS with @(
             },
         }, 
     );  
+    MANUFACTURER_NAME_MC_NAME1@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SHIPSTATUSMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MANUFACTURER_NAME_MC_NAME1',
+                        ValueListProperty : 'MANUFACTURER_NAME_MC_NAME1'
+                    }
+                ]
+            },
+        }, 
+    );  
 };

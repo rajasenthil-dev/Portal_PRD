@@ -47,6 +47,8 @@
           "semanticObject": "shipstatus",
           "action": "display",
           "title": "{{shipstatus-display.flpTitle}}",
+          "subTitle": "{{flpSubTitle}}",
+          "icon": "{{flpIcon}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"

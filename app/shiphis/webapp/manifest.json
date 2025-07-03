@@ -49,7 +49,7 @@
           "action": "display",
           "title": "{{flpTitle}}",
           "subTitle": "{{flpSubTitle}}",
-          "icon": "{{flpIcon}}",
+          "icon": "{{flpIcon}}", 
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
