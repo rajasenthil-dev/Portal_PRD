@@ -95,7 +95,9 @@ module.exports = cds.service.impl(function() {
         BACKORDERS: `(VKORG <> '1000')`,
         RETURNS: `(CO_VKORG <> '1000')`,
         SHIPPINGSTATUS: `(VKORG <> '1000')`,
-        SHIPSTATUSVKORG: `(VKORG <> '1000')`
+        SHIPSTATUSVKORG: `(VKORG <> '1000')`,
+        MAINPAGESUMMARY: `(VKORG <> '1000')`,
+        MAINPAGEINVENTORY: `(VKORG <> '1000')`
     };
     
     /**

@@ -770,7 +770,7 @@ key LOT_CHARG               : String(10)    @title : '{i18n>SALESBYCURRENT.LOT_C
     PRODUCT_DESCRIPTION_MAKTX : String(40)  @title : '{i18n>SALESBYCURRENT.PRODUCT_DESCRIPTION_MAKTX}'; // Corrected typo in original title implicitly via key
     PROVINCE_REGIO          : String(3)     @title : '{i18n>SALESBYCURRENT.PROVINCE_REGIO}';
     PURCHASE_ORDER_BSTKD    : String(35)    @title : '{i18n>SALESBYCURRENT.PURCHASE_ORDER_BSTKD}';
-    QUANTITY_FKIMG          : Decimal(13,3) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
+    QUANTITY_FKIMG          : Decimal(13,0) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
     RBTXT                   : String(20)    @title : '{i18n>SALESBYCURRENT.RBTXT}';
     SHIP_TO_KUNWE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_KUNWE_ANA}';
     SHIP_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_NAME}';
@@ -1456,6 +1456,7 @@ entity MAINPAGESUMMARY
         QTY_DIFF        : Decimal(23, 2);
         PERCENTAGE_DIFF : Decimal(34, 0);
         MONTH_NAME      : String(8); 
+        VKORG           : String(4);
 }
 
 define view MPSYEAR as
@@ -1490,6 +1491,7 @@ entity MAINPAGEINVENTORY
     DAMAGE_DESTRUCTION      : Decimal(38, 2);
     SAMPLE_QTY              : Decimal(38, 2); 
     MANUFACTURER_MFRPN      : String(10);
+    VKORG                   : String(4);
     
 }
 
