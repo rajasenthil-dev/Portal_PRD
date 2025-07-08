@@ -168,8 +168,6 @@ entity INVENTORYAUDITTRAIL
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
         NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}';
-        BWART               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.BWART}';
-        BTEXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.BTEXT}'
         
 }
 
@@ -721,7 +719,7 @@ key LOT_CHARG               : String(10)    @title : '{i18n>SALESBYCURRENT.LOT_C
     PRODUCT_DESCRIPTION_MAKTX : String(40)  @title : '{i18n>SALESBYCURRENT.PRODUCT_DESCRIPTION_MAKTX}'; 
     PROVINCE_REGIO          : String(3)     @title : '{i18n>SALESBYCURRENT.PROVINCE_REGIO}';
     PURCHASE_ORDER_BSTKD    : String(35)    @title : '{i18n>SALESBYCURRENT.PURCHASE_ORDER_BSTKD}';
-    QUANTITY_FKIMG          : Decimal(13,3) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
+    QUANTITY_FKIMG          : Decimal(13,0) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
     RBTXT                   : String(20)    @title : '{i18n>SALESBYCURRENT.RBTXT}';
     SHIP_TO_KUNWE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_KUNWE_ANA}';
     SHIP_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_NAME}';
