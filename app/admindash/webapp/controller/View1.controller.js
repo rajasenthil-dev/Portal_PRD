@@ -9,7 +9,7 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("admindash.controller.View1", {
-        onInit: async function () {
+        onInit: function () {
             this.oUploadSet = this.byId("fileUploader");
             this._oModel = this.getOwnerComponent().getModel();
             this.getView().setModel(new JSONModel({

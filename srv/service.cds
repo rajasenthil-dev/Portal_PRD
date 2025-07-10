@@ -1452,19 +1452,26 @@ service Media {
         { grant: ['READ', 'WRITE'], to: 'Internal' }
     ]
 
-    entity MediaFile as projection on ENTMediaFile {
-        ID,
+    entity MediaFile as projection on ENTMediaFile{
+        key ID,
+
         fileName,
         manufacturerNumber,
         MFGName,
-        mediaType,
+
+        @Core.MediaType : 'mediaType'
+        @Core.ContentDisposition.Filename : 'fileName'
         content,
-        createdAt,    // <<<<<<< ADD THIS LINE
+
+        @Core.IsMediaType
+        mediaType,
+
+        createdAt,
         modifiedAt,
-        createdBy, // Optional: add if you need to display these
-        modifiedBy, // Optional: add if you need to display these
+        createdBy,
+        modifiedBy,
         url
-    };
+  };
 }
 
 annotate Media.MediaFile with @odata.draft.enabled: true;

@@ -1003,12 +1003,12 @@ define view CMSALESORG as
 entity SHIPPINGHISTORY
 {
         TRK_DLVTO            : String(40)    @title : '{i18n>SHIPPINGHISTORY.TRK_DLVTO}';
-    key VBELN                : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
+        VBELN                : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
     key KUNNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNNR}';
         WADAT_IST            : String(8)     @title : '{i18n>SHIPPINGHISTORY.WADAT_IST}';
         NAME1                : String(35)    @title : '{i18n>SHIPPINGHISTORY.NAME1}';
     key VKORG                : String(4)     @title : '{i18n>SHIPPINGHISTORY.VKORG}';
-        LFUHR                : String(6)     @title : '{i18n>SHIPPINGHISTORY.LFUHR}';
+        //LFUHR                : String(6)     @title : '{i18n>SHIPPINGHISTORY.LFUHR}';
         CARRIER              : String(10)    @title : '{i18n>SHIPPINGHISTORY.CARRIER}';
         CAL_BILL_ITM_COUNT   : Integer       @title : '{i18n>SHIPPINGHISTORY.CAL_BILL_ITM_COUNT}';
     key KUNAG                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNAG}';
@@ -1016,10 +1016,18 @@ entity SHIPPINGHISTORY
         MFRNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.MFRNR}';
         MEINS                : String(3)     @title : '{i18n>SHIPPINGHISTORY.MEINS}';
         PSTLZ                : String(10)    @title : '{i18n>SHIPPINGHISTORY.PSTLZ}';
-        LFDAT                : String(8)     @title : '{i18n>SHIPPINGHISTORY.LFDAT}';
+        //LFDAT                : String(8)     @title : '{i18n>SHIPPINGHISTORY.LFDAT}';
         TRACKN               : String(35)    @title : '{i18n>SHIPPINGHISTORY.TRACKN}';
         CURRENT              : String(3)     @title : '{i18n>SHIPPINGHISTORY.CURRENT}';
         MFRNR_NAME           : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
+        PRODUCT_TYPE         : String(14)    @title : '{i18n>SHIPPINGHISTORY.PROUCT_TYPE}';
+    key GUID_ESI             : Binary(16)    @title : '{i18n>SHIPPINGHISTORY.GUID_ESI}';
+        DELIVERY_DATE        : String(11)    @title : '{i18n>SHIPPINGHISTORY.DELIVERY_DATE}';
+        TRK_STAT_E           : String(4)     @title : '{i18n>SHIPPINGHISTORY.TRK_STAT_E}';
+        TRK_TXT              : String(60)    @title : '{i18n>SHIPPINGHISTORY.TRK_TXT}';
+        TIME_OFF_DELIVERY    : String(9)     @title : '{i18n>SHIPPINGHISTORY.TIME_OFF_DELIVERY}';
+        DOCID                : String(35)    @title : '{i18n>SHIPPINGHISTORY.DOCID}';
+        DELIVERY_TIME_ZONE   : String(6)     @title : '{i18n>SHIPPINGHISTORY.DELIVERY_TIME_ZONE}';
 }
 
 // Shipping History Invoice filter
@@ -1501,7 +1509,7 @@ using { cuid, managed } from '@sap/cds/common';
 // namespace com.yourcompany.media;
 
 entity MediaFile : cuid, managed { // 'cuid' provides 'ID: UUID' as the key. 'managed' provides audit fields.
-                                 // No need to explicitly define 'ID' again.
+key ID                 : UUID;                         // No need to explicitly define 'ID' again.
     @Core.MediaType : mediaType
     @Core.ContentDisposition.Filename : fileName
     content            : LargeBinary;

@@ -26,7 +26,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, LFDAT, TRACKN, CARRIER, VKORG
+            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, DELIVERY_DATE, TRACKN, CARRIER, VKORG
 
         ],
         LineItem : [
@@ -64,15 +64,39 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : PRODUCT_TYPE
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : TRACKN
             },
             {
                 $Type : 'UI.DataField',
-                Value : LFDAT
+                Value : DELIVERY_DATE
             },
             {
                 $Type : 'UI.DataField',
-                Value : LFUHR
+                Value : GUID_ESI
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TRK_STAT_E
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TRK_TXT
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TIME_OFF_DELIVERY
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DELIVERY_TIME_ZONE
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DOCID
             },
             {
                 $Type : 'UI.DataField',

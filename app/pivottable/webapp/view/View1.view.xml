@@ -11,7 +11,7 @@
                 <f:DynamicPageHeader id="dynamicPageHeader" class="noPadding">
             <m:FlexBox id="headerFlexBox" width="100%" direction="Row" wrap="Wrap" justifyContent="SpaceBetween" class="headerPadding sapUiMediumMarginBottom borderBottom">
                 <m:HeaderContainer id="logoContainer" scrollStep="200" height="100px">
-                    <m:FlexBox id="_IDGenFlexBox" alignItems="Center" height="100px">
+                    <!-- <m:FlexBox id="_IDGenFlexBox" alignItems="Center" height="100px">
                         <m:FlexBox id="_IDGenFlexBox1" alignItems="Center" height="75px" class="imgBG">
                             <m:Image 
                             core:require="{
@@ -20,7 +20,7 @@
                             src="{path: 'logo>url', formatter: 'Formatter.formatUrl.bind($controller)'}"
                             id="logoImage" width="125px" decorative="false" press="onLogoPressed" tooltip="SAP Logo"/>
                         </m:FlexBox>
-                    </m:FlexBox>
+                    </m:FlexBox> -->
                 </m:HeaderContainer>
                 <!-- <m:HeaderContainer id="refreshContainer" scrollStep="200">
                     <m:GenericTile id="refreshTile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="{path: 'refreshTime'}" frameType="OneByHalf">
@@ -30,7 +30,7 @@
                     </m:GenericTile>
                 </m:HeaderContainer> -->
             </m:FlexBox>
-            <sf:SmartFilterBar id="smartFilterBar" entitySet="" filterChange="onFilterBarFilterChange" useDateRangeType="true" persistencyKey="SmartFilterBar_BACKORDERS" smartVariant="pageVariant" liveMode="true" search="onSearch">
+            <!-- <sf:SmartFilterBar id="smartFilterBar" entitySet="" filterChange="onFilterBarFilterChange" useDateRangeType="true" persistencyKey="SmartFilterBar_BACKORDERS" smartVariant="pageVariant" liveMode="true" search="onSearch">
                 <sf:controlConfiguration>
                     <sf:ControlConfiguration id="_IDGenControlConfiguration" label="Company" />
                     <sf:ControlConfiguration id="_IDGenControlConfiguration1" label="Customer" />
@@ -38,8 +38,8 @@
                     <sf:ControlConfiguration id="_IDGenControlConfiguration3" label="Date" />
                     <sf:ControlConfiguration id="_IDGenControlConfiguration4" label="Type" />
                 </sf:controlConfiguration>
-            </sf:SmartFilterBar>
-            <m:Panel id="summaryPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+            </sf:SmartFilterBar> -->
+            <!-- <m:Panel id="summaryPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
                 <m:HeaderContainer id="summaryContainer" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
                     <m:FlexBox id="_IDGenFlexBox2" class="mck_Tile" direction="Column">
                         <m:Title id="_IDGenTitle" class="mck_TileContentTitle" text="{i18n>backordersTileTitle}"/>
@@ -82,7 +82,7 @@
                             id="TileContent5" class="mck_TileContent" text="{path: 'unitsToBeReceived', type:'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: true , groupingSeperator : ','}}"/>
                     </m:FlexBox>
                 </m:HeaderContainer>
-            </m:Panel>
+            </m:Panel> -->
             </f:DynamicPageHeader>
             </f:header>
             <f:content>

@@ -49,7 +49,7 @@
                                     module: 'sap.ui.comp.config.condition.DateRangeType'
                                 }" />
                             <sf:ControlConfiguration id="_IDGenControlConfiguration2"
-                                key="LFDAT"
+                                key="DELIVERY_DATE"
                                 visibleInAdvancedArea="true"
                                 conditionType="{
                                     module: 'sap.ui.comp.config.condition.DateRangeType'
@@ -182,13 +182,13 @@
                                     <Text id="_IDGenText141" text="{PSTLZ}" />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="LFDAT">
+                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="DELIVERY_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "LFDAT", "leadingProperty": "LFDAT", "columnIndex": 7}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATE", "leadingProperty": "DELIVERY_DATE", "columnIndex": 7}'/>
                                 </t:customData>
-                                <Text id="_IDGenText8" text="{i18n>SHIPPINGHISTORY.LFDAT}"/>
+                                <Text id="_IDGenText8" text="{i18n>SHIPPINGHISTORY.DELIVERY_DATE}"/>
                                 <t:template>
-                                     <Text id="_IDGenText12" text="{=${LFDAT}==='00000000' ? ${i18n>noDate} : ${path: 'LFDAT', type: 'sap.ui.model.odata.type.Date'}}" /> </t:template>
+                                     <Text id="_IDGenText12" text="{=${DELIVERY_DATE}==='00000000' ? ${i18n>noDate} : ${path: 'DELIVERY_DATE', type: 'sap.ui.model.odata.type.Date'}}" /> </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn4" width="7.813rem" hAlign="End" sortProperty="LFUHR">
                                 <t:customData>
