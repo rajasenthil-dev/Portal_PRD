@@ -99,13 +99,41 @@ module.exports = cds.service.impl(function() {
         MAINPAGESUMMARY: `(VKORG <> '1000')`,
         MAINPAGEINVENTORY: `(VKORG <> '1000')`
     };
-    
+    const excludedSKUsFor0001000005 = {
+        SALESBYCURRENT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        SALESBYCURRENTWOPID: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        ITEMMASTER: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        INVENTORYSTATUS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        INVENTORYBYLOT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        INVENTORYVALUATION: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        INVENTORYAUDITTRAIL:['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'], 
+        INVENTORYSNAPSHOT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        PRICING: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        OPENORDERS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        BACKORDERS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        SHIPPINGSTATUS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+        MAINPAGEINVENTORY: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062']
+    };
+    const skuFieldMap = {
+        SALESBYCURRENT: 'SKU_MATNR',
+        SALESBYCURRENTWOPID: 'SKU_MATNR',
+        ITEMMASTER: 'PRODUCT',
+        INVENTORYSTATUS: 'SKU_MATNR',
+        INVENTORYBYLOT: 'MATNR',
+        INVENTORYVALUATION: 'MATNR',
+        INVENTORYAUDITTRAIL:'MATNR', 
+        INVENTORYSNAPSHOT: 'MATNR',
+        PRICING: 'MATNR',
+        OPENORDERS: 'MATNR',
+        BACKORDERS: 'MATNR',
+        SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO ',
+        MAINPAGEINVENTORY: 'SKU_MATNR'
+    };
     /**
      * Manufacturer → Entity Filter Map
      */
     const manufacturerFilterMap = {
-        '0001000019': entityFilterMapFor0001000019,
-        '0001000005': entityFilterMapFor0001000005
+        '0001000019': entityFilterMapFor0001000019
     };
     
     // --- Generic 'before READ' Handler ---
@@ -113,21 +141,37 @@ module.exports = cds.service.impl(function() {
         const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
         const fullEntityName = req.target?.name;
         const entityName = fullEntityName?.split('.').pop();
-    
+
         console.log(`READ handler for ${entityName} - ManufacturerNumber: ${userManufacturer}`);
-    
-        if (manufacturerFilterMap[userManufacturer]) {
-        const entityFilters = manufacturerFilterMap[userManufacturer];
-        const filter = entityFilters[entityName];
-    
-        if (filter) {
-            console.log(`Applying exclusion filter for manufacturer ${userManufacturer} on entity: ${entityName}`);
-            try {
-            req.query.where(filter);
-            } catch (e) {
-            console.warn(`Entity ${entityName} does not support filtering`);
+
+        // 🎯 SKU-based filtering for 0001000005
+        if (userManufacturer === '0001000005') {
+            const excludedSKUs = excludedSKUsFor0001000005[entityName];
+            const skuField = skuFieldMap[entityName];
+
+            if (excludedSKUs?.length && skuField) {
+                const skuFilter = `${skuField} NOT IN (${excludedSKUs.map(sku => `'${sku}'`).join(', ')})`;
+                console.log(`Applying SKU exclusion filter for manufacturer 0001000005 on entity ${entityName}: ${skuFilter}`);
+                try {
+                    req.query.where(skuFilter);
+                } catch (e) {
+                    console.warn(`Entity ${entityName} does not support filtering`);
+                }
+                return; // ✅ early return — skip VKORG-based filter
             }
         }
+
+        // 🧾 VKORG-based filtering for 0001000019 and others in the map
+        const entityFilters = manufacturerFilterMap[userManufacturer];
+        const filter = entityFilters?.[entityName];
+
+        if (filter) {
+            console.log(`Applying VKORG exclusion filter for manufacturer ${userManufacturer} on entity: ${entityName}`);
+            try {
+                req.query.where(filter);
+            } catch (e) {
+                console.warn(`Entity ${entityName} does not support filtering`);
+            }
         }
     });
     /**

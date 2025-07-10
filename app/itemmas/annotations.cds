@@ -78,12 +78,6 @@ annotate INVENTORY.ITEMMASTER with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : STPRS,
-                Label : '{i18n>ITEMMASTER.STPRS}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : DIN,
                 Label : '{i18n>ITEMMASTER.DIN}',
                 ![@HTML5.CssDefaults] : {width : '3.125rem'}

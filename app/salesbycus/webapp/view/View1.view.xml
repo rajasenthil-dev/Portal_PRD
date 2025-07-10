@@ -193,7 +193,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn231" width='7.813rem' hAlign="End" sortProperty="VBELN_VBAK">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VBELN_VBAK", "leadingProperty": "SVBELN_VBAK"}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VBELN_VBAK", "leadingProperty": "VBELN_VBAK"}'/>
                                 </t:customData>
                                 <Text id="_IDGenText521" text="{i18n>SALESBYCURRENT.VBELN_VBAK}"></Text>
                                 <t:template>
