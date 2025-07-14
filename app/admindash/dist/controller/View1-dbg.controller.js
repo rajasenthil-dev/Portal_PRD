@@ -22,7 +22,7 @@ sap.ui.define([
                 existingMfgNames: []       // Existing Manufacturer Names 
             }), "ui");
             this._binding = null;
-
+            this.getView().getModel("ui").setProperty("/isEditMode", true);
             this._fetchExistingManufacturers();
             
         },
@@ -69,52 +69,105 @@ sap.ui.define([
         },
         // Open the dialog
         onOpenDialog: function () {
+            const oUiModel = this.getView().getModel("ui");
+            oUiModel.setProperty("/isEditMode", false);
             this.getView().byId("addManufacturerDialog").open();
         },
-
+        onEditPress: function () {
+            const oTable = this.byId("idMediaFilesTable");
+            const aSelectedItems = oTable.getSelectedItems();
+        
+            if (aSelectedItems.length !== 1) {
+                MessageBox.warning("Please select exactly one file to edit.");
+                return;
+            }
+        
+            const oContext = aSelectedItems[0].getBindingContext();
+            const oData = oContext.getObject();
+            const oUiModel = this.getView().getModel("ui");
+            oUiModel.setProperty("/isEditMode", true);
+        
+            // Populate UI model with selected data
+            oUiModel.setProperty("/manufacturerNumber", oData.manufacturerNumber);
+            oUiModel.setProperty("/mfgName", oData.MFGName);
+            oUiModel.setProperty("/fileData", {
+                fileName: oData.fileName,
+                fileType: oData.mediaType,
+                fileUrl: oData.url
+            });
+        
+            // Store the binding context for reuse (for PATCH later)
+            this._editBindingContext = oContext;
+        
+            // Open the dialog in edit mode
+            this.getView().byId("addManufacturerDialog").open();
+        },
         // Close the dialog
         onCloseDialog: function () {
             this.getView().byId("addManufacturerDialog").close();
         },
         onUploadPress: async function () {
-            var oUiModel = this.getView().getModel("ui");
-            var oFile = oUiModel.getProperty("/fileData/file");
-            var sManufacturerNumber = oUiModel.getProperty("/manufacturerNumber");
-            var sMFGName = oUiModel.getProperty("/mfgName");
-            var sToken = oUiModel.getProperty("/csrfToken");
-
-            // Normalize values to lowercase for case-insensitive comparison
-            var existingManufacturers = oUiModel.getProperty("/existingManufacturers").map(num => num.toLowerCase());
-            var existingMfgNames = oUiModel.getProperty("/existingMfgNames").map(name => name.toLowerCase());
-
-            // Check if manufacturer number already exists (case-insensitive)
-            if (existingManufacturers.includes(sManufacturerNumber.toLowerCase())) {
+            const isEditMode = !!this._editBindingContext;
+            const oUiModel = this.getView().getModel("ui");
+            const oFile = oUiModel.getProperty("/fileData/file");
+            const sManufacturerNumber = oUiModel.getProperty("/manufacturerNumber");
+            const sMFGName = oUiModel.getProperty("/mfgName");
+            const sToken = oUiModel.getProperty("/csrfToken");
+        
+            // Normalize values
+            const existingManufacturers = oUiModel.getProperty("/existingManufacturers").map(num => num.toLowerCase());
+            const existingMfgNames = oUiModel.getProperty("/existingMfgNames").map(name => name.toLowerCase());
+            const currentManufacturerNumber = isEditMode ? this._editBindingContext.getProperty("manufacturerNumber").toLowerCase() : null;
+            const currentMFGName = isEditMode ? this._editBindingContext.getProperty("MFGName").toLowerCase() : null;
+        
+            // Check for duplicate number
+            if (
+                existingManufacturers.includes(sManufacturerNumber.toLowerCase()) &&
+                (!isEditMode || sManufacturerNumber.toLowerCase() !== currentManufacturerNumber)
+            ) {
                 MessageBox.error("This Manufacturer Number already exists.");
-                return; // Prevent upload
+                return;
             }
-
-            // Check if manufacturer name already exists (case-insensitive)
-            if (existingMfgNames.includes(sMFGName.toLowerCase())) {
+        
+            // Check for duplicate name
+            if (
+                existingMfgNames.includes(sMFGName.toLowerCase()) &&
+                (!isEditMode || sMFGName.toLowerCase() !== currentMFGName)
+            ) {
                 MessageBox.error("This Manufacturer Name already exists.");
-                return; // Prevent upload
+                return;
             }
-
-            if (!this._validateUploadInputs(sManufacturerNumber, sMFGName, oFile)) return;
-            
+        
+            // Validate inputs (oFile is optional in edit mode)
+            if (!this._validateUploadInputs(sManufacturerNumber, sMFGName, oFile, isEditMode)) return;
+        
             try {
+                // Prepare context
                 if (!this._binding) {
-                    const response = await this._createDraft(sManufacturerNumber, sMFGName, oFile.name, oFile.type, sToken);
-                    if (response?.context) {
-                        this._binding = this.getView().getModel().bindContext(response.context.getPath(), null, {
+                    if (isEditMode) {
+                        this._binding = this.getView().getModel().bindContext(this._editBindingContext.getPath(), null, {
                             $$updateGroupId: "UploadGroup"
                         });
+                    } else {
+                        const response = await this._createDraft(sManufacturerNumber, sMFGName, oFile.name, oFile.type, sToken);
+                        if (response?.context) {
+                            this._binding = this.getView().getModel().bindContext(response.context.getPath(), null, {
+                                $$updateGroupId: "UploadGroup"
+                            });
+                        }
                     }
                 }
-                
-                await this._updateDraftWithContent(this._binding.getPath(), oFile, oFile.type, oFile.name, sToken);
+        
+                // If a file is selected, upload it
+                if (oFile) {
+                    await this._updateDraftWithContent(this._binding.getPath(), oFile, oFile.type, oFile.name, sToken);
+                }
+        
+                // Activate the draft
                 await this._activateDraft(this._binding.getPath(), sToken);
-                
+        
                 MessageBox.success("File uploaded successfully.");
+                this._editBindingContext = null;
                 this._resetForm();
                 this.onCloseDialog();
             } catch (error) {
@@ -139,10 +192,10 @@ sap.ui.define([
             .catch(error => console.error("Error fetching CSRF token: ", error));
         },
 
-        _validateUploadInputs: function (sManufacturerNumber, sMFGName, oFile) {
+        _validateUploadInputs: function (sManufacturerNumber, sMFGName, oFile, isEditMode) {
             if (!sManufacturerNumber) return MessageBox.error("Please enter a Manufacturer Number."), false;
             if (!sMFGName) return MessageBox.error("Please enter an MFG Name."), false;
-            if (!oFile) return MessageBox.error("Please choose a file to upload."), false;
+            if (!oFile && !isEditMode) return MessageBox.error("Please choose a file to upload."), false;
             return true;
         },
 
@@ -253,6 +306,7 @@ sap.ui.define([
         // },
 
         _activateDraft: function (sPath, csrfToken) {
+            debugger
             var sAppPath = sap.ui.require.toUrl("admindash").split("/resources")[0];
             if(sAppPath === ".") {
                 sAppPath = "";

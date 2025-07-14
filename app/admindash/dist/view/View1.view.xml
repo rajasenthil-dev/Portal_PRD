@@ -28,6 +28,8 @@
                             <Title id="tableTitle" text="Manufacturer Logos" level="H2"/>
                             <ToolbarSpacer id="toolbarSpacer" />
                             <Button id="openAddDialogButton" text="Add New Logo" press=".onOpenDialog" type="Emphasized" icon="sap-icon://add"/>
+                            <Button id="editSelectedButton" text="Edit Selected" press=".onEditPress" type="Transparent" icon="sap-icon://edit"
+                                enabled="{= ${idMediaFilesTable>/selectedContexts}.length === 1 }"/>
                             <Button id="deleteSelectedButton" text="Delete Selected" press=".onDeleteDraft" type="Reject" icon="sap-icon://delete"
                                 enabled="{= ${idMediaFilesTable>/selectedContexts}.length > 0 }"/>
                         </content>
@@ -94,7 +96,7 @@
             </Table>
             </VBox>
             </HBox>
-            <Dialog id="addManufacturerDialog" title="Add New Manufacturer Logo"
+            <Dialog id="addManufacturerDialog" title="{= ${ui>/isEditMode} ? 'Edit Manufacturer Logo' : 'Add New Manufacturer Logo' }"
                 stretch="{= !${device>/system/desktop} }"
                 busyIndicatorDelay="0"
                 busy="{ui>/isUploading}"
@@ -140,7 +142,7 @@
                     </form:SimpleForm>
                 </content>
                 <beginButton>
-                    <Button id="uploadButton" text="Upload &amp; Activate" press=".onUploadPress" type="Emphasized" enabled="{= !${ui>/isUploading} &amp;&amp; !!${ui>/fileData} }">
+                    <Button id="uploadButton" text="{= ${ui>/isEditMode} ? 'Save Changes' : 'Upload &amp; Activate' }" press=".onUploadPress" type="Emphasized" enabled="{= !${ui>/isUploading} &amp;&amp; !!${ui>/fileData} }">
                         <layoutData><OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow"/></layoutData>
                     </Button>
                 </beginButton>
