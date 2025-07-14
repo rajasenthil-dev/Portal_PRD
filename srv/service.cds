@@ -1457,30 +1457,6 @@ service Media {
 }
 annotate Media.MediaFile with @odata.draft.enabled: true;
 
-using MediaFile as ENTAdminMediaFile from '../db/schema';
-
-service AdminMedia {
-    @requires: 'authenticated-user'
-    @restrict: [
-        { grant: ['READ', 'WRITE'], to: 'Internal' }
-    ]
-    entity MediaFile as projection on ENTAdminMediaFile {
-        key ID, 
-            fileName,
-            manufacturerNumber,
-            MFGName,
-            @Core.MediaType : 'mediaType' 
-            @Core.ContentDisposition.Filename : 'fileName' 
-            content,
-            @Core.IsMediaType
-            mediaType,        
-            createdAt,
-            modifiedAt,
-            createdBy,
-            modifiedBy,
-            url
-    };
-}
 
 
 
