@@ -17,6 +17,11 @@
             "name": "$XSAPPNAME.Internal",
             "description": "Internal User",
             "grant-as-authority-to-apps": ["mck-portal"]
+        },
+        {
+            "name": "$XSAPPNAME.Admin",
+            "description": "Admin User",
+            "grant-as-authority-to-apps": ["mck-portal"]
         }
     ],
     "attributes": [
@@ -80,6 +85,14 @@
             "scope-references": [
                 "uaa.user",
                 "$XSAPPNAME.Internal"
+            ]
+        },
+        {
+            "name": "Admin",
+            "description": "generated",
+            "scope-references": [
+                "uaa.user",
+                "$XSAPPNAME.Admin"
             ]
         },
         {

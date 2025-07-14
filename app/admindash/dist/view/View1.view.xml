@@ -34,7 +34,7 @@
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>
-                    <Column visible="false"><Text text="ID"/></Column>
+                
 
                     <Column id="mfgNumberCol" width="15%"><Text id="mfgNumberColText" text="Man. Number" /></Column>
                     <Column id="mfgNameCol" width="20%"><Text id="mfgNameColText" text="Man. Name" /></Column>
@@ -46,12 +46,12 @@
                 <items>
                     <ColumnListItem id="tableItemTemplate" vAlign="Middle" type="Navigation" press=".onListItemPress">
                         <cells>
-                            <Text text="{ID}" visible="false"/>
+                            
                             <Text id="itemMfgNumber" text="{manufacturerNumber}" />
                             <Text id="itemMfgName" text="{MFGName}" />
                             <Text id="itemFileName" text="{fileName}" />
                             <!-- <CheckBox id="itemIsPlaceholder" selected="{isPlaceholder}" editable="false" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom" /> -->
-                            <Image 
+                             <Image 
                                 core:require="{
                                     Formatter: 'admindash/model/formatter'
                                 }" 

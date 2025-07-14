@@ -225,6 +225,16 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : TIME_OFF_DELIVERY,
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DELIVERY_DATE,
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : VGBEL,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },

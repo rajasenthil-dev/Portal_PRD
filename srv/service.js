@@ -611,27 +611,40 @@ module.exports = cds.service.impl(function() {
     };
 
     this.on('READ', 'MediaFile', async (req, next) => {
-        const user = req.user;
-
-        // define internal user detection logic
-        const isInternal = req.user.is('Internal')
-
-        if (isInternal) {
-            // Option 1: hard reject
-            //req.reject(403, 'Internal users cannot list all manufacturers. Showing fallback instead.');
-
-            //Option 2: return a fallback instead of rejecting
-            return [{
-                        MFGName: "McKesson Canada"
-                    }];
-
-            // just comment/uncomment which strategy you want
-            //return;
-        }
-        return next();
-
         
-    });
+        const isAdmin = req.user.is('Admin');
+        const isInternal = req.user.is('Internal') && !isAdmin;
+        // If admin, do not apply fallback logic to avoid breaking UI
+        if (isAdmin) {
+          return next(); // Return real data only
+        }
+      
+        let results = await next();
+      
+        if (isInternal) {
+          console.log("Internal user detected — injecting fallback record");
+      
+          if (!Array.isArray(results)) results = [];
+      
+          results.unshift({
+            ID: "be12312c-826f-4249-ab71-0823b1929824",
+            MFGName: "McKesson",
+            content: "image/jpeg",
+            createdAt: new Date().toISOString(),
+            createdBy: "system",
+            fileName: "MCKCAN1.jpg",
+            manufacturerNumber: "0002020000",
+            mediaType: "image/jpeg",
+            modifiedAt: new Date().toISOString(),
+            modifiedBy: "system",
+            url: "/fallback.jpg", // Or use static hosting
+            IsActiveEntity: true,
+            isFallbackStub: true
+          });
+        }
+      
+        return results;
+      });
     // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 

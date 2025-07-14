@@ -64,6 +64,13 @@
                                     module: 'sap.ui.comp.config.condition.DateRangeType'
                                 }"
                             />
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration4"
+                                key="DELIVERY_DATE"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }"
+                            />
                         </sf:controlConfiguration>
                         <sf:controlConfiguration>
                             <sf:ControlConfiguration id="customCurrentFilter"
@@ -305,9 +312,18 @@
                                     <Text id="DeliveryDate1" text="{path: 'DELEVERY_DATE_VDATU', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn218" width='7.813rem' hAlign="End" sortProperty="DELIVERY_DATE">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATE", "leadingProperty": "DELIVERY_DATE", "columnIndex": 33}'/>
+                                </t:customData>
+                                <Text id="_IDGenText518" text="{i18n>SALESBYCURRENT.DELIVERY_DATE}"></Text>
+                                <t:template>
+                                    <Text id="DeliveryDate18" text="{path: 'DELIVERY_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn9" width='7.813rem' hAlign="End" sortProperty="TRACKING_TRACKN">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "TRACKING_TRACKN", "leadingProperty": "TRACKING_TRACKN", "columnIndex": 33}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "TRACKING_TRACKN", "leadingProperty": "TRACKING_TRACKN", "columnIndex": 34}'/>
                                 </t:customData>
                                 <Text id="_IDGenText14" text="{i18n>SALESBYCURRENT.TRACKING_TRACKN}"></Text>
                                 <t:template>
@@ -317,7 +333,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End" visible="{= !${userPermissions>/shouldHidePatientId} }" sortProperty="PATIENT_ID">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PATIENT_ID", "leadingProperty": "PATIENT_ID", "columnIndex": 34}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PATIENT_ID", "leadingProperty": "PATIENT_ID", "columnIndex": 35}'/>
                                 </t:customData>
                                 <Text id="_IDGenText17" text="{i18n>SALESBYCURRENT.PATIENT_ID}"></Text>
                                 <t:template>
@@ -327,7 +343,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn13" width='7.813rem' hAlign="End" sortProperty="CO_VKORG">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "CO_VKORG", "leadingProperty": "CO_VKORG", "columnIndex": 36}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CO_VKORG", "leadingProperty": "CO_VKORG", "columnIndex": 37}'/>
                                 </t:customData>
                                 <Text id="_IDGenText16" text="{i18n>SALESBYCURRENT.CO_VKORG}"></Text>
                                 <t:template>
@@ -337,7 +353,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn14" width='7.813rem' hAlign="End" sortProperty="VKBUR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 37}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKBUR", "leadingProperty": "VKBUR", "columnIndex": 38}'/>
                                 </t:customData>
                                 <Text id="_IDGenText20" text="{i18n>SALESBYCURRENT.VKBUR}"></Text>
                                 <t:template>
@@ -347,7 +363,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn15" width='7.813rem' hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 38}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 39}'/>
                                 </t:customData>
                                 <Text id="_IDGenText22" text="{i18n>SALESBYCURRENT.MFRNR}"></Text>
                                 <t:template>

@@ -743,6 +743,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
+    TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
+    DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -792,6 +794,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
+    TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
+    DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -1509,12 +1513,12 @@ using { cuid, managed } from '@sap/cds/common';
 // namespace com.yourcompany.media;
 
 entity MediaFile : cuid, managed { // 'cuid' provides 'ID: UUID' as the key. 'managed' provides audit fields.
-key ID                 : UUID;                         // No need to explicitly define 'ID' again.
+                         // No need to explicitly define 'ID' again.
     @Core.MediaType : mediaType
     @Core.ContentDisposition.Filename : fileName
     content            : LargeBinary;
     fileName           : String;
-    mediaType          : String @Core.IsMediaType;
+    mediaType          : String;
     url                : String;
     manufacturerNumber : String(50);
     MFGName            : String(255);

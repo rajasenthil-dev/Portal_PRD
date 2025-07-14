@@ -1449,30 +1449,38 @@ service Media {
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '($user.ManufacturerNumber = manufacturerNumber)' },
-        { grant: ['READ', 'WRITE'], to: 'Internal' }
+        { grant: 'READ', to: 'Internal' },
+        { grant: ['READ', 'WRITE'], to: 'Admin' }
     ]
 
-    entity MediaFile as projection on ENTMediaFile{
-        key ID,
+    entity MediaFile as projection on ENTMediaFile;
+}
+annotate Media.MediaFile with @odata.draft.enabled: true;
 
-        fileName,
-        manufacturerNumber,
-        MFGName,
+using MediaFile as ENTAdminMediaFile from '../db/schema';
 
-        @Core.MediaType : 'mediaType'
-        @Core.ContentDisposition.Filename : 'fileName'
-        content,
-
-        @Core.IsMediaType
-        mediaType,
-
-        createdAt,
-        modifiedAt,
-        createdBy,
-        modifiedBy,
-        url
-  };
+service AdminMedia {
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: ['READ', 'WRITE'], to: 'Internal' }
+    ]
+    entity MediaFile as projection on ENTAdminMediaFile {
+        key ID, 
+            fileName,
+            manufacturerNumber,
+            MFGName,
+            @Core.MediaType : 'mediaType' 
+            @Core.ContentDisposition.Filename : 'fileName' 
+            content,
+            @Core.IsMediaType
+            mediaType,        
+            createdAt,
+            modifiedAt,
+            createdBy,
+            modifiedBy,
+            url
+    };
 }
 
-annotate Media.MediaFile with @odata.draft.enabled: true;
+
 
