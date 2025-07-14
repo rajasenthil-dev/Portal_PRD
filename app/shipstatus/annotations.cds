@@ -4,7 +4,7 @@ annotate PROCESSING.SHIPPINGSTATUS with @(
     Search.defaultSearchElement: true,
     UI : {
         SelectionFields  : [
-            OBD_ITEM_NO_ITEMNO,
+            SKU_PRODUCTNO,
             CUSTOMER_PO_BSTNK,
             PRODUCT_DESCRIPTION_MAKTX,
             PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS,
@@ -18,7 +18,7 @@ annotate PROCESSING.SHIPPINGSTATUS with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : OBD_ITEM_NO_ITEMNO
+                Value : SKU_PRODUCTNO
             },
             {
                 $Type : 'UI.DataField',
@@ -75,7 +75,7 @@ annotate PROCESSING.SHIPPINGSTATUS with @(
         ]
     } 
 ){
-    OBD_ITEM_NO_ITEMNO@(
+    SKU_PRODUCTNO@(
         Common: {
             ValueList : {
                 $Type : 'Common.ValueListType',
@@ -83,8 +83,8 @@ annotate PROCESSING.SHIPPINGSTATUS with @(
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'OBD_ITEM_NO_ITEMNO',
-                        ValueListProperty : 'OBD_ITEM_NO_ITEMNO'
+                        LocalDataProperty : 'SKU_PRODUCTNO',
+                        ValueListProperty : 'SKU_PRODUCTNO'
                     }
                 ]
             },

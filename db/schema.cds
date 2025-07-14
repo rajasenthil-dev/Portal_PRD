@@ -707,7 +707,7 @@ entity SALESBYCURRENT
 key CO_VKORG                : String(4)     @title : '{i18n>SALESBYCURRENT.CO_VKORG}';
     COMMENT                 : String(13)    @title : '{i18n>SALESBYCURRENT.COMMENT}';
     CURRENT                 : String(3)     @title : '{i18n>SALESBYCURRENT.CURRENT}';
-    DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; 
+    //DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; 
     EXPIRY_DATE_VFDAT       : String(8)     @title : '{i18n>SALESBYCURRENT.EXPIRY_DATE_VFDAT}';
 key INVOICE_CREDIT_VBELN    : String(10)    @title : '{i18n>SALESBYCURRENT.INVOICE_CREDIT_VBELN}';
     INVOICE_DATE_FKDAT      : String(8)     @title : '{i18n>SALESBYCURRENT.INVOICE_DATE_FKDAT}';
@@ -759,7 +759,7 @@ entity SALESBYCURRENTWOPID
 key CO_VKORG                : String(4)     @title : '{i18n>SALESBYCURRENT.CO_VKORG}';
     COMMENT                 : String(13)    @title : '{i18n>SALESBYCURRENT.COMMENT}';
     CURRENT                 : String(3)     @title : '{i18n>SALESBYCURRENT.CURRENT}';
-    DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; // Note: Typo 'DELEVERY' kept in field name
+    //DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; // Note: Typo 'DELEVERY' kept in field name
     EXPIRY_DATE_VFDAT       : String(8)     @title : '{i18n>SALESBYCURRENT.EXPIRY_DATE_VFDAT}';
 key INVOICE_CREDIT_VBELN    : String(10)    @title : '{i18n>SALESBYCURRENT.INVOICE_CREDIT_VBELN}';
     INVOICE_DATE_FKDAT      : String(8)     @title : '{i18n>SALESBYCURRENT.INVOICE_DATE_FKDAT}';
@@ -1397,7 +1397,6 @@ define view BOVKORG as
 entity SHIPPINGSTATUS
 {
     key OBD_NO_DOCNO_C                              : String(10)        @title: 'Delivery #';
-    key OBD_ITEM_NO_ITEMNO                          : String(10)        @title: 'SKU';
         OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp         @title: 'Plant Time';
     key PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27)        @title: 'Warehouse Status';
         SO_NO_REFDOCNO                              : String(35)        @title: 'Sales Order #';
@@ -1410,13 +1409,15 @@ entity SHIPPINGSTATUS
         PRODUCT_DESCRIPTION_MAKTX                   : String(40)        @title: 'Product Description';
         REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Requested Delivery Date';
     key SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
+        AUDAT                                       : String(8)         @title: 'Document Date';
         SHIP_TO_NAME_PARTNER                        : String(10)        @title: 'Ship To Name';
+        MANUFACTURER_MFRNR                          : String(10)        @title: 'Manufacturer #';
         MANUFACTURER_NAME_MC_NAME1                  : String(35)        @title: 'Manufacturer Name';
-        MANUFACTURER_MFRNR                          : String(10)        @title: 'Manufacturer #'
+        SKU_PRODUCTNO                               : String(7)         @title: 'SKU';
 }
 define view SHIPSTATUSSKU as
     select from SHIPPINGSTATUS distinct {
-        key OBD_ITEM_NO_ITEMNO,
+        key SKU_PRODUCTNO,
         MANUFACTURER_MFRNR @UI.Hidden
 };
 define view SHIPSTATUSCUSTPO as

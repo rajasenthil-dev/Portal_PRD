@@ -8,6 +8,10 @@
     xmlns:sf="sap.ui.comp.smartfilterbar"
     xmlns:st="sap.ui.comp.smarttable"
     xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    core:require="{
+        CurrencyType: 'sap/ui/model/type/Currency',
+        DateType: 'sap/ui/model/type/Date
+    }"
     displayBlock="true">
     <App id="app">
         <f:DynamicPage id="dynamicPage" showFooter="true">
@@ -181,7 +185,8 @@
                                 </t:customData>
                                 <Text id="_IDGenText5" text="{i18n>SALESBYCURRENTWOPID.INVOICE_DATE_FKDAT}"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate1" text="{path: 'INVOICE_DATE_FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="invoiceDate1" text="{
+                                    path: 'INVOICE_DATE_FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn23" width='7.813rem' hAlign="End" sortProperty="SKU_MATNR">
@@ -302,7 +307,7 @@
                                         text="{path: 'WERKS'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn21" width='7.813rem' hAlign="End" sortProperty="DELEVERY_DATE_VDATU">
+                            <!-- <t:Column id="_IDGenColumn21" width='7.813rem' hAlign="End" sortProperty="DELEVERY_DATE_VDATU">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DELEVERY_DATE_VDATU", "leadingProperty": "DELEVERY_DATE_VDATU", "columnIndex": 32}'/>
                                 </t:customData>
@@ -310,14 +315,17 @@
                                 <t:template>
                                     <Text id="DeliveryDate1" text="{path: 'DELEVERY_DATE_VDATU', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
-                            </t:Column>
+                            </t:Column> -->
                             <t:Column id="_IDGenColumn28" width='7.813rem' hAlign="End" sortProperty="DELIVERY_DATE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATE", "leadingProperty": "DELIVERY_DATE", "columnIndex": 33}'/>
                                 </t:customData>
                                 <Text id="_IDGenText58" text="{i18n>SALESBYCURRENTWOPID.DELIVERY_DATE}"></Text>
                                 <t:template>
-                                    <Text id="DeliveryDate8" text="{path: 'DELIVERY_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="DeliveryDate8" text="{
+                                        path: 'DELIVERY_DATE', 
+                                        type: 'sap.ui.model.type.Date'
+                                    }"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn9" width='7.813rem' hAlign="End" sortProperty="TRACKING_TRACKN">
