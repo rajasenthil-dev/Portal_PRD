@@ -1006,32 +1006,32 @@ define view CMSALESORG as
 @cds.persistence.exists
 entity SHIPPINGHISTORY
 {
-        TRK_DLVTO            : String(40)    @title : '{i18n>SHIPPINGHISTORY.TRK_DLVTO}';
-        VBELN                : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
-    key KUNNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNNR}';
-        WADAT_IST            : String(8)     @title : '{i18n>SHIPPINGHISTORY.WADAT_IST}';
-        NAME1                : String(35)    @title : '{i18n>SHIPPINGHISTORY.NAME1}';
-    key VKORG                : String(4)     @title : '{i18n>SHIPPINGHISTORY.VKORG}';
+        TRK_DLVTO                      : String(40)    @title : '{i18n>SHIPPINGHISTORY.TRK_DLVTO}';
+        VBELN                          : String(10)    @title : '{i18n>SHIPPINGHISTORY.VBELN}';
+    key KUNNR                          : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNNR}';
+        WADAT_IST                      : String(8)     @title : '{i18n>SHIPPINGHISTORY.WADAT_IST}';
+        NAME1                          : String(35)    @title : '{i18n>SHIPPINGHISTORY.NAME1}';
+    key VKORG                          : String(4)     @title : '{i18n>SHIPPINGHISTORY.VKORG}';
         //LFUHR                : String(6)     @title : '{i18n>SHIPPINGHISTORY.LFUHR}';
-        CARRIER              : String(10)    @title : '{i18n>SHIPPINGHISTORY.CARRIER}';
-        CAL_BILL_ITM_COUNT   : Integer       @title : '{i18n>SHIPPINGHISTORY.CAL_BILL_ITM_COUNT}';
-    key KUNAG                : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNAG}';
-        FKIMG                : Decimal(18,0) @title : '{i18n>SHIPPINGHISTORY.FKIMG}';
-        MFRNR                : String(10)    @title : '{i18n>SHIPPINGHISTORY.MFRNR}';
-        MEINS                : String(3)     @title : '{i18n>SHIPPINGHISTORY.MEINS}';
-        PSTLZ                : String(10)    @title : '{i18n>SHIPPINGHISTORY.PSTLZ}';
+        CARRIER                        : String(10)    @title : '{i18n>SHIPPINGHISTORY.CARRIER}';
+        CAL_BILL_ITM_COUNT             : Integer       @title : '{i18n>SHIPPINGHISTORY.CAL_BILL_ITM_COUNT}';
+    key KUNAG                          : String(10)    @title : '{i18n>SHIPPINGHISTORY.KUNAG}';
+        FKIMG                          : Decimal(18,0) @title : '{i18n>SHIPPINGHISTORY.FKIMG}';
+        MFRNR                          : String(10)    @title : '{i18n>SHIPPINGHISTORY.MFRNR}';
+        MEINS                          : String(3)     @title : '{i18n>SHIPPINGHISTORY.MEINS}';
+        PSTLZ                          : String(10)    @title : '{i18n>SHIPPINGHISTORY.PSTLZ}';
         //LFDAT                : String(8)     @title : '{i18n>SHIPPINGHISTORY.LFDAT}';
-        TRACKN               : String(35)    @title : '{i18n>SHIPPINGHISTORY.TRACKN}';
-        CURRENT              : String(3)     @title : '{i18n>SHIPPINGHISTORY.CURRENT}';
-        MFRNR_NAME           : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
-        PRODUCT_TYPE         : String(14)    @title : '{i18n>SHIPPINGHISTORY.PROUCT_TYPE}';
-    key GUID_ESI             : Binary(16)    @title : '{i18n>SHIPPINGHISTORY.GUID_ESI}';
-        DELIVERY_DATE        : String(11)    @title : '{i18n>SHIPPINGHISTORY.DELIVERY_DATE}';
-        TRK_STAT_E           : String(4)     @title : '{i18n>SHIPPINGHISTORY.TRK_STAT_E}';
-        TRK_TXT              : String(60)    @title : '{i18n>SHIPPINGHISTORY.TRK_TXT}';
-        TIME_OFF_DELIVERY    : String(9)     @title : '{i18n>SHIPPINGHISTORY.TIME_OFF_DELIVERY}';
-        DOCID                : String(35)    @title : '{i18n>SHIPPINGHISTORY.DOCID}';
-        DELIVERY_TIME_ZONE   : String(6)     @title : '{i18n>SHIPPINGHISTORY.DELIVERY_TIME_ZONE}';
+        TRACKN                         : String(35)    @title : '{i18n>SHIPPINGHISTORY.TRACKN}';
+        CURRENT                        : String(3)     @title : '{i18n>SHIPPINGHISTORY.CURRENT}';
+        MFRNR_NAME                     : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
+        PRODUCT_TYPE                   : String(14)    @title : '{i18n>SHIPPINGHISTORY.PROUCT_TYPE}';
+    key GUID_ESI                       : Binary(16)    @title : '{i18n>SHIPPINGHISTORY.GUID_ESI}';
+        DELIVERY_DATETIME_TRK_TXT      : String(60)    @title : '{i18n>SHIPPINGHISTORY.DELIVERY_DATE}';
+        //TRK_STAT_E                     : String(4)     @title : '{i18n>SHIPPINGHISTORY.TRK_STAT_E}';
+        //TRK_TXT                        : String(60)    @title : '{i18n>SHIPPINGHISTORY.TRK_TXT}';
+        // TIME_OFF_DELIVERY              : String(9)     @title : '{i18n>SHIPPINGHISTORY.TIME_OFF_DELIVERY}';
+        DOCID                          : String(35)    @title : '{i18n>SHIPPINGHISTORY.DOCID}';
+        DELIVERY_TIMEZONE_TRK_TZONE    : String(6)     @title : '{i18n>SHIPPINGHISTORY.DELIVERY_TIME_ZONE}';
 }
 
 // Shipping History Invoice filter
@@ -1409,7 +1409,7 @@ entity SHIPPINGSTATUS
         PRODUCT_DESCRIPTION_MAKTX                   : String(40)        @title: 'Product Description';
         REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Requested Delivery Date';
     key SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
-        AUDAT                                       : String(8)         @title: 'Document Date';
+        AUDAT                                       : String(8)         @title: 'Order Date';
         SHIP_TO_NAME_PARTNER                        : String(10)        @title: 'Ship To Name';
         MANUFACTURER_MFRNR                          : String(10)        @title: 'Manufacturer #';
         MANUFACTURER_NAME_MC_NAME1                  : String(35)        @title: 'Manufacturer Name';
