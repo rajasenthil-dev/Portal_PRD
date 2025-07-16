@@ -73,7 +73,28 @@
                         smartVariant="pageVariant"
                         liveMode="true"
                         search="onSearch"
-                    />
+                    >
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                                key="AUDAT"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }" />
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration2"
+                                key="REQUESTED_DELIVERY_DATE_VDATU"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }" />
+                                <sf:ControlConfiguration id="_IDGenControlConfiguration3"
+                                key="OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }" />
+                        </sf:controlConfiguration>
+                    </sf:SmartFilterBar>
 
                     
                 </f:DynamicPageHeader>
