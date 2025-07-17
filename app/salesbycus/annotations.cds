@@ -60,7 +60,6 @@ Search.defaultSearchElement: true,
             SHIP_TO_NAME,
             INVOICE_DATE_FKDAT,
             EXPIRY_DATE_VFDAT,
-            DELEVERY_DATE_VDATU,
             CURRENT,
             CO_VKORG,
             VKBUR,
@@ -237,11 +236,6 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VGBEL,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : DELEVERY_DATE_VDATU,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',

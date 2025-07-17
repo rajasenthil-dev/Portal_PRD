@@ -1026,6 +1026,7 @@ entity SHIPPINGHISTORY
         MFRNR_NAME                     : String(35)    @title : '{i18n>SHIPPINGHISTORY.MFRNR_NAME}';
         PRODUCT_TYPE                   : String(14)    @title : '{i18n>SHIPPINGHISTORY.PROUCT_TYPE}';
     key GUID_ESI                       : Binary(16)    @title : '{i18n>SHIPPINGHISTORY.GUID_ESI}';
+        @UI.HiddenFilter:true
         DELIVERY_DATETIME_TRK_TXT      : String(60)    @title : '{i18n>SHIPPINGHISTORY.DELIVERY_DATE}';
         //TRK_STAT_E                     : String(4)     @title : '{i18n>SHIPPINGHISTORY.TRK_STAT_E}';
         //TRK_TXT                        : String(60)    @title : '{i18n>SHIPPINGHISTORY.TRK_TXT}';
@@ -1459,13 +1460,13 @@ entity MAINPAGESUMMARY
     key PREVIOUS_YEAR   : Integer;
     key CALMONTH        : Integer;
     key PRE_YEAR_MONTH  :Integer;
-        NETWR_CURRENT   : Decimal(25, 2);
-        NETWR_PREVIOUS  : Decimal(25, 2);
-        FKIMG_CURRENT   : Decimal(23, 2);
-        FKIMG_PREVIOUS  : Decimal(23, 2);
+        NETWR_CURRENT   : Decimal(25,2);
+        NETWR_PREVIOUS  : Decimal(25,2);
+        FKIMG_CURRENT   : Decimal(23,2);
+        FKIMG_PREVIOUS  : Decimal(23,2);
         INV_COUNT       : Integer;
-        QTY_DIFF        : Decimal(23, 2);
-        PERCENTAGE_DIFF : Decimal(34, 0);
+        QTY_DIFF        : Decimal(23,2);
+        PERCENTAGE_DIFF : Decimal(34,0);
         MONTH_NAME      : String(8); 
         VKORG           : String(4);
 }
@@ -1502,8 +1503,7 @@ entity MAINPAGEINVENTORY
     DAMAGE_DESTRUCTION      : Decimal(38, 2);
     SAMPLE_QTY              : Decimal(38, 2); 
     MANUFACTURER_MFRPN      : String(10);
-    VKORG                   : String(4);
-    
+    VKORG                   : String(4);    
 }
 
 

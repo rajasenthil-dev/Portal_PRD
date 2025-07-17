@@ -73,7 +73,28 @@
                         smartVariant="pageVariant"
                         liveMode="true"
                         search="onSearch"
-                    />
+                    >
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                                key="AUDAT"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }" />
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration2"
+                                key="REQUESTED_DELIVERY_DATE_VDATU"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }" />
+                                <sf:ControlConfiguration id="_IDGenControlConfiguration3"
+                                key="OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED"
+                                visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }" />
+                        </sf:controlConfiguration>
+                    </sf:SmartFilterBar>
 
                     
                 </f:DynamicPageHeader>
@@ -124,7 +145,7 @@
                             <!-- Requested Delivery Date -->
                             <t:Column id="_IDGenColumn2" width="10rem" hAlign="End" sortProperty="REQUESTED_DELIVERY_DATE_VDATU">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='{"columnKey":"REQUESTED_DELIVERY_DATE_VDATU","leadingProperty":"REQUESTED_DELIVERY_DATE_VDATU","columnIndex":1}'/>
+                                    <core:CustomData key="p13nData" value='{"columnKey":"REQUESTED_DELIVERY_DATE_VDATU","leadingProperty":"REQUESTED_DELIVERY_DATE_VDATU","columnIndex":2}'/>
                                 </t:customData>
                                 <Text id="_IDGenText2" text="Requested Delivery Date" />
                                 <t:template>
@@ -137,9 +158,9 @@
                             <!-- Document Date -->
                             <t:Column id="_IDGenColumn3" width="10rem" hAlign="End" sortProperty="AUDAT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='{"columnKey":"AUDAT","leadingProperty":"AUDAT","columnIndex":2}' />
+                                    <core:CustomData key="p13nData" value='{"columnKey":"AUDAT","leadingProperty":"AUDAT","columnIndex":1}' />
                                 </t:customData>
-                                <Text id="_IDGenText4" text="Document Date" />
+                                <Text id="_IDGenText4" text="Order Date" />
                                 <t:template>
                                 <Text 
                                     id="_IDGenText5" text="{

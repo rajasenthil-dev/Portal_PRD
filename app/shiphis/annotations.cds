@@ -26,7 +26,7 @@ Search.defaultSearchElement: true,
     },
     UI : {
         SelectionFields  : [
-            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, DELIVERY_DATETIME_TRK_TXT, TRACKN, CARRIER, VKORG
+            VBELN, KUNAG, KUNNR, NAME1, WADAT_IST, TRACKN, CARRIER, VKORG
 
         ],
         LineItem : [
@@ -78,11 +78,10 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : GUID_ESI
             },
-            
-            
             {
                 $Type : 'UI.DataField',
-                Value : DELIVERY_TIMEZONE_TRK_TZONE
+                Value : DELIVERY_TIMEZONE_TRK_TZONE,
+                ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -109,7 +108,8 @@ Search.defaultSearchElement: true,
                 Value : VKORG
             }
         ],
-    },   
+    },
+       
 ){
     VBELN@(
         Common: {
@@ -250,4 +250,8 @@ Search.defaultSearchElement: true,
             },
         }, 
     );
+   DELIVERY_DATETIME_TRK_TXT @(
+    odata.filterable: false,
+    UI.HiddenFilter : true
+); 
 }
