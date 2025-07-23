@@ -6,8 +6,28 @@
 
 ###POST operation to upload image
 
-POST {{protocol}};//{{Host}}:{{port}}/odata/v4/media(IsActiveEntity=false)/Media.draftActivate
-Content-Type: image/png
-slug: McK-Logo-RBG.png
+# POST {{protocol}};//{{Host}}:{{port}}/odata/v4/media(IsActiveEntity=false)/Media.draftActivate
+# Content-Type: image/png
+# slug: McK-Logo-RBG.png
 
-./McK-Logo-RBG.png 
+# ./McK-Logo-RBG.png 
+
+##POST operation to create user
+POST {{protocol}};//{{Host}}:{{port}}/odata/v4/okta/CreateUser
+Content-Type: application/json
+
+{
+  "input": {
+    "firstName": "Bryan1",
+    "lastName": "Cash1",
+    "email": "bryan.cash1@tcs.com",
+    "login": "bryan.cash1@tcs.com",
+    "selectedGroup": "00gkmbbie9xNhlxcb1d7",
+    "mfgName": "Unither",
+    "salesOffice": "",
+    "profitCentre": "5252268",
+    "salesOrg": "2018",
+    "manufacturerNumbers": ["0001000024"]
+  }
+
+}

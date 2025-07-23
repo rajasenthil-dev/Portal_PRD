@@ -1,5 +1,6 @@
 const cds = require('@sap/cds');
 const deduplicateForInternal = require('./utils/deduplication')
+const { transformFilterToCaseInsensitive } = require('./utils/filterUtils');
 /**
  * Implementation of ALL services.
  */
@@ -430,6 +431,148 @@ module.exports = cds.service.impl(function() {
       
         return results;
       });
+
+    // const OKTA_API_TOKEN = '00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph';
+    // const OKTA_API_URL = 'https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/users?activate=true';
+    
+    // this.on('CreateUser', async (req) => {
+    //     console.log("Action Hit!", req.data);
+    //     try {
+    //         const payload = req.data.input;
+    
+    //       // ✅ Build Okta User Creation Payload
+    //         const oktaPayload = {
+    //             profile: {
+    //                 firstName: payload.firstName,
+    //                 lastName: payload.lastName,
+    //                 email: payload.email,
+    //                 login: payload.login || payload.email,
+    //                 SalesOffice: payload.salesOffice,
+    //                 ProfitCentre: payload.profitCentre,
+    //                 SalesOrg: payload.salesOrg,
+    //                 ManufacturerNumber: payload.manufacturerNumbers,
+    //                 MFGName: payload.mfgName
+    //             },
+    //             groupIds: payload.selectedGroup // Optional: populate if you want to assign Okta group IDs
+    //         };
+    
+    //         // ✅ Call Okta API
+    //         const response = await axios.post(OKTA_API_URL, oktaPayload, {
+    //             headers: {
+    //             Authorization: `SSWS ${OKTA_API_TOKEN}`,
+    //             "Content-Type": "application/json"
+    //             }
+    //         });
+    
+    //         return {
+    //             success: true,
+    //             message: "User successfully created in Okta",
+    //             userId: response.data.id
+    //         };
+    
+    //     } catch (err) {
+    //         console.error("Okta Error: ", err.response?.data || err.message);
+    //         return {
+    //             success: false,
+    //             message: err.response?.data?.errorCauses?.[0]?.errorSummary || err.message,
+    //             userId: ""
+    //         };
+    //     }
+    // });
+    // --- CASE-INSENSITIVE FILTERING LOGIC ---
+    // this.on('READ', 'BOSHIPTONAME', async (req) => {
+    //     // Get the entity reference for type safety and consistency
+    //     const { BOSHIPTONAME } = this.entities; // Make sure this line is present and correct
+
+    //     // Access the incoming query from the request
+    //     const { SELECT } = req.query;
+
+    //     // --- Step 1: Identify the fields that need case-insensitive filtering ---
+    //     const caseInsensitiveFields = ['NAME1']; // Add all relevant fields here
+
+    //     // --- Step 2: Traverse and modify the WHERE clause of the SELECT query ---
+    //     if (SELECT.where) {
+    //         // Pass cds.ql to the utility function
+    //         SELECT.where = transformFilterToCaseInsensitive(SELECT.where, caseInsensitiveFields, cds.ql);
+    //     }
+
+    //     // --- Step 3: Execute the modified query ---
+    //     // Let CAP execute the query against the database with the transformed WHERE clause
+    //     return cds.run(SELECT);
+    // });
+    this.before ('READ', '*' ,async (req)=>{
+
+        //console.log(req);
+
+        console.log("before searching");
+
+        console.log(req.query.SELECT.where);
+
+        let conditions =req.query.SELECT.where;
+
+        /*console.log(conditions[0].ref);
+        console.log(conditions[1]);
+        console.log(conditions[2].val);
+        */
+        //req.query.SELECT.where[1] = 'LIKE';
+        //req.query.SELECT.where[2].val = `%${conditions[2].val}%`;
+
+
+        //req.query.SELECT.where.push('and');
+        //req.query.SELECT.where.push({ func: 'contains', args: [ { ref: [ 'KEYWORD' ] }, { val: '20' } ] });
+
+        var newCondition = [];
+
+        if (conditions){
+
+            conditions.forEach((condition,index) => {
+            
+                var scol ='';
+                var sval = '';
+                var sOperator = '';
+    
+                if(condition==='and' || condition==='or'||condition==='('||condition===')'
+                || condition.func !=undefined
+                ){
+                    newCondition.push(condition);
+                }
+    
+                if(condition.ref!=undefined){
+                    
+                    //console.log(index);
+    
+                    scol=condition.ref[0];
+                    sOperator=conditions[index+1];
+                    sval=conditions[index+2].val;
+    
+                    //newCondition.push({ func: 'contains', args: [ { ref: [ scol ] }, { val: sval } ] });
+
+
+                    if(sOperator==='='){
+                        newCondition.push({ func:'toupper', args:[{ref: [ scol ] }]},'like',{ val: `%${sval.toUpperCase()}%` });
+                    }else{
+                        newCondition.push({ ref: [ scol ] },sOperator,{ val: sval });
+                    }
+        
+    
+                    //newCondition.push(`${scol} like '%${sval}%'`);
+                    
+                }
+            });
+        }
+
+
+        //overwrite the condition
+        //req.query.SELECT.where = newCondition;
+
+        if(newCondition&& newCondition.length>0){
+            req.query.SELECT.where = newCondition;
+        }
+        
+
+        console.log(req.query.SELECT.where);
+
+     });
     // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 

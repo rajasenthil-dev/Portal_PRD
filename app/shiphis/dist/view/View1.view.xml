@@ -48,12 +48,7 @@
                                 conditionType="{
                                     module: 'sap.ui.comp.config.condition.DateRangeType'
                                 }" />
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration2"
-                                key="DELIVERY_DATETIME_TRK_TXT"
-                                visibleInAdvancedArea="true"
-                                conditionType="{
-                                    module: 'sap.ui.comp.config.condition.DateRangeType'
-                                }" />
+                            
                         </sf:controlConfiguration>
                         <sf:controlConfiguration>
                             <sf:ControlConfiguration id="customCurrentFilter"
@@ -184,13 +179,13 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="DELIVERY_DATETIME_TRK_TXT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATETIME_TRK_TXT", "leadingProperty": "DELIVERY_DATETIME_TRK_TXT", "columnIndex": 7}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATETIME_TRK_TXT", "leadingProperty": "DELIVERY_DATETIME_TRK_TXT", "columnIndex": 11}'/>
                                 </t:customData>
                                 <Text id="_IDGenText8" text="{i18n>SHIPPINGHISTORY.DELIVERY_DATE}"/>
                                 <t:template>
                                      <Text id="_IDGenText12" text="{=${DELIVERY_DATETIME_TRK_TXT}==='00000000' ? ${i18n>noDate} : ${path: 'DELIVERY_DATETIME_TRK_TXT', type: 'sap.ui.model.odata.type.Date'}}" /> </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" width="7.813rem" hAlign="End" sortProperty="LFUHR">
+                            <!-- <t:Column id="_IDGenColumn4" width="7.813rem" hAlign="End" sortProperty="LFUHR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "LFUHR", "leadingProperty": "LFUHR", "columnIndex": 10}'/>
                                 </t:customData>
@@ -198,7 +193,7 @@
                                 <t:template>
                                     <Text id="_IDGenText13" text="{path: 'LFUHR', formatter: '._formatTime'}" />
                                 </t:template>
-                            </t:Column>
+                            </t:Column> -->
                             <t:Column id="_IDGenColumn8" width="6rem" hAlign="End" sortProperty="VKORG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 15}'/>
