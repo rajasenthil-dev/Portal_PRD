@@ -133,7 +133,12 @@ annotate FINANCE.OPENAR with @(
                 $Type : 'UI.DataField',
                 Value : VKORG,
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
-            }
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : PROFIT_CENTER,
+                ![@HTML5.CssDefaults] : {width : '5.813rem'}
+            },
 
         ],
     },

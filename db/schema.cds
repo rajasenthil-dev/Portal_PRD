@@ -450,6 +450,7 @@ entity OPENAR
         MFRNR               : String(10)        @title : '{i18n>OPENAR.MFRNR}';
         MFRNR_NAME          : String(10)        @title : '{i18n>OPENAR.MFRNR_NAME}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>OPENAR.VTEXT_ZTERM}';
+        PROFIT_CENTER       : String(10)        @title : '{i18n>OPENAR.PRCTR_PROFIT_CENTER}';
 }
 define view OPENARCUSTOMER as
     select from OPENAR distinct {

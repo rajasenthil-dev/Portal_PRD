@@ -42,3 +42,5 @@ using from './pivottable/annotations';
 using from './salesbycuswopid/annotations';
 
 using from './shipstatus/annotations';
+
+using from './mckaccesshubuser/annotations';

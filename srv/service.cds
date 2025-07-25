@@ -1457,6 +1457,42 @@ service Media {
 }
 annotate Media.MediaFile with @odata.draft.enabled: true;
 
+service OktaService {
+  action createOktaUser(user: UserInput) returns OktaResponse;
+  action getOktaGroups(query: String) returns many OktaGroup;
+}
+
+type OktaGroup {
+  id: String;
+  profile: GroupProfile;
+}
+
+type GroupProfile {
+  name: String;
+  description: String;
+}
+
+type UserInput {
+  profile: Profile;
+  groupIds: many String;
+}
+
+type Profile {
+  firstName: String;
+  lastName: String;
+  email: String;
+  login: String;
+  salesOffice: String;
+  profitCentre: String;
+  salesOrg: String;
+  manufacturerNumber: many String;
+  mfgName: String;
+}
+
+type OktaResponse {
+  status: String;
+  userId: String;
+}
 
 
 

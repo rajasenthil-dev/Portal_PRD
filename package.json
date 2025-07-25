@@ -62,7 +62,8 @@
     "watch-pivottable": "cds watch --open pivottable/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-salesbycuswopid": "cds watch --open salesbycuswopid/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-shipstatus": "cds watch --open shipstatus/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-shipstatus1": "cds watch --open shipstatus1/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-shipstatus1": "cds watch --open shipstatus1/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-mckaccesshubuser": "cds watch --open mckaccesshubuser/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "service": {

@@ -500,79 +500,191 @@ module.exports = cds.service.impl(function() {
     //     // Let CAP execute the query against the database with the transformed WHERE clause
     //     return cds.run(SELECT);
     // });
-    this.before ('READ', '*' ,async (req)=>{
-
-        //console.log(req);
-
+    this.before ('READ', [
+        'ITEMMASTER',
+        'ITEMMASPD',
+        'ITEMMASMFRNRNAME',
+        'ITEMMASCATEGORY',
+        'INVENTORYSTATUS',
+        'INVSTATUSPLANTNAME',
+        'INVSTATUSMFRNRNAME',
+        'INVENTORYAUDITTRAIL',
+        'IATPLANTNAME',
+        'IATTRANTYPE',
+        'IATPRODUCTCODE',
+        'IATLOT',
+        'IATWAREHOUSE',
+        'IATCUSTSUPPNAME',
+        'IATMFRNRNAME',
+        'BILL_TONAME',
+        'FINCJMFRNRNAME',
+        'INVENTORYSNAPSHOT',
+        'INVSNAPPLANTNAME',
+        'INVSNAPPRODDESC',
+        'INVSNAPLOT',
+        'INVSNAPWARESTAT',
+        'INVSNAPMFRNRNAME',
+        'INVENTORYBYLOT',
+        'INVBYLOTPLANTNAME',
+        'INVBYLOTPRODUCTCODE',
+        'INVBYLOTLOT',
+        'INVBYLOTWAREHOUSE',
+        'INVBYLOTMFRNRNAME',
+        'OPENAR',
+        'OPENARCUSTOMER',
+        'OPENARMFRNRNAME',
+        'INVENTORYVALUATION',
+        'INVVALPLANTNAME',
+        'INVVALPRODDESC',
+        'INVVALMFRNRNAME',
+        'INVOICEHISTORY',
+        'IHPLANTNAME',
+        'IHCUSTOMER',
+        'IHTYPE',
+        'IHPROVINCE',
+        'IHMFRNRNAME',
+        'SALESBYCURRENT',
+        'SALESBYCURRENTWOPID',
+        'SBCPLANTNAME',
+        'SBCPRODDESC',
+        'SBCTYPE',
+        'SBCWAREHOUSE',
+        'SBCLOT',
+        'SBCBILLTO',
+        'SBCSHIPTO',
+        'SBCMFRNRNAME',
+        'CUSTOMERMASTER',
+        'KUNN2_BILLTONAME',
+        'KUNN2_SHIPTONAME',
+        'CAL_CUST_STATUS',
+        'SHIPPINGHISTORY',
+        'SHSHIPTONAME',
+        'SHCARRIER',
+        'SHMFRNRNAME',
+        'PRICING',
+        'PRICINGPRICEDESC',
+        'PRICINGPRODUCTDESC',
+        'PRICINGMFRNRNAME',
+        'RETURNS',
+        'RETCUSTNAME',
+        'RETREASON',
+        'RETMFRNRNAME',
+        'BACKORDERS',
+        'BOPRODUCTDESC',
+        'BOSHIPTONAME',
+        'BOMFRNRNAME',
+        'SHIPPINGSTATUS',
+        'SHIPSTATUSPRODDESC',
+        'SHIPSTATUSWHSTATUS',
+        'SHIPSTATUSMFRNRNAME'
+    ], async (req) => {
         console.log("before searching");
-
         console.log(req.query.SELECT.where);
-
-        let conditions =req.query.SELECT.where;
-
-        /*console.log(conditions[0].ref);
-        console.log(conditions[1]);
-        console.log(conditions[2].val);
-        */
-        //req.query.SELECT.where[1] = 'LIKE';
-        //req.query.SELECT.where[2].val = `%${conditions[2].val}%`;
-
-
-        //req.query.SELECT.where.push('and');
-        //req.query.SELECT.where.push({ func: 'contains', args: [ { ref: [ 'KEYWORD' ] }, { val: '20' } ] });
-
-        var newCondition = [];
-
-        if (conditions){
-
-            conditions.forEach((condition,index) => {
-            
-                var scol ='';
-                var sval = '';
-                var sOperator = '';
     
-                if(condition==='and' || condition==='or'||condition==='('||condition===')'
-                || condition.func !=undefined
-                ){
-                    newCondition.push(condition);
+        const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
+        const newCondition = [];
+    
+        existingConditions.forEach((condition, index) => {
+            if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
+                newCondition.push(condition);
+            } else if (condition.ref) {
+                const scol = condition.ref[0];
+                const sOperator = existingConditions[index + 1];
+                const sval = existingConditions[index + 2]?.val;
+    
+                // 🔥 Transform only normal "=" searches to LIKE
+                if (sOperator === '=' && sval) {
+                    newCondition.push(
+                        { func: 'toupper', args: [{ ref: [scol] }] },
+                        'like',
+                        { val: `%${sval.toUpperCase()}%` }
+                    );
+                } else {
+                    newCondition.push({ ref: [scol] }, sOperator, { val: sval });
                 }
+            }
+        });
     
-                if(condition.ref!=undefined){
-                    
-                    //console.log(index);
-    
-                    scol=condition.ref[0];
-                    sOperator=conditions[index+1];
-                    sval=conditions[index+2].val;
-    
-                    //newCondition.push({ func: 'contains', args: [ { ref: [ scol ] }, { val: sval } ] });
-
-
-                    if(sOperator==='='){
-                        newCondition.push({ func:'toupper', args:[{ref: [ scol ] }]},'like',{ val: `%${sval.toUpperCase()}%` });
-                    }else{
-                        newCondition.push({ ref: [ scol ] },sOperator,{ val: sval });
-                    }
-        
-    
-                    //newCondition.push(`${scol} like '%${sval}%'`);
-                    
-                }
-            });
-        }
-
-
-        //overwrite the condition
-        //req.query.SELECT.where = newCondition;
-
-        if(newCondition&& newCondition.length>0){
+        if (newCondition.length > 0) {
             req.query.SELECT.where = newCondition;
         }
-        
-
+    
         console.log(req.query.SELECT.where);
+    });
 
-     });
+    this.on('createOktaUser', async req => {
+        const axios = require('axios');
+        const user = req.data.user;
+
+        // Prepare payload for Okta, ensure arrays where needed
+        const payload = {
+        profile: {
+            firstName: user.profile.firstName,
+            lastName: user.profile.lastName,
+            email: user.profile.email,
+            login: user.profile.login,
+            salesOffice: user.profile.salesOffice,
+            profitCentre: user.profile.profitCentre,
+            salesOrg: user.profile.salesOrg,
+            manufacturerNumber: Array.isArray(user.profile.manufacturerNumber)
+            ? user.profile.manufacturerNumber
+            : [user.profile.manufacturerNumber],  // wrap if not array
+            mfgName: user.profile.mfgName
+        },
+        groupIds: Array.isArray(user.groupIds)
+            ? user.groupIds
+            : [user.groupIds]  // wrap if not array
+        };
+
+        try {
+        const response = await axios.post(
+            'https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/users?activate=true',
+            payload,
+            {
+            headers: {
+                'Authorization': `SSWS 00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+            }
+        );
+
+        return {
+            status: 'success',
+            userId: response.data.id
+        };
+        } catch (error) {
+        console.error('Okta API error:', error?.response?.data || error.message);
+        req.error(500, 'Failed to create user in Okta.');
+        }
+    });
+    this.on('getOktaGroups', async (req) => {
+        const axios = require('axios');
+        const query = req.data.query || ''; // Default to empty if no query provided
+      
+        try {
+          const response = await axios.get(
+            `https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/groups?q=MFG`,
+            {
+              headers: {
+                'Authorization': `SSWS 00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph`,
+                'Accept': 'application/json'
+              }
+            }
+          );
+      
+          return response.data.map(group => ({
+            id: group.id,
+            profile: {
+              name: group.profile.name,
+              description: group.profile.description
+            }
+          }));
+        } catch (error) {
+          console.error('Okta API error (getOktaGroups):', error?.response?.data || error.message);
+          req.error(500, 'Failed to fetch Okta groups.');
+        }
+    });
     // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 
@@ -620,3 +732,4 @@ module.exports = cds.service.impl(function() {
     
     //You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
 });
+
