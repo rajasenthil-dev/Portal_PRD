@@ -231,7 +231,7 @@ entity CASHJOURNAL
 {
         BILL_TO             : String(10)        @title : '{i18n>CASHJOURNAL.BILL_TO}';
         SHIP_TO             : String(10)        @title : '{i18n>CASHJOURNAL.SHIP_TO}';
-    key VKORG               : String(4)         @title : '{i18n>CASHJOURNAL.VKORG}';
+        VKORG               : String(4)         @title : '{i18n>CASHJOURNAL.VKORG}';
         BKTXT               : String(25)        @title : '{i18n>CASHJOURNAL.BKTXT}';
         SGTXT               : String(50)        @title : '{i18n>CASHJOURNAL.SGTXT}';
         CAL_DISCOUNT        : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_DISCOUNT}';
@@ -240,20 +240,21 @@ entity CASHJOURNAL
         BUDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BUDAT}';
     key VBELN               : String(10)        @title : '{i18n>CASHJOURNAL.VBELN}';
         NETWR               : Decimal(20,2)     @title : '{i18n>CASHJOURNAL.NETWR}';
-        FKDAT               : String(8)         @title : '{i18n>CASHJOURNAL.FKDAT}';
         BLART               : String(2)         @title : '{i18n>CASHJOURNAL.BLART}';
         MFRNR               : String(10)        @title : '{i18n>CASHJOURNAL.MFRNR}';
     key BUKRS               : String(4)         @title : '{i18n>CASHJOURNAL.BUKRS}';
-    key BELNR               : String(10)        @title : '{i18n>CASHJOURNAL.BELNR}';
+        BELNR               : String(10)        @title : '{i18n>CASHJOURNAL.BELNR}';
     key GJAHR               : String(4)         @title : '{i18n>CASHJOURNAL.GJAHR}';
         BSTKD               : String(35)        @title : '{i18n>CASHJOURNAL.BSTKD}';
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
-    key AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
+        AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
         BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
         CURRENT             : String(3)         @title : '{i18n>CASHJOURNAL.CURRENT}';
         CAL_INV_AMOUNT      : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}';
         MFRNR_NAME          : String(35)        @title : '{i18n>CASHJOURNAL.MFRNR_NAME}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>CASHJOURNAL.VTEXT_ZTERM}';
+        ZTERM               : String(4)          @title : '{i18n>CASHJOURNAL.ZTERM}';
+        //DEPOSIT_DATE        : Date              @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
 }
 define view BLARTS as
     select from CASHJOURNAL distinct {

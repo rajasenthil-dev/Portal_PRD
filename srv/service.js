@@ -1,6 +1,5 @@
 const cds = require('@sap/cds');
 const deduplicateForInternal = require('./utils/deduplication')
-const { transformFilterToCaseInsensitive } = require('./utils/filterUtils');
 /**
  * Implementation of ALL services.
  */
@@ -19,7 +18,7 @@ module.exports = cds.service.impl(function() {
             console.log(`Normalized ManufacturerNumber to array:`, req.user.attr.ManufacturerNumber);
         }
     });
-
+    
     // --- Mappings of entity to filters ---
     /**
      * Entity → Filter map for manufacturer 0001000019
@@ -134,7 +133,7 @@ module.exports = cds.service.impl(function() {
      * Manufacturer → Entity Filter Map
      */
     const manufacturerFilterMap = {
-        '0001000019': entityFilterMapFor0001000019
+        '0001000024': entityFilterMapFor0001000019
     };
     
     // --- Generic 'before READ' Handler ---
@@ -175,7 +174,113 @@ module.exports = cds.service.impl(function() {
             }
         }
     });
+    this.before ('READ', [
+        'ITEMMASTER',
+        'ITEMMASPD',
+        'ITEMMASMFRNRNAME',
+        'ITEMMASCATEGORY',
+        'INVENTORYSTATUS',
+        'INVSTATUSPLANTNAME',
+        'INVSTATUSMFRNRNAME',
+        'INVENTORYAUDITTRAIL',
+        'IATPLANTNAME',
+        'IATTRANTYPE',
+        'IATPRODUCTCODE',
+        'IATLOT',
+        'IATWAREHOUSE',
+        'IATCUSTSUPPNAME',
+        'IATMFRNRNAME',
+        'BILL_TONAME',
+        'FINCJMFRNRNAME',
+        'INVENTORYSNAPSHOT',
+        'INVSNAPPLANTNAME',
+        'INVSNAPPRODDESC',
+        'INVSNAPLOT',
+        'INVSNAPWARESTAT',
+        'INVSNAPMFRNRNAME',
+        'INVENTORYBYLOT',
+        'INVBYLOTPLANTNAME',
+        'INVBYLOTPRODUCTCODE',
+        'INVBYLOTLOT',
+        'INVBYLOTWAREHOUSE',
+        'INVBYLOTMFRNRNAME',
+        'OPENAR',
+        'OPENARCUSTOMER',
+        'OPENARMFRNRNAME',
+        'INVENTORYVALUATION',
+        'INVVALPLANTNAME',
+        'INVVALPRODDESC',
+        'INVVALMFRNRNAME',
+        'INVOICEHISTORY',
+        'IHPLANTNAME',
+        'IHCUSTOMER',
+        'IHTYPE',
+        'IHPROVINCE',
+        'IHMFRNRNAME',
+        //'SALESBYCURRENT',
+        //'SALESBYCURRENTWOPID',
+        'SBCPRODDESC',
+        'SBCBILLTO',
+        'SBCSHIPTO',
+        'SBCMFRNRNAME',
+        'CUSTOMERMASTER',
+        'KUNN2_BILLTONAME',
+        'KUNN2_SHIPTONAME',
+        'CAL_CUST_STATUS',
+        'SHIPPINGHISTORY',
+        'SHSHIPTONAME',
+        'SHCARRIER',
+        'SHMFRNRNAME',
+        'PRICING',
+        'PRICINGPRICEDESC',
+        'PRICINGPRODUCTDESC',
+        'PRICINGMFRNRNAME',
+        'RETURNS',
+        'RETCUSTNAME',
+        'RETREASON',
+        'RETMFRNRNAME',
+        'BACKORDERS',
+        'BOPRODUCTDESC',
+        'BOSHIPTONAME',
+        'BOMFRNRNAME',
+        'SHIPPINGSTATUS',
+        'SHIPSTATUSPRODDESC',
+        'SHIPSTATUSWHSTATUS',
+        'SHIPSTATUSMFRNRNAME'
+    ], async (req) => {
+        console.log("before searching");
+        console.log(req.query.SELECT.where);
     
+        const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
+        const newCondition = [];
+    
+        existingConditions.forEach((condition, index) => {
+            if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
+                newCondition.push(condition);
+            } else if (condition.ref) {
+                const scol = condition.ref[0];
+                const sOperator = existingConditions[index + 1];
+                const sval = existingConditions[index + 2]?.val;
+    
+                // 🔥 Transform only normal "=" searches to LIKE
+                if (sOperator === '=' && sval) {
+                    newCondition.push(
+                        { func: 'toupper', args: [{ ref: [scol] }] },
+                        'like',
+                        { val: `%${sval.toUpperCase()}%` }
+                    );
+                } else {
+                    newCondition.push({ ref: [scol] }, sOperator, { val: sval });
+                }
+            }
+        });
+    
+        if (newCondition.length > 0) {
+            req.query.SELECT.where = newCondition;
+        }
+    
+        console.log(req.query.SELECT.where);
+    });
 
     // --- START: Deduplication for Internal users ---
 
@@ -500,117 +605,7 @@ module.exports = cds.service.impl(function() {
     //     // Let CAP execute the query against the database with the transformed WHERE clause
     //     return cds.run(SELECT);
     // });
-    this.before ('READ', [
-        'ITEMMASTER',
-        'ITEMMASPD',
-        'ITEMMASMFRNRNAME',
-        'ITEMMASCATEGORY',
-        'INVENTORYSTATUS',
-        'INVSTATUSPLANTNAME',
-        'INVSTATUSMFRNRNAME',
-        'INVENTORYAUDITTRAIL',
-        'IATPLANTNAME',
-        'IATTRANTYPE',
-        'IATPRODUCTCODE',
-        'IATLOT',
-        'IATWAREHOUSE',
-        'IATCUSTSUPPNAME',
-        'IATMFRNRNAME',
-        'BILL_TONAME',
-        'FINCJMFRNRNAME',
-        'INVENTORYSNAPSHOT',
-        'INVSNAPPLANTNAME',
-        'INVSNAPPRODDESC',
-        'INVSNAPLOT',
-        'INVSNAPWARESTAT',
-        'INVSNAPMFRNRNAME',
-        'INVENTORYBYLOT',
-        'INVBYLOTPLANTNAME',
-        'INVBYLOTPRODUCTCODE',
-        'INVBYLOTLOT',
-        'INVBYLOTWAREHOUSE',
-        'INVBYLOTMFRNRNAME',
-        'OPENAR',
-        'OPENARCUSTOMER',
-        'OPENARMFRNRNAME',
-        'INVENTORYVALUATION',
-        'INVVALPLANTNAME',
-        'INVVALPRODDESC',
-        'INVVALMFRNRNAME',
-        'INVOICEHISTORY',
-        'IHPLANTNAME',
-        'IHCUSTOMER',
-        'IHTYPE',
-        'IHPROVINCE',
-        'IHMFRNRNAME',
-        'SALESBYCURRENT',
-        'SALESBYCURRENTWOPID',
-        'SBCPLANTNAME',
-        'SBCPRODDESC',
-        'SBCTYPE',
-        'SBCWAREHOUSE',
-        'SBCLOT',
-        'SBCBILLTO',
-        'SBCSHIPTO',
-        'SBCMFRNRNAME',
-        'CUSTOMERMASTER',
-        'KUNN2_BILLTONAME',
-        'KUNN2_SHIPTONAME',
-        'CAL_CUST_STATUS',
-        'SHIPPINGHISTORY',
-        'SHSHIPTONAME',
-        'SHCARRIER',
-        'SHMFRNRNAME',
-        'PRICING',
-        'PRICINGPRICEDESC',
-        'PRICINGPRODUCTDESC',
-        'PRICINGMFRNRNAME',
-        'RETURNS',
-        'RETCUSTNAME',
-        'RETREASON',
-        'RETMFRNRNAME',
-        'BACKORDERS',
-        'BOPRODUCTDESC',
-        'BOSHIPTONAME',
-        'BOMFRNRNAME',
-        'SHIPPINGSTATUS',
-        'SHIPSTATUSPRODDESC',
-        'SHIPSTATUSWHSTATUS',
-        'SHIPSTATUSMFRNRNAME'
-    ], async (req) => {
-        console.log("before searching");
-        console.log(req.query.SELECT.where);
     
-        const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
-        const newCondition = [];
-    
-        existingConditions.forEach((condition, index) => {
-            if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
-                newCondition.push(condition);
-            } else if (condition.ref) {
-                const scol = condition.ref[0];
-                const sOperator = existingConditions[index + 1];
-                const sval = existingConditions[index + 2]?.val;
-    
-                // 🔥 Transform only normal "=" searches to LIKE
-                if (sOperator === '=' && sval) {
-                    newCondition.push(
-                        { func: 'toupper', args: [{ ref: [scol] }] },
-                        'like',
-                        { val: `%${sval.toUpperCase()}%` }
-                    );
-                } else {
-                    newCondition.push({ ref: [scol] }, sOperator, { val: sval });
-                }
-            }
-        });
-    
-        if (newCondition.length > 0) {
-            req.query.SELECT.where = newCondition;
-        }
-    
-        console.log(req.query.SELECT.where);
-    });
 
     this.on('createOktaUser', async req => {
         const axios = require('axios');

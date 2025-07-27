@@ -59,10 +59,14 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : VBELN
             }, 
-            {
-                $Type : 'UI.DataField',
-                Value : FKDAT
-            },  
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : FKDAT
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : DEPOSIT_DATE
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : NETWR,
@@ -96,6 +100,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : BUDAT
             },
+            
             {
                 $Type : 'UI.DataField',
                 Value : BUKRS,
