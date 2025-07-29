@@ -174,7 +174,7 @@ module.exports = cds.service.impl(function() {
             }
         }
     });
-    this.before ('READ', [
+    this.before('READ', [
         'ITEMMASTER',
         'ITEMMASPD',
         'ITEMMASMFRNRNAME',
@@ -217,8 +217,8 @@ module.exports = cds.service.impl(function() {
         'IHTYPE',
         'IHPROVINCE',
         'IHMFRNRNAME',
-        //'SALESBYCURRENT',
-        //'SALESBYCURRENTWOPID',
+        'SALESBYCURRENT', // <--- EXCLUDE SALESBYCURRENT FROM THIS GENERIC HANDLER
+        'SALESBYCURRENTWOPID', // <--- EXCLUDE SALESBYCURRENTWOPID
         'SBCPRODDESC',
         'SBCBILLTO',
         'SBCSHIPTO',
@@ -251,8 +251,16 @@ module.exports = cds.service.impl(function() {
         console.log("before searching");
         console.log(req.query.SELECT.where);
     
+        const fullEntityName = req.target?.name;
+        const entityName = fullEntityName?.split('.').pop();
+        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+    
         const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
         const newCondition = [];
+    
+        // Check if the current entity/manufacturer combination has a specific filter
+        // If so, we should not apply the generic toUpper/like transformation to its specific filter parts
+        const hasSpecificManufacturerFilter = manufacturerFilterMap[userManufacturer] && manufacturerFilterMap[userManufacturer][entityName];
     
         existingConditions.forEach((condition, index) => {
             if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
@@ -262,14 +270,26 @@ module.exports = cds.service.impl(function() {
                 const sOperator = existingConditions[index + 1];
                 const sval = existingConditions[index + 2]?.val;
     
-                // 🔥 Transform only normal "=" searches to LIKE
-                if (sOperator === '=' && sval) {
+                // Check if this condition is part of a special filter (e.g., VKORG, WERKS for 0001000024)
+                // You might need a more sophisticated way to identify these,
+                // perhaps by maintaining a list of fields that should NOT be toupper/like'd
+                // or by checking if the current condition matches a part of your pre-defined filters.
+                // For simplicity, assuming 'CO_VKORG' and 'WERKS' are the problem fields for the special case.
+                const isSpecialFilterField = (scol === 'CO_VKORG' || scol === 'WERKS' || scol === 'SALESORG' || scol === 'VKBUR' || scol === 'SALES_ORG' || scol === 'VKORG' || scol === 'WAREHOUSE_NAME_LNUMT');
+    
+                // If it's a direct equality on a potentially problematic field in a specific filter context,
+                // or if the entity is SALESBYCURRENT (or others with hardcoded filters)
+                // AND the manufacturer has a specific filter applied, then DO NOT apply toUpper/like.
+                if (sOperator === '=' && sval && !isSpecialFilterField && !hasSpecificManufacturerFilter) {
+                    // Apply toUpper and LIKE for general case-insensitive search
                     newCondition.push(
                         { func: 'toupper', args: [{ ref: [scol] }] },
                         'like',
                         { val: `%${sval.toUpperCase()}%` }
                     );
                 } else {
+                    // Push the condition as is if it's not a candidate for toUpper/like transformation,
+                    // or if it's part of a special filter that should remain untouched.
                     newCondition.push({ ref: [scol] }, sOperator, { val: sval });
                 }
             }
