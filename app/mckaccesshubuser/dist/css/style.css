@@ -147,3 +147,7 @@
   border-left: 4px solid #00BFFF;
   border-radius: 0.5rem;
 }
+.emphasize {
+  font-style: italic;
+  font-weight: 300;
+}

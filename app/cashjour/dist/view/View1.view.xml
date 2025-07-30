@@ -36,7 +36,7 @@
                     <sf:SmartFilterBar id="bar0" entitySet="CASHJOURNAL" useDateRangeType="true" persistencyKey="SmartFilterBar_CASHJOURNAL" smartVariant="pageVariant" liveMode="true" search="onSearch">
                         <sf:controlConfiguration>
                         
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration1" key="BUDAT" visibleInAdvancedArea="true" conditionType="{                                     module: 'sap.ui.comp.config.condition.DateRangeType'                                 }"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1" key="DEPOSIT_DATE" visibleInAdvancedArea="true" conditionType="{                                     module: 'sap.ui.comp.config.condition.DateRangeType'                                 }"/>
                         </sf:controlConfiguration>
                         <sf:controlConfiguration>
                             <sf:ControlConfiguration id="customCurrentFilter"
@@ -154,13 +154,13 @@
                                     <Text id="cashReceived" text="{path: 'CAL_CASH_RECEIVED', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="BUDAT">
+                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="DEPOSIT_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BUDAT", "leadingProperty": "BUDAT", "columnIndex": 11}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DEPOSIT_DATE", "leadingProperty": "DEPOSIT_DATE", "columnIndex": 11}'/>
                                 </t:customData>
-                                <Text id="_IDGenText6" text="{i18n>CASHJOURNAL.BUDAT}" textAlign="End"/>
+                                <Text id="_IDGenText6" text="{i18n>CASHJOURNAL.DEPOSIT_DATE}" textAlign="End"/>
                                 <t:template>
-                                    <Text id="depositDate" text="{path: 'BUDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="depositDate" text="{path: 'DEPOSIT_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn4" width="7.813rem" hAlign="End" sortProperty="BURKS">

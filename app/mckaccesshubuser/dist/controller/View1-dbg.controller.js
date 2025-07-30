@@ -16,6 +16,9 @@ sap.ui.define([
           this._oNavContainer = this.byId("wizardNavContainer");
           this._oWizardContentPage = this.byId("wizardContentPage");
           this._initModel();
+          var oMappingModel = new sap.ui.model.json.JSONModel();
+          oMappingModel.loadData("model/manufacturerGroupMap.json"); // path relative to index.html or component.js
+          this.getView().setModel(oMappingModel, "groupMapping");
           this.model = new JSONModel();
           const selectedGroup = this.getView().getModel("userContext").getProperty("/selectedGroup");
           console.log("Selected Group:", selectedGroup);
@@ -169,43 +172,80 @@ sap.ui.define([
             oModel.setProperty("/editManufacturerDetails", false);
             oModel.setProperty("/editGroup", false);
           },
-          onBeforeRendering: function () {
-            if (!this._groupsLoaded) {
-                this._loadOktaGroups();
-                this._groupsLoaded = true;
-            }
-          },
+          // onBeforeRendering: function () {
+          //   if (!this._groupsLoaded) {
+          //       this._loadOktaGroups();
+          //       this._groupsLoaded = true;
+          //   }
+          // },
           _loadOktaGroups: function () {
             var oView = this.getView();
             var oUserModel = oView.getModel("userContext");
             var oOktaModel = oView.getModel("oktaService");
-
-            // Check if model is available
-            if (!oUserModel) {
-                console.error("userContext model not found. Did you set it in onInit?");
+            var oMappingModel = oView.getModel("groupMapping");
+        
+            if (!oUserModel || !oMappingModel) {
+                console.error("Required models not found. Did you set them in onInit?");
                 return;
             }
-
+        
             var oAction = oOktaModel.bindContext("/getOktaGroups(...)");
-
+        
             oAction.execute()
-                .then(function () {
-                    var aGroups = oAction.getBoundContext().getObject();
-                    console.log("Fetched Groups:", aGroups);
-                    debugger
-                    oUserModel.setProperty("/groupDetails/groupList", aGroups);
-
-                    // Optionally select first group by default
-                    if (aGroups.length) {
-                        oUserModel.setProperty("/selectedGroup", aGroups[2].id);
-                    }
-
-                    oUserModel.updateBindings(true); // Force UI refresh if needed
-                })
-                .catch(function (oError) {
-                    console.error("Error fetching groups:", oError);
-                    sap.m.MessageBox.error("Failed to fetch Okta groups.");
-                });
+            .then(function () {
+              var oRawData = oAction.getBoundContext().getObject();
+              var aGroups = oRawData?.value || [];
+          
+              console.log("Fetched Groups:", aGroups);
+              oUserModel.setProperty("/groupDetails/groupList", aGroups);
+          
+              // Default to dropdown enabled
+              oUserModel.setProperty("/isGroupMapped", false);
+          
+              // Default to 3rd group fallback in case no match happens
+              var oDefaultGroup = aGroups[3]; // 3rd item
+              if (oDefaultGroup) {
+                  oUserModel.setProperty("/selectedGroup", oDefaultGroup.id);
+                  console.warn("Defaulting to 3rd group:", oDefaultGroup);
+              }
+          
+              // Now check for manufacturer and mapping
+              var sMfgNumber = oUserModel.getProperty("/manufacturerNumber");
+              if (!sMfgNumber) {
+                  console.warn("Manufacturer number not set. Used default group.");
+                  oUserModel.updateBindings(true);
+                  return;
+              }
+          
+              var aMappings = oMappingModel.getProperty("/mappings") || [];
+              var oMatchedMapping = aMappings.find(function (m) {
+                  return m.manufacturerNumber === sMfgNumber;
+              });
+          
+              if (!oMatchedMapping) {
+                  console.warn("No mapping found for manufacturer number:", sMfgNumber);
+                  oUserModel.updateBindings(true);
+                  return;
+              }
+          
+              var oMatchedGroup = aGroups.find(function (group) {
+                  return group.id === oMatchedMapping.groupId;
+              });
+          
+              if (oMatchedGroup) {
+                  oUserModel.setProperty("/selectedGroup", oMatchedGroup.id);
+                  oUserModel.setProperty("/isGroupMapped", true); // Disable select
+                  console.log("Auto-selected group:", oMatchedGroup);
+              } else {
+                  console.warn("Mapped groupId not found. Falling back to default group.");
+              }
+          
+              oUserModel.updateBindings(true);
+            })
+            .catch(function (oError) {
+                console.error("Error fetching groups:", oError);
+                sap.m.MessageBox.error("Failed to fetch Okta groups.");
+            });
           },
           goToUserStep: function () {
             debugger
@@ -220,6 +260,9 @@ sap.ui.define([
                   this.byId("UserTypeStep").setNextStep(this.getView().byId("stepInternalFinal"));
                 break;
             }
+          },
+          goToGroupStep: function () {
+            this._loadOktaGroups();
           },
           setUserMethod: function () {
             this.setDiscardableProperty({
@@ -295,29 +338,38 @@ sap.ui.define([
               window.top.location.href = "/";
               // ✅ Replace "/" with your Work Zone workspace URL if needed
           },
-          onFetchGroups: function () {
-            var oModel = this.getView().getModel("oktaService");
-            var oAction = oModel.bindContext("/getOktaGroups(...)");
-        
-            oAction.setParameter("query", "MFG");
-        
+          onCreateOktaGroup: function () {
+            debugger
             var oView = this.getView();
-        
-            oAction.execute()
-                .then(function () {
-                    var aGroups = oAction.getBoundContext().getObject();
-        
-                    // Update the userContext model with the group list
-                    var oUserContextModel = oView.getModel("userContext");
-                    oUserContextModel.setProperty("/groupDetails", {
-                        groupList: aGroups
-                    });
-                })
-                .catch(function (oError) {
-                    console.error("Error fetching groups:", oError);
-                    sap.m.MessageBox.error("Failed to fetch Okta groups.");
-                });
-        },
+            var oOktaModel = oView.getModel("oktaService");
+            var oUserModel = oView.getModel("userContext");
+
+            var oGroupProfile = {
+                name: oUserModel.getProperty("/newGroupName"),
+                description: "Custom group for MFG user"
+            };
+
+            var oAction = oOktaModel.bindContext("/createOktaGroup(...)");
+            oAction.setParameter("group", { profile: oGroupProfile });
+
+            oAction.execute().then(function () {
+                var oGroup = oAction.getBoundContext().getObject();
+
+                // ✅ Set selected group to new one
+                oUserModel.setProperty("/selectedGroup", oGroup.id);
+
+                // Optional: Add to groupList if you want to update the dropdown
+                var aGroupList = oUserModel.getProperty("/groupDetails/groupList") || [];
+                aGroupList.push(oGroup);
+                oUserModel.setProperty("/groupDetails/groupList", aGroupList);
+
+                sap.m.MessageToast.show("Group created and selected.");
+            }).catch(function (oError) {
+                console.error("Failed to create group:", oError);
+                sap.m.MessageBox.error("Could not create new Okta group.");
+            });
+          },
+          
           onSubmitOktaUser: function () {
             var oView = this.getView();
             var oUserContext = oView.getModel("userContext").getData();

@@ -1460,10 +1460,15 @@ annotate Media.MediaFile with @odata.draft.enabled: true;
 service OktaService {
   action createOktaUser(user: UserInput) returns OktaResponse;
   action getOktaGroups(query: String) returns many OktaGroup;
+  action createOktaGroup(group: NewOktaGroup) returns OktaGroup;
 }
 
 type OktaGroup {
   id: String;
+  profile: GroupProfile;
+}
+
+type NewOktaGroup {
   profile: GroupProfile;
 }
 

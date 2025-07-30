@@ -174,7 +174,7 @@ module.exports = cds.service.impl(function() {
             }
         }
     });
-    this.before('READ', [
+    this.before ('READ', [
         'ITEMMASTER',
         'ITEMMASPD',
         'ITEMMASMFRNRNAME',
@@ -217,8 +217,8 @@ module.exports = cds.service.impl(function() {
         'IHTYPE',
         'IHPROVINCE',
         'IHMFRNRNAME',
-        'SALESBYCURRENT', // <--- EXCLUDE SALESBYCURRENT FROM THIS GENERIC HANDLER
-        'SALESBYCURRENTWOPID', // <--- EXCLUDE SALESBYCURRENTWOPID
+        //'SALESBYCURRENT',
+        //'SALESBYCURRENTWOPID',
         'SBCPRODDESC',
         'SBCBILLTO',
         'SBCSHIPTO',
@@ -248,20 +248,11 @@ module.exports = cds.service.impl(function() {
         'SHIPSTATUSWHSTATUS',
         'SHIPSTATUSMFRNRNAME'
     ], async (req) => {
+    
         console.log("before searching");
         console.log(req.query.SELECT.where);
-    
-        const fullEntityName = req.target?.name;
-        const entityName = fullEntityName?.split('.').pop();
-        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
-    
         const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
         const newCondition = [];
-    
-        // Check if the current entity/manufacturer combination has a specific filter
-        // If so, we should not apply the generic toUpper/like transformation to its specific filter parts
-        const hasSpecificManufacturerFilter = manufacturerFilterMap[userManufacturer] && manufacturerFilterMap[userManufacturer][entityName];
-    
         existingConditions.forEach((condition, index) => {
             if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
                 newCondition.push(condition);
@@ -269,38 +260,151 @@ module.exports = cds.service.impl(function() {
                 const scol = condition.ref[0];
                 const sOperator = existingConditions[index + 1];
                 const sval = existingConditions[index + 2]?.val;
-    
-                // Check if this condition is part of a special filter (e.g., VKORG, WERKS for 0001000024)
-                // You might need a more sophisticated way to identify these,
-                // perhaps by maintaining a list of fields that should NOT be toupper/like'd
-                // or by checking if the current condition matches a part of your pre-defined filters.
-                // For simplicity, assuming 'CO_VKORG' and 'WERKS' are the problem fields for the special case.
-                const isSpecialFilterField = (scol === 'CO_VKORG' || scol === 'WERKS' || scol === 'SALESORG' || scol === 'VKBUR' || scol === 'SALES_ORG' || scol === 'VKORG' || scol === 'WAREHOUSE_NAME_LNUMT');
-    
-                // If it's a direct equality on a potentially problematic field in a specific filter context,
-                // or if the entity is SALESBYCURRENT (or others with hardcoded filters)
-                // AND the manufacturer has a specific filter applied, then DO NOT apply toUpper/like.
-                if (sOperator === '=' && sval && !isSpecialFilterField && !hasSpecificManufacturerFilter) {
-                    // Apply toUpper and LIKE for general case-insensitive search
+                // 🔥 Transform only normal "=" searches to LIKE
+                if (sOperator === '=' && sval) {
                     newCondition.push(
                         { func: 'toupper', args: [{ ref: [scol] }] },
                         'like',
                         { val: `%${sval.toUpperCase()}%` }
                     );
                 } else {
-                    // Push the condition as is if it's not a candidate for toUpper/like transformation,
-                    // or if it's part of a special filter that should remain untouched.
                     newCondition.push({ ref: [scol] }, sOperator, { val: sval });
                 }
             }
         });
-    
+
         if (newCondition.length > 0) {
             req.query.SELECT.where = newCondition;
         }
-    
         console.log(req.query.SELECT.where);
     });
+    // this.before('READ', [
+    //     'ITEMMASTER',
+    //     'ITEMMASPD',
+    //     'ITEMMASMFRNRNAME',
+    //     'ITEMMASCATEGORY',
+    //     'INVENTORYSTATUS',
+    //     'INVSTATUSPLANTNAME',
+    //     'INVSTATUSMFRNRNAME',
+    //     'INVENTORYAUDITTRAIL',
+    //     'IATPLANTNAME',
+    //     'IATTRANTYPE',
+    //     'IATPRODUCTCODE',
+    //     'IATLOT',
+    //     'IATWAREHOUSE',
+    //     'IATCUSTSUPPNAME',
+    //     'IATMFRNRNAME',
+    //     'BILL_TONAME',
+    //     'FINCJMFRNRNAME',
+    //     'INVENTORYSNAPSHOT',
+    //     'INVSNAPPLANTNAME',
+    //     'INVSNAPPRODDESC',
+    //     'INVSNAPLOT',
+    //     'INVSNAPWARESTAT',
+    //     'INVSNAPMFRNRNAME',
+    //     'INVENTORYBYLOT',
+    //     'INVBYLOTPLANTNAME',
+    //     'INVBYLOTPRODUCTCODE',
+    //     'INVBYLOTLOT',
+    //     'INVBYLOTWAREHOUSE',
+    //     'INVBYLOTMFRNRNAME',
+    //     'OPENAR',
+    //     'OPENARCUSTOMER',
+    //     'OPENARMFRNRNAME',
+    //     'INVENTORYVALUATION',
+    //     'INVVALPLANTNAME',
+    //     'INVVALPRODDESC',
+    //     'INVVALMFRNRNAME',
+    //     'INVOICEHISTORY',
+    //     'IHPLANTNAME',
+    //     'IHCUSTOMER',
+    //     'IHTYPE',
+    //     'IHPROVINCE',
+    //     'IHMFRNRNAME',
+    //     'SALESBYCURRENT', // <--- EXCLUDE SALESBYCURRENT FROM THIS GENERIC HANDLER
+    //     'SALESBYCURRENTWOPID', // <--- EXCLUDE SALESBYCURRENTWOPID
+    //     'SBCPRODDESC',
+    //     'SBCBILLTO',
+    //     'SBCSHIPTO',
+    //     'SBCMFRNRNAME',
+    //     'CUSTOMERMASTER',
+    //     'KUNN2_BILLTONAME',
+    //     'KUNN2_SHIPTONAME',
+    //     'CAL_CUST_STATUS',
+    //     'SHIPPINGHISTORY',
+    //     'SHSHIPTONAME',
+    //     'SHCARRIER',
+    //     'SHMFRNRNAME',
+    //     'PRICING',
+    //     'PRICINGPRICEDESC',
+    //     'PRICINGPRODUCTDESC',
+    //     'PRICINGMFRNRNAME',
+    //     'RETURNS',
+    //     'RETCUSTNAME',
+    //     'RETREASON',
+    //     'RETMFRNRNAME',
+    //     'BACKORDERS',
+    //     'BOPRODUCTDESC',
+    //     'BOSHIPTONAME',
+    //     'BOMFRNRNAME',
+    //     'SHIPPINGSTATUS',
+    //     'SHIPSTATUSPRODDESC',
+    //     'SHIPSTATUSWHSTATUS',
+    //     'SHIPSTATUSMFRNRNAME'
+    // ], async (req) => {
+    //     console.log("before searching");
+    //     console.log(req.query.SELECT.where);
+    
+    //     const fullEntityName = req.target?.name;
+    //     const entityName = fullEntityName?.split('.').pop();
+    //     const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+    
+    //     const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
+    //     const newCondition = [];
+    
+    //     // Check if the current entity/manufacturer combination has a specific filter
+    //     // If so, we should not apply the generic toUpper/like transformation to its specific filter parts
+    //     const hasSpecificManufacturerFilter = manufacturerFilterMap[userManufacturer] && manufacturerFilterMap[userManufacturer][entityName];
+    
+    //     existingConditions.forEach((condition, index) => {
+    //         if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
+    //             newCondition.push(condition);
+    //         } else if (condition.ref) {
+    //             const scol = condition.ref[0];
+    //             const sOperator = existingConditions[index + 1];
+    //             const sval = existingConditions[index + 2]?.val;
+    
+    //             // Check if this condition is part of a special filter (e.g., VKORG, WERKS for 0001000024)
+    //             // You might need a more sophisticated way to identify these,
+    //             // perhaps by maintaining a list of fields that should NOT be toupper/like'd
+    //             // or by checking if the current condition matches a part of your pre-defined filters.
+    //             // For simplicity, assuming 'CO_VKORG' and 'WERKS' are the problem fields for the special case.
+    //             const isSpecialFilterField = (scol === 'CO_VKORG' || scol === 'WERKS' || scol === 'SALESORG' || scol === 'VKBUR' || scol === 'SALES_ORG' || scol === 'VKORG' || scol === 'WAREHOUSE_NAME_LNUMT');
+    
+    //             // If it's a direct equality on a potentially problematic field in a specific filter context,
+    //             // or if the entity is SALESBYCURRENT (or others with hardcoded filters)
+    //             // AND the manufacturer has a specific filter applied, then DO NOT apply toUpper/like.
+    //             if (sOperator === '=' && sval && !isSpecialFilterField && !hasSpecificManufacturerFilter) {
+    //                 // Apply toUpper and LIKE for general case-insensitive search
+    //                 newCondition.push(
+    //                     { func: 'toupper', args: [{ ref: [scol] }] },
+    //                     'like',
+    //                     { val: `%${sval.toUpperCase()}%` }
+    //                 );
+    //             } else {
+    //                 // Push the condition as is if it's not a candidate for toUpper/like transformation,
+    //                 // or if it's part of a special filter that should remain untouched.
+    //                 newCondition.push({ ref: [scol] }, sOperator, { val: sval });
+    //             }
+    //         }
+    //     });
+    
+    //     if (newCondition.length > 0) {
+    //         req.query.SELECT.where = newCondition;
+    //     }
+    
+    //     console.log(req.query.SELECT.where);
+    // });
 
     // --- START: Deduplication for Internal users ---
 
@@ -698,6 +802,34 @@ module.exports = cds.service.impl(function() {
         } catch (error) {
           console.error('Okta API error (getOktaGroups):', error?.response?.data || error.message);
           req.error(500, 'Failed to fetch Okta groups.');
+        }
+    });
+    this.on('createOktaGroup', async (req) => {
+        const axios = require('axios');
+        const groupData = req.data.group;
+    
+        try {
+            const response = await axios.post(
+                'https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/groups',
+                { profile: groupData.profile },
+                {
+                    headers: {
+                        'Authorization': `SSWS 00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+    
+            return {
+                id: response.data.id,
+                profile: {
+                    name: response.data.profile.name,
+                    description: response.data.profile.description
+                }
+            };
+        } catch (error) {
+            console.error("Okta API error (createOktaGroup):", error?.response?.data || error.message);
+            req.error(500, "Failed to create Okta group.");
         }
     });
     // 3. Apply the handler to all 'READ' operations for the specified entities.

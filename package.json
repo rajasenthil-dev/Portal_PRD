@@ -105,7 +105,8 @@
         "kind": "cloudfoundry"
       },
       "db": {
-        "kind": "sql"
+        "kind": "sql",
+        "log_sql": true
       },
       "html5-repo": true
     }

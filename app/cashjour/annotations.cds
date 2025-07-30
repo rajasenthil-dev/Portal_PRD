@@ -26,7 +26,7 @@ Search.defaultSearchElement: true,
         SelectionFields  : [
             BILL_TO,
             NAME1, 
-            BUDAT,
+            DEPOSIT_DATE,
             BLART,
             VKORG,
             PRCTR
@@ -98,7 +98,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : BUDAT
+                Value : DEPOSIT_DATE
             },
             
             {
