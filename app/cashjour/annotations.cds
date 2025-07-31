@@ -98,6 +98,10 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : BUDAT
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : DEPOSIT_DATE
             },
             
