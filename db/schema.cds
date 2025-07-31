@@ -747,6 +747,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
+    KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -798,6 +799,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
+    KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {

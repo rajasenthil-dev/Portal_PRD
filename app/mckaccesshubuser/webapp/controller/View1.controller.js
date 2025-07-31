@@ -15,78 +15,105 @@ sap.ui.define([
           this._wizard = this.byId("wizard");
           this._oNavContainer = this.byId("wizardNavContainer");
           this._oWizardContentPage = this.byId("wizardContentPage");
-          this._initModel();
+          //this._initModel();
+
+          var sPath = jQuery.sap.getModulePath("mckaccesshubuser.model", "/manufacturerGroupMap.json");
           var oMappingModel = new sap.ui.model.json.JSONModel();
-          oMappingModel.loadData("model/manufacturerGroupMap.json"); // path relative to index.html or component.js
+          // Temporary in-memory JSON for functional testing
+          var aTempMappings = [
+            {
+              manufacturerNumber: "0001000024",
+              groupId: "00gkmbbie9xNhlxcb1d7",
+              groupName: "MFG_Reports_All"
+            },
+            {
+              manufacturerNumber: "0001000011",
+              groupId: "00gkmbbie9xNhlxcb1d7",
+              groupName: "MFG_Reports_All"
+            },
+            {
+              manufacturerNumber: "0001000025",
+              groupId: "00gkmb9nd4VgJ9b8v1d7",
+              groupName: "MFG_Reports_NoBKO_NoFinance"
+            },
+            {
+              manufacturerNumber: "0001000011",
+              groupId: "00gkmbbie9xNhlxcb1d7",
+              groupName: "MFG_Reports_All"
+            },
+            {
+              manufacturerNumber: "0001000018",
+              groupId: "00gkmbc4l40FFT6m51d7",
+              groupName: "MFG_Reports_NoFinance_NoInvoiceHistory"
+            },
+            {
+              manufacturerNumber: "0001000015",
+              groupId: "00gkmbc4l40FFT6m51d7",
+              groupName: "MFG_Reports_NoFinance_NoInvoiceHistory"
+            },
+            {
+              manufacturerNumber: "0001000016",
+              groupId: "00gkmbc4l40FFT6m51d7",
+              groupName: "MFG_Reports_NoFinance_NoInvoiceHistory"
+            },
+          ];
+
+          oMappingModel.setData({ mappings: aTempMappings });
           this.getView().setModel(oMappingModel, "groupMapping");
+
           this.model = new JSONModel();
-          const selectedGroup = this.getView().getModel("userContext").getProperty("/selectedGroup");
-          console.log("Selected Group:", selectedGroup);
           // Set initial properties immediately
           this.model.setProperty("/selectedUser", "InternalUser");
           this.model.setData({
-              selectedUser: "InternalUser",
-              editGroup: false,
-              groupAction: 0, // 0 = Existing Group, 1 = New Group
-              selectedGroup: "",
-              firstName: "",
-              lastName: "",
-              email: "",
-              manufacturerNumber: "",
-              MFGName: "",
-              profitCentre: "",
-              salesOrg: "",
-              salesOffice: "",
-              newGroupName: "",
-              groupDetails: {
-                  groupList: []
+            selectedUser: "InternalUser",
+            editGroup: false,
+            groupAction: 0, // 0 = Existing Group, 1 = New Group
+            selectedGroup: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            manufacturerNumber: "",
+            MFGName: "",
+            profitCentre: "",
+            salesOrg: "",
+            salesOffice: "",
+            newGroupName: "",
+            groupDetails: {
+              groupList: []
+            },
+            internalChecklist: [
+              {
+                "title": "Create a ServiceNow Request",
+                "description": "Use the 'AD Group Membership' request type."
               },
-              internalChecklist: [
-                {
-                  "title": "Create a ServiceNow Request",
-                  "description": "Use the 'AD Group Membership' request type."
-                },
-                {
-                  "title": "Enter User's Info",
-                  "description": "Name, email, and whether they are a new hire or transfer."
-                },
-                {
-                  "title": "Select Correct AD Group",
-                  "description": "BTP_INTERNAL_USERS for NAMCK or MFG_INTERNAL_USERS_CA for CA."
-                },
-                {
-                  "title": "Write a Clear Business Justification",
-                  "description": "Why this access is needed."
-                },
-                {
-                  "title": "Approval Path",
-                  "description": "Manager → Application Owner → AD Group Admin"
-                }
-              ],
-              approvalSteps: [
-                { step: "Manager Approval", icon: "sap-icon://employee-approvals" },
-                { step: "Application Owner Approval", icon: "sap-icon://user-settings" },
-                { step: "AD Group Admin Adds User", icon: "sap-icon://shield" }
-              ]
+              {
+                "title": "Enter User's Info",
+                "description": "Name, email, and whether they are a new hire or transfer."
+              },
+              {
+                "title": "Select Correct AD Group",
+                "description": "BTP_INTERNAL_USERS for NAMCK or MFG_INTERNAL_USERS_CA for CA."
+              },
+              {
+                "title": "Write a Clear Business Justification",
+                "description": "Why this access is needed."
+              },
+              {
+                "title": "Approval Path",
+                "description": "Manager → Application Owner → AD Group Admin"
+              }
+            ],
+            approvalSteps: [
+              { step: "Manager Approval", icon: "sap-icon://employee-approvals" },
+              { step: "Application Owner Approval", icon: "sap-icon://user-settings" },
+              { step: "AD Group Admin Adds User", icon: "sap-icon://shield" }
+            ]
           });
           // Set the model on the view
           this.getView().setModel(this.model, "userContext");
-          debugger
-          var oOktaModel = this.getView().getModel("oktaService");
+          const selectedGroup = this.getView().getModel("userContext").getProperty("/selectedGroup");
+          console.log("Selected Group:", selectedGroup);
 
-          console.log("Okta Model from View:", oOktaModel);
-
-          if (!oOktaModel) {
-              console.error("❌ OktaService model not found! Check manifest or Component.js");
-              return;
-          }
-
-          oOktaModel.metadataLoaded().then(function () {
-              console.log("✅ Metadata loaded successfully");
-              this._loadOktaGroups();
-          }.bind(this)).catch(function (err) {
-              console.error("❌ Failed to load metadata:", err);
-          });
           const oInstructions = this.byId("internalInstructions");
           const oInstructions1 = this.byId("internalInstructions1");
           const oExternalUserInfo = this.byId("externalUserInfo");
@@ -137,8 +164,8 @@ sap.ui.define([
               <p class="tipText"><strong>Tip:</strong> Reach out to your admin team before creating a new group — there may already be one that fits your need!</p>`
             );
     
-                //this.model.loadData(sap.ui.require.toUrl("sap/ui/demo/mock/products.json"));
-                this.getView().setModel(this.model);
+            //this.model.loadData(sap.ui.require.toUrl("sap/ui/demo/mock/products.json"));
+            this.getView().setModel(this.model);
             // sample JSON data for testing
             // const oData = {
             //   userType: "Internal",
@@ -166,12 +193,12 @@ sap.ui.define([
           //       <li>Select the user type to continue.</li>
           //     </ul>
           //   `);
-            let oModel = this.getView().getModel("userContext");
+          let oModel = this.getView().getModel("userContext");
     
-            oModel.setProperty("/editUserDetails", false);
-            oModel.setProperty("/editManufacturerDetails", false);
-            oModel.setProperty("/editGroup", false);
-          },
+          oModel.setProperty("/editUserDetails", false);
+          oModel.setProperty("/editManufacturerDetails", false);
+          oModel.setProperty("/editGroup", false);
+        },
           // onBeforeRendering: function () {
           //   if (!this._groupsLoaded) {
           //       this._loadOktaGroups();

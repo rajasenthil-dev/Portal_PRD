@@ -133,7 +133,7 @@ module.exports = cds.service.impl(function() {
      * Manufacturer → Entity Filter Map
      */
     const manufacturerFilterMap = {
-        '0001000024': entityFilterMapFor0001000019
+        '0001000019': entityFilterMapFor0001000019
     };
     
     // --- Generic 'before READ' Handler ---
