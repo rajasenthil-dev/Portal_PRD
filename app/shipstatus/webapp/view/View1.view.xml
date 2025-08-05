@@ -147,7 +147,7 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='{"columnKey":"REQUESTED_DELIVERY_DATE_VDATU","leadingProperty":"REQUESTED_DELIVERY_DATE_VDATU","columnIndex":2}'/>
                                 </t:customData>
-                                <Text id="_IDGenText2" text="Requested Delivery Date" />
+                                <Text id="_IDGenText2" text="Estimated Delivery Date" />
                                 <t:template>
                                     <Text 
                                         id="_IDGenText3" text="{

@@ -747,7 +747,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
-    KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
+key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    TXT30                   : String(30)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -799,7 +800,8 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
-    KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
+key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    TXT30                   : String(30)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -883,6 +885,11 @@ define view SBCSALESOFFICE as
 define view SBCYEAR as
     select from SALESBYCURRENT distinct {
         key INV_YEAR,
+        MFRNR @UI.Hidden
+};
+define view SBCCUSTOMERTYPE as
+    select from SALESBYCURRENT distinct {
+        key TXT30,
         MFRNR @UI.Hidden
 };
 // Sales by Product/Customer
@@ -1412,7 +1419,7 @@ entity SHIPPINGSTATUS
     key VKORG                                       : String(4)         @title: 'Sales Org';
         QUANTITY_ORDERED_QTY                        : Decimal(31,0)     @title: 'Quantity Ordered';
         PRODUCT_DESCRIPTION_MAKTX                   : String(40)        @title: 'Product Description';
-        REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Requested Delivery Date';
+        REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Estimated Delivery Date';
     key SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
         AUDAT                                       : String(8)         @title: 'Order Date';
         SHIP_TO_NAME_PARTNER                        : String(10)        @title: 'Ship To Name';
@@ -1455,6 +1462,30 @@ define view SHIPSTATUSMFRNR as
         key MANUFACTURER_MFRNR
 };
 
+@cds.persistence.exists
+entity PIVOTTABLE
+{
+        MFRNR_MANUFACTURER              : String(10)        @title: '{i18n>PIVOTTABLE.MFRNR}';
+    key VBELN_BILLING_DOCUMENT          : String(10)        @title: '{i18n>PIVOTTABLE.VBELN}';
+        FKIMG_INVOICED_QUANTITY         : Decimal(18,3)     @title: '{i18n>PIVOTTABLE.FKIMG}';
+        NETWR_NET_VALUE                 : Decimal(18,2)     @title: '{i18n>PIVOTTABLE.NETWR}';
+        VKORG_ANA_SALES_ORGANIZATION    : String(4)         @title: '{i18n>PIVOTTABLE.VKORG}';
+        FKART_ANA_BILLING_TYPE          : String(4)         @title: '{i18n>PIVOTTABLE.FKART}';
+        REGIO_ANA_REGION                : String(3)         @title: '{i18n>PIVOTTABLE.REGIO}';
+        KUNAG_ANA_SOLD_TO_PARTY         : String(10)        @title: '{i18n>PIVOTTABLE.KUNAG}';
+        FKDAT_ANA_BILLING_DATE          : Date              @title: '{i18n>PIVOTTABLE.FKDAT}';
+        MATNR_MATERIAL                  : String(7)         @title: '{i18n>PIVOTTABLE.MATNR}';
+        SALE_MONTH                      : String(8)         @title: '{i18n>PIVOTTABLE.SALE_MONTH}';
+        PROVINCE                        : String(25)        @title: '{i18n>PIVOTTABLE.PROVINCE}';
+
+        // --- CRITICAL HIERARCHY FIELDS ---
+        // These fields are REQUIRED for the TreeTable UI. The Datasphere view MUST provide them.
+        // They define the parent-child relationships (e.g., Province -> Customer).
+        // HierarchyLevel : Integer; // The level in the hierarchy (e.g., 0 for Province, 1 for Customer)
+        // ParentNodeID   : String;  // The ID of the parent node. Null for top-level nodes.
+        // NodeText       : String;  // The text to display for the node (e.g., "Ontario" or "Customer ABC")
+        // NodeID         : String;  // A unique ID for each node in the hierarchy.
+}
 
 @cds.persistence.exists
 entity MAINPAGESUMMARY 

@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/processing/",
+        "uri": "/odata/v4/sales/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -77,8 +77,13 @@
     "dependencies": {
       "minUI5Version": "1.135.0",
       "libs": {
+        "sap.ui.core": {},
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.ui.layout": {},
+        "sap.f": {},
+        "sap.ui.table": {},
+        "sap.ui.comp": {},
+        "sap.ui.mdc": {}
       }
     },
     "contentDensities": {
@@ -96,9 +101,11 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {
+          "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": true,
+          "groupId": "$direct"
         }
       },
       "logo": {
@@ -155,8 +162,27 @@
       "type": "XML",
       "id": "App",
       "async": true
+    },
+    "framework": {
+      "name": "SAPUI5",
+      "version": "1.120.13",
+      "libraries": [
+        {
+          "name": "sap.m"
+        },
+        {
+          "name": "sap.ui.core"
+        },
+        {
+          "name": "sap.ui.mdc"
+        },
+        {
+          "name": "themelib_sap_horizon"
+        }
+      ]
     }
   },
+  
   "sap.cloud": {
     "public": true,
     "service": "mck.portal"

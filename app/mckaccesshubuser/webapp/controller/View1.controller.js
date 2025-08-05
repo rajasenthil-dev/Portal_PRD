@@ -69,6 +69,7 @@ sap.ui.define([
             editGroup: false,
             groupAction: 0, // 0 = Existing Group, 1 = New Group
             selectedGroup: "",
+            selectedGroupName: "",
             firstName: "",
             lastName: "",
             email: "",
@@ -213,67 +214,73 @@ sap.ui.define([
         
             if (!oUserModel || !oMappingModel) {
                 console.error("Required models not found. Did you set them in onInit?");
+                sap.m.MessageBox.error("Missing models required to fetch Okta groups.");
                 return;
             }
         
             var oAction = oOktaModel.bindContext("/getOktaGroups(...)");
         
             oAction.execute()
-            .then(function () {
-              var oRawData = oAction.getBoundContext().getObject();
-              var aGroups = oRawData?.value || [];
-          
-              console.log("Fetched Groups:", aGroups);
-              oUserModel.setProperty("/groupDetails/groupList", aGroups);
-          
-              // Default to dropdown enabled
-              oUserModel.setProperty("/isGroupMapped", false);
-          
-              // Default to 3rd group fallback in case no match happens
-              var oDefaultGroup = aGroups[3]; // 3rd item
-              if (oDefaultGroup) {
-                  oUserModel.setProperty("/selectedGroup", oDefaultGroup.id);
-                  console.warn("Defaulting to 3rd group:", oDefaultGroup);
-              }
-          
-              // Now check for manufacturer and mapping
-              var sMfgNumber = oUserModel.getProperty("/manufacturerNumber");
-              if (!sMfgNumber) {
-                  console.warn("Manufacturer number not set. Used default group.");
-                  oUserModel.updateBindings(true);
-                  return;
-              }
-          
-              var aMappings = oMappingModel.getProperty("/mappings") || [];
-              var oMatchedMapping = aMappings.find(function (m) {
-                  return m.manufacturerNumber === sMfgNumber;
-              });
-          
-              if (!oMatchedMapping) {
-                  console.warn("No mapping found for manufacturer number:", sMfgNumber);
-                  oUserModel.updateBindings(true);
-                  return;
-              }
-          
-              var oMatchedGroup = aGroups.find(function (group) {
-                  return group.id === oMatchedMapping.groupId;
-              });
-          
-              if (oMatchedGroup) {
-                  oUserModel.setProperty("/selectedGroup", oMatchedGroup.id);
-                  oUserModel.setProperty("/isGroupMapped", true); // Disable select
-                  console.log("Auto-selected group:", oMatchedGroup);
-              } else {
-                  console.warn("Mapped groupId not found. Falling back to default group.");
-              }
-          
-              oUserModel.updateBindings(true);
-            })
-            .catch(function (oError) {
-                console.error("Error fetching groups:", oError);
-                sap.m.MessageBox.error("Failed to fetch Okta groups.");
-            });
-          },
+                .then(function () {
+                    var oRawData = oAction.getBoundContext().getObject();
+                    var aGroups = oRawData?.value || [];
+        
+                    console.log("Fetched Groups:", aGroups);
+        
+                    // Store groups in user model
+                    oUserModel.setProperty("/groupDetails/groupList", aGroups);
+                    oUserModel.setProperty("/isGroupMapped", false); // default to false
+        
+                    // Default group (3rd in list) as a fallback
+                    var oDefaultGroup = aGroups[3];
+                    var oFinalGroup = oDefaultGroup;
+                    var isGroupMapped = false;
+        
+                    // Attempt mapping logic if manufacturer number is available
+                    var sMfgNumber = oUserModel.getProperty("/manufacturerNumber");
+        
+                    if (sMfgNumber) {
+                        var aMappings = oMappingModel.getProperty("/mappings") || [];
+        
+                        var oMatchedMapping = aMappings.find(function (m) {
+                            return m.manufacturerNumber === sMfgNumber;
+                        });
+        
+                        if (oMatchedMapping) {
+                            var oMatchedGroup = aGroups.find(function (group) {
+                                return group.id === oMatchedMapping.groupId;
+                            });
+        
+                            if (oMatchedGroup) {
+                                oFinalGroup = oMatchedGroup;
+                                isGroupMapped = true;
+                                console.log("Auto-mapped group:", oMatchedGroup);
+                            } else {
+                                console.warn("Mapped group ID not found in fetched groups.");
+                            }
+                        } else {
+                            console.warn("No mapping found for manufacturer number:", sMfgNumber);
+                        }
+                    } else {
+                        console.warn("Manufacturer number not set. Using fallback.");
+                    }
+        
+                    // Set final selected group (either mapped or default)
+                    if (oFinalGroup) {
+                        oUserModel.setProperty("/selectedGroup", oFinalGroup.id);
+                        oUserModel.setProperty("/selectedGroupName", oFinalGroup.profile?.name || oFinalGroup.name);
+                        oUserModel.setProperty("/isGroupMapped", isGroupMapped);
+                    } else {
+                        console.warn("No group found to select.");
+                    }
+        
+                    oUserModel.updateBindings(true);
+                })
+                .catch(function (oError) {
+                    console.error("Error fetching groups:", oError);
+                    sap.m.MessageBox.error("Failed to fetch Okta groups.");
+                });
+        },
           goToUserStep: function () {
             debugger
             var selectedKey = this.model.getProperty("/selectedUser");
@@ -365,8 +372,10 @@ sap.ui.define([
               window.top.location.href = "/";
               // ✅ Replace "/" with your Work Zone workspace URL if needed
           },
+          
           onCreateOktaGroup: function () {
             debugger
+            
             var oView = this.getView();
             var oOktaModel = oView.getModel("oktaService");
             var oUserModel = oView.getModel("userContext");
@@ -384,6 +393,7 @@ sap.ui.define([
 
                 // ✅ Set selected group to new one
                 oUserModel.setProperty("/selectedGroup", oGroup.id);
+                oUserModel.setProperty("/selectedGroupName", oGroup.profile?.name || oGroup.name);
 
                 // Optional: Add to groupList if you want to update the dropdown
                 var aGroupList = oUserModel.getProperty("/groupDetails/groupList") || [];
@@ -415,7 +425,7 @@ sap.ui.define([
                         manufacturerNumber: [oUserContext.manufacturerNumber],
                         mfgName: oUserContext.mfgName
                     },
-                    groupIds: ["00gkmbbie9xNhlxcb1d7"]
+                    groupIds: [oUserContext.selectedGroup]
                 }
             };
         

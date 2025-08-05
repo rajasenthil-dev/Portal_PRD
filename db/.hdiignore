@@ -426,3 +426,9 @@ src/gen/SHIPPINGSTATUS.hdbview
 src/gen/INVENTORY.INVSTATUSWAREHOUSESTATUS.hdbview
 src/gen/INVSTATUSWAREHOUSESTATUS.hdbview
 
+src/gen/SALES.PIVOTTABLE.hdbview
+src/gen/PIVOTTABLE.hdbview
+
+src/gen/SALES.SBCCUSTOMERTYPE.hdbview
+src/gen/SBCCUSTOMERTYPE.hdbview
+

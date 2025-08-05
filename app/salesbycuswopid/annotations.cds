@@ -63,7 +63,8 @@ Search.defaultSearchElement: true,
             CO_VKORG,
             VKBUR,
             BEZEI,
-            BEZEI_AUART
+            BEZEI_AUART,
+            TXT30
         ],
         
         LineItem  : [
@@ -164,6 +165,11 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : SHIP_TO_NAME,
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TXT30,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -405,6 +411,23 @@ Search.defaultSearchElement: true,
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'WAREHOUSE',
                         ValueListProperty : 'WAREHOUSE'
+                    }
+                ]
+            },
+        }
+        
+    );
+    TXT30@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCCUSTOMERTYPE',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'TXT30',
+                        ValueListProperty : 'TXT30'
                     }
                 ]
             },

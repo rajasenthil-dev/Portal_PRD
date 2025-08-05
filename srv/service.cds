@@ -920,6 +920,8 @@ using SBCYEAR as ENTSBCYEAR from '../db/schema';
 using SBCBEZEI as ENTSBCBEZEI from '../db/schema';
 using SBCBEZEIAUART as ENTSBCBEZEIAUART from '../db/schema';
 using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
+using SBCCUSTOMERTYPE as ENTSBCCUSTOMERTYPE from '../db/schema';
+using PIVOTTABLE as ENTPIVOTTABLE from '../db/schema';
 
 
 service SALES {
@@ -1139,6 +1141,18 @@ service SALES {
         { grant: 'READ', to: 'Internal' }
     ]
     entity SBCPLANTNAME as projection on ENTSBCPLANTNAME;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SBCCUSTOMERTYPE as projection on ENTSBCCUSTOMERTYPE;
+    
+
+    entity PIVOTTABLE as projection on ENTPIVOTTABLE;
+
+
 }
 
 using CUSTOMERMASTER as ENTCUSTOMERMASTER from '../db/schema';

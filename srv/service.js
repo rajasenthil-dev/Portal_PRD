@@ -135,46 +135,8 @@ module.exports = cds.service.impl(function() {
     const manufacturerFilterMap = {
         '0001000019': entityFilterMapFor0001000019
     };
-    
-    // --- Generic 'before READ' Handler ---
-    this.before('READ', (req) => {
-        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
-        const fullEntityName = req.target?.name;
-        const entityName = fullEntityName?.split('.').pop();
 
-        console.log(`READ handler for ${entityName} - ManufacturerNumber: ${userManufacturer}`);
-
-        // 🎯 SKU-based filtering for 0001000005
-        if (userManufacturer === '0001000005') {
-            const excludedSKUs = excludedSKUsFor0001000005[entityName];
-            const skuField = skuFieldMap[entityName];
-
-            if (excludedSKUs?.length && skuField) {
-                const skuFilter = `${skuField} NOT IN (${excludedSKUs.map(sku => `'${sku}'`).join(', ')})`;
-                console.log(`Applying SKU exclusion filter for manufacturer 0001000005 on entity ${entityName}: ${skuFilter}`);
-                try {
-                    req.query.where(skuFilter);
-                } catch (e) {
-                    console.warn(`Entity ${entityName} does not support filtering`);
-                }
-                return; // ✅ early return — skip VKORG-based filter
-            }
-        }
-
-        // 🧾 VKORG-based filtering for 0001000019 and others in the map
-        const entityFilters = manufacturerFilterMap[userManufacturer];
-        const filter = entityFilters?.[entityName];
-
-        if (filter) {
-            console.log(`Applying VKORG exclusion filter for manufacturer ${userManufacturer} on entity: ${entityName}`);
-            try {
-                req.query.where(filter);
-            } catch (e) {
-                console.warn(`Entity ${entityName} does not support filtering`);
-            }
-        }
-    });
-    this.before ('READ', [
+    const fuzzySearchEntities = new Set([
         'ITEMMASTER',
         'ITEMMASPD',
         'ITEMMASMFRNRNAME',
@@ -217,8 +179,7 @@ module.exports = cds.service.impl(function() {
         'IHTYPE',
         'IHPROVINCE',
         'IHMFRNRNAME',
-        //'SALESBYCURRENT',
-        //'SALESBYCURRENTWOPID',
+        'SALESBYCURRENT',
         'SBCPRODDESC',
         'SBCBILLTO',
         'SBCSHIPTO',
@@ -247,37 +208,232 @@ module.exports = cds.service.impl(function() {
         'SHIPSTATUSPRODDESC',
         'SHIPSTATUSWHSTATUS',
         'SHIPSTATUSMFRNRNAME'
-    ], async (req) => {
-    
-        console.log("before searching");
-        console.log(req.query.SELECT.where);
-        const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
-        const newCondition = [];
-        existingConditions.forEach((condition, index) => {
-            if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
-                newCondition.push(condition);
-            } else if (condition.ref) {
-                const scol = condition.ref[0];
-                const sOperator = existingConditions[index + 1];
-                const sval = existingConditions[index + 2]?.val;
-                // 🔥 Transform only normal "=" searches to LIKE
-                if (sOperator === '=' && sval) {
-                    newCondition.push(
-                        { func: 'toupper', args: [{ ref: [scol] }] },
-                        'like',
-                        { val: `%${sval.toUpperCase()}%` }
-                    );
-                } else {
-                    newCondition.push({ ref: [scol] }, sOperator, { val: sval });
-                }
-            }
-        });
-
-        if (newCondition.length > 0) {
-            req.query.SELECT.where = newCondition;
+      ]);
+      this.before('READ', async (req) => {
+        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+        const fullEntityName = req.target?.name;
+        const entityName = fullEntityName?.split('.').pop();
+      
+        console.log(`📥 READ request on ${entityName}, Manufacturer: ${userManufacturer}`);
+      
+        let where = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
+      
+        // === 1. Apply SKU-based exclusion for manufacturer 0001000005 ===
+        if (userManufacturer === '0001000005') {
+          const excludedSKUs = excludedSKUsFor0001000005[entityName];
+          const skuField = skuFieldMap[entityName];
+      
+          if (excludedSKUs?.length && skuField) {
+            const skuFilter = {
+              xpr: [
+                { ref: [skuField] },
+                'not in',
+                { val: excludedSKUs }
+              ]
+            };
+            console.log(`🧹 SKU Filter for ${entityName}:`, skuFilter);
+            if (where.length > 0) where.push('and');
+            where.push(skuFilter);
+          }
         }
-        console.log(req.query.SELECT.where);
+      
+        // === 2. Apply VKORG/PLANT-based filter per manufacturer/entity ===
+        const entityFilters = manufacturerFilterMap[userManufacturer];
+        const rawFilter = entityFilters?.[entityName];
+      
+        if (rawFilter) {
+          try {
+            const parsedExpr = cds.parse.expr(rawFilter);
+            console.log(`🔒 VKORG Filter for ${entityName}:`, rawFilter);
+            if (where.length > 0) where.push('and');
+            where.push(parsedExpr);
+          } catch (e) {
+            console.warn(`⚠️ Failed to parse VKORG filter for ${entityName}: ${e.message}`);
+          }
+        }
+      
+        // === 3. Transform '=' conditions into case-insensitive LIKEs ===
+        if (fuzzySearchEntities.has(entityName)) {
+          const transformedWhere = [];
+      
+          for (let i = 0; i < where.length; i++) {
+            const condition = where[i];
+      
+            if (['and', 'or', '(', ')'].includes(condition)) {
+              transformedWhere.push(condition);
+            } else if (condition?.ref) {
+              const field = condition.ref[0];
+              const operator = where[i + 1];
+              const valueObj = where[i + 2];
+      
+              if (operator === '=' && valueObj?.val) {
+                transformedWhere.push(
+                  { func: 'toupper', args: [{ ref: [field] }] },
+                  'like',
+                  { val: `%${valueObj.val.toUpperCase()}%` }
+                );
+                i += 2; // Skip over operator and value
+              } else {
+                transformedWhere.push(condition);
+              }
+            } else if (condition?.xpr) {
+              // Preserve already-built expressions like parsed VKORG filters
+              transformedWhere.push(condition);
+            }
+          }
+      
+          req.query.SELECT.where = transformedWhere;
+          console.log(`🔍 Final WHERE with fuzzy LIKEs for ${entityName}:`, JSON.stringify(transformedWhere, null, 2));
+        } else {
+          // Apply WHERE if any conditions exist (non-fuzzy)
+          if (where.length > 0) {
+            req.query.SELECT.where = where;
+            console.log(`📄 Final WHERE for ${entityName}:`, JSON.stringify(where, null, 2));
+          }
+        }
     });
+    // // --- Generic 'before READ' Handler ---
+    // this.before('READ', (req) => {
+    //     const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+    //     const fullEntityName = req.target?.name;
+    //     const entityName = fullEntityName?.split('.').pop();
+
+    //     console.log(`READ handler for ${entityName} - ManufacturerNumber: ${userManufacturer}`);
+
+    //     // 🎯 SKU-based filtering for 0001000005
+    //     if (userManufacturer === '0001000005') {
+    //         const excludedSKUs = excludedSKUsFor0001000005[entityName];
+    //         const skuField = skuFieldMap[entityName];
+
+    //         if (excludedSKUs?.length && skuField) {
+    //             const skuFilter = `${skuField} NOT IN (${excludedSKUs.map(sku => `'${sku}'`).join(', ')})`;
+    //             console.log(`Applying SKU exclusion filter for manufacturer 0001000005 on entity ${entityName}: ${skuFilter}`);
+    //             try {
+    //                 req.query.where(skuFilter);
+    //             } catch (e) {
+    //                 console.warn(`Entity ${entityName} does not support filtering`);
+    //             }
+    //             return; // ✅ early return — skip VKORG-based filter
+    //         }
+    //     }
+
+    //     // 🧾 VKORG-based filtering for 0001000019 and others in the map
+    //     const entityFilters = manufacturerFilterMap[userManufacturer];
+    //     const filter = entityFilters?.[entityName];
+
+    //     if (filter) {
+    //         console.log(`Applying VKORG exclusion filter for manufacturer ${userManufacturer} on entity: ${entityName}`);
+    //         try {
+    //             req.query.where(filter);
+    //         } catch (e) {
+    //             console.warn(`Entity ${entityName} does not support filtering`);
+    //         }
+    //     }
+    // });
+    // this.before ('READ', [
+    //     'ITEMMASTER',
+    //     'ITEMMASPD',
+    //     'ITEMMASMFRNRNAME',
+    //     'ITEMMASCATEGORY',
+    //     'INVENTORYSTATUS',
+    //     'INVSTATUSPLANTNAME',
+    //     'INVSTATUSMFRNRNAME',
+    //     'INVENTORYAUDITTRAIL',
+    //     'IATPLANTNAME',
+    //     'IATTRANTYPE',
+    //     'IATPRODUCTCODE',
+    //     'IATLOT',
+    //     'IATWAREHOUSE',
+    //     'IATCUSTSUPPNAME',
+    //     'IATMFRNRNAME',
+    //     'BILL_TONAME',
+    //     'FINCJMFRNRNAME',
+    //     'INVENTORYSNAPSHOT',
+    //     'INVSNAPPLANTNAME',
+    //     'INVSNAPPRODDESC',
+    //     'INVSNAPLOT',
+    //     'INVSNAPWARESTAT',
+    //     'INVSNAPMFRNRNAME',
+    //     'INVENTORYBYLOT',
+    //     'INVBYLOTPLANTNAME',
+    //     'INVBYLOTPRODUCTCODE',
+    //     'INVBYLOTLOT',
+    //     'INVBYLOTWAREHOUSE',
+    //     'INVBYLOTMFRNRNAME',
+    //     'OPENAR',
+    //     'OPENARCUSTOMER',
+    //     'OPENARMFRNRNAME',
+    //     'INVENTORYVALUATION',
+    //     'INVVALPLANTNAME',
+    //     'INVVALPRODDESC',
+    //     'INVVALMFRNRNAME',
+    //     'INVOICEHISTORY',
+    //     'IHPLANTNAME',
+    //     'IHCUSTOMER',
+    //     'IHTYPE',
+    //     'IHPROVINCE',
+    //     'IHMFRNRNAME',
+    //     //'SALESBYCURRENT',
+    //     //'SALESBYCURRENTWOPID',
+    //     'SBCPRODDESC',
+    //     'SBCBILLTO',
+    //     'SBCSHIPTO',
+    //     'SBCMFRNRNAME',
+    //     'CUSTOMERMASTER',
+    //     'KUNN2_BILLTONAME',
+    //     'KUNN2_SHIPTONAME',
+    //     'CAL_CUST_STATUS',
+    //     'SHIPPINGHISTORY',
+    //     'SHSHIPTONAME',
+    //     'SHCARRIER',
+    //     'SHMFRNRNAME',
+    //     'PRICING',
+    //     'PRICINGPRICEDESC',
+    //     'PRICINGPRODUCTDESC',
+    //     'PRICINGMFRNRNAME',
+    //     'RETURNS',
+    //     'RETCUSTNAME',
+    //     'RETREASON',
+    //     'RETMFRNRNAME',
+    //     'BACKORDERS',
+    //     'BOPRODUCTDESC',
+    //     'BOSHIPTONAME',
+    //     'BOMFRNRNAME',
+    //     'SHIPPINGSTATUS',
+    //     'SHIPSTATUSPRODDESC',
+    //     'SHIPSTATUSWHSTATUS',
+    //     'SHIPSTATUSMFRNRNAME'
+    // ], async (req) => {
+    
+    //     console.log("before searching");
+    //     console.log(req.query.SELECT.where);
+    //     const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
+    //     const newCondition = [];
+    //     existingConditions.forEach((condition, index) => {
+    //         if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
+    //             newCondition.push(condition);
+    //         } else if (condition.ref) {
+    //             const scol = condition.ref[0];
+    //             const sOperator = existingConditions[index + 1];
+    //             const sval = existingConditions[index + 2]?.val;
+    //             // 🔥 Transform only normal "=" searches to LIKE
+    //             if (sOperator === '=' && sval) {
+    //                 newCondition.push(
+    //                     { func: 'toupper', args: [{ ref: [scol] }] },
+    //                     'like',
+    //                     { val: `%${sval.toUpperCase()}%` }
+    //                 );
+    //             } else {
+    //                 newCondition.push({ ref: [scol] }, sOperator, { val: sval });
+    //             }
+    //         }
+    //     });
+
+    //     if (newCondition.length > 0) {
+    //         req.query.SELECT.where = newCondition;
+    //     }
+    //     console.log(req.query.SELECT.where);
+    // });
     // this.before('READ', [
     //     'ITEMMASTER',
     //     'ITEMMASPD',
@@ -485,6 +641,7 @@ module.exports = cds.service.impl(function() {
         'SBCSALESORG': 'CO_VKORG',
         'SBCSALESOFFICE': 'VKBUR',
         'SBCYEAR': 'INV_YEAR',
+        'SBCCUSTOMERTYPE': 'TXT30',
         'KUNN2_BILLTO': 'KUNN2_BILLTO',
         'KUNN2_BILLTONAME': 'NAME1_BILLTO',
         'KUNN2_SHIPTO': 'KUNN2_SHIPTO',

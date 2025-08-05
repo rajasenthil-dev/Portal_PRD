@@ -281,7 +281,7 @@
                             value="{userContext>/newGroupName}"
                             width="20rem" />
                       <Button id="_IDGenButton" text="Create Group" press="onCreateOktaGroup" type="Emphasized" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
-                      <Select id="groupSelect1"
+                      <!-- <Select id="groupSelect1"
                               width="22rem"
                               
                               selectedKey="{userContext>/selectedGroup}"
@@ -289,7 +289,7 @@
                                   path: 'userContext>/groupDetails/groupList/value'
                               }">
                           <core:Item id="_IDGenItem12" key="{userContext>id}" text="{userContext>profile/name}" />
-                      </Select>
+                      </Select> -->
                   </VBox>
                 </VBox>
 
@@ -487,7 +487,7 @@
               </HBox>
 
               <VBox id="_IDGenVBox22" visible="{= !${userContext>/editGroup}}">
-                <Text id="_IDGenText41" text="Selected Group: {userContext>/selectedGroup}" 
+                <Text id="_IDGenText41" text="Selected Group: {userContext>/selectedGroupName}" 
                       visible="{= ${userContext>/groupAction} === 0}" />
                 <Text id="_IDGenText42" text="New Group to be Created: {userContext>/newGroupName}" 
                       visible="{= ${userContext>/groupAction} === 1}" />
@@ -510,7 +510,7 @@
                       width="22rem"
                         selectedKey="{userContext>/selectedGroup}"
                         items="{
-                            path: 'userContext>/groupDetails/groupList/value'
+                            path: 'userContext>/groupDetails/groupList'
                         }">
                       <core:Item id="_IDGenItem1" key="{userContext>id}" text="{userContext>profile/name}" />
                     </Select>
