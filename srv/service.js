@@ -25,273 +25,274 @@ module.exports = cds.service.impl(function() {
      * (Sales Org 1000 and Plant 1010 excluded)
     */
     const entityFilterMapFor0001000019 = {
-        SALESBYCURRENT: `(CO_VKORG <> '1000' AND WERKS <> '1010')`,
-        SALESBYCURRENTWOPID: `(CO_VKORG <> '1000' AND WERKS <> '1010')`,
-        SBCSALESORG: `(CO_VKORG <> '1000')`,
-        RETVKORG: `(CO_VKORG <> '1000')`,
-        ITEMMASTER: `(SALESORG <> '1000' AND BWKEY <> '1010')`,
-        ITEMMASSALESORG: `(SALESORG <> '1000')`,
-        INVENTORYSTATUS: `(VKBUR <> '1000' AND PLANT <> '1010')`,
-        INVSTATUSVKBUR: `(VKBUR <> '1000')`,
-        INVENTORYBYLOT: `(VKBUR <> '1000' AND PLANT <> '1010')`,
-        INVENTORYVALUATION: `(VKBUR <> '1000' AND PLANT <> '1010')`,
-        INVENTORYAUDITTRAIL: `(SALES_ORG <> '1000' AND WERKS <> '1010')`,
-        IATSALESORG: `(SALES_ORG <> '1000' AND WERKS <> '1010')`,
-        CASHJOURNAL: `(VKORG <> '1000')`,
-        INVENTORYSNAPSHOT: `(VKORG <> '1000')`,
-        FINCJSALESORG: `(VKORG <> '1000')`,
-        IHSALESORG: `(VKORG <> '1000')`,
-        OPENAR: `(VKORG <> '1000')`,
-        OPENARSALESORG: `(VKORG <> '1000')`,
-        CUSTOMERMASTER: `(VKORG <> '1000')`,
-        CMSALESORG: `(VKORG <> '1000')`,
-        SHIPPINGHISTORY: `(VKORG <> '1000')`,
-        SHVKORG: `(VKORG <> '1000')`,
-        PRICING: `(VKORG <> '1000')`,
-        PRICINGSALESORG: `(VKORG <> '1000')`,
-        OOVKORG: `(VKORG <> '1000')`,
-        BOVKORG: `(VKORG <> '1000')`,
-        INVOICEHISTORY: `(VKORG <> '1000' AND WERKS <> '1010')`,
-        OPENORDERS: `(VKORG <> '1000' AND PLANT <> '1010')`,
-        BACKORDERS: `(VKORG <> '1000' AND PLANT <> '1010')`,
-        RETURNS: `(CO_VKORG <> '1000' AND PLANT <> '1010')`,
-        SHIPPINGSTATUS: `(VKORG <> '1000' AND WAREHOUSE_NAME_LNUMT <> '1010')`,
-        SHIPSTATUSVKORG: `(VKORG <> '1000')`
-    };
-    
-    /**
-     * Entity → Filter map for manufacturer 0001000005
-     * (Sales Org 1000 excluded ONLY, allow Plant 1010)
-     */
-    const entityFilterMapFor0001000005 = {
-        SALESBYCURRENT: `(CO_VKORG <> '1000')`,
-        SALESBYCURRENTWOPID: `(CO_VKORG <> '1000')`,
-        SBCSALESORG: `(CO_VKORG <> '1000')`,
-        RETVKORG: `(CO_VKORG <> '1000')`,
-        ITEMMASTER: `(SALESORG <> '1000')`,
-        ITEMMASSALESORG: `(SALESORG <> '1000')`,
-        INVENTORYSTATUS: `(VKBUR <> '1000')`,
-        INVSTATUSVKBUR: `(VKBUR <> '1000')`,
-        INVENTORYBYLOT: `(VKBUR <> '1000')`,
-        INVENTORYVALUATION: `(VKBUR <> '1000')`,
-        INVENTORYAUDITTRAIL: `(SALES_ORG <> '1000')`,
-        IATSALESORG: `(SALES_ORG <> '1000')`,
-        CASHJOURNAL: `(VKORG <> '1000')`,
-        INVENTORYSNAPSHOT: `(VKORG <> '1000')`,
-        FINCJSALESORG: `(VKORG <> '1000')`,
-        IHSALESORG: `(VKORG <> '1000')`,
-        OPENAR: `(VKORG <> '1000')`,
-        OPENARSALESORG: `(VKORG <> '1000')`,
-        CUSTOMERMASTER: `(VKORG <> '1000')`,
-        CMSALESORG: `(VKORG <> '1000')`,
-        SHIPPINGHISTORY: `(VKORG <> '1000')`,
-        SHVKORG: `(VKORG <> '1000')`,
-        PRICING: `(VKORG <> '1000')`,
-        PRICINGSALESORG: `(VKORG <> '1000')`,
-        OOVKORG: `(VKORG <> '1000')`,
-        BOVKORG: `(VKORG <> '1000')`,
-        INVOICEHISTORY: `(VKORG <> '1000')`,
-        OPENORDERS: `(VKORG <> '1000')`,
-        BACKORDERS: `(VKORG <> '1000')`,
-        RETURNS: `(CO_VKORG <> '1000')`,
-        SHIPPINGSTATUS: `(VKORG <> '1000')`,
-        SHIPSTATUSVKORG: `(VKORG <> '1000')`,
-        MAINPAGESUMMARY: `(VKORG <> '1000')`,
-        MAINPAGEINVENTORY: `(VKORG <> '1000')`
-    };
-    const excludedSKUsFor0001000005 = {
-        SALESBYCURRENT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        SALESBYCURRENTWOPID: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        ITEMMASTER: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        INVENTORYSTATUS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        INVENTORYBYLOT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        INVENTORYVALUATION: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        INVENTORYAUDITTRAIL:['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'], 
-        INVENTORYSNAPSHOT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        PRICING: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        OPENORDERS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        BACKORDERS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        SHIPPINGSTATUS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
-        MAINPAGEINVENTORY: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062']
-    };
-    const skuFieldMap = {
-        SALESBYCURRENT: 'SKU_MATNR',
-        SALESBYCURRENTWOPID: 'SKU_MATNR',
-        ITEMMASTER: 'PRODUCT',
-        INVENTORYSTATUS: 'SKU_MATNR',
-        INVENTORYBYLOT: 'MATNR',
-        INVENTORYVALUATION: 'MATNR',
-        INVENTORYAUDITTRAIL:'MATNR', 
-        INVENTORYSNAPSHOT: 'MATNR',
-        PRICING: 'MATNR',
-        OPENORDERS: 'MATNR',
-        BACKORDERS: 'MATNR',
-        SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO ',
-        MAINPAGEINVENTORY: 'SKU_MATNR'
-    };
-    /**
-     * Manufacturer → Entity Filter Map
-     */
-    const manufacturerFilterMap = {
-        '0001000019': entityFilterMapFor0001000019
-    };
+      SALESBYCURRENTAPP: `(CO_VKORG <> '1000' AND WERKS <> '1010')`,
+      SALESBYCURRENTWOPID: `(CO_VKORG <> '1000' AND WERKS <> '1010')`,
+      SBCSALESORG: `(CO_VKORG <> '1000')`,
+      RETVKORG: `(CO_VKORG <> '1000')`,
+      ITEMMASTER: `(SALESORG <> '1000' AND BWKEY <> '1010')`,
+      ITEMMASSALESORG: `(SALESORG <> '1000')`,
+      INVENTORYSTATUS: `(VKBUR <> '1000' AND PLANT <> '1010')`,
+      INVSTATUSVKBUR: `(VKBUR <> '1000')`,
+      INVENTORYBYLOT: `(VKBUR <> '1000' AND PLANT <> '1010')`,
+      INVENTORYVALUATION: `(VKBUR <> '1000' AND PLANT <> '1010')`,
+      INVENTORYAUDITTRAIL: `(SALES_ORG <> '1000' AND WERKS <> '1010')`,
+      IATSALESORG: `(SALES_ORG <> '1000' AND WERKS <> '1010')`,
+      CASHJOURNAL: `(VKORG <> '1000')`,
+      INVENTORYSNAPSHOT: `(VKORG <> '1000')`,
+      FINCJSALESORG: `(VKORG <> '1000')`,
+      IHSALESORG: `(VKORG <> '1000')`,
+      OPENAR: `(VKORG <> '1000')`,
+      OPENARSALESORG: `(VKORG <> '1000')`,
+      CUSTOMERMASTER: `(VKORG <> '1000')`,
+      CMSALESORG: `(VKORG <> '1000')`,
+      SHIPPINGHISTORY: `(VKORG <> '1000')`,
+      SHVKORG: `(VKORG <> '1000')`,
+      PRICING: `(VKORG <> '1000')`,
+      PRICINGSALESORG: `(VKORG <> '1000')`,
+      OOVKORG: `(VKORG <> '1000')`,
+      BOVKORG: `(VKORG <> '1000')`,
+      INVOICEHISTORY: `(VKORG <> '1000' AND WERKS <> '1010')`,
+      OPENORDERS: `(VKORG <> '1000' AND PLANT <> '1010')`,
+      BACKORDERS: `(VKORG <> '1000' AND PLANT <> '1010')`,
+      RETURNS: `(CO_VKORG <> '1000' AND PLANT <> '1010')`,
+      SHIPPINGSTATUS: `(VKORG <> '1000' AND WAREHOUSE_NAME_LNUMT <> '1010')`,
+      SHIPSTATUSVKORG: `(VKORG <> '1000')`
+  };
+  
+  /**
+   * Entity → Filter map for manufacturer 0001000005
+   * (Sales Org 1000 excluded ONLY, allow Plant 1010)
+   */
+  const entityFilterMapFor0001000005 = {
+      SALESBYCURRENTAPP: `(CO_VKORG <> '1000')`,
+      SALESBYCURRENTWOPID: `(CO_VKORG <> '1000')`,
+      SBCSALESORG: `(CO_VKORG <> '1000')`,
+      RETVKORG: `(CO_VKORG <> '1000')`,
+      ITEMMASTER: `(SALESORG <> '1000')`,
+      ITEMMASSALESORG: `(SALESORG <> '1000')`,
+      INVENTORYSTATUS: `(VKBUR <> '1000')`,
+      INVSTATUSVKBUR: `(VKBUR <> '1000')`,
+      INVENTORYBYLOT: `(VKBUR <> '1000')`,
+      INVENTORYVALUATION: `(VKBUR <> '1000')`,
+      INVENTORYAUDITTRAIL: `(SALES_ORG <> '1000')`,
+      IATSALESORG: `(SALES_ORG <> '1000')`,
+      CASHJOURNAL: `(VKORG <> '1000')`,
+      INVENTORYSNAPSHOT: `(VKORG <> '1000')`,
+      FINCJSALESORG: `(VKORG <> '1000')`,
+      IHSALESORG: `(VKORG <> '1000')`,
+      OPENAR: `(VKORG <> '1000')`,
+      OPENARSALESORG: `(VKORG <> '1000')`,
+      CUSTOMERMASTER: `(VKORG <> '1000')`,
+      CMSALESORG: `(VKORG <> '1000')`,
+      SHIPPINGHISTORY: `(VKORG <> '1000')`,
+      SHVKORG: `(VKORG <> '1000')`,
+      PRICING: `(VKORG <> '1000')`,
+      PRICINGSALESORG: `(VKORG <> '1000')`,
+      OOVKORG: `(VKORG <> '1000')`,
+      BOVKORG: `(VKORG <> '1000')`,
+      INVOICEHISTORY: `(VKORG <> '1000')`,
+      OPENORDERS: `(VKORG <> '1000')`,
+      BACKORDERS: `(VKORG <> '1000')`,
+      RETURNS: `(CO_VKORG <> '1000')`,
+      SHIPPINGSTATUS: `(VKORG <> '1000')`,
+      SHIPSTATUSVKORG: `(VKORG <> '1000')`,
+      MAINPAGESUMMARY: `(VKORG <> '1000')`,
+      MAINPAGEINVENTORY: `(VKORG <> '1000')`
+  };
+  const excludedSKUsFor0001000005 = {
+      SALESBYCURRENTAPP: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      SALESBYCURRENTWOPID: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      ITEMMASTER: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      INVENTORYSTATUS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      INVENTORYBYLOT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      INVENTORYVALUATION: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      INVENTORYAUDITTRAIL:['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'], 
+      INVENTORYSNAPSHOT: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      PRICING: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      OPENORDERS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      BACKORDERS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      SHIPPINGSTATUS: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
+      MAINPAGEINVENTORY: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062']
+  };
+  const skuFieldMap = {
+      SALESBYCURRENTAPP: 'SKU_MATNR',
+      SALESBYCURRENTWOPID: 'SKU_MATNR',
+      ITEMMASTER: 'PRODUCT',
+      INVENTORYSTATUS: 'SKU_MATNR',
+      INVENTORYBYLOT: 'MATNR',
+      INVENTORYVALUATION: 'MATNR',
+      INVENTORYAUDITTRAIL:'MATNR', 
+      INVENTORYSNAPSHOT: 'MATNR',
+      PRICING: 'MATNR',
+      OPENORDERS: 'MATNR',
+      BACKORDERS: 'MATNR',
+      SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO ',
+      MAINPAGEINVENTORY: 'SKU_MATNR'
+  };
+  /**
+   * Manufacturer → Entity Filter Map
+   */
+  const manufacturerFilterMap = {
+      '0001000019': entityFilterMapFor0001000019
+  };
 
-    const fuzzySearchEntities = new Set([
-        'ITEMMASTER',
-        'ITEMMASPD',
-        'ITEMMASMFRNRNAME',
-        'ITEMMASCATEGORY',
-        'INVENTORYSTATUS',
-        'INVSTATUSPLANTNAME',
-        'INVSTATUSMFRNRNAME',
-        'INVENTORYAUDITTRAIL',
-        'IATPLANTNAME',
-        'IATTRANTYPE',
-        'IATPRODUCTCODE',
-        'IATLOT',
-        'IATWAREHOUSE',
-        'IATCUSTSUPPNAME',
-        'IATMFRNRNAME',
-        'BILL_TONAME',
-        'FINCJMFRNRNAME',
-        'INVENTORYSNAPSHOT',
-        'INVSNAPPLANTNAME',
-        'INVSNAPPRODDESC',
-        'INVSNAPLOT',
-        'INVSNAPWARESTAT',
-        'INVSNAPMFRNRNAME',
-        'INVENTORYBYLOT',
-        'INVBYLOTPLANTNAME',
-        'INVBYLOTPRODUCTCODE',
-        'INVBYLOTLOT',
-        'INVBYLOTWAREHOUSE',
-        'INVBYLOTMFRNRNAME',
-        'OPENAR',
-        'OPENARCUSTOMER',
-        'OPENARMFRNRNAME',
-        'INVENTORYVALUATION',
-        'INVVALPLANTNAME',
-        'INVVALPRODDESC',
-        'INVVALMFRNRNAME',
-        'INVOICEHISTORY',
-        'IHPLANTNAME',
-        'IHCUSTOMER',
-        'IHTYPE',
-        'IHPROVINCE',
-        'IHMFRNRNAME',
-        'SALESBYCURRENT',
-        'SBCPRODDESC',
-        'SBCBILLTO',
-        'SBCSHIPTO',
-        'SBCMFRNRNAME',
-        'CUSTOMERMASTER',
-        'KUNN2_BILLTONAME',
-        'KUNN2_SHIPTONAME',
-        'CAL_CUST_STATUS',
-        'SHIPPINGHISTORY',
-        'SHSHIPTONAME',
-        'SHCARRIER',
-        'SHMFRNRNAME',
-        'PRICING',
-        'PRICINGPRICEDESC',
-        'PRICINGPRODUCTDESC',
-        'PRICINGMFRNRNAME',
-        'RETURNS',
-        'RETCUSTNAME',
-        'RETREASON',
-        'RETMFRNRNAME',
-        'BACKORDERS',
-        'BOPRODUCTDESC',
-        'BOSHIPTONAME',
-        'BOMFRNRNAME',
-        'SHIPPINGSTATUS',
-        'SHIPSTATUSPRODDESC',
-        'SHIPSTATUSWHSTATUS',
-        'SHIPSTATUSMFRNRNAME'
-      ]);
-      this.before('READ', async (req) => {
-        const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
-        const fullEntityName = req.target?.name;
-        const entityName = fullEntityName?.split('.').pop();
-      
-        console.log(`📥 READ request on ${entityName}, Manufacturer: ${userManufacturer}`);
-      
-        let where = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
-      
-        // === 1. Apply SKU-based exclusion for manufacturer 0001000005 ===
-        if (userManufacturer === '0001000005') {
-          const excludedSKUs = excludedSKUsFor0001000005[entityName];
-          const skuField = skuFieldMap[entityName];
-      
-          if (excludedSKUs?.length && skuField) {
-            const skuFilter = {
-              xpr: [
-                { ref: [skuField] },
-                'not in',
-                { val: excludedSKUs }
-              ]
-            };
-            console.log(`🧹 SKU Filter for ${entityName}:`, skuFilter);
-            if (where.length > 0) where.push('and');
-            where.push(skuFilter);
-          }
+  const fuzzySearchEntities = new Set([
+      'ITEMMASTER',
+      'ITEMMASPD',
+      'ITEMMASMFRNRNAME',
+      'ITEMMASCATEGORY',
+      'INVENTORYSTATUS',
+      'INVSTATUSPLANTNAME',
+      'INVSTATUSMFRNRNAME',
+      'INVENTORYAUDITTRAIL',
+      'IATPLANTNAME',
+      'IATTRANTYPE',
+      'IATPRODUCTCODE',
+      'IATLOT',
+      'IATWAREHOUSE',
+      'IATCUSTSUPPNAME',
+      'IATMFRNRNAME',
+      'BILL_TONAME',
+      'FINCJMFRNRNAME',
+      'INVENTORYSNAPSHOT',
+      'INVSNAPPLANTNAME',
+      'INVSNAPPRODDESC',
+      'INVSNAPLOT',
+      'INVSNAPWARESTAT',
+      'INVSNAPMFRNRNAME',
+      'INVENTORYBYLOT',
+      'INVBYLOTPLANTNAME',
+      'INVBYLOTPRODUCTCODE',
+      'INVBYLOTLOT',
+      'INVBYLOTWAREHOUSE',
+      'INVBYLOTMFRNRNAME',
+      'OPENAR',
+      'OPENARCUSTOMER',
+      'OPENARMFRNRNAME',
+      'INVENTORYVALUATION',
+      'INVVALPLANTNAME',
+      'INVVALPRODDESC',
+      'INVVALMFRNRNAME',
+      'INVOICEHISTORY',
+      'IHPLANTNAME',
+      'IHCUSTOMER',
+      'IHTYPE',
+      'IHPROVINCE',
+      'IHMFRNRNAME',
+      'SALESBYCURRENTAPP',
+      'SALESBYCURRENTWOPID',
+      'SBCPRODDESC',
+      'SBCBILLTO',
+      'SBCSHIPTO',
+      'SBCMFRNRNAME',
+      'CUSTOMERMASTER',
+      'KUNN2_BILLTONAME',
+      'KUNN2_SHIPTONAME',
+      'CAL_CUST_STATUS',
+      'SHIPPINGHISTORY',
+      'SHSHIPTONAME',
+      'SHCARRIER',
+      'SHMFRNRNAME',
+      'PRICING',
+      'PRICINGPRICEDESC',
+      'PRICINGPRODUCTDESC',
+      'PRICINGMFRNRNAME',
+      'RETURNS',
+      'RETCUSTNAME',
+      'RETREASON',
+      'RETMFRNRNAME',
+      'BACKORDERS',
+      'BOPRODUCTDESC',
+      'BOSHIPTONAME',
+      'BOMFRNRNAME',
+      'SHIPPINGSTATUS',
+      'SHIPSTATUSPRODDESC',
+      'SHIPSTATUSWHSTATUS',
+      'SHIPSTATUSMFRNRNAME'
+    ]);
+    this.before('READ', async (req) => {
+      const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
+      const fullEntityName = req.target?.name;
+      const entityName = fullEntityName?.split('.').pop();
+    
+      console.log(`📥 READ request on ${entityName}, Manufacturer: ${userManufacturer}`);
+    
+      let where = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
+    
+      // === 1. Apply SKU-based exclusion for manufacturer 0001000005 ===
+      if (userManufacturer === '0001000005') {
+        const excludedSKUs = excludedSKUsFor0001000005[entityName];
+        const skuField = skuFieldMap[entityName];
+    
+        if (excludedSKUs?.length && skuField) {
+          const skuFilter = {
+            xpr: [
+              { ref: [skuField] },
+              'not in',
+              { val: excludedSKUs }
+            ]
+          };
+          console.log(`🧹 SKU Filter for ${entityName}:`, skuFilter);
+          if (where.length > 0) where.push('and');
+          where.push(skuFilter);
         }
-      
-        // === 2. Apply VKORG/PLANT-based filter per manufacturer/entity ===
-        const entityFilters = manufacturerFilterMap[userManufacturer];
-        const rawFilter = entityFilters?.[entityName];
-      
-        if (rawFilter) {
-          try {
-            const parsedExpr = cds.parse.expr(rawFilter);
-            console.log(`🔒 VKORG Filter for ${entityName}:`, rawFilter);
-            if (where.length > 0) where.push('and');
-            where.push(parsedExpr);
-          } catch (e) {
-            console.warn(`⚠️ Failed to parse VKORG filter for ${entityName}: ${e.message}`);
-          }
+      }
+    
+      // === 2. Apply VKORG/PLANT-based filter per manufacturer/entity ===
+      const entityFilters = manufacturerFilterMap[userManufacturer];
+      const rawFilter = entityFilters?.[entityName];
+    
+      if (rawFilter) {
+        try {
+          const parsedExpr = cds.parse.expr(rawFilter);
+          console.log(`🔒 VKORG Filter for ${entityName}:`, rawFilter);
+          if (where.length > 0) where.push('and');
+          where.push(parsedExpr);
+        } catch (e) {
+          console.warn(`⚠️ Failed to parse VKORG filter for ${entityName}: ${e.message}`);
         }
-      
-        // === 3. Transform '=' conditions into case-insensitive LIKEs ===
-        if (fuzzySearchEntities.has(entityName)) {
-          const transformedWhere = [];
-      
-          for (let i = 0; i < where.length; i++) {
-            const condition = where[i];
-      
-            if (['and', 'or', '(', ')'].includes(condition)) {
-              transformedWhere.push(condition);
-            } else if (condition?.ref) {
-              const field = condition.ref[0];
-              const operator = where[i + 1];
-              const valueObj = where[i + 2];
-      
-              if (operator === '=' && valueObj?.val) {
-                transformedWhere.push(
-                  { func: 'toupper', args: [{ ref: [field] }] },
-                  'like',
-                  { val: `%${valueObj.val.toUpperCase()}%` }
-                );
-                i += 2; // Skip over operator and value
-              } else {
-                transformedWhere.push(condition);
-              }
-            } else if (condition?.xpr) {
-              // Preserve already-built expressions like parsed VKORG filters
+      }
+    
+      // === 3. Transform '=' conditions into case-insensitive LIKEs ===
+      if (fuzzySearchEntities.has(entityName)) {
+        const transformedWhere = [];
+    
+        for (let i = 0; i < where.length; i++) {
+          const condition = where[i];
+    
+          if (['and', 'or', '(', ')'].includes(condition)) {
+            transformedWhere.push(condition);
+          } else if (condition?.ref) {
+            const field = condition.ref[0];
+            const operator = where[i + 1];
+            const valueObj = where[i + 2];
+    
+            if (operator === '=' && valueObj?.val) {
+              transformedWhere.push(
+                { func: 'toupper', args: [{ ref: [field] }] },
+                'like',
+                { val: `%${valueObj.val.toUpperCase()}%` }
+              );
+              i += 2; // Skip over operator and value
+            } else {
               transformedWhere.push(condition);
             }
-          }
-      
-          req.query.SELECT.where = transformedWhere;
-          console.log(`🔍 Final WHERE with fuzzy LIKEs for ${entityName}:`, JSON.stringify(transformedWhere, null, 2));
-        } else {
-          // Apply WHERE if any conditions exist (non-fuzzy)
-          if (where.length > 0) {
-            req.query.SELECT.where = where;
-            console.log(`📄 Final WHERE for ${entityName}:`, JSON.stringify(where, null, 2));
+          } else if (condition?.xpr) {
+            // Preserve already-built expressions like parsed VKORG filters
+            transformedWhere.push(condition);
           }
         }
-    });
+    
+        req.query.SELECT.where = transformedWhere;
+        console.log(`🔍 Final WHERE with fuzzy LIKEs for ${entityName}:`, JSON.stringify(transformedWhere, null, 2));
+      } else {
+        // Apply WHERE if any conditions exist (non-fuzzy)
+        if (where.length > 0) {
+          req.query.SELECT.where = where;
+          console.log(`📄 Final WHERE for ${entityName}:`, JSON.stringify(where, null, 2));
+        }
+      }
+  });
     // // --- Generic 'before READ' Handler ---
     // this.before('READ', (req) => {
     //     const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
@@ -641,7 +642,7 @@ module.exports = cds.service.impl(function() {
         'SBCSALESORG': 'CO_VKORG',
         'SBCSALESOFFICE': 'VKBUR',
         'SBCYEAR': 'INV_YEAR',
-        'SBCCUSTOMERTYPE': 'TXT30',
+        'SBCCUSTOMERTYPE': 'BILL_TO_TYPE',
         'KUNN2_BILLTO': 'KUNN2_BILLTO',
         'KUNN2_BILLTONAME': 'NAME1_BILLTO',
         'KUNN2_SHIPTO': 'KUNN2_SHIPTO',

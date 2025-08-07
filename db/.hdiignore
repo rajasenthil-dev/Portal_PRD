@@ -432,3 +432,5 @@ src/gen/PIVOTTABLE.hdbview
 src/gen/SALES.SBCCUSTOMERTYPE.hdbview
 src/gen/SBCCUSTOMERTYPE.hdbview
 
+src/gen/SALES.SALESBYCURRENTAPP.hdbview
+src/gen/ALESBYCURRENTAPP.hdbview

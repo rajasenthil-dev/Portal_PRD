@@ -248,13 +248,13 @@ entity CASHJOURNAL
         BSTKD               : String(35)        @title : '{i18n>CASHJOURNAL.BSTKD}';
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
         AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
-        BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
+        BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
         CURRENT             : String(3)         @title : '{i18n>CASHJOURNAL.CURRENT}';
         CAL_INV_AMOUNT      : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}';
         MFRNR_NAME          : String(35)        @title : '{i18n>CASHJOURNAL.MFRNR_NAME}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>CASHJOURNAL.VTEXT_ZTERM}';
-        
-        DEPOSIT_DATE        : Date              @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
+        // DEPOSIT_DATE        : Date              @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
+        NETDT               : String(8)         @title : '{i18n>CASHJOURNAL.NETDT}';
 }
 define view BLARTS as
     select from CASHJOURNAL distinct {
@@ -747,8 +747,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
-key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
-    TXT30                   : String(30)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -800,8 +799,60 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
-key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD}';
-    TXT30                   : String(30)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
+}
+
+@cds.persistence.exists
+entity SALESBYCURRENTAPP
+{
+    ADDRESS_1               : String(35)    @title : '{i18n>SALESBYCURRENT.ADDRESS_1}';
+    ADDRESS_2               : String(40)    @title : '{i18n>SALESBYCURRENT.ADDRESS_2}';
+    AMOUNT_NETWR            : Decimal(20,2) @title : '{i18n>SALESBYCURRENT.AMOUNT_NETWR}';
+    AUGRU_AUFT              : String(3)     @title : '{i18n>SALESBYCURRENT.AUGRU_AUFT}';
+    BILL_TO_KUNRE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.BILL_TO_KUNRE_ANA}';
+    BILL_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.BILL_TO_NAME}';
+    CITY_ORT01              : String(35)    @title : '{i18n>SALESBYCURRENT.CITY_ORT01}';
+key CO_VKORG                : String(4)     @title : '{i18n>SALESBYCURRENT.CO_VKORG}';
+    COMMENT                 : String(13)    @title : '{i18n>SALESBYCURRENT.COMMENT}';
+    CURRENT                 : String(3)     @title : '{i18n>SALESBYCURRENT.CURRENT}';
+    //DELEVERY_DATE_VDATU     : String(8)     @title : '{i18n>SALESBYCURRENT.DELEVERY_DATE_VDATU}'; // Note: Typo 'DELEVERY' kept in field name
+    EXPIRY_DATE_VFDAT       : String(8)     @title : '{i18n>SALESBYCURRENT.EXPIRY_DATE_VFDAT}';
+key INVOICE_CREDIT_VBELN    : String(10)    @title : '{i18n>SALESBYCURRENT.INVOICE_CREDIT_VBELN}';
+    INVOICE_DATE_FKDAT      : String(8)     @title : '{i18n>SALESBYCURRENT.INVOICE_DATE_FKDAT}';
+key LOT_CHARG               : String(10)    @title : '{i18n>SALESBYCURRENT.LOT_CHARG}';
+    MFRNR                   : String(10)    @title : '{i18n>SALESBYCURRENT.MFRNR}';
+    MFRPN                   : String(40)    @title : '{i18n>SALESBYCURRENT.MFRPN}';
+    POSTAL_CODE_PSTLZ       : String(10)    @title : '{i18n>SALESBYCURRENT.POSTAL_CODE_PSTLZ}';
+    PRODUCT_DESCRIPTION_MAKTX : String(40)  @title : '{i18n>SALESBYCURRENT.PRODUCT_DESCRIPTION_MAKTX}'; // Corrected typo in original title implicitly via key
+    PROVINCE_REGIO          : String(3)     @title : '{i18n>SALESBYCURRENT.PROVINCE_REGIO}';
+    PURCHASE_ORDER_BSTKD    : String(35)    @title : '{i18n>SALESBYCURRENT.PURCHASE_ORDER_BSTKD}';
+    QUANTITY_FKIMG          : Decimal(13,0) @title : '{i18n>SALESBYCURRENT.QUANTITY_FKIMG}';
+    RBTXT                   : String(20)    @title : '{i18n>SALESBYCURRENT.RBTXT}';
+    SHIP_TO_KUNWE_ANA       : String(10)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_KUNWE_ANA}';
+    SHIP_TO_NAME            : String(70)    @title : '{i18n>SALESBYCURRENT.SHIP_TO_NAME}';
+key SKU_MATNR               : String(7)     @title : '{i18n>SALESBYCURRENT.SKU_MATNR}';
+    TBTXT                   : String(60)    @title : '{i18n>SALESBYCURRENT.TBTXT}';
+    TRACKING_TRACKN         : String(35)    @title : '{i18n>SALESBYCURRENT.TRACKING_TRACKN}';
+    MWSBP                   : Decimal(18,2) @title : '{i18n>SALESBYCURRENT.MWSBP}';
+    UNIT_PRICE              : Decimal(32,2) @title : '{i18n>SALESBYCURRENT.UNIT_PRICE}';
+    UNITS_PER_CASE          : Integer       @title : '{i18n>SALESBYCURRENT.UNITS_PER_CASE}';
+    UPC_EAN11               : String(18)    @title : '{i18n>SALESBYCURRENT.UPC_EAN11}';
+key VKBUR                   : String(4)     @title : '{i18n>SALESBYCURRENT.VKBUR}';
+    VTEXT_FKART             : String(40)    @title : '{i18n>SALESBYCURRENT.VTEXT_FKART}';
+    WAERK                   : String(5)     @title : '{i18n>SALESBYCURRENT.WAERK}';
+    WAREHOUSE               : String(12)    @title : '{i18n>SALESBYCURRENT.WAREHOUSE}';
+key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS}';
+    PLANT_NAME              : String(30)    @title : '{i18n>SALESBYCURRENT.PLANT_NAME}';
+    MFRNR_NAME              : String(35)    @title : '{i18n>SALESBYCURRENT.MFRNR_NAME}'; 
+    INV_YEAR                : String(4)     @title : '{i18n>SALESBYCURRENT.INV_YEAR}';
+    BEZEI                   : String(40)    @title : '{i18n>SALESBYCURRENT.BEZEI}';
+    AUART                   : String(4)     @title : '{i18n>SALESBYCURRENT.AUART}';
+    BEZEI_AUART             : String(20)    @title : '{i18n>SALESBYCURRENT.BEZEI_AUART}';
+    VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
+    VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
+    TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
+    DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
+    BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
@@ -889,7 +940,7 @@ define view SBCYEAR as
 };
 define view SBCCUSTOMERTYPE as
     select from SALESBYCURRENT distinct {
-        key TXT30,
+        key BILL_TO_TYPE,
         MFRNR @UI.Hidden
 };
 // Sales by Product/Customer

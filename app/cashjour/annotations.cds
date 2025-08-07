@@ -26,7 +26,7 @@ Search.defaultSearchElement: true,
         SelectionFields  : [
             BILL_TO,
             NAME1, 
-            DEPOSIT_DATE,
+            NETDT,
             BLART,
             VKORG,
             PRCTR
@@ -63,10 +63,7 @@ Search.defaultSearchElement: true,
             //     $Type : 'UI.DataField',
             //     Value : FKDAT
             // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : DEPOSIT_DATE
-            // },
+            
             {
                 $Type : 'UI.DataField',
                 Value : NETWR,
@@ -102,9 +99,8 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : DEPOSIT_DATE
+                Value : NETDT
             },
-            
             {
                 $Type : 'UI.DataField',
                 Value : BUKRS,

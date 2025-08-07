@@ -37,7 +37,7 @@
                     </FlexBox>
                     <sf:SmartFilterBar
                         id="bar0"
-                        entitySet="SALESBYCURRENT"
+                        entitySet="SALESBYCURRENTAPP"
                         useDateRangeType="true"
                         persistencyKey="SmartFilterBar_SALESBYCURRENT"
                         smartVariant="pageVariant"
@@ -127,8 +127,8 @@
                     enableAutoBinding="true" 
                     id="table0" 
                     smartFilterId="bar0"
-                    cd:w5g.dt.context="/SALESBYCURRENT" 
-                    entitySet="SALESBYCURRENT" 
+                    cd:w5g.dt.context="/SALESBYCURRENTAPP" 
+                    entitySet="SALESBYCURRENTAPP" 
                     placeToolbarInTable="true" 
                     useExportToExcel="true" 
                     beforeExport="onBeforeExport" 

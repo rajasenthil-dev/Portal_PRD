@@ -902,6 +902,7 @@ using IHBEZEI as ENTIHBEZEI from '../db/schema';
 using IHPLANTNAME as ENTIHPLANTNAME from '../db/schema';
 
 using SALESBYCURRENTWOPID as ENTSALESBYCURRENTWOPID from '../db/schema';
+using SALESBYCURRENTAPP as ENTSALESBYCURRENTAPP from '../db/schema';
 using SALESBYCURRENT as ENTSALESBYCURRENT from '../db/schema';
 using SBCINVOICE as ENTSBCINVOICE from '../db/schema';
 using SBCPRODDESC as ENTSBCPRODDESC from '../db/schema';
@@ -1022,6 +1023,13 @@ service SALES {
         { grant: 'READ', to: 'Internal' }
     ]
     entity SALESBYCURRENTWOPID as projection on ENTSALESBYCURRENTWOPID;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SALESBYCURRENTAPP as projection on ENTSALESBYCURRENTAPP;
 
     @requires: 'authenticated-user'
     @restrict: [

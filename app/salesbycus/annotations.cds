@@ -1,6 +1,6 @@
 using SALES as service from '../../srv/service';
 
-annotate SALES.SALESBYCURRENT with @(
+annotate SALES.SALESBYCURRENTAPP with @(
 Search.defaultSearchElement: true,
     odata: {
         filterable: {
@@ -65,7 +65,7 @@ Search.defaultSearchElement: true,
             VKBUR,
             BEZEI,
             BEZEI_AUART,
-            TXT30
+            BILL_TO_TYPE
         ],
         
         LineItem  : [
@@ -170,7 +170,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : TXT30,
+                Value : BILL_TO_TYPE,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
@@ -418,7 +418,7 @@ Search.defaultSearchElement: true,
         }
         
     );
-    TXT30@(
+    BILL_TO_TYPE@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -427,8 +427,8 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterInOut',
-                        LocalDataProperty : 'TXT30',
-                        ValueListProperty : 'TXT30'
+                        LocalDataProperty : 'BILL_TO_TYPE',
+                        ValueListProperty : 'BILL_TO_TYPE'
                     }
                 ]
             },
