@@ -237,7 +237,7 @@ entity CASHJOURNAL
         CAL_DISCOUNT        : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_DISCOUNT}';
         CAL_CASH_RECEIVED   : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_CASH_RECEIVED}';
         NAME1               : String(35)        @title : '{i18n>CASHJOURNAL.NAME1}';
-        BUDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BUDAT}';
+        CAL_INV_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.BUDAT}';
     key VBELN               : String(10)        @title : '{i18n>CASHJOURNAL.VBELN}';
         NETWR               : Decimal(20,2)     @title : '{i18n>CASHJOURNAL.NETWR}';
         BLART               : String(2)         @title : '{i18n>CASHJOURNAL.BLART}';
@@ -248,13 +248,13 @@ entity CASHJOURNAL
         BSTKD               : String(35)        @title : '{i18n>CASHJOURNAL.BSTKD}';
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
         AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
-        BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
+        CAL_DEP_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
         CURRENT             : String(3)         @title : '{i18n>CASHJOURNAL.CURRENT}';
         CAL_INV_AMOUNT      : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}';
         MFRNR_NAME          : String(35)        @title : '{i18n>CASHJOURNAL.MFRNR_NAME}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>CASHJOURNAL.VTEXT_ZTERM}';
         // DEPOSIT_DATE        : Date              @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
-        NETDT               : String(8)         @title : '{i18n>CASHJOURNAL.NETDT}';
+        CAL_DUE_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.NETDT}';
 }
 define view BLARTS as
     select from CASHJOURNAL distinct {
