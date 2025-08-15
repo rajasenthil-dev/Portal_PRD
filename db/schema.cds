@@ -167,8 +167,8 @@ entity INVENTORYAUDITTRAIL
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
-        NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}';
-        
+        NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}'; 
+        BUKRS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.BUKRS}';      
 }
 
 define view IATPLANTNAME as
@@ -239,7 +239,7 @@ entity CASHJOURNAL
         NAME1               : String(35)        @title : '{i18n>CASHJOURNAL.NAME1}';
         CAL_INV_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.BUDAT}';
     key VBELN               : String(10)        @title : '{i18n>CASHJOURNAL.VBELN}';
-        NETWR               : Decimal(20,2)     @title : '{i18n>CASHJOURNAL.NETWR}';
+        //NETWR               : Decimal(20,2)     @title : '{i18n>CASHJOURNAL.NETWR}';
         BLART               : String(2)         @title : '{i18n>CASHJOURNAL.BLART}';
         MFRNR               : String(10)        @title : '{i18n>CASHJOURNAL.MFRNR}';
     key BUKRS               : String(4)         @title : '{i18n>CASHJOURNAL.BUKRS}';
@@ -255,6 +255,8 @@ entity CASHJOURNAL
         VTEXT_ZTERM         : String(30)        @title : '{i18n>CASHJOURNAL.VTEXT_ZTERM}';
         // DEPOSIT_DATE        : Date              @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
         CAL_DUE_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.NETDT}';
+        //BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
+        BSCHL               : String(2)         @title : '{i18n>CASHJOURNAL.BSCHL}';
 }
 define view BLARTS as
     select from CASHJOURNAL distinct {
@@ -748,6 +750,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -800,6 +803,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
 
 @cds.persistence.exists
@@ -853,6 +857,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
+    OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {

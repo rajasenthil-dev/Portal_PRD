@@ -423,7 +423,7 @@ sap.ui.define([
                         profitCentre: oUserContext.profitCentre,
                         salesOrg: oUserContext.salesOrg,
                         manufacturerNumber: [oUserContext.manufacturerNumber],
-                        mfgName: oUserContext.mfgName
+                        mfgName: oUserContext.MFGName
                     },
                     groupIds: [oUserContext.selectedGroup]
                 }

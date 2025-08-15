@@ -68,11 +68,6 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : NETWR,
                 ![@HTML5.CssDefaults] : {width : '16rem'}
-            },  
-            {
-                $Type : 'UI.DataField',
-                Value : AUBEL,
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },          
             {
                 $Type : 'UI.DataField',
@@ -95,11 +90,11 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : BUDAT
+                Value : CAL_INV_DATE
             },
             {
                 $Type : 'UI.DataField',
-                Value : NETDT
+                Value : CAL_DUE_DATE
             },
             {
                 $Type : 'UI.DataField',

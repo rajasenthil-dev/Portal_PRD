@@ -194,7 +194,7 @@ sap.ui.define([
             this._fetchAndSetLogo();
         },
         onSearch: function () {
-            const oSmartFilterBar = this.getView().byId("smartFilterBar");
+            const oSmartFilterBar = this.getView().byId("bar0");
             const oSmartTable = this.getView().byId("table0");
             const oBinding = oSmartTable.getTable().getBinding("rows");
         

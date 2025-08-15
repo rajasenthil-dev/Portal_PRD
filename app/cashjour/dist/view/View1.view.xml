@@ -144,7 +144,7 @@
                                     <Link id="invoice" text="{VBELN}" press=".onInvoiceClick"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width="7.813rem" hAlign="End" sortProperty="NETWR">
+                            <!-- <t:Column id="_IDGenColumn1" width="7.813rem" hAlign="End" sortProperty="NETWR">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "NETWR", "leadingProperty": "NETWR", "columnIndex": 6}'/>
                                 </t:customData>
@@ -152,7 +152,7 @@
                                 <t:template>
                                     <Text id="invoiceAmount" text="{path: 'NETWR', formatter: '._formatCurrency'}"/>
                                 </t:template>
-                            </t:Column>
+                            </t:Column> -->
                             <t:Column id="_IDGenColumn2" width="7.813rem" hAlign="End" sortProperty="CAL_CASH_RECEIVED">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CAL_CASH_RECEIVED", "leadingProperty": "CAL_CASH_RECEIVED", "columnIndex": 7}'/>
@@ -162,36 +162,45 @@
                                     <Text id="cashReceived" text="{path: 'CAL_CASH_RECEIVED', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="BUDAT">
+                            <t:Column id="_IDGenColumn3" width="7.813rem" hAlign="End" sortProperty="CAL_INV_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BUDAT", "leadingProperty": "BUDAT", "columnIndex": 11}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CAL_INV_DATE", "leadingProperty": "CAL_INV_DATE", "columnIndex": 11}'/>
                                 </t:customData>
                                 <Text id="_IDGenText6" text="{i18n>CASHJOURNAL.BUDAT}" textAlign="End"/>
                                 <t:template>
-                                    <Text id="invoiceDate" text="{path: 'BUDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="invoiceDate" text="{path: 'CAL_INV_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn33" width="7.813rem" hAlign="End" sortProperty="NETDT">
+                            <t:Column id="_IDGenColumn33" width="7.813rem" hAlign="End" sortProperty="CAL_DUE_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "NETDT", "leadingProperty": "NETDT", "columnIndex": 12}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CAL_DUE_DATE", "leadingProperty": "CAL_DUE_DATE", "columnIndex": 12}'/>
                                 </t:customData>
                                 <Text id="_IDGenText62" text="{i18n>CASHJOURNAL.NETDT}" textAlign="End"/>
                                 <t:template>
-                                    <Text id="depositDate" text="{path: 'NETDT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="depositDate" text="{path: 'CAL_DUE_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn31" width="7.813rem" hAlign="End" sortProperty="BLDAT">
+                            <t:Column id="_IDGenColumn31" width="7.813rem" hAlign="End" sortProperty="CAL_DEP_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BLDAT", "leadingProperty": "BLDAT", "columnIndex": 13}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CAL_DEP_DATE", "leadingProperty": "CAL_DEP_DATE", "columnIndex": 13}'/>
                                 </t:customData>
-                                <Text id="_IDGenText61" text="{i18n>CASHJOURNAL.BLDAT}" textAlign="End"/>
+                                <Text id="_IDGenText61" text="{i18n>CASHJOURNAL.DEPOSIT_DATE}" textAlign="End"/>
                                 <t:template>
-                                    <Text id="documentDate" text="{path: 'BLDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="documentDate" text="{path: 'CAL_DEP_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
+                            <!-- <t:Column id="_IDGenColumn371" width="7.813rem" hAlign="End" sortProperty="BLDAT">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BLDAT", "leadingProperty": "BLDAT", "columnIndex": 14}'/>
+                                </t:customData>
+                                <Text id="_IDGenText671" text="{i18n>CASHJOURNAL.BLDAT}" textAlign="End"/>
+                                <t:template>
+                                    <Text id="documentDate1" text="{path: 'BLDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                </t:template>
+                            </t:Column> -->
                             <t:Column id="_IDGenColumn4" width="7.813rem" hAlign="End" sortProperty="BURKS">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BUKRS", "leadingProperty": "BUKRS", "columnIndex": 14}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BUKRS", "leadingProperty": "BUKRS", "columnIndex": 15}'/>
                                 </t:customData>
                                 <Text id="_IDGenText13" text="{i18n>CASHJOURNAL.BUKRS}" textAlign="End"/>
                                 <t:template>
@@ -200,7 +209,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn8" width="7.813rem" hAlign="End" sortProperty="BELNR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BELNR", "leadingProperty": "BELNR", "columnIndex": 15}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BELNR", "leadingProperty": "BELNR", "columnIndex": 16}'/>
                                 </t:customData>
                                 <Text id="_IDGenText15" text="{i18n>CASHJOURNAL.BELNR}" textAlign="End"/>
                                 <t:template>
@@ -209,7 +218,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn9" width="7.813rem" hAlign="End" sortProperty="GJAHR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "GJAHR", "leadingProperty": "GJAHR", "columnIndex": 16}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "GJAHR", "leadingProperty": "GJAHR", "columnIndex": 17}'/>
                                 </t:customData>
                                 <Text id="_IDGenText17" text="{i18n>CASHJOURNAL.GJAHR}" textAlign="End"/>
                                 <t:template>
@@ -218,7 +227,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn7" width="7.813rem" hAlign="End" sortProperty="BSTKD">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BSTKD", "leadingProperty": "BSTKD", "columnIndex": 18}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BSTKD", "leadingProperty": "BSTKD", "columnIndex": 19}'/>
                                 </t:customData>
                                 <Text id="_IDGenText10" text="{i18n>CASHJOURNAL.BSTKD}" textAlign="End"/>
                                 <t:template>
@@ -228,7 +237,7 @@
                             
                             <t:Column id="_IDGenColumn6" width="7.813rem" hAlign="End" sortProperty="VKORG">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 22}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 23}'/>
                                 </t:customData>
                                 <Text id="_IDGenText8" text="{i18n>CASHJOURNAL.VKORG}" textAlign="End"/>
                                 <t:template>
@@ -237,7 +246,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn5" width="7.813rem" hAlign="End" sortProperty="PRCTR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRCTR", "leadingProperty": "PRCTR", "columnIndex": 23}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PRCTR", "leadingProperty": "PRCTR", "columnIndex": 24}'/>
                                 </t:customData>
                                 <Text id="_IDGenText2" text="{i18n>CASHJOURNAL.PRCTR}" textAlign="End"/>
                                 <t:template>
@@ -246,7 +255,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn32" width="7.813rem" hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 24}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 25}'/>
                                 </t:customData>
                                 <Text id="_IDGenText63" text="{i18n>CASHJOURNAL.MFRNR}" textAlign="End"/>
                                 <t:template>

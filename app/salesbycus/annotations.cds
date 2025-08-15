@@ -13,7 +13,6 @@ Search.defaultSearchElement: true,
             CITY_ORT01              : true,
             CO_VKORG                : true,
             COMMENT                 : true,
-            CURRENT                 : true,
             DELEVERY_DATE_VDATU     : true,
             EXPIRY_DATE_VFDAT       : true,
             INVOICE_CREDIT_VBELN    : true,
@@ -97,6 +96,11 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : PRODUCT_DESCRIPTION_MAKTX,
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : OBKNR,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
