@@ -210,20 +210,40 @@ module.exports = cds.service.impl(function() {
       'SHIPSTATUSWHSTATUS',
       'SHIPSTATUSMFRNRNAME'
     ]);
+    // Map of fields to exclude from fuzzy LIKE per entity
+    const fuzzyExclusions = {
+      SALESBYCURRENTAPP: ['CURRENT'],
+      SALESBYCURRENTWOPID: ['CURRENT'],
+      INVOICEHISTORY: ['CURRENT'],
+      INVENTORYAUDITTRAIL: ['CURRENT'],
+      INVENTORYSNAPSHOT: ['CURRENT'],
+      RETURNS: ['CURRENT'],
+      SHIPPINGHISTORY: ['CURRENT']
+      // Add other entity → field exclusions here
+    };
+
+    // Helper: is the element a string-ish field we can safely fuzzy on?
+    function isStringField(req, field) {
+      const el = req.target?.elements?.[field];
+      const t = el?.type;
+      // Treat these as strings; adjust if you use custom types
+      return t === 'cds.String' || t === 'cds.LargeString' || t === 'cds.UUID' || t === 'Edm.String';
+    }
+
     this.before('READ', async (req) => {
       const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
       const fullEntityName = req.target?.name;
       const entityName = fullEntityName?.split('.').pop();
-    
+
       console.log(`📥 READ request on ${entityName}, Manufacturer: ${userManufacturer}`);
-    
+
       let where = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
-    
-      // === 1. Apply SKU-based exclusion for manufacturer 0001000005 ===
+
+      // === 1) SKU-based exclusion for manufacturer 0001000005 ===
       if (userManufacturer === '0001000005') {
         const excludedSKUs = excludedSKUsFor0001000005[entityName];
         const skuField = skuFieldMap[entityName];
-    
+
         if (excludedSKUs?.length && skuField) {
           const skuFilter = {
             xpr: [
@@ -237,11 +257,11 @@ module.exports = cds.service.impl(function() {
           where.push(skuFilter);
         }
       }
-    
-      // === 2. Apply VKORG/PLANT-based filter per manufacturer/entity ===
+
+      // === 2) VKORG/PLANT-based filter per manufacturer/entity ===
       const entityFilters = manufacturerFilterMap[userManufacturer];
       const rawFilter = entityFilters?.[entityName];
-    
+
       if (rawFilter) {
         try {
           const parsedExpr = cds.parse.expr(rawFilter);
@@ -252,47 +272,73 @@ module.exports = cds.service.impl(function() {
           console.warn(`⚠️ Failed to parse VKORG filter for ${entityName}: ${e.message}`);
         }
       }
-    
-      // === 3. Transform '=' conditions into case-insensitive LIKEs ===
-      if (fuzzySearchEntities.has(entityName)) {
-        const transformedWhere = [];
-    
+
+      // === 3) Fuzzy transformation (data-type-safe + per-field exclusions) ===
+      if (fuzzySearchEntities.has(entityName) && where.length) {
+        const transformed = [];
+        const exclusions = new Set(fuzzyExclusions[entityName] || []);
+
         for (let i = 0; i < where.length; i++) {
-          const condition = where[i];
-    
-          if (['and', 'or', '(', ')'].includes(condition)) {
-            transformedWhere.push(condition);
-          } else if (condition?.ref) {
-            const field = condition.ref[0];
-            const operator = where[i + 1];
-            const valueObj = where[i + 2];
-    
-            if (operator === '=' && valueObj?.val) {
-              transformedWhere.push(
-                { func: 'toupper', args: [{ ref: [field] }] },
-                'like',
-                { val: `%${valueObj.val.toUpperCase()}%` }
-              );
-              i += 2; // Skip over operator and value
-            } else {
-              transformedWhere.push(condition);
-            }
-          } else if (condition?.xpr) {
-            // Preserve already-built expressions like parsed VKORG filters
-            transformedWhere.push(condition);
+          const tok = where[i];
+
+          // copy logical connectors and parentheses
+          if (typeof tok === 'string' && (tok === 'and' || tok === 'or' || tok === '(' || tok === ')')) {
+            transformed.push(tok);
+            continue;
           }
+
+          // preserve complex/nested expressions as-is
+          if (tok?.xpr) {
+            transformed.push(tok);
+            continue;
+          }
+
+          // Handle [ref, operator, value] triples
+          if (tok?.ref) {
+            const field = tok.ref[0];
+            const op = where[i + 1];
+            const rhs = where[i + 2];
+
+            // If looks like a proper triple, decide to transform or copy
+            if (typeof op === 'string' && rhs !== undefined) {
+              const isEq = (op === '=' || op === 'eq');
+              const rhsIsVal = typeof rhs === 'object' && rhs !== null && ('val' in rhs);
+
+              // Only transform: equality + string field + not excluded + RHS is a literal value
+              if (isEq && rhsIsVal && isStringField(req, field) && !exclusions.has(field)) {
+                const upperVal = String(rhs.val).toUpperCase();
+                // Use 'upper' which compiles cleanly to SQL UPPER(...)
+                transformed.push(
+                  { func: 'upper', args: [{ ref: [field] }] },
+                  'like',
+                  { val: `%${upperVal}%` }
+                );
+                i += 2; // consumed op + rhs
+                continue;
+              }
+
+              // ✅ Default: copy the triple untouched
+              transformed.push(tok, op, rhs);
+              i += 2;
+              continue;
+            }
+
+            // Not a standard triple → copy token
+            transformed.push(tok);
+            continue;
+          }
+
+          // Fallback: copy anything else verbatim
+          transformed.push(tok);
         }
-    
-        req.query.SELECT.where = transformedWhere;
-        console.log(`🔍 Final WHERE with fuzzy LIKEs for ${entityName}:`, JSON.stringify(transformedWhere, null, 2));
-      } else {
-        // Apply WHERE if any conditions exist (non-fuzzy)
-        if (where.length > 0) {
-          req.query.SELECT.where = where;
-          console.log(`📄 Final WHERE for ${entityName}:`, JSON.stringify(where, null, 2));
-        }
+
+        req.query.SELECT.where = transformed;
+        console.log(`🔍 Final WHERE (fuzzy, safe) for ${entityName}:`, JSON.stringify(transformed, null, 2));
+      } else if (where.length) {
+        req.query.SELECT.where = where;
+        console.log(`📄 Final WHERE (no fuzzy) for ${entityName}:`, JSON.stringify(where, null, 2));
       }
-  });
+    });
     // // --- Generic 'before READ' Handler ---
     // this.before('READ', (req) => {
     //     const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
@@ -890,61 +936,71 @@ module.exports = cds.service.impl(function() {
     
 
     this.on('createOktaUser', async req => {
-        const axios = require('axios');
-        const user = req.data.user;
+      const axios = require('axios');
+      const user = req.data.user;
+      const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
+      const OKTA_API_URL = process.env.OKTA_API_URL;
 
-        // Prepare payload for Okta, ensure arrays where needed
-        const payload = {
-        profile: {
-            firstName: user.profile.firstName,
-            lastName: user.profile.lastName,
-            email: user.profile.email,
-            login: user.profile.login,
-            salesOffice: user.profile.salesOffice,
-            profitCentre: user.profile.profitCentre,
-            salesOrg: user.profile.salesOrg,
-            manufacturerNumber: Array.isArray(user.profile.manufacturerNumber)
-            ? user.profile.manufacturerNumber
-            : [user.profile.manufacturerNumber],  // wrap if not array
-            mfgName: user.profile.mfgName
-        },
-        groupIds: Array.isArray(user.groupIds)
-            ? user.groupIds
-            : [user.groupIds]  // wrap if not array
-        };
+      if (!OKTA_API_TOKEN) {
+          req.error(500, "OKTA_API_TOKEN is not set in environment variables.");
+          return;
+      }
 
-        try {
-        const response = await axios.post(
-            'https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/users?activate=true',
-            payload,
-            {
-            headers: {
-                'Authorization': `SSWS 00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-            }
-        );
+      const payload = {
+          profile: {
+              firstName: user.profile?.firstName,
+              lastName: user.profile?.lastName,
+              email: user.profile?.email,
+              login: user.profile?.login,
+              salesOffice: user.profile?.salesOffice,
+              profitCentre: user.profile?.profitCentre,
+              salesOrg: user.profile?.salesOrg,
+              manufacturerNumber: Array.isArray(user.profile?.manufacturerNumber)
+                  ? user.profile.manufacturerNumber
+                  : [user.profile?.manufacturerNumber].filter(Boolean),
+              mfgName: user.profile?.mfgName
+          },
+          groupIds: Array.isArray(user.groupIds)
+              ? user.groupIds
+              : [user.groupIds].filter(Boolean)
+      };
 
-        return {
-            status: 'success',
-            userId: response.data.id
-        };
-        } catch (error) {
-        console.error('Okta API error:', error?.response?.data || error.message);
-        req.error(500, 'Failed to create user in Okta.');
-        }
-    });
+      try {
+          const response = await axios.post(
+              `${OKTA_API_URL}users?activate=true`,
+              payload,
+              {
+                  headers: {
+                      'Authorization': `SSWS ${OKTA_API_TOKEN}`,
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json'
+                  }
+              }
+          );
+
+          return {
+              status: 'success',
+              userId: response.data.id
+          };
+      } catch (error) {
+          console.error('Okta API error:', {
+              status: error.response?.status,
+              data: error.response?.data,
+              message: error.message
+          });
+          req.error(500, 'Failed to create user in Okta.');
+      }
+  });
     this.on('getOktaGroups', async (req) => {
         const axios = require('axios');
         const query = req.data.query || ''; // Default to empty if no query provided
       
         try {
           const response = await axios.get(
-            `https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/groups?q=MFG`,
+            `${OKTA_API_URL}groups?q=MFG`,
             {
               headers: {
-                'Authorization': `SSWS 00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph`,
+                'Authorization': `SSWS ${OKTA_API_TOKEN}`,
                 'Accept': 'application/json'
               }
             }
@@ -968,11 +1024,11 @@ module.exports = cds.service.impl(function() {
     
         try {
             const response = await axios.post(
-                'https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/groups',
+                `${OKTA_API_URL}groups`,
                 { profile: groupData.profile },
                 {
                     headers: {
-                        'Authorization': `SSWS 00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph`,
+                        'Authorization': `SSWS ${OKTA_API_TOKEN}`,
                         'Content-Type': 'application/json'
                     }
                 }

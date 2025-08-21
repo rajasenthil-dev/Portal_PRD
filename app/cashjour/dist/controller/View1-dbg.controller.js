@@ -25,49 +25,49 @@ sap.ui.define([
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
             const oSmartTable = this.getView().byId("table0");
-            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-            var oToolbar = oSmartTable.getToolbar();
-            var oCurrentStatus = new sap.m.ObjectStatus({
-                text: oBundle.getText("CASHJOURNAL.CURRENTTEXT"),
-                icon: "sap-icon://circle-task-2",
-                state: "Success",
-                inverted:true,
-                tooltip: oBundle.getText("CASHJOURNAL.CURRENTTOOLTIP")
-            })
-            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
-            var oCurrentStatusText =  new sap.m.Text({
-                text: " | "
-            })
-            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
-            var oLegacyStatus = new sap.m.ObjectStatus({
-                text: oBundle.getText("CASHJOURNAL.LEGACYTEXT"),
-                icon: "sap-icon://circle-task-2",
-                state: "Information",
-                inverted:true,
-                tooltip: oBundle.getText("CASHJOURNAL.LEGACYTOOLTIP")
-            })
-            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
-            var oLegacyStatusText =  new sap.m.Text({
-                text: "Legacy Data"
-            })
-            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
-            var oLegendTitle = new sap.m.Text({
-                text: "Legend:"
-            })
-            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
-            var oLegendBox = new sap.m.HBox({
-                items: [
-                    oCurrentStatus,
-                    oCurrentStatusText,
-                    oLegacyStatus
+            // var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            // var oToolbar = oSmartTable.getToolbar();
+            // var oCurrentStatus = new sap.m.ObjectStatus({
+            //     text: oBundle.getText("CASHJOURNAL.CURRENTTEXT"),
+            //     icon: "sap-icon://circle-task-2",
+            //     state: "Success",
+            //     inverted:true,
+            //     tooltip: oBundle.getText("CASHJOURNAL.CURRENTTOOLTIP")
+            // })
+            // oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            // var oCurrentStatusText =  new sap.m.Text({
+            //     text: " | "
+            // })
+            // oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            // var oLegacyStatus = new sap.m.ObjectStatus({
+            //     text: oBundle.getText("CASHJOURNAL.LEGACYTEXT"),
+            //     icon: "sap-icon://circle-task-2",
+            //     state: "Information",
+            //     inverted:true,
+            //     tooltip: oBundle.getText("CASHJOURNAL.LEGACYTOOLTIP")
+            // })
+            // oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            // var oLegacyStatusText =  new sap.m.Text({
+            //     text: "Legacy Data"
+            // })
+            // oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            // var oLegendTitle = new sap.m.Text({
+            //     text: "Legend:"
+            // })
+            // oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            // var oLegendBox = new sap.m.HBox({
+            //     items: [
+            //         oCurrentStatus,
+            //         oCurrentStatusText,
+            //         oLegacyStatus
                     
-                ],
-                alignItems: "Center",
-                justifyContent: "End"
-            });
+            //     ],
+            //     alignItems: "Center",
+            //     justifyContent: "End"
+            // });
 
-            oToolbar.addContent(new sap.m.ToolbarSpacer());
-            oToolbar.addContent(oLegendBox);
+            // oToolbar.addContent(new sap.m.ToolbarSpacer());
+            // oToolbar.addContent(oLegendBox);
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {

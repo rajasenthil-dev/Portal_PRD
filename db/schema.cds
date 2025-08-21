@@ -41,7 +41,7 @@ entity ITEMMASTER
         MANUFACTURERNUMBER    : String(10)    @title: '{i18n>ITEMMASTER.MANUFACTURERNUMBER}';
         MFRNR_PART_NUMBER     : String(40)    @title: '{i18n>ITEMMASTER.MFRNR_PART_NUMBER}';
         MFRNR_NAME            : String(35)    @title: '{i18n>ITEMMASTER.MFRNR_NAME}';
-        
+        STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';       
 }
 
 
@@ -249,6 +249,7 @@ entity CASHJOURNAL
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
         AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
         CAL_DEP_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
+        @UI.hidden
         CURRENT             : String(3)         @title : '{i18n>CASHJOURNAL.CURRENT}';
         CAL_INV_AMOUNT      : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}';
         MFRNR_NAME          : String(35)        @title : '{i18n>CASHJOURNAL.MFRNR_NAME}';
@@ -750,7 +751,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
-    OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -803,7 +804,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
-    OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
 
 @cds.persistence.exists
@@ -857,7 +858,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
     DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
-    OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {

@@ -33,12 +33,12 @@ Search.defaultSearchElement: true,
         ],
         
         LineItem  : [
-            {
-                $Type : 'UI.DataField',
-                Value : CURRENT,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : CURRENT,
+            //     ![@HTML5.CssDefaults] : {width : '10rem'}
 
-            },
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO,

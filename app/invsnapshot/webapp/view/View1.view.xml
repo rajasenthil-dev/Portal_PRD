@@ -207,7 +207,7 @@ xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:sf
                                     </t:customData>
                                 <Text id="_IDGenText21" text="{i18n>INVENTORYSNAPSHOT.PLANT}"></Text>
                                 <t:template>
-                                <Text id="_IDGenText22" text="{path: 'VKORG'}" />
+                                <Text id="_IDGenText22" text="{path: 'WERKS'}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn9" width="7rem" hAlign="End" sortProperty="VKORG">
