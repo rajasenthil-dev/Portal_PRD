@@ -581,7 +581,7 @@ MFRNR_7CH }
 entity INVOICEHISTORY
 {
         BKTXT        : String(25)    @title : '{i18n>INVOICEHISTORY.BKTXT}';
-        LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
+    key LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
         CAL_GST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_GST}';
         CAL_PST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_PST}';
         ORT01        : String(35)    @title : '{i18n>INVOICEHISTORY.ORT01}';

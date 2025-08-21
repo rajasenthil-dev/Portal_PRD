@@ -83,7 +83,7 @@ sap.ui.define([], () => {
                 groupingEnabled: true,
                 groupingSeparator: ",",
                 decimalSeparator: ".",
-                minFractionDigits: 0,
+                minFractionDigits: 2,
                 maxFractionDigits: 2
             });
             let formattedPrice = "$" + oNumberFormat.format(price);
