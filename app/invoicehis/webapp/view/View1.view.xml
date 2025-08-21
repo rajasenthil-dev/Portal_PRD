@@ -220,14 +220,7 @@
                                 </t:customData>
                                 <Text id="_IDGenText3" text="{i18n>INVOICEHISTORY.LFDAT}"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText11" text="{
-                                        path: 'LFDAT', 
-                                        type: 'sap.ui.model.odata.type.DateTime',
-                                         formatOptions: {
-                                            style: 'medium',
-                                            UTC: true
-                                        }
-                                    }" />
+                                    <Text id="_IDGenText11" text="{path: 'LFDAT', type: 'sap.ui.model.odata.type.Date'}" />
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn9" width='7.813rem' hAlign="End" sortProperty="VKORG">

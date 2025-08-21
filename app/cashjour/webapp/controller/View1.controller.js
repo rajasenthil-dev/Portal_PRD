@@ -193,28 +193,28 @@ sap.ui.define([
             console.log("RouteView1 pattern matched – fetching logo...");
             this._fetchAndSetLogo();
         },
-        onSearch: function () {
-            const oSmartFilterBar = this.getView().byId("bar0");
-            const oSmartTable = this.getView().byId("table0");
-            const oBinding = oSmartTable.getTable().getBinding("rows");
+        // onSearch: function () {
+        //     const oSmartFilterBar = this.getView().byId("bar0");
+        //     const oSmartTable = this.getView().byId("table0");
+        //     const oBinding = oSmartTable.getTable().getBinding("rows");
         
-            if (!oBinding) {
-                console.warn("Table binding is missing.");
-                return;
-            }
+        //     if (!oBinding) {
+        //         console.warn("Table binding is missing.");
+        //         return;
+        //     }
         
-            // Get selected value from the filter
-            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+        //     // Get selected value from the filter
+        //     let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
         
-            // Build the filter condition
-            let aFilters = [];
-            if (sCurrentStatus) {
-                aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
-            }
+        //     // Build the filter condition
+        //     let aFilters = [];
+        //     if (sCurrentStatus) {
+        //         aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+        //     }
         
-            // Apply the filter
-            oBinding.filter(aFilters);
-        },
+        //     // Apply the filter
+        //     oBinding.filter(aFilters);
+        // },
         onOpenDialog: function () {
 			// load BusyDialog fragment asynchronously
 			if (!this._pBusyDialog) {
