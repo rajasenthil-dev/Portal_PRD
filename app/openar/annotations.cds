@@ -111,12 +111,12 @@ annotate FINANCE.OPENAR with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : NETWR,
+                Value : NETWR_VBRK,
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
-                Value : TSL,
+                Value : TSL_CLEARED,
                 ![@HTML5.CssDefaults] : {width : '6.813rem'}
             },
             {
