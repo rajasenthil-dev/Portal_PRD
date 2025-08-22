@@ -432,53 +432,61 @@ define view INVBYLOTVKBUR as
 @cds.persistence.exists
 entity OPENAR 
 {
+    key BELNR               : String(10)        @title : '{i18n>OPENAR.BELNR}';
+        BLART               : String(2)         @title : '{i18n>OPENAR.BLART}';
+        VKORG               : String(4)         @title : '{i18n>OPENAR.VKORG}';
+        NAME1               : String(35)        @title : '{i18n>OPENAR.NAME1}';
+        CREDIT_LIMIT        : Decimal(15,2)     @title : '{i18n>OPENAR.CREDIT_LIMIT}';
+        CAL_AGE             : Integer           @title : '{i18n>OPENAR.CAL_AGE}';
         CAL_1_30            : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_1_30}';
         CAL_31_60           : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_31_60}';
         CAL_61_90           : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_61_90}';
-        CAL_AGE             : Integer           @title : '{i18n>OPENAR.CAL_AGE}';
-        TSL                 : Decimal(23,2)     @title : '{i18n>OPENAR.TSL}';
-    key VKORG               : String(4)         @title : '{i18n>OPENAR.VKORG}';
-        CREDIT_LIMIT        : Decimal(15,2)     @title : '{i18n>OPENAR.CREDIT_LIMIT}';
-        CAL_CURRENT         : Decimal(23,2)     @title : '{i18n>OPENAR.CAL_CURRENT}';
-    key BILL_TO             : String(10)        @title : '{i18n>OPENAR.BILL_TO}';
-        NAME1               : String(35)        @title : '{i18n>OPENAR.NAME1}';
-        BSTKD               : String(35)        @title : '{i18n>OPENAR.BSTKD}';
-        NETDT               : String(8)         @title : '{i18n>OPENAR.NETDT}';
-    key BELNR               : String(10)        @title : '{i18n>OPENAR.BELNR}';
-        FKDAT               : String(8)         @title : '{i18n>OPENAR.FKDAT}';
-        ZTERM               : String(4)         @title : '{i18n>OPENAR.ZTERM}';
-        NETWR               : Decimal(23,2)     @title : '{i18n>OPENAR.NETWR}';
         CAL_OVER_90         : Decimal(24,2)     @title : '{i18n>OPENAR.CAL_OVER_90}';
-    key STORE_SHIP_TO       : String(10)        @title : '{i18n>OPENAR.STORE_SHIP_TO}';
-        BLART               : String(2)         @title : '{i18n>OPENAR.BLART}';
-        MFRNR               : String(10)        @title : '{i18n>OPENAR.MFRNR}';
-        MFRNR_NAME          : String(10)        @title : '{i18n>OPENAR.MFRNR_NAME}';
+        CAL_CURRENT         : Decimal(23,2)     @title : '{i18n>OPENAR.CAL_CURRENT}';
+    key PROFIT_CENTER       : String(10)        @title : '{i18n>OPENAR.PRCTR_PROFIT_CENTER}';
+        NETDT               : String(8)         @title : '{i18n>OPENAR.NETDT}';
+
+        PROFIT_CENTER_NAME  : String(20)        @title : '{i18n>OPENAR.PROFIT_CENTER_NAME}';
+        VTEXT_VKORG         : String(20)        @title : '{i18n>OPENAR.VTEXT_VKORG}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>OPENAR.VTEXT_ZTERM}';
-        PROFIT_CENTER       : String(10)        @title : '{i18n>OPENAR.PRCTR_PROFIT_CENTER}';
+
+        FKDAT               : String(8)         @title : '{i18n>OPENAR.FKDAT}';
+
+    key KUNNR               : String(10)        @title : '{i18n>OPENAR.KUNNR}';
+
+        NETWR_VBRK          : Decimal(23,2)     @title : '{i18n>OPENAR.NETWR}';
+        TSL_CLEARED         : Decimal(23,2)     @title : '{i18n>OPENAR.TSL}';
+        BSTKD               : String(35)        @title : '{i18n>OPENAR.BSTKD}';
+        WRBTR_OPEN          : Decimal(28,2)     @title : '{i18n>OPENAR.WRBTR_OPEN}';
+        
+    key BILL_TO             : String(10)        @title : '{i18n>OPENAR.BILL_TO}';   
+    key STORE_SHIP_TO       : String(10)        @title : '{i18n>OPENAR.STORE_SHIP_TO}';
+        
+       
 }
 define view OPENARCUSTOMER as
     select from OPENAR distinct {
         key NAME1,
-        MFRNR @UI.Hidden
+        PROFIT_CENTER @UI.Hidden
 };
 define view OPENARCUSTOMERID as
     select from OPENAR distinct {
         key BILL_TO,
-        MFRNR @UI.Hidden
+        PROFIT_CENTER @UI.Hidden
 };
 define view OPENARMFRNR as
     select from OPENAR distinct {
-        key MFRNR
+        key PROFIT_CENTER
 };
 define view OPENARMFRNRNAME as
     select from OPENAR distinct {
-        key MFRNR_NAME,
-        MFRNR @UI.Hidden
+        key PROFIT_CENTER_NAME,
+        PROFIT_CENTER @UI.Hidden
 };
 define view OPENARSALESORG as
     select from OPENAR distinct {
         key VKORG,
-        MFRNR @UI.Hidden
+        PROFIT_CENTER @UI.Hidden
 };
 @cds.search: { PLANT, LGNUM, MATNR, MAKTX, MFRPN,VKBUR,MFRNR }
 @cds.persistence.exists

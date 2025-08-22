@@ -951,13 +951,11 @@ module.exports = cds.service.impl(function() {
               firstName: user.profile?.firstName,
               lastName: user.profile?.lastName,
               email: user.profile?.email,
-              login: user.profile?.login,
+              login: user.profile?.email,
               salesOffice: user.profile?.salesOffice,
               profitCentre: user.profile?.profitCentre,
               salesOrg: user.profile?.salesOrg,
-              manufacturerNumber: Array.isArray(user.profile?.manufacturerNumber)
-                  ? user.profile.manufacturerNumber
-                  : [user.profile?.manufacturerNumber].filter(Boolean),
+              manufacturerNumber: user.profile?.manufacturerNumber,
               mfgName: user.profile?.mfgName
           },
           groupIds: Array.isArray(user.groupIds)
@@ -994,7 +992,8 @@ module.exports = cds.service.impl(function() {
     this.on('getOktaGroups', async (req) => {
         const axios = require('axios');
         const query = req.data.query || ''; // Default to empty if no query provided
-      
+        const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
+        const OKTA_API_URL = process.env.OKTA_API_URL;
         try {
           const response = await axios.get(
             `${OKTA_API_URL}groups?q=MFG`,
@@ -1021,6 +1020,8 @@ module.exports = cds.service.impl(function() {
     this.on('createOktaGroup', async (req) => {
         const axios = require('axios');
         const groupData = req.data.group;
+        const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
+        const OKTA_API_URL = process.env.OKTA_API_URL;
     
         try {
             const response = await axios.post(

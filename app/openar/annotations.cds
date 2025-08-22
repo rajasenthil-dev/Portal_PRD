@@ -139,6 +139,10 @@ annotate FINANCE.OPENAR with @(
                 Value : PROFIT_CENTER,
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
+            {
+                $Type : 'UI.DataField',
+                Value : PROFIT_CENTER_NAME
+            },
 
         ],
     },
@@ -179,7 +183,7 @@ annotate FINANCE.OPENAR with @(
         }    
         
     );
-    MFRNR@(
+    PROFIT_CENTER@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -188,15 +192,15 @@ annotate FINANCE.OPENAR with @(
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'MFRNR',
-                        ValueListProperty : 'MFRNR'
+                        LocalDataProperty : 'PROFIT_CENTER',
+                        ValueListProperty : 'PROFIT_CENTER'
                     }
                 ]
             },
         }    
         
     );
-    MFRNR_NAME@(
+    PROFIT_CENTER_NAME@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
@@ -205,8 +209,8 @@ annotate FINANCE.OPENAR with @(
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'MFRNR_NAME',
-                        ValueListProperty : 'MFRNR_NAME'
+                        LocalDataProperty : 'PROFIT_CENTER_NAME',
+                        ValueListProperty : 'PROFIT_CENTER_NAME'
                     }
                 ]
             },

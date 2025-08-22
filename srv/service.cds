@@ -1307,42 +1307,42 @@ service FINANCE {
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity OPENAR as projection on ENTOPENAR;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity OPENARCUSTOMER as projection on ENTOPENARCUSTOMER;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity OPENARCUSTOMERID as projection on ENTOPENARCUSTOMERID;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity OPENARMFRNR as projection on ENTOPENARMFRNR;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity OPENARMFRNRNAME as projection on ENTOPENARMFRNRNAME;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity OPENARSALESORG as projection on ENTOPENARSALESORG;

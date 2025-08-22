@@ -230,8 +230,8 @@ sap.ui.define([
                 totals.fTot31to60 += this._getValueOrZero(oContext, "CAL_31_60");
                 totals.fTot61to90 += this._getValueOrZero(oContext, "CAL_61_90");
                 totals.fTotOver90 += this._getValueOrZero(oContext, "CAL_OVER_90");
-                totals.fTotInvoice += this._getValueOrZero(oContext, "NETWR");
-                totals.fTotAmountPaid += this._getValueOrZero(oContext, "TSL");
+                totals.fTotInvoice += this._getValueOrZero(oContext, "NETWR_VBRK");
+                totals.fTotAmountPaid += this._getValueOrZero(oContext, "TSL_CLEARED");
             }, this);
 
             // --- Update Footer ---
@@ -349,7 +349,7 @@ sap.ui.define([
                 // Ensure NETDT exists and is valid before formatting
                 if (oData && oData.NETDT) {
                      var dueDate = this._parseDate(oData.NETDT); // Use a dedicated parsing function
-                     var balance = (oData.NETWR || 0) - (oData.TSL || 0);
+                     var balance = (oData.NETWR_VBRK || 0) - (oData.TSL_CLEARED || 0);
 
                      // Check if dueDate is valid, past, and balance > 0
                      if (dueDate && dueDate < currentDate && balance > 0) {
@@ -377,7 +377,7 @@ sap.ui.define([
                 var oData = oContext.getObject();
                 // Ensure properties exist before calculation
                  if (oData) {
-                     var balance = (oData.NETWR || 0) - (oData.TSL || 0);
+                     var balance = (oData.NETWR_VBRK || 0) - (oData.TSL_CLEARED || 0);
                      return balance > 0;
                  }
                  return false;
@@ -400,7 +400,7 @@ sap.ui.define([
             // Filter for open invoices first
             var aOpenInvoiceContexts = aContexts.filter(oContext => {
                  var oData = oContext.getObject();
-                 return oData && ((oData.NETWR || 0) - (oData.TSL || 0) > 0);
+                 return oData && ((oData.NETWR_VBRK || 0) - (oData.TSL_CLEARED || 0) > 0);
             });
 
             if (aOpenInvoiceContexts.length === 0) {

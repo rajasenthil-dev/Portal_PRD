@@ -195,6 +195,15 @@
                 >
                     <t:Table id="table" alternateRowColors="true" selectionMode="None">
                         <t:columns>
+                            <t:Column id="_IDGenColumn2" width='7.813rem' hAlign="End" sortProperty="KUNNR">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText21" text="{i18n>OPENAR.KUNNR}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText22" text="{KUNNR}" />
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="End" sortProperty="BILL_TO">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "BILL_TO", "leadingProperty": "BILL_TO", "columnIndex": 0}'/>
@@ -285,27 +294,36 @@
                                     <Text id="over90" text="{path: 'CAL_OVER_90', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn8"  width='7.813rem' hAlign="End" sortProperty="NETWR">
+                            <t:Column id="_IDGenColumn15"  width='7.813rem' hAlign="End" sortProperty="WRBTR_OPEN">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "NETWR", "leadingProperty": "NETWR", "columnIndex": 14}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "WRBTR_OPEN", "leadingProperty": "WRBTR_OPEN", "columnIndex": 14}'/>
                                 </t:customData>
-                                <Text id="_IDGenText8" text="{i18n>OPENAR.NETWR}"></Text>
+                                <Text id="_IDGenText1" text="{i18n>OPENAR.WRBTR_OPEN}"></Text>
                                 <t:template>
-                                    <Text id="invoiceAmount" text="{path: 'NETWR', formatter: '._formatCurrency'}"/>
+                                    <Text id="_IDGenText19" text="{path: 'WRBTR_OPEN', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn9"  width='7.813rem' hAlign="End" sortProperty="TSL">
+                            <t:Column id="_IDGenColumn8"  width='7.813rem' hAlign="End" sortProperty="NETWR_VBRK">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "TSL", "leadingProperty": "TSL", "columnIndex": 15}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "NETWR_VBRK", "leadingProperty": "NETWR_VBRK", "columnIndex": 15}'/>
                                 </t:customData>
-                                <Text id="_IDGenText9" text="{i18n>OPENAR.TSL}"></Text>
+                                <Text id="_IDGenText8" text="{i18n>OPENAR.NETWR_VBRK}"></Text>
                                 <t:template>
-                                    <Text id="amountPaid" text="{path: 'TSL', formatter: '._formatCurrency'}"/>
+                                    <Text id="invoiceAmount" text="{path: 'NETWR_VBRK', formatter: '._formatCurrency'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn9"  width='7.813rem' hAlign="End" sortProperty="TSL_CLEARED">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "TSL_CLEARED", "leadingProperty": "TSL_CLEARED", "columnIndex": 16}'/>
+                                </t:customData>
+                                <Text id="_IDGenText9" text="{i18n>OPENAR.TSL_CLEARED}"></Text>
+                                <t:template>
+                                    <Text id="amountPaid" text="{path: 'TSL_CLEARED', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn13"  width='7.813rem' hAlign="End" sortProperty="ZTERM">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "ZTERM", "leadingProperty": "ZTERM", "columnIndex": 16}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "ZTERM", "leadingProperty": "ZTERM", "columnIndex": 17}'/>
                                 </t:customData>
                                 <Text id="_IDGenText15" text="{i18n>OPENAR.ZTERM}"></Text>
                                 <t:template>
@@ -314,7 +332,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn10"  width='7.813rem' hAlign="End" sortProperty="VKORG">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 18}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 19}'/>
                                 </t:customData>
                                 <Text id="_IDGenText10" text="{i18n>OPENAR.VKORG}"></Text>
                                 <t:template>
@@ -323,7 +341,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn14"  width='7.813rem' hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 19}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 20}'/>
                                 </t:customData>
                                 <Text id="_IDGenText17" text="{i18n>OPENAR.MFRNR}"></Text>
                                 <t:template>
