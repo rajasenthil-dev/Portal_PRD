@@ -46,7 +46,7 @@
                         
                             <sf:ControlConfiguration id="_IDGenControlConfiguration2" key="NETDT" visibleInAdvancedArea="true" conditionType="{                                     module: 'sap.ui.comp.config.condition.DateRangeType'                                 }"/>
                         </sf:controlConfiguration>
-                        <!-- <sf:controlConfiguration>
+                        <sf:controlConfiguration>
                             <sf:ControlConfiguration id="customCurrentFilter"
                                 key="CURRENT"
                                 visibleInAdvancedArea="true"
@@ -61,7 +61,7 @@
                                     </ComboBox>
                                 </sf:customControl>
                             </sf:ControlConfiguration>
-                        </sf:controlConfiguration> -->
+                        </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                     <!-- <Panel id="_IDGenPanel" class="sapUiMediumMarginTop" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
                         <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
@@ -100,7 +100,7 @@
                     class="sapUiResponsiveContentPadding sapUiLargeMarginBottom">
                     <t:Table id="table" selectionMode="None" alternateRowColors="true">
                         <t:columns>
-                            <!-- <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center" sortProperty="CURRENT">
+                            <t:Column id="_IDGenColumn11" width='7.813rem' hAlign="Center" sortProperty="CURRENT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>
@@ -116,7 +116,7 @@
                                         state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
                                         text="{= ${CURRENT} === 'YES' ? ${i18n>CASHJOURNAL.CURRENTTEXT} : ${i18n>CASHJOURNAL.LEGACYTEXT}}"/>
                                 </t:template>
-                            </t:Column> -->
+                            </t:Column>
                             <t:Column id="_IDGenColumn102" width="7.813rem" hAlign="End" sortProperty="SHIP_TO">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SHIP_TO", "leadingProperty": "SHIP_TO", "columnIndex": 1}'/>

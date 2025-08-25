@@ -1568,7 +1568,6 @@ entity MAINPAGESUMMARY
         QTY_DIFF        : Decimal(23,2);
         PERCENTAGE_DIFF : Decimal(34,0);
         MONTH_NAME      : String(8); 
-        VKORG           : String(4);
 }
 
 define view MPSYEAR as
