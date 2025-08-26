@@ -10,5 +10,7 @@ AS SELECT
     KONWA,
     REGIO,
     MFRNR_NAME,
-    DATAB     
+    DATAB,
+    KDGRP,
+    KUNNR     
 FROM "SYNPRICINGDOC"

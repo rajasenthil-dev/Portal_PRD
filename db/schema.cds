@@ -1177,14 +1177,16 @@ define view SHVKORG as
 entity PRICING
 {
     key VKORG       : String(4)     @title : '{i18n>PRICING.VKORG}';
-        KBETR       : Decimal(11,2) @title : '{i18n>PRICING.KBETR}';
     key KSCHL       : String(4)     @title : '{i18n>PRICING.KSCHL}';
-        VTEXT       : String(20)    @title : '{i18n>PRICING.VTEXT}';
     key MATNR       : String(7)     @title : '{i18n>PRICING.MATNR}';
         MAKTX       : String(40)    @title : '{i18n>PRICING.MAKTX}';
-        REGIO       : String(3)     @title : '{i18n>PRICING.REGIO}';
-        MFRNR       : String(10)    @title : '{i18n>PRICING.MFRNR}';
+        VTEXT       : String(20)    @title : '{i18n>PRICING.VTEXT}';
+        KBETR       : Decimal(11,2) @title : '{i18n>PRICING.KBETR}';
         KONWA       : String(5)     @title : '{i18n>PRICING.KONWA}';
+    key KDGRP       : String(2)     @title : '{i18n>PRICING.KDGRP}';
+    key KUNNR       : String(10)    @title : '{i18n>PRICING.KUNNR}';
+        MFRNR       : String(10)    @title : '{i18n>PRICING.MFRNR}';
+    key REGIO       : String(3)     @title : '{i18n>PRICING.REGIO}';
         MFRNR_NAME  : String(35)    @title : '{i18n>PRICING.MFRNR_NAME}';
         DATAB       : String(8)     @title : '{i18n>PRICING.DATAB}';
 }
