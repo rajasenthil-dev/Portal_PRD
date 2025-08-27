@@ -208,7 +208,9 @@ module.exports = cds.service.impl(function() {
       'SHIPPINGSTATUS',
       'SHIPSTATUSPRODDESC',
       'SHIPSTATUSWHSTATUS',
-      'SHIPSTATUSMFRNRNAME'
+      'SHIPSTATUSMFRNRNAME',
+      'MAINPAGESUMMARY',
+      'MPSMONTH'
     ]);
     // Map of fields to exclude from fuzzy LIKE per entity
     const fuzzyExclusions = {

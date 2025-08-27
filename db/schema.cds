@@ -589,7 +589,7 @@ MFRNR_7CH }
 entity INVOICEHISTORY
 {
         BKTXT        : String(25)    @title : '{i18n>INVOICEHISTORY.BKTXT}';
-    key LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
+        LFDAT        : String(8)     @title : '{i18n>INVOICEHISTORY.LFDAT}';
         CAL_GST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_GST}';
         CAL_PST      : Decimal(23,2) @title : '{i18n>INVOICEHISTORY.CAL_PST}';
         ORT01        : String(35)    @title : '{i18n>INVOICEHISTORY.ORT01}';
@@ -612,7 +612,7 @@ entity INVOICEHISTORY
         PATIENT_ID   : String(15)    @title : '{i18n>INVOICEHISTORY.PATIENT_ID}';
         AUGRU_AUFT   : String(3)     @title : '{i18n>INVOICEHISTORY.AUGRU_AUFT}';
         PLANT_NAME   : String(30)    @title : '{i18n>INVOICEHISTORY.PLANT_NAME}';
-        WERKS        : String(4)     @title : '{i18n>INVOICEHISTORY.WERKS}';
+    key WERKS        : String(4)     @title : '{i18n>INVOICEHISTORY.WERKS}';
         BEZEI        : String(40)    @title : '{i18n>INVOICEHISTORY.BEZEI}';
         MFRNR_NAME   : String(35)    @title : '{i18n>INVOICEHISTORY.MFRNR_NAME}';
         
@@ -1561,7 +1561,7 @@ entity MAINPAGESUMMARY
     key CALYEAR         : Integer;
     key PREVIOUS_YEAR   : Integer;
     key CALMONTH        : Integer;
-    key PRE_YEAR_MONTH  :Integer;
+    key PRE_YEAR_MONTH  : Integer;
         NETWR_CURRENT   : Decimal(25,2);
         NETWR_PREVIOUS  : Decimal(25,2);
         FKIMG_CURRENT   : Decimal(23,2);
