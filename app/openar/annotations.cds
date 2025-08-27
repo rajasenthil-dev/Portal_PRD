@@ -22,8 +22,6 @@ annotate FINANCE.OPENAR with @(
             CAL_OVER_90: true,
             STORE_SHIP_TO: true,
             BLART: true,
-            MFRNR: true, 
-            MFRNR_NAME: true
         }
     },
     UI : {
