@@ -65,7 +65,7 @@ annotate FINANCE.OPENAR with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : BLART,
+                Value : DOC_TYPE,
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
             },
             {

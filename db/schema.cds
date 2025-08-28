@@ -433,7 +433,6 @@ define view INVBYLOTVKBUR as
 entity OPENAR 
 {
     key BELNR               : String(10)        @title : '{i18n>OPENAR.BELNR}';
-        BLART               : String(2)         @title : '{i18n>OPENAR.BLART}';
         VKORG               : String(4)         @title : '{i18n>OPENAR.VKORG}';
         NAME1               : String(35)        @title : '{i18n>OPENAR.NAME1}';
         CREDIT_LIMIT        : Decimal(15,2)     @title : '{i18n>OPENAR.CREDIT_LIMIT}';
@@ -447,7 +446,7 @@ entity OPENAR
         NETDT               : String(8)         @title : '{i18n>OPENAR.NETDT}';
 
         PROFIT_CENTER_NAME  : String(20)        @title : '{i18n>OPENAR.PROFIT_CENTER_NAME}';
-        VTEXT_VKORG         : String(20)        @title : '{i18n>OPENAR.VTEXT_VKORG}';
+        
         VTEXT_ZTERM         : String(30)        @title : '{i18n>OPENAR.VTEXT_ZTERM}';
 
         FKDAT               : String(8)         @title : '{i18n>OPENAR.FKDAT}';

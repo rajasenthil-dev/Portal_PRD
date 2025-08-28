@@ -321,15 +321,6 @@
                                     <Text id="amountPaid" text="{path: 'TSL_CLEARED', formatter: '._formatCurrency'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn13"  width='7.813rem' hAlign="End" sortProperty="ZTERM">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "ZTERM", "leadingProperty": "ZTERM", "columnIndex": 18}'/>
-                                </t:customData>
-                                <Text id="_IDGenText15" text="{i18n>OPENAR.ZTERM}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText16" text="{path: 'ZTERM'}"/>
-                                </t:template>
-                            </t:Column>
                             <t:Column id="_IDGenColumn10"  width='7.813rem' hAlign="End" sortProperty="VKORG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "VKORG", "leadingProperty": "VKORG", "columnIndex": 20}'/>
