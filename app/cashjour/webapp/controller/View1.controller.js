@@ -25,68 +25,68 @@ sap.ui.define([
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
             const oSmartTable = this.getView().byId("table0");
-            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-            var oToolbar = oSmartTable.getToolbar();
-            var oCurrentStatus = new sap.m.ObjectStatus({
-                text: oBundle.getText("CASHJOURNAL.CURRENTTEXT"),
-                icon: "sap-icon://circle-task-2",
-                state: "Success",
-                inverted:true,
-                tooltip: oBundle.getText("CASHJOURNAL.CURRENTTOOLTIP")
-            })
-            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
-            var oCurrentStatusText =  new sap.m.Text({
-                text: " | "
-            })
-            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
-            var oLegacyStatus = new sap.m.ObjectStatus({
-                text: oBundle.getText("CASHJOURNAL.LEGACYTEXT"),
-                icon: "sap-icon://circle-task-2",
-                state: "Information",
-                inverted:true,
-                tooltip: oBundle.getText("CASHJOURNAL.LEGACYTOOLTIP")
-            })
-            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
-            var oLegacyStatusText =  new sap.m.Text({
-                text: "Legacy Data"
-            })
-            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
-            var oLegendTitle = new sap.m.Text({
-                text: "Legend:"
-            })
-            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
-            var oLegendBox = new sap.m.HBox({
-                items: [
-                    oCurrentStatus,
-                    oCurrentStatusText,
-                    oLegacyStatus
+            // var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            // var oToolbar = oSmartTable.getToolbar();
+            // var oCurrentStatus = new sap.m.ObjectStatus({
+            //     text: oBundle.getText("CASHJOURNAL.CURRENTTEXT"),
+            //     icon: "sap-icon://circle-task-2",
+            //     state: "Success",
+            //     inverted:true,
+            //     tooltip: oBundle.getText("CASHJOURNAL.CURRENTTOOLTIP")
+            // })
+            // oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            // var oCurrentStatusText =  new sap.m.Text({
+            //     text: " | "
+            // })
+            // oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            // var oLegacyStatus = new sap.m.ObjectStatus({
+            //     text: oBundle.getText("CASHJOURNAL.LEGACYTEXT"),
+            //     icon: "sap-icon://circle-task-2",
+            //     state: "Information",
+            //     inverted:true,
+            //     tooltip: oBundle.getText("CASHJOURNAL.LEGACYTOOLTIP")
+            // })
+            // oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            // var oLegacyStatusText =  new sap.m.Text({
+            //     text: "Legacy Data"
+            // })
+            // oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            // var oLegendTitle = new sap.m.Text({
+            //     text: "Legend:"
+            // })
+            // oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            // var oLegendBox = new sap.m.HBox({
+            //     items: [
+            //         oCurrentStatus,
+            //         oCurrentStatusText,
+            //         oLegacyStatus
                     
-                ],
-                alignItems: "Center",
-                justifyContent: "End"
-            });
+            //     ],
+            //     alignItems: "Center",
+            //     justifyContent: "End"
+            // });
 
-            oToolbar.addContent(new sap.m.ToolbarSpacer());
-            oToolbar.addContent(oLegendBox);
-            const oTable = oSmartTable.getTable();
-            this.bAuthorizationErrorShown = false;
-            oModel.attachRequestFailed(function (oEvent) {
-                var oParams = oEvent.getParameters();
-                if (oParams.response.statusCode === "403") {
-                    oTable.setNoData("No data available due to authorization restrictions");
-                    oTable.setBusy(false)    
-                    if(!this.bAuthorizationErrorShown) {
-                        this.bAuthorizationErrorShown = true;
-                        MessageBox.error("You do not have the required permissions to access this report.", {
-                            title: "Unauthorized Access",
-                            id: "messageBoxId1",
-                            details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
-                            contentWidth: "100px",
-                        });
+            // oToolbar.addContent(new sap.m.ToolbarSpacer());
+            // oToolbar.addContent(oLegendBox);
+            // const oTable = oSmartTable.getTable();
+            // this.bAuthorizationErrorShown = false;
+            // oModel.attachRequestFailed(function (oEvent) {
+            //     var oParams = oEvent.getParameters();
+            //     if (oParams.response.statusCode === "403") {
+            //         oTable.setNoData("No data available due to authorization restrictions");
+            //         oTable.setBusy(false)    
+            //         if(!this.bAuthorizationErrorShown) {
+            //             this.bAuthorizationErrorShown = true;
+            //             MessageBox.error("You do not have the required permissions to access this report.", {
+            //                 title: "Unauthorized Access",
+            //                 id: "messageBoxId1",
+            //                 details: "Permission is required to access this report. Please contact your administrator if you believe this is an error or require access.",
+            //                 contentWidth: "100px",
+            //             });
                     
-                    }
-                }
-            });
+            //         }
+            //     }
+            // });
               // Access the underlying table
             
             this._debouncedCalculateTotals = this._debounce(this._calculateTotals.bind(this), 300);
@@ -193,28 +193,28 @@ sap.ui.define([
             console.log("RouteView1 pattern matched – fetching logo...");
             this._fetchAndSetLogo();
         },
-        onSearch: function () {
-            const oSmartFilterBar = this.getView().byId("bar0");
-            const oSmartTable = this.getView().byId("table0");
-            const oBinding = oSmartTable.getTable().getBinding("rows");
+        // onSearch: function () {
+        //     const oSmartFilterBar = this.getView().byId("bar0");
+        //     const oSmartTable = this.getView().byId("table0");
+        //     const oBinding = oSmartTable.getTable().getBinding("rows");
         
-            if (!oBinding) {
-                console.warn("Table binding is missing.");
-                return;
-            }
+        //     if (!oBinding) {
+        //         console.warn("Table binding is missing.");
+        //         return;
+        //     }
         
-            // Get selected value from the filter
-            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+        //     // Get selected value from the filter
+        //     let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
         
-            // Build the filter condition
-            let aFilters = [];
-            if (sCurrentStatus) {
-                aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
-            }
+        //     // Build the filter condition
+        //     let aFilters = [];
+        //     if (sCurrentStatus) {
+        //         aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+        //     }
         
-            // Apply the filter
-            oBinding.filter(aFilters);
-        },
+        //     // Apply the filter
+        //     oBinding.filter(aFilters);
+        // },
         onOpenDialog: function () {
 			// load BusyDialog fragment asynchronously
 			if (!this._pBusyDialog) {

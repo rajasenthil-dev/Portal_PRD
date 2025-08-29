@@ -33,12 +33,12 @@ Search.defaultSearchElement: true,
         ],
         
         LineItem  : [
-            {
-                $Type : 'UI.DataField',
-                Value : CURRENT,
-                ![@HTML5.CssDefaults] : {width : '10rem'}
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : CURRENT,
+            //     ![@HTML5.CssDefaults] : {width : '10rem'}
 
-            },
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : BILL_TO,
@@ -64,11 +64,11 @@ Search.defaultSearchElement: true,
             //     Value : FKDAT
             // },
             
-            {
-                $Type : 'UI.DataField',
-                Value : NETWR,
-                ![@HTML5.CssDefaults] : {width : '16rem'}
-            },          
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : NETWR,
+            //     ![@HTML5.CssDefaults] : {width : '16rem'}
+            // },          
             {
                 $Type : 'UI.DataField',
                 Value : CAL_CASH_RECEIVED,
@@ -78,6 +78,10 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : CAL_DISCOUNT,
                 ![@HTML5.CssDefaults] : {width : '5.813rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : XBLNR_REF
             },
             {
                 $Type : 'UI.DataField',

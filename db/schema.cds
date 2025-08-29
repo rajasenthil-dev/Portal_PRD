@@ -239,7 +239,9 @@ entity CASHJOURNAL
         NAME1               : String(35)        @title : '{i18n>CASHJOURNAL.NAME1}';
         CAL_INV_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.BUDAT}';
     key VBELN               : String(10)        @title : '{i18n>CASHJOURNAL.VBELN}';
-        //NETWR               : Decimal(20,2)     @title : '{i18n>CASHJOURNAL.NETWR}';
+        @UI.HiddenFilter
+        @UI.Hiddden
+        NETWR               : Decimal(20,2)     @title : '{i18n>CASHJOURNAL.NETWR}';
         BLART               : String(2)         @title : '{i18n>CASHJOURNAL.BLART}';
         MFRNR               : String(10)        @title : '{i18n>CASHJOURNAL.MFRNR}';
     key BUKRS               : String(4)         @title : '{i18n>CASHJOURNAL.BUKRS}';
@@ -247,17 +249,24 @@ entity CASHJOURNAL
     key GJAHR               : String(4)         @title : '{i18n>CASHJOURNAL.GJAHR}';
         BSTKD               : String(35)        @title : '{i18n>CASHJOURNAL.BSTKD}';
         PRCTR               : String(10)        @title : '{i18n>CASHJOURNAL.PRCTR}';
-        AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
+        //AUBEL               : String(10)        @title : '{i18n>CASHJOURNAL.AUBEL}';
         CAL_DEP_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
-        @UI.hidden
+        @UI.HiddenFilter
+        @UI.Hidden
         CURRENT             : String(3)         @title : '{i18n>CASHJOURNAL.CURRENT}';
         CAL_INV_AMOUNT      : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.CAL_INV_AMOUNT}';
         MFRNR_NAME          : String(35)        @title : '{i18n>CASHJOURNAL.MFRNR_NAME}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>CASHJOURNAL.VTEXT_ZTERM}';
+        @UI.HiddenFilter
+        @UI.Hidden
+        ZTERM         : String(4)         @title : '{i18n>CASHJOURNAL.ZTERM}';
         // DEPOSIT_DATE        : Date              @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
         CAL_DUE_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.NETDT}';
-        //BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
+        @UI.HiddenFilter
+        @UI.Hidden
+        BLDAT               : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
         BSCHL               : String(2)         @title : '{i18n>CASHJOURNAL.BSCHL}';
+        XBLNR_REF           : String(16)        @title : '{i18n>CASHJOURNAL.XBLNR_REF}';
 }
 define view BLARTS as
     select from CASHJOURNAL distinct {
@@ -864,7 +873,7 @@ key WERKS                   : String(4)     @title : '{i18n>SALESBYCURRENT.WERKS
     VGBEL                   : String(10)    @title : '{i18n>SALESBYCURRENT.VGBEL}';
     VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN_VBAK}';
     TIME_OFF_DELIVERY       : String(9)     @title : '{i18n>SALESBYCURRENT.TIME_OFF_DELIVERY}';
-    DELIVERY_DATE           : String(11)    @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
+    DELIVERY_DATE           : String(11)     @title : '{i18n>SALESBYCURRENT.DELIVERY_DATE}';
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
     // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
