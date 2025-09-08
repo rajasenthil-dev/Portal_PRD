@@ -63,7 +63,7 @@ module.exports = cds.service.impl(function() {
    * Entity → Filter map for manufacturer 0001000005
    * (Sales Org 1000 excluded ONLY, allow Plant 1010)
    */
-  const entityFilterMapFor0001000005 = {
+  const salesOrg1000ExclusionMap = {
       SALESBYCURRENTAPP: `(CO_VKORG <> '1000')`,
       SALESBYCURRENTWOPID: `(CO_VKORG <> '1000')`,
       SBCSALESORG: `(CO_VKORG <> '1000')`,
@@ -133,7 +133,11 @@ module.exports = cds.service.impl(function() {
    * Manufacturer → Entity Filter Map
    */
   const manufacturerFilterMap = {
-      '0001000019': entityFilterMapFor0001000019
+      '0001000019': entityFilterMapFor0001000019,
+      '0001000005': salesOrg1000ExclusionMap,
+      '0001000002': salesOrg1000ExclusionMap,  
+      '0001000059': salesOrg1000ExclusionMap  
+      // add more if needed
   };
 
   const fuzzySearchEntities = new Set([
