@@ -433,4 +433,9 @@ src/gen/SALES.SBCCUSTOMERTYPE.hdbview
 src/gen/SBCCUSTOMERTYPE.hdbview
 
 src/gen/SALES.SALESBYCURRENTAPP.hdbview
-src/gen/ALESBYCURRENTAPP.hdbview
+src/gen/SALESBYCURRENTAPP.hdbview
+
+src/models/SALES_PIVOTTABLE.hdbview
+
+src/gen/FINANCE.OPENARBILLINGTYPE.hdbview
+src/gen/OPENARBILLINGTYPE.hdbview

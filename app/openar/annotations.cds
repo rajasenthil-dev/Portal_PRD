@@ -29,7 +29,8 @@ annotate FINANCE.OPENAR with @(
             BILL_TO,
             NAME1,
             FKDAT,
-            VKORG
+            VKORG,
+            DOC_TYPE
         ],
         
         LineItem  : [
@@ -226,6 +227,23 @@ annotate FINANCE.OPENAR with @(
                         $Type : 'Common.ValueListParameterOut',
                         LocalDataProperty : 'VKORG',
                         ValueListProperty : 'VKORG'
+                    }
+                ]
+            },
+        }    
+        
+    );
+    DOC_TYPE@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'OPENARBILLINGTYPE',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'DOC_TYPE',
+                        ValueListProperty : 'DOC_TYPE'
                     }
                 ]
             },

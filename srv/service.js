@@ -59,6 +59,46 @@ module.exports = cds.service.impl(function() {
       SHIPSTATUSVKORG: `(VKORG <> '1000')`
   };
   
+  // --- Mappings of entity to filters ---
+    /**
+     * Entity → Filter map for manufacturer 0001000002(Novartis)
+     * (Sales Org 1000 and Plant 1000 excluded)
+    */
+    const entityFilterMapFor0001000002 = {
+      SALESBYCURRENTAPP: `(CO_VKORG <> '1000' AND WERKS <> '1000')`,
+      SALESBYCURRENTWOPID: `(CO_VKORG <> '1000' AND WERKS <> '1000')`,
+      SBCSALESORG: `(CO_VKORG <> '1000')`,
+      RETVKORG: `(CO_VKORG <> '1000')`,
+      ITEMMASTER: `(SALESORG <> '1000' AND BWKEY <> '1000')`,
+      ITEMMASSALESORG: `(SALESORG <> '1000')`,
+      INVENTORYSTATUS: `(VKBUR <> '1000' AND PLANT <> '1000')`,
+      INVSTATUSVKBUR: `(VKBUR <> '1000')`,
+      INVENTORYBYLOT: `(VKBUR <> '1000' AND PLANT <> '1000')`,
+      INVENTORYVALUATION: `(VKBUR <> '1000' AND PLANT <> '1000')`,
+      INVENTORYAUDITTRAIL: `(SALES_ORG <> '1000' AND WERKS <> '1000')`,
+      IATSALESORG: `(SALES_ORG <> '1000' AND WERKS <> '1000')`,
+      CASHJOURNAL: `(VKORG <> '1000')`,
+      INVENTORYSNAPSHOT: `(VKORG <> '1000')`,
+      FINCJSALESORG: `(VKORG <> '1000')`,
+      IHSALESORG: `(VKORG <> '1000')`,
+      OPENAR: `(VKORG <> '1000')`,
+      OPENARSALESORG: `(VKORG <> '1000')`,
+      CUSTOMERMASTER: `(VKORG <> '1000')`,
+      CMSALESORG: `(VKORG <> '1000')`,
+      SHIPPINGHISTORY: `(VKORG <> '1000')`,
+      SHVKORG: `(VKORG <> '1000')`,
+      PRICING: `(VKORG <> '1000')`,
+      PRICINGSALESORG: `(VKORG <> '1000')`,
+      OOVKORG: `(VKORG <> '1000')`,
+      BOVKORG: `(VKORG <> '1000')`,
+      INVOICEHISTORY: `(VKORG <> '1000' AND WERKS <> '1000')`,
+      OPENORDERS: `(VKORG <> '1000' AND PLANT <> '1000')`,
+      BACKORDERS: `(VKORG <> '1000' AND PLANT <> '1000')`,
+      RETURNS: `(CO_VKORG <> '1000' AND PLANT <> '1000')`,
+      SHIPPINGSTATUS: `(VKORG <> '1000' AND WAREHOUSE_NAME_LNUMT <> '1000')`,
+      SHIPSTATUSVKORG: `(VKORG <> '1000')`
+  };
+
   /**
    * Entity → Filter map for manufacturer 0001000005
    * (Sales Org 1000 excluded ONLY, allow Plant 1010)
@@ -135,7 +175,7 @@ module.exports = cds.service.impl(function() {
   const manufacturerFilterMap = {
       '0001000019': entityFilterMapFor0001000019,
       '0001000005': salesOrg1000ExclusionMap,
-      '0001000002': salesOrg1000ExclusionMap,  
+      '0001000002': entityFilterMapFor0001000002,  
       '0001000059': salesOrg1000ExclusionMap  
       // add more if needed
   };

@@ -462,8 +462,8 @@ entity OPENAR
 
     key KUNNR               : String(10)        @title : '{i18n>OPENAR.KUNNR}';
 
-        NETWR_VBRK          : Decimal(23,2)     @title : '{i18n>OPENAR.NETWR}';
-        TSL_CLEARED         : Decimal(23,2)     @title : '{i18n>OPENAR.TSL}';
+        NETWR_VBRK          : Decimal(23,2)     @title : '{i18n>OPENAR.NETWR_VBRK}';
+        TSL_CLEARED         : Decimal(23,2)     @title : '{i18n>OPENAR.TSL_CLEARED}';
         BSTKD               : String(35)        @title : '{i18n>OPENAR.BSTKD}';
         WRBTR_OPEN          : Decimal(28,2)     @title : '{i18n>OPENAR.WRBTR_OPEN}';
         
@@ -473,6 +473,11 @@ entity OPENAR
         
        
 }
+define view OPENARBILLINGTYPE as
+    select from OPENAR distinct {
+        key DOC_TYPE,
+        PROFIT_CENTER @UI.Hidden
+};
 define view OPENARCUSTOMER as
     select from OPENAR distinct {
         key NAME1,

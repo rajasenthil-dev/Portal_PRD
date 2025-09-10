@@ -1301,6 +1301,7 @@ using OPENARCUSTOMERID as ENTOPENARCUSTOMERID from '../db/schema';
 using OPENARMFRNR as ENTOPENARMFRNR from '../db/schema';
 using OPENARMFRNRNAME as ENTOPENARMFRNRNAME from '../db/schema';
 using OPENARSALESORG as ENTOPENARSALESORG from '../db/schema';
+using OPENARBILLINGTYPE as ENTOPENARBILLINGTYPE from '../db/schema';
 
 service FINANCE {
     // ℹ️ Accounts Receivable Related Entities
@@ -1319,6 +1320,12 @@ service FINANCE {
     ]
     entity OPENARCUSTOMER as projection on ENTOPENARCUSTOMER;
 
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity OPENARBILLINGTYPE as projection on ENTOPENARBILLINGTYPE
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
