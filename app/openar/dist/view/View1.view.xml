@@ -330,6 +330,24 @@
                                     <Text id="creditAmount" text="{path: 'VKORG'}"/>
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn14"  width='7.813rem' hAlign="End" sortProperty="ZUONR">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "ZUONR", "leadingProperty": "ZUONR", "columnIndex": 21}'/>
+                                </t:customData>
+                                <Text id="_IDGenText15" text="{i18n>OPENAR.ZUONR}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText16" text="{path: 'ZUONR'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn16"  width='7.813rem' hAlign="End" sortProperty="XBLNR">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "XBLNR", "leadingProperty": "XBLNR", "columnIndex": 22}'/>
+                                </t:customData>
+                                <Text id="_IDGenText17" text="{i18n>OPENAR.XBLNR}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText18" text="{path: 'XBLNR'}"/>
+                                </t:template>
+                            </t:Column>
                             
                         </t:columns> 
                     </t:Table>

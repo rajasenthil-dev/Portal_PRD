@@ -469,8 +469,9 @@ entity OPENAR
         
     key BILL_TO             : String(10)        @title : '{i18n>OPENAR.BILL_TO}';   
     key STORE_SHIP_TO       : String(10)        @title : '{i18n>OPENAR.STORE_SHIP_TO}';
-        DOC_TYPE            : String(40)        @title : '{i18n>OPENAR.DOC_TYPE}'
-        
+        DOC_TYPE            : String(40)        @title : '{i18n>OPENAR.DOC_TYPE}';
+    key ZUONR               : String(18)        @title : '{i18n>OPENAR.ZUONR}';
+    key XBLNR               : String(16)        @title : '{i18n>OPENAR.XBLNR}'; 
        
 }
 define view OPENARBILLINGTYPE as
