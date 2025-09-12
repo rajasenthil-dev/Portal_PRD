@@ -55,20 +55,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : SHIP_TO
             },
-            {
-                $Type : 'UI.DataField',
-                Value : VBELN
-            }, 
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : FKDAT
-            // },
-            
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : NETWR,
-            //     ![@HTML5.CssDefaults] : {width : '16rem'}
-            // },          
+                     
             {
                 $Type : 'UI.DataField',
                 Value : CAL_CASH_RECEIVED,
@@ -81,11 +68,11 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : XBLNR_REF
+                Value : XBLNR
             },
             {
                 $Type : 'UI.DataField',
-                Value : BLART,
+                Value : DOC_TYPE,
                 ![@HTML5.CssDefaults] : {width : '6.813rem'}
             },
             {
@@ -141,12 +128,27 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : BLDAT,
+                Value : BLDAT_DEP,
             },
             {
                 $Type : 'UI.DataField',
                 Value : CAL_INV_AMOUNT,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ZUONR,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : KUNNR,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : VTEXT_VKORG,
             }
+
+
+
 
         ],
     },
@@ -192,17 +194,17 @@ Search.defaultSearchElement: true,
             },
         }      
     );
-    BLART@(
+    DOC_TYPE@(
         Common: {
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
-                CollectionPath : 'BLARTS',
+                CollectionPath : 'DOC_TYPE',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'BLART',
-                        ValueListProperty : 'BLART'
+                        LocalDataProperty : 'DOC_TYPE',
+                        ValueListProperty : 'DOC_TYPE'
                     }
                 ]
             },
@@ -256,7 +258,7 @@ Search.defaultSearchElement: true,
             },
         } 
     );
-    MFRNR_NAME@(
+    VTEXT_VKORG@(
         Common: {
             
             ValueListWithFixedValues,
@@ -267,8 +269,8 @@ Search.defaultSearchElement: true,
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',
-                        LocalDataProperty : 'MFRNR_NAME',
-                        ValueListProperty : 'MFRNR_NAME'
+                        LocalDataProperty : 'VTEXT_VKORG',
+                        ValueListProperty : 'VTEXT_VKORG'
                     }
                 ]
             },

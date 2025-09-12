@@ -678,7 +678,7 @@ module.exports = cds.service.impl(function() {
         'IATCUSTSUPP': 'KUNNR',
         'IATCUSTSUPPNAME': 'CUSTOMER_NAME',
         'IATMFRNRNAME': 'MFRNR_NAME',
-        'BLARTS': 'BLART',
+        'DOC_TYPE': 'DOC_TYPE',
         'BILL_TOS': 'BILL_TO',
         'BILL_TONAME': 'NAME1',
         'FINCJMFRNRNAME': 'MFRNR_NAME',

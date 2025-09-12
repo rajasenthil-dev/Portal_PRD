@@ -1287,7 +1287,7 @@ service CUSTOMERS {
 }
 
 using CASHJOURNAL as ENTCASHJOURNAL from '../db/schema';
-using BLARTS as ENTBLARTS from '../db/schema';
+using DOC_TYPE as ENTDOC_TYPE from '../db/schema';
 using BILL_TOS as ENTBILL_TOS from '../db/schema';
 using BILL_TONAME as ENTBILL_TONAME from '../db/schema';
 using FINCJMFRNR as ENTFINCJMFRNR from '../db/schema';
@@ -1361,56 +1361,56 @@ service FINANCE {
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity CASHJOURNAL as projection on ENTCASHJOURNAL;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity BLARTS as projection on ENTBLARTS;
+    entity DOC_TYPE as projection on ENTDOC_TYPE;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BILL_TOS as projection on ENTBILL_TOS;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity BILL_TONAME as projection on ENTBILL_TONAME;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity FINCJMFRNR as projection on ENTFINCJMFRNR;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity FINCJMFRNRNAME as projection on ENTFINCJMFRNRNAME;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity FINCJSALESORG as projection on ENTFINCJSALESORG;
 
     @requires: 'authenticated-user'
     @restrict: [
-        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
     entity FINCJPRCTR as projection on ENTFINCJPRCTR;
