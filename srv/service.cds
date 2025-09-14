@@ -1287,7 +1287,7 @@ service CUSTOMERS {
 }
 
 using CASHJOURNAL as ENTCASHJOURNAL from '../db/schema';
-using DOC_TYPE as ENTDOC_TYPE from '../db/schema';
+using BILLINGTYPE as ENTBILLINGTYPE from '../db/schema';
 using BILL_TOS as ENTBILL_TOS from '../db/schema';
 using BILL_TONAME as ENTBILL_TONAME from '../db/schema';
 using FINCJMFRNR as ENTFINCJMFRNR from '../db/schema';
@@ -1325,7 +1325,7 @@ service FINANCE {
         { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity OPENARBILLINGTYPE as projection on ENTOPENARBILLINGTYPE
+    entity OPENARBILLINGTYPE as projection on ENTOPENARBILLINGTYPE;
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PROFIT_CENTER' },
@@ -1371,7 +1371,7 @@ service FINANCE {
         { grant: 'READ', to: 'Viewer', where: '$user.ProfitCentre = PRCTR' },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity DOC_TYPE as projection on ENTDOC_TYPE;
+    entity BILLINGTYPE as projection on ENTBILLINGTYPE;
 
     @requires: 'authenticated-user'
     @restrict: [

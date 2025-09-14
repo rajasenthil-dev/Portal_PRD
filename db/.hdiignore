@@ -439,3 +439,6 @@ src/models/SALES_PIVOTTABLE.hdbview
 
 src/gen/FINANCE.OPENARBILLINGTYPE.hdbview
 src/gen/OPENARBILLINGTYPE.hdbview
+
+src/gen/FINANCE.BILLINGTYPE.hdbview
+src/gen/BILLINGTYPE.hdbview

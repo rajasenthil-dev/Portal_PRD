@@ -249,7 +249,7 @@ entity CASHJOURNAL
         CAL_INV_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.BUDAT}';
         CAL_DUE_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.NETDT}';
         CAL_DEP_DATE        : String(8)         @title : '{i18n>CASHJOURNAL.DEPOSIT_DATE}';
-        BLDAT_DEP           : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT}';
+        BLDAT_DEP           : String(8)         @title : '{i18n>CASHJOURNAL.BLDAT_DEP}';
         VTEXT_ZTERM         : String(30)        @title : '{i18n>CASHJOURNAL.VTEXT_ZTERM}';
         @UI.HiddenFilter
         @UI.Hidden
@@ -259,12 +259,12 @@ entity CASHJOURNAL
     key ZUONR               : String(18)        @title : '{i18n>CASHJOURNAL.ZUONR}';
     key KUNNR               : String(10)        @title : '{i18n>CASHJOURNAL.KUNNR}';
 
-        XBLNR               : String(16)        @title : '{i18n>CASHJOURNAL.XBLNR_REF}';
+        XBLNR               : String(16)        @title : '{i18n>CASHJOURNAL.XBLNR}';
     key VKORG               : String(4)         @title : '{i18n>CASHJOURNAL.VKORG}';
 
         VTEXT_VKORG         : String(4)         @title : '{i18n>CASHJOURNAL.VTEXT_VKORG}';
 }
-define view DOC_TYPE as
+define view BILLINGTYPE as
     select from CASHJOURNAL distinct {
         key DOC_TYPE,
         PRCTR @UI.Hidden

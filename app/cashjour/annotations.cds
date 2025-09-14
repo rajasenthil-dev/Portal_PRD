@@ -29,7 +29,8 @@ Search.defaultSearchElement: true,
             NETDT,
             BLART,
             VKORG,
-            PRCTR
+            PRCTR,
+            DOC_TYPE
         ],
         
         LineItem  : [
@@ -199,7 +200,7 @@ Search.defaultSearchElement: true,
             ValueListWithFixedValues,
             ValueList : {
                 $Type : 'Common.ValueListType',
-                CollectionPath : 'DOC_TYPE',
+                CollectionPath : 'BILLINGTYPE',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterOut',

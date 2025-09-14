@@ -1,0 +1,494 @@
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:38:21.952730] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T20:38:21.934243215Z] "GET / HTTP/2.0" 200 0 710 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0" "10.2.8.0:61352" "10.36.192.21:61041" x_forwarded_for:"165.1.179.81, 10.2.8.0" x_forwarded_proto:"https" vcap_request_id:"d617f5f5-20bf-4a50-5fa3-dafac0917a99" response_time:0.018383 gorouter_time:0.000070 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.003752 tls_time:0.007511 backend_time:0.018314 local_address:"10.2.1.8:30680" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"d41bed27-7ae0-4652-95f1-8a346d1152ac-68C484BD-8E20A72" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"165.1.179.81" x_request_id:"-" x_b3_traceid:"d617f5f520bf4a505fa3dafac0917a99" x_b3_spanid:"5fa3dafac0917a99" x_b3_parentspanid:"-" b3:"d617f5f520bf4a505fa3dafac0917a99-5fa3dafac0917a99" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:38:21.953159] {"written_at":"2025-09-12T20:38:21.952Z","written_ts":1757709501952000000,"csn_component":"-","correlation_id":"d617f5f5-20bf-4a50-5fa3-dafac0917a99","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"d617f5f5-20bf-4a50-5fa3-dafac0917a99","msg":"query does not exist for request url /"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:38:21.953223] {"written_at":"2025-09-12T20:38:21.952Z","written_ts":1757709501952000000,"csn_component":"-","correlation_id":"d617f5f5-20bf-4a50-5fa3-dafac0917a99","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"d617f5f5-20bf-4a50-5fa3-dafac0917a99","msg":"sending page with client-side redirect to https://discovery-sunrise.authentication.us20.hana.ondemand.com/oauth/authorize?response_type=code&client_id=sb-mck-portal!t15650&redirect_uri=https%3A%2F%2Fmckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com%2Flogin%2Fcallback"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:38:21.953928] {"written_at":"2025-09-12T20:38:21.953Z","written_ts":1757709501953000000,"csn_component":"-","correlation_id":"d617f5f5-20bf-4a50-5fa3-dafac0917a99","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"d617f5f5-20bf-4a50-5fa3-dafac0917a99","msg":"x-forwarded-path header: undefined"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:38:22.344078] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T20:38:22.189157452Z] "GET /login/callback?code=SdOJFDy0Stf3IJ39iyFXCxoWscCD3cUF HTTP/2.0" 302 0 0 "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0" "10.2.8.0:59698" "10.36.192.21:61041" x_forwarded_for:"165.1.179.81, 10.2.8.0" x_forwarded_proto:"https" vcap_request_id:"4eced66a-6d4d-4da0-750c-e100374ac389" response_time:0.154819 gorouter_time:0.000097 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.001506 tls_time:0.007020 backend_time:0.154722 local_address:"10.2.1.9:45596" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"d41bed27-7ae0-4652-95f1-8a346d1152ac-68C484BE-8E20AE7" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"165.1.179.81" x_request_id:"-" x_b3_traceid:"4eced66a6d4d4da0750ce100374ac389" x_b3_spanid:"750ce100374ac389" x_b3_parentspanid:"-" b3:"4eced66a6d4d4da0750ce100374ac389-750ce100374ac389" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:38:22.499382] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T20:38:22.426755981Z] "GET / HTTP/2.0" 404 0 139 "https://mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0" "10.2.8.0:59698" "10.36.192.21:61041" x_forwarded_for:"165.1.179.81, 10.2.8.0" x_forwarded_proto:"https" vcap_request_id:"b75bfa16-ec00-486f-7653-9d16483698d9" response_time:0.072540 gorouter_time:0.000091 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.000000 tls_time:0.000000 backend_time:0.072449 local_address:"10.2.1.9:45596" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"d41bed27-7ae0-4652-95f1-8a346d1152ac-68C484BE-8E20B61" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"165.1.179.81" x_request_id:"-" x_b3_traceid:"b75bfa16ec00486f76539d16483698d9" x_b3_spanid:"76539d16483698d9" x_b3_parentspanid:"-" b3:"b75bfa16ec00486f76539d16483698d9-76539d16483698d9" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:50:21.916066] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T20:50:21.899916952Z] "GET /app-logout?iss=a2vctyspz.accounts.ondemand.com&sid=S-SP-3a8365e2-911c-4d64-b4de-4365f5d6177c HTTP/1.1" 302 0 0 "https://a2vctyspz.accounts.ondemand.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" "10.5.8.1:45510" "10.36.192.21:61041" x_forwarded_for:"75.240.170.161, 170.85.9.112, 10.5.8.1" x_forwarded_proto:"https" vcap_request_id:"ca395654-cb09-46ef-60ca-ad9127182d07" response_time:0.016001 gorouter_time:0.000043 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.001111 tls_time:0.010774 backend_time:0.015958 local_address:"10.5.1.8:38300" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"881e203c-b08a-483c-889b-842fca604e19-68C4878D-85C47B5" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"170.85.9.112" x_request_id:"-" x_b3_traceid:"ca395654cb0946ef60caad9127182d07" x_b3_spanid:"60caad9127182d07" x_b3_parentspanid:"-" b3:"ca395654cb0946ef60caad9127182d07-60caad9127182d07" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:50:23.203373] {"written_at":"2025-09-12T20:50:23.202Z","written_ts":1757710223202000000,"csn_component":"-","correlation_id":"a7fb03ac-89e5-4d7b-557f-8165b541b9f7","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"a7fb03ac-89e5-4d7b-557f-8165b541b9f7","msg":"query does not exist for request url /?iss=a2vctyspz.accounts.ondemand.com&sid=S-SP-3a8365e2-911c-4d64-b4de-4365f5d6177c"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:50:23.203431] {"written_at":"2025-09-12T20:50:23.203Z","written_ts":1757710223203000000,"csn_component":"-","correlation_id":"a7fb03ac-89e5-4d7b-557f-8165b541b9f7","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"a7fb03ac-89e5-4d7b-557f-8165b541b9f7","msg":"sending page with client-side redirect to https://discovery-sunrise.authentication.us20.hana.ondemand.com/oauth/authorize?response_type=code&client_id=sb-mck-portal!t15650&redirect_uri=https%3A%2F%2Fmckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com%2Flogin%2Fcallback"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:50:23.203483] {"written_at":"2025-09-12T20:50:23.203Z","written_ts":1757710223203000000,"csn_component":"-","correlation_id":"a7fb03ac-89e5-4d7b-557f-8165b541b9f7","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"a7fb03ac-89e5-4d7b-557f-8165b541b9f7","msg":"x-forwarded-path header: undefined"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T20:50:23.206177] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T20:50:23.193083927Z] "GET /?iss=a2vctyspz.accounts.ondemand.com&sid=S-SP-3a8365e2-911c-4d64-b4de-4365f5d6177c HTTP/1.1" 200 0 712 "https://a2vctyspz.accounts.ondemand.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" "10.5.8.1:55144" "10.36.192.21:61041" x_forwarded_for:"75.240.170.161, 170.85.9.112, 10.5.8.1" x_forwarded_proto:"https" vcap_request_id:"a7fb03ac-89e5-4d7b-557f-8165b541b9f7" response_time:0.012850 gorouter_time:0.000038 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.001126 tls_time:0.006620 backend_time:0.012812 local_address:"10.5.1.9:15328" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"881e203c-b08a-483c-889b-842fca604e19-68C4878D-85C4AB1" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"170.85.9.112" x_request_id:"-" x_b3_traceid:"a7fb03ac89e54d7b557f8165b541b9f7" x_b3_spanid:"557f8165b541b9f7" x_b3_parentspanid:"-" b3:"a7fb03ac89e54d7b557f8165b541b9f7-557f8165b541b9f7" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T21:02:24.263599] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T21:02:24.251743015Z] "GET /app-logout?iss=a2vctyspz.accounts.ondemand.com&sid=S-SP-03a58722-1449-41b7-a579-a5e7789370c5 HTTP/1.1" 302 0 0 "https://a2vctyspz.accounts.ondemand.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" "10.5.8.0:13676" "10.36.192.21:61041" x_forwarded_for:"75.240.170.161, 170.85.9.112, 10.5.8.0" x_forwarded_proto:"https" vcap_request_id:"ed641969-6a9e-4a17-650f-55ea6384bb76" response_time:0.011771 gorouter_time:0.000035 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.001083 tls_time:0.006532 backend_time:0.011737 local_address:"10.5.1.8:13684" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"58fb4eb3-62a8-4174-8b31-eb88ac6428d9-68C48A60-9249D81" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"170.85.9.112" x_request_id:"-" x_b3_traceid:"ed6419696a9e4a17650f55ea6384bb76" x_b3_spanid:"650f55ea6384bb76" x_b3_parentspanid:"-" b3:"ed6419696a9e4a17650f55ea6384bb76-650f55ea6384bb76" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T21:02:24.860905] {"written_at":"2025-09-12T21:02:24.860Z","written_ts":1757710944860000000,"csn_component":"-","correlation_id":"d58405fa-1925-4ebd-4f25-156dcb506b09","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"d58405fa-1925-4ebd-4f25-156dcb506b09","msg":"query does not exist for request url /?iss=a2vctyspz.accounts.ondemand.com&sid=S-SP-03a58722-1449-41b7-a579-a5e7789370c5"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T21:02:24.860958] {"written_at":"2025-09-12T21:02:24.860Z","written_ts":1757710944860000000,"csn_component":"-","correlation_id":"d58405fa-1925-4ebd-4f25-156dcb506b09","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"d58405fa-1925-4ebd-4f25-156dcb506b09","msg":"sending page with client-side redirect to https://discovery-sunrise.authentication.us20.hana.ondemand.com/oauth/authorize?response_type=code&client_id=sb-mck-portal!t15650&redirect_uri=https%3A%2F%2Fmckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com%2Flogin%2Fcallback"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T21:02:24.860976] {"written_at":"2025-09-12T21:02:24.860Z","written_ts":1757710944860000000,"csn_component":"-","correlation_id":"d58405fa-1925-4ebd-4f25-156dcb506b09","type":"log","logger":"nodejs-logger","layer":"/Auth/OAuth2","level":"info","container_id":"10.36.192.21","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","request_id":"d58405fa-1925-4ebd-4f25-156dcb506b09","msg":"x-forwarded-path header: undefined"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T21:02:24.861262] mckesson-corporation-discovery-sunrise-datasphere-dev-m75790d06.cfapps.us20.hana.ondemand.com - [2025-09-12T21:02:24.848123798Z] "GET /?iss=a2vctyspz.accounts.ondemand.com&sid=S-SP-03a58722-1449-41b7-a579-a5e7789370c5 HTTP/1.1" 200 0 710 "https://a2vctyspz.accounts.ondemand.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" "10.5.8.0:46030" "10.36.192.21:61041" x_forwarded_for:"75.240.170.161, 170.85.9.112, 10.5.8.0" x_forwarded_proto:"https" vcap_request_id:"d58405fa-1925-4ebd-4f25-156dcb506b09" response_time:0.013046 gorouter_time:0.000037 app_id:"6e422593-95d5-4699-8c5d-f8ad235afff5" app_index:"0" instance_id:"dec540a9-6204-40b0-6662-3cef" failed_attempts:0 failed_attempts_time:"-" dns_time:0.000000 dial_time:0.001604 tls_time:0.006460 backend_time:0.013010 local_address:"10.5.1.9:60540" x_cf_routererror:"-" x_correlationid:"-" tenantid:"-" sap_passport:"-" x_scp_request_id:"58fb4eb3-62a8-4174-8b31-eb88ac6428d9-68C48A60-9249E66" x_cf_app_instance:"-" x_forwarded_host:"-" x_custom_host:"-" x_ssl_client:"-" x_ssl_client_session_id:"-" x_ssl_client_verify:"-" x_ssl_client_subject_dn:"-" x_ssl_client_subject_cn:"-" x_ssl_client_issuer_dn:"-" x_ssl_client_notbefore:"-" x_ssl_client_notafter:"-" x_cf_forwarded_url:"-" traceparent:"-" true_client_ip:"-" x_cf_true_client_ip:"170.85.9.112" x_request_id:"-" x_b3_traceid:"d58405fa19254ebd4f25156dcb506b09" x_b3_spanid:"4f25156dcb506b09" x_b3_parentspanid:"-" b3:"d58405fa19254ebd4f25156dcb506b09-4f25156dcb506b09" (STDOUT, RTR)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:35.870013] Uploading app package for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:36.099255] Updated app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 ({"environment_variables"=>"[PRIVATE DATA HIDDEN]"}) (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:45.899903] Stopping app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:45.946759] Cell b4044827-ed3c-4639-ab39-2e8af1591c41 stopping instance dec540a9-6204-40b0-6662-3cef (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.159455] Creating build for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.730875] Downloading zero_trust_sidecar_buildpack_1_10... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.730926] Downloading nodejs_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.730926] Downloading sap_java_buildpack_1_114... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.730960] Downloading staticfile_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.731025] Downloading sap_java_buildpack_jakarta_2_36... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.751484] Downloaded staticfile_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.751509] Downloading go_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.751561] Downloaded zero_trust_sidecar_buildpack_1_10 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.751609] Downloading python_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.753450] Downloaded sap_java_buildpack_jakarta_2_36 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.753503] Downloading php_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.754288] Downloaded nodejs_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.754310] Downloading nginx_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.754563] Downloaded sap_java_buildpack_1_114 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.754591] Downloading binary_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.765782] Downloaded python_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.765833] Downloading sap_java_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.765937] Downloaded php_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.765981] Downloading zero_trust_sidecar_buildpack_1_8... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.769808] Downloaded nginx_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.769810] Downloaded go_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.769851] Downloading zero_trust_sidecar_buildpack_1_9... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.769962] Downloaded binary_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.769981] Downloading zero_trust_sidecar_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.777974] Downloading sap_java_buildpack_jakarta_2_38... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.778847] Downloaded zero_trust_sidecar_buildpack_1_8 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.778885] Downloading sap_java_buildpack_jakarta... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.781049] Downloaded sap_java_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.781091] Downloading java_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.786831] Downloaded zero_trust_sidecar_buildpack_1_9 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.786866] Downloading sap_java_buildpack_jakarta_2_37... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.786903] Downloaded zero_trust_sidecar_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.786920] Downloading sap_java_buildpack_1_115... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.795296] Downloaded sap_java_buildpack_jakarta (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.795387] Downloaded sap_java_buildpack_jakarta_2_38 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.797479] Downloaded java_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.803006] Downloaded sap_java_buildpack_jakarta_2_37 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.804631] Downloaded sap_java_buildpack_1_115 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:46.804730] Cell 8a12f4da-7108-4400-8388-096573fd4265 creating container for instance 9d954c38-f44a-4189-90e6-e09fa122b75f (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:47.399353] Security group rules were updated (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:47.462387] Cell 8a12f4da-7108-4400-8388-096573fd4265 successfully created container for instance 9d954c38-f44a-4189-90e6-e09fa122b75f (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:48.152123] Downloading app package... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:48.152166] Downloading build artifacts cache... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:48.182275] Downloaded build artifacts cache (226B) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:49.253900] Downloaded app package (7.6M) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:49.887584] -----> Nodejs Buildpack version 1.8.39 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:50.242215] -----> Bootstrapping python (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:50.242264] -----> Installing python 3.11.13 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:50.242286] Copy [/tmp/buildpacks/6ca7b63990364784/dependencies/28094bfda36b8c744219390b5b628ee3/python_3.11.13_linux_x64_cflinuxfs4_49160849.tgz] (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:53.963518] -----> Installing binaries (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:53.963727] engines.node (package.json): ^20 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:53.963766] engines.npm (package.json): unspecified (use default) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:53.963775] -----> Installing node 20.19.3 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:53.963878] Copy [/tmp/buildpacks/6ca7b63990364784/dependencies/6a0b3fcebc33ffce62ab5303e4529de6/node_20.19.3_linux_x64_cflinuxfs4_cae347d1.tgz] (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:55.864158] Using default npm version: 10.8.2 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:55.864193] -----> Installing yarn 1.22.22 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:55.864298] Copy [/tmp/buildpacks/6ca7b63990364784/dependencies/ff849eb7696d3a7f463752a272c9a88e/yarn_1.22.22_linux_noarch_any-stack_83bda680.tgz] (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.187114] Installed yarn 1.22.22 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.187144] -----> Creating runtime environment (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189081] NODE_ENV=production (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189116] NODE_HOME=/tmp/contents1865867577/deps/0/node (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189121] NODE_MODULES_CACHE=true (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189127] NODE_VERBOSE=false (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189129] NPM_CONFIG_LOGLEVEL=error (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189135] NPM_CONFIG_PRODUCTION=true (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189141] -----> Building dependencies (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189143] Prebuild detected (node_modules already exists) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.189148] Rebuilding any native modules (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.889271] rebuilt dependencies successfully (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.891816] npm notice (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.891849] npm notice New major version of npm available! 10.8.2 -> 11.6.0 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.891853] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.0 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.891856] npm notice To update run: npm install -g npm@11.6.0 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.891858] npm notice (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:56.904836] Installing any new modules (package.json + package-lock.json) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:57.612038] up to date in 628ms (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:57.612153] 20 packages are looking for funding (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:57.612162] run `npm fund` for details (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:13:58.551792] Contrast Security no credentials found. Will not write environment files. (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:07.572735] Exit status 0 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:07.572802] Uploading droplet, build artifacts cache... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:07.572857] Uploading build artifacts cache... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:07.572899] Uploading droplet... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:07.612247] Uploaded build artifacts cache (226B) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:08.567993] Creating droplet for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:10.676703] Uploaded droplet (52.9M) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:10.696753] Uploading complete (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:11.273344] Cell 8a12f4da-7108-4400-8388-096573fd4265 stopping instance 9d954c38-f44a-4189-90e6-e09fa122b75f (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:11.273392] Cell 8a12f4da-7108-4400-8388-096573fd4265 destroying container for instance 9d954c38-f44a-4189-90e6-e09fa122b75f (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:13.334327] Cell 8a12f4da-7108-4400-8388-096573fd4265 successfully destroyed container for instance 9d954c38-f44a-4189-90e6-e09fa122b75f (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:15.738270] Updated app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 ({:droplet_guid=>"8e517c0d-ff09-4ef6-8a45-6f4519905847"}) (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:15.989206] Creating revision for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:16.036078] Starting app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:16.235905] Cell 61217269-d57d-40e1-9f62-4923e34e8173 creating container for instance 9124c59f-123f-4fe8-6edc-c76b (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:16.631726] Security group rules were updated (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:16.703553] Cell 61217269-d57d-40e1-9f62-4923e34e8173 successfully created container for instance 9124c59f-123f-4fe8-6edc-c76b (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:17.103211] Downloading droplet... (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:20.508886] Downloaded droplet (52.9M) (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:20.509049] Starting health monitoring of container (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:20.577374] Invoking pre-start scripts. (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:20.785771] Invoking start command. (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:21.129151] > start (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:21.129178] > node node_modules/@sap/approuter/approuter.js (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:21.388500] {"written_at":"2025-09-12T22:14:21.386Z","written_ts":1757715261386000000,"csn_component":"-","correlation_id":"-","type":"log","logger":"nodejs-logger","layer":"/LoggingLibrary","level":"warning","container_id":"10.36.193.10","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"","msg":"Dynamic log level switching not available"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:21.710245] {"written_at":"2025-09-12T22:14:21.709Z","written_ts":1757715261709000000,"csn_component":"-","correlation_id":"mfhea80d","type":"log","logger":"nodejs-logger","layer":"/approuter","level":"info","container_id":"10.36.193.10","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"mfhea80d","msg":"Application router version 18.0.3"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:21.713258] {"written_at":"2025-09-12T22:14:21.712Z","written_ts":1757715261712000000,"csn_component":"-","correlation_id":"mfhea80g","type":"log","logger":"nodejs-logger","layer":"/Configuration","level":"info","container_id":"10.36.193.10","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"mfhea80g","msg":"No COOKIES environment variable"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:21.754149] {"written_at":"2025-09-12T22:14:21.753Z","written_ts":1757715261753000000,"csn_component":"-","correlation_id":"mfhea80d","type":"log","logger":"nodejs-logger","layer":"/approuter","level":"info","container_id":"10.36.193.10","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"mfhea80d","msg":"Application router is listening on port: 8080"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:23.205815] Container became healthy (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:23.232111] Process became ready with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 payload: {"instance"=>"9124c59f-123f-4fe8-6edc-c76b", "index"=>0, "cell_id"=>"61217269-d57d-40e1-9f62-4923e34e8173", "ready"=>true, "version"=>"ea36a218-d242-4463-8ff0-541a0b4e4693"} (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:52.770214] Cell b4044827-ed3c-4639-ab39-2e8af1591c41 destroying container for instance dec540a9-6204-40b0-6662-3cef (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:52.886458] Exit status 137 (STDOUT, PROXY)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:14:54.767739] Cell b4044827-ed3c-4639-ab39-2e8af1591c41 successfully destroyed container for instance dec540a9-6204-40b0-6662-3cef (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:47.357349] Uploading app package for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:47.618815] Updated app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 ({"environment_variables"=>"[PRIVATE DATA HIDDEN]"}) (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.178776] Stopping app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.239988] Cell 61217269-d57d-40e1-9f62-4923e34e8173 stopping instance 9124c59f-123f-4fe8-6edc-c76b (STDOUT, CELL)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.455600] Creating build for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.970176] Downloading nodejs_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.970234] Downloading sap_java_buildpack_1_114... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.970243] Downloading sap_java_buildpack_jakarta_2_36... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.970245] Downloading zero_trust_sidecar_buildpack_1_10... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.970325] Downloading nginx_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.988802] Downloaded zero_trust_sidecar_buildpack_1_10 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.988839] Downloading zero_trust_sidecar_buildpack_1_8... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.990144] Downloaded nodejs_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.990158] Downloaded sap_java_buildpack_1_114 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.990172] Downloading zero_trust_sidecar_buildpack_1_9... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.990181] Downloading sap_java_buildpack_jakarta... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.990551] Downloaded nginx_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.990574] Downloading sap_java_buildpack_jakarta_2_38... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.994351] Downloaded sap_java_buildpack_jakarta_2_36 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:57.994377] Downloading sap_java_buildpack_jakarta_2_37... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.004593] Downloaded zero_trust_sidecar_buildpack_1_8 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.004637] Downloading sap_java_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.006131] Downloaded sap_java_buildpack_jakarta (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.006152] Downloading python_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.006313] Downloaded zero_trust_sidecar_buildpack_1_9 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.006344] Downloading binary_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.006633] Downloaded sap_java_buildpack_jakarta_2_38 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.006664] Downloading go_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.009518] Downloaded sap_java_buildpack_jakarta_2_37 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.009554] Downloading zero_trust_sidecar_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.019963] Downloaded sap_java_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.020012] Downloading staticfile_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.021433] Downloaded python_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.021596] Downloaded binary_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.021620] Downloading sap_java_buildpack_1_115... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.024565] Downloaded zero_trust_sidecar_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.024589] Downloading java_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.025023] Downloaded go_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.025062] Downloading php_buildpack... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.035544] Downloaded staticfile_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.036885] Downloaded sap_java_buildpack_1_115 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.040492] Downloaded java_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.041369] Downloaded php_buildpack (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.041454] Cell e6c3e8c8-8e8c-418c-8cb9-acf3ba55158a creating container for instance f5719c80-12a5-4815-9bcb-5d7f175ba534 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.596617] Security group rules were updated (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.671167] Cell e6c3e8c8-8e8c-418c-8cb9-acf3ba55158a successfully created container for instance f5719c80-12a5-4815-9bcb-5d7f175ba534 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.942533] Downloading app package... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.942627] Downloading build artifacts cache... (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:22:58.968896] Downloaded build artifacts cache (226B) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:00.044016] Downloaded app package (7.6M) (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:00.777400] -----> Nodejs Buildpack version 1.8.39 (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:01.187316] -----> Bootstrapping python (STDOUT, STG)#
+#2025 09 12 22:23:06.772#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:01.187347] -----> Installing python 3.11.13 (STDOUT, STG)#
+#2025 09 12 22:23:06.773#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:01.187368] Copy [/tmp/buildpacks/6ca7b63990364784/dependencies/28094bfda36b8c744219390b5b628ee3/python_3.11.13_linux_x64_cflinuxfs4_49160849.tgz] (STDOUT, STG)#
+#2025 09 12 22:23:06.773#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:05.067362] -----> Installing binaries (STDOUT, STG)#
+#2025 09 12 22:23:06.773#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:05.067569] engines.node (package.json): ^20 (STDOUT, STG)#
+#2025 09 12 22:23:06.773#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:05.067593] engines.npm (package.json): unspecified (use default) (STDOUT, STG)#
+#2025 09 12 22:23:06.773#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:05.067614] -----> Installing node 20.19.3 (STDOUT, STG)#
+#2025 09 12 22:23:06.773#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4445#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:05.067926] Copy [/tmp/buildpacks/6ca7b63990364784/dependencies/6a0b3fcebc33ffce62ab5303e4529de6/node_20.19.3_linux_x64_cflinuxfs4_cae347d1.tgz] (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.075868] Using default npm version: 10.8.2 (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.075916] -----> Installing yarn 1.22.22 (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.075956] Copy [/tmp/buildpacks/6ca7b63990364784/dependencies/ff849eb7696d3a7f463752a272c9a88e/yarn_1.22.22_linux_noarch_any-stack_83bda680.tgz] (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.434636] Installed yarn 1.22.22 (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.434672] -----> Creating runtime environment (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436620] NODE_ENV=production (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436651] NODE_HOME=/tmp/contents166179006/deps/0/node (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436655] NODE_MODULES_CACHE=true (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436657] NODE_VERBOSE=false (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436664] NPM_CONFIG_LOGLEVEL=error (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436668] NPM_CONFIG_PRODUCTION=true (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436671] -----> Building dependencies (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436673] Prebuild detected (node_modules already exists) (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:07.436693] Rebuilding any native modules (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.220687] rebuilt dependencies successfully (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.224725] npm notice (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.224747] npm notice New major version of npm available! 10.8.2 -> 11.6.0 (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.224753] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.0 (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.224757] npm notice To update run: npm install -g npm@11.6.0 (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.224760] npm notice (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:08.240265] Installing any new modules (package.json + package-lock.json) (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:09.171067] up to date in 850ms (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:09.171234] 20 packages are looking for funding (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:09.171255] run `npm fund` for details (STDOUT, STG)#
+#2025 09 12 22:23:16.799#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4451#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:10.227980] Contrast Security no credentials found. Will not write environment files. (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:19.632993] Exit status 0 (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:19.633069] Uploading droplet, build artifacts cache... (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:19.633127] Uploading build artifacts cache... (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:19.633157] Uploading droplet... (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:19.664618] Uploaded build artifacts cache (225B) (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:20.523600] Creating droplet for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:23.596884] Uploaded droplet (52.9M) (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:23.622867] Uploading complete (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:24.371963] Cell e6c3e8c8-8e8c-418c-8cb9-acf3ba55158a stopping instance f5719c80-12a5-4815-9bcb-5d7f175ba534 (STDOUT, STG)#
+#2025 09 12 22:23:26.796#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4458#
+[PollStageAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:24.372050] Cell e6c3e8c8-8e8c-418c-8cb9-acf3ba55158a destroying container for instance f5719c80-12a5-4815-9bcb-5d7f175ba534 (STDOUT, STG)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:26.888505] Updated app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 ({:droplet_guid=>"a0b8b20c-c782-47f8-ae9e-6bf6a53dfb26"}) (STDOUT, API)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:26.893086] Cell e6c3e8c8-8e8c-418c-8cb9-acf3ba55158a successfully destroyed container for instance f5719c80-12a5-4815-9bcb-5d7f175ba534 (STDOUT, STG)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:27.156645] Creating revision for app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:27.204097] Starting app with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 (STDOUT, API)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:27.422203] Cell 1242413f-26a7-40ca-9d10-61a944e99d2c creating container for instance 69148813-50aa-4eb7-5f24-ec0c (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:27.839306] Security group rules were updated (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:27.917049] Cell 1242413f-26a7-40ca-9d10-61a944e99d2c successfully created container for instance 69148813-50aa-4eb7-5f24-ec0c (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:28.960708] Downloading droplet... (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:32.206022] Downloaded droplet (52.9M) (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:32.206281] Starting health monitoring of container (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:32.271631] Invoking pre-start scripts. (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:32.479445] Invoking start command. (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:32.798052] > start (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:32.798075] > node node_modules/@sap/approuter/approuter.js (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:33.041125] {"written_at":"2025-09-12T22:23:33.038Z","written_ts":1757715813038000000,"csn_component":"-","correlation_id":"-","type":"log","logger":"nodejs-logger","layer":"/LoggingLibrary","level":"warning","container_id":"10.36.192.23","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"","msg":"Dynamic log level switching not available"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:33.344114] {"written_at":"2025-09-12T22:23:33.343Z","written_ts":1757715813343000000,"csn_component":"-","correlation_id":"mfhem1nj","type":"log","logger":"nodejs-logger","layer":"/approuter","level":"info","container_id":"10.36.192.23","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"mfhem1nj","msg":"Application router version 18.0.3"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:33.346759] {"written_at":"2025-09-12T22:23:33.346Z","written_ts":1757715813346000000,"csn_component":"-","correlation_id":"mfhem1nm","type":"log","logger":"nodejs-logger","layer":"/Configuration","level":"info","container_id":"10.36.192.23","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"mfhem1nm","msg":"No COOKIES environment variable"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:33.385642] {"written_at":"2025-09-12T22:23:33.385Z","written_ts":1757715813385000000,"csn_component":"-","correlation_id":"mfhem1nj","type":"log","logger":"nodejs-logger","layer":"/approuter","level":"info","container_id":"10.36.192.23","component_type":"application","component_id":"6e422593-95d5-4699-8c5d-f8ad235afff5","component_name":"mck-portal","component_instance":-1,"source_instance":-1,"organization_id":"557795fb-ec02-41f6-b249-2b9c73ac8438","organization_name":"McKesson Corporation_discovery-sunrise","space_id":"2742a945-aac7-4753-a013-50fdd526e1db","space_name":"Datasphere_Dev","context_id":"mfhem1nj","msg":"Application router is listening on port: 8080"} (STDOUT, APP/PROC/WEB)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:34.534113] Container became healthy (STDOUT, CELL)#
+#2025 09 12 22:23:36.911#Z#DEBUG#ddd9f0f0-9026-11f0-9909-eeee0a9ba7f0.mck-portal#flowable-async-job-executor-thread-4469#
+[PollStartAppStatusExecution] 6e422593-95d5-4699-8c5d-f8ad235afff5 [2025-09-12T22:23:34.560736] Process became ready with guid 6e422593-95d5-4699-8c5d-f8ad235afff5 payload: {"instance"=>"69148813-50aa-4eb7-5f24-ec0c", "index"=>0, "cell_id"=>"1242413f-26a7-40ca-9d10-61a944e99d2c", "ready"=>true, "version"=>"da614719-6165-414c-a54d-7d6ce70a7954"} (STDOUT, API)#

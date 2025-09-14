@@ -18,7 +18,7 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel();
             const oView = this.getView();
             const oSmartFilterBar = oView.byId("bar0");
-        
+            const oTable = oView.byId("table")
             oView.setBusy(true);
         
             oSmartFilterBar.attachInitialized(function () {
@@ -250,7 +250,7 @@ sap.ui.define([
         
                 // Iterate through the rows to sum the values
                 aContexts.forEach(function (oContext) {
-                    fTotalNetWr += parseFloat(oContext.getProperty("NETWR")) || 0;
+                    fTotalNetWr += parseFloat(oContext.getProperty("CAL_INV_AMOUNT")) || 0;
                     fTotalCashReceived += parseFloat(oContext.getProperty("CAL_CASH_RECEIVED")) || 0;
                     fTotalDiscount += parseFloat(oContext.getProperty("CAL_DISCOUNT")) || 0;
                 });
