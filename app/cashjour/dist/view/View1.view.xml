@@ -36,15 +36,25 @@
                     <sf:SmartFilterBar id="bar0" entitySet="CASHJOURNAL" useDateRangeType="true" persistencyKey="SmartFilterBar_CASHJOURNAL" smartVariant="pageVariant" liveMode="true" search="onSearch">
                         <sf:controlConfiguration>
                         
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration1" key="BUDAT" visibleInAdvancedArea="true" conditionType="{                                     module: 'sap.ui.comp.config.condition.DateRangeType'                                 }"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration1" key="CAL_INV_DATE" visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }"/>
                         </sf:controlConfiguration>
                         <sf:controlConfiguration>
                         
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration3" key="BLDAT" visibleInAdvancedArea="true" conditionType="{                                     module: 'sap.ui.comp.config.condition.DateRangeType'                                 }"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration3" key="BLDAT_DEP" visibleInAdvancedArea="true" conditionType="{module: 'sap.ui.comp.config.condition.DateRangeType'}"/>
                         </sf:controlConfiguration>
                         <sf:controlConfiguration>
                         
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration2" key="NETDT" visibleInAdvancedArea="true" conditionType="{                                     module: 'sap.ui.comp.config.condition.DateRangeType'                                 }"/>
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration2" key="CAL_DUE_DATE" visibleInAdvancedArea="true" conditionType="{module: 'sap.ui.comp.config.condition.DateRangeType'}"/>
+                        </sf:controlConfiguration>
+                        <sf:controlConfiguration>
+                        
+                            <sf:ControlConfiguration id="_IDGenControlConfiguration4" key="CAL_DEP_DATE" visibleInAdvancedArea="true"
+                                conditionType="{
+                                    module: 'sap.ui.comp.config.condition.DateRangeType'
+                                }"/>
                         </sf:controlConfiguration>
                         <!-- <sf:controlConfiguration>
                             <sf:ControlConfiguration id="customCurrentFilter"
