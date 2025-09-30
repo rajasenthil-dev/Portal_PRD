@@ -98,7 +98,8 @@ entity INVENTORYSTATUS
         RECALLS              : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RECALLS}';
         INVENTORY_HOLD       : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.INVENTORY_HOLD}';
         RELABEL_QTY          : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.RELABEL_QTY}';
-        SAMPLE_QTY           : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
+        MARKETING_SAMPLE_QTY : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.SAMPLE_QTY}';
+        LAB_SAMPLE_QTY       : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.LAB_SAMPLE_QTY}';
         UNIT                 : String(3)      @title: '{i18n>INVENTORYSTATUS.UNIT}';
     key VKBUR                : String(4)      @title: '{i18n>INVENTORYSTATUS.VKBUR}';
         MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';

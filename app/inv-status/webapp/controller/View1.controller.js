@@ -179,7 +179,12 @@ sap.ui.define([
                     color: "Negative"
                 },
                 {
-                    prop: "SAMPLE_QTY",
+                    prop: "MARKETING_SAMPLE_QTY",
+                    icon: "sap-icon://pharmacy",
+                    color: "Warning"
+                },
+                {
+                    prop: "LAB_SAMPLE_QTY",
                     icon: "sap-icon://lab",
                     color: "Neutral"
                 },
