@@ -1,4 +1,3 @@
-
 const cds = require('@sap/cds');
 const path = require('path');
 const cors = require('cors');
@@ -73,6 +72,8 @@ async function authMiddleware(req, res, next) {
 
     if (!authHeader) {
         console.log('No Authorization Header Found');
+        console.log('Request URL:', req.originalUrl);
+        console.log('Request Path:', req.path);
         return res.status(401).send('Unauthorized');
     } else {
         console.log('User Token:', authHeader);

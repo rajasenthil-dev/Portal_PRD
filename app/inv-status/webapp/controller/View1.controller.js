@@ -132,72 +132,36 @@ sap.ui.define([
         
             const oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
         
+            const STATUS_COLORS = {
+                OPEN_STOCK: "#4CAF50",
+                QUARANTINE: "#FF5722",
+                RETAINS: "#9E9E9E",
+                QUALITY_HOLD: "#FF5722",
+                RETURNS_CAL: "#9E9E9E",
+                RECALLS: "#F44336",
+                INVENTORY_HOLD: "#FF5722",
+                RELABEL_QTY: "#9E9E9E",
+                DAMAGE_DESTRUCTION: "#F44336",
+                MARKETING_SAMPLE_QTY: "#FF9800",
+                LAB_SAMPLE_QTY: "#2196F3",
+                IN_PROCESS: "#4CAF50",
+                TOTAL_QTY: "#4CAF50"
+            };
+
             const fields = [
-                {
-                    prop: "OPEN_STOCK",
-                    icon: "sap-icon://inventory",
-                    color: "Positive"
-                },
-                {
-                    prop: "QUARANTINE",
-                    icon: "sap-icon://alert",
-                    color: "Critical"
-                },
-                {
-                    prop: "RETAINS",
-                    icon: "sap-icon://save",
-                    color: "Neutral"
-                },
-                {
-                    prop: "QUALITY_HOLD",
-                    icon: "sap-icon://synchronize",
-                    color: "Critical"
-                },
-                {
-                    prop: "RETURNS_CAL",
-                    icon: "sap-icon://undo",
-                    color: "Neutral"
-                },
-                {
-                    prop: "RECALLS",
-                    icon: "sap-icon://reset",
-                    color: "Negative"
-                },
-                {
-                    prop: "INVENTORY_HOLD",
-                    icon: "sap-icon://shelf",
-                    color: "Critical"
-                },
-                {
-                    prop: "RELABEL_QTY",
-                    icon: "sap-icon://tag",
-                    color: "Neutral"
-                },
-                {
-                    prop: "DAMAGE_DESTRUCTION",
-                    icon: "sap-icon://delete",
-                    color: "Negative"
-                },
-                {
-                    prop: "MARKETING_SAMPLE_QTY",
-                    icon: "sap-icon://pharmacy",
-                    color: "Warning"
-                },
-                {
-                    prop: "LAB_SAMPLE_QTY",
-                    icon: "sap-icon://lab",
-                    color: "Neutral"
-                },
-                {
-                    prop: "IN_PROCESS",
-                    icon: "sap-icon://process",
-                    color: "Positive"
-                },
-                {
-                    prop: "TOTAL_QTY",
-                    icon: "sap-icon://sum",
-                    color: "Positive"
-                }
+                { prop: "OPEN_STOCK", icon: "sap-icon://inventory", color: STATUS_COLORS.OPEN_STOCK },
+                { prop: "QUARANTINE", icon: "sap-icon://alert", color: STATUS_COLORS.QUARANTINE },
+                { prop: "RETAINS", icon: "sap-icon://save", color: STATUS_COLORS.RETAINS },
+                { prop: "QUALITY_HOLD", icon: "sap-icon://synchronize", color: STATUS_COLORS.QUALITY_HOLD },
+                { prop: "RETURNS_CAL", icon: "sap-icon://undo", color: STATUS_COLORS.RETURNS_CAL },
+                { prop: "RECALLS", icon: "sap-icon://reset", color: STATUS_COLORS.RECALLS },
+                { prop: "INVENTORY_HOLD", icon: "sap-icon://shelf", color: STATUS_COLORS.INVENTORY_HOLD },
+                { prop: "RELABEL_QTY", icon: "sap-icon://tag", color: STATUS_COLORS.RELABEL_QTY },
+                { prop: "DAMAGE_DESTRUCTION", icon: "sap-icon://delete", color: STATUS_COLORS.DAMAGE_DESTRUCTION },
+                { prop: "MARKETING_SAMPLE_QTY", icon: "sap-icon://pharmacy", color: STATUS_COLORS.MARKETING_SAMPLE_QTY },
+                { prop: "LAB_SAMPLE_QTY", icon: "sap-icon://lab", color: STATUS_COLORS.LAB_SAMPLE_QTY },
+                { prop: "IN_PROCESS", icon: "sap-icon://process", color: STATUS_COLORS.IN_PROCESS },
+                { prop: "TOTAL_QTY", icon: "sap-icon://sum", color: STATUS_COLORS.TOTAL_QTY }
             ];
         
             const totalsData = fields.map(field => {

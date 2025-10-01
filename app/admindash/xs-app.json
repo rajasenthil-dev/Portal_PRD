@@ -11,6 +11,7 @@
       "target": "/odata/$1",
       "destination": "mck-portal-srv-api",
       "authenticationType": "xsuaa",
+      "forwardAuthToken": true,
       "csrfProtection": false
     },
     {
