@@ -321,11 +321,7 @@
                                 <t:template>
                                     <Text id="DeliveryDate18" text="{
                                         path: 'DELIVERY_DATE', 
-                                        type: 'sap.ui.model.odata.type.Date',
-                                        formatOptions: {
-                                            style: 'medium',
-                                            pattern: 'MMM dd yyyy'
-                                        }
+                                        type: 'sap.ui.model.odata.type.Date'
                                     }"/>
                                 </t:template>
                             </t:Column>

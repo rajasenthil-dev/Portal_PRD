@@ -8,7 +8,7 @@ sap.ui.define([
     "use strict";
     var history = {
       prevUserSelect: null
-    };
+    }; 
 
     return Controller.extend("mckaccesshubuser.controller.View1", {
         onInit: function () { 
@@ -166,7 +166,7 @@ sap.ui.define([
             );
     
             //this.model.loadData(sap.ui.require.toUrl("sap/ui/demo/mock/products.json"));
-            this.getView().setModel(this.model);
+            //this.getView().setModel(this.model);
             // sample JSON data for testing
             // const oData = {
             //   userType: "Internal",
@@ -222,64 +222,88 @@ sap.ui.define([
         
             oAction.execute()
                 .then(function () {
+                    // After fetching aGroups
                     var oRawData = oAction.getBoundContext().getObject();
                     var aGroups = oRawData?.value || [];
-        
-                    console.log("Fetched Groups:", aGroups);
-        
-                    // Store groups in user model
+
+                    console.log(">>> Debug: selectedGroup before anything:", oUserModel.getProperty("/selectedGroup"));
+                    console.log(">>> Debug: selectedGroupName before anything:", oUserModel.getProperty("/selectedGroupName"));
+                    console.log(">>> Debug: groupAction:", oUserModel.getProperty("/groupAction"));
+                    console.log(">>> Debug: isInitialized:", oUserModel.getProperty("/isInitialized"));
+                    console.log(">>> Debug: groups count:", aGroups.length);
+                    console.log(">>> Debug: groups ids:", aGroups.map(g => g.id));
+                    console.log(">>> Debug: groups names:", aGroups.map(g => g.profile?.name || g.name));
+
+                    console.log("Fetched Groups (count):", aGroups.length);
+                    console.log("Fetched Groups IDs:", aGroups.map(g => g.id));
+                    console.log("Fetched Groups names:", aGroups.map(g => g.profile?.name || g.name));
+
+                    // store groups
                     oUserModel.setProperty("/groupDetails/groupList", aGroups);
-                    oUserModel.setProperty("/isGroupMapped", false); // default to false
-        
-                    // Default group (3rd in list) as a fallback
-                    var oDefaultGroup = aGroups[3];
-                    var oFinalGroup = oDefaultGroup;
-                    var isGroupMapped = false;
-        
-                    // Attempt mapping logic if manufacturer number is available
-                    var sMfgNumber = oUserModel.getProperty("/manufacturerNumber");
-        
-                    if (sMfgNumber) {
-                        var aMappings = oMappingModel.getProperty("/mappings") || [];
-        
-                        var oMatchedMapping = aMappings.find(function (m) {
-                            return m.manufacturerNumber === sMfgNumber;
-                        });
-        
-                        if (oMatchedMapping) {
-                            var oMatchedGroup = aGroups.find(function (group) {
-                                return group.id === oMatchedMapping.groupId;
-                            });
-        
-                            if (oMatchedGroup) {
-                                oFinalGroup = oMatchedGroup;
-                                isGroupMapped = true;
-                                console.log("Auto-mapped group:", oMatchedGroup);
+
+                    // keep existing selection if valid
+                    var currentSelection = String(oUserModel.getProperty("/selectedGroup") || "");
+                    var isInitialized = !!oUserModel.getProperty("/isInitialized");
+                    var selectionValid = aGroups.some(g => String(g.id) === currentSelection);
+
+                    if (selectionValid) {
+                        console.log("Existing selectedGroup is valid:", currentSelection);
+                        // keep it, but update selectedGroupName in case name changed
+                        var matched = aGroups.find(g => String(g.id) === currentSelection);
+                        oUserModel.setProperty("/selectedGroupName", matched.profile?.name || matched.name || "");
+                    } else {
+                        // existing selection not found in fetched groups
+                        // try auto-map (only if manufacturerNumber provided)
+                        var sMfgNumber = oUserModel.getProperty("/manufacturerNumber");
+                        var mappedGroup = null;
+                        if (sMfgNumber) {
+                            var aMappings = oMappingModel.getProperty("/mappings") || [];
+                            var oMatchedMapping = aMappings.find(m => m.manufacturerNumber === sMfgNumber);
+                            if (oMatchedMapping) {
+                                mappedGroup = aGroups.find(g => String(g.id) === oMatchedMapping.groupId);
+                                if (mappedGroup) {
+                                    console.log("Auto-mapped group found:", mappedGroup);
+                                    oUserModel.setProperty("/selectedGroup", String(mappedGroup.id));
+                                    oUserModel.setProperty("/selectedGroupName", mappedGroup.profile?.name || mappedGroup.name || "");
+                                    oUserModel.setProperty("/isGroupMapped", true);
+                                } else {
+                                    console.warn("Mapping exists but group id not in fetched groups", oMatchedMapping.groupId);
+                                }
                             } else {
-                                console.warn("Mapped group ID not found in fetched groups.");
+                                console.log("No mapping found for manufacturer:", sMfgNumber);
                             }
-                        } else {
-                            console.warn("No mapping found for manufacturer number:", sMfgNumber);
                         }
-                    } else {
-                        console.warn("Manufacturer number not set. Using fallback.");
+
+                        // If still nothing mapped, only default ONCE (first-time init) and only if /selectedGroup is falsy
+                        if (!mappedGroup && !currentSelection && !isInitialized && aGroups.length > 0) {
+                            var oDefault = aGroups[0];
+                            oUserModel.setProperty("/selectedGroup", String(oDefault.id));
+                            oUserModel.setProperty("/selectedGroupName", oDefault.profile?.name || oDefault.name || "");
+                            console.log("Defaulted to first group on initial load:", oDefault);
+                        } else if (!mappedGroup && currentSelection) {
+                            // If there was a current selection but it wasn't found, keep it (do not overwrite)
+                            console.warn("Current selection not found in fetched groups but preserving it:", currentSelection);
+                        }
                     }
-        
-                    // Set final selected group (either mapped or default)
-                    if (oFinalGroup) {
-                        oUserModel.setProperty("/selectedGroup", oFinalGroup.id);
-                        oUserModel.setProperty("/selectedGroupName", oFinalGroup.profile?.name || oFinalGroup.name);
-                        oUserModel.setProperty("/isGroupMapped", isGroupMapped);
-                    } else {
-                        console.warn("No group found to select.");
-                    }
-        
+
+                    // mark initialized
+                    oUserModel.setProperty("/isInitialized", true);
                     oUserModel.updateBindings(true);
                 })
                 .catch(function (oError) {
                     console.error("Error fetching groups:", oError);
                     sap.m.MessageBox.error("Failed to fetch Okta groups.");
                 });
+          },
+          onGroupChange: function (oEvent) {
+            var sNewKey = oEvent.getParameter("selectedItem").getKey();
+            var sNewText = oEvent.getParameter("selectedItem").getText();
+
+            var oUserModel = this.getView().getModel("userContext");
+            oUserModel.setProperty("/selectedGroup", sNewKey);
+            oUserModel.setProperty("/selectedGroupName", sNewText);
+
+            console.log("User selected new group:", sNewKey, sNewText);
         },
           goToUserStep: function () {
             debugger

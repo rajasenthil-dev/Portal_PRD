@@ -121,7 +121,14 @@ annotate INVENTORY.INVENTORYSTATUS with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : SAMPLE_QTY,
+                Value : MARKETING_SAMPLE_QTY,
+                Label : '{i18n>INVENTORYSTATUS.SAMPLE_QTY}',
+                ![@HTML5.CssDefaults] : {width : '10rem'}
+
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : LAB_SAMPLE_QTY,
                 Label : '{i18n>INVENTORYSTATUS.SAMPLE_QTY}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
 

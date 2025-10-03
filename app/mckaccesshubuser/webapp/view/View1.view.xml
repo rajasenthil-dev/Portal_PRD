@@ -264,6 +264,7 @@
                   <VBox id="existingGroupBox" visible="{= ${userContext>/groupAction} === 0 }">
                       <Label id="_IDGenLabel19" text="Select Group"/>
                       <Select id="groupSelect"
+                              change=".onGroupChange"
                               width="22rem"
                               selectedKey="{userContext>/selectedGroup}"
                               enabled="{= !${userContext>/isGroupMapped} }"
@@ -507,7 +508,8 @@
                 <VBox id="_IDGenVBox13" visible="{= ${userContext>/groupAction} === 0 }">
                     <Label id="_IDGenLabel21" text="Select Group" />
                     <Select id="_IDGenSelect" 
-                      width="22rem"
+                        width="22rem"
+                        change=".onGroupChange"
                         selectedKey="{userContext>/selectedGroup}"
                         items="{
                             path: 'userContext>/groupDetails/groupList'

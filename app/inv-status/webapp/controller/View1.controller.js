@@ -129,7 +129,10 @@ sap.ui.define([
             const oTable = this.getView().byId("table0").getTable();
             const oBinding = oTable.getBinding("rows");
             const aContexts = oBinding.getContexts(0, oBinding.getLength());
-        
+            aContexts.forEach(ctx => {
+                console.log("Marketing:", ctx.getProperty("MARKETING_SAMPLE_QTY"));
+                console.log("Lab:", ctx.getProperty("LAB_SAMPLE_QTY"));
+            });
             const oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
         
             const STATUS_COLORS = {

@@ -69,7 +69,9 @@ module.exports = cds.service.impl(async function () {
 // ✅ Middleware to authenticate users (Optional)
 async function authMiddleware(req, res, next) {
     const authHeader = req.headers['authorization'];
-
+    if (req.path === '/health') {
+        return next();
+    }
     if (!authHeader) {
         console.log('No Authorization Header Found');
         console.log('Request URL:', req.originalUrl);
