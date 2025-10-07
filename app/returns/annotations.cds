@@ -106,8 +106,22 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : PLANT_NAME,
                 ![@HTML5.CssDefaults] : {width : '4rem'}
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : CREDIT_IND
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : MSR_RET_REASON
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BEZEI
             }
             
+
+
         ],
     },
 ){
