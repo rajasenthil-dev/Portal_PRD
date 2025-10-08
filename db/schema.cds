@@ -613,7 +613,7 @@ entity INVOICEHISTORY
         PSTLZ        : String(10)    @title : '{i18n>INVOICEHISTORY.PSTLZ}';
         REGIO        : String(3)     @title : '{i18n>INVOICEHISTORY.REGIO}';
     key AUBEL        : String(10)    @title : '{i18n>INVOICEHISTORY.AUBEL}';
-        TRACKN       : String(35)    @title : '{i18n>INVOICEHISTORY.TRACKN}';
+    key TRACKN       : String(35)    @title : '{i18n>INVOICEHISTORY.TRACKN}';
     key BILL_TO      : String(10)    @title : '{i18n>INVOICEHISTORY.BILL_TO}';
         WAERK        : String(5)     @title : '{i18n>INVOICEHISTORY.WAERK}';
     key VBELN        : String(10)    @title : '{i18n>INVOICEHISTORY.VBELN}';
