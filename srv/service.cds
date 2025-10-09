@@ -924,7 +924,7 @@ using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
 using SBCCUSTOMERTYPE as ENTSBCCUSTOMERTYPE from '../db/schema';
 using PIVOTTABLE as ENTPIVOTTABLE from '../db/schema';
 
-
+using SALESSERIALNUMBER as ENTSALESSERIALNUMBER from '../db/schema';
 service SALES {
     // ℹ️ Ivoice History Related Entities
     // ⚠️ CDS Authorization Pending
@@ -1157,6 +1157,12 @@ service SALES {
     ]
     entity SBCCUSTOMERTYPE as projection on ENTSBCCUSTOMERTYPE;
     
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SALESSERIALNUMBER as projection on ENTSALESSERIALNUMBER;
 
     entity PIVOTTABLE as projection on ENTPIVOTTABLE;
 

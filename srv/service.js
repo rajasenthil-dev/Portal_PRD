@@ -69,7 +69,7 @@ module.exports = cds.service.impl(function() {
       SALESBYCURRENTWOPID: `(CO_VKORG <> '1000' AND WERKS <> '1000')`,
       SBCSALESORG: `(CO_VKORG <> '1000')`,
       RETVKORG: `(CO_VKORG <> '1000')`,
-      ITEMMASTER: `(SALESORG <> '1000' AND BWKEY <> '1000')`,
+      ITEMMASTER: `(SALESORG <> '1000')`,
       ITEMMASSALESORG: `(SALESORG <> '1000')`,
       INVENTORYSTATUS: `(VKBUR <> '1000' AND PLANT <> '1000')`,
       INVSTATUSVKBUR: `(VKBUR <> '1000')`,
@@ -254,7 +254,8 @@ module.exports = cds.service.impl(function() {
       'SHIPSTATUSWHSTATUS',
       'SHIPSTATUSMFRNRNAME',
       'MAINPAGESUMMARY',
-      'MPSMONTH'
+      'MPSMONTH',
+      'SALESSERIALNUMBER'
     ]);
     // Map of fields to exclude from fuzzy LIKE per entity
     const fuzzyExclusions = {

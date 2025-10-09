@@ -442,3 +442,6 @@ src/gen/OPENARBILLINGTYPE.hdbview
 
 src/gen/FINANCE.BILLINGTYPE.hdbview
 src/gen/BILLINGTYPE.hdbview
+
+src/gen/SALES.SALESSERIALNUMBER.hdbview
+src/gen/SERIALNUMBER.hdbview

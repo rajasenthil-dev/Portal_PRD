@@ -881,6 +881,7 @@ key VBELN_VBAK              : String(10)    @title : '{i18n>SALESBYCURRENT.VBELN
     BILL_TO_TYPE            : String(20)    @title : '{i18n>SALESBYCURRENT.KTOKD}';
     // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
 }
+
 define view SBCINVOICE as
     select from SALESBYCURRENT distinct {
         key INVOICE_CREDIT_VBELN,
@@ -970,8 +971,39 @@ define view SBCCUSTOMERTYPE as
         key BILL_TO_TYPE,
         MFRNR @UI.Hidden
 };
-// Sales by Product/Customer
-// Security attributes to match: ??
+@cds.persistence.exists
+entity SALESSERIALNUMBER
+{
+    key SALES_ORDER_NO              : String(10)       @title : '{i18n>SALESSERIALNUMBER.SALES_ORDER_NO}';
+    key PURCHASE_ORDER_BSTKD        : String(35)       @title : '{i18n>SALESSERIALNUMBER.PURCHASE_ORDER_BSTKD}';
+        INVOICE_DATE_FKDAT          : String(8)        @title : '{i18n>SALESSERIALNUMBER.INVOICE_DATE_FKDAT}';
+    key INVOICE_CREDIT_NO           : String(10)       @title : '{i18n>SALESSERIALNUMBER.INVOICE_CREDIT_NO}';
+    key SKU                         : String(7)        @title : '{i18n>SALESSERIALNUMBER.SKU}'; 
+        PRODUCT_DESCRIPTION         : String(40)       @title : '{i18n>SALESSERIALNUMBER.PRODUCT_DESCRIPTION}';    
+        AMOUNT                      : Decimal(30,2)    @title : '{i18n>SALESSERIALNUMBER.AMOUNT}'; 
+        QUANTITY                    : Decimal(18)      @title : '{i18n>SALESSERIALNUMBER.QUANTITY}'; 
+    key LOT                         : String(10)       @title : '{i18n>SALESSERIALNUMBER.LOT}';    
+        DOCUMENT_TYPE               : String(4)        @title : '{i18n>SALESSERIALNUMBER.DOCUMENT_TYPE}';
+        BILL_TO_NAME                : String(70)       @title : '{i18n>SALESSERIALNUMBER.BILL_TO_NAME}';
+    key BILL_TO_NO                  : String(10)       @title : '{i18n>SALESSERIALNUMBER.BILL_TO_NO}';
+        SHIP_TO_NAME                : String(70)       @title : '{i18n>SALESSERIALNUMBER.SHIP_TO_NAME}';
+    key SHIP_TO_NO                  : String(10)       @title : '{i18n>SALESSERIALNUMBER.SHIP_TO_NO}';
+        ADDRESS_1                   : String(35)       @title : '{i18n>SALESSERIALNUMBER.ADDRESS_1}';
+        ADDRESS_2                   : String(40)       @title : '{i18n>SALESSERIALNUMBER.ADDRESS_2}';
+        CITY                        : String(35)       @title : '{i18n>SALESSERIALNUMBER.CITY}';
+        POSTAL_CODE                 : String(10)       @title : '{i18n>SALESSERIALNUMBER.POSTAL_CODE}';
+        PROVINCE                    : String(3)        @title : '{i18n>SALESSERIALNUMBER.PROVINCE}';        
+        UNIT_PRICE                  : Decimal(32,2)    @title : '{i18n>SALESSERIALNUMBER.UNIT_PRICE}';        
+        TIME_OFF_DELIVERY           : String(9)        @title : '{i18n>SALESSERIALNUMBER.TIME_OFF_DELIVERY}';        
+        DELIVERY_DATE               : String(11)       @title : '{i18n>SALESSERIALNUMBER.DELIVERY_DATE}';       
+    key SALES_ORG                   : String(4)        @title : '{i18n>SALESSERIALNUMBER.SALES_ORG}';       
+        TAX_AMOUNT                  : Decimal(18,2)    @title : '{i18n>SALESSERIALNUMBER.TAX_AMOUNT}';       
+        ORDER_TYPE                  : String(4)        @title : '{i18n>SALESSERIALNUMBER.ORDER_TYPE}';        
+        ORDER_REASON                : String(3)        @title : '{i18n>SALESSERIALNUMBER.ORDER_REASON}';        
+    key ORDER_REASON_DESCRIPTION    : String(40)       @title : '{i18n>SALESSERIALNUMBER.ORDER_REASON_DESCRIPTION}';        
+    key VGBEL                       : String(10)       @title : '{i18n>SALESSERIALNUMBER.VGBEL}';            
+        SERIAL_NUMBER               : String(18)       @title : '{i18n>SALESSERIALNUMBER.SERIAL_NUMBER}';                          
+}
 @cds.search: { 
      
     PURCHASE_ORDER,  
