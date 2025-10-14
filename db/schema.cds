@@ -1,6 +1,6 @@
 @cds.search: { PRODUCTSTANDARDID, PRODUCT, CATEGORY, MANUFACTURERNUMBER, SALESORG, CREATIONDATE, PRODUCTDESCRIPTION_EN, SIZEUOM }
 @cds.persistence.exists
-// entity ITEMMASTER 
+// entity ITEMMASTER_1 
 // {
 //     key PRODUCT                 : String(7)     @title: '{{ITEMMASTER.PRODUCT}}';
 //     key SALESORG                : String(4)     @title: 'Sales Org';
