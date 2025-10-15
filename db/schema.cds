@@ -999,10 +999,11 @@ entity SALESSERIALNUMBER
     key SALES_ORG                   : String(4)        @title : '{i18n>SALESSERIALNUMBER.SALES_ORG}';       
         TAX_AMOUNT                  : Decimal(18,2)    @title : '{i18n>SALESSERIALNUMBER.TAX_AMOUNT}';       
         ORDER_TYPE                  : String(4)        @title : '{i18n>SALESSERIALNUMBER.ORDER_TYPE}';        
-        ORDER_REASON                : String(3)        @title : '{i18n>SALESSERIALNUMBER.ORDER_REASON}';        
+        ORDER__REASON                : String(3)        @title : '{i18n>SALESSERIALNUMBER.ORDER__REASON}';        
     key ORDER_REASON_DESCRIPTION    : String(40)       @title : '{i18n>SALESSERIALNUMBER.ORDER_REASON_DESCRIPTION}';        
     key VGBEL                       : String(10)       @title : '{i18n>SALESSERIALNUMBER.VGBEL}';            
-        SERIAL_NUMBER               : String(18)       @title : '{i18n>SALESSERIALNUMBER.SERIAL_NUMBER}';                          
+        SERIAL_NUMBER               : String(18)       @title : '{i18n>SALESSERIALNUMBER.SERIAL_NUMBER}'; 
+        EXP_DATE                    : String(8)        @title : '{i18n>SALESSERIALNUMBER.EXP_DATE}';                        
 }
 @cds.search: { 
      
@@ -1071,6 +1072,7 @@ entity CUSTOMERMASTER
         CAL_CUST_STATUS	: String(1)         @title: '{i18n>CUSTOMERMASTER.CAL_CUST_STATUS}';	 
         CAL_TERM	    : String(4)         @title: '{i18n>CUSTOMERMASTER.CAL_TERM}';
         VTEXT           : String(30)	    @title: '{i18n>CUSTOMERMASTER.VTEXT}';
+    
 }
 // Customer Master Bill To filter
 define view KUNN2_BILLTO as
@@ -1234,6 +1236,7 @@ entity PRICING
     key REGIO       : String(3)     @title : '{i18n>PRICING.REGIO}';
         MFRNR_NAME  : String(35)    @title : '{i18n>PRICING.MFRNR_NAME}';
         DATAB       : String(8)     @title : '{i18n>PRICING.DATAB}';
+        COCO_NUM    : String(10)    @title : '{i18n>PRICING.COCO_NUM}';
 }
 // Shipping History Carrier filter
 define view PRICINGPRICEDESC as
@@ -1470,7 +1473,8 @@ key KUNWE_ANA      : String(10)    @title : '{i18n>BACKORDERS.KUNWE_ANA}';
     MEINS          : String(3)     @title : '{i18n>BACKORDERS.MEINS}';
     MFRNR_NAME     : String(35)    @title : '{i18n>BACKORDERS.MFRNR_NAME}'; 
     PLANT          : String(3)     @title : '{i18n>BACKORDERS.PLANT}';
-    PLANT_NAME     : String(35)    @title : '{i18n>BACKORDERS.PLANT_NAME}';   
+    PLANT_NAME     : String(35)    @title : '{i18n>BACKORDERS.PLANT_NAME}';  
+    MFRPN          : String(10)    @title : '{i18n>BACKORDERS.MFRPN}';
 }
 
 

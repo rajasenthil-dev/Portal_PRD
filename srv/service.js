@@ -139,6 +139,7 @@ module.exports = cds.service.impl(function() {
       MAINPAGESUMMARY: `(VKORG <> '1000')`,
       MAINPAGEINVENTORY: `(VKORG <> '1000')`
   };
+  
   const excludedSKUsFor0001000005 = {
       SALESBYCURRENTAPP: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
       SALESBYCURRENTWOPID: ['1000025', '1000026', '1000035', '1000036', '1000037', '1000055', '1000056', '1000062'],
@@ -257,6 +258,15 @@ module.exports = cds.service.impl(function() {
       'MPSMONTH',
       'SALESSERIALNUMBER'
     ]);
+    const dynamicEntityRules = {
+      CUSTOMERMASTER: {
+        triggerField: 'VKORG',       // field to check in the incoming query
+        triggerValue: '4000',        // when this value is matched...
+        excludeField: 'KTEXT_SHIPTO',// ...exclude records with this field/value
+        excludeValue: 'HOSPITAL'
+      }
+    };
+
     // Map of fields to exclude from fuzzy LIKE per entity
     const fuzzyExclusions = {
       SALESBYCURRENTAPP: ['CURRENT'],
@@ -319,8 +329,42 @@ module.exports = cds.service.impl(function() {
           console.warn(`⚠️ Failed to parse VKORG filter for ${entityName}: ${e.message}`);
         }
       }
+      // === 3) CUSTOMERMASTER SalesOrg = 4000 exclusion logic via entity map ===
+      const dynamicRule = dynamicEntityRules[entityName];
 
-      // === 3) Fuzzy transformation (data-type-safe + per-field exclusions) ===
+      if (dynamicRule && where.length) {
+        const { triggerField, triggerValue, excludeField, excludeValue } = dynamicRule;
+        let hasTriggerCondition = false;
+
+        // Scan WHERE clause for the trigger condition
+        for (let i = 0; i < where.length; i++) {
+          const tok = where[i];
+          const op = where[i + 1];
+          const rhs = where[i + 2];
+
+          if (tok?.ref?.[0] === triggerField && (op === '=' || op === 'eq') && rhs?.val === triggerValue) {
+            hasTriggerCondition = true;
+            break;
+          }
+        }
+
+        // If trigger condition exists → add exclusion filter
+        if (hasTriggerCondition) {
+          const exclusionFilter = {
+            xpr: [
+              { ref: [excludeField] },
+              '!=',
+              { val: excludeValue }
+            ]
+          };
+
+          console.log(`🏥 Dynamic rule for ${entityName}: ${triggerField}=${triggerValue} → exclude ${excludeField}=${excludeValue}`);
+
+          if (where.length > 0) where.push('and');
+          where.push(exclusionFilter);
+        }
+      }
+      // === 4) Fuzzy transformation (data-type-safe + per-field exclusions) ===
       if (fuzzySearchEntities.has(entityName) && where.length) {
         const transformed = [];
         const exclusions = new Set(fuzzyExclusions[entityName] || []);

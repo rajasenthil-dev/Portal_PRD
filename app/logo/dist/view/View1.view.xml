@@ -1,6 +1,0 @@
-<mvc:View controllerName="logo.controller.View1"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-        <Image width="100%" id="logoImage" src=""/>
-    
-</mvc:View>
