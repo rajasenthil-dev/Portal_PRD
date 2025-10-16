@@ -60,7 +60,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -70,7 +70,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -80,7 +80,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -90,7 +90,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -100,7 +100,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -110,7 +110,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -121,7 +121,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -131,7 +131,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -141,7 +141,7 @@ service PROCESSING {
         {   
             grant: 'READ', 
             to: 'Viewer', 
-            where: '$user.ManufacturerNumber = MANUFACTURER_MFRNR' 
+            where: '$user.ManufacturerNumber = MFRNR' 
         },
         { grant: 'READ', to: 'Internal' }
     ]
@@ -1157,11 +1157,11 @@ service SALES {
     ]
     entity SBCCUSTOMERTYPE as projection on ENTSBCCUSTOMERTYPE;
     
-    // @requires: 'authenticated-user'
-    // @restrict: [
-    //     { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
-    //     { grant: 'READ', to: 'Internal' }
-    // ]
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SALESSERIALNUMBER as projection on ENTSALESSERIALNUMBER;
 
     entity PIVOTTABLE as projection on ENTPIVOTTABLE;

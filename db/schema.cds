@@ -1003,7 +1003,8 @@ entity SALESSERIALNUMBER
     key ORDER_REASON_DESCRIPTION    : String(40)       @title : '{i18n>SALESSERIALNUMBER.ORDER_REASON_DESCRIPTION}';        
     key VGBEL                       : String(10)       @title : '{i18n>SALESSERIALNUMBER.VGBEL}';            
         SERIAL_NUMBER               : String(18)       @title : '{i18n>SALESSERIALNUMBER.SERIAL_NUMBER}'; 
-        EXP_DATE                    : String(8)        @title : '{i18n>SALESSERIALNUMBER.EXP_DATE}';                        
+        EXP_DATE                    : String(8)        @title : '{i18n>SALESSERIALNUMBER.EXP_DATE}';  
+        MFRNR                       : String(10)       @title : '{i18n>SALESSERIALNUMBER.MFRNR}'; 
 }
 @cds.search: { 
      
