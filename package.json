@@ -35,7 +35,7 @@
     "test": "jest",
     "clean": "rimraf .portal_mta_build_tmp resources mta_archives Makefile_*.mta gen || true",
     "build": "npm run clean && npx mbt build --mtar archive",
-    "build:cf": "rimraf resources mta_archives && mbt build --mtar archive",
+    "build:cf": "rimraf mta_archives resources && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/mck-portal_1.0.3.mtar --retries 1",
     "watch": "cds watch --profile hybrid",
     "watch-poc-app": "cds watch --open poc-app/webapp/index.html?sap-ui-xx-viewCache=false",

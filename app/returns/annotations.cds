@@ -114,10 +114,6 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : MSR_RET_REASON
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : BEZEI
             }
             
 

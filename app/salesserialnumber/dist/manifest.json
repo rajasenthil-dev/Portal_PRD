@@ -6,7 +6,9 @@
     "i18n": {
       "bundleUrl": "i18n/i18n.properties",
       "supportedLocales": [
-        ""
+        "",
+        "en",
+        "fr"
       ]
     },
     "applicationVersion": {

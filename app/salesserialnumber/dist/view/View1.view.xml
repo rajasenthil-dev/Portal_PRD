@@ -34,15 +34,15 @@
                             </GenericTile>
                         </HeaderContainer> -->
                     </FlexBox>
-                    <!-- <sf:SmartFilterBar
+                    <sf:SmartFilterBar
                         id="bar0"
                         entitySet="SALESSERIALNUMBER"
                         useDateRangeType="true"
                         persistencyKey="SmartFilterBar_SALESSERIALNUMBER"
                         smartVariant="pageVariant"
                         liveMode="true"
-                        search="onSearch"> -->
-                        <!-- <sf:controlConfiguration>
+                        search="onSearch">
+                        <sf:controlConfiguration>
                             <sf:ControlConfiguration id="_IDGenControlConfiguration1"
                                 key="INVOICE_DATE_FKDAT"
                                 visibleInAdvancedArea="true"
@@ -51,19 +51,13 @@
                                 }"
                             />
                             <sf:ControlConfiguration id="_IDGenControlConfiguration2"
-                                key="EXPIRY_DATE_VFDAT"
+                                key="EXP_DATE"
                                 visibleInAdvancedArea="true"
                                 conditionType="{
                                     module: 'sap.ui.comp.config.condition.DateRangeType'
                                 }"
                             />
-                            <sf:ControlConfiguration id="_IDGenControlConfiguration3"
-                                key="DELEVERY_DATE_VDATU"
-                                visibleInAdvancedArea="true"
-                                conditionType="{
-                                    module: 'sap.ui.comp.config.condition.DateRangeType'
-                                }"
-                            />
+                            
                             <sf:ControlConfiguration id="_IDGenControlConfiguration4"
                                 key="DELIVERY_DATE"
                                 visibleInAdvancedArea="true"
@@ -72,24 +66,8 @@
                                 }"
                             />
                         </sf:controlConfiguration>
-                        <sf:controlConfiguration>
-                            <sf:ControlConfiguration id="customCurrentFilter"
-                                key="CURRENT"
-                                visibleInAdvancedArea="true"
-                            >
-                                <sf:customControl>
-                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
-                                        <items>
-                                            <core:Item id="_IDGenItem2" key="" text="{i18n>SALESBYCURRENT.ALLTEXT}"/>
-                                            <core:Item id="_IDGenItem" key="YES" text="{i18n>SALESBYCURRENT.CURRENTTEXT}"/>
-                                            <core:Item id="_IDGenItem1" key="NO" text="{i18n>SALESBYCURRENT.LEGACYTEXT}"/>
-                                        </items>
-                                    </ComboBox>
-                                </sf:customControl>
-                            </sf:ControlConfiguration>
-                        </sf:controlConfiguration> -->
-                    <!-- </sf:SmartFilterBar> -->
-                    <!-- <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+                    </sf:SmartFilterBar>
+                    <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
 
                         <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
 
@@ -111,7 +89,7 @@
                             </FlexBox>
                             
                         </HeaderContainer>
-                    </Panel> -->
+                    </Panel>
                 </f:DynamicPageHeader>
             </f:header>
 
@@ -139,7 +117,7 @@
                     enableAutoColumnWidth="true" 
                     class="sapUiResponsiveContentPadding"
                 >
-                    <!-- <t:Table
+                    <t:Table
                         selectionMode="None"
                         id="table"
                         class="footerPadding"
@@ -150,150 +128,121 @@
                             TypeForODataTimestamp: 'sap/ui/model/odata/type/DateTimeOffset'
                         }">
                         <t:columns>
-                            <t:Column id="_IDGenColumn11" width='7rem' hAlign="Center" sortProperty="CURRENT">
+                            <t:Column id="_IDGenColumn10" width='7.813rem' hAlign="End" sortProperty="INVOICE_CREDIT_NO">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_NO", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 1}'/>
                                 </t:customData>
-                                <Text id="_IDGenText31" text="{i18n>SALESBYCURRENT.CURRENT}"></Text>
+                                <Text id="_IDGenText30" text="{i18n>SALESSERIALNUMBER.INVOICE_CREDIT_NO}"></Text>
                                 <t:template>
-                                    <ObjectStatus id="_IDGenObjectStatus"
-                                    core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
-                                        }"
-                                        icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
-                                        inverted="true"
-                                        state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
-                                        tooltip="{= ${CURRENT} === 'YES' ? 'Captured from the new system post-migration and is up-to-date.' : 'Pulled from the previous system before the upgrade/migration'}"
-                                        text="{= ${CURRENT} === 'YES' ? 'Current' : 'Legacy'}"/>
-                                </t:template>
-                            </t:Column>
-                            <t:Column id="_IDGenColumn10" width='7.813rem' hAlign="End" sortProperty="INVOICE_CREDIT_VBELN">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_VBELN", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 1}'/>
-                                </t:customData>
-                                <Text id="_IDGenText30" text="{i18n>SALESBYCURRENT.INVOICE_CREDIT_VBELN}"></Text>
-                                <t:template>
-                                    <Link id="inviocecredir" text="{INVOICE_CREDIT_VBELN}" press=".onInvoiceClick"/>
+                                    <Link id="inviocecredir" text="{INVOICE_CREDIT_NO}" press=".onInvoiceClick"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn2" width='7.813rem' hAlign="End" sortProperty="INVOICE_DATE_FKDAT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_DATE_FKDAT", "leadingProperty": "INVOICE_DATE_FKDAT", "columnIndex": 2}'/>
                                 </t:customData>
-                                <Text id="_IDGenText5" text="{i18n>SALESBYCURRENT.INVOICE_DATE_FKDAT}"></Text>
+                                <Text id="_IDGenText5" text="{i18n>SALESSERIALNUMBER.INVOICE_DATE_FKDAT}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate1" text="{path: 'INVOICE_DATE_FKDAT', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn23" width='7.813rem' hAlign="End" sortProperty="SKU_MATNR">
+                            <t:Column id="_IDGenColumn23" width='7.813rem' hAlign="End" sortProperty="SKU">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU_MATNR", "leadingProperty": "SKU_MATNR", "columnIndex": 4}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SKU", "leadingProperty": "SKU", "columnIndex": 3}'/>
                                 </t:customData>
-                                <Text id="_IDGenText52" text="{i18n>SALESBYCURRENT.SKU_MATNR}"></Text>
+                                <Text id="_IDGenText52" text="{i18n>SALESSERIALNUMBER.SKU}"></Text>
                                 <t:template>
                                     <Text id="sku111" 
                                         core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
+                                            Formatter: 'salesserialnumber/model/formatter'
                                         }"
-                                        text="{path: 'SKU_MATNR', formatter: 'Formatter.removeLeadingZeros'}"/>
+                                        text="{path: 'SKU', formatter: 'Formatter.removeLeadingZeros'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn231" width='7.813rem' hAlign="End" sortProperty="VBELN_VBAK">
+                            <t:Column id="_IDGenColumn231" width='7.813rem' hAlign="End" sortProperty="PURCHASE_ORDER_BSTKD">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "VBELN_VBAK", "leadingProperty": "VBELN_VBAK"}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "PURCHASE_ORDER_BSTKD", "leadingProperty": "PURCHASE_ORDER_BSTKD", "columnIndex": 4}'/>
                                 </t:customData>
-                                <Text id="_IDGenText521" text="{i18n>SALESBYCURRENT.VBELN_VBAK}"></Text>
+                                <Text id="_IDGenText521" text="{i18n>SALESSERIALNUMBER.PURCHASE_ORDER_BSTKD}"></Text>
                                 <t:template>
-                                    <Text id="sku1111" text="{path: 'VBELN_VBAK'}"/>
-                                </t:template>
-                            </t:Column>
-                            <t:Column id="_IDGenColumn7" width='7.813rem' hAlign="End" sortProperty="MFRPN">
-                                <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "MFRPN", "leadingProperty": "MFRPN", "columnIndex": 5}'/>
-                                </t:customData>
-                                <Text id="_IDGenText10" text="{i18n>SALESBYCURRENT.MFRPN}"></Text>
-                                <t:template>
-                                    <Text id="_IDGenText11" 
-                                        
-                                        text="{path: 'MFRPN'}"/>
+                                    <Text id="sku1111" text="{path: 'PURCHASE_ORDER_BSTKD'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn16" width='7.813rem' hAlign="End" sortProperty="UNIT_PRICE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "UNIT_PRICE", "leadingProperty": "UNIT_PRICE", "columnIndex": 8}'/>
                                 </t:customData>
-                                <Text id="_IDGenText24" text="{i18n>SALESBYCURRENT.UNIT_PRICE}"></Text>
+                                <Text id="_IDGenText24" text="{i18n>SALESSERIALNUMBER.UNIT_PRICE}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText25"
                                         core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
+                                            Formatter: 'salesserialnumber/model/formatter'
                                         }" 
                                         text="{
-                                            parts: [{path:'UNIT_PRICE'}, {path:'WAERK'}],
+                                            parts: [{path:'UNIT_PRICE'}],
                                             formatter: 'Formatter._formatCurrency'
                                         }"
                                     />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End" sortProperty="AMOUNT_NETWR">
+                            <t:Column id="_IDGenColumn1" width='7.813rem' hAlign="End" sortProperty="AMOUNT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "AMOUNT_NETWR", "leadingProperty": "AMOUNT_NETWR", "columnIndex": 9}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "AMOUNT", "leadingProperty": "AMOUNT", "columnIndex": 9}'/>
                                 </t:customData>
-                                <Text id="_IDGenText4" text="{i18n>SALESBYCURRENT.AMOUNT_NETWR}"></Text>
+                                <Text id="_IDGenText4" text="{i18n>SALESSERIALNUMBER.AMOUNT}"></Text>
                                 <t:template> 
                                     <Text id="invoiceAmount" 
                                         core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
+                                            Formatter: 'salesserialnumber/model/formatter'
                                         }"
                                         text="{
                                             parts: [
-                                                { path: 'AMOUNT_NETWR' },
-                                                { path: 'WAERK' }
+                                                { path: 'AMOUNT' }
                                             ],
                                             formatter:'Formatter._formatCurrency'
                                         }"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn20" width='7.813rem' hAlign="End" sortProperty="EXPIRY_DATE_VFDAT">
+                            <t:Column id="_IDGenColumn20" width='7.813rem' hAlign="End" sortProperty="EXP_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "EXPIRY_DATE_VFDAT", "leadingProperty": "EXPIRY_DATE_VFDAT", "columnIndex": 15}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "EXP_DATE", "leadingProperty": "EXP_DATE", "columnIndex": 10}'/>
                                 </t:customData>
-                                <Text id="_IDGenText50" text="{i18n>SALESBYCURRENT.EXPIRY_DATE_VFDAT}"></Text>
+                                <Text id="_IDGenText50" text="{i18n>SALESSERIALNUMBER.EXP_DATE}"></Text>
                                 <t:template>
-                                    <Text id="expiryDate1" text="{path: 'EXPIRY_DATE_VFDAT', type: 'sap.ui.model.odata.type.Date'}"/>
+                                    <Text id="expiryDate1" text="{path: 'EXP_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" width='7.813rem' hAlign="End" sortProperty="BILL_TO_KUNRE_ANA">
+                            <t:Column id="_IDGenColumn4" width='7.813rem' hAlign="End" sortProperty="BILL_TO_NO">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "BILL_TO_KUNRE_ANA", "leadingProperty": "BILL_TO_KUNRE_ANA", "columnIndex": 18}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "BILL_TO_NO", "leadingProperty": "BILL_TO_NO", "columnIndex": 14}'/>
                                 </t:customData>
-                                <Text id="_IDGenText" text="{i18n>SALESBYCURRENT.BILL_TO_KUNRE_ANA}"></Text>
+                                <Text id="_IDGenText" text="{i18n>SALESSERIALNUMBER.BILL_TO_NO}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText2" 
-                                        text="{path: 'BILL_TO_KUNRE_ANA'}"/>
+                                        text="{path: 'BILL_TO_NO'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="End" sortProperty="SHIP_TO_KUNWE_ANA">
+                            <t:Column id="_IDGenColumn3" width='7.813rem' hAlign="End" sortProperty="SHIP_TO_NO">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHIP_TO_KUNWE_ANA", "leadingProperty": "SHIP_TO_KUNWE_ANA", "columnIndex": 20}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHIP_TO_NO", "leadingProperty": "SHIP_TO_NO", "columnIndex": 16}'/>
                                 </t:customData>
-                                <Text id="_IDGenText7" text="{i18n>SALESBYCURRENT.SHIP_TO_KUNWE_ANA}"></Text>
+                                <Text id="_IDGenText7" text="{i18n>SALESSERIALNUMBER.SHIP_TO_NO}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText8" 
-                                        text="{path: 'SHIP_TO_KUNWE_ANA'}"/>
+                                        text="{path: 'SHIP_TO_NO'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End" sortProperty="UPC_EAN11">
+                           <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End" sortProperty="SALES_ORG">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "UPC_EAN11", "leadingProperty": "UPC_EAN11", "columnIndex": 28}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SALES_ORG", "leadingProperty": "SALES_ORG", "columnIndex": 23}'/>
                                 </t:customData>
-                                <Text id="_IDGenText6" text="{i18n>SALESBYCURRENT.UPC_EAN11}"></Text>
+                                <Text id="_IDGenText6" text="{i18n>SALESSERIALNUMBER.SALES_ORG}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText9" 
-                                        text="{path: 'UPC_EAN11'}"/>
+                                        text="{path: 'SALES_ORG'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn8" width='7.813rem' hAlign="End" sortProperty="WERKS">
+                            <!-- <t:Column id="_IDGenColumn8" width='7.813rem' hAlign="End" sortProperty="WERKS">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 30}'/>
                                 </t:customData>
@@ -302,13 +251,13 @@
                                     <Text id="_IDGenText13" 
                                         text="{path: 'WERKS'}"/>
                                 </t:template>
-                            </t:Column>
+                            </t:Column>-->
                             
                             <t:Column id="_IDGenColumn218" width='7.813rem' hAlign="End" sortProperty="DELIVERY_DATE">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATE", "leadingProperty": "DELIVERY_DATE", "columnIndex": 33}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DELIVERY_DATE", "leadingProperty": "DELIVERY_DATE", "columnIndex": 11}'/>
                                 </t:customData>
-                                <Text id="_IDGenText518" text="{i18n>SALESBYCURRENT.DELIVERY_DATE}"></Text>
+                                <Text id="_IDGenText518" text="{i18n>SALESSERIALNUMBER.DELIVERY_DATE}"></Text>
                                 <t:template>
                                     <Text id="DeliveryDate18" text="{
                                         path: 'DELIVERY_DATE', 
@@ -316,27 +265,27 @@
                                     }"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn9" width='7.813rem' hAlign="End" sortProperty="TRACKING_TRACKN">
+                            <t:Column id="_IDGenColumn9" width='7.813rem' hAlign="End" sortProperty="VGBEL">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "TRACKING_TRACKN", "leadingProperty": "TRACKING_TRACKN", "columnIndex": 34}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "VGBEL", "leadingProperty": "VGBEL", "columnIndex": 24}'/>
                                 </t:customData>
-                                <Text id="_IDGenText14" text="{i18n>SALESBYCURRENT.TRACKING_TRACKN}"></Text>
+                                <Text id="_IDGenText14" text="{i18n>SALESSERIALNUMBER.VGBEL}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText15" 
-                                        text="{path: 'TRACKING_TRACKN'}"/>
+                                        text="{path: 'VGBEL'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End" visible="{= !${userPermissions>/shouldHidePatientId} }" sortProperty="PATIENT_ID">
+                            <t:Column id="_IDGenColumn5" width='7.813rem' hAlign="End" sortProperty="SERIAL_NUMBER">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "PATIENT_ID", "leadingProperty": "PATIENT_ID", "columnIndex": 35}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SERIAL_NUMBER", "leadingProperty": "SERIAL_NUMBER", "columnIndex": 25}'/>
                                 </t:customData>
-                                <Text id="_IDGenText17" text="{i18n>SALESBYCURRENT.PATIENT_ID}"></Text>
+                                <Text id="_IDGenText17" text="{i18n>SALESSERIALNUMBER.SERIAL_NUMBER}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText18" 
-                                        text="{path: 'PATIENT_ID'}"/>
+                                        text="{path: 'SERIAL_NUMBER'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn13" width='7.813rem' hAlign="End" sortProperty="CO_VKORG">
+                            <!--<t:Column id="_IDGenColumn13" width='7.813rem' hAlign="End" sortProperty="CO_VKORG">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CO_VKORG", "leadingProperty": "CO_VKORG", "columnIndex": 37}'/>
                                 </t:customData>
@@ -355,23 +304,23 @@
                                     <Text id="_IDGenText21" 
                                         text="{path: 'VKBUR'}"/>
                                 </t:template>
-                            </t:Column>
+                            </t:Column>-->
                             <t:Column id="_IDGenColumn15" width='7.813rem' hAlign="End" sortProperty="MFRNR" visible="false">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "MFRNR", "leadingProperty": "MFRNR", "columnIndex": 39}'/>
                                 </t:customData>
-                                <Text id="_IDGenText22" text="{i18n>SALESBYCURRENT.MFRNR}"></Text>
+                                <Text id="_IDGenText22" text="{i18n>SALESSERIALNUMBER.MFRNR}"></Text>
                                 <t:template>
                                     <Text id="_IDGenText23" 
                                         text="{path: 'MFRNR'}"/>
                                 </t:template>
-                            </t:Column>
+                            </t:Column> 
                             
                         </t:columns>
-                    </t:Table> -->
+                    </t:Table>
                 </st:SmartTable>
             </f:content>
-            <!-- <f:footer>
+            <f:footer>
                 <OverflowToolbar id="_IDGenOverflowToolbar1" class="footer">
                     
                     <FlexBox id="_IDGenFlexBox9" width="100%" justifyContent="SpaceBetween" wrap="Wrap">
@@ -392,7 +341,7 @@
                         </FlexBox>
                     </FlexBox>
                 </OverflowToolbar>
-            </f:footer> -->
+            </f:footer>
 
         </f:DynamicPage>
 </mvc:View>

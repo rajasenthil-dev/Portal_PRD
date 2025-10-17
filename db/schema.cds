@@ -1006,6 +1006,50 @@ entity SALESSERIALNUMBER
         EXP_DATE                    : String(8)        @title : '{i18n>SALESSERIALNUMBER.EXP_DATE}';  
         MFRNR                       : String(10)       @title : '{i18n>SALESSERIALNUMBER.MFRNR}'; 
 }
+define view SSNINVOICE as
+    select from SALESSERIALNUMBER distinct {
+        key INVOICE_CREDIT_NO,
+        MFRNR @UI.Hidden
+};
+define view SSNORDERREASON as
+    select from SALESSERIALNUMBER distinct {
+        key ORDER_REASON_DESCRIPTION,
+        MFRNR @UI.Hidden
+};
+define view SSNPRODDESC as
+    select from SALESSERIALNUMBER distinct {
+        key PRODUCT_DESCRIPTION,
+        MFRNR @UI.Hidden
+};
+define view SSNDOCTYPE as
+    select from SALESSERIALNUMBER distinct {
+        key DOCUMENT_TYPE,
+        MFRNR @UI.Hidden
+};
+define view SSNLOT as
+    select from SALESSERIALNUMBER distinct {
+        key LOT,
+        MFRNR @UI.Hidden
+};
+define view SSNBILLTO as
+    select from SALESSERIALNUMBER distinct {
+        key BILL_TO_NAME,
+        MFRNR @UI.Hidden
+};
+define view SSNSHIPTO as
+    select from SALESSERIALNUMBER distinct {
+        key SHIP_TO_NAME,
+        MFRNR @UI.Hidden
+};
+define view SSNMFRNR as
+    select from SALESSERIALNUMBER distinct {
+        key MFRNR
+};
+define view SSNSALESORG as
+    select from SALESSERIALNUMBER distinct {
+        key SALES_ORG,
+        MFRNR @UI.Hidden
+};
 @cds.search: { 
      
     PURCHASE_ORDER,  
@@ -1387,10 +1431,10 @@ define view OOMFRNRNAME as
 entity RETURNS
 {
     ERDAT                 : String(8)     @title : '{i18n>RETURNS.ERDAT}';
-    CUSTOMER_KUNNR        : String(10)    @title : '{i18n>RETURNS.CUSTOMER_KUNNR}';
+key CUSTOMER_KUNNR        : String(10)    @title : '{i18n>RETURNS.CUSTOMER_KUNNR}';
     CUSTOMER_NAME_NAME1   : String(35)    @title : '{i18n>RETURNS.CUSTOMER_NAME_NAME1}';
     PROVINCE_REGIO        : String(3)     @title : '{i18n>RETURNS.PROVINCE_REGIO}';
-    VBELN_VBAK            : String(10)    @title : '{i18n>RETURNS.VBELN_VBAK}';
+key VBELN_VBAK            : String(10)    @title : '{i18n>RETURNS.VBELN_VBAK}';
     REASON_BEZEI          : String(40)    @title : '{i18n>RETURNS.REASON_BEZEI}';
     REFERENCE_BSTKD       : String(35)    @title : '{i18n>RETURNS.REFERENCE_BSTKD}';
 key VBELN_VBRK            : String(35)    @title : '{i18n>RETURNS.VBELN_VBRK}';
@@ -1405,8 +1449,7 @@ key VKBUR                 : String(4)     @title : '{i18n>RETURNS.VKBUR}';
     VBTYP                 : String(1)     @title : '{i18n>RETURNS.VBTYP}';
     CREDIT_IND            : String(1)     @title : '{i18n>RETURNS.CREDIT_IND}';
     MSR_RET_REASON        : String(3)     @title : '{i18n>RETURNS.MSR_RET_REASON}';
-    BEZEI                 : String(60)    @title : '{i18n>RETURNS.BEZEI}';
-    PLANT                 : String(3)     @title : '{i18n>RETURNS.PLANT}';
+key PLANT                 : String(3)     @title : '{i18n>RETURNS.PLANT}';
     PLANT_NAME            : String(35)    @title : '{i18n>RETURNS.PLANT_NAME}';   
 }
 //  Returns Customer filter
