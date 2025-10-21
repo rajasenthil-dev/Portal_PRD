@@ -42,7 +42,7 @@
                         smartVariant="pageVariant"
                         liveMode="true"
                         search="onSearch">
-                        <sf:controlConfiguration>
+                        <sf:controlConfiguration> 
                             <sf:ControlConfiguration id="_IDGenControlConfiguration1"
                                 key="INVOICE_DATE_FKDAT"
                                 visibleInAdvancedArea="true"
@@ -65,6 +65,22 @@
                                     module: 'sap.ui.comp.config.condition.DateRangeType'
                                 }"
                             />
+                        </sf:controlConfiguration>
+                        <sf:controlConfiguration>
+                            <sf:ControlConfiguration id="customCurrentFilter"
+                                key="CURRENT"
+                                visibleInAdvancedArea="true"
+                            >
+                                <sf:customControl>
+                                    <ComboBox id="currentFilterBox" selectedKey="{filters>/currentStatus}">
+                                        <items>
+                                            <core:Item id="_IDGenItem2" key="" text="{i18n>SALESBYCURRENT.ALLTEXT}"/>
+                                            <core:Item id="_IDGenItem" key="YES" text="{i18n>SALESBYCURRENT.CURRENTTEXT}"/>
+                                            <core:Item id="_IDGenItem1" key="NO" text="{i18n>SALESBYCURRENT.LEGACYTEXT}"/>
+                                        </items>
+                                    </ComboBox>
+                                </sf:customControl>
+                            </sf:ControlConfiguration>
                         </sf:controlConfiguration>
                     </sf:SmartFilterBar>
                     <Panel id="_IDGenPanel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
@@ -128,6 +144,23 @@
                             TypeForODataTimestamp: 'sap/ui/model/odata/type/DateTimeOffset'
                         }">
                         <t:columns>
+                            <t:Column id="_IDGenColumn11" width='7rem' hAlign="Center" sortProperty="CURRENT">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
+                                </t:customData>
+                                <Text id="_IDGenText31" text="{i18n>SALESBYCURRENT.CURRENT}"></Text>
+                                <t:template>
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                    core:require="{
+                                            Formatter: 'salesbycus/model/formatter'
+                                        }"
+                                        icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
+                                        inverted="true"
+                                        state="{path: 'CURRENT', formatter: 'Formatter.yesNoIconColor'}"
+                                        tooltip="{= ${CURRENT} === 'YES' ? 'Captured from the new system post-migration and is up-to-date.' : 'Pulled from the previous system before the upgrade/migration'}"
+                                        text="{= ${CURRENT} === 'YES' ? 'Current' : 'Legacy'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn10" width='7.813rem' hAlign="End" sortProperty="INVOICE_CREDIT_NO">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_NO", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 1}'/>

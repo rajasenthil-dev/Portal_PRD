@@ -992,6 +992,8 @@ define view SBCCUSTOMERTYPE as
 @cds.persistence.exists
 entity SALESSERIALNUMBER
 {
+        CURRENT                     : String(3)        @title : '{i18n>SALESSERIALNUMBER.CURRENT}';
+        MFRPN                       : String(40)       @title : '{i18n>SALESSERIALNUMBER.MFRPN}';
     key SALES_ORDER_NO              : String(10)       @title : '{i18n>SALESSERIALNUMBER.SALES_ORDER_NO}';
     key PURCHASE_ORDER_BSTKD        : String(35)       @title : '{i18n>SALESSERIALNUMBER.PURCHASE_ORDER_BSTKD}';
         INVOICE_DATE_FKDAT          : String(8)        @title : '{i18n>SALESSERIALNUMBER.INVOICE_DATE_FKDAT}';
@@ -1652,26 +1654,13 @@ define view SHIPSTATUSMFRNR as
 @cds.persistence.exists
 entity PIVOTTABLE
 {
-        MFRNR_MANUFACTURER              : String(10)        @title: '{i18n>PIVOTTABLE.MFRNR}';
-    key VBELN_BILLING_DOCUMENT          : String(10)        @title: '{i18n>PIVOTTABLE.VBELN}';
-        FKIMG_INVOICED_QUANTITY         : Decimal(18,3)     @title: '{i18n>PIVOTTABLE.FKIMG}';
-        NETWR_NET_VALUE                 : Decimal(18,2)     @title: '{i18n>PIVOTTABLE.NETWR}';
-        VKORG_ANA_SALES_ORGANIZATION    : String(4)         @title: '{i18n>PIVOTTABLE.VKORG}';
-        FKART_ANA_BILLING_TYPE          : String(4)         @title: '{i18n>PIVOTTABLE.FKART}';
-        REGIO_ANA_REGION                : String(3)         @title: '{i18n>PIVOTTABLE.REGIO}';
-        KUNAG_ANA_SOLD_TO_PARTY         : String(10)        @title: '{i18n>PIVOTTABLE.KUNAG}';
-        FKDAT_ANA_BILLING_DATE          : Date              @title: '{i18n>PIVOTTABLE.FKDAT}';
-        MATNR_MATERIAL                  : String(7)         @title: '{i18n>PIVOTTABLE.MATNR}';
-        SALE_MONTH                      : String(8)         @title: '{i18n>PIVOTTABLE.SALE_MONTH}';
-        PROVINCE                        : String(25)        @title: '{i18n>PIVOTTABLE.PROVINCE}';
-
-        // --- CRITICAL HIERARCHY FIELDS ---
-        // These fields are REQUIRED for the TreeTable UI. The Datasphere view MUST provide them.
-        // They define the parent-child relationships (e.g., Province -> Customer).
-        // HierarchyLevel : Integer; // The level in the hierarchy (e.g., 0 for Province, 1 for Customer)
-        // ParentNodeID   : String;  // The ID of the parent node. Null for top-level nodes.
-        // NodeText       : String;  // The text to display for the node (e.g., "Ontario" or "Customer ABC")
-        // NodeID         : String;  // A unique ID for each node in the hierarchy.
+    key MAKTX                       : String(40);
+    key PROVINCE_REGIO              : String(3);
+    key SHIP_TO_NAME                : String(70);
+    key INVOICE_DATE_FKDAT          : String(8);
+    key CAL_MONTH                   : String(8);
+    key CAL_YEAR                    : String(10);
+        QUANTITY_FKIMG              : Decimal(28,3);
 }
 
 @cds.persistence.exists

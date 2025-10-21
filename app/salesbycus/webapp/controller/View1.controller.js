@@ -327,7 +327,7 @@ sap.ui.define([
         onSearch: function () {
             const oSmartFilterBar = this.getView().byId("bar0");
             const oSmartTable = this.getView().byId("table0");
-            const oBinding = oSmartTable.getTable().getBinding("rows");
+            const oBinding = oSmartTable.getTable().getBinding("rows"); 
         
             if (!oBinding) {
                 console.warn("Table binding is missing.");

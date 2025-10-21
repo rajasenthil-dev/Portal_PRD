@@ -314,6 +314,7 @@ src/gen/IHMFRNR.hdbview
 src/gen/IHSALESORG.hdbview
 
 src/gen/SALES.SALESBYCURRENT.hdbview
+src/gen/SALESBYCURRENT.hdbview
 src/gen/SALES.SBCINVOICE.hdbview
 src/gen/SALES.SBCPRODDESC.hdbview
 src/gen/SALES.SBCTYPE.hdbview
@@ -434,8 +435,6 @@ src/gen/SBCCUSTOMERTYPE.hdbview
 
 src/gen/SALES.SALESBYCURRENTAPP.hdbview
 src/gen/SALESBYCURRENTAPP.hdbview
-
-src/models/SALES_PIVOTTABLE.hdbview
 
 src/gen/FINANCE.OPENARBILLINGTYPE.hdbview
 src/gen/OPENARBILLINGTYPE.hdbview

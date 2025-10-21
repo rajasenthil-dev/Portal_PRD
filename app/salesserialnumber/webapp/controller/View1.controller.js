@@ -39,48 +39,48 @@ sap.ui.define([
             });
             var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             const oSmartTable = this.getView().byId("table0");
-            // var oToolbar = oSmartTable.getToolbar();
-            // var oCurrentStatus = new sap.m.ObjectStatus({
-            //     text: oBundle.getText("SALESBYCURRENT.CURRENTTEXT"),
-            //     icon: "sap-icon://circle-task-2",
-            //     state: "Success",
-            //     inverted:true,
-            //     tooltip:oBundle.getText("SALESBYCURRENT.CURRENTTOOLTIP"),
-            // })
-            // oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
-            // var oCurrentStatusText =  new sap.m.Text({
-            //     text: " | "
-            // })
-            // oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
-            // var oLegacyStatus = new sap.m.ObjectStatus({
-            //     text: oBundle.getText("SALESBYCURRENT.LEGACYTEXT"),
-            //     icon: "sap-icon://circle-task-2",
-            //     state: "Information",
-            //     inverted:true,
-            //     tooltip:oBundle.getText("SALESBYCURRENT.LEGACYTOOLTIP"),
-            // })
-            // oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
-            // var oLegacyStatusText =  new sap.m.Text({
-            //     text: "Legacy Data"
-            // })
-            // oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
-            // var oLegendTitle = new sap.m.Text({
-            //     text: "Legend:"
-            // })
-            // oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
-            // var oLegendBox = new sap.m.HBox({
-            //     items: [
-            //         oCurrentStatus,
-            //         oCurrentStatusText,
-            //         oLegacyStatus
+            var oToolbar = oSmartTable.getToolbar();
+            var oCurrentStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("SALESBYCURRENT.CURRENTTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Success",
+                inverted:true,
+                tooltip:oBundle.getText("SALESBYCURRENT.CURRENTTOOLTIP"),
+            })
+            oCurrentStatus.addStyleClass("sapUiTinyMarginEnd");
+            var oCurrentStatusText =  new sap.m.Text({
+                text: " | "
+            })
+            oCurrentStatusText.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegacyStatus = new sap.m.ObjectStatus({
+                text: oBundle.getText("SALESBYCURRENT.LEGACYTEXT"),
+                icon: "sap-icon://circle-task-2",
+                state: "Information",
+                inverted:true,
+                tooltip:oBundle.getText("SALESBYCURRENT.LEGACYTOOLTIP"),
+            })
+            oLegacyStatus.addStyleClass("sapUiTinyMarginEnd")
+            var oLegacyStatusText =  new sap.m.Text({
+                text: "Legacy Data"
+            })
+            oLegacyStatusText.addStyleClass("text-bold sapUiTinyMarginEnd")
+            var oLegendTitle = new sap.m.Text({
+                text: "Legend:"
+            })
+            oLegendTitle.addStyleClass("text-bold sapUiTinyMarginEnd");
+            var oLegendBox = new sap.m.HBox({
+                items: [
+                    oCurrentStatus,
+                    oCurrentStatusText,
+                    oLegacyStatus
                     
-            //     ],
-            //     alignItems: "Center",
-            //     justifyContent: "End"
-            // });
+                ],
+                alignItems: "Center",
+                justifyContent: "End"
+            });
 
-            // oToolbar.addContent(new sap.m.ToolbarSpacer());
-            // oToolbar.addContent(oLegendBox);
+            oToolbar.addContent(new sap.m.ToolbarSpacer());
+            oToolbar.addContent(oLegendBox);
             const oTable = oSmartTable.getTable();
             this.bAuthorizationErrorShown = false;
             oModel.attachRequestFailed(function (oEvent) {
@@ -317,28 +317,28 @@ sap.ui.define([
                 console.warn("Tile not found:", sTileId);
             }
         },
-        // onSearch: function () {
-        //     const oSmartFilterBar = this.getView().byId("bar0");
-        //     const oSmartTable = this.getView().byId("table0");
-        //     const oBinding = oSmartTable.getTable().getBinding("rows");
+        onSearch: function () {
+            const oSmartFilterBar = this.getView().byId("bar0");
+            const oSmartTable = this.getView().byId("table0");
+            const oBinding = oSmartTable.getTable().getBinding("rows");
         
-        //     if (!oBinding) {
-        //         console.warn("Table binding is missing.");
-        //         return;
-        //     }
+            if (!oBinding) {
+                console.warn("Table binding is missing.");
+                return;
+            }
         
             // Get selected value from the filter
-            //let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
+            let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
         
             // Build the filter condition
-            // let aFilters = [];
-            // if (sCurrentStatus) {
-            //     aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
-            // }
+            let aFilters = [];
+            if (sCurrentStatus) {
+                aFilters.push(new sap.ui.model.Filter("CURRENT", sap.ui.model.FilterOperator.Contains, sCurrentStatus));
+            }
         
             // Apply the filter
-        //     oBinding.filter(aFilters);
-        // },
+            oBinding.filter(aFilters);
+        },
         _formatRowHighlight: function (oValue) {
 			// Your logic for rowHighlight goes here
 			if (oValue === "NO") { 

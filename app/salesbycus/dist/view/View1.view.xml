@@ -276,7 +276,7 @@
 
                             <t:Column id="_IDGenColumn17" width='7.813rem' hAlign="End" sortProperty="KZWI3">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "KZWI3", "leadingProperty": "KZWI1", "columnIndex": 11}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KZWI3", "leadingProperty": "KZWI3", "columnIndex": 11}'/>
                                 </t:customData>
                                 <Text id="_IDGenText26" text="{i18n>SALESBYCURRENT.KZWI3}"></Text>
                                 <t:template>
