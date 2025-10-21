@@ -317,15 +317,15 @@ sap.ui.define([
                 console.warn("Tile not found:", sTileId);
             }
         },
-        onSearch: function () {
-            const oSmartFilterBar = this.getView().byId("bar0");
-            const oSmartTable = this.getView().byId("table0");
-            const oBinding = oSmartTable.getTable().getBinding("rows");
+        // onSearch: function () {
+        //     const oSmartFilterBar = this.getView().byId("bar0");
+        //     const oSmartTable = this.getView().byId("table0");
+        //     const oBinding = oSmartTable.getTable().getBinding("rows");
         
-            if (!oBinding) {
-                console.warn("Table binding is missing.");
-                return;
-            }
+        //     if (!oBinding) {
+        //         console.warn("Table binding is missing.");
+        //         return;
+        //     }
         
             // Get selected value from the filter
             //let sCurrentStatus = this.getView().byId("currentFilterBox").getSelectedKey();
@@ -337,8 +337,8 @@ sap.ui.define([
             // }
         
             // Apply the filter
-            oBinding.filter(aFilters);
-        },
+        //     oBinding.filter(aFilters);
+        // },
         _formatRowHighlight: function (oValue) {
 			// Your logic for rowHighlight goes here
 			if (oValue === "NO") { 

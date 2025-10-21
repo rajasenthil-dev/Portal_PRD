@@ -925,6 +925,17 @@ using SBCCUSTOMERTYPE as ENTSBCCUSTOMERTYPE from '../db/schema';
 using PIVOTTABLE as ENTPIVOTTABLE from '../db/schema';
 
 using SALESSERIALNUMBER as ENTSALESSERIALNUMBER from '../db/schema';
+using SSNINVOICE as ENTSSNINVOICE from '../db/schema';
+using SSNORDERREASON as ENTSSNORDERREASON from '../db/schema';
+using SSNPRODDESC as ENTSSNPRODDESC from '../db/schema';
+using SSNDOCTYPE as ENTSSNDOCTYPE from '../db/schema';
+using SSNLOT as ENTSSNLOT from '../db/schema';
+using SSNBILLTO as ENTSSNBILLTO from '../db/schema';
+using SSNSHIPTO as ENTSSNSHIPTO from '../db/schema';
+using SSNMFRNR as ENTSSNMFRNR from '../db/schema';
+using SSNMFRNRNAME as ENTSSNMFRNRNAME from '../db/schema';
+using SSNSALESORG as ENTSSNSALESORG from '../db/schema';
+
 service SALES {
     // ℹ️ Ivoice History Related Entities
     // ⚠️ CDS Authorization Pending
@@ -1163,7 +1174,77 @@ service SALES {
         { grant: 'READ', to: 'Internal' }
     ]
     entity SALESSERIALNUMBER as projection on ENTSALESSERIALNUMBER;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNINVOICE as projection on ENTSSNINVOICE;
 
+     @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNORDERREASON as projection on ENTSSNORDERREASON;
+
+     @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNPRODDESC as projection on ENTSSNPRODDESC;
+    
+     @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNDOCTYPE as projection on ENTSSNDOCTYPE;
+
+     @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNLOT as projection on ENTSSNLOT;
+
+     @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNBILLTO as projection on ENTSSNBILLTO;
+    
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNSHIPTO as projection on ENTSSNSHIPTO;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNMFRNR as projection on ENTSSNMFRNR;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNMFRNRNAME as projection on ENTSSNMFRNRNAME;
+
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
+    entity SSNSALESORG as projection on ENTSSNSALESORG;
+
+    
     entity PIVOTTABLE as projection on ENTPIVOTTABLE;
 
 

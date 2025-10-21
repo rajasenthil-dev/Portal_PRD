@@ -256,7 +256,17 @@ module.exports = cds.service.impl(function() {
       'SHIPSTATUSMFRNRNAME',
       'MAINPAGESUMMARY',
       'MPSMONTH',
-      'SALESSERIALNUMBER'
+      'SALESSERIALNUMBER',
+      'SSNINVOICE',
+      'SSNORDERREASON',
+      'SSNPRODDESC',
+      'SSNDOCTYPE',
+      'SSNLOT',
+      'SSNBILLTO',
+      'SSNSHIPTO',
+      'SSNMFRNR',
+      'SSNSALESORG',
+      'SSNMFRNRNAME'
     ]);
     const dynamicEntityRules = {
       CUSTOMERMASTER: {
@@ -828,7 +838,18 @@ module.exports = cds.service.impl(function() {
         "SHIPSTATUSPRODDESC": "PRODUCT_DESCRIPTION_MAKTX",
         "SHIPSTATUSWHSTATUS": "PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS",
         "SHIPSTATUSVKORG": "VKORG",
-        "SHIPSTATUSMFRNRNAME": "MANUFACTURER_NAME_MC_NAME1"
+        "SHIPSTATUSMFRNRNAME": "MANUFACTURER_NAME_MC_NAME1",
+        "SSNSALESORG": "SALES_ORG",
+        "SSNMFRNRNAME": "MFRNRNAME",
+        "SSNMFRNR": "MFRNR",
+        "SSNSHIPTO": "SHIP_TO_NAME",
+        "SSNBILLTO": "BILL_TO_NAME",
+        "SSNLOT": "LOT",
+        "SSNDOCTYPE": "DOCUMENT_TYPE",
+        "SSNPRODDESC": "PRODUCT_DESCRIPTION",
+        "SSNORDERREASON": "ORDER_REASON_DESCRIPTION",
+        "SSNINVOICE": "INVOICE_CREDIT_NO"
+
         // Add more here easily:
         // 'ANOTHERENTITY': 'ANOTHERCOLUMN'
     };

@@ -179,6 +179,30 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : KTOKD,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TXT30, 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : KTEXT, 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : KZWI1, 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : KZWI3, 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TOTAL_AMOUNT, 
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : ADDRESS_1,
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },

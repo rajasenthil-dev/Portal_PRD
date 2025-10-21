@@ -204,21 +204,7 @@ Search.defaultSearchElement: true,
         }
         
     );
-    // BILL_TO_KUNRE_ANA@(
-    //     Common: {
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCBILLTOID',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterOut',
-    //                     LocalDataProperty : 'BILL_TO_KUNRE_ANA',
-    //                     ValueListProperty : 'BILL_TO_KUNRE_ANA'
-    //                 }
-    //             ]
-    //         },
-    //     }
-    // );
+    
     BILL_TO_NAME@(
         Common: {
             ValueList : {
@@ -234,21 +220,7 @@ Search.defaultSearchElement: true,
             },
         }
     );
-    // SHIP_TO_KUNWE_ANA@(
-    //      Common: {
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCSHIPTOID',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterOut',
-    //                     LocalDataProperty : 'SHIP_TO_KUNWE_ANA',
-    //                     ValueListProperty : 'SHIP_TO_KUNWE_ANA'
-    //                 }
-    //             ]
-    //         },
-    //     }
-    // );
+    
     SHIP_TO_NAME@(
         Common: {
             ValueList : {
@@ -265,40 +237,7 @@ Search.defaultSearchElement: true,
         }
         
     );
-    // WAREHOUSE@(
-    //     Common: {
-    //         ValueListWithFixedValues,
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCWAREHOUSE',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterInOut',
-    //                     LocalDataProperty : 'WAREHOUSE',
-    //                     ValueListProperty : 'WAREHOUSE'
-    //                 }
-    //             ]
-    //         },
-    //     }
-        
-    // );
-    // BILL_TO_TYPE@(
-    //     Common: {
-    //         ValueListWithFixedValues,
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCCUSTOMERTYPE',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterInOut',
-    //                     LocalDataProperty : 'BILL_TO_TYPE',
-    //                     ValueListProperty : 'BILL_TO_TYPE'
-    //                 }
-    //             ]
-    //         },
-    //     }
-        
-    // );
+    
     MFRNR@(
         Common: {
             ValueListWithFixedValues,
@@ -316,23 +255,23 @@ Search.defaultSearchElement: true,
         }
         
     );
-    // MFRNR_NAME@(
-    //     Common: {
-    //         ValueListWithFixedValues,
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCMFRNRNAME',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterOut',
-    //                     LocalDataProperty : 'MFRNR_NAME',
-    //                     ValueListProperty : 'MFRNR_NAME'
-    //                 }
-    //             ]
-    //         },
-    //     }
+    MFRNR_NAME@(
+        Common: {
+            ValueListWithFixedValues,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'SBCMFRNRNAME',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterOut',
+                        LocalDataProperty : 'MFRNR_NAME',
+                        ValueListProperty : 'MFRNR_NAME'
+                    }
+                ]
+            },
+        }
         
-    // );
+    );
     SALES_ORG@(
         Common: {
             ValueListWithFixedValues,
@@ -350,23 +289,7 @@ Search.defaultSearchElement: true,
         }
         
     );
-    // VKBUR@(
-    //     Common: {
-    //         ValueListWithFixedValues,
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCSALESOFFICE',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterOut',
-    //                     LocalDataProperty : 'VKBUR',
-    //                     ValueListProperty : 'VKBUR'
-    //                 }
-    //             ]
-    //         },
-    //     }
-        
-    // );
+    
     ORDER_REASON_DESCRIPTION@(
         Common: {
             ValueListWithFixedValues,
@@ -384,38 +307,5 @@ Search.defaultSearchElement: true,
         }
         
     );
-    // BEZEI_AUART@(
-    //     Common: {
-    //         ValueListWithFixedValues,
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCBEZEIAUART',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterOut',
-    //                     LocalDataProperty : 'BEZEI_AUART',
-    //                     ValueListProperty : 'BEZEI_AUART'
-    //                 }
-    //             ]
-    //         },
-    //     }
-        
-    // );
-    // PLANT_NAME@(
-    //     Common: {
-    //         ValueListWithFixedValues,
-    //         ValueList : {
-    //             $Type : 'Common.ValueListType',
-    //             CollectionPath : 'SBCPLANTNAME',
-    //             Parameters : [
-    //                 {
-    //                     $Type : 'Common.ValueListParameterOut',
-    //                     LocalDataProperty : 'PLANT_NAME',
-    //                     ValueListProperty : 'PLANT_NAME'
-    //                 }
-    //             ]
-    //         },
-    //     }
-        
-    // );
+    
 };
