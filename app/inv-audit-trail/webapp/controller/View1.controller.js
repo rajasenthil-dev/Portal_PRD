@@ -240,10 +240,10 @@ sap.ui.define([
             var fTotalQuantity = 0;
             
             aContexts.forEach(function (oContext) {
-            fTotalQuantity += parseFloat(oContext.getProperty("MENGE")) || 0;
+                fTotalQuantity += parseFloat(oContext.getProperty("STOCK_QTY")) || 0;
                 var oData = oContext.getObject();
-                if (oData.TRAN_TYPE && oData.MENGE) {
-                    var iQuantity = parseFloat(oData.MENGE);
+                if (oData.TRAN_TYPE && oData.STOCK_QTY) {
+                    var iQuantity = parseFloat(oData.STOCK_QTY);
                     if (!isNaN(iQuantity)){
                         switch (oData.TRAN_TYPE) {
                             case "Order":

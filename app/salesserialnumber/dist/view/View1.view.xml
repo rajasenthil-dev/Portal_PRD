@@ -148,11 +148,11 @@
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "CURRENT", "leadingProperty": "CURRENT", "columnIndex": 0}'/>
                                 </t:customData>
-                                <Text id="_IDGenText31" text="{i18n>SALESBYCURRENT.CURRENT}"></Text>
+                                <Text id="_IDGenText31" text="{i18n>SALESSERIALNUMBER.CURRENT}"></Text>
                                 <t:template>
                                     <ObjectStatus id="_IDGenObjectStatus"
                                     core:require="{
-                                            Formatter: 'salesbycus/model/formatter'
+                                            Formatter: 'salesserialnumber/model/formatter'
                                         }"
                                         icon="{path: 'CURRENT', formatter:'Formatter.yesNoIcon'}"
                                         inverted="true"

@@ -44,3 +44,5 @@ using from './shipstatus/annotations';
 using from './mckaccesshubuser/annotations';
 
 using from './salesserialnumber/annotations';
+
+using from './accessmanager1/annotations';

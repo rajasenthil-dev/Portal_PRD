@@ -1,10 +1,180 @@
 const cds = require('@sap/cds');
 const deduplicateForInternal = require('./utils/deduplication')
+const okta = require('./okta-helper');
 /**
  * Implementation of ALL services.
  */
-module.exports = cds.service.impl(function() {
+module.exports = cds.service.impl(async function () {
+  /** ---------------------------------------------------------------------
+   * OKTA HANDLERS (merged from serviceA.js)
+   * ------------------------------------------------------------------- */
 
+  const OKTAUsers =
+  this.entities.OKTAUsers || this.entities['UserService.OKTAUsers'];
+const LocalUserData =
+  this.entities.LocalUserData || this.entities['UserService.LocalUserData'];
+
+if (!OKTAUsers) {
+  console.warn('⚠️ OKTAUsers not found in current service context.');
+  return;
+}
+
+  /** Utility: Flatten arrays → strings for UI */
+  const ensureString = (val) => {
+    if (Array.isArray(val)) return val.join(', ');
+    if (val === null || val === undefined) return '';
+    return String(val);
+  };
+
+  /** Utility: Split strings → arrays for Okta */
+  const parseToArray = (val) => {
+    if (Array.isArray(val)) return val;
+    if (!val) return [];
+    return val.split(',').map((s) => s.trim()).filter(Boolean);
+  };
+
+  /** Admin check */
+  function isAdmin(req) {
+    if (process.env.STRICT_ROLE_CHECK === 'true') {
+      const roles = (req.user && req.user.roles) || [];
+      return roles.includes('admin') || roles.includes('Admin');
+    }
+    return true;
+  }
+
+  /** ---------------------- READ HANDLER ---------------------- */
+  this.on('READ', OKTAUsers, async (req) => {
+    console.log('📡 Fetching MFG users from Okta...');
+
+    const oktaUsers = await okta.listMFGUsers();
+    let local = [];
+
+    if (cds.db) {
+      try {
+        local = await SELECT.from(LocalUserData);
+      } catch (e) {
+        console.warn('⚠️ LocalUserData query skipped — no DB connection.');
+      }
+    } else {
+      console.warn('⚠️ No DB connected. Skipping LocalUserData merge.');
+    }
+    //const oktaUsers = await okta.listMFGUsers();
+    //const local = await SELECT.from(LocalUserData);
+
+    const merged = oktaUsers.map((u) => {
+      const localRow = local.find((r) => r.id === u.id);
+      if (!localRow) {
+        return {
+          ...u,
+          manufacturerNumber: ensureString(u.manufacturerNumber),
+          groupNames: ensureString(u.groupNames),
+          groupIds: ensureString(u.groupIds),
+        };
+      }
+
+      return {
+        ...u,
+        ...localRow,
+        manufacturerNumber: ensureString(localRow.manufacturerNumber || u.manufacturerNumber),
+        groupNames: ensureString(localRow.groupNames || u.groupNames),
+        groupIds: ensureString(localRow.groupIds || u.groupIds),
+        mfgName: localRow.manufacturerName || u.mfgName,
+        salesOrg: localRow.salesOrg || u.salesOrg,
+        salesOffice: localRow.salesOffice || u.salesOffice,
+        profitCentre: localRow.profitCentre || u.profitCentre,
+      };
+    });
+
+    const top = req.query?.SELECT?.limit?.rows?.val || 50;
+    const skip = req.query?.SELECT?.limit?.offset?.val || 0;
+    req._.count = merged.length;
+    const paginated = merged.slice(skip, skip + top);
+
+    console.log(`✅ Returning ${paginated.length} of ${merged.length} users`);
+    return paginated;
+  });
+
+  /** ---------------------- UPDATE HANDLER ---------------------- */
+  this.on('UPDATE', OKTAUsers, async (req) => {
+    let id = req.params?.[0]?.id || req.data.id;
+    if (typeof id === 'object') id = id.id;
+    if (!id || typeof id !== 'string') return req.error(400, `Invalid ID: ${JSON.stringify(req.params)}`);
+
+    const payload = req.data || {};
+    const oktaProfile = {};
+    const oktaPayload = { profile: oktaProfile };
+
+    // --- Map payload to Okta ---
+    if (payload.firstName) oktaProfile.firstName = payload.firstName;
+    if (payload.lastName) oktaProfile.lastName = payload.lastName;
+    if (payload.email) {
+      oktaProfile.email = payload.email;
+      oktaProfile.login = payload.email;
+    }
+    ['salesOrg', 'salesOffice', 'profitCentre', 'mfgName'].forEach(f => {
+      if (payload[f]) oktaProfile[f] = payload[f];
+    });
+    if (payload.manufacturerNumber) {
+      oktaPayload.profile.manufacturerNumber = payload.manufacturerNumber.split(',').map(s => s.trim());
+    }
+    if (payload.groupIds) {
+      oktaPayload.groupIds = payload.groupIds.split(',').map(s => s.trim());
+    }
+
+    // --- Update Okta ---
+    if (Object.keys(oktaProfile).length > 0 || oktaPayload.groupIds) {
+      await okta.updateUser(id, oktaPayload);
+    }
+
+    // --- Optional local persistence ---
+    if (cds.db) {
+      const localFields = {
+        id,
+        manufacturerName: payload.mfgName || null,
+        manufacturerNumber: payload.manufacturerNumber || '',
+        salesOrg: payload.salesOrg || null,
+        salesOffice: payload.salesOffice || null,
+        profitCentre: payload.profitCentre || null,
+        groupNames: payload.groupNames || '',
+        groupIds: payload.groupIds || '',
+      };
+      const existing = await SELECT.one(LocalUserData).where({ id });
+      existing
+        ? await UPDATE(LocalUserData).set(localFields).where({ id })
+        : await INSERT.into(LocalUserData).entries(localFields);
+    }
+
+    // ✅ Return explicit object (no DB read)
+    req.info(`Handled virtual UPDATE for Okta user ${id}`);
+    return {
+      id,
+      ...payload,
+      status: 'UPDATED',
+      updatedAt: new Date().toISOString()
+    };
+  });
+
+  /** ---------------------- GROUPS HANDLER ---------------------- */
+  this.on('READ', 'OktaGroups', async () => {
+    const groups = await okta.listGroups({ limit: 1000 });
+    return (groups || []).map((g) => ({
+      id: g.id,
+      name: g.profile?.name || g.name,
+    }));
+  });
+
+  /** ---------------------------------------------------------------------
+   * EXISTING GLOBAL LOGIC CONTINUES BELOW
+   * ------------------------------------------------------------------- */
+
+  /** Your existing "before('*')" normalization handler and all other logic below */
+  this.before('*', async (req) => {
+    const mfrnr = req.user?.attr?.ManufacturerNumber;
+    if (mfrnr && !Array.isArray(mfrnr)) {
+      req.user.attr.ManufacturerNumber = [mfrnr];
+      console.log(`Normalized ManufacturerNumber to array:`, req.user.attr.ManufacturerNumber);
+    }
+  });
     /**
      * This 'before' handler runs before any operation on any entity in this service.
      * It's the perfect place to prepare the user object for authorization by ensuring
@@ -1205,5 +1375,6 @@ module.exports = cds.service.impl(function() {
 
     
     //You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
+    
 });
 

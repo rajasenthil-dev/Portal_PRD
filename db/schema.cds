@@ -141,35 +141,39 @@ define view INVSTATUSVKBUR as
         key VKBUR,
         MANUFACTURER_MFRNR
 };
-@cds.search: { MATNR, MAKTX, POSTING_DATE, CHARG, WAREHOUSE_STATUS, KUNNR, CUSTOMER_NAME, INV_MATDOC_ITEM, WERKS, LGORT, MFRNR, NAME1_PLANT }
+
 @cds.persistence.exists
-entity INVENTORYAUDITTRAIL 
+entity INVENTORYAUDITTRAIL  
 {
     key MATNR               : String(7)     @title: '{i18n>INVENTORYAUDITTRAIL.MATNR}';
         MAKTX               : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MAKTX}';
-        MENGE               : Decimal(13,0) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
     key CHARG               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.CHARG}';
     key KUNNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.KUNNR}';
         CUSTOMER_NAME       : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.CUSTOMER_NAME}';
         MFRNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR}';
     key WAREHOUSE_STATUS    : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.WAREHOUSE_STATUS}';
-    key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
-        LGORT               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
         MFRNR_PROD_CODE     : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}';
         MEINS               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.MEINS}';
-        PLANT_NAME         : String(30)     @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
-        TRAN_TYPE           : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}';
-    key INV_MATDOC_ITEM     : String(15)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
+    key TRAN_TYPE           : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}';
         SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
-        CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
+    key CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
         DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
         POSTING_DATE        : Date          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+        MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
+    key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
+        SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
+        PLANT_NAME         : String(30)     @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
+        SALES_ORG_NAME      : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG_NAME';
+        NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}'; 
         RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
-        MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
-        SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
-        NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}'; 
-        BUKRS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.BUKRS}';      
+        STOCK_QTY           : Decimal(38,2) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
+    key STGE_LOC            : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
+    key INV_ADJ_RECEIPT     : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
+    key SOURCE_DESTINATION  : String(11)    @title: '{i18n>INVENTORYAUDITTRAIL.SOURCE_DESTINATION}';
+        SRC_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.SRC_STORAGE_BIN}';
+        DES_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.DES_STORAGE_BIN}';
+        DOCNO               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.DOCNO}';     
 }
 
 define view IATPLANTNAME as
@@ -264,6 +268,10 @@ entity CASHJOURNAL
     key VKORG               : String(4)         @title : '{i18n>CASHJOURNAL.VKORG}';
 
         VTEXT_VKORG         : String(4)         @title : '{i18n>CASHJOURNAL.VTEXT_VKORG}';
+        WRBTR_UNAUTH_DEDUCT : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.WRBTR_UNAUTH_DEDUCT}';
+        RSTGR_BSID          : String(3)         @title : '{i18n>CASHJOURNAL.RSTGR_BSID}';
+        SGTXT_BSID          : String(50)        @title : '{i18n>CASHJOURNAL.SGTXT_BSID}';
+    
 }
 define view BILLINGTYPE as
     select from CASHJOURNAL distinct {
@@ -310,7 +318,7 @@ entity INVENTORYSNAPSHOT
         ON_HAND             : Decimal(36,2) @title: '{i18n>INVENTORYSNAPSHOT.ON_HAND}';
         MFRPN               : String(40)    @title: '{i18n>INVENTORYSNAPSHOT.MFRPN}';
         DAYS_UNTIL_EXPIRY   : Integer       @title: '{i18n>INVENTORYSNAPSHOT.DAYS_UNTIL_EXPIRY}';
-    key REPORT_DATE         : Date          @title: '{i18n>INVENTORYSNAPSHOT.REPORT_DATE}';
+    key REPORT_DATE         : String(8)     @title: '{i18n>INVENTORYSNAPSHOT.REPORT_DATE}';
     key VKORG               : String(4)     @title: '{i18n>INVENTORYSNAPSHOT.VKORG}';
     key LGNUM               : String(4)     @title: '{i18n>INVENTORYSNAPSHOT.LGNUM}';
         UNIT                : String(3)     @title: '{i18n>INVENTORYSNAPSHOT.UNIT}';
@@ -1733,6 +1741,19 @@ entity MediaFile : cuid, managed { // 'cuid' provides 'ID: UUID' as the key. 'ma
     url                : String;
     manufacturerNumber : String(50);
     MFGName            : String(255);
+}
+
+
+// This entity holds manufacturer/sales data locally (future: HDI)
+entity LocalUserData : cuid, managed {
+    key userId: String(100);
+    manufacturerNumber: String(50);
+    mfgName: String(255);
+    salesOrg: String(50);
+    salesOffice: String(50);
+    profitCentre: String(50);
+    groupNames: String(50);
+    groupIds: String(50);
 }
 
 

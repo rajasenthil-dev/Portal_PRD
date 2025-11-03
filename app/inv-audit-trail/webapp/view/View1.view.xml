@@ -190,13 +190,13 @@
                                     <Text id="invoiceDate2" text="{path: 'KUNNR'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn121213" width='10rem' hAlign="End" sortProperty="INV_MATDOC_ITEM">
+                            <t:Column id="_IDGenColumn121213" width='10rem' hAlign="End" sortProperty="INV_ADJ_RECEIPT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_MATDOC_ITEM", "leadingProperty": "INV_MATDOC_ITEM", "columnIndex": 14}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_ADJ_RECEIPT", "leadingProperty": "INV_ADJ_RECEIPT", "columnIndex": 14}'/>
                                 </t:customData>
                                 <Text id="_IDGenText323" text="{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}"></Text>
                                 <t:template>
-                                    <Text id="invoiceDate23" text="{path: 'INV_MATDOC_ITEM'}"/>
+                                    <Text id="invoiceDate23" text="{path: 'INV_ADJ_RECEIPT'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn23" width='5rem' hAlign="End" sortProperty="DIN">

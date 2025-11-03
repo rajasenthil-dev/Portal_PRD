@@ -81,7 +81,7 @@ Search.defaultSearchElement: true,
             
             {
                 $Type : 'UI.DataField',
-                Value : MENGE,
+                Value : STOCK_QTY,
                 Label : '{i18n>INVENTORYAUDITTRAIL.MENGE}',
                 ![@HTML5.CssDefaults] : {width : '6rem'}
             },
@@ -122,7 +122,7 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : INV_MATDOC_ITEM,
+                Value : INV_ADJ_RECEIPT,
                 Label : '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
@@ -158,13 +158,25 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : LGORT,
+                Value : STGE_LOC,
                 Label : '{i18n>INVENTORYAUDITTRAIL.LGORT}',
                 ![@HTML5.CssDefaults] : {width : '10rem'}
             },
             {
                 $Type : 'UI.DataField',
                 Value : SALES_ORG
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SRC_STORAGE_BIN
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DES_STORAGE_BIN 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : DOCNO
             }
         ],
     },

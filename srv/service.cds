@@ -1,5 +1,5 @@
-// Processing Service
 
+// Processing Service
 using RETURNS as ENTRETURNS from '../db/schema';
 using RETCUST as ENTRETCUST from '../db/schema';
 using RETCUSTNAME as ENTRETCUSTNAME from '../db/schema';
@@ -1572,6 +1572,59 @@ service Media {
     entity MediaFile as projection on ENTMediaFile;
 }
 annotate Media.MediaFile with @odata.draft.enabled: true;
+
+
+using LocalUserData as ENTLocalUserData from '../db/schema';
+
+
+service UserService { // Service name remains the same (Path: /odata/v4/UserService/)
+
+    // Expose the LocalUserData entity from db (read-only recommended if not edited here)
+    @readonly
+    entity LocalUserData as projection on ENTLocalUserData;
+
+    // --- Annotations for OKTAUsers Entity ---
+    // @UI.LineItem : [ // Defines the table columns
+    //     {Value: status, Label: 'Status'},
+    //     {Value: firstName, Label: 'First Name'},
+    //     {Value: lastName, Label: 'Last Name'},
+    //     {Value: email, Label: 'Email'},
+    //     {Value: mfgName, Label: 'Manufacturer'},
+    //     {Value: salesOrg, Label: 'Sales Org'},
+    //     {Value: salesOffice, Label: 'Sales Office'},
+    //     {Value: profitCentre, Label: 'Profit Center'},
+    //     {Value: groupNames, Label: 'Groups'}
+    //     // Note: The "Action" column needs to be added manually in the SmartTable definition in the XML view
+    // ]
+    // @UI.SelectionFields : [ // Defines the default SmartFilterBar fields
+    //     firstName,
+    //     lastName,
+    //     email,
+    //     mfgName,
+    //     salesOrg
+    // ]
+    @cds.persistence.skip
+    entity OKTAUsers {
+        // Key field
+        key id             : String(100) @title: 'User Id';
+            // Properties with annotations
+            status             : String @title: 'Status';
+            firstName          : String @title: 'First Name'; // Already added to SelectionFields above
+            lastName           : String @title: 'Last Name'; // Already added to SelectionFields above
+            email              : String @title: 'Email'; // Already added to SelectionFields above
+            @UI.Hidden             : true // Usually hidden from table/filter
+            login              : String @title: 'Login Name';
+            salesOffice        : String @title: 'Sales Office';
+            profitCentre       : String @title: 'Profit Center';
+            salesOrg           : String @title: 'Sales Org'; // Already added to SelectionFields above
+            manufacturerNumber : String @title: 'Manufacturer #';
+            mfgName            : String @title: 'Manufacturer'; // Already added to SelectionFields above
+            @UI.Hidden             : true // Usually hidden from table/filter
+            groupIds           : String @title: 'Group Id';
+            groupNames         : String @title: 'Group Name';
+    }
+
+} // End of service UserService
 
 service OktaService {
   action createOktaUser(user: UserInput) returns OktaResponse;

@@ -146,11 +146,19 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : VTEXT_VKORG,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : WRBTR_UNAUTH_DEDUCT,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : RSTGR_BSID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SGTXT_BSID,
             }
-
-
-
-
         ],
     },
     
