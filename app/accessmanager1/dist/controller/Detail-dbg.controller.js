@@ -19,33 +19,86 @@ sap.ui.define([
             });
             this.getView().setModel(oViewModel, "viewState");
           
-          
+            const oGroupModel = new sap.ui.model.json.JSONModel({
+                groupList: []
+            });
+            this.getView().setModel(oGroupModel, "editGroups");
 
-          this.oRouter.getRoute("master").attachPatternMatched(this._onProductMatched, this);
-          this.oRouter.getRoute("detail").attachPatternMatched(this._onProductMatched, this);
+            this.oRouter.getRoute("master").attachPatternMatched(this._onProductMatched, this);
+            this.oRouter.getRoute("detail").attachPatternMatched(this._onProductMatched, this);
         },
+        _loadOktaGroups: function () {
+            const oView = this.getView();
+            const oGroupModel = oView.getModel("editGroups");
+            const oOktaModel = this.getOwnerComponent().getModel("oktaService");
 
+            if (!oGroupModel || !oOktaModel) {
+                MessageBox.error("Missing models to load Okta groups.");
+                return;
+            }
+
+            const oAction = oOktaModel.bindContext("/getOktaGroups(...)");
+            oAction.setParameter("query", "MFG");
+
+            oAction.execute().then(() => {
+                const oRaw = oAction.getBoundContext().getObject();
+                const aGroups = oRaw?.value || [];
+
+                // Save group list to model
+                oGroupModel.setProperty("/groupList", aGroups);
+
+                console.log("✅ Groups loaded:", aGroups.length);
+
+                // Optional: set default if no group selected
+                const oCtx = oView.getBindingContext("edit");
+                if (oCtx && !oCtx.getProperty("groupIds") && aGroups.length > 0) {
+                const sFirstGroupId = aGroups[0].id;
+                const sFirstGroupName = aGroups[0].profile?.name || aGroups[0].name;
+
+                oCtx.setProperty("groupIds", sFirstGroupId);
+                oCtx.setProperty("groupNames", sFirstGroupName);
+                }
+            }).catch((err) => {
+                console.error("❌ Failed to load groups:", err);
+                MessageBox.error("Could not load Okta groups.");
+            });
+        },
+        onGroupChange: function (oEvent) {
+            const sNewGroupId = oEvent.getParameter("selectedItem").getKey();
+            const sNewGroupName = oEvent.getParameter("selectedItem").getText();
+
+            const oCtx = this.getView().getBindingContext("edit");
+            if (oCtx) {
+                oCtx.setProperty("groupIds", sNewGroupId);
+                oCtx.setProperty("groupNames", sNewGroupName);
+            }
+
+            console.log("Updated user with new group:", sNewGroupId, sNewGroupName);
+        },
         _onProductMatched: function (oEvent) {
-          this._product= oEvent.getParameter("arguments").product || this._product || "0";
-          var sObjectPath = "/" + this._product;
-          this.getView().bindElement({
-            path: sObjectPath,
-            model: "edit"
-          });
-          
+            this._product= oEvent.getParameter("arguments").product || this._product || "0";
+            var sObjectPath = "/" + this._product;
+            this.getView().bindElement({
+                path: sObjectPath,
+                model: "edit"
+            });
+        
         },
 
         onEditToggleButtonPress: function() {
-          var oObjectPage = this.getView().byId("ObjectPageLayout"),
+            var oObjectPage = this.getView().byId("ObjectPageLayout"),
             bCurrentShowFooterState = oObjectPage.getShowFooter();
 
-          oObjectPage.setShowFooter(!bCurrentShowFooterState);
-          const oViewModel = this.getView().getModel("viewState");
-          const bEditable = !oViewModel.getProperty("/isEdit");
-          oViewModel.setProperty("/isEdit", bEditable);
-
-          sap.m.MessageToast.show(bEditable ? "Edit mode enabled" : "Edit mode disabled");
+            oObjectPage.setShowFooter(!bCurrentShowFooterState);
+            const oViewModel = this.getView().getModel("viewState");
+            const bEditable = !oViewModel.getProperty("/isEdit");
+            oViewModel.setProperty("/isEdit", bEditable);
+            if (bEditable) {
+            this._loadOktaGroups();
+            }
+            sap.m.MessageToast.show(bEditable ? "Edit mode enabled" : "Edit mode disabled");
         },
+          
         onCancel: function () {
             const oView = this.getView();
             const oObjectPage = oView.byId("ObjectPageLayout");
@@ -64,12 +117,10 @@ sap.ui.define([
                 layout: fioriLibrary.LayoutType.OneColumn
             });
         },
-       onSave: function () {
+        onSave: function () {
             const oView = this.getView();
             const oODataModel = this.getOwnerComponent().getModel();
-            const oRouter = this.getOwnerComponent().getRouter();
-            const fioriLibrary = sap.f.library;
-
+        
             const oCtx = oView.getBindingContext("edit");
             if (!oCtx) {
                 return sap.m.MessageBox.error("Cannot save: No binding context.");
@@ -100,86 +151,77 @@ sap.ui.define([
                     });
                 },
                 error: (oError) => {
-                oView.setBusy(false);
-                console.error("❌ Save Error", oError);
-                sap.m.MessageBox.error("Update failed — check input or permissions.");
+                    oView.setBusy(false);
+                    console.error("❌ Save Error", oError);
+                    sap.m.MessageBox.error("Update failed — check input or permissions.");
                 },
                 merge: true
             });
         },
-      //   onSave: function () {
-      //     const oView = this.getView();
-      //     const oObjectPage = this.byId("ObjectPageLayout");
-      //     const oEditModel = this.getView().getModel("edit");
-      //     const oCtx = oObjectPage.getBindingContext("edit");
+        onActivateUser: async function () {
+            const oView = this.getView();
+            const oModel = this.getView().getModel(); // Assuming OData V2 or V4
+            const oCtx = oView.getBindingContext();   // Adjust this depending on selection
 
-      //     if (!oCtx) {
-      //         sap.m.MessageBox.error("No user selected to save.");
-      //         return;
-      //     }
+            if (!oCtx) {
+                return MessageBox.warning("Please select a user first.");
+            }
 
-      //     // Extract updated user data
-      //     const oData = oCtx.getObject();
+            const userId = oCtx.getProperty("id");
 
-      //     // Build OData V2 payload for backend ⇢ must match service.cds props
-      //     const payload = {
-      //       firstName: oData.firstName,
-      //       lastName: oData.lastName,
-      //       email: oData.email,
-      //       mfgName: oData.mfgName,
+            try {
+                await this._callOktaAction("activateUser", { userId });
+                MessageToast.show(`✅ User ${userId} activated`);
+            } catch (err) {
+                console.error("Activation failed:", err);
+                MessageBox.error(`❌ Failed to activate user ${userId}`);
+            }
+        },
 
-      //       // ✅ CAP expects String for these
-      //       manufacturerNumber: Array.isArray(oData.manufacturerNumber)
-      //         ? oData.manufacturerNumber.join(",")
-      //         : oData.manufacturerNumber || "",
+        onDeactivateUser: async function () {
+            const oView = this.getView();
+            const oModel = this.getView().getModel();
+            const oCtx = oView.getBindingContext();
 
-      //       groupIds: Array.isArray(oData.groupIds)
-      //         ? oData.groupIds.join(",")
-      //         : oData.groupIds || "",
+            if (!oCtx) {
+            return MessageBox.warning("Please select a user first.");
+            }
 
-      //       salesOrg: oData.salesOrg,
-      //       salesOffice: oData.salesOffice,
-      //       profitCentre: oData.profitCentre,
-      //     };
+            const userId = oCtx.getProperty("id");
 
-      //     // Determine OData path for correct user from default model
-      //     const sId = encodeURIComponent(oData.id);
-      //     const sPath = "/OKTAUsers('" + sId + "')";
+            try {
+            await this._callOktaAction("deactivateUser", { userId });
+            MessageToast.show(`✅ User ${userId} deactivated`);
+            } catch (err) {
+            console.error("Deactivation failed:", err);
+            MessageBox.error(`❌ Failed to deactivate user ${userId}`);
+            }
+        },
 
-      //     const oModel = this.getOwnerComponent().getModel(); // Default OData V2 Model
-      //     oView.setBusy(true);
+        _callOktaAction: async function (actionName, payload) {
+            const oModel = this.getView().getModel();
 
-      //     oModel.update(sPath, payload, {
-      //         success: () => {
-      //             oView.setBusy(false);
-      //             sap.m.MessageToast.show("User updated successfully ✅");
+            return new Promise((resolve, reject) => {
+                oModel.callFunction(`/${actionName}`, {
+                method: "POST",
+                urlParameters: payload,
+                success: resolve,
+                error: reject
+                });
+            });
+        },
 
-      //             // Refresh both models so list updates too
-      //             oEditModel.refresh(true);
-      //             oModel.refresh(true);
-
-      //             // Exit edit mode + hide footer
-      //             oEditModel.setProperty("/isEdit", false);
-      //             oObjectPage.setShowFooter(false);
-      //         },
-      //         error: (oError) => {
-      //             oView.setBusy(false);
-
-      //             let sErrorMessage = "Failed to save user.";
-      //             try {
-      //                 const oResp = JSON.parse(oError.responseText);
-      //                 sErrorMessage = oResp.error?.message?.value || oResp.error?.message || sErrorMessage;
-      //             } catch (e) {}
-
-      //             sap.m.MessageBox.error(sErrorMessage);
-      //             console.error("Save error:", oError);
-      //         }
-      //     });
-      // },
         onExit: function () {
-          this.oRouter.getRoute("master").detachPatternMatched(this._onProductMatched, this);
-          this.oRouter.getRoute("detail").detachPatternMatched(this._onProductMatched, this);
-          
+            if (sap && sap.navigation && sap.navigation.toExternal) {
+                sap.navigation.toExternal({
+                    target: {
+                        shellHash: "#Shell-home" // or "Shell-home"
+                    }
+                });
+            } else {
+                window.top.location.href = "https://discovery-sunrise.launchpad.cfapps.us20.hana.ondemand.com/site?siteId=0cf6c23e-def9-4ed5-a7fb-0b378ac9e3ed#Shell-home";
+            }
+                    
         }
-	});
+    });
 });

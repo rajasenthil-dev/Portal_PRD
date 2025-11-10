@@ -4,7 +4,8 @@
 	xmlns:m="sap.m"
 	xmlns:f="sap.f"
 	xmlns:form="sap.ui.layout.form"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
 	<ObjectPageLayout
 		id="ObjectPageLayout"
 		showTitleInHeaderContent="true"
@@ -100,7 +101,24 @@
 
 									<!-- Right Column -->
 									<m:Label id="_IDGenLabel4" text="Group Names"/>
-									<m:Input id="_IDGenInput3" value="{edit>groupNames}" editable="{viewState>/isEdit}" />
+									<m:VBox id="_IDGenVBox2">
+										<m:Input id="_IDGenInput3" value="{edit>groupNames}" visible="{= !${viewState>/isEdit} }" editable="false" />
+										<m:Select
+											id="groupSelect"
+											selectedKey="{edit>groupIds}"
+											editable="{viewState>/isEdit}"
+											visible="{= ${viewState>/isEdit} }"
+											change=".onGroupChange"
+											items="{
+												path: 'editGroups>/groupList'
+											}">
+											<core:Item id="_IDGenItem"
+												key="{editGroups>id}"
+												text="{= ${editGroups>profile/name} || ${editGroups>name} }"
+										/>
+										</m:Select>
+									</m:VBox>
+
 
 									<m:Label id="_IDGenLabel5" text="Group IDs"/>
 									<m:Input id="_IDGenInput4" value="{edit>groupIds}" enabled="false" />

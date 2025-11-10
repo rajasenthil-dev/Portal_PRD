@@ -1578,7 +1578,11 @@ using LocalUserData as ENTLocalUserData from '../db/schema';
 
 
 service UserService { // Service name remains the same (Path: /odata/v4/UserService/)
-
+    action createOktaUser(user: UserInput) returns OktaResponse;
+    action getOktaGroups(query: String) returns many OktaGroup;
+    action createOktaGroup(group: NewOktaGroup) returns OktaGroup;
+    action activateUser(userId: String) returns String;
+    action deactivateUser(userId: String) returns String;
     // Expose the LocalUserData entity from db (read-only recommended if not edited here)
     @readonly
     entity LocalUserData as projection on ENTLocalUserData;
@@ -1626,11 +1630,11 @@ service UserService { // Service name remains the same (Path: /odata/v4/UserServ
 
 } // End of service UserService
 
-service OktaService {
-  action createOktaUser(user: UserInput) returns OktaResponse;
-  action getOktaGroups(query: String) returns many OktaGroup;
-  action createOktaGroup(group: NewOktaGroup) returns OktaGroup;
-}
+// service OktaService {
+//   action createOktaUser(user: UserInput) returns OktaResponse;
+//   action getOktaGroups(query: String) returns many OktaGroup;
+//   action createOktaGroup(group: NewOktaGroup) returns OktaGroup;
+// }
 
 type OktaGroup {
   id: String;
@@ -1667,6 +1671,74 @@ type OktaResponse {
   status: String;
   userId: String;
 }
+
+// service UserService {
+//   action createOktaUser(user: UserInput) returns OktaResponse;
+//   action activateUser(userId: String) returns String;
+//   action deactivateUser(userId: String) returns String;
+
+//   // 👇 Add these two:
+//   action getOktaGroups(query: String) returns many OktaGroup;
+//   action createOktaGroup(group: NewOktaGroup) returns OktaGroup;
+
+//   @cds.persistence.skip
+//   entity OKTAUsers {
+//     key id: String;
+//     firstName: String;
+//     lastName: String;
+//     email: String;
+//     login: String;
+//     salesOrg: String;
+//     salesOffice: String;
+//     profitCentre: String;
+//     mfgName: String;
+//     manufacturerNumber: String;
+//     groupIds: String;
+//     groupNames: String;
+//   }
+
+//   entity OktaGroups {
+//     key id: String;
+//     name: String;
+//     description: String;
+//   }
+// }
+
+// type OktaGroup {
+//   id: String;
+//   profile: GroupProfile;
+// }
+
+// type NewOktaGroup {
+//   profile: GroupProfile;
+// }
+
+// type GroupProfile {
+//   name: String;
+//   description: String;
+// }
+
+// type UserInput {
+//   profile: Profile;
+//   groupIds: many String;
+// }
+
+// type Profile {
+//   firstName: String;
+//   lastName: String;
+//   email: String;
+//   login: String;
+//   salesOrg: String;
+//   salesOffice: String;
+//   profitCentre: String;
+//   manufacturerNumber: many String;
+//   mfgName: String;
+// }
+
+// type OktaResponse {
+//   status: String;
+//   userId: String;
+// }
 
 
 

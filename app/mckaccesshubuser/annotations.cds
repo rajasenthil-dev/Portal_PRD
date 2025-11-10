@@ -1,1 +1,1 @@
-using OktaService as service from '../../srv/service';
+using UserService as service from '../../srv/service';

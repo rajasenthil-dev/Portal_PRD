@@ -158,7 +158,7 @@ entity INVENTORYAUDITTRAIL
         SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
     key CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
         DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
-        POSTING_DATE        : Date          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+        POSTING_DATE        : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
     key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
@@ -785,6 +785,8 @@ key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD
     KZWI3                   : Decimal(33,2) @title : '{i18>SALESBYCURRENT.KZWI3}';
     TOTAL_AMOUNT            : Decimal(38,1) @title : '{i18n>SALESBYCURRENT.TOTAL_AMOUNT}';
     // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    SMTP_ADDR               : String(241)   @title : '{i18n>SALESBYCURRENT.SMTP_ADDR}';
+    TEL_NUMBER              : String(30)    @title : '{i18n>SALESBYCURRENT.TEL_NUMBER}';
 }
 @cds.persistence.exists
 entity SALESBYCURRENTWOPID
@@ -845,6 +847,8 @@ key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD
     KZWI3                   : Decimal(33,2) @title : '{i18>SALESBYCURRENT.KZWI3}';
     TOTAL_AMOUNT            : Decimal(38,1) @title : '{i18n>SALESBYCURRENT.TOTAL_AMOUNT}';
     // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    SMTP_ADDR               : String(241)   @title : '{i18n>SALESBYCURRENT.SMTP_ADDR}';
+    TEL_NUMBER              : String(30)    @title : '{i18n>SALESBYCURRENT.TEL_NUMBER}';
 }
 
 @cds.persistence.exists
@@ -906,6 +910,8 @@ key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD
     KZWI3                   : Decimal(33,2) @title : '{i18n>SALESBYCURRENT.KZWI3}';
     TOTAL_AMOUNT            : Decimal(38,1) @title : '{i18n>SALESBYCURRENT.TOTAL_AMOUNT}';
     // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    SMTP_ADDR               : String(241) @title : '{i18n>SALESBYCURRENT.SMTP_ADDR}';
+    TEL_NUMBER              : String(30) @title : '{i18n>SALESBYCURRENT.TEL_NUMBER}';
 }
 
 define view SBCINVOICE as
@@ -1662,13 +1668,13 @@ define view SHIPSTATUSMFRNR as
 @cds.persistence.exists
 entity PIVOTTABLE
 {
-    key MAKTX                       : String(40);
-    key PROVINCE_REGIO              : String(3);
-    key SHIP_TO_NAME                : String(70);
-    key INVOICE_DATE_FKDAT          : String(8);
-    key CAL_MONTH                   : String(8);
-    key CAL_YEAR                    : String(10);
-        QUANTITY_FKIMG              : Decimal(28,3);
+    key MAKTX                       : String(40)    @title : '{i18n>PIVOTTABLE.MAKTX}';
+    key PROVINCE_REGIO              : String(3)     @title : '{i18n>PIVOTTABLE.PROVINCE_REGIO}';
+    key SHIP_TO_NAME                : String(70)    @title : '{i18n>PIVOTTABLE.SHIP_TO_NAME}';
+    key INVOICE_DATE_FKDAT          : String(8)     @title : '{i18n>PIVOTTABLE.INVOICE_DATE_FKDAT}';
+    key CAL_MONTH                   : String(8)     @title : '{i18n>PIVOTTABLE.CAL_MONTH}';
+    key CAL_YEAR                    : String(10)    @title : '{i18n>PIVOTTABLE.CAL_YEAR}';
+        QUANTITY_FKIMG              : Decimal(28,3) @title : '{i18n>PIVOTTABLE.QUANTITY_FKIMG }';
 }
 
 @cds.persistence.exists

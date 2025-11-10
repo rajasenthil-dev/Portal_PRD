@@ -1,172 +1,11 @@
 const cds = require('@sap/cds');
 const deduplicateForInternal = require('./utils/deduplication')
-const okta = require('./okta-helper');
+// const okta = require('./utils/okta-helper');
 /**
- * Implementation of ALL services.
- */
+** Implementation of ALL services. **
+**/
 module.exports = cds.service.impl(async function () {
-  /** ---------------------------------------------------------------------
-   * OKTA HANDLERS (merged from serviceA.js)
-   * ------------------------------------------------------------------- */
-
-  const OKTAUsers =
-  this.entities.OKTAUsers || this.entities['UserService.OKTAUsers'];
-const LocalUserData =
-  this.entities.LocalUserData || this.entities['UserService.LocalUserData'];
-
-if (!OKTAUsers) {
-  console.warn('⚠️ OKTAUsers not found in current service context.');
-  return;
-}
-
-  /** Utility: Flatten arrays → strings for UI */
-  const ensureString = (val) => {
-    if (Array.isArray(val)) return val.join(', ');
-    if (val === null || val === undefined) return '';
-    return String(val);
-  };
-
-  /** Utility: Split strings → arrays for Okta */
-  const parseToArray = (val) => {
-    if (Array.isArray(val)) return val;
-    if (!val) return [];
-    return val.split(',').map((s) => s.trim()).filter(Boolean);
-  };
-
-  /** Admin check */
-  function isAdmin(req) {
-    if (process.env.STRICT_ROLE_CHECK === 'true') {
-      const roles = (req.user && req.user.roles) || [];
-      return roles.includes('admin') || roles.includes('Admin');
-    }
-    return true;
-  }
-
-  /** ---------------------- READ HANDLER ---------------------- */
-  this.on('READ', OKTAUsers, async (req) => {
-    console.log('📡 Fetching MFG users from Okta...');
-
-    const oktaUsers = await okta.listMFGUsers();
-    let local = [];
-
-    if (cds.db) {
-      try {
-        local = await SELECT.from(LocalUserData);
-      } catch (e) {
-        console.warn('⚠️ LocalUserData query skipped — no DB connection.');
-      }
-    } else {
-      console.warn('⚠️ No DB connected. Skipping LocalUserData merge.');
-    }
-    //const oktaUsers = await okta.listMFGUsers();
-    //const local = await SELECT.from(LocalUserData);
-
-    const merged = oktaUsers.map((u) => {
-      const localRow = local.find((r) => r.id === u.id);
-      if (!localRow) {
-        return {
-          ...u,
-          manufacturerNumber: ensureString(u.manufacturerNumber),
-          groupNames: ensureString(u.groupNames),
-          groupIds: ensureString(u.groupIds),
-        };
-      }
-
-      return {
-        ...u,
-        ...localRow,
-        manufacturerNumber: ensureString(localRow.manufacturerNumber || u.manufacturerNumber),
-        groupNames: ensureString(localRow.groupNames || u.groupNames),
-        groupIds: ensureString(localRow.groupIds || u.groupIds),
-        mfgName: localRow.manufacturerName || u.mfgName,
-        salesOrg: localRow.salesOrg || u.salesOrg,
-        salesOffice: localRow.salesOffice || u.salesOffice,
-        profitCentre: localRow.profitCentre || u.profitCentre,
-      };
-    });
-
-    const top = req.query?.SELECT?.limit?.rows?.val || 50;
-    const skip = req.query?.SELECT?.limit?.offset?.val || 0;
-    req._.count = merged.length;
-    const paginated = merged.slice(skip, skip + top);
-
-    console.log(`✅ Returning ${paginated.length} of ${merged.length} users`);
-    return paginated;
-  });
-
-  /** ---------------------- UPDATE HANDLER ---------------------- */
-  this.on('UPDATE', OKTAUsers, async (req) => {
-    let id = req.params?.[0]?.id || req.data.id;
-    if (typeof id === 'object') id = id.id;
-    if (!id || typeof id !== 'string') return req.error(400, `Invalid ID: ${JSON.stringify(req.params)}`);
-
-    const payload = req.data || {};
-    const oktaProfile = {};
-    const oktaPayload = { profile: oktaProfile };
-
-    // --- Map payload to Okta ---
-    if (payload.firstName) oktaProfile.firstName = payload.firstName;
-    if (payload.lastName) oktaProfile.lastName = payload.lastName;
-    if (payload.email) {
-      oktaProfile.email = payload.email;
-      oktaProfile.login = payload.email;
-    }
-    ['salesOrg', 'salesOffice', 'profitCentre', 'mfgName'].forEach(f => {
-      if (payload[f]) oktaProfile[f] = payload[f];
-    });
-    if (payload.manufacturerNumber) {
-      oktaPayload.profile.manufacturerNumber = payload.manufacturerNumber.split(',').map(s => s.trim());
-    }
-    if (payload.groupIds) {
-      oktaPayload.groupIds = payload.groupIds.split(',').map(s => s.trim());
-    }
-
-    // --- Update Okta ---
-    if (Object.keys(oktaProfile).length > 0 || oktaPayload.groupIds) {
-      await okta.updateUser(id, oktaPayload);
-    }
-
-    // --- Optional local persistence ---
-    if (cds.db) {
-      const localFields = {
-        id,
-        manufacturerName: payload.mfgName || null,
-        manufacturerNumber: payload.manufacturerNumber || '',
-        salesOrg: payload.salesOrg || null,
-        salesOffice: payload.salesOffice || null,
-        profitCentre: payload.profitCentre || null,
-        groupNames: payload.groupNames || '',
-        groupIds: payload.groupIds || '',
-      };
-      const existing = await SELECT.one(LocalUserData).where({ id });
-      existing
-        ? await UPDATE(LocalUserData).set(localFields).where({ id })
-        : await INSERT.into(LocalUserData).entries(localFields);
-    }
-
-    // ✅ Return explicit object (no DB read)
-    req.info(`Handled virtual UPDATE for Okta user ${id}`);
-    return {
-      id,
-      ...payload,
-      status: 'UPDATED',
-      updatedAt: new Date().toISOString()
-    };
-  });
-
-  /** ---------------------- GROUPS HANDLER ---------------------- */
-  this.on('READ', 'OktaGroups', async () => {
-    const groups = await okta.listGroups({ limit: 1000 });
-    return (groups || []).map((g) => ({
-      id: g.id,
-      name: g.profile?.name || g.name,
-    }));
-  });
-
-  /** ---------------------------------------------------------------------
-   * EXISTING GLOBAL LOGIC CONTINUES BELOW
-   * ------------------------------------------------------------------- */
-
+  
   /** Your existing "before('*')" normalization handler and all other logic below */
   this.before('*', async (req) => {
     const mfrnr = req.user?.attr?.ManufacturerNumber;
@@ -610,275 +449,6 @@ if (!OKTAUsers) {
         console.log(`📄 Final WHERE (no fuzzy) for ${entityName}:`, JSON.stringify(where, null, 2));
       }
     });
-    // // --- Generic 'before READ' Handler ---
-    // this.before('READ', (req) => {
-    //     const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
-    //     const fullEntityName = req.target?.name;
-    //     const entityName = fullEntityName?.split('.').pop();
-
-    //     console.log(`READ handler for ${entityName} - ManufacturerNumber: ${userManufacturer}`);
-
-    //     // 🎯 SKU-based filtering for 0001000005
-    //     if (userManufacturer === '0001000005') {
-    //         const excludedSKUs = excludedSKUsFor0001000005[entityName];
-    //         const skuField = skuFieldMap[entityName];
-
-    //         if (excludedSKUs?.length && skuField) {
-    //             const skuFilter = `${skuField} NOT IN (${excludedSKUs.map(sku => `'${sku}'`).join(', ')})`;
-    //             console.log(`Applying SKU exclusion filter for manufacturer 0001000005 on entity ${entityName}: ${skuFilter}`);
-    //             try {
-    //                 req.query.where(skuFilter);
-    //             } catch (e) {
-    //                 console.warn(`Entity ${entityName} does not support filtering`);
-    //             }
-    //             return; // ✅ early return — skip VKORG-based filter
-    //         }
-    //     }
-
-    //     // 🧾 VKORG-based filtering for 0001000019 and others in the map
-    //     const entityFilters = manufacturerFilterMap[userManufacturer];
-    //     const filter = entityFilters?.[entityName];
-
-    //     if (filter) {
-    //         console.log(`Applying VKORG exclusion filter for manufacturer ${userManufacturer} on entity: ${entityName}`);
-    //         try {
-    //             req.query.where(filter);
-    //         } catch (e) {
-    //             console.warn(`Entity ${entityName} does not support filtering`);
-    //         }
-    //     }
-    // });
-    // this.before ('READ', [
-    //     'ITEMMASTER',
-    //     'ITEMMASPD',
-    //     'ITEMMASMFRNRNAME',
-    //     'ITEMMASCATEGORY',
-    //     'INVENTORYSTATUS',
-    //     'INVSTATUSPLANTNAME',
-    //     'INVSTATUSMFRNRNAME',
-    //     'INVENTORYAUDITTRAIL',
-    //     'IATPLANTNAME',
-    //     'IATTRANTYPE',
-    //     'IATPRODUCTCODE',
-    //     'IATLOT',
-    //     'IATWAREHOUSE',
-    //     'IATCUSTSUPPNAME',
-    //     'IATMFRNRNAME',
-    //     'BILL_TONAME',
-    //     'FINCJMFRNRNAME',
-    //     'INVENTORYSNAPSHOT',
-    //     'INVSNAPPLANTNAME',
-    //     'INVSNAPPRODDESC',
-    //     'INVSNAPLOT',
-    //     'INVSNAPWARESTAT',
-    //     'INVSNAPMFRNRNAME',
-    //     'INVENTORYBYLOT',
-    //     'INVBYLOTPLANTNAME',
-    //     'INVBYLOTPRODUCTCODE',
-    //     'INVBYLOTLOT',
-    //     'INVBYLOTWAREHOUSE',
-    //     'INVBYLOTMFRNRNAME',
-    //     'OPENAR',
-    //     'OPENARCUSTOMER',
-    //     'OPENARMFRNRNAME',
-    //     'INVENTORYVALUATION',
-    //     'INVVALPLANTNAME',
-    //     'INVVALPRODDESC',
-    //     'INVVALMFRNRNAME',
-    //     'INVOICEHISTORY',
-    //     'IHPLANTNAME',
-    //     'IHCUSTOMER',
-    //     'IHTYPE',
-    //     'IHPROVINCE',
-    //     'IHMFRNRNAME',
-    //     //'SALESBYCURRENT',
-    //     //'SALESBYCURRENTWOPID',
-    //     'SBCPRODDESC',
-    //     'SBCBILLTO',
-    //     'SBCSHIPTO',
-    //     'SBCMFRNRNAME',
-    //     'CUSTOMERMASTER',
-    //     'KUNN2_BILLTONAME',
-    //     'KUNN2_SHIPTONAME',
-    //     'CAL_CUST_STATUS',
-    //     'SHIPPINGHISTORY',
-    //     'SHSHIPTONAME',
-    //     'SHCARRIER',
-    //     'SHMFRNRNAME',
-    //     'PRICING',
-    //     'PRICINGPRICEDESC',
-    //     'PRICINGPRODUCTDESC',
-    //     'PRICINGMFRNRNAME',
-    //     'RETURNS',
-    //     'RETCUSTNAME',
-    //     'RETREASON',
-    //     'RETMFRNRNAME',
-    //     'BACKORDERS',
-    //     'BOPRODUCTDESC',
-    //     'BOSHIPTONAME',
-    //     'BOMFRNRNAME',
-    //     'SHIPPINGSTATUS',
-    //     'SHIPSTATUSPRODDESC',
-    //     'SHIPSTATUSWHSTATUS',
-    //     'SHIPSTATUSMFRNRNAME'
-    // ], async (req) => {
-    
-    //     console.log("before searching");
-    //     console.log(req.query.SELECT.where);
-    //     const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
-    //     const newCondition = [];
-    //     existingConditions.forEach((condition, index) => {
-    //         if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
-    //             newCondition.push(condition);
-    //         } else if (condition.ref) {
-    //             const scol = condition.ref[0];
-    //             const sOperator = existingConditions[index + 1];
-    //             const sval = existingConditions[index + 2]?.val;
-    //             // 🔥 Transform only normal "=" searches to LIKE
-    //             if (sOperator === '=' && sval) {
-    //                 newCondition.push(
-    //                     { func: 'toupper', args: [{ ref: [scol] }] },
-    //                     'like',
-    //                     { val: `%${sval.toUpperCase()}%` }
-    //                 );
-    //             } else {
-    //                 newCondition.push({ ref: [scol] }, sOperator, { val: sval });
-    //             }
-    //         }
-    //     });
-
-    //     if (newCondition.length > 0) {
-    //         req.query.SELECT.where = newCondition;
-    //     }
-    //     console.log(req.query.SELECT.where);
-    // });
-    // this.before('READ', [
-    //     'ITEMMASTER',
-    //     'ITEMMASPD',
-    //     'ITEMMASMFRNRNAME',
-    //     'ITEMMASCATEGORY',
-    //     'INVENTORYSTATUS',
-    //     'INVSTATUSPLANTNAME',
-    //     'INVSTATUSMFRNRNAME',
-    //     'INVENTORYAUDITTRAIL',
-    //     'IATPLANTNAME',
-    //     'IATTRANTYPE',
-    //     'IATPRODUCTCODE',
-    //     'IATLOT',
-    //     'IATWAREHOUSE',
-    //     'IATCUSTSUPPNAME',
-    //     'IATMFRNRNAME',
-    //     'BILL_TONAME',
-    //     'FINCJMFRNRNAME',
-    //     'INVENTORYSNAPSHOT',
-    //     'INVSNAPPLANTNAME',
-    //     'INVSNAPPRODDESC',
-    //     'INVSNAPLOT',
-    //     'INVSNAPWARESTAT',
-    //     'INVSNAPMFRNRNAME',
-    //     'INVENTORYBYLOT',
-    //     'INVBYLOTPLANTNAME',
-    //     'INVBYLOTPRODUCTCODE',
-    //     'INVBYLOTLOT',
-    //     'INVBYLOTWAREHOUSE',
-    //     'INVBYLOTMFRNRNAME',
-    //     'OPENAR',
-    //     'OPENARCUSTOMER',
-    //     'OPENARMFRNRNAME',
-    //     'INVENTORYVALUATION',
-    //     'INVVALPLANTNAME',
-    //     'INVVALPRODDESC',
-    //     'INVVALMFRNRNAME',
-    //     'INVOICEHISTORY',
-    //     'IHPLANTNAME',
-    //     'IHCUSTOMER',
-    //     'IHTYPE',
-    //     'IHPROVINCE',
-    //     'IHMFRNRNAME',
-    //     'SALESBYCURRENT', // <--- EXCLUDE SALESBYCURRENT FROM THIS GENERIC HANDLER
-    //     'SALESBYCURRENTWOPID', // <--- EXCLUDE SALESBYCURRENTWOPID
-    //     'SBCPRODDESC',
-    //     'SBCBILLTO',
-    //     'SBCSHIPTO',
-    //     'SBCMFRNRNAME',
-    //     'CUSTOMERMASTER',
-    //     'KUNN2_BILLTONAME',
-    //     'KUNN2_SHIPTONAME',
-    //     'CAL_CUST_STATUS',
-    //     'SHIPPINGHISTORY',
-    //     'SHSHIPTONAME',
-    //     'SHCARRIER',
-    //     'SHMFRNRNAME',
-    //     'PRICING',
-    //     'PRICINGPRICEDESC',
-    //     'PRICINGPRODUCTDESC',
-    //     'PRICINGMFRNRNAME',
-    //     'RETURNS',
-    //     'RETCUSTNAME',
-    //     'RETREASON',
-    //     'RETMFRNRNAME',
-    //     'BACKORDERS',
-    //     'BOPRODUCTDESC',
-    //     'BOSHIPTONAME',
-    //     'BOMFRNRNAME',
-    //     'SHIPPINGSTATUS',
-    //     'SHIPSTATUSPRODDESC',
-    //     'SHIPSTATUSWHSTATUS',
-    //     'SHIPSTATUSMFRNRNAME'
-    // ], async (req) => {
-    //     console.log("before searching");
-    //     console.log(req.query.SELECT.where);
-    
-    //     const fullEntityName = req.target?.name;
-    //     const entityName = fullEntityName?.split('.').pop();
-    //     const userManufacturer = req.user?.attr?.ManufacturerNumber?.[0];
-    
-    //     const existingConditions = req.query.SELECT.where ? [...req.query.SELECT.where] : [];
-    //     const newCondition = [];
-    
-    //     // Check if the current entity/manufacturer combination has a specific filter
-    //     // If so, we should not apply the generic toUpper/like transformation to its specific filter parts
-    //     const hasSpecificManufacturerFilter = manufacturerFilterMap[userManufacturer] && manufacturerFilterMap[userManufacturer][entityName];
-    
-    //     existingConditions.forEach((condition, index) => {
-    //         if (condition === 'and' || condition === 'or' || condition === '(' || condition === ')' || condition.func) {
-    //             newCondition.push(condition);
-    //         } else if (condition.ref) {
-    //             const scol = condition.ref[0];
-    //             const sOperator = existingConditions[index + 1];
-    //             const sval = existingConditions[index + 2]?.val;
-    
-    //             // Check if this condition is part of a special filter (e.g., VKORG, WERKS for 0001000024)
-    //             // You might need a more sophisticated way to identify these,
-    //             // perhaps by maintaining a list of fields that should NOT be toupper/like'd
-    //             // or by checking if the current condition matches a part of your pre-defined filters.
-    //             // For simplicity, assuming 'CO_VKORG' and 'WERKS' are the problem fields for the special case.
-    //             const isSpecialFilterField = (scol === 'CO_VKORG' || scol === 'WERKS' || scol === 'SALESORG' || scol === 'VKBUR' || scol === 'SALES_ORG' || scol === 'VKORG' || scol === 'WAREHOUSE_NAME_LNUMT');
-    
-    //             // If it's a direct equality on a potentially problematic field in a specific filter context,
-    //             // or if the entity is SALESBYCURRENT (or others with hardcoded filters)
-    //             // AND the manufacturer has a specific filter applied, then DO NOT apply toUpper/like.
-    //             if (sOperator === '=' && sval && !isSpecialFilterField && !hasSpecificManufacturerFilter) {
-    //                 // Apply toUpper and LIKE for general case-insensitive search
-    //                 newCondition.push(
-    //                     { func: 'toupper', args: [{ ref: [scol] }] },
-    //                     'like',
-    //                     { val: `%${sval.toUpperCase()}%` }
-    //                 );
-    //             } else {
-    //                 // Push the condition as is if it's not a candidate for toUpper/like transformation,
-    //                 // or if it's part of a special filter that should remain untouched.
-    //                 newCondition.push({ ref: [scol] }, sOperator, { val: sval });
-    //             }
-    //         }
-    //     });
-    
-    //     if (newCondition.length > 0) {
-    //         req.query.SELECT.where = newCondition;
-    //     }
-    
-    //     console.log(req.query.SELECT.where);
-    // });
 
     // --- START: Deduplication for Internal users ---
 
@@ -1146,235 +716,276 @@ if (!OKTAUsers) {
       
         return results;
       });
-
-    // const OKTA_API_TOKEN = '00Rpkzmvl-3WrAG_z3FewYqZeKCzaSax09cF1NR5Ph';
-    // const OKTA_API_URL = 'https://rbgcatman-auth-login.dev.mckesson.ca/api/v1/users?activate=true';
     
-    // this.on('CreateUser', async (req) => {
-    //     console.log("Action Hit!", req.data);
+  //   this.on('createOktaUser', async req => {
+  //     const axios = require('axios');
+  //     const user = req.data.user;
+  //     const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
+  //     const OKTA_API_URL = process.env.OKTA_API_URL;
+
+  //     if (!OKTA_API_TOKEN) {
+  //         req.error(500, "OKTA_API_TOKEN is not set in environment variables.");
+  //         return;
+  //     }
+
+  //     const payload = {
+  //         profile: {
+  //             firstName: user.profile?.firstName,
+  //             lastName: user.profile?.lastName,
+  //             email: user.profile?.email,
+  //             login: user.profile?.email,
+  //             salesOffice: user.profile?.salesOffice,
+  //             profitCentre: user.profile?.profitCentre,
+  //             salesOrg: user.profile?.salesOrg,
+  //             manufacturerNumber: user.profile?.manufacturerNumber,
+  //             mfgName: user.profile?.mfgName
+  //         },
+  //         groupIds: Array.isArray(user.groupIds)
+  //             ? user.groupIds
+  //             : [user.groupIds].filter(Boolean)
+  //     };
+
+  //     try {
+  //         const response = await axios.post(
+  //             `${OKTA_API_URL}users?activate=true`,
+  //             payload,
+  //             {
+  //                 headers: {
+  //                     'Authorization': `SSWS ${OKTA_API_TOKEN}`,
+  //                     'Content-Type': 'application/json',
+  //                     'Accept': 'application/json'
+  //                 }
+  //             }
+  //         );
+
+  //         return {
+  //             status: 'success',
+  //             userId: response.data.id
+  //         };
+  //     } catch (error) {
+  //         console.error('Okta API error:', {
+  //             status: error.response?.status,
+  //             data: error.response?.data,
+  //             message: error.message
+  //         });
+  //         req.error(500, 'Failed to create user in Okta.');
+  //     }
+  // });
+    // this.on('getOktaGroups', async (req) => {
+    //     const axios = require('axios');
+    //     const query = req.data.query || ''; // Default to empty if no query provided
+    //     const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
+    //     const OKTA_API_URL = process.env.OKTA_API_URL;
     //     try {
-    //         const payload = req.data.input;
-    
-    //       // ✅ Build Okta User Creation Payload
-    //         const oktaPayload = {
-    //             profile: {
-    //                 firstName: payload.firstName,
-    //                 lastName: payload.lastName,
-    //                 email: payload.email,
-    //                 login: payload.login || payload.email,
-    //                 SalesOffice: payload.salesOffice,
-    //                 ProfitCentre: payload.profitCentre,
-    //                 SalesOrg: payload.salesOrg,
-    //                 ManufacturerNumber: payload.manufacturerNumbers,
-    //                 MFGName: payload.mfgName
-    //             },
-    //             groupIds: payload.selectedGroup // Optional: populate if you want to assign Okta group IDs
-    //         };
-    
-    //         // ✅ Call Okta API
-    //         const response = await axios.post(OKTA_API_URL, oktaPayload, {
-    //             headers: {
-    //             Authorization: `SSWS ${OKTA_API_TOKEN}`,
-    //             "Content-Type": "application/json"
-    //             }
-    //         });
-    
-    //         return {
-    //             success: true,
-    //             message: "User successfully created in Okta",
-    //             userId: response.data.id
-    //         };
-    
-    //     } catch (err) {
-    //         console.error("Okta Error: ", err.response?.data || err.message);
-    //         return {
-    //             success: false,
-    //             message: err.response?.data?.errorCauses?.[0]?.errorSummary || err.message,
-    //             userId: ""
-    //         };
-    //     }
-    // });
-    // --- CASE-INSENSITIVE FILTERING LOGIC ---
-    // this.on('READ', 'BOSHIPTONAME', async (req) => {
-    //     // Get the entity reference for type safety and consistency
-    //     const { BOSHIPTONAME } = this.entities; // Make sure this line is present and correct
-
-    //     // Access the incoming query from the request
-    //     const { SELECT } = req.query;
-
-    //     // --- Step 1: Identify the fields that need case-insensitive filtering ---
-    //     const caseInsensitiveFields = ['NAME1']; // Add all relevant fields here
-
-    //     // --- Step 2: Traverse and modify the WHERE clause of the SELECT query ---
-    //     if (SELECT.where) {
-    //         // Pass cds.ql to the utility function
-    //         SELECT.where = transformFilterToCaseInsensitive(SELECT.where, caseInsensitiveFields, cds.ql);
-    //     }
-
-    //     // --- Step 3: Execute the modified query ---
-    //     // Let CAP execute the query against the database with the transformed WHERE clause
-    //     return cds.run(SELECT);
-    // });
-    
-
-    this.on('createOktaUser', async req => {
-      const axios = require('axios');
-      const user = req.data.user;
-      const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
-      const OKTA_API_URL = process.env.OKTA_API_URL;
-
-      if (!OKTA_API_TOKEN) {
-          req.error(500, "OKTA_API_TOKEN is not set in environment variables.");
-          return;
-      }
-
-      const payload = {
-          profile: {
-              firstName: user.profile?.firstName,
-              lastName: user.profile?.lastName,
-              email: user.profile?.email,
-              login: user.profile?.email,
-              salesOffice: user.profile?.salesOffice,
-              profitCentre: user.profile?.profitCentre,
-              salesOrg: user.profile?.salesOrg,
-              manufacturerNumber: user.profile?.manufacturerNumber,
-              mfgName: user.profile?.mfgName
-          },
-          groupIds: Array.isArray(user.groupIds)
-              ? user.groupIds
-              : [user.groupIds].filter(Boolean)
-      };
-
-      try {
-          const response = await axios.post(
-              `${OKTA_API_URL}users?activate=true`,
-              payload,
-              {
-                  headers: {
-                      'Authorization': `SSWS ${OKTA_API_TOKEN}`,
-                      'Content-Type': 'application/json',
-                      'Accept': 'application/json'
-                  }
-              }
-          );
-
-          return {
-              status: 'success',
-              userId: response.data.id
-          };
-      } catch (error) {
-          console.error('Okta API error:', {
-              status: error.response?.status,
-              data: error.response?.data,
-              message: error.message
-          });
-          req.error(500, 'Failed to create user in Okta.');
-      }
-  });
-    this.on('getOktaGroups', async (req) => {
-        const axios = require('axios');
-        const query = req.data.query || ''; // Default to empty if no query provided
-        const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
-        const OKTA_API_URL = process.env.OKTA_API_URL;
-        try {
-          const response = await axios.get(
-            `${OKTA_API_URL}groups?q=MFG`,
-            {
-              headers: {
-                'Authorization': `SSWS ${OKTA_API_TOKEN}`,
-                'Accept': 'application/json'
-              }
-            }
-          );
+    //       const response = await axios.get(
+    //         `${OKTA_API_URL}groups?q=MFG`,
+    //         {
+    //           headers: {
+    //             'Authorization': `SSWS ${OKTA_API_TOKEN}`,
+    //             'Accept': 'application/json'
+    //           }
+    //         }
+    //       );
       
-          return response.data.map(group => ({
-            id: group.id,
-            profile: {
-              name: group.profile.name,
-              description: group.profile.description
-            }
-          }));
-        } catch (error) {
-          console.error('Okta API error (getOktaGroups):', error?.response?.data || error.message);
-          req.error(500, 'Failed to fetch Okta groups.');
-        }
-    });
-    this.on('createOktaGroup', async (req) => {
-        const axios = require('axios');
-        const groupData = req.data.group;
-        const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
-        const OKTA_API_URL = process.env.OKTA_API_URL;
+    //       return response.data.map(group => ({
+    //         id: group.id,
+    //         profile: {
+    //           name: group.profile.name,
+    //           description: group.profile.description
+    //         }
+    //       }));
+    //     } catch (error) {
+    //       console.error('Okta API error (getOktaGroups):', error?.response?.data || error.message);
+    //       req.error(500, 'Failed to fetch Okta groups.');
+    //     }
+    // });
+    // this.on('createOktaGroup', async (req) => {
+    //     const axios = require('axios');
+    //     const groupData = req.data.group;
+    //     const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
+    //     const OKTA_API_URL = process.env.OKTA_API_URL;
     
-        try {
-            const response = await axios.post(
-                `${OKTA_API_URL}groups`,
-                { profile: groupData.profile },
-                {
-                    headers: {
-                        'Authorization': `SSWS ${OKTA_API_TOKEN}`,
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
+    //     try {
+    //         const response = await axios.post(
+    //             `${OKTA_API_URL}groups`,
+    //             { profile: groupData.profile },
+    //             {
+    //                 headers: {
+    //                     'Authorization': `SSWS ${OKTA_API_TOKEN}`,
+    //                     'Content-Type': 'application/json'
+    //                 }
+    //             }
+    //         );
     
-            return {
-                id: response.data.id,
-                profile: {
-                    name: response.data.profile.name,
-                    description: response.data.profile.description
-                }
-            };
-        } catch (error) {
-            console.error("Okta API error (createOktaGroup):", error?.response?.data || error.message);
-            req.error(500, "Failed to create Okta group.");
-        }
-    });
+    //         return {
+    //             id: response.data.id,
+    //             profile: {
+    //                 name: response.data.profile.name,
+    //                 description: response.data.profile.description
+    //             }
+    //         };
+    //     } catch (error) {
+    //         console.error("Okta API error (createOktaGroup):", error?.response?.data || error.message);
+    //         req.error(500, "Failed to create Okta group.");
+    //     }
+    // });
     // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
 
-    // --- END: Refactored logic ---
-    // this.on('calculateOverallTotals', async (req) => {
-    //     // Access the filters applied to the SalesAnalytics entity from the UI.
-    //     // The req.query.SELECT.where clause will contain the filters from the SmartTable/SmartFilterBar.
-    //     const filterClause = req.query.SELECT.where;
 
-    //     // Build a CQN query to perform aggregations on the original SALESBYCURRENT table,
-    //     // applying the same filters as the main table display.
-    //     const cqn = SELECT.one`
-    //         sum(AMOUNT_NETWR) as salesTotal,
-    //         count(*) as lineCount,
-    //         sum(QUANTITY_FKIMG) as unitsTotal,
-    //         sum(QUANTITY_FKIMG) as quantityTotal,
-    //         count(distinct case when VTEXT_FKART = 'Invoice' then INVOICE_CREDIT_VBELN end) as uniqueInvoiceCount
-    //     `.from('SALESBYCURRENT'); // Query the original entity for overall totals
+  /** ---------------------------------------------------------------------
+  * OKTA HANDLERS (merged from serviceA.js)
+  * -------------------------------------------------------------------- */
 
-    //     // Apply the filters if they exist in the request.
-    //     if (filterClause) {
-    //         cqn.where(filterClause);
-    //     }
+  // const OKTAUsers =
+  // this.entities.OKTAUsers || this.entities['UserService.OKTAUsers'];
+  // const LocalUserData =
+  //   this.entities.LocalUserData || this.entities['UserService.LocalUserData'];
 
-    //     try {
-    //         // Execute the query against the database
-    //         const result = await cds.run(cqn);
+  // if (!OKTAUsers) {
+  //   console.warn('⚠️ OKTAUsers not found in current service context.');
+  //   return;
+  // }
 
-    //         // Return the aggregated values. Use fallback to 0 for null results.
-    //         return {
-    //             salesTotal: result.salesTotal || 0,
-    //             lineCount: result.lineCount || 0,
-    //             unitsTotal: result.unitsTotal || 0,
-    //             quantityTotal: result.quantityTotal || 0,
-    //             uniqueInvoiceCount: result.uniqueInvoiceCount || 0,
-    //         };
-    //     } catch (error) {
-    //         console.error("Error calculating overall totals:", error);
-    //         // Re-throw the error or return default values if calculation fails
-    //         throw new Error("Failed to calculate overall totals.");
-    //     }
-    // });
-    
+  // /** Utility: Flatten arrays → strings for UI */
+  // const ensureString = (val) => {
+  //   if (Array.isArray(val)) return val.join(', ');
+  //   if (val === null || val === undefined) return '';
+  //   return String(val);
+  // };
 
-    
-    //You can add other handlers for other entities or operations (CREATE, UPDATE, etc.) here.
-    
+  // /** Utility: Split strings → arrays for Okta */
+  // const parseToArray = (val) => {
+  //   if (Array.isArray(val)) return val;
+  //   if (!val) return [];
+  //   return val.split(',').map((s) => s.trim()).filter(Boolean);
+  // };
+
+  // /** Admin check */
+  // function isAdmin(req) {
+  //   if (process.env.STRICT_ROLE_CHECK === 'true') {
+  //     const roles = (req.user && req.user.roles) || [];
+  //     return roles.includes('admin') || roles.includes('Admin');
+  //   }
+  //   return true;
+  // }
+
+  // /** ---------------------- READ HANDLER ---------------------- */
+  // this.on('READ', OKTAUsers, async (req) => {
+  //   console.log('📡 Fetching MFG users from Okta...');
+
+  //   const oktaUsers = await okta.listMFGUsers();
+  //   let local = [];
+
+  //   if (cds.db) {
+  //     try {
+  //       local = await SELECT.from(LocalUserData);
+  //     } catch (e) {
+  //       console.warn('⚠️ LocalUserData query skipped — no DB connection.');
+  //     }
+  //   } else {
+  //     console.warn('⚠️ No DB connected. Skipping LocalUserData merge.');
+  //   }
+  //   const oktaUsers = await okta.listMFGUsers();
+  //   const local = await SELECT.from(LocalUserData);
+
+  //   const merged = oktaUsers.map((u) => {
+  //     const localRow = local.find((r) => r.id === u.id);
+  //     if (!localRow) {
+  //       return {
+  //         ...u,
+  //         manufacturerNumber: ensureString(u.manufacturerNumber),
+  //         groupNames: ensureString(u.groupNames),
+  //         groupIds: ensureString(u.groupIds),
+  //       };
+  //     }
+
+  //     return {
+  //       ...u,
+  //       ...localRow,
+  //       manufacturerNumber: ensureString(localRow.manufacturerNumber || u.manufacturerNumber),
+  //       groupNames: ensureString(localRow.groupNames || u.groupNames),
+  //       groupIds: ensureString(localRow.groupIds || u.groupIds),
+  //       mfgName: localRow.manufacturerName || u.mfgName,
+  //       salesOrg: localRow.salesOrg || u.salesOrg,
+  //       salesOffice: localRow.salesOffice || u.salesOffice,
+  //       profitCentre: localRow.profitCentre || u.profitCentre,
+  //     };
+  //   });
+
+  //   const top = req.query?.SELECT?.limit?.rows?.val || 50;
+  //   const skip = req.query?.SELECT?.limit?.offset?.val || 0;
+  //   req._.count = merged.length;
+  //   const paginated = merged.slice(skip, skip + top);
+
+  //   console.log(`✅ Returning ${paginated.length} of ${merged.length} users`);
+  //   return paginated;
+  // });
+
+  // /** ---------------------- UPDATE HANDLER ---------------------- */
+  // this.on('UPDATE', OKTAUsers, async (req) => {
+  //   let id = req.params?.[0]?.id || req.data.id;
+  //   if (typeof id === 'object') id = id.id;
+  //   if (!id || typeof id !== 'string') return req.error(400, `Invalid ID: ${JSON.stringify(req.params)}`);
+
+  //   const payload = req.data || {};
+  //   const oktaProfile = {};
+  //   const oktaPayload = { profile: oktaProfile };
+
+  //   --- Map payload to Okta ---
+  //   if (payload.firstName) oktaProfile.firstName = payload.firstName;
+  //   if (payload.lastName) oktaProfile.lastName = payload.lastName;
+  //   if (payload.email) {
+  //     oktaProfile.email = payload.email;
+  //     oktaProfile.login = payload.email;
+  //   }
+  //   ['salesOrg', 'salesOffice', 'profitCentre', 'mfgName'].forEach(f => {
+  //     if (payload[f]) oktaProfile[f] = payload[f];
+  //   });
+  //   if (payload.manufacturerNumber) {
+  //     oktaPayload.profile.manufacturerNumber = payload.manufacturerNumber.split(',').map(s => s.trim());
+  //   }
+  //   if (payload.groupIds) {
+  //     oktaPayload.groupIds = payload.groupIds.split(',').map(s => s.trim());
+  //   }
+
+  //   --- Update Okta ---
+  //   if (Object.keys(oktaProfile).length > 0 || oktaPayload.groupIds) {
+  //     await okta.updateUser(id, oktaPayload);
+  //   }
+
+  //   --- Optional local persistence ---
+  //   if (cds.db) {
+  //     const localFields = {
+  //       id,
+  //       manufacturerName: payload.mfgName || null,
+  //       manufacturerNumber: payload.manufacturerNumber || '',
+  //       salesOrg: payload.salesOrg || null,
+  //       salesOffice: payload.salesOffice || null,
+  //       profitCentre: payload.profitCentre || null,
+  //       groupNames: payload.groupNames || '',
+  //       groupIds: payload.groupIds || '',
+  //     };
+  //     const existing = await SELECT.one(LocalUserData).where({ id });
+  //     existing
+  //       ? await UPDATE(LocalUserData).set(localFields).where({ id })
+  //       : await INSERT.into(LocalUserData).entries(localFields);
+  //   }
+
+  //   ✅ Return explicit object (no DB read)
+  //   req.info(`Handled virtual UPDATE for Okta user ${id}`);
+  //   return req.reply();
+  // });
+
+  // /** ---------------------- GROUPS HANDLER ---------------------- */
+  // this.on('READ', 'OktaGroups', async () => {
+  //   const groups = await okta.listGroups({ limit: 1000 });
+  //   return (groups || []).map((g) => ({
+  //     id: g.id,
+  //     name: g.profile?.name || g.name,
+  //   }));
+  // });
+  await require('./handlers/okta-handlers')(this);
+  
 });
 

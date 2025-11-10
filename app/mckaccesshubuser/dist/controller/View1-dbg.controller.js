@@ -218,7 +218,9 @@ sap.ui.define([
                 return;
             }
         
+            
             var oAction = oOktaModel.bindContext("/getOktaGroups(...)");
+            oAction.setParameter("query", "MFG"); // ✅ Set required parameter
         
             oAction.execute()
                 .then(function () {

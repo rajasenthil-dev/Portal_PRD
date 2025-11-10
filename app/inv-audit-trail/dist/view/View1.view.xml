@@ -172,6 +172,15 @@
                                         />
                                 </t:template>
                             </t:Column>
+                            <t:Column id="_IDGenColumn1" width='5rem' hAlign="End" sortProperty="POSTING_DATE">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "POSTING_DATE", "leadingProperty": "POSTING_DATE", "columnIndex": 5}'/>
+                                </t:customData>
+                                <Text id="_IDGenText2" text="{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText4" text="{path: 'POSTING_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
+                                </t:template>
+                            </t:Column>
                             <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End" sortProperty="SHELF_LIFE_EXP_DT">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "SHELF_LIFE_EXP_DT", "leadingProperty": "SHELF_LIFE_EXP_DT", "columnIndex": 10}'/>

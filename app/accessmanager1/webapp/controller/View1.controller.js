@@ -21,20 +21,41 @@ sap.ui.define([
 				sQuery = oEvent.getParameter("query");
 
 			if (sQuery && sQuery.length > 0) {
-				oTableSearchState = [new Filter("Name", FilterOperator.Contains, sQuery)];
+				oTableSearchState = [new Filter("email", FilterOperator.Contains, sQuery)];
 			}
 
 			this.oProductsTable.getBinding("items").filter(oTableSearchState, "Application");
 		},
 
 		onAdd: function () {
-			MessageBox.information("This functionality is not ready yet.", {title: "Aw, Snap!"});
+			debugger
+			//const oCrossAppNav = sap.ushell?.Container?.getService?.("CrossApplicationNavigation");
+
+			if (sap.ushell && sap.ushell.Container && sap.ushell.Container.getServiceAsync) {
+				sap.ushell.Container.getServiceAsync("CrossApplicationNavigation")
+					.then(function(oCrossAppNav) {
+					oCrossAppNav.toExternal({
+						target: {
+						semanticObject: "user",
+						action: "create"
+						}
+					});
+					})
+					.catch(function(err) {
+					console.error("❌ CrossAppNav failed", err);
+					sap.m.MessageBox.error("Navigation service not available.");
+					});
+			} else {
+				// Fallback (optional): direct URL
+				MessageBox.information("This functionality is not ready yet.", {title: "Aw, Snap!"});
+			}
+			
 		},
 
 		onSort: function () {
 			this._bDescendingSort = !this._bDescendingSort;
 			var oBinding = this.oProductsTable.getBinding("items"),
-				oSorter = new Sorter("Name", this._bDescendingSort);
+				oSorter = new Sorter("lastName", this._bDescendingSort);
 
 			oBinding.sort(oSorter);
 		},

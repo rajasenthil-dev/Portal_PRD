@@ -1,13 +1,74 @@
 <mvc:View controllerName="pivottable.controller.View1"
     xmlns="sap.m"
+    xmlns:f="sap.f"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
+    xmlns:sf="sap.ui.comp.smartfilterbar"
+    xmlns:st="sap.ui.comp.smarttable"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:t="sap.ui.table"
     height="100%">
-    <Page id="mainPage" title="Sales Analysis Report">
-        <content>
+    <f:DynamicPage id="dynamicPage" showFooter="true">
+    <!-- <Page id="mainPage" title="Sales Analysis Report"> -->
+        <f:header>
+            <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" class="noPadding">
+                <FlexBox id="_IDGenFlexBox6" width="100%" direction="Row" wrap="Wrap" justifyContent="SpaceBetween" class="headerPadding sapUiMediumMarginBottom borderBottom">
+                    <HeaderContainer id="container1" scrollStep="200" height="100px">
+                        <FlexBox id="_IDGenFlexBox7" alignItems="Center" height="100px">
+                            <FlexBox id="_IDGenFlexBox8" alignItems="Center" height="75px" class="imgBG">
+                                    <Image id="logoImage" src="/img/logoipsum-325.svg" width="125px" decorative="false" press="onLogoPressed" tooltip="{i18n>tooltipLogo}" >
+                                    <layoutData>
+                                        <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow"/>
+                                    </layoutData>
+                                </Image>
+                            </FlexBox>
+                        </FlexBox>
+                    </HeaderContainer>
+                    <!-- <HeaderContainer id="container2" scrollStep="200">
+                            <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>lastRefresh}" subheader="3/22/2024 6:30:57AM" frameType="OneByHalf">
+                            <TileContent id="_IDGenTileContent1" class="refreshTitle" footer="{i18n>tileFooterText}">
+                                <Text id="_IDGenText1" class="refreshText" text="3/22/2024 6:30:57AM"/>
+                            </TileContent>
+                        </GenericTile>
+                    </HeaderContainer> -->
+                </FlexBox>
+                <sf:SmartFilterBar
+                    id="bar0"
+                    entitySet="PIVOTTABLE"
+                    useDateRangeType="true"
+                    persistencyKey="SmartFilterBar_PIVOTTABLE"
+                    smartVariant="pageVariant"
+                    liveMode="true"
+                    search="onFilterSearch"
+                    initialise=".onFilterBarInitialised">
+                    <sf:controlConfiguration>
+                        <sf:ControlConfiguration id="_IDGenControlConfiguration1"
+                            key="INVOICE_DATE_FKDAT"
+                            visibleInAdvancedArea="true"
+                            conditionType="{
+                                module: 'sap.ui.comp.config.condition.DateRangeType'
+                            }"
+                        />
+                    </sf:controlConfiguration>
+                </sf:SmartFilterBar>
+                <!-- <Panel id="panel" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+                    <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
+                        <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
+                            <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
+                            <Text id="_IDGenNumericContent1" class="mck_TileContent" text=""/>
+                        </FlexBox>
+                        <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
+                            <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
+                            <Text id="_IDGenNumericContent2" class="mck_TileContent" text=""/>
+                        </FlexBox>
+                    </HeaderContainer>
+                </Panel> -->
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
             <!-- Manual Filter Bar for maximum compatibility -->
-            <Panel id="_IDGenPanel" class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
-                 <headerToolbar>
+            <!-- <Panel id="_IDGenPanel" class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
+                <headerToolbar>
                     <OverflowToolbar id="_IDGenOverflowToolbar">
                         <Title id="_IDGenTitle" text="Filters"/>
                     </OverflowToolbar>
@@ -39,10 +100,10 @@
                         </Toolbar>
                     </VBox>
                 </content>
-            </Panel>
+            </Panel> -->
 
             <!-- Summary Panel (No changes here) -->
-            <Panel id="_IDGenPanel1" class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
+            <!-- <Panel id="_IDGenPanel1" class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="true">
                 <headerToolbar>
                     <OverflowToolbar id="_IDGenOverflowToolbar1">
                         <Title id="_IDGenTitle1" text="Overall Summary"/>
@@ -76,51 +137,200 @@
                         </GenericTile>
                     </FlexBox>
                 </content>
-            </Panel>
+            </Panel> -->
 
             <!-- Stable sap.m.Table to display data -->
-            <Table
-                id="salesTable"
-                inset="false"
-                items="{path: '/PIVOTTABLE'}"
-                class="sapUiResponsiveMargin">
-                <headerToolbar>
-                    <OverflowToolbar id="_IDGenOverflowToolbar2">
-                        <Title id="_IDGenTitle2" text="Data Breakdown"/>
-                        <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
-                        <Button id="_IDGenButton2" text="Ladega Products" press=".onFilterLadega" type="Emphasized"/>
-                        <Button id="_IDGenButton3" text="Cystadrops Products" press=".onFilterCystadrops" type="Emphasized"/>
-                    </OverflowToolbar>
-                </headerToolbar>
-                <columns>
-                    <Column id="_IDGenColumn"><Text id="_IDGenText1" text="Customer"/></Column>
-                    <Column id="_IDGenColumn1"><Text id="_IDGenText2" text="Product"/></Column>
-                    <Column id="_IDGenColumn2" hAlign="End"><Text id="_IDGenText3" text="Net Value"/></Column>
-                    <Column id="_IDGenColumn3" hAlign="End"><Text id="_IDGenText4" text="Invoiced Qty"/></Column>
-                    <Column id="_IDGenColumn4"><Text id="_IDGenText5" text="Province"/></Column>
-                    <Column id="_IDGenColumn5"><Text id="_IDGenText6" text="Billing Date"/></Column>
-                </columns>
+            <IconTabBar
+                id="idIconTabBar"
+                select=".onFilterSelect"
+                class="sapUiResponsiveContentPadding">
                 <items>
-                    <ColumnListItem id="_IDGenColumnListItem">
-                        <cells>
-                            <Text id="_IDGenText7" text="{KUNAG_ANA_SOLD_TO_PARTY}"/>
-                            <Text id="_IDGenText8" text="{MATNR_MATERIAL}"/>
-                            <Text id="_IDGenText9" text="{
-                                path: 'NETWR_NET_VALUE',
-                                type: 'sap.ui.model.type.Currency',
-                                formatOptions: { showMeasure: false }
-                            }"/>
-                            <Text id="_IDGenText10" text="{FKIMG_INVOICED_QUANTITY}"/>
-                            <Text id="_IDGenText11" text="{PROVINCE}"/>
-                            <Text id="_IDGenText12" text="{
-                                path: 'FKDAT_ANA_BILLING_DATE',
-                                type: 'sap.ui.model.type.Date',
-                                formatOptions: { style: 'medium' }
-                            }"/>
-                        </cells>
-                    </ColumnListItem>
+                    <IconTabFilter
+                        id="Pro"
+                        showAll="true"
+                        count="{/PIVOTTABLE/Counts/MAKTX}"
+                        icon="sap-icon://multi-select"
+                        text="All Products"
+                        key="Products" />
+                    <IconTabSeparator id="itab"/>
+                    <IconTabFilter
+                        id="lad"
+                        icon="sap-icon://lab"
+                        text="Ladega"
+                        key="Ladega" />
+                    <IconTabFilter
+                        id="sig"
+                        icon="sap-icon://syringe"
+                        text="SIGNIFOR"
+                        key="SIGNIFOR" />
+                    <IconTabFilter
+                        id="cysta"
+                        icon="sap-icon://clinical-task-tracker"
+                        text="Cystadrops"
+                        key="Cystadrops" />
                 </items>
-            </Table>
-        </content>
-    </Page>
+                <content>
+                    <st:SmartTable
+                        xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+                        width="100%" 
+                        direction="Column" 
+                        fitContainer="true" 
+                        tableType="Table" 
+                        header="{i18n>tableTitle}" 
+                        enableAutoBinding="true" 
+                        id="table0" 
+                        smartFilterId="bar0"
+                        cd:w5g.dt.context="/PIVOTTABLE" 
+                        entitySet="PIVOTTABLE" 
+                        placeToolbarInTable="true" 
+                        useExportToExcel="true" 
+                        beforeExport="onBeforeExport" 
+                        useVariantManagement="true" 
+                        useTablePersonalisation="true" 
+                        customData:p13nDialogSettings='{filter:{visible:false}}'
+                        showRowCount="true" 
+                        persistencyKey="SmartTableAnalytical_Explored"
+                        enableAutoColumnWidth="true" 
+                        class="sapUiResponsiveContentPadding"
+                    >
+                    <t:Table
+                        selectionMode="None"
+                        id="table"
+                        class="footerPadding"
+                        alternateRowColors="true"
+                        core:require="{
+                            TypeForODataV2DateOnly: 'sap/ui/model/odata/type/DateTime',
+                            TypeForODataV2Time: 'sap/ui/model/odata/type/Date',
+                            TypeForODataTimestamp: 'sap/ui/model/odata/type/DateTimeOffset'
+                        }"> 
+                            <t:columns>
+                                <t:Column id="_IDGenColumn11" width='22rem' hAlign="Begin" sortProperty="MAKTX">
+                                    <t:customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "MAKTX", "leadingProperty": "MAKTX", "columnIndex": 0}'/>
+                                    </t:customData>
+                                    <Text id="_IDGenText31" text="{i18n>PIVOTTABLE.MAKTX}"></Text>
+                                    <t:template>
+                                        <Text id="_IDGenText" text="{MAKTX}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn1" width='6rem' hAlign="Begin" sortProperty="PROVINCE_REGIO">
+                                    <t:customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "PROVINCE_REGIO", "leadingProperty": "PROVINCE_REGIO", "columnIndex": 1}'/>
+                                    </t:customData>
+                                    <Text id="_IDGenText1" text="{i18n>PIVOTTABLE.PROVINCE_REGIO}"></Text>
+                                    <t:template>
+                                        <Text id="_IDGenText2" text="{PROVINCE_REGIO}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn2" hAlign="Begin" sortProperty="SHIP_TO_NAME">
+                                    <t:customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "SHIP_TO_NAME", "leadingProperty": "SHIP_TO_NAME", "columnIndex": 2}'/>
+                                    </t:customData>
+                                    <Text id="_IDGenText3" text="{i18n>PIVOTTABLE.SHIP_TO_NAME}"></Text>
+                                    <t:template>
+                                        <Text id="_IDGenText4" text="{SHIP_TO_NAME}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn3" hAlign="End" sortProperty="INVOICE_DATE_FKDAT">
+                                    <t:customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_DATE_FKDAT", "leadingProperty": "INVOICE_DATE_FKDAT", "columnIndex": 3}'/>
+                                    </t:customData>
+                                    <Text id="_IDGenText5" text="{i18n>PIVOTTABLE.INVOICE_DATE_FKDAT}"></Text>
+                                    <t:template>
+                                        <Text id="_IDGenText12" text="{
+                                            parts: [{ path: 'INVOICE_DATE_FKDAT', type: 'sap.ui.model.odata.type.Date' }],
+                                            formatter: '.formatOrDash'
+                                        }"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn4"  hAlign="End" sortProperty="QUANTITY_FKIMG">
+                                    <t:customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "QUANTITY_FKIMG", "leadingProperty": "QUANTITY_FKIMG", "columnIndex": 4}'/>
+                                    </t:customData>
+                                    <Text id="_IDGenText6" text="{i18n>PIVOTTABLE.QUANTITY_FKIMG}"></Text>
+                                    <t:template>
+                                        <Text id="_IDGenText7"  text="{QUANTITY_FKIMG}"/>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </st:SmartTable>
+
+                        
+                        
+                        
+                    <!-- <Table
+                        id="salesTable"
+                        inset="false"
+                        items="{path: '/PIVOTTABLE'}"
+                        class="sapUiResponsiveMargin"> -->
+                        <!-- <headerToolbar> -->
+                            <!-- <Toolbar id="_IDGenOverflowToolbar2">
+                                <DateRangeSelection id="idDateRange" />
+                                <Input id="idProvinceFilter" placeholder="Province" />
+                                <Input id="idShipToFilter" placeholder="ShipTo Name" /> -->
+                                <!-- <Select id="idMonthFilter">
+                                    <items>
+                                    <core:Item id="_IDGenItem" key="01" text="January" />
+                                    <core:Item id="_IDGenItem1" key="02" text="February" />\
+                                    </items>
+                                </Select> -->
+                                <!-- <Button id="_IDGenButton1" text="Search" press="onFilterSearch" /> -->
+                                <!-- <Title id="_IDGenTitle222" text="Data Breakdown"/>
+                                <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+                                <Button id="_IDGenButton2" text="Ladega Products" press=".onFilterLadega" type="Emphasized"/>
+                                <Button id="_IDGenButton12" text="SIGNIFOR Products" press=".onFilterSignifor" type="Emphasized"/>
+                                <Button id="_IDGenButton3" text="Cystadrops Products" press=".onFilterCystadrops" type="Emphasized"/> -->
+                            <!-- </Toolbar>
+                        </headerToolbar> -->
+                        <!-- <columns>
+                            <Column id="_IDGenColumn"><Text id="_IDGenText1" text="Product Desc"/></Column>
+                            <Column id="_IDGenColumn1"><Text id="_IDGenText2" text="Province"/></Column>
+                            <Column id="_IDGenColumn2" hAlign="End"><Text id="_IDGenText3" text="Ship To Name"/></Column>
+                            <Column id="_IDGenColumn3" hAlign="End"><Text id="_IDGenText4" text="Invoiced Date"/></Column>
+                            <Column id="_IDGenColumn4"><Text id="_IDGenText5" text="Month"/></Column>
+                            <Column id="_IDGenColumn5"><Text id="_IDGenText6" text="Year"/></Column>
+                            <Column id="_IDGenColumn6"><Text id="_IDGenText17" text="Quantity"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="_IDGenColumnListItem">
+                                <cells>
+                                    <Text id="_IDGenText7" text="{MAKTX}"/>
+                                    <Text id="_IDGenText8" text="{PROVINCE_REGIO}"/>
+                                    <Text id="_IDGenText9" text="{SHIP_TO_NAME}"/>            
+                                    <Text id="_IDGenText12" text="{
+                                            parts: [{ path: 'INVOICE_DATE_FKDAT', type: 'sap.ui.model.odata.type.Date' }],
+                                            formatter: '.formatOrDash'
+                                        }"/>
+                                    <Text id="_IDGenText10" text="{CAL_MONTH}"/>
+                                    <Text id="_IDGenText11" text="{CAL_YEAR}"/>
+                                    <Text id="_IDGenText13" text="{QUANTITY_FKIMG}"/>
+                                    
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table> -->
+                </content>
+            </IconTabBar>
+        </f:content>
+        <f:footer>
+                <OverflowToolbar id="_IDGenOverflowToolbar1" class="footer">
+                    <!-- Added by Bryan Cash in order to make the footer fully responsive for mobile devices -->
+                    <FlexBox id="_IDGenFlexBox9" width="100%" justifyContent="SpaceBetween" wrap="Wrap">
+                        <FlexBox id="_IDGenFlexBox10">
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1"
+                                title="{i18n>totals}"
+                                class="footerTitle"/>
+                        </FlexBox>
+                        <FlexBox id="_IDGenFlexBox11" >
+                            <HBox id="_IDGenHBox1" class="sapUiSmallMarginEnd">
+                                <Label id="_IDGenLabel1" text="{i18n>footerLabel1}:" class="cssLabelTotal"/>
+                                <Text id="FooterText1" class="footerText" text =""/>
+                            </HBox>
+                        </FlexBox>
+                    </FlexBox>
+                </OverflowToolbar>
+            </f:footer>
+    <!-- </Page> -->
+    </f:DynamicPage>
 </mvc:View>

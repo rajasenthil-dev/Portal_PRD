@@ -23,6 +23,14 @@
           "annotations": [],
           "odataVersion": "2.0"
         }
+      },
+      "oktaService": {
+        "uri": "/odata/v4/user/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
       }
     },
     "crossNavigation": {
@@ -32,6 +40,7 @@
           "action": "display",
           "title": "{{access-display.flpTitle}}",
           "subTitle": "{{access-display.flpSubtitle}}",
+          "icon": "{{access-display.flpIcon}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -79,6 +88,16 @@
       },
       "": {
         "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "oktaService": {
+        "type": "sap.ui.model.odata.v4.ODataModel",   
+        "dataSource": "oktaService",
         "preload": true,
         "settings": {
           "operationMode": "Server",

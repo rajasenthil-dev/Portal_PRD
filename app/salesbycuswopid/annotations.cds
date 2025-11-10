@@ -191,6 +191,14 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : SMTP_ADDR, 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : TEL_NUMBER, 
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : KZWI1, 
             },
             {

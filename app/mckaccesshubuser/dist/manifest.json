@@ -22,7 +22,7 @@
     },
     "dataSources": {
       "oktaService": {
-        "uri": "/odata/v4/okta/",
+        "uri": "/odata/v4/user/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -37,6 +37,7 @@
           "action": "create",
           "title": "{{user-create.flpTitle}}",
           "subTitle": "{{user-create.flpSubtitle}}",
+          "icon": "{{user-create.flpIcon}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
