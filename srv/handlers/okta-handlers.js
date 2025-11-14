@@ -365,6 +365,8 @@ module.exports = async function (srv) {
     try {
       const groupIds = req.data.groupIds?.split(',').map(s => s.trim()) || [];
       const manufacturerNumber = req.data.manufacturerNumber?.split(',').map(s => s.trim()) || [];
+      console.log(groupIds)
+      console.log(manufacturerNumber)
 
       const profile = {
         firstName: req.data.firstName,
@@ -376,6 +378,7 @@ module.exports = async function (srv) {
         mfgName: req.data.mfgName,
         manufacturerNumber
       };
+      console.log(profile)
 
       await okta.updateUser(id, profile, groupIds);
 
@@ -481,5 +484,33 @@ module.exports = async function (srv) {
       return req.error(500, 'Failed to create Okta group.');
     }
   });
+
+  
+  srv.on('sendActivationEmail', async (req) => {
+    const { userId } = req.data;
+
+    if (!userId) return req.error(400, 'Missing user ID');
+
+    try {
+      await okta.reactivateUser(userId);
+      return 'Activation email sent via reactivation.';
+    } catch (err) {
+      console.error('❌ Failed to send activation email:', err.message);
+      return req.error(500, 'Failed to send activation email.');
+    }
+  });
+  srv.on('deleteUser', async (req) => {
+  const { userId } = req.data;
+
+  if (!userId) return req.error(400, 'Missing userId.');
+
+  try {
+    const result = await okta.deleteUser(userId);
+    return result;
+  } catch (err) {
+    console.error('❌ [deleteUser] Failed:', err.message);
+    return req.error(500, 'Failed to delete user.');
+  }
+});
 };
 

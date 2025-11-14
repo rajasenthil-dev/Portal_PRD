@@ -160,18 +160,29 @@ sap.ui.define([
         },
         onActivateUser: async function () {
             const oView = this.getView();
-            const oModel = this.getView().getModel(); // Assuming OData V2 or V4
-            const oCtx = oView.getBindingContext();   // Adjust this depending on selection
+            const oModel = this.getOwnerComponent().getModel(); // default model
+            const oCtx = oView.getBindingContext("edit");
 
             if (!oCtx) {
                 return MessageBox.warning("Please select a user first.");
             }
 
             const userId = oCtx.getProperty("id");
+            const sPath = oCtx.getPath();
 
             try {
                 await this._callOktaAction("activateUser", { userId });
-                MessageToast.show(`✅ User ${userId} activated`);
+
+                // ✅ Re-fetch latest user data to update UI
+                oModel.read(sPath, {
+                success: (oData) => {
+                    oModel.setProperty(sPath, oData); // optional: force update
+                    MessageToast.show(`✅ User ${userId} activated`);
+                },
+                error: () => {
+                    MessageToast.show("Activated but failed to refresh user data");
+                }
+                });
             } catch (err) {
                 console.error("Activation failed:", err);
                 MessageBox.error(`❌ Failed to activate user ${userId}`);
@@ -180,24 +191,62 @@ sap.ui.define([
 
         onDeactivateUser: async function () {
             const oView = this.getView();
-            const oModel = this.getView().getModel();
-            const oCtx = oView.getBindingContext();
+            const oModel = this.getOwnerComponent().getModel();
+            const oCtx = oView.getBindingContext("edit");
 
             if (!oCtx) {
-            return MessageBox.warning("Please select a user first.");
+                return MessageBox.warning("Please select a user first.");
+            }
+
+            const userId = oCtx.getProperty("id");
+            const sPath = oCtx.getPath();
+
+            try {
+                await this._callOktaAction("deactivateUser", { userId });
+
+                oModel.read(sPath, {
+                success: (oData) => {
+                    oModel.setProperty(sPath, oData);
+                    MessageToast.show(`✅ User ${userId} deactivated`);
+                },
+                error: () => {
+                    MessageToast.show("Deactivated but failed to refresh user data");
+                }
+                });
+            } catch (err) {
+                console.error("Deactivation failed:", err);
+                MessageBox.error(`❌ Failed to deactivate user ${userId}`);
+            }
+        },
+        onSendActivationEmail: async function () {
+            const oView = this.getView();
+            const oCtx = oView.getBindingContext("edit");
+
+            if (!oCtx) {
+                return MessageBox.warning("Please select a user first.");
             }
 
             const userId = oCtx.getProperty("id");
 
             try {
-            await this._callOktaAction("deactivateUser", { userId });
-            MessageToast.show(`✅ User ${userId} deactivated`);
+                await this._callOktaAction("sendActivationEmail", { userId });
+                MessageToast.show(`✅ Activation email sent to ${userId}`);
+
+                // 🔄 Refresh the binding context to update status
+                await new Promise((resolve, reject) => {
+                    oCtx.getModel().read(oCtx.getPath(), {
+                        success: (oData) => {
+                            oCtx.getModel().setProperty(oCtx.getPath(), oData);
+                            resolve();
+                        },
+                        error: reject
+                    });
+                });
             } catch (err) {
-            console.error("Deactivation failed:", err);
-            MessageBox.error(`❌ Failed to deactivate user ${userId}`);
+                console.error("❌ Email activation failed:", err);
+                MessageBox.error(`Failed to send activation email for ${userId}`);
             }
         },
-
         _callOktaAction: async function (actionName, payload) {
             const oModel = this.getView().getModel();
 

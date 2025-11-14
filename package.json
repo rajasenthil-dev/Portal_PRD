@@ -34,7 +34,7 @@
     "start": "cds-serve",
     "test": "jest",
     "clean": "rimraf .portal_mta_build_tmp resources mta_archives Makefile_*.mta gen || true",
-    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "build": "rm -rf resources mta_archives && mbt build --mtar archive",
     "build:cf": "rimraf mta_archives resources && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/mck-portal_1.0.3.mtar --retries 1",
     "watch": "cds watch --profile hybrid",

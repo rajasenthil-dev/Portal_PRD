@@ -1583,6 +1583,8 @@ service UserService { // Service name remains the same (Path: /odata/v4/UserServ
     action createOktaGroup(group: NewOktaGroup) returns OktaGroup;
     action activateUser(userId: String) returns String;
     action deactivateUser(userId: String) returns String;
+    action sendActivationEmail(userId: String) returns String;
+    action deleteUser(userId: String) returns String;
     // Expose the LocalUserData entity from db (read-only recommended if not edited here)
     @readonly
     entity LocalUserData as projection on ENTLocalUserData;

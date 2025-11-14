@@ -27,15 +27,21 @@
 						text="Activate"
 						icon="sap-icon://employee-approvals"
 						type="Accept"
-						visible="{= ${edit>status} !== 'ACTIVE'}"
-						press=".onActivate"/>
+						visible="{= ${edit>status} === 'DEPROVISIONED'}"
+						press=".onActivateUser"/>
+					<m:Button id="sendEmailButton"
+						text="Send Activation Email"
+						icon="sap-icon://email"
+						press=".onSendActivationEmail"
+						visible="{= ${edit>status} === 'PROVISIONED' }"
+					/>
 					<m:Button 
 						id="deactivateButton"
 						text="Deactivate"
 						icon="sap-icon://employee-rejections"
 						type="Reject"
 						visible="{= ${edit>status} === 'ACTIVE'}"
-						press=".onDeactivate"/>
+						press=".onDeactivateUser"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>

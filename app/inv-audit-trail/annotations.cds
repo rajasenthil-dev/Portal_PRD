@@ -74,6 +74,11 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : POSTING_TIMEE,
+                Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}'
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : TRAN_TYPE,
                 Label : '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}

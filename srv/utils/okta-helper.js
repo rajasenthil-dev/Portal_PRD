@@ -192,15 +192,28 @@ function getOktaApiInstance() {
     throw new Error('Missing Okta configuration environment variables.');
   }
 
-  return axios.create({
+  const axiosInstance = axios.create({
     baseURL: `${OKTA_BASE_URL.replace(/\/$/, '')}/api/v1`,
     timeout: 15000,
     headers: {
       Authorization: `SSWS ${OKTA_API_TOKEN}`,
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      'User-Agent': 'cap-app/1.0'
     },
+    proxy: false // disables proxy, in case you're behind a corporate one
   });
+
+  axiosInstance.interceptors.request.use(config => {
+    console.log("📡 OKTA Request:", {
+      method: config.method,
+      url: config.baseURL + config.url,
+      headers: config.headers
+    });
+    return config;
+  });
+
+  return axiosInstance;
 }
 
 /* ----------------- Group Utilities ------------------- */
@@ -236,6 +249,7 @@ async function createUser(profile, groupIds = []) {
     const resp = await api.post('/users?activate=true', payload);
     const userId = resp.data?.id;
 
+
     if (groupIds?.length) {
       for (const groupId of groupIds) {
         await api.put(`/groups/${encodeURIComponent(groupId)}/users/${encodeURIComponent(userId)}`);
@@ -253,30 +267,43 @@ async function createUser(profile, groupIds = []) {
 /**
  * Update an existing Okta user (and optionally group memberships)
  */
-async function updateUser(id, profile, groupIds = []) {
+async function updateUser(userId, profile = {}, groupIds = []) {
+  if (!userId) throw new Error('User ID is required');
+
+  const api = getOktaApiInstance(); // Ensure this is your shared axios instance
+
+  // // 1. Update profile
+  if (Object.keys(profile).length > 0) {
+    await api.post(`/users/${encodeURIComponent(userId)}`, { profile });
+  }
+
+  // 2. Update groups if needed
+  // if (Array.isArray(groupIds) && groupIds.length > 0) {
+  //   await _replaceUserGroups(userId, groupIds);
+  // }
+
+  return;
+}
+
+async function _replaceUserGroups(userId, newGroupIds) {
   const api = getOktaApiInstance();
 
-  try {
-    if (profile) {
-      await api.post(`/users/${encodeURIComponent(id)}`, { profile });
+  // Fetch current group assignments
+  const currentGroupsResp = await api.get(`/users/${encodeURIComponent(userId)}/groups`);
+  const currentGroupIds = currentGroupsResp.data.map(g => g.id);
+
+  // Remove from any group not in the new list
+  for (const oldGroupId of currentGroupIds) {
+    if (!newGroupIds.includes(oldGroupId)) {
+      await api.delete(`/groups/${oldGroupId}/users/${userId}`);
     }
+  }
 
-    if (groupIds?.length > 0) {
-      const current = await api.get(`/users/${id}/groups`);
-      const currentIds = (current.data || []).map((g) => g.id);
-
-      for (const groupId of groupIds) {
-        if (!currentIds.includes(groupId)) {
-          await api.put(`/groups/${groupId}/users/${id}`);
-        }
-      }
+  // Add to new groups (ignore ones already assigned)
+  for (const newGroupId of newGroupIds) {
+    if (!currentGroupIds.includes(newGroupId)) {
+      await api.put(`/groups/${newGroupId}/users/${userId}`);
     }
-
-    console.log(`✅ Updated Okta user: ${id}`);
-    return { status: 'updated' };
-  } catch (error) {
-    console.error('❌ [updateUser] Error:', error.response?.data || error.message);
-    throw error;
   }
 }
 
@@ -312,6 +339,7 @@ async function listUsersInMFGGroups() {
       for (const u of users.data || []) {
         const existing = userMap.get(u.id) || {
           id: u.id,
+          status: u.status,
           firstName: u.profile?.firstName,
           lastName: u.profile?.lastName,
           email: u.profile?.email,
@@ -376,7 +404,36 @@ async function deactivateUser(id) {
     throw error;
   }
 }
+async function deleteUser(userId) {
+  const api = getOktaApiInstance();
 
+  try {
+    // Step 1: Get user status
+    const { data: user } = await api.get(`/users/${userId}`);
+    const status = user.status;
+
+    if (status !== 'DEPROVISIONED') {
+      console.log(`ℹ️ User status is '${status}', deactivating first...`);
+      await api.post(`/users/${userId}/lifecycle/deactivate`);
+    }
+
+    // Step 2: Delete user
+    await api.delete(`/users/${userId}`);
+    console.log(`🗑️ Successfully deleted user: ${userId}`);
+    return { status: 'deleted' };
+  } catch (err) {
+    console.error('❌ [deleteUser] Failed:', err.response?.data || err.message);
+    throw err;
+  }
+}
+async function sendActivationEmail(userId) {
+  const api = getOktaApiInstance();
+  return api.post(`/users/${userId}/lifecycle/activate?sendEmail=true`);
+}
+async function reactivateUser(userId) {
+  const api = getOktaApiInstance();
+  return api.post(`/users/${userId}/lifecycle/reactivate?sendEmail=true`);
+}
 /* ----------------- Exports ------------------- */
 
 module.exports = {
@@ -387,5 +444,8 @@ module.exports = {
   activateUser,
   deactivateUser,
   getUserGroups,
+  sendActivationEmail,
+  reactivateUser,
+  deleteUser
 };
 

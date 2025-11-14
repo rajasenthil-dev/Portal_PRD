@@ -159,6 +159,7 @@ entity INVENTORYAUDITTRAIL
     key CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
         DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
         POSTING_DATE        : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+        POSTING_TIME        : Time          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
     key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
