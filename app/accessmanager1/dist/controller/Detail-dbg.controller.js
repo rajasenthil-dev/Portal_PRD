@@ -247,6 +247,38 @@ sap.ui.define([
                 MessageBox.error(`Failed to send activation email for ${userId}`);
             }
         },
+        onDeleteUser: async function () {
+            const oView = this.getView();
+            const oCtx = oView.getBindingContext("edit");
+
+            if (!oCtx) {
+                return MessageBox.warning("Please select a user first.");
+            }
+
+            const userId = oCtx.getProperty("id");
+
+            const confirm = await new Promise((resolve) => {
+                MessageBox.confirm(`Are you sure you want to delete user ${userId}?`, {
+                title: "Confirm Deletion",
+                actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+                emphasizedAction: MessageBox.Action.NO,
+                onClose: resolve
+                });
+            });
+
+            if (confirm !== MessageBox.Action.YES) return;
+
+            try {
+                await this._callOktaAction("deleteUser", { userId });
+                MessageToast.show(`🗑️ User ${userId} deleted`);
+                
+                // Refresh list or navigate back depending on your UI
+                this.getOwnerComponent().getModel().refresh(true);
+            } catch (err) {
+                console.error("❌ Deletion failed:", err);
+                MessageBox.error(`Failed to delete user: ${err.message || err}`);
+            }
+        },
         _callOktaAction: async function (actionName, payload) {
             const oModel = this.getView().getModel();
 
@@ -257,7 +289,9 @@ sap.ui.define([
                 success: resolve,
                 error: reject
                 });
+                oModel.refresh(true);
             });
+            
         },
 
         onExit: function () {

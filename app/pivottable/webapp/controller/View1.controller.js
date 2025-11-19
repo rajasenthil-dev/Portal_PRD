@@ -9,23 +9,176 @@ sap.ui.define([
     return Controller.extend("pivottable.controller.View1", {
 
         onInit: function () {
-            const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.getRoute("RouteView1").attachPatternMatched(this._onPatternMatched, this);
-           
-            this._oSmartTable = this.byId("table0");
-            const oSmartTable = this.getView().byId("table0");
+            const monthLookup = {
+                "JANUARY": 1, "FEBRUARY": 2, "MARCH": 3, "APRIL": 4,
+                "MAY": 5, "JUNE": 6, "JULY": 7, "AUGUST": 8,
+                "SEPTEMBER": 9, "OCTOBER": 10, "NOVEMBER": 11, "DECEMBER": 12
+            };
+            const oTileModel = new sap.ui.model.json.JSONModel({
+                monthTotals: {
+                    JANUARY: 0,
+                    FEBRUARY: 0,
+                    MARCH: 0,
+                    APRIL: 0,
+                    MAY: 0,
+                    JUNE: 0,
+                    JULY: 0,
+                    AUGUST: 0,
+                    SEPTEMBER: 0,
+                    OCTOBER: 0,
+                    NOVEMBER: 0,
+                    DECEMBER: 0
+                }
+            });
+            this.getView().setModel(oTileModel, "tileModel");
+            // Default product key
+            this._sSelectedKey = "Ladega";
+
+            const oSmartTable     = this.byId("table0");
+            const oSmartFilterBar = this.byId("bar0");
+            const oTabs           = this.byId("idIconTabBar");
+
+            this._oSmartTable = oSmartTable;
+
+            // -----------------------------------------
+            // 1️⃣ SmartTable INITIALISE (table is ready)
+            // -----------------------------------------
+            oSmartTable.attachInitialise(() => {
+                // mark table ready if you still use flags
+                this._bTableReady = true;
+
+                // Preselect product tab visually
+                if (oTabs) {
+                    oTabs.setSelectedKey("Ladega");
+                }
+
+                // 🔹 Inner GridTable exists *now*
+                const oInnerTable = oSmartTable.getTable();
+                if (oInnerTable) {
+                    oInnerTable.attachRowsUpdated(this._onRowsUpdated.bind(this));
+                }
+            });
+
+            // --------------------------------------------------
+            // 2️⃣ SmartFilterBar INITIALIZED (when controls exist)
+            // --------------------------------------------------
+            oSmartFilterBar.attachEventOnce("initialized", () => {
+
+                this._bFilterReady = true;
+
+                const currentYear  = new Date().getFullYear().toString();
+                const oYearControl = oSmartFilterBar.getControlByKey("CAL_YEAR");
+
+                if (oYearControl && oYearControl.setSelectedKey) {
+                    oYearControl.setSelectedKey([currentYear]);
+                }
+
+                oSmartFilterBar.fireFilterChange();
+                oSmartFilterBar.search(); // triggers rebind
+            });
+            
+            // --------------------------------------------------
+            // 3️⃣ Inject product filter before SmartTable binds
+            // --------------------------------------------------
+            oSmartTable.attachBeforeRebindTable(this._onBeforeRebindTable, this);
+        },
+        _onTabSelect: function (oEvent) {
+            debugger
+            const key = oEvent.getParameter("key");
+
+            // Store selected product
+            this._sSelectedKey = key;
+
+            // Force SmartTable to rebind
+            this._oSmartTable.rebindTable();
+        },
+        // _attemptInitialLoad: function () {
+        //     if (this._bTableReady && this._bFilterReady) {
+        //         this._oSmartTable.rebindTable();
+        //     }
+        // },
+        /**
+         * Runs only when BOTH SmartTable.initialise AND SmartFilterBar.initialise have fired
+         */
+        _attemptInitialRebind: function () {
+
+            if (this._bSmartTableReady && this._bFilterBarReady) {
+
+                // Rebind table now that both are ready
+                this._oSmartTable.rebindTable();
+            }
+        },
+        // onAfterRendering: function () {
+        //     const oTabs = this.byId("idIconTabBar");
+
+        //     // Visually select the tab
+        //     // Set default internal key value
+        //     oTabs.sSelectedKey = "Ladega";
+
+        //     // Rebind SmartTable with that filter
+        //     setTimeout(() => {
+        //         oSmartTable.rebindTable();
+        //     }, 200); // 150–200 ms is the sweet spot for Work Zone
+        
+        // },
+        _onRowsUpdated: function () {
+            const oSmartTable = this.byId("table0");
             const oTable = oSmartTable.getTable();
-            // Listen when SmartTable finishes its initial binding
-            this._oSmartTable.attachInitialise(this._onSmartTableInit, this);
+            const oBinding = oTable.getBinding("rows");
 
-            // Attach rebind handler to inject tab filters before binding
-            this._oSmartTable.attachBeforeRebindTable(this._onBeforeRebindTable, this);
+            if (!oBinding) return;
 
-            oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+            const aContexts = oBinding.getContexts(0, oBinding.getLength());
+            if (!aContexts.length) return;
+
+            // Your actual month column names coming from the CAP aggregated handler
+            const monthOrder = [
+                "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE",
+                "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"
+            ];
+
+            const totals = {};
+            monthOrder.forEach(m => totals[m] = 0);
+
+            let ytd = 0;
+            let rowCount = aContexts.length;
+
+            aContexts.forEach(ctx => {
+                const row = ctx.getObject();
+
+                monthOrder.forEach(m => {
+                    const val = Number(row[m] || 0);
+                    totals[m] += val;
+                    ytd += val;
+                });
+            });
+
+            // Find highest month
+            let highest = { month: "", value: 0 };
+            monthOrder.forEach(m => {
+                if (totals[m] > highest.value) {
+                    highest = { month: m, value: totals[m] };
+                }
+            });
+
+            const avg = rowCount > 0 ? ytd / rowCount : 0;
+
+            // Update your existing footer
+            this.byId("FooterText1").setText(ytd.toLocaleString());
+
+            // Render both tile sets
+            this._renderMonthlyTiles(totals);
+            this._renderAdvancedTiles({
+                ytd,
+                highest,
+                avg,
+                rows: rowCount
+            });
+            this._generateMonthBadges(totals);
         },
         _refreshUserModel: async function () {
             const oUserModel = this.getOwnerComponent().getModel("userModel");
-            var sAppPath = sap.ui.require.toUrl("salesbycus").split("/resources")[0];
+            var sAppPath = sap.ui.require.toUrl("pivottable").split("/resources")[0];
             if(sAppPath === ".") {
                 sAppPath = "";
             }
@@ -47,7 +200,7 @@ sap.ui.define([
             const mfgNumber = userData.ManufacturerNumber;
             const oLogoImage = oView.byId("logoImage");
         
-            var sAppPath = sap.ui.require.toUrl("salesbycus").split("/resources")[0];
+            var sAppPath = sap.ui.require.toUrl("pivottable").split("/resources")[0];
             if (sAppPath === ".") {
                 sAppPath = "";
             }
@@ -108,10 +261,7 @@ sap.ui.define([
                 aFilters.push(new sap.ui.model.Filter("MAKTX", sap.ui.model.FilterOperator.Contains, "SIGNIFOR"));
                 break;
                 case "Cystadrops":
-                aFilters.push(new sap.ui.model.Filter("MAKTX", sap.ui.model.FilterOperator.Contains, "CYSTADROP"));
-                break;
-                default:
-                // All products, no filters
+                aFilters.push(new sap.ui.model.Filter("MAKTX", sap.ui.model.FilterOperator.Contains, "CYSTADROPS"));
                 break;
             }
 
@@ -122,72 +272,170 @@ sap.ui.define([
         formatOrDash: function (date) { 
             if (date === '00000000' || !date) { return '--' } else { return date ? date : '--'; } 
         },
-        _calculateTotals: function () {
-            const oSmartTable = this.getView().byId("table0");
+        _calculateMonthlyTotals: function () {
+            const oSmartTable = this.byId("table0");
             const oTable = oSmartTable.getTable();
             const oBinding = oTable.getBinding("rows");
-        
-            if (!oBinding) {
-                console.warn("Table binding is missing.");
-                this._updateTile("FooterText1", "0");
-                return;
-            }
-        
-            const aContexts = oBinding.getContexts(0, oBinding.getLength());
-            // Check if contexts array is available and not empty
-            if (!aContexts || aContexts.length === 0) {
-                console.warn("Data is not available for calculation.");
-                
-                this._updateTile("FooterText1", "0");
-                return;
-            }
-        
-            // Initialize totals and sets
-            const totals = aContexts.reduce((acc, oContext) => {
-                const oData = oContext.getObject();
-                if (!oData) return acc;
-    
-        
-                // Units Calculation (Units per case * Quantity - Applied to all rows)
-                // const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
-                const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
-                acc.unitsTotal += quantity;
-        
-                // Footer Quantity Calculation (Sum QUANTITY_FKIMG - Applied to all rows)
-                acc.quantityTotal += quantity;
-        
-                return acc;
-            }, {
-                quantityTotal: 0
+
+            if (!oBinding) return;
+
+            const aContexts = oBinding.getContexts();
+            if (!aContexts.length) return;
+
+            const monthFields = [
+                "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
+                "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"
+            ];
+
+            // Initialize totals
+            const totals = {};
+            monthFields.forEach(m => totals[m] = 0);
+
+            // Aggregate totals
+            aContexts.forEach(ctx => {
+                const row = ctx.getObject();
+                monthFields.forEach(m => {
+                    totals[m] += Number(row[m] || 0);
+                });
             });
-        
-        
-            // Format values
-            // Ensure formatter, formatLargeNumber, formatNumberWithCommas, and formatCurrency are available
-            // Added basic checks for formatter and functions
-            
-            const quantityTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.quantityTotal) : totals.quantityTotal;
-        
-            // Update Footer
-            this._updateTile("FooterText1", quantityTotalFormatted); // Quantity (Assuming FooterText1 is updated by _updateTile)
-            
+
+            this._renderMonthlyTiles(totals);
         },
-        // Assuming these helper functions exist in your controller or a formatter file
-        // Example placeholder for _updateTile
-        _updateTile: function(sTileId, sText) {
-            const oTile = this.getView().byId(sTileId);
-            if (oTile) {
-                // Assuming the tile has a setText method or a content with setText
-                if (oTile.setText) {
-                    oTile.setText(sText);
-                } else if (oTile.getContent && oTile.getContent() && oTile.getContent().setText) {
-                    oTile.getContent().setText(sText);
-                } else {
-                    console.warn("Tile or its content does not have a setText method:", sTileId);
+        _renderMonthlyTiles: function (totals) {
+            const oContainer = this.byId("monthlyTileContainer");
+            oContainer.removeAllItems();
+
+            const monthOrder = [
+                "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
+                "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"
+            ];
+
+            monthOrder.forEach(month => {
+                const value = totals[month] || 0;
+
+                const oTile = new sap.m.VBox({
+                    alignItems: "Center",
+                    justifyContent: "Center",
+                    items: [
+                        new sap.m.Label({
+                            text: month.substring(0, 3), // JAN, FEB, ...
+                            design: "Bold"
+                        }).addStyleClass("mckMonthTileHeader"),
+                        new sap.m.Text({
+                            text: value.toLocaleString()
+                        }).addStyleClass("mckMonthTileValue")
+                    ]
+                }).addStyleClass("mckMonthTile");
+
+                oContainer.addItem(oTile);
+            });
+        },
+        _renderAdvancedTiles: function (stats) {
+
+            const oContainer = this.byId("advancedTileContainer");
+            oContainer.removeAllItems();
+
+            const tiles = [
+                {
+                    title: "YTD Total",
+                    value: stats.ytd,
+                    icon: "sap-icon://sum",
+                    color: "blue"
+                },
+                {
+                    title: "Highest Month",
+                    value: stats.highest.value,
+                    subtitle: stats.highest.month,
+                    icon: "sap-icon://arrow-top",
+                    color: "orange"
+                },
+                {
+                    title: "Average / Month",
+                    value: stats.avg,
+                    icon: "sap-icon://measure",
+                    color: "grey"
+                },
+                {
+                    title: "Total Customers",
+                    value: stats.rows,
+                    icon: "sap-icon://list",
+                    color: "green"
                 }
-            } else {
-                console.warn("Tile not found:", sTileId);
-            }
+            ];
+
+            tiles.forEach(t => {
+
+                const oTile = new sap.m.VBox({
+                    width: "180px",
+                    height: "90px",
+                    alignItems: "Start",
+                    justifyContent: "Center",
+                    items: [
+                        new sap.m.HBox({
+                            alignItems: "Center",
+                            items: [
+                                new sap.ui.core.Icon({
+                                    src: t.icon,
+                                    size: "1.5rem"
+                                }).addStyleClass("advTileIcon"),
+                                new sap.m.Label({
+                                    text: t.title,
+                                    design: "Bold"
+                                }).addStyleClass("advTileTitle")
+                            ]
+                        }),
+                        new sap.m.Text({
+                            text: t.value.toLocaleString()
+                        }).addStyleClass("advTileValue"),
+                        t.subtitle
+                            ? new sap.m.Text({ text: t.subtitle }).addStyleClass("advTileSubtitle")
+                            : new sap.m.Text({ text: "" })
+                    ]
+                }).addStyleClass("advTile advTile-" + t.color);
+
+                oContainer.addItem(oTile);
+            });
         },
+        _generateMonthBadges: function (monthTotals) {
+            const oBox = this.byId("monthBadgesBox");
+            oBox.removeAllItems();
+
+            const monthNames = [
+                "Jan","Feb","Mar","Apr","May","Jun",
+                "Jul","Aug","Sep","Oct","Nov","Dec"
+            ];
+
+            const monthLookup = {
+                "JANUARY": 1, "FEBRUARY": 2, "MARCH": 3, "APRIL": 4,
+                "MAY": 5, "JUNE": 6, "JULY": 7, "AUGUST": 8,
+                "SEPTEMBER": 9, "OCTOBER": 10, "NOVEMBER": 11, "DECEMBER": 12
+            };
+
+            Object.keys(monthTotals).forEach(monthKey => {
+                const total = monthTotals[monthKey];
+
+                // Convert "JANUARY" → 1, etc.
+                let monthIndex = Number(monthKey);
+                if (isNaN(monthIndex)) {
+                    monthIndex = monthLookup[monthKey.toUpperCase()] || null;
+                }
+
+                if (!monthIndex) {
+                    console.warn("Invalid month key:", monthKey);
+                    return;
+                }
+
+                const monthName = monthNames[monthIndex - 1];
+
+                const oChip = new sap.m.HBox({
+                    items: [
+                        new sap.m.Text({ text: monthName }).addStyleClass("mckMonthName"),
+                        new sap.m.Text({ text: total.toLocaleString() }).addStyleClass("mckMonthValue")
+                    ]
+                }).addStyleClass("mckMonthChip");
+
+                oBox.addItem(oChip);
+            });
+        }
     });
 });

@@ -164,7 +164,6 @@ entity INVENTORYAUDITTRAIL
     key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
         PLANT_NAME         : String(30)     @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
-        SALES_ORG_NAME      : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG_NAME';
         NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}'; 
         RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
@@ -1669,14 +1668,41 @@ define view SHIPSTATUSMFRNR as
 @cds.persistence.exists
 entity PIVOTTABLE
 {
+    key MFRNR                       : String(10)    @title : '{i18n>PIVOTTABLE.MFRNR}';
+    key CO_VKORG                    : String(4)     @title : '{i18n>PIVOTTABLE.CO_VKORG}';
     key MAKTX                       : String(40)    @title : '{i18n>PIVOTTABLE.MAKTX}';
+    key CAL_YEAR                    : String(10)    @title : '{i18n>PIVOTTABLE.CAL_YEAR}';
     key PROVINCE_REGIO              : String(3)     @title : '{i18n>PIVOTTABLE.PROVINCE_REGIO}';
     key SHIP_TO_NAME                : String(70)    @title : '{i18n>PIVOTTABLE.SHIP_TO_NAME}';
-    key INVOICE_DATE_FKDAT          : String(8)     @title : '{i18n>PIVOTTABLE.INVOICE_DATE_FKDAT}';
-    key CAL_MONTH                   : String(8)     @title : '{i18n>PIVOTTABLE.CAL_MONTH}';
-    key CAL_YEAR                    : String(10)    @title : '{i18n>PIVOTTABLE.CAL_YEAR}';
-        QUANTITY_FKIMG              : Decimal(28,3) @title : '{i18n>PIVOTTABLE.QUANTITY_FKIMG }';
+    key VTEXT_FKART                 : String(8)     @title : '{i18n>PIVOTTABLE.VTEXT_FKART}';
+        JANUARY                     : Decimal(33,3) @title : '{i18n>PIVOTTABLE.JAN}'; 
+        FEBRUARY                    : Decimal(33,3) @title : '{i18n>PIVOTTABLE.FEB}';
+        MARCH                       : Decimal(33,3) @title : '{i18n>PIVOTTABLE.MAR}';
+        APRIL                       : Decimal(33,3) @title : '{i18n>PIVOTTABLE.APR}';
+        MAY                         : Decimal(33,3) @title : '{i18n>PIVOTTABLE.MAY}';
+        JUNE                        : Decimal(33,3) @title : '{i18n>PIVOTTABLE.JUN}';
+        JULY                        : Decimal(33,3) @title : '{i18n>PIVOTTABLE.JUL}';
+        AUGUST                      : Decimal(33,3) @title : '{i18n>PIVOTTABLE.AUG}';
+        SEPTEMBER                   : Decimal(33,3) @title : '{i18n>PIVOTTABLE.SEP}';
+        OCTOBER                     : Decimal(33,3) @title : '{i18n>PIVOTTABLE.OCT}';
+        NOVEMBER                    : Decimal(33,3) @title : '{i18n>PIVOTTABLE.NOV}';
+        DECEMBER                    : Decimal(33,3) @title : '{i18n>PIVOTTABLE.DEC}';
+        virtual TOTAL : Decimal(33,3)
+        @sapui.visible : true
+        @Common.Label : '{i18n>PIVOTTABLE.TOTAL}'
+        @UI.lineItem: [{ position: 99 }];
 }
+
+define view PIVOTCALYEAR as
+    select from PIVOTTABLE distinct {
+        key CAL_YEAR,
+        MFRNR @UI.Hidden
+};
+define view PIVOTPROVINCE as
+    select from PIVOTTABLE distinct {
+        key PROVINCE_REGIO,
+        MFRNR @UI.Hidden
+};
 
 @cds.persistence.exists
 entity MAINPAGESUMMARY 

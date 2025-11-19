@@ -40,7 +40,7 @@
 						text="Deactivate"
 						icon="sap-icon://employee-rejections"
 						type="Reject"
-						visible="{= ${edit>status} === 'ACTIVE'}"
+						visible="{= ${edit>status} === 'ACTIVE' || ${edit>status} === 'PROVISIONED' }"
 						press=".onDeactivateUser"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
@@ -176,7 +176,8 @@
 			<m:OverflowToolbar id="_IDGenOverflowToolbar2">
 				<m:ToolbarSpacer id="_IDGenToolbarSpacer2"/>
 				<m:Button id="_IDGenButton5" type="Accept" text="Save" press=".onSave" />
-				<m:Button id="_IDGenButton6" type="Reject" text="Cancel" press=".onCancel"/>
+				<m:Button id="_IDGenButton7" type="Reject" text="Delete User" press=".onDeleteUser" />
+				<m:Button id="_IDGenButton6" type="Ghost" text="Cancel" press=".onCancel"/>
 			</m:OverflowToolbar>
 		</footer>
 	</ObjectPageLayout>

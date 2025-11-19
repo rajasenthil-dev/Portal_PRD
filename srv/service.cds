@@ -923,6 +923,8 @@ using SBCBEZEIAUART as ENTSBCBEZEIAUART from '../db/schema';
 using SBCPLANTNAME as ENTSBCPLANTNAME from '../db/schema';
 using SBCCUSTOMERTYPE as ENTSBCCUSTOMERTYPE from '../db/schema';
 using PIVOTTABLE as ENTPIVOTTABLE from '../db/schema';
+using PIVOTCALYEAR as ENTPIVOTCALYEAR from '../db/schema';
+using PIVOTPROVINCE as ENTPIVOTPROVINCE from '../db/schema';
 
 using SALESSERIALNUMBER as ENTSALESSERIALNUMBER from '../db/schema';
 using SSNINVOICE as ENTSSNINVOICE from '../db/schema';
@@ -1246,7 +1248,8 @@ service SALES {
 
     
     entity PIVOTTABLE as projection on ENTPIVOTTABLE;
-
+    entity PIVOTCALYEAR as projection on ENTPIVOTCALYEAR;
+    entity PIVOTPROVINCE as projection on ENTPIVOTPROVINCE;
 
 }
 

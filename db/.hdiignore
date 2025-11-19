@@ -475,3 +475,8 @@ src/gen/SSNSALESORG.hdbview
 src/gen/SALES.SSNMFRNRNAME.hdbview
 src/gen/SSNMFRNRNAME.hdbview
 
+src/gen/SALES.PIVOTCALYEAR.hdbview
+src/gen/PIVOTCALYEAR.hdbview
+
+src/gen/SALES.PIVOTPROVINCE.hdbview
+src/gen/PIVOTPROVINCE.hdbview

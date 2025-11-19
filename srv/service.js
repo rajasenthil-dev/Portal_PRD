@@ -588,7 +588,9 @@ module.exports = cds.service.impl(async function () {
         "SSNDOCTYPE": "DOCUMENT_TYPE",
         "SSNPRODDESC": "PRODUCT_DESCRIPTION",
         "SSNORDERREASON": "ORDER_REASON_DESCRIPTION",
-        "SSNINVOICE": "INVOICE_CREDIT_NO"
+        "SSNINVOICE": "INVOICE_CREDIT_NO",
+        "PIVOTCALYEAR": "CAL_YEAR",
+        "PIVOTPROVINCE": "PROVINCE_REGIO"
 
         // Add more here easily:
         // 'ANOTHERENTITY': 'ANOTHERCOLUMN'
@@ -611,38 +613,6 @@ module.exports = cds.service.impl(async function () {
         deduplicateForInternal(req, columnName);
     });
 
-    // this.before('READ', 'MediaFile', (data, req) => {
-    //     // If no data or not an array (e.g., single result, already handled or error), return as is.
-    //     if (!Array.isArray(data)) {
-    //         console.log('[MediaFile] Data is not an array or is null/undefined. Returning as is.');
-    //         return data;
-    //     }
-
-    //     // Check if the user is an internal user.
-    //     const isInternalUser = req.user.is('Internal');
-
-    //     // If there's only one result, or if it's not an internal user, pass through.
-    //     if (data.length === 1 || !isInternalUser) {
-    //         console.log(`[MediaFile] Single result found or not an Internal user (${isInternalUser}). Returning as is.`);
-    //         return data;
-    //     }
-
-    //     // Fallback case for Internal users when multiple results are found
-    //     console.log('[MediaFile] Multiple results found for Internal user, applying fallback.');
-    //     return [{
-    //         ID: 'fallback-id',
-    //         MFGName: "Internal User",
-    //         url: null, // Make sure this path is served publicly
-    //         fileName: null,
-    //         manufacturerNumber: null,
-    //         mediaType: null,
-    //         content: null,
-    //         createdAt: null,
-    //         modifiedAt: null,
-    //         createdBy: null,
-    //         modifiedBy: null
-    //     }];
-    // });
     this.before("READ", "MAINPAGESUMMARY", (req) => {
         if (req.data.CALYEAR && typeof req.data.CALYEAR === "string") {
           req.data.CALYEAR = parseInt(req.data.CALYEAR, 10);
@@ -717,274 +687,61 @@ module.exports = cds.service.impl(async function () {
         return results;
       });
     
-  //   this.on('createOktaUser', async req => {
-  //     const axios = require('axios');
-  //     const user = req.data.user;
-  //     const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
-  //     const OKTA_API_URL = process.env.OKTA_API_URL;
 
-  //     if (!OKTA_API_TOKEN) {
-  //         req.error(500, "OKTA_API_TOKEN is not set in environment variables.");
-  //         return;
-  //     }
-
-  //     const payload = {
-  //         profile: {
-  //             firstName: user.profile?.firstName,
-  //             lastName: user.profile?.lastName,
-  //             email: user.profile?.email,
-  //             login: user.profile?.email,
-  //             salesOffice: user.profile?.salesOffice,
-  //             profitCentre: user.profile?.profitCentre,
-  //             salesOrg: user.profile?.salesOrg,
-  //             manufacturerNumber: user.profile?.manufacturerNumber,
-  //             mfgName: user.profile?.mfgName
-  //         },
-  //         groupIds: Array.isArray(user.groupIds)
-  //             ? user.groupIds
-  //             : [user.groupIds].filter(Boolean)
-  //     };
-
-  //     try {
-  //         const response = await axios.post(
-  //             `${OKTA_API_URL}users?activate=true`,
-  //             payload,
-  //             {
-  //                 headers: {
-  //                     'Authorization': `SSWS ${OKTA_API_TOKEN}`,
-  //                     'Content-Type': 'application/json',
-  //                     'Accept': 'application/json'
-  //                 }
-  //             }
-  //         );
-
-  //         return {
-  //             status: 'success',
-  //             userId: response.data.id
-  //         };
-  //     } catch (error) {
-  //         console.error('Okta API error:', {
-  //             status: error.response?.status,
-  //             data: error.response?.data,
-  //             message: error.message
-  //         });
-  //         req.error(500, 'Failed to create user in Okta.');
-  //     }
-  // });
-    // this.on('getOktaGroups', async (req) => {
-    //     const axios = require('axios');
-    //     const query = req.data.query || ''; // Default to empty if no query provided
-    //     const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
-    //     const OKTA_API_URL = process.env.OKTA_API_URL;
-    //     try {
-    //       const response = await axios.get(
-    //         `${OKTA_API_URL}groups?q=MFG`,
-    //         {
-    //           headers: {
-    //             'Authorization': `SSWS ${OKTA_API_TOKEN}`,
-    //             'Accept': 'application/json'
-    //           }
-    //         }
-    //       );
-      
-    //       return response.data.map(group => ({
-    //         id: group.id,
-    //         profile: {
-    //           name: group.profile.name,
-    //           description: group.profile.description
-    //         }
-    //       }));
-    //     } catch (error) {
-    //       console.error('Okta API error (getOktaGroups):', error?.response?.data || error.message);
-    //       req.error(500, 'Failed to fetch Okta groups.');
-    //     }
-    // });
-    // this.on('createOktaGroup', async (req) => {
-    //     const axios = require('axios');
-    //     const groupData = req.data.group;
-    //     const OKTA_API_TOKEN = process.env.OKTA_API_TOKEN;
-    //     const OKTA_API_URL = process.env.OKTA_API_URL;
-    
-    //     try {
-    //         const response = await axios.post(
-    //             `${OKTA_API_URL}groups`,
-    //             { profile: groupData.profile },
-    //             {
-    //                 headers: {
-    //                     'Authorization': `SSWS ${OKTA_API_TOKEN}`,
-    //                     'Content-Type': 'application/json'
-    //                 }
-    //             }
-    //         );
-    
-    //         return {
-    //             id: response.data.id,
-    //             profile: {
-    //                 name: response.data.profile.name,
-    //                 description: response.data.profile.description
-    //             }
-    //         };
-    //     } catch (error) {
-    //         console.error("Okta API error (createOktaGroup):", error?.response?.data || error.message);
-    //         req.error(500, "Failed to create Okta group.");
-    //     }
-    // });
     // 3. Apply the handler to all 'READ' operations for the specified entities.
-    this.after('READ', entitiesWithRoleBasedMfrnr, addRoleBasedVisibilityFlag);
+    this.on("READ", "PIVOTTABLE", async (req, next) => {
 
+      // 1️⃣ Run the existing DB query first
+      let rows = await next();
+      if (!rows || rows.length === 0) return rows;
 
-  /** ---------------------------------------------------------------------
-  * OKTA HANDLERS (merged from serviceA.js)
-  * -------------------------------------------------------------------- */
+      // 2️⃣ Filter out any product containing "Brochure"
+      rows = rows.filter(r =>
+        !String(r.MAKTX || "").toUpperCase().includes("BROCHURE")
+      );
 
-  // const OKTAUsers =
-  // this.entities.OKTAUsers || this.entities['UserService.OKTAUsers'];
-  // const LocalUserData =
-  //   this.entities.LocalUserData || this.entities['UserService.LocalUserData'];
+      // 3️⃣ Keep ONLY invoice document types
+      const allowedInvoiceTypes = [
+        "Invoice",
+        "FFS Invoice",
+        "Final Invoice",
+        "Tax Invoice"
+      ];
 
-  // if (!OKTAUsers) {
-  //   console.warn('⚠️ OKTAUsers not found in current service context.');
-  //   return;
-  // }
+      rows = rows.filter(r =>
+        allowedInvoiceTypes.includes(String(r.VTEXT_FKART || "").trim())
+      );
 
-  // /** Utility: Flatten arrays → strings for UI */
-  // const ensureString = (val) => {
-  //   if (Array.isArray(val)) return val.join(', ');
-  //   if (val === null || val === undefined) return '';
-  //   return String(val);
-  // };
+      // 4️⃣ Aggregate customers with the same name
+      const aggregated = {};
+      for (const row of rows) {
+        const key = `${row.PROVINCE_REGIO}::${row.SHIP_TO_NAME}`;
 
-  // /** Utility: Split strings → arrays for Okta */
-  // const parseToArray = (val) => {
-  //   if (Array.isArray(val)) return val;
-  //   if (!val) return [];
-  //   return val.split(',').map((s) => s.trim()).filter(Boolean);
-  // };
+        if (!aggregated[key]) {
+          aggregated[key] = { ...row };
+        } else {
+          const target = aggregated[key];
+          [
+            "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
+            "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"
+          ].forEach(month => {
+              target[month] = Number(target[month] || 0) + Number(row[month] || 0);
+          });
+        }
+      }
 
-  // /** Admin check */
-  // function isAdmin(req) {
-  //   if (process.env.STRICT_ROLE_CHECK === 'true') {
-  //     const roles = (req.user && req.user.roles) || [];
-  //     return roles.includes('admin') || roles.includes('Admin');
-  //   }
-  //   return true;
-  // }
+      // 5️⃣ Add TOTAL column = sum of all months
+      const result = Object.values(aggregated).map(r => {
+        r.TOTAL =
+          Number(r.JANUARY) + Number(r.FEBRUARY) + Number(r.MARCH) + Number(r.APRIL) +
+          Number(r.MAY) + Number(r.JUNE) + Number(r.JULY) + Number(r.AUGUST) +
+          Number(r.SEPTEMBER) + Number(r.OCTOBER) + Number(r.NOVEMBER) + Number(r.DECEMBER);
+        return r;
+      });
 
-  // /** ---------------------- READ HANDLER ---------------------- */
-  // this.on('READ', OKTAUsers, async (req) => {
-  //   console.log('📡 Fetching MFG users from Okta...');
+      return result;
+    });
 
-  //   const oktaUsers = await okta.listMFGUsers();
-  //   let local = [];
-
-  //   if (cds.db) {
-  //     try {
-  //       local = await SELECT.from(LocalUserData);
-  //     } catch (e) {
-  //       console.warn('⚠️ LocalUserData query skipped — no DB connection.');
-  //     }
-  //   } else {
-  //     console.warn('⚠️ No DB connected. Skipping LocalUserData merge.');
-  //   }
-  //   const oktaUsers = await okta.listMFGUsers();
-  //   const local = await SELECT.from(LocalUserData);
-
-  //   const merged = oktaUsers.map((u) => {
-  //     const localRow = local.find((r) => r.id === u.id);
-  //     if (!localRow) {
-  //       return {
-  //         ...u,
-  //         manufacturerNumber: ensureString(u.manufacturerNumber),
-  //         groupNames: ensureString(u.groupNames),
-  //         groupIds: ensureString(u.groupIds),
-  //       };
-  //     }
-
-  //     return {
-  //       ...u,
-  //       ...localRow,
-  //       manufacturerNumber: ensureString(localRow.manufacturerNumber || u.manufacturerNumber),
-  //       groupNames: ensureString(localRow.groupNames || u.groupNames),
-  //       groupIds: ensureString(localRow.groupIds || u.groupIds),
-  //       mfgName: localRow.manufacturerName || u.mfgName,
-  //       salesOrg: localRow.salesOrg || u.salesOrg,
-  //       salesOffice: localRow.salesOffice || u.salesOffice,
-  //       profitCentre: localRow.profitCentre || u.profitCentre,
-  //     };
-  //   });
-
-  //   const top = req.query?.SELECT?.limit?.rows?.val || 50;
-  //   const skip = req.query?.SELECT?.limit?.offset?.val || 0;
-  //   req._.count = merged.length;
-  //   const paginated = merged.slice(skip, skip + top);
-
-  //   console.log(`✅ Returning ${paginated.length} of ${merged.length} users`);
-  //   return paginated;
-  // });
-
-  // /** ---------------------- UPDATE HANDLER ---------------------- */
-  // this.on('UPDATE', OKTAUsers, async (req) => {
-  //   let id = req.params?.[0]?.id || req.data.id;
-  //   if (typeof id === 'object') id = id.id;
-  //   if (!id || typeof id !== 'string') return req.error(400, `Invalid ID: ${JSON.stringify(req.params)}`);
-
-  //   const payload = req.data || {};
-  //   const oktaProfile = {};
-  //   const oktaPayload = { profile: oktaProfile };
-
-  //   --- Map payload to Okta ---
-  //   if (payload.firstName) oktaProfile.firstName = payload.firstName;
-  //   if (payload.lastName) oktaProfile.lastName = payload.lastName;
-  //   if (payload.email) {
-  //     oktaProfile.email = payload.email;
-  //     oktaProfile.login = payload.email;
-  //   }
-  //   ['salesOrg', 'salesOffice', 'profitCentre', 'mfgName'].forEach(f => {
-  //     if (payload[f]) oktaProfile[f] = payload[f];
-  //   });
-  //   if (payload.manufacturerNumber) {
-  //     oktaPayload.profile.manufacturerNumber = payload.manufacturerNumber.split(',').map(s => s.trim());
-  //   }
-  //   if (payload.groupIds) {
-  //     oktaPayload.groupIds = payload.groupIds.split(',').map(s => s.trim());
-  //   }
-
-  //   --- Update Okta ---
-  //   if (Object.keys(oktaProfile).length > 0 || oktaPayload.groupIds) {
-  //     await okta.updateUser(id, oktaPayload);
-  //   }
-
-  //   --- Optional local persistence ---
-  //   if (cds.db) {
-  //     const localFields = {
-  //       id,
-  //       manufacturerName: payload.mfgName || null,
-  //       manufacturerNumber: payload.manufacturerNumber || '',
-  //       salesOrg: payload.salesOrg || null,
-  //       salesOffice: payload.salesOffice || null,
-  //       profitCentre: payload.profitCentre || null,
-  //       groupNames: payload.groupNames || '',
-  //       groupIds: payload.groupIds || '',
-  //     };
-  //     const existing = await SELECT.one(LocalUserData).where({ id });
-  //     existing
-  //       ? await UPDATE(LocalUserData).set(localFields).where({ id })
-  //       : await INSERT.into(LocalUserData).entries(localFields);
-  //   }
-
-  //   ✅ Return explicit object (no DB read)
-  //   req.info(`Handled virtual UPDATE for Okta user ${id}`);
-  //   return req.reply();
-  // });
-
-  // /** ---------------------- GROUPS HANDLER ---------------------- */
-  // this.on('READ', 'OktaGroups', async () => {
-  //   const groups = await okta.listGroups({ limit: 1000 });
-  //   return (groups || []).map((g) => ({
-  //     id: g.id,
-  //     name: g.profile?.name || g.name,
-  //   }));
-  // });
   await require('./handlers/okta-handlers')(this);
   
 });
