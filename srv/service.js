@@ -741,7 +741,161 @@ module.exports = cds.service.impl(async function () {
 
       return result;
     });
+this.on("READ", "INVENTORYAUDITTRAIL", async (req, next) => {
+    console.log("🔥 INVENTORYAUDITTRAIL handler STARTED");
+    let rows = await next();     // 1) SmartTable filtered rows
+    if (!rows.length) return rows;
 
+    // 2) Clone query WITHOUT $top, $skip for full aggregation
+    const fullQuery = JSON.parse(JSON.stringify(req.query));
+
+    if (fullQuery.SELECT.limit) delete fullQuery.SELECT.limit;  // remove paging
+    if (fullQuery.SELECT.orderBy) delete fullQuery.SELECT.orderBy; // remove sorting
+
+    // 3) Fetch all matching rows for real totals
+    const all = await cds.run(fullQuery);
+
+    // 4) Aggregate
+    const totals = {
+        GrandTotal: 0,
+        OrderTotal: 0,
+        ReceiptTotal: 0,
+        AdjustmentsTotal: 0,
+        ReturnsTotal: 0,
+        PhysicalCountTotal: 0,
+        GoodsReceiptPostingTotal: 0,
+        GoodsIssuePostingTotal: 0,
+        InternalWarehouseMovementTotal: 0,
+        PostingChangeTotal: 0,
+        PutawayTotal: 0,
+        StockRemovalTotal: 0
+    };
+
+    for (const r of all) {
+        const qty = Number(r.STOCK_QTY || 0);
+        totals.GrandTotal += qty;
+        let type = (r.TRAN_TYPE || "")
+          .normalize("NFKC")                  // normalize unicode
+          .replace(/\p{White_Space}+/gu, " ") // unicode-aware whitespace collapse
+          .trim();
+        switch (type) {
+          case "Order":
+              totals.OrderTotal += qty; 
+              break;
+          case "Receipt":
+              totals.ReceiptTotal += qty; 
+              break;
+          case "Adjustment":
+              totals.AdjustmentsTotal += qty; 
+              break;
+          case "Return":
+              totals.ReturnsTotal += qty; 
+              break;
+          case "Physical Inventory":
+              totals.PhysicalCountTotal += qty; 
+              break;
+          case "Goods Receipt Posting":
+              totals.GoodsReceiptPostingTotal += qty; 
+              break;
+          case "Goods Issue Posting":
+              totals.GoodsIssuePostingTotal += qty; 
+              break;
+          case "Internal Warehouse Movement":
+              totals.InternalWarehouseMovementTotal += qty; 
+              break;
+          case "Posting Change":
+              totals.PostingChangeTotal += qty; 
+              break;
+          case "Putaway":
+              totals.PutawayTotal += qty; 
+              break;
+          case "Stock Removal":
+              totals.StockRemovalTotal += qty; 
+              break;
+      }
+    }
+
+    // 5) Attach totals to every row
+    rows.forEach(r => r._Totals = totals);
+
+    return rows;
+});
+
+  
+  //   const { InventoryAuditSummary } = this.entities;
+
+  //   this.on("READ", "InventoryAuditSummary", async (req, next) => {
+  //       const tx = cds.tx(req);
+
+  //       // Clone filters sent by SmartFilterBar
+  //       const sfbFilters = req.query.SELECT.where || [];
+
+  //       // Build the summary query dynamically
+  //       const baseQuery = SELECT.from("INVENTORYAUDITTRAIL")
+  //           .columns("TRAN_TYPE", "SUM(STOCK_QTY) AS TOTAL_QTY")
+  //           .groupBy("TRAN_TYPE");
+
+  //       // Apply SmartFilterBar filters (date, material, plant, etc)
+  //       if (sfbFilters.length > 0) {
+  //           baseQuery.where(sfbFilters);
+  //       }
+
+  //       return await tx.run(baseQuery);
+  //   });
+  //   this.on("READ", "InventoryAuditSummary", async (req) => {
+
+  //     const tx = cds.transaction(req);
+
+  //     // Pass SmartFilterBar filters to DB query
+  //     const where = req.query.SELECT.where || [];
+
+  //     const invRows = await tx.run(
+  //         SELECT.from("INVENTORYAUDITTRAIL")
+  //               .columns(
+  //                     "TRAN_TYPE",
+  //                     "STOCK_QTY"
+  //               )
+  //               .where(where)
+  //     );
+
+  //     // Initialize totals
+  //     let summary = {
+  //         id: cds.utils.uuid(),
+  //         totalQuantity: 0,
+  //         orderQuantity: 0,
+  //         receiptQuantity: 0,
+  //         adjustmentsQuantity: 0,
+  //         returnsQuantity: 0,
+  //         physicalCountQty: 0
+  //     };
+
+  //     // Aggregate rows
+  //     for (const row of invRows) {
+  //         const qty = Number(row.STOCK_QTY || 0);
+
+  //         summary.totalQuantity += qty;
+
+  //         switch (row.TRAN_TYPE) {
+  //             case "Order":
+  //                 summary.orderQuantity += qty;
+  //                 break;
+  //             case "Receipt":
+  //                 summary.receiptQuantity += qty;
+  //                 break;
+  //             case "Adjustments":
+  //                 summary.adjustmentsQuantity += qty;
+  //                 break;
+  //             case "Returns":
+  //                 summary.returnsQuantity += qty;
+  //                 break;
+  //             case "PhysicalCount":
+  //                 summary.physicalCountQty += qty;
+  //                 break;
+  //         }
+  //     }
+
+  //     return [summary];
+  // });
   await require('./handlers/okta-handlers')(this);
   
 });

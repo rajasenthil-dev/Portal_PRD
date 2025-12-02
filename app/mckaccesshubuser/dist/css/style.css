@@ -151,3 +151,60 @@
   font-style: italic;
   font-weight: 300;
 }
+/* Base styling for helper text */
+.helperMessage {
+    font-size: 0.75rem!important; 
+    font-weight: 700!important;             /* smaller, subtle text */
+    color: #174EA0!important;                  /* SAPUI5 neutral grey text */
+    margin-top: -10px !important;
+    margin-bottom: 1rem;      /* tighten spacing under the input */
+    line-height: 1.2;                /* reduce vertical spacing */
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    display: none;
+}
+
+/* Animated state */
+.helperMessage--visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideFadeIn 0.25s ease-out;
+}
+
+
+
+
+/* Optional: slight delay for smoothness */
+.helperMessage--visible {
+    animation: slideFadeIn 0.25s ease-out;
+}
+
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.helperMessage--hide {
+    animation: slideFadeOut 0.25s ease-out forwards;
+}
+
+@keyframes slideFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+.helperMessage--error {
+    color: #bb0000 !important;
+}

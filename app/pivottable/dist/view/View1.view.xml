@@ -241,6 +241,7 @@
                             enableAutoColumnWidth="true" 
                             class="sapUiResponsiveContentPadding"
                         >
+                         
                         <t:Table
                             selectionMode="None"
                             id="table"

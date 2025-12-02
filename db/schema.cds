@@ -109,6 +109,12 @@ entity INVENTORYSTATUS
         //WAREHOUSE_STATUS     : String(30)     @title: '{i18n>INVENTORYSTATUS.WAREHOUSE_STATUS}';
         IN_PROCESS           : Decimal(36,0)  @title: '{i18n>INVENTORYSTATUS.IN_PROCESS}';
         TOTAL_QTY            : Decimal(38,0)  @title: '{i18n>INVENTORYSTATUS.TOTAL_QTY}';
+        virtual OrderTotal          : Decimal(20,3);
+        virtual ReceiptTotal        : Decimal(20,3);
+        virtual AdjustmentsTotal    : Decimal(20,3);
+        virtual ReturnsTotal        : Decimal(20,3);
+        virtual PhysicalCountTotal  : Decimal(20,3);
+        virtual GrandTotal          : Decimal(20,3);
 
 }
 define view INVSTATUSPRODUCTCODE as
@@ -150,12 +156,12 @@ entity INVENTORYAUDITTRAIL
     key CHARG               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.CHARG}';
     key KUNNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.KUNNR}';
         CUSTOMER_NAME       : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.CUSTOMER_NAME}';
-        MFRNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR}';
+    key MFRNR               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR}';
     key WAREHOUSE_STATUS    : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.WAREHOUSE_STATUS}';
         MFRNR_PROD_CODE     : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_PROD_CODE}';
         MEINS               : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.MEINS}';
     key TRAN_TYPE           : String(40)    @title: '{i18n>INVENTORYAUDITTRAIL.TRAN_TYPE}';
-        SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
+    key SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
     key CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
         DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
         POSTING_DATE        : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
@@ -168,14 +174,22 @@ entity INVENTORYAUDITTRAIL
         RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
         STOCK_QTY           : Decimal(38,2) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
+    key CONFIRMED_AT        : Timestamp     @title: '{i18n>INVENTORYAUDITTRAIL.CONFIRMED_AT}';
     key STGE_LOC            : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
     key INV_ADJ_RECEIPT     : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
-    key SOURCE_DESTINATION  : String(11)    @title: '{i18n>INVENTORYAUDITTRAIL.SOURCE_DESTINATION}';
         SRC_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.SRC_STORAGE_BIN}';
         DES_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.DES_STORAGE_BIN}';
         DOCNO               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.DOCNO}';     
+    key SOURCE_DESTINATION  : String(11)    @title: '{i18n>INVENTORYAUDITTRAIL.SOURCE_DESTINATION}';
 }
-
+// @cds.persistence.skip      
+// @cds.search.enabled
+// view InventoryAuditSummary as
+//     select from INVENTORYAUDITTRAIL {
+//         TRAN_TYPE,
+//         sum(STOCK_QTY) as TOTAL_QTY
+//     }
+//     group by TRAN_TYPE;
 define view IATPLANTNAME as
     select from INVENTORYAUDITTRAIL distinct {
         key PLANT_NAME,
@@ -1614,7 +1628,7 @@ entity SHIPPINGSTATUS
     key OBD_NO_DOCNO_C                              : String(10)        @title: 'Delivery #';
         OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp         @title: 'Plant Time';
     key PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27)        @title: 'Warehouse Status';
-        SO_NO_REFDOCNO                              : String(35)        @title: 'Sales Order #';
+    key SO_NO_REFDOCNO                              : String(35)        @title: 'Sales Order #';
         CUSTOMER_PO_BSTNK                           : String(20)        @title: 'Customer PO'; 
     key STORAGE_CONDITIONS_STOKEY1                  : String(5)         @title: 'Storage Condition';
     key WAREHOUSE_NAME_LNUMT                        : String(40)        @title: 'Plant'; 
@@ -1622,13 +1636,13 @@ entity SHIPPINGSTATUS
     key VKORG                                       : String(4)         @title: 'Sales Org';
         QUANTITY_ORDERED_QTY                        : Decimal(31,0)     @title: 'Quantity Ordered';
         PRODUCT_DESCRIPTION_MAKTX                   : String(40)        @title: 'Product Description';
-        REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Estimated Delivery Date';
+    key REQUESTED_DELIVERY_DATE_VDATU               : String(8)         @title: 'Estimated Delivery Date';
     key SHIP_TO_PARTYNO                             : String(10)        @title: 'Ship To #';
-        AUDAT                                       : String(8)         @title: 'Order Date';
         SHIP_TO_NAME_PARTNER                        : String(10)        @title: 'Ship To Name';
+    key AUDAT                                       : String(8)         @title: 'Order Date';
         MANUFACTURER_MFRNR                          : String(10)        @title: 'Manufacturer #';
         MANUFACTURER_NAME_MC_NAME1                  : String(35)        @title: 'Manufacturer Name';
-        SKU_PRODUCTNO                               : String(7)         @title: 'SKU';
+    key SKU_PRODUCTNO                               : String(7)         @title: 'SKU';
 }
 define view SHIPSTATUSSKU as
     select from SHIPPINGSTATUS distinct {

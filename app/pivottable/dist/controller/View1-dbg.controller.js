@@ -39,7 +39,7 @@ sap.ui.define([
             const oTabs           = this.byId("idIconTabBar");
 
             this._oSmartTable = oSmartTable;
-
+            
             // -----------------------------------------
             // 1️⃣ SmartTable INITIALISE (table is ready)
             // -----------------------------------------
@@ -81,6 +81,17 @@ sap.ui.define([
             // 3️⃣ Inject product filter before SmartTable binds
             // --------------------------------------------------
             oSmartTable.attachBeforeRebindTable(this._onBeforeRebindTable, this);
+        },
+        _applyInitialSort: function () {
+            var oTable = this.byId("table");
+            var oBinding = oTable.getBinding("items");
+
+            if (!oBinding) return;
+
+            oBinding.sort([
+                new sap.ui.model.Sorter("PROVINCE_REGIO", false),
+                new sap.ui.model.Sorter("SHIP_TO_NAME", false)
+            ]);
         },
         _onTabSelect: function (oEvent) {
             debugger
@@ -253,6 +264,11 @@ sap.ui.define([
             const mParams = oEvent.getParameter("bindingParams");
             const aFilters = [];
 
+            // Override default sorter stack
+            mParams.sorter = [
+                new sap.ui.model.Sorter("PROVINCE_REGIO", false),
+                new sap.ui.model.Sorter("SHIP_TO_NAME", false)
+            ];
             switch (this._sSelectedKey) {
                 case "Ladega":
                 aFilters.push(new sap.ui.model.Filter("MAKTX", sap.ui.model.FilterOperator.Contains, "LEDAGA"));

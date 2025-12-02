@@ -68,31 +68,62 @@
                             </sf:ControlConfiguration>
                         </sf:controlConfiguration>
                     </sf:SmartFilterBar>
-                    <Panel id="panel1" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
+                    <Panel
+                        id="MonthlyPanel"
+                        headerText="{i18n>panelHeader}"
+                        expandable="true"
+                        expanded="true"
+                        class="monthlyPanel panelBottomSeparator">
+
+                        <VBox id="_IDGenVBox1"
+                            width="100%"
+                            class="tilePanelContent">
+                            
+                            
+                            <VBox id="_IDGenVBox3" class="mckPanelInner" width="100%">
+                                <HBox id="_IDGenHBox1" class="mckSectionHeader">
+                                    <Text id="_IDGenText6" text="Transaction Type Totals" class="mckSectionHeaderText"/>
+                                    <HBox id="_IDGenHBox3" class="mckSectionHeaderLine"/>
+                                </HBox>
+                                <Text id="_IDGenText7" text="Sum of transaction types. " class="mckSubText"/>
+                    
+                                <VBox id="_IDGenVBox2" class="mckMonthZone">
+                                    <FlexBox 
+                                        id="monthBadgesBox"
+                                        justifyContent="Center"
+                                        alignItems="Start"
+                                        wrap="Wrap"
+                                        class="mckMonthBadgeContainer">
+                                    </FlexBox>
+                                </VBox>
+                            </VBox>
+                        </VBox>
+                    </Panel>
+                    <!-- <Panel id="panel1" expandable="true" expanded="true" headerText="{i18n>panelHeader}">
                         <HeaderContainer id="container4" scrollStep="200" orientation="Horizontal" gridLayout="true" class="mck_HeaderContainer">
                             <FlexBox id="_IDGenFlexBox1" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle1" class="mck_TileContentTitle" text="{i18n>tileTitle1}"/>
-                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text="{path: 'transactionCounts>/counts/Order', formatter: '._formatNumber'}"/>
+                                <Text id="_IDGenNumericContent1" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox2" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle2" class="mck_TileContentTitle" text="{i18n>tileTitle2}"/>
-                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text="{path: 'transactionCounts>/counts/Receipt', formatter: '._formatNumber'}"/>
+                                <Text id="_IDGenNumericContent2" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox3" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle3" class="mck_TileContentTitle" text="{i18n>tileTitle3}"/>
-                                <Text id="_IDGenNumericContent3" class="mck_TileContent" text="{path:'transactionCounts>/counts/Adjustments', formatter: '._formatNumber'}"/>
+                                <Text id="_IDGenNumericContent3" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox4" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle4" class="mck_TileContentTitle" text="{i18n>tileTitle4}"/>
-                                <Text id="_IDGenNumericContent4" class="mck_TileContent" text="{path: 'transactionCounts>/counts/Returns', formatter: '._formatNumber'}"/>
+                                <Text id="_IDGenNumericContent4" class="mck_TileContent" text=""/>
                             </FlexBox>
                             <FlexBox id="_IDGenFlexBox5" direction="Column" class="mck_Tile">
                                 <Title id="_IDGenTitle5" class="mck_TileContentTitle" text="{i18n>tileTitle5}"/>
-                                <Text id="_IDGenNumericContent5" class="mck_TileContent" text="{path: 'transactionCounts>/counts/PhysicalCount', formatter: '._formatNumber'}"/>
+                                <Text id="_IDGenNumericContent5" class="mck_TileContent" text=""/>
                             </FlexBox>
                             
                         </HeaderContainer>
-                    </Panel>
+                    </Panel> -->
                     
                 </f:DynamicPageHeader>
             </f:header>
@@ -172,7 +203,7 @@
                                         />
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn1" width='5rem' hAlign="End" sortProperty="POSTING_DATE">
+                            <t:Column id="_IDGenColumn1" width='8rem' hAlign="End" sortProperty="POSTING_DATE">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "POSTING_DATE", "leadingProperty": "POSTING_DATE", "columnIndex": 5}'/>
                                 </t:customData>
@@ -181,9 +212,18 @@
                                     <Text id="_IDGenText4" text="{path: 'POSTING_DATE', type: 'sap.ui.model.odata.type.Date'}"/>
                                 </t:template>
                             </t:Column>
+                            <!-- <t:Column id="_IDGenColumn3" width='8rem' hAlign="End" sortProperty="POSTING_TIME">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "POSTING_TIME", "leadingProperty": "POSTING_TIME", "columnIndex": 6}'/>
+                                </t:customData>
+                                <Text id="_IDGenText9" text="{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText10" text="{POSTING_TIME}"/>
+                                </t:template>
+                            </t:Column> -->
                             <t:Column id="_IDGenColumn" width='7.813rem' hAlign="End" sortProperty="SHELF_LIFE_EXP_DT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHELF_LIFE_EXP_DT", "leadingProperty": "SHELF_LIFE_EXP_DT", "columnIndex": 10}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SHELF_LIFE_EXP_DT", "leadingProperty": "SHELF_LIFE_EXP_DT", "columnIndex": 12}'/>
                                 </t:customData>
                                 <Text id="_IDGenText3" text="{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}"></Text>
                                 <t:template>
@@ -192,7 +232,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn12121" width='10rem' hAlign="End" sortProperty="KUNNR">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 12}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "KUNNR", "leadingProperty": "KUNNR", "columnIndex": 13}'/>
                                 </t:customData>
                                 <Text id="_IDGenText32" text="{i18n>INVENTORYAUDITTRAIL.KUNNR}"></Text>
                                 <t:template>
@@ -201,7 +241,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn121213" width='10rem' hAlign="End" sortProperty="INV_ADJ_RECEIPT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_ADJ_RECEIPT", "leadingProperty": "INV_ADJ_RECEIPT", "columnIndex": 14}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INV_ADJ_RECEIPT", "leadingProperty": "INV_ADJ_RECEIPT", "columnIndex": 15}'/>
                                 </t:customData>
                                 <Text id="_IDGenText323" text="{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}"></Text>
                                 <t:template>
@@ -210,7 +250,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn23" width='5rem' hAlign="End" sortProperty="DIN">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 15}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "DIN", "leadingProperty": "DIN", "columnIndex": 16}'/>
                                 </t:customData>
                                 <Text id="_IDGenText322" text="{i18n>INVENTORYAUDITTRAIL.DIN}"></Text>
                                 <t:template>
@@ -219,11 +259,29 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn234" width='5rem' hAlign="End" sortProperty="WERKS">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 16}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "WERKS", "leadingProperty": "WERKS", "columnIndex": 17}'/>
                                 </t:customData>
                                 <Text id="_IDGenText3224" text="{i18n>INVENTORYAUDITTRAIL.WERKS}"></Text>
                                 <t:template>
                                     <Text id="invoiceDate24" text="{path: 'WERKS'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn4" width='20rem' hAlign="End" sortProperty="CONFIRMED_AT">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CONFIRMED_AT", "leadingProperty": "CONFIRMED_AT", "columnIndex": 7}'/>
+                                </t:customData>
+                                <Text id="_IDGenText1" text="{i18n>INVENTORYAUDITTRAIL.CONFIRMED_AT}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText5" text="{path: 'CONFIRMED_AT'}"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End" sortProperty="SALES_ORG" visible="true">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "SALES_ORG", "leadingProperty": "SALES_ORG", "columnIndex": 24}'/>
+                                </t:customData>
+                                <Text id="_IDGenText8" text="{i18n>INVENTORYAUDITTRAIL.SALES_ORG}"></Text>
+                                <t:template>
+                                    <Text id="_IDGenText11" text="{path: 'SALES_ORG'}"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn25" width='7.813rem' hAlign="End" sortProperty="MFRNR" visible="false">

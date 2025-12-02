@@ -408,6 +408,7 @@ using IATMFRNR as ENTIATMFRNR from '../db/schema';
 using IATMFRNRNAME as ENTIATMFRNRNAME from '../db/schema';
 using IATTRANTYPE as ENTIATTRANTYPE from '../db/schema';
 using IATPLANTNAME as ENTIATPLANTNAME from '../db/schema';
+// using { InventoryAuditSummary as IAS } from '../db/schema';
 
 // Inventory Status
 using INVENTORYSTATUS as ENTINVENTORYSTATUS from '../db/schema';
@@ -469,8 +470,10 @@ service INVENTORY {
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
-    entity INVENTORYAUDITTRAIL as projection on ENTINVENTORYAUDITTRAIL; 
-
+    entity INVENTORYAUDITTRAIL as projection on ENTINVENTORYAUDITTRAIL;
+    
+    // @readonly
+    // entity InventoryAuditSummary as projection on IAS;
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
@@ -938,7 +941,10 @@ using SSNMFRNR as ENTSSNMFRNR from '../db/schema';
 using SSNMFRNRNAME as ENTSSNMFRNRNAME from '../db/schema';
 using SSNSALESORG as ENTSSNSALESORG from '../db/schema';
 
+
+
 service SALES {
+    
     // ℹ️ Ivoice History Related Entities
     // ⚠️ CDS Authorization Pending
     @requires: 'authenticated-user'
@@ -1246,9 +1252,23 @@ service SALES {
     ]
     entity SSNSALESORG as projection on ENTSSNSALESORG;
 
-    
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity PIVOTTABLE as projection on ENTPIVOTTABLE;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity PIVOTCALYEAR as projection on ENTPIVOTCALYEAR;
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity PIVOTPROVINCE as projection on ENTPIVOTPROVINCE;
 
 }

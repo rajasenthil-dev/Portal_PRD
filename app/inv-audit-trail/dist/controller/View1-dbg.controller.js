@@ -16,7 +16,10 @@ sap.ui.define([
             const oSmartFilterBar = oView.byId("bar0");
         
             oView.setBusy(true);
-        
+
+            // oSmartFilterBar.attachSearch(() => {
+            //     this._loadInventoryAuditSummary();
+            // });
             oSmartFilterBar.attachInitialized(function () {
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
@@ -94,9 +97,10 @@ sap.ui.define([
                 }
             });
             this.getView().setModel(oTileCountsModel, "transactionCounts");
-
+            
             // Get the SmartTable and bind the data change event
-            oTable.attachEvent("rowsUpdated", this._calculateTotals.bind(this));
+            oTable.attachEvent("rowsUpdated", this._onRowsUpdated.bind(this));
+           
 
             // // Fetch User Data and Logo
             // const oUserModel = this.getOwnerComponent().getModel("userModel");
@@ -137,6 +141,32 @@ sap.ui.define([
             //     oView.byId("logoImage").setSrc(sFallbackImage);
             // }.bind(this));
          },
+         _onRowsUpdated: function () {
+            const oSmartTable = this.byId("table0");
+            const oTable = oSmartTable.getTable();
+            const oBinding = oTable.getBinding("rows");
+            if (!oBinding) return;
+
+            const aContexts = oBinding.getContexts();
+            if (!aContexts.length) return;
+
+            const firstRow = aContexts[0]?.getObject()?._Totals;
+            if (!firstRow) return;
+            console.log(firstRow)
+
+            // --- Update UI tiles ---
+            // this.byId("_IDGenNumericContent1").setText(this._formatNumber(firstRow.OrderTotal));
+            // this.byId("_IDGenNumericContent2").setText(this._formatNumber(firstRow.ReceiptTotal));
+            // this.byId("_IDGenNumericContent3").setText(this._formatNumber(firstRow.AdjustmentsTotal));
+            // this.byId("_IDGenNumericContent4").setText(this._formatNumber(firstRow.ReturnsTotal));
+            // this.byId("_IDGenNumericContent5").setText(this._formatNumber(firstRow.PhysicalCountTotal));
+
+            // --- Update footer if needed ---
+            this.byId("footerText1").setText(this._formatNumber(firstRow.GrandTotal || 0));
+
+            // --- Generate badges from totals ---
+            this._updateTransactionBadges(firstRow);
+        },
          _refreshUserModel: async function () {
             const oUserModel = this.getOwnerComponent().getModel("userModel");
             var sAppPath = sap.ui.require.toUrl("invaudittrail").split("/resources")[0];
@@ -224,7 +254,6 @@ sap.ui.define([
         },
          
         _calculateTotals: function () {
-            
             var oSmartTable = this.getView().byId("table0");
             var oTable = oSmartTable.getTable();
             var oBinding = oTable.getBinding("rows");
@@ -272,7 +301,36 @@ sap.ui.define([
             this.byId("footerText1").setText(formattedQuantity);
             
         },
-        
+        // _loadAuditSummary: function () {
+        //     const oModel = this.getView().getModel(); // OData V4 model
+        //     const oFilterBar = this.byId("bar0");
+
+        //     const aFilters = oFilterBar.getFilters(); // SmartFilterBar filters
+
+        //     oModel.read("/InventoryAuditSummary", {
+        //         filters: aFilters,
+        //         success: (oData) => {
+        //             const results = oData.results;
+
+        //             // Build tile summaries:
+        //             const tileCounts = {
+        //                 Order: 0,
+        //                 Receipt: 0,
+        //                 Adjustments: 0,
+        //                 Returns: 0,
+        //                 PhysicalCount: 0
+        //             };
+
+        //             results.forEach(row => {
+        //                 tileCounts[row.TRAN_TYPE] = row.TOTAL_QTY;
+        //             });
+
+        //             this.getView()
+        //                 .getModel("transactionCounts")
+        //                 .setProperty("/counts", tileCounts);
+        //         }
+        //     });
+        // },
         _formatNumber : function (value) {
             return new Intl.NumberFormat('en-US', {
                 maximumFractionDigits: 0
@@ -321,7 +379,39 @@ sap.ui.define([
                 return String(Number(value));
             }
             return value; 
+        },
+        _updateTransactionBadges: function(firstRow) {
+            const oBox = this.byId("monthBadgesBox");
+            oBox.removeAllItems(); // clear existing badges
+
+            if (!firstRow) return;
+
+            const badgeConfig = [
+                { title: "Orders",          value: firstRow.OrderTotal,       color: "#143359" },
+                { title: "Receipts",        value: firstRow.ReceiptTotal,     color: "#143359" },
+                { title: "Adjustments",     value: firstRow.AdjustmentsTotal, color: "#143359" },
+                { title: "Returns",         value: firstRow.ReturnsTotal,     color: "#143359" },
+                { title: "Physical Inventory",  value: firstRow.PhysicalCountTotal, color: "#143359" },
+                { title: "Goods Receipt Posting",  value: firstRow.GoodsReceiptPostingTotal, color: "#143359" },
+                { title: "Goods Issue Posting",  value: firstRow.GoodsIssuePostingTotal, color: "#143359" },
+                { title: "Internal Warehouse Movement",  value: firstRow.InternalWarehouseMovementTotal, color: "#143359" },
+                { title: "Posting Change",  value: firstRow.PostingChangeTotal, color: "#143359" },
+                { title: "Putaway",  value: firstRow.PutawayTotal, color: "#143359" },
+                { title: "Stock Removal",  value: firstRow.StockRemovalTotal, color: "#143359" }
+            ];
+
+            badgeConfig.forEach(cfg => {
+                const oChip = new sap.m.HBox({
+                    items: [
+                        new sap.m.Text({ text: cfg.title }).addStyleClass("mckMonthName"),
+                        new sap.m.Text({ text: this._formatNumber(cfg.value) }).addStyleClass("mckMonthValue")
+                    ]
+                }).addStyleClass("mckMonthChip");
+
+                oBox.addItem(oChip);
+            });
         }
+
         
         
     });

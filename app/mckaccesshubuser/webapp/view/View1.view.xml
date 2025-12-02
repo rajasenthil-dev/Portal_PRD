@@ -206,19 +206,33 @@
                 <Text id="_IDGenText25" class="sapUiSmallMarginBottom" text="You're halfway there! Let’s capture the manufacturer's details linked to this user." />
 
                 <Label id="_IDGenLabel3" text="Manufacturer Number"/>
-                <Input id="manufacturerNumber" value="{userContext>/manufacturerNumber}" placeholder="e.g. 1234567" class="sapUiSmallMarginBottom" width="20rem"/>
+                <Input 
+                  id="manufacturerNumber" 
+                  value="{userContext>/manufacturerNumber}" 
+                  placeholder="e.g. 0001234567"
+                  tooltip="Enter a 10-digit Manufacturer Number. Add leading zeros if needed."
+                  class="sapUiSmallMarginBottom" 
+                  liveChange=".onManufacturerNumberChange"
+                  width="20rem"/>
+
+                  <Text
+                      id="manufacturerHelp"
+                      text="Enter a 10-digit manufacturer number (with leading zeros if needed)."
+                      visible="true"
+                      class="helperMessage"
+                  />
 
                 <Label id="_IDGenLabel4" text="Manufacturer Name"/>
                 <Input id="manufacturerName" value="{userContext>/MFGName}" placeholder="e.g. ABC Pharma Inc." class="sapUiSmallMarginBottom" width="20rem"/>
 
                 <Label id="_IDGenLabel5" text="Profit Center"/>
-                <Input id="profitCenter" value="{userContext>/profitCentre}" placeholder="e.g. PCTR01" class="sapUiSmallMarginBottom" width="20rem"/>
+                <Input id="profitCenter" value="{userContext>/profitCentre}" placeholder="e.g. 12345" class="sapUiSmallMarginBottom" width="20rem"/>
 
                 <Label id="_IDGenLabel6" text="Sales Org"/>
                 <Input id="salesOrg" value="{userContext>/salesOrg}" placeholder="e.g. 1000" class="sapUiSmallMarginBottom" width="20rem"/>
 
                 <Label id="_IDGenLabel7" text="Sales Office"/>
-                <Input id="salesOffice" value="{userContext>/salesOffice}" placeholder="e.g. 101" width="20rem"/>
+                <Input id="salesOffice" value="{userContext>/salesOffice}" placeholder="e.g. 2001" width="20rem"/>
               </VBox>
 
               <!-- Right Info Card -->

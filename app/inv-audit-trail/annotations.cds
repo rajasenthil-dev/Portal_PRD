@@ -74,8 +74,9 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
-                Value : POSTING_TIMEE,
-                Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}'
+                Value : POSTING_TIME,
+                Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}',
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -88,7 +89,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : STOCK_QTY,
                 Label : '{i18n>INVENTORYAUDITTRAIL.MENGE}',
-                ![@HTML5.CssDefaults] : {width : '6rem'}
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -100,7 +101,7 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : CHARG,
                 Label : '{i18n>INVENTORYAUDITTRAIL.CHARG}',
-                ![@HTML5.CssDefaults] : {width : '4rem'}
+                ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
                 $Type : 'UI.DataField',
@@ -178,6 +179,10 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : DES_STORAGE_BIN 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : CONFIRMED_AT 
             },
             {
                 $Type : 'UI.DataField',

@@ -546,6 +546,65 @@ sap.ui.define([
             });
     
             this.getView().setModel(this.model, "userContext");
+        },
+        onAfterRendering: function () {
+          const input = this.byId("manufacturerNumber");
+          const help = this.byId("manufacturerHelp");
+
+          input.addEventDelegate({
+              onfocusin: () => {
+                  help.setVisible(true);
+                  help.addStyleClass("helperMessage--visible");
+              },
+              onfocusout: () => {
+                  let value = input.getValue();
+
+                  // Pad on blur if needed
+                  if (value && value.length < 10) {
+                      value = value.padStart(10, "0");
+                      input.setValue(value);
+                  }
+
+                  // FINAL VALIDATION AFTER PADDING
+                  if (value.length === 10 && /^\d{10}$/.test(value)) {
+                      input.setValueState("None");
+                      input.setValueStateText("");
+                  }
+
+                  help.removeStyleClass("helperMessage--visible");
+                  help.addStyleClass("helperMessage--hide");
+
+                  setTimeout(() => {
+                      help.setVisible(false);
+                      help.removeStyleClass("helperMessage--hide");
+                  }, 250);
+              }
+            });
+        },
+        onManufacturerNumberChange: function (oEvent) {
+            const input = oEvent.getSource();
+            let value = input.getValue();
+
+            // Remove non-numbers
+            value = value.replace(/\D/g, "");
+
+            // VALIDATION FIRST
+            if (value.length > 10) {
+                input.setValueState("Error");
+                input.setValueStateText("Cannot exceed 10 digits.");
+            } else if (value.length < 10) {
+                input.setValueState("Error");
+                input.setValueStateText("Must be exactly 10 digits.");
+            } else {
+                input.setValueState("None");
+            }
+
+            // After validation, ENFORCE the 10-digit maximum
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+
+            input.setValue(value);
         }
     
     });

@@ -8,27 +8,29 @@
   "dependencies": {
     "@cap-js-community/odata-v2-adapter": "^1.13.5",
     "@cap-js/hana": "^1",
-    "@sap/approuter": "^19.0.0",
+    "@sap/approuter": "^18.0.0",
+    "@sap/cds": "8.9.6",
     "@sap/xssec": "^4",
     "axios": "^1.7.9",
+    "cds-plugin-ui5": "^0.13.0",
     "cors": "^2.8.5",
     "cuid": "^3.0.0",
     "express": "^4",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-    "passport": "^0.7.0",
-    "@sap/cds": "^9"
+    "passport": "^0.7.0"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.6",
     "@cap-js/sqlite": "^1",
-    "@sap/cds": "^8.9.2",
     "@sap/cds-dk": "^8.7.1",
     "@sap/ux-specification": "1.136.9",
+    "@sap/ux-ui5-tooling": "^1.19.5",
+    "@ui5/cli": "^4.0.36",
     "jest": "^29.7.0",
     "mbt": "^1.2.33",
     "rimraf": "^6.0.1",
-    "cds-plugin-ui5": "^0.13.0"
+    "ui5-task-zipper": "^3.4.4"
   },
   "scripts": {
     "start": "cds-serve",
@@ -117,8 +119,28 @@
     }
   },
   "sapux": [
-    "app/shipstatus",
-    "app/shipstatus1",
+    "app/admindash",
+    "app/accessmanager1",
+    "app/bckorders",
+    "app/cashjour",
+    "app/customermaster",
+    "app/inv-audit-trail",
+    "app/inv-status",
+    "app/invbylot",
+    "app/invoicehis",
+    "app/invsnapshot",
+    "app/invval",
+    "app/itemmas",
+    "app/mckaccesshubuser",
+    "app/openar",
+    "app/openorders",
+    "app/pivottable",
+    "app/pricelist",
+    "app/returns",
+    "app/salesbycus",
+    "app/salesbycuswopid",
+    "app/salesserialnumber",
+    "app/shiphis",
     "app/shipstatus"
   ],
   "workspaces": [
