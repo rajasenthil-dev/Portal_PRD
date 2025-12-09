@@ -9,7 +9,6 @@
     "@cap-js-community/odata-v2-adapter": "^1.13.5",
     "@cap-js/hana": "^1",
     "@sap/approuter": "^18.0.0",
-    "@sap/cds": "8.9.6",
     "@sap/xssec": "^4",
     "axios": "^1.7.9",
     "cds-plugin-ui5": "^0.13.0",
@@ -17,6 +16,7 @@
     "cuid": "^3.0.0",
     "express": "^4",
     "jsonwebtoken": "^9.0.2",
+    "luxon": "^3.7.2",
     "multer": "^1.4.5-lts.1",
     "passport": "^0.7.0"
   },
@@ -28,9 +28,9 @@
     "@sap/ux-ui5-tooling": "^1.19.5",
     "@ui5/cli": "^4.0.36",
     "jest": "^29.7.0",
-    "mbt": "^1.2.33",
-    "rimraf": "^6.0.1",
-    "ui5-task-zipper": "^3.4.4"
+    "mbt": "^1.2.29",
+    "rimraf": "^5.0.5",
+    "ui5-middleware-approuter": "^3.8.0"
   },
   "scripts": {
     "start": "cds-serve",

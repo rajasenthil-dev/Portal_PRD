@@ -1,5 +1,6 @@
 const cds = require('@sap/cds');
-const deduplicateForInternal = require('./utils/deduplication')
+const deduplicateForInternal = require('./utils/deduplication');
+const { DateTime } = require('luxon');
 // const okta = require('./utils/okta-helper');
 /**
 ** Implementation of ALL services. **
@@ -67,7 +68,41 @@ module.exports = cds.service.impl(async function () {
       SHIPPINGSTATUS: `(VKORG <> '1000' AND WAREHOUSE_NAME_LNUMT <> '1010')`,
       SHIPSTATUSVKORG: `(VKORG <> '1000')`
   };
-  
+
+  const entityFilterMapFor0001000025 = {
+      SALESBYCURRENTAPP: `(CO_VKORG = '2006')`,
+      SALESBYCURRENTWOPID: `(CO_VKORG = '2006')`,
+      SBCSALESORG: `(CO_VKORG = '2006')`,
+      RETVKORG: `(CO_VKORG = '2006')`,
+      ITEMMASTER: `(SALESORG = '2006')`,
+      ITEMMASSALESORG: `(SALESORG = '2006')`,
+      INVENTORYSTATUS: `(VKBUR = '2006')`,
+      INVSTATUSVKBUR: `(VKBUR = '2006')`,
+      INVENTORYBYLOT: `(VKBUR = '2006')`,
+      INVENTORYVALUATION: `(VKBUR = '2006')`,
+      INVENTORYAUDITTRAIL: `(SALES_ORG = '2006')`,
+      IATSALESORG: `(SALES_ORG = '2006')`,
+      CASHJOURNAL: `(VKORG = '2006')`,
+      INVENTORYSNAPSHOT: `(VKORG = '2006')`,
+      FINCJSALESORG: `(VKORG = '2006')`,
+      IHSALESORG: `(VKORG = '2006')`,
+      OPENAR: `(VKORG = '2006')`,
+      OPENARSALESORG: `(VKORG = '2006')`,
+      CUSTOMERMASTER: `(VKORG = '2006')`,
+      CMSALESORG: `(VKORG = '2006')`,
+      SHIPPINGHISTORY: `(VKORG = '2006')`,
+      SHVKORG: `(VKORG = '2006')`,
+      PRICING: `(VKORG = '2006')`,
+      PRICINGSALESORG: `(VKORG = '2006')`,
+      OOVKORG: `(VKORG = '2006')`,
+      BOVKORG: `(VKORG = '2006')`,
+      INVOICEHISTORY: `(VKORG = '2006')`,
+      OPENORDERS: `(VKORG = '2006')`,
+      BACKORDERS: `(VKORG = '2006')`,
+      RETURNS: `(CO_VKORG = '2006')`,
+      SHIPPINGSTATUS: `(VKORG = '2006')`,
+      SHIPSTATUSVKORG: `(VKORG = '2006')`
+  };
   // --- Mappings of entity to filters ---
     /**
      * Entity → Filter map for manufacturer 0001000002(Novartis)
@@ -186,7 +221,8 @@ module.exports = cds.service.impl(async function () {
       '0001000019': entityFilterMapFor0001000019,
       '0001000005': salesOrg1000ExclusionMap,
       '0001000002': entityFilterMapFor0001000002,  
-      '0001000059': salesOrg1000ExclusionMap  
+      '0001000059': salesOrg1000ExclusionMap,
+      '0001000025': entityFilterMapFor0001000025  
       // add more if needed
   };
 
@@ -294,10 +330,20 @@ module.exports = cds.service.impl(async function () {
       INVENTORYAUDITTRAIL: ['CURRENT'],
       INVENTORYSNAPSHOT: ['CURRENT'],
       RETURNS: ['CURRENT'],
-      SHIPPINGHISTORY: ['CURRENT']
+      SHIPPINGHISTORY: ['CURRENT'],
+      INVENTORYAUDITTRAIL: ['POSTING_DATE'],
+      INVENTORYAUDITTRAIL: ['POSTING_TIME']
       // Add other entity → field exclusions here
     };
+    const allowedPivotSKUs = [
+      '1000199', // Cystadrops
+      '1000207', // LEDAGA
+      '1000206', '1000205', '1000204', '1000203',
+      '1000202', '1000198', '1000201', '1000200' // Signifor
+    ];
 
+    // For PIVOTTABLE, SKU field is MATNR (same product #)
+    const pivotSKUField = 'SKU_MATNR'; 
     // Helper: is the element a string-ish field we can safely fuzzy on?
     function isStringField(req, field) {
       const el = req.target?.elements?.[field];
@@ -447,6 +493,26 @@ module.exports = cds.service.impl(async function () {
       } else if (where.length) {
         req.query.SELECT.where = where;
         console.log(`📄 Final WHERE (no fuzzy) for ${entityName}:`, JSON.stringify(where, null, 2));
+      }
+      // === 5) Restrict PIVOTTABLE to allowed SKU list ===
+      if (entityName === 'PIVOTTABLE') {
+        const skuConditions = allowedPivotSKUs.map(sku => [
+          { ref: [pivotSKUField] }, '=', { val: sku }
+        ]);
+
+        // Insert 'or' between each condition
+        const xpr = [];
+        skuConditions.forEach((c, i) => {
+          if (i > 0) xpr.push('or');
+          xpr.push(...c);
+        });
+
+        const skuFilter = { xpr };
+
+        console.log(`🎯 Filtering PIVOTTABLE SKUs using OR-based filter`, allowedPivotSKUs);
+
+        if (where.length > 0) where.push('and');
+        where.push(skuFilter);
       }
     });
 
@@ -688,19 +754,15 @@ module.exports = cds.service.impl(async function () {
       });
     
 
-    // 3. Apply the handler to all 'READ' operations for the specified entities.
     this.on("READ", "PIVOTTABLE", async (req, next) => {
 
-      // 1️⃣ Run the existing DB query first
       let rows = await next();
       if (!rows || rows.length === 0) return rows;
 
-      // 2️⃣ Filter out any product containing "Brochure"
       rows = rows.filter(r =>
         !String(r.MAKTX || "").toUpperCase().includes("BROCHURE")
       );
 
-      // 3️⃣ Keep ONLY invoice document types
       const allowedInvoiceTypes = [
         "Invoice",
         "FFS Invoice",
@@ -712,7 +774,6 @@ module.exports = cds.service.impl(async function () {
         allowedInvoiceTypes.includes(String(r.VTEXT_FKART || "").trim())
       );
 
-      // 4️⃣ Aggregate customers with the same name
       const aggregated = {};
       for (const row of rows) {
         const key = `${row.PROVINCE_REGIO}::${row.SHIP_TO_NAME}`;
@@ -725,12 +786,11 @@ module.exports = cds.service.impl(async function () {
             "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
             "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"
           ].forEach(month => {
-              target[month] = Number(target[month] || 0) + Number(row[month] || 0);
+            target[month] = Number(target[month] || 0) + Number(row[month] || 0);
           });
         }
       }
 
-      // 5️⃣ Add TOTAL column = sum of all months
       const result = Object.values(aggregated).map(r => {
         r.TOTAL =
           Number(r.JANUARY) + Number(r.FEBRUARY) + Number(r.MARCH) + Number(r.APRIL) +
@@ -739,87 +799,143 @@ module.exports = cds.service.impl(async function () {
         return r;
       });
 
-      return result;
+      // 🔥 NEW: Ensure whole numbers for export & display
+      [
+        "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
+        "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER",
+        "TOTAL"
+      ].forEach(field => {
+        result.forEach(r => {
+          if (r[field] !== null && r[field] !== undefined) {
+            r[field] = Math.trunc(r[field]); // drop decimals completely
+          }
+        });
+      });
+
+      return result; 
     });
-this.on("READ", "INVENTORYAUDITTRAIL", async (req, next) => {
-    console.log("🔥 INVENTORYAUDITTRAIL handler STARTED");
-    let rows = await next();     // 1) SmartTable filtered rows
-    if (!rows.length) return rows;
+    // // ⏳ BEFORE READ → rewrite Posting Date filters to CONFIRMED_AT date
 
-    // 2) Clone query WITHOUT $top, $skip for full aggregation
-    const fullQuery = JSON.parse(JSON.stringify(req.query));
+    // this.before("READ", "INVENTORYAUDITTRAIL", (req) => {
+    //     const where = req.query?.SELECT?.where;
+    //     if (!where || !Array.isArray(where)) return;
 
-    if (fullQuery.SELECT.limit) delete fullQuery.SELECT.limit;  // remove paging
-    if (fullQuery.SELECT.orderBy) delete fullQuery.SELECT.orderBy; // remove sorting
+    //     console.log("📌 RAW WHERE before rewrite:", where);
 
-    // 3) Fetch all matching rows for real totals
-    const all = await cds.run(fullQuery);
+    //     for (let i = 0; i < where.length; i++) {
+    //         let lhs = where[i];
+    //         const op = where[i + 1];
+    //         let rhs = where[i + 2];
 
-    // 4) Aggregate
-    const totals = {
-        GrandTotal: 0,
-        OrderTotal: 0,
-        ReceiptTotal: 0,
-        AdjustmentsTotal: 0,
-        ReturnsTotal: 0,
-        PhysicalCountTotal: 0,
-        GoodsReceiptPostingTotal: 0,
-        GoodsIssuePostingTotal: 0,
-        InternalWarehouseMovementTotal: 0,
-        PostingChangeTotal: 0,
-        PutawayTotal: 0,
-        StockRemovalTotal: 0
-    };
+    //         const lhsField = typeof lhs === "string" 
+    //             ? lhs.replace(/['"]/g, "")
+    //             : lhs?.ref?.[0];
 
-    for (const r of all) {
-        const qty = Number(r.STOCK_QTY || 0);
-        totals.GrandTotal += qty;
-        let type = (r.TRAN_TYPE || "")
-          .normalize("NFKC")                  // normalize unicode
-          .replace(/\p{White_Space}+/gu, " ") // unicode-aware whitespace collapse
-          .trim();
-        switch (type) {
-          case "Order":
-              totals.OrderTotal += qty; 
-              break;
-          case "Receipt":
-              totals.ReceiptTotal += qty; 
-              break;
-          case "Adjustment":
-              totals.AdjustmentsTotal += qty; 
-              break;
-          case "Return":
-              totals.ReturnsTotal += qty; 
-              break;
-          case "Physical Inventory":
-              totals.PhysicalCountTotal += qty; 
-              break;
-          case "Goods Receipt Posting":
-              totals.GoodsReceiptPostingTotal += qty; 
-              break;
-          case "Goods Issue Posting":
-              totals.GoodsIssuePostingTotal += qty; 
-              break;
-          case "Internal Warehouse Movement":
-              totals.InternalWarehouseMovementTotal += qty; 
-              break;
-          case "Posting Change":
-              totals.PostingChangeTotal += qty; 
-              break;
-          case "Putaway":
-              totals.PutawayTotal += qty; 
-              break;
-          case "Stock Removal":
-              totals.StockRemovalTotal += qty; 
-              break;
-      }
-    }
+    //         if (lhsField !== "POSTING_DATE") continue;
+    //         if (!rhs) continue;
 
-    // 5) Attach totals to every row
-    rows.forEach(r => r._Totals = totals);
+    //         let value = rhs.val ?? rhs;
 
-    return rows;
-});
+    //         // Convert YYYYMMDD → YYYY-MM-DD
+    //         if (typeof value === "string" && /^\d{8}$/.test(value)) {
+    //             value = `${value.slice(0,4)}-${value.slice(4,6)}-${value.slice(6)}`;
+    //         }
+
+    //         // Replace LEFT side with date(CONFIRMED_AT)
+    //         where[i] = {
+    //             func: "date",
+    //             args: [{ ref: ["CONFIRMED_AT"] }]
+    //         };
+
+    //         // Replace RHS literal
+    //         where[i + 2] = { val: value };
+
+    //         console.log(`🔁 Rewrote filter: POSTING_DATE ${op} ${value}`);
+    //     }
+
+    //     console.log("📌 RAW WHERE after rewrite:", where);
+    // });
+
+
+    this.on("READ", "INVENTORYAUDITTRAIL", async (req, next) => {
+        console.log("🔥 INVENTORYAUDITTRAIL handler STARTED");
+        let rows = await next();     // 1) SmartTable filtered rows
+        if (!rows.length) return rows;
+
+        // rows.forEach(r => {
+        //   if (!r.CONFIRMED_AT) return;
+
+        //   let ts;
+
+        //   if (r.CONFIRMED_AT instanceof Date) {
+        //     ts = DateTime.fromJSDate(r.CONFIRMED_AT, { zone: "utc" });
+        //   } else if (typeof r.CONFIRMED_AT === "string") {
+        //     ts = DateTime.fromISO(r.CONFIRMED_AT.replace(" ", "T"), { zone: "utc" });
+        //   } else {
+        //     console.warn("⚠️ Unknown CONFIRMED_AT type:", typeof r.CONFIRMED_AT);
+        //     return;
+        //   }
+
+        //   if (!ts.isValid) {
+        //     console.warn("⚠️ Invalid timestamp:", r.CONFIRMED_AT);
+        //     return;
+        //   }
+        //   const local = ts.setZone("America/Toronto");
+
+        //   r.POSTING_DATE = local.toISODate("LLL. d yyyy");        // YYYY-MM-DD
+        //   r.POSTING_TIME = local.toFormat("hh:mm:ss a");
+
+        // });
+
+        // 2) Clone query WITHOUT $top, $skip for full aggregation
+        const fullQuery = JSON.parse(JSON.stringify(req.query));
+
+        if (fullQuery.SELECT.limit) delete fullQuery.SELECT.limit;  // remove paging
+        if (fullQuery.SELECT.orderBy) delete fullQuery.SELECT.orderBy; // remove sorting
+
+        // 3) Fetch all matching rows for real totals
+        const all = await cds.run(fullQuery);
+
+        // 4) Aggregate
+        const totals = {
+            GrandTotal: 0,
+            OrderTotal: 0,
+            ReceiptTotal: 0,
+            AdjustmentsTotal: 0,
+            ReturnsTotal: 0,
+            PhysicalCountTotal: 0,
+            GoodsReceiptPostingTotal: 0,
+            GoodsIssuePostingTotal: 0,
+            InternalWarehouseMovementTotal: 0,
+            PostingChangeTotal: 0,
+            PutawayTotal: 0,
+            StockRemovalTotal: 0
+        };
+
+        for (const r of all) {
+            const qty = Number(r.STOCK_QTY || 0);
+            totals.GrandTotal += qty;
+            const type = (r.TRAN_TYPE || "").normalize("NFKC").replace(/\p{White_Space}+/gu, " ").trim();
+            switch (type) {
+                case "Order": totals.OrderTotal += qty; break;
+                case "Receipt": totals.ReceiptTotal += qty; break;
+                case "Adjustment": totals.AdjustmentsTotal += qty; break;
+                case "Return": totals.ReturnsTotal += qty; break;
+                case "Physical Inventory": totals.PhysicalCountTotal += qty; break;
+                case "Goods Receipt Posting": totals.GoodsReceiptPostingTotal += qty; break;
+                case "Goods Issue Posting": totals.GoodsIssuePostingTotal += qty; break;
+                case "Internal Warehouse Movement": totals.InternalWarehouseMovementTotal += qty; break;
+                case "Posting Change": totals.PostingChangeTotal += qty; break;
+                case "Putaway": totals.PutawayTotal += qty; break;
+                case "Stock Removal": totals.StockRemovalTotal += qty; break;
+            }
+        }
+
+        // 5) Attach totals to every row
+        rows.forEach(r => r._Totals = totals);
+
+        return rows;
+    });
 
   
   //   const { InventoryAuditSummary } = this.entities;

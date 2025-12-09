@@ -164,12 +164,12 @@ entity INVENTORYAUDITTRAIL
     key SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
     key CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
         DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
-        POSTING_DATE        : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+        POSTING_DATE        : Date     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
         POSTING_TIME        : Time          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
     key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
-        PLANT_NAME         : String(30)     @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
+        PLANT_NAME          : String(30)    @title: '{i18n>INVENTORYAUDITTRAIL.NAME1_PLANT}';
         NARCOTICS_IND       : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.NARCOTICS_IND}'; 
         RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
@@ -181,6 +181,16 @@ entity INVENTORYAUDITTRAIL
         DES_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.DES_STORAGE_BIN}';
         DOCNO               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.DOCNO}';     
     key SOURCE_DESTINATION  : String(11)    @title: '{i18n>INVENTORYAUDITTRAIL.SOURCE_DESTINATION}';
+        // virtual POSTING_DATE : String(8)
+        // @odata.Type : 'Edm.String'
+        // @UI.lineItem
+        // @UI.selectionField
+        // @Common.Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+
+        // virtual POSTING_TIME : String(8)
+        // @UI.lineItem
+        // @Common.Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}'
+        // @odata.Type : 'Edm.String';
 }
 // @cds.persistence.skip      
 // @cds.search.enabled
@@ -1626,7 +1636,7 @@ define view BOVKORG as
 entity SHIPPINGSTATUS
 {
     key OBD_NO_DOCNO_C                              : String(10)        @title: 'Delivery #';
-        OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp         @title: 'Plant Time';
+    key OBD_TIMESTAMP_LAST_STATUS_TIME_PLANT_BASED  : Timestamp         @title: 'Plant Time';
     key PICK_AND_PACK_STATUS_SALES_SHIPPING_STATUS  : String(27)        @title: 'Warehouse Status';
     key SO_NO_REFDOCNO                              : String(35)        @title: 'Sales Order #';
         CUSTOMER_PO_BSTNK                           : String(20)        @title: 'Customer PO'; 
@@ -1685,23 +1695,38 @@ entity PIVOTTABLE
     key MFRNR                       : String(10)    @title : '{i18n>PIVOTTABLE.MFRNR}';
     key CO_VKORG                    : String(4)     @title : '{i18n>PIVOTTABLE.CO_VKORG}';
     key MAKTX                       : String(40)    @title : '{i18n>PIVOTTABLE.MAKTX}';
+    key SKU_MATNR                   : String(7)     @title : '{i18n>PIVOTTABLE.SKU_MATNR}';
     key CAL_YEAR                    : String(10)    @title : '{i18n>PIVOTTABLE.CAL_YEAR}';
     key PROVINCE_REGIO              : String(3)     @title : '{i18n>PIVOTTABLE.PROVINCE_REGIO}';
     key SHIP_TO_NAME                : String(70)    @title : '{i18n>PIVOTTABLE.SHIP_TO_NAME}';
     key VTEXT_FKART                 : String(8)     @title : '{i18n>PIVOTTABLE.VTEXT_FKART}';
-        JANUARY                     : Decimal(33,3) @title : '{i18n>PIVOTTABLE.JAN}'; 
-        FEBRUARY                    : Decimal(33,3) @title : '{i18n>PIVOTTABLE.FEB}';
-        MARCH                       : Decimal(33,3) @title : '{i18n>PIVOTTABLE.MAR}';
-        APRIL                       : Decimal(33,3) @title : '{i18n>PIVOTTABLE.APR}';
-        MAY                         : Decimal(33,3) @title : '{i18n>PIVOTTABLE.MAY}';
-        JUNE                        : Decimal(33,3) @title : '{i18n>PIVOTTABLE.JUN}';
-        JULY                        : Decimal(33,3) @title : '{i18n>PIVOTTABLE.JUL}';
-        AUGUST                      : Decimal(33,3) @title : '{i18n>PIVOTTABLE.AUG}';
-        SEPTEMBER                   : Decimal(33,3) @title : '{i18n>PIVOTTABLE.SEP}';
-        OCTOBER                     : Decimal(33,3) @title : '{i18n>PIVOTTABLE.OCT}';
-        NOVEMBER                    : Decimal(33,3) @title : '{i18n>PIVOTTABLE.NOV}';
-        DECEMBER                    : Decimal(33,3) @title : '{i18n>PIVOTTABLE.DEC}';
-        virtual TOTAL : Decimal(33,3)
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        JANUARY                     : Decimal(33,0) @title : '{i18n>PIVOTTABLE.JAN}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 } 
+        FEBRUARY                    : Decimal(33,0) @title : '{i18n>PIVOTTABLE.FEB}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        MARCH                       : Decimal(33,0) @title : '{i18n>PIVOTTABLE.MAR}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        APRIL                       : Decimal(33,0) @title : '{i18n>PIVOTTABLE.APR}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        MAY                         : Decimal(33,0) @title : '{i18n>PIVOTTABLE.MAY}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        JUNE                        : Decimal(33,0) @title : '{i18n>PIVOTTABLE.JUN}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        JULY                        : Decimal(33,0) @title : '{i18n>PIVOTTABLE.JUL}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        AUGUST                      : Decimal(33,0) @title : '{i18n>PIVOTTABLE.AUG}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        SEPTEMBER                   : Decimal(33,0) @title : '{i18n>PIVOTTABLE.SEP}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        OCTOBER                     : Decimal(33,0) @title : '{i18n>PIVOTTABLE.OCT}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        NOVEMBER                    : Decimal(33,0) @title : '{i18n>PIVOTTABLE.NOV}';
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        DECEMBER                    : Decimal(33,0) @title : '{i18n>PIVOTTABLE.DEC}';
+        @Semantics.quantity
+        @AnalyticsDetails.export.settings: { decimalPlaces: 0 }
+        virtual TOTAL : Decimal(33,0)
         @sapui.visible : true
         @Common.Label : '{i18n>PIVOTTABLE.TOTAL}'
         @UI.lineItem: [{ position: 99 }];

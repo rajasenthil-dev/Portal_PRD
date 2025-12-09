@@ -304,7 +304,7 @@
                                         }" 
                                         text="{
                                             parts: [{path:'TOTAL_AMOUNT'}, {path:'WAERK'}],
-                                            formatter: 'Formatter._formatCurrency'
+                                            formatter:'Formatter._formatCurrency'
                                         }"
                                     />
                                 </t:template>
