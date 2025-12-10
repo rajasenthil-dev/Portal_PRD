@@ -9,7 +9,6 @@ Search.defaultSearchElement: true,
             MAKTX: true, 
             CHARG: true,
             POSTING_DATE: true,
-            CONFIRMED_AT: true, 
             WAREHOUSE_STATUS:true, 
             KUNNR:true, 
             CUSTOMER_NAME:true, 
@@ -72,12 +71,6 @@ Search.defaultSearchElement: true,
                 $Type : 'UI.DataField',
                 Value : POSTING_DATE,
                 Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}',
-                ![@HTML5.CssDefaults] : {width : '7.813rem'}
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : POSTING_TIME,
-                Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}',
                 ![@HTML5.CssDefaults] : {width : '7.813rem'}
             },
             {
