@@ -158,6 +158,10 @@ Search.defaultSearchElement: true,
             {
                 $Type : 'UI.DataField',
                 Value : SGTXT_BSID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : AUGBL,
             }
         ],
     },

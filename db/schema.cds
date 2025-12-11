@@ -287,6 +287,7 @@ entity CASHJOURNAL
         WRBTR_UNAUTH_DEDUCT : Decimal(23,2)     @title : '{i18n>CASHJOURNAL.WRBTR_UNAUTH_DEDUCT}';
         RSTGR_BSID          : String(3)         @title : '{i18n>CASHJOURNAL.RSTGR_BSID}';
         SGTXT_BSID          : String(50)        @title : '{i18n>CASHJOURNAL.SGTXT_BSID}';
+    key AUGBL               : String(10)        @title : '{i18n>CASHJOURNAL.AUGBL}';
     
 }
 define view BILLINGTYPE as
