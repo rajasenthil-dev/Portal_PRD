@@ -173,7 +173,15 @@ Search.defaultSearchElement: true,
             },
             {
                 $Type : 'UI.DataField',
+                Value : VLTYP
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : DES_STORAGE_BIN 
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : NLTYP
             },
             {
                 $Type : 'UI.DataField',

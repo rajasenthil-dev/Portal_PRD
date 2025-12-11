@@ -209,14 +209,37 @@
                                 </t:customData>
                                 <Text id="_IDGenText2" text="{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}"></Text>
                                 <t:template>
-                                    <Text id="_IDGenText4" text="{
-                                        path: 'POSTING_DATE', 
-                                        type: 'sap.ui.model.odata.type.Date',
-                                        formatOptions: { 
-                                        style: 'medium'
-                                    } }"/>
+                                    <Text 
+                                        id="_IDGenText4" 
+                                        text="{
+                                            path: 'POSTING_DATE', 
+                                            type: 'sap.ui.model.odata.type.Date',
+                                            formatOptions: { 
+                                                style: 'medium'
+                                            } 
+                                        }"/>
                                 </t:template>
                             </t:Column>
+                            <!-- <t:Column id="_IDGenColumn22" width='8rem' hAlign="End" sortProperty="POSTING_TIME">
+                                <t:customData>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "POSTING_TIME", "leadingProperty": "POSTING_TIME", "columnIndex": 6}'/>
+                                </t:customData>
+                                <Text id="_IDGenText222" text="{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}"></Text>
+                                <t:template>
+                                    <Text 
+                                        id="_IDGenText42" 
+                                        text="{
+                                            path: 'POSTING_TIME', 
+                                            type: 'sap.ui.model.odata.type.Time',
+                                            formatOptions: {
+                                                source: {
+                                                    pattern: 'h:mm:ss a'
+                                                },
+                                                pattern: 'h:mma'
+                                            } 
+                                        }"/>
+                                </t:template>
+                            </t:Column> -->
                             <!-- <t:Column id="_IDGenColumn3" width='8rem' hAlign="End" sortProperty="POSTING_TIME">
                                 <t:customData>
                                     <core:CustomData key="p13nData" value='\{"columnKey": "POSTING_TIME", "leadingProperty": "POSTING_TIME", "columnIndex": 6}'/>
@@ -274,18 +297,29 @@
                                     <Text id="invoiceDate24" text="{path: 'WERKS'}"/>
                                 </t:template>
                             </t:Column>
-                            <t:Column id="_IDGenColumn4" width='20rem' hAlign="End" sortProperty="CONFIRMED_AT">
+                            <t:Column id="_IDGenColumn4"  width='8rem' hAlign="End" sortProperty="CONFIRMED_AT">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "CONFIRMED_AT", "leadingProperty": "CONFIRMED_AT", "columnIndex": 7}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "CONFIRMED_AT", "leadingProperty": "CONFIRMED_AT", "columnIndex": 6}'/>
                                 </t:customData>
                                 <Text
                                     id="_IDGenText1" 
-                                    text="{i18n>INVENTORYAUDITTRAIL.CONFIRMED_AT}"></Text>
+                                    text="{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}"></Text>
                                 <t:template>
                                     <Text 
                                      core:require="{Formatter: 'invaudittrail/model/formatter'}"
                                      id="_IDGenText5" 
-                                     text="{path: 'CONFIRMED_AT',  type: 'sap.ui.model.type.String'}"/>
+                                     text="{
+                                        path: 'CONFIRMED_AT', 
+                                        type: 'sap.ui.model.odata.type.DateTime',
+                                        formatOptions: {
+                                            source: {
+                                                pattern: 'yyyy-MM-dd HH:mm:ss.SSS',
+                                                timeZone: 'America/New_York'
+                                            },
+                                            pattern: 'h:mma',
+                                            timeZone: 'America/New_York'
+                                        }
+                                    }"/>
                                 </t:template>
                             </t:Column>
                             <t:Column id="_IDGenColumn6" width='7.813rem' hAlign="End" sortProperty="SALES_ORG" visible="true">

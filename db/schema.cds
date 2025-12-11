@@ -181,16 +181,8 @@ entity INVENTORYAUDITTRAIL
         DES_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.DES_STORAGE_BIN}';
         DOCNO               : String(10)    @title: '{i18n>INVENTORYAUDITTRAIL.DOCNO}';     
     key SOURCE_DESTINATION  : String(11)    @title: '{i18n>INVENTORYAUDITTRAIL.SOURCE_DESTINATION}';
-        // virtual POSTING_DATE : String(8)
-        // @odata.Type : 'Edm.String'
-        // @UI.lineItem
-        // @UI.selectionField
-        // @Common.Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
-
-        // virtual POSTING_TIME : String(8)
-        // @UI.lineItem
-        // @Common.Label : '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}'
-        // @odata.Type : 'Edm.String';
+        VLTYP               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.VLTYP}';
+        NLTYP               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.NLTYP}';
 }
 // @cds.persistence.skip      
 // @cds.search.enabled
