@@ -237,7 +237,7 @@
                             useTablePersonalisation="true" 
                             customData:p13nDialogSettings='{filter:{visible:false}}'
                             showRowCount="true" 
-                            persistencyKey="SmartTableAnalytical_Explored"
+                            persistencyKey="SmartTableAnalytical_PIVOT"
                             enableAutoColumnWidth="true" 
                             class="sapUiResponsiveContentPadding"
                         >

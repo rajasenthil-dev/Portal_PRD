@@ -69,7 +69,7 @@
                     useTablePersonalisation="true"
                     customData:p13nDialogSettings='{filter:{visible:false}}'
                     showRowCount="true"
-                    persistencyKey="SmartTableAnalytical_Explored"
+                    persistencyKey="SmartTableAnalytical_PRICING"
                     enableAutoColumnWidth="true" class="sapUiResponsiveContentPadding"
                 >
                     <t:Table id="table" selectionMode="None" alternateRowColors="true"> 

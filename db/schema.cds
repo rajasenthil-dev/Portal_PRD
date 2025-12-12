@@ -925,7 +925,7 @@ key KTOKD                   : String(4)     @title : '{i18n>SALESBYCURRENT.KTOKD
     KTEXT                   : String(20)    @title : '{i18n>SALESBYCURRENT.KTEXT}';
     KZWI1                   : Decimal(34,2) @title : '{i18n>SALESBYCURRENT.KZWI1}';
     KZWI3                   : Decimal(33,2) @title : '{i18n>SALESBYCURRENT.KZWI3}';
-    TOTAL_AMOUNT            : Decimal(38,1) @title : '{i18n>SALESBYCURRENT.TOTAL_AMOUNT}';
+    TOTAL_AMOUNT            : Decimal(38,2) @title : '{i18n>SALESBYCURRENT.TOTAL_AMOUNT}';
     // OBKNR                   : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
     SMTP_ADDR               : String(241) @title : '{i18n>SALESBYCURRENT.SMTP_ADDR}';
     TEL_NUMBER              : String(30) @title : '{i18n>SALESBYCURRENT.TEL_NUMBER}';

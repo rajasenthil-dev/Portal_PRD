@@ -936,7 +936,36 @@ module.exports = cds.service.impl(async function () {
 
         return rows;
     });
+    // Handler for Server-Side Aggregation
+    this.on('READ', 'GlobalTotals', async (req) => {
+        
+        // 1. Extract filters applied by the Smart Filter Bar
+        const filter = req.query.SELECT.where; 
 
+        // 2. Execute the aggregation query on the main entity.
+        // Use the underlying database view name if 'SALESBYCURRENTAPP' is a projection on a view.
+        // We use the CDS entity name here:
+        const totals = await this.run(
+            SELECT.one
+                .columns(
+                    'sum(TOTAL_AMOUNT) as TotalSales', 
+                    'sum(QUANTITY_FKIMG) as TotalUnits', 
+                    'count(*) as TotalLines',
+                    'count(distinct case when VTEXT_FKART = \'Invoice\' then INVOICE_CREDIT_VBELN end) as UniqueInvoices'
+                )
+                .from('SALESBYCURRENTAPP') 
+                .where(filter) // Apply the filters
+        );
+        
+        // 3. Return the result in the expected singleton structure
+        return {
+            ID: 1, // Key for the singleton
+            TotalSales: totals.TotalSales || 0,
+            TotalUnits: totals.TotalUnits || 0,
+            TotalLines: totals.TotalLines || 0,
+            UniqueInvoices: totals.UniqueInvoices || 0,
+        };
+    });
   
   //   const { InventoryAuditSummary } = this.entities;
 

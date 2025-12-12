@@ -72,7 +72,7 @@
                     useTablePersonalisation="true" 
                     customData:p13nDialogSettings='{filter:{visible:false}}'
                     showRowCount="true" 
-                    persistencyKey="SmartTableAnalytical_Explored" 
+                    persistencyKey="SmartTable_CUSTOMERMASTER" 
                     demandPopin="true" 
                     enableAutoColumnWidth="true" 
                     class="sapUiResponsiveContentPadding sapUiLargeMarginBottom"

@@ -44,8 +44,17 @@ sap.ui.define([
             oSmartFilterBar.attachInitialized(function () {
                 oView.setBusy(false); // Once filter bar + value helps are ready
             });
-            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             const oSmartTable = this.getView().byId("table0");
+            if (!oSmartTable) {
+                console.error("Smart Table 'table0' not found in the view.");
+                return; // Exit if the control isn't there yet
+            }
+            
+            // Attach the initialise event handler. 
+            // We use .bind(this) or passing 'this' as the third argument to ensure the context is correct.
+            oSmartTable.attachInitialise(this._onSmartTableInitialised, this);
+            var oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            
             var oToolbar = oSmartTable.getToolbar();
             var oCurrentStatus = new sap.m.ObjectStatus({
                 text: oBundle.getText("SALESBYCURRENT.CURRENTTEXT"),
@@ -210,102 +219,210 @@ sap.ui.define([
             console.log("RouteView1 pattern matched – fetching logo...");
             this._fetchAndSetLogo();
         },
-        _calculateTotals: function () {
-            const oSmartTable = this.getView().byId("table0");
-            const oTable = oSmartTable.getTable();
-            const oBinding = oTable.getBinding("rows");
-        
-            if (!oBinding) {
-                console.warn("Table binding is missing.");
-                // Optionally clear tiles/footers if no binding
-                this._updateTile("_IDGenNumericContent1", "0");
-                this._updateTile("_IDGenNumericContent2", "0");
-                this._updateTile("_IDGenNumericContent3", "0");
-                this._updateTile("_IDGenNumericContent4", "0");
-                this._updateTile("FooterText1", "0");
-                this._updateTile("FooterText2", "0"); // Assuming FooterText2 is also updated by _updateTile
-                return;
+        _onSmartTableInitialised: function() {
+            const oSmartTable = this.byId("table0"); // Safe to access here, as it's initialized
+
+            const sFilterBarId = oSmartTable.getSmartFilterId();
+            const oFilterBar = this.byId(sFilterBarId);
+
+            if (oFilterBar) {
+                // Attach the search event to our totals method
+                // This ensures _calculateTotals is called whenever the user applies a filter
+                oFilterBar.attachSearch(this._calculateTotals, this);
+                
+                // Also attach the reset event
+                oFilterBar.attachReset(this._calculateTotals, this);
+
+                // Perform the initial calculation after the SFB and Table are ready
+                this._calculateTotals(); 
+            } else {
+                console.warn("Smart Filter Bar not found or not initialized.");
             }
-        
-            const aContexts = oBinding.getContexts(0, oBinding.getLength());
-            // Check if contexts array is available and not empty
-            if (!aContexts || aContexts.length === 0) {
-                console.warn("Data is not available for calculation.");
-                // Clear tiles/footers if no data
-                this._updateTile("_IDGenNumericContent1", "0");
-                this._updateTile("_IDGenNumericContent2", "0");
-                this._updateTile("_IDGenNumericContent3", "0");
-                this._updateTile("_IDGenNumericContent4", "0");
-                this._updateTile("FooterText1", "0");
-                this._updateTile("FooterText2", "0"); // Assuming FooterText2 is also updated by _updateTile
-                return;
-            }
-        
-            // Initialize totals and sets
-            const totals = aContexts.reduce((acc, oContext) => {
-                const oData = oContext.getObject();
-                if (!oData) return acc;
-        
-                // Sales & Amount Calculation (Applied to all rows)
-                acc.salesTotal += parseFloat(oData.AMOUNT_NETWR || 0);
-        
-                // Lines Calculation (Count every row)
-                acc.lineCount++;
-        
-                // Units Calculation (Units per case * Quantity - Applied to all rows)
-                // const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
-                const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
-                acc.unitsTotal += quantity;
-        
-                // Footer Quantity Calculation (Sum QUANTITY_FKIMG - Applied to all rows)
-                acc.quantityTotal += quantity;
-        
-                // --- New Logic for Unique Invoice Count ---
-                // Only process if the type is "Invoice"
-                if (oData.VTEXT_FKART === "Invoice") {
-                    // Add the invoice number to the Set for unique count if it exists
-                    if (oData.INVOICE_CREDIT_VBELN) {
-                        acc.uniqueInvoiceNumbers.add(oData.INVOICE_CREDIT_VBELN);
-                    }
-                    // Note: The previous 'invoiceCount' which counted rows with type "Invoice"
-                    // is removed as the requirement is for the unique invoice number count.
-                }
-                // --- End New Logic ---
-        
-                return acc;
-            }, {
-                salesTotal: 0,
-                // invoiceCount: 0, // Removed as we are now counting unique numbers
-                lineCount: 0,
-                unitsTotal: 0,
-                quantityTotal: 0,
-                uniqueInvoiceNumbers: new Set() // Set to store unique invoice numbers
-            });
-        
-            // Calculate unique counts from the Sets
-            const uniqueInvoiceCount = totals.uniqueInvoiceNumbers.size; // Get the size of the Set
-        
-            // Format values
-            // Ensure formatter, formatLargeNumber, formatNumberWithCommas, and formatCurrency are available
-            // Added basic checks for formatter and functions
-            const salesTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.salesTotal) : totals.salesTotal;
-            const lineCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.lineCount) : totals.lineCount;
-            const unitsTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.unitsTotal) : totals.unitsTotal;
-            const quantityTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.quantityTotal) : totals.quantityTotal;
-            const salesAmountFormatted = this.formatCurrency ? this.formatCurrency(totals.salesTotal, "USD") : totals.salesTotal;
-        
-        
-            // Update UI elements (tiles)
-            this._updateTile("_IDGenNumericContent1", salesTotalFormatted); // Sales
-            // Update TileContent2 with the unique invoice count
-            this._updateTile("_IDGenNumericContent2", this.formatNumberWithCommas ? this.formatNumberWithCommas(uniqueInvoiceCount) : uniqueInvoiceCount); // Unique Invoices
-            this._updateTile("_IDGenNumericContent3", lineCountFormatted); // Lines
-            this._updateTile("_IDGenNumericContent4", unitsTotalFormatted); // Units
-        
-            // Update Footer
-            this._updateTile("FooterText1", quantityTotalFormatted); // Quantity (Assuming FooterText1 is updated by _updateTile)
-            this._updateTile("FooterText2", salesAmountFormatted); // Amount (Same as Sales) (Assuming FooterText2 is updated by _updateTile)
         },
+       /**
+         * Executes a server-side OData read to fetch application-wide totals 
+         * from the CAP service, applying any active filters from the Smart Filter Bar.
+        */
+        _calculateTotals: function (oEvent) {
+            // 1. Get the necessary control references
+            const oSmartTable = this.byId("table0");
+            if (!oSmartTable) {
+                console.error("Smart Table 'table0' not found.");
+                return;
+            }
+
+            const sFilterBarId = oSmartTable.getSmartFilterId();
+            const oFilterBar = this.byId(sFilterBarId);
+            
+            // Check if the SFB exists and is initialized
+            if (!oFilterBar) {
+                console.warn("Smart Filter Bar not ready for filter extraction.");
+                return;
+            }
+
+            // 2. Extract and clean up the filters from the Smart Filter Bar
+            // We get the raw filter array, which may contain complex groups (AND/OR).
+            const aComplexFilters = oFilterBar.getFilters() || [];
+            const aSimpleFilters = [];
+
+            // Helper function to flatten the complex filter structure (to avoid serialization issues)
+            const extractSimpleFilters = (oFilter) => {
+                // Recursively extract filters if it's a composite filter (AND/OR group)
+                if (oFilter.aFilters && oFilter.aFilters.length > 0) {
+                    oFilter.aFilters.forEach(extractSimpleFilters);
+                } else if (oFilter.sOperator && oFilter.oValue1 !== undefined) {
+                    // It's a simple filter: Property, Operator, Value
+                    aSimpleFilters.push(oFilter);
+                }
+                // NOTE: This intentionally skips filters with null/undefined values
+            };
+            
+            aComplexFilters.forEach(extractSimpleFilters);
+            
+            // 3. Execute the OData read on the Singleton entity
+            // This server call is now responsible for calculation and filter application.
+            this.getView().getModel().read("/GlobalTotals(1)", {
+                // Pass the array of clean filter objects
+                filters: aSimpleFilters, 
+                
+                success: (oData) => {
+                    // Data received from CAP: {ID: 1, TotalSales: 9828221.40, TotalUnits: ..., TotalLines: ...}
+
+                    const fTotalSales = oData.TotalSales || 0;
+                    const fTotalUnits = oData.TotalUnits || 0;
+                    const iTotalLines = oData.TotalLines || 0;
+                    const iUniqueInvoices = oData.UniqueInvoices || 0;
+                    
+                    
+
+
+                    // 4. Format and update UI elements
+                    
+                    // Sales formatting (Assuming formatLargeNumber and formatCurrency are available)
+                    const salesTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(fTotalSales) : fTotalSales;
+                    const salesAmountFormatted = this.formatCurrency ? this.formatCurrency(fTotalSales, "USD") : fTotalSales;
+                    
+                    // Quantity/Line formatting
+                    const unitsTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(fTotalUnits) : fTotalUnits;
+                    const lineCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(iTotalLines) : iTotalLines;
+                    const uniqueInvoiceCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(iUniqueInvoices) : iUniqueInvoices;
+
+                    // Update Tiles
+                    this._updateTile("_IDGenNumericContent1", salesTotalFormatted);       // Sales
+                    this._updateTile("_IDGenNumericContent2", uniqueInvoiceCountFormatted);// Unique Invoices
+                    this._updateTile("_IDGenNumericContent3", lineCountFormatted);        // Lines
+                    this._updateTile("_IDGenNumericContent4", unitsTotalFormatted);       // Units
+                    
+                    // Update Footer (Assuming FooterText1 is for Quantity and FooterText2 is for Amount)
+                    this._updateTile("FooterText1", unitsTotalFormatted);  // Quantity/Units
+                    this._updateTile("FooterText2", salesAmountFormatted); // Amount
+                    
+                },
+                error: (oError) => {
+                    console.error("Failed to fetch server totals:", oError);
+                    // Optionally clear the tiles or display a friendly error message
+                    this._updateTile("_IDGenNumericContent1", "N/A");
+                    this._updateTile("_IDGenNumericContent2", "N/A");
+                    // ...
+                }
+            });
+        },
+        // _calculateTotals: function () {
+        //     const oSmartTable = this.getView().byId("table0");
+        //     const oTable = oSmartTable.getTable();
+        //     const oBinding = oTable.getBinding("rows");
+        
+        //     if (!oBinding) {
+        //         console.warn("Table binding is missing.");
+        //         // Optionally clear tiles/footers if no binding
+        //         this._updateTile("_IDGenNumericContent1", "0");
+        //         this._updateTile("_IDGenNumericContent2", "0");
+        //         this._updateTile("_IDGenNumericContent3", "0");
+        //         this._updateTile("_IDGenNumericContent4", "0");
+        //         this._updateTile("FooterText1", "0");
+        //         this._updateTile("FooterText2", "0"); // Assuming FooterText2 is also updated by _updateTile
+        //         return;
+        //     }
+        
+        //     const aContexts = oBinding.getContexts(0, oBinding.getLength());
+        //     // Check if contexts array is available and not empty
+        //     if (!aContexts || aContexts.length === 0) {
+        //         console.warn("Data is not available for calculation.");
+        //         // Clear tiles/footers if no data
+        //         this._updateTile("_IDGenNumericContent1", "0");
+        //         this._updateTile("_IDGenNumericContent2", "0");
+        //         this._updateTile("_IDGenNumericContent3", "0");
+        //         this._updateTile("_IDGenNumericContent4", "0");
+        //         this._updateTile("FooterText1", "0");
+        //         this._updateTile("FooterText2", "0"); // Assuming FooterText2 is also updated by _updateTile
+        //         return;
+        //     }
+        
+        //     // Initialize totals and sets
+        //     const totals = aContexts.reduce((acc, oContext) => {
+        //         const oData = oContext.getObject();
+        //         if (!oData) return acc;
+        
+        //         // Sales & Amount Calculation (Applied to all rows)
+        //         acc.salesTotal += parseFloat(oData.AMOUNT_NETWR || 0);
+        
+        //         // Lines Calculation (Count every row)
+        //         acc.lineCount++;
+        
+        //         // Units Calculation (Units per case * Quantity - Applied to all rows)
+        //         // const unitsPerCase = parseFloat(oData.UNITS_PER_CASE || 0);
+        //         const quantity = parseFloat(oData.QUANTITY_FKIMG || 0);
+        //         acc.unitsTotal += quantity;
+        
+        //         // Footer Quantity Calculation (Sum QUANTITY_FKIMG - Applied to all rows)
+        //         acc.quantityTotal += quantity;
+        
+        //         // --- New Logic for Unique Invoice Count ---
+        //         // Only process if the type is "Invoice"
+        //         if (oData.VTEXT_FKART === "Invoice") {
+        //             // Add the invoice number to the Set for unique count if it exists
+        //             if (oData.INVOICE_CREDIT_VBELN) {
+        //                 acc.uniqueInvoiceNumbers.add(oData.INVOICE_CREDIT_VBELN);
+        //             }
+        //             // Note: The previous 'invoiceCount' which counted rows with type "Invoice"
+        //             // is removed as the requirement is for the unique invoice number count.
+        //         }
+        //         // --- End New Logic ---
+        
+        //         return acc;
+        //     }, {
+        //         salesTotal: 0,
+        //         // invoiceCount: 0, // Removed as we are now counting unique numbers
+        //         lineCount: 0,
+        //         unitsTotal: 0,
+        //         quantityTotal: 0,
+        //         uniqueInvoiceNumbers: new Set() // Set to store unique invoice numbers
+        //     });
+        
+        //     // Calculate unique counts from the Sets
+        //     const uniqueInvoiceCount = totals.uniqueInvoiceNumbers.size; // Get the size of the Set
+        
+        //     // Format values
+        //     // Ensure formatter, formatLargeNumber, formatNumberWithCommas, and formatCurrency are available
+        //     // Added basic checks for formatter and functions
+        //     const salesTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.salesTotal) : totals.salesTotal;
+        //     const lineCountFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.lineCount) : totals.lineCount;
+        //     const unitsTotalFormatted = this.formatNumberWithCommas ? this.formatNumberWithCommas(totals.unitsTotal) : totals.unitsTotal;
+        //     const quantityTotalFormatted = this.formatLargeNumber ? this.formatLargeNumber(totals.quantityTotal) : totals.quantityTotal;
+        //     const salesAmountFormatted = this.formatCurrency ? this.formatCurrency(totals.salesTotal, "USD") : totals.salesTotal;
+        
+        
+        //     // Update UI elements (tiles)
+        //     this._updateTile("_IDGenNumericContent1", salesTotalFormatted); // Sales
+        //     // Update TileContent2 with the unique invoice count
+        //     this._updateTile("_IDGenNumericContent2", this.formatNumberWithCommas ? this.formatNumberWithCommas(uniqueInvoiceCount) : uniqueInvoiceCount); // Unique Invoices
+        //     this._updateTile("_IDGenNumericContent3", lineCountFormatted); // Lines
+        //     this._updateTile("_IDGenNumericContent4", unitsTotalFormatted); // Units
+        
+        //     // Update Footer
+        //     this._updateTile("FooterText1", quantityTotalFormatted); // Quantity (Assuming FooterText1 is updated by _updateTile)
+        //     this._updateTile("FooterText2", salesAmountFormatted); // Amount (Same as Sales) (Assuming FooterText2 is updated by _updateTile)
+        // },
         
         // Assuming these helper functions exist in your controller or a formatter file
         // Example placeholder for _updateTile

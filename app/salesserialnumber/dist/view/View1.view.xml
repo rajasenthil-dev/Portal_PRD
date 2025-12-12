@@ -129,7 +129,7 @@
                     useTablePersonalisation="true" 
                     customData:p13nDialogSettings='{filter:{visible:false}}'
                     showRowCount="true" 
-                    persistencyKey="SmartTableAnalytical_Explored"
+                    persistencyKey="SmartTableAnalytical_SERIALNUM"
                     enableAutoColumnWidth="true" 
                     class="sapUiResponsiveContentPadding"
                 >
@@ -163,7 +163,7 @@
                             </t:Column>
                             <t:Column id="_IDGenColumn10" width='7.813rem' hAlign="End" sortProperty="INVOICE_CREDIT_NO">
                                 <t:customData>
-                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_NO", "leadingProperty": "INVOICE_CREDIT_VBELN", "columnIndex": 1}'/>
+                                    <core:CustomData key="p13nData" value='\{"columnKey": "INVOICE_CREDIT_NO", "leadingProperty": "INVOICE_CREDIT_NO", "columnIndex": 1}'/>
                                 </t:customData>
                                 <Text id="_IDGenText30" text="{i18n>SALESSERIALNUMBER.INVOICE_CREDIT_NO}"></Text>
                                 <t:template>

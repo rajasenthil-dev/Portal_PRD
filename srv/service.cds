@@ -942,7 +942,70 @@ using SSNMFRNRNAME as ENTSSNMFRNRNAME from '../db/schema';
 using SSNSALESORG as ENTSSNSALESORG from '../db/schema';
 
 
-
+aspect Totals {
+    TotalSales                  : Decimal(33, 2);
+    TotalUnits                  : Decimal(33, 0);
+    TotalLines                  : Integer;
+    UniqueInvoices              : Integer;
+    PURCHASE_ORDER_BSTKD        : String(35);
+    PRODUCT_DESCRIPTION_MAKTX   : String(40); 
+    UNITS_PER_CASE              : Integer;
+    QUANTITY_FKIMG              : Decimal(13,0);
+    AMOUNT_NETWR                : Decimal(20,2);
+    LOT_CHARG                   : String(10);
+    BILL_TO_KUNRE_ANA           : String(10);
+    SHIP_TO_KUNWE_ANA           : String(10);
+    BILL_TO_NAME                : String(70);
+    SHIP_TO_NAME                : String(70);
+    ADDRESS_1                   : String(35);
+    ADDRESS_2                   : String(40);
+    POSTAL_CODE_PSTLZ           : String(10);
+    CITY_ORT01                  : String(35);
+    MFRPN                       : String(40);
+    PROVINCE_REGIO              : String(3);
+    MFRNR                       : String(10);
+    UPC_EAN11                   : String(18);
+    WAREHOUSE                   : String(12);
+    TRACKING_TRACKN             : String(35);
+    SKU_MATNR                   : String(7);
+    COMMENT                     : String(13);
+    CURRENT                     : String(3);
+    INVOICE_CREDIT_VBELN        : String(10);
+    UNIT_PRICE                  : Decimal(32,2);
+    WAERK                       : String(5);
+    RBTXT                       : String(20);
+    VTEXT_FKART                 : String(40);
+    CO_VKORG                    : String(4);
+    TBTXT                       : String(60);
+    AUGRU_AUFT                  : String(3);
+    MWSBP                       : Decimal(18,2);
+    VKBUR                       : String(4);
+    INVOICE_DATE_FKDAT          : String(8);
+    //DELEVERY_DATE_VDATU       : String(8); 
+    EXPIRY_DATE_VFDAT           : String(8);
+    PATIENT_ID                  : String(20);
+    MFRNR_NAME                  : String(35); 
+    WERKS                       : String(4);
+    PLANT_NAME                  : String(30);
+    INV_YEAR                    : String(4);
+    AUART                       : String(4);
+    BEZEI                       : String(40);
+    BEZEI_AUART                 : String(20);
+    VBELN_VBAK                  : String(10);
+    VGBEL                       : String(10);
+    TIME_OFF_DELIVERY           : String(9);
+    DELIVERY_DATE               : String(11);
+    BILL_TO_TYPE                : String(20);
+    KTOKD                       : String(4);
+    TXT30                       : String(30);
+    KTEXT                       : String(20);
+    KZWI1                       : Decimal(34,2);
+    KZWI3                       : Decimal(33,2);
+    TOTAL_AMOUNT                : Decimal(38,2);
+    // OBKNR                    : Integer64     @title : '{i18n>SALESBYCURRENT.OBKNR}';
+    SMTP_ADDR                   : String(241);
+    TEL_NUMBER                  : String(30);
+}
 service SALES {
     
     // ℹ️ Ivoice History Related Entities
@@ -1055,6 +1118,7 @@ service SALES {
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
+
     entity SBCINVOICE as projection on ENTSBCINVOICE;
 
     @requires: 'authenticated-user'
@@ -1062,8 +1126,19 @@ service SALES {
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
         { grant: 'READ', to: 'Internal' }
     ]
+    
+    
+    entity GlobalTotals : Totals {
+        key ID : Integer; 
+    };
+    
+    @requires: 'authenticated-user'
+    @restrict: [
+        { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },
+        { grant: 'READ', to: 'Internal' }
+    ]
     entity SBCPRODDESC as projection on ENTSBCPRODDESC;
-
+    
     @requires: 'authenticated-user'
     @restrict: [
         { grant: 'READ', to: 'Viewer', where: '$user.ManufacturerNumber = MFRNR' },

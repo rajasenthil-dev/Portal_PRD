@@ -103,7 +103,7 @@
                     useVariantManagement="true"
                     useTablePersonalisation="true"
                     showRowCount="true"
-                    persistencyKey="SmartTableAnalytical_Explored"
+                    persistencyKey="SmartTableAnalytical_SHIPHIS"
                     demandPopin="true"
                     customData:p13nDialogSettings='{filter:{visible:false}}'
                     enableAutoColumnWidth="true"
