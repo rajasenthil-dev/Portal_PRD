@@ -1,4 +1,10 @@
-
+/* ********* Modification Log *****************************************************************
+CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+CHG0238269  INC3492677     Jan-12-26  Raja Senthil
+DESCRIPTION: App: Inventory Status:- Maintain with "MANUFACTURER_MFRNR" in projection 
+Entity: INVSTATUSPRODUCTCODE, INVSTATUSVKBUR in order to filter Value help for External User
+based on assigned Manufacturer
+***********************************************************************************************/
 // Processing Service
 using RETURNS as ENTRETURNS from '../db/schema';
 using RETCUST as ENTRETCUST from '../db/schema';
@@ -620,7 +626,11 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVSTATUSPRODUCTCODE as projection on ENTINVSTATUSPRODUCTCODE{
-        PRODUCT_CODE
+        PRODUCT_CODE,
+        /* Begin of CHG0238269 - INC3492677, For external User: "MANUFACTURER_MFRNR" to be considered
+        as for External user in general data filtered based Manufacturer Number */
+        MANUFACTURER_MFRNR
+        /* End of CHG0238269 - INC3492677 */    
     }
     group by PRODUCT_CODE;
 
@@ -666,7 +676,11 @@ service INVENTORY {
         { grant: 'READ', to: 'Internal' }
     ]
     entity INVSTATUSVKBUR as projection on ENTINVSTATUSVKBUR{
-        VKBUR
+        VKBUR,
+        /* Begin of CHG0238269 - INC3492677, For external User: "MANUFACTURER_MFRNR" to be considered,
+        as for External user in general data filtered based Manufacturer Number */
+        MANUFACTURER_MFRNR
+        /* End of CHG0238269 - INC3492677 */
     }
     group by VKBUR;
 

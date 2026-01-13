@@ -1,3 +1,8 @@
+/* ********* Modification Log *****************************************************************
+CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+CHG0238269  INC3492677     Jan-12-26  Raja Senthil
+DESCRIPTION: During format of Summation of Total Sales, Handle null value flow of String "0"
+***********************************************************************************************/
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/Dialog",
@@ -514,8 +519,10 @@ sap.ui.define([
             return oDateFormat.format(oDate);
         },
         formatLargeNumber: function(value) {
-            if (!value || isNaN(value)) return "0";
-        
+            /* Begin of CHG0238269 - INC3492677 - Handle String "0" */
+            // if (!value || isNaN(value)) return "0";
+            if (!value || isNaN(value) || value == "0") return "0";
+            /* End of CHG0238269 - INC3492677 */
             const absValue = Math.abs(value); // Handle negative numbers safely
         
             if (absValue >= 1_000_000_000) {

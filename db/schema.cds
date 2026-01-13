@@ -1,3 +1,8 @@
+/* ********* Modification Log *****************************************************************
+CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+CHG0238269  INC3492677     Jan-12-26  Raja Senthil
+DESCRIPTION: App: Inventory Status:- Update Char Length of "MANUFACTURER_MFRNR"
+***********************************************************************************************/
 @cds.search: { PRODUCTSTANDARDID, PRODUCT, CATEGORY, MANUFACTURERNUMBER, SALESORG, CREATIONDATE, PRODUCTDESCRIPTION_EN, SIZEUOM }
 @cds.persistence.exists
 // entity ITEMMASTER_1 
@@ -102,7 +107,10 @@ entity INVENTORYSTATUS
         LAB_SAMPLE_QTY       : Decimal(38,0)        @title: '{i18n>INVENTORYSTATUS.LAB_SAMPLE_QTY}';
         UNIT                 : String(3)      @title: '{i18n>INVENTORYSTATUS.UNIT}';
     key VKBUR                : String(4)      @title: '{i18n>INVENTORYSTATUS.VKBUR}';
-        MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
+    /* Begin of CHG0238269 - INC3492677 - Char Length Update */
+        // MANUFACTURER_MFRNR   : String(40)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
+        MANUFACTURER_MFRNR   : String(10)     @title: '{i18n>INVENTORYSTATUS.MANUFACTURER_MFRNR}';
+    /* End of CHG0238269 - INC3492677 - Char Length Update */
         MFRNR_NAME           : String(35)     @title: '{i18n>INVENTORYSTATUS.MFRNR_NAME}';
     key PLANT                : String(4)      @title: '{i18n>INVENTORYSTATUS.PLANT}';
         PLANT_NAME           : String(30)     @title: '{i18n>INVENTORYSTATUS.PLANT_NAME}';
