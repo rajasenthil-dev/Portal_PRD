@@ -309,16 +309,8 @@
                                      core:require="{Formatter: 'invaudittrail/model/formatter'}"
                                      id="_IDGenText5" 
                                      text="{
-                                        path: 'CONFIRMED_AT', 
-                                        type: 'sap.ui.model.odata.type.DateTime',
-                                        formatOptions: {
-                                            source: {
-                                                pattern: 'yyyy-MM-dd HH:mm:ss.SSS',
-                                                timeZone: 'America/New_York'
-                                            },
-                                            pattern: 'h:mma',
-                                            timeZone: 'America/New_York'
-                                        }
+                                        path: 'CONFIRMED_AT', formatter: 'Formatter.formatTimeEST'
+                                        
                                     }"/>
                                 </t:template>
                             </t:Column>

@@ -164,8 +164,8 @@ entity INVENTORYAUDITTRAIL
     key SHELF_LIFE_EXP_DT   : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.SHELF_LIFE_EXP_DT}';
     key CURRENT             : String(3)     @title: '{i18n>INVENTORYAUDITTRAIL.CURRENT}';
         DIN                 : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.DIN}';
-        POSTING_DATE        : Date     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
-        POSTING_TIME        : Time          @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}';
+        POSTING_DATE        : String(8)     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_DATE}';
+        POSTING_TIME        : String(6)     @title: '{i18n>INVENTORYAUDITTRAIL.POSTING_TIME}';
         MFRNR_NAME          : String(35)    @title: '{i18n>INVENTORYAUDITTRAIL.MFRNR_NAME}';
     key WERKS               : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.WERKS}';
         SALES_ORG           : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.SALES_ORG}';
@@ -174,7 +174,7 @@ entity INVENTORYAUDITTRAIL
         RBTXT               : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.RBTXT}';
         TBTXT               : String(60)    @title: '{i18n>INVENTORYAUDITTRAIL.TBTXT}';
         STOCK_QTY           : Decimal(38,2) @title: '{i18n>INVENTORYAUDITTRAIL.MENGE}';
-    key CONFIRMED_AT        : Timestamp     @title: '{i18n>INVENTORYAUDITTRAIL.CONFIRMED_AT}';
+    key CONFIRMED_AT        : String(14)    @title: '{i18n>INVENTORYAUDITTRAIL.CONFIRMED_AT}';
     key STGE_LOC            : String(4)     @title: '{i18n>INVENTORYAUDITTRAIL.LGORT}';
     key INV_ADJ_RECEIPT     : String(20)    @title: '{i18n>INVENTORYAUDITTRAIL.INV_MATDOC_ITEM}';
         SRC_STORAGE_BIN     : String(18)    @title: '{i18n>INVENTORYAUDITTRAIL.SRC_STORAGE_BIN}';
