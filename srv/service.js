@@ -7,14 +7,14 @@ const { DateTime } = require('luxon');
 **/
 module.exports = cds.service.impl(async function () {
   
-  /** Your existing "before('*')" normalization handler and all other logic below */
+  /** Your existing "before('*')" normalization handler and all other logic below 
   this.before('*', async (req) => {
     const mfrnr = req.user?.attr?.ManufacturerNumber;
     if (mfrnr && !Array.isArray(mfrnr)) {
       req.user.attr.ManufacturerNumber = [mfrnr];
       console.log(`Normalized ManufacturerNumber to array:`, req.user.attr.ManufacturerNumber);
     }
-  });
+  }); */
     /**
      * This 'before' handler runs before any operation on any entity in this service.
      * It's the perfect place to prepare the user object for authorization by ensuring
