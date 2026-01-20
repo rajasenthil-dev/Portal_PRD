@@ -211,7 +211,7 @@ module.exports = cds.service.impl(async function () {
       PRICING: 'MATNR',
       OPENORDERS: 'MATNR',
       BACKORDERS: 'MATNR',
-      SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO ',
+      SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO',
       MAINPAGEINVENTORY: 'SKU_MATNR'
   };
   /**
@@ -338,7 +338,7 @@ module.exports = cds.service.impl(async function () {
     const allowedPivotSKUs = [
       '1000199', // Cystadrops
       '1000207', // LEDAGA
-      '1000206', '1000205', '1000204', '1000203',
+      '1000206', '1000205', '1000204', '1000203', // Signifor
       '1000202', '1000198', '1000201', '1000200' // Signifor
     ];
 
