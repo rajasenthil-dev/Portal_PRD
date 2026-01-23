@@ -7,14 +7,14 @@ const { DateTime } = require('luxon');
 **/
 module.exports = cds.service.impl(async function () {
   
-  /** Your existing "before('*')" normalization handler and all other logic below */
+  /** Your existing "before('*')" normalization handler and all other logic below 
   this.before('*', async (req) => {
     const mfrnr = req.user?.attr?.ManufacturerNumber;
     if (mfrnr && !Array.isArray(mfrnr)) {
       req.user.attr.ManufacturerNumber = [mfrnr];
       console.log(`Normalized ManufacturerNumber to array:`, req.user.attr.ManufacturerNumber);
     }
-  });
+  }); */
     /**
      * This 'before' handler runs before any operation on any entity in this service.
      * It's the perfect place to prepare the user object for authorization by ensuring
@@ -211,7 +211,7 @@ module.exports = cds.service.impl(async function () {
       PRICING: 'MATNR',
       OPENORDERS: 'MATNR',
       BACKORDERS: 'MATNR',
-      SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO ',
+      SHIPPINGSTATUS: 'OBD_ITEM_NO_ITEMNO',
       MAINPAGEINVENTORY: 'SKU_MATNR'
   };
   /**
@@ -338,7 +338,7 @@ module.exports = cds.service.impl(async function () {
     const allowedPivotSKUs = [
       '1000199', // Cystadrops
       '1000207', // LEDAGA
-      '1000206', '1000205', '1000204', '1000203',
+      '1000206', '1000205', '1000204', '1000203', // Signifor
       '1000202', '1000198', '1000201', '1000200' // Signifor
     ];
 
