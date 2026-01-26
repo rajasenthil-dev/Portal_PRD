@@ -688,7 +688,7 @@ module.exports = cds.service.impl(async function () {
 
     // 1. Define the list of entities that need this special visibility logic.
     const entitiesWithRoleBasedMfrnr = ['INVOICEHISTORY', 'SALESBYCURRENT'];
-/* Comment out as not Used - Keeping for future reference 
+/* Comment out as function: "addRoleBasedVisibilityFlag" not Used - Keeping for future reference */
     // 2. Define the 'after' handler to distinguish between Internal and External users.
     const addRoleBasedVisibilityFlag = function(results, req) {
         // If there are no results (e.g., a read for a non-existent ID), exit.
@@ -716,7 +716,7 @@ module.exports = cds.service.impl(async function () {
             record.isMfrnrHidden = shouldHideMfrnr;
         });
     };
-*/
+
     this.on('READ', 'MediaFile', async (req, next) => {
         
         const isAdmin = req.user.is('Admin');
