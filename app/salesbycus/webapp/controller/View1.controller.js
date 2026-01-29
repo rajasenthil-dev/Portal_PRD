@@ -1,7 +1,10 @@
 /* ********* Modification Log *****************************************************************
-CHG#:       INCIDENT#:     DATE:       DEVELOPER:
-CHG0238269  INC3492677     Jan-12-26  Raja Senthil
+Version CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+1.0     CHG0238269  INC3492677     Jan-12-26  Raja Senthil
 DESCRIPTION: During format of Summation of Total Sales, Handle null value flow of String "0"
+2.0     CHG0242283  INC3611792     Jan-27-26  Raja Senthil N 
+DESCRIPTION: - During format of Summation of Total Sales: Handle summation value less than "1000"
+               by Converting to Number(from String) before formatting
 ***********************************************************************************************/
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
@@ -532,7 +535,11 @@ sap.ui.define([
             } else if (absValue >= 1_000) {
                 return (value / 1_000).toFixed(2) + "K";
             } 
-            return value.toFixed(2); // For values less than 1K
+        /* Begin of CHG0242283 - INC3611792 - 
+            Convert to Number(from String) before formatting */             
+            // return value.toFixed(2); // For values less than 1K
+            return Number(value).toFixed(2); // For values less than 1K
+        /* End of CHG0242283 - INC3611792 */            
         },
         formatNumberWithCommas: function(value) {
             if (!value || isNaN(value)) return "0";
