@@ -1,3 +1,9 @@
+/* ********* Modification Log ************************************************************
+Version CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+1.0     CHG0243133  INC3591169     Jan-29-26  Raja Senthil N
+DESCRIPTION: Ignore below exclusion logic for Customer Master App so that report
+             displays customers belong to "HOSPITAL" ship to type for S.Org: 4000 
+*******************************************************************************************/
 const cds = require('@sap/cds');
 const deduplicateForInternal = require('./utils/deduplication');
 const { DateTime } = require('luxon');
@@ -313,6 +319,8 @@ module.exports = cds.service.impl(async function () {
       'SSNSALESORG',
       'SSNMFRNRNAME'
     ]);
+    /* Begin of CHG0243133 INC3591169 - Ignore below exclusion logic for Customer Master App
+   so that report displays customers belong to "HOSPITAL" ship to type for S.Org: 4000  
     const dynamicEntityRules = {
       CUSTOMERMASTER: {
         triggerField: 'VKORG',       // field to check in the incoming query
@@ -321,7 +329,7 @@ module.exports = cds.service.impl(async function () {
         excludeValue: 'HOSPITAL'
       }
     };
-
+   End of CHG0243133 INC3591169 */
     // Map of fields to exclude from fuzzy LIKE per entity
     const fuzzyExclusions = {
       SALESBYCURRENTAPP: ['CURRENT'],
@@ -394,6 +402,8 @@ module.exports = cds.service.impl(async function () {
           console.warn(`⚠️ Failed to parse VKORG filter for ${entityName}: ${e.message}`);
         }
       }
+/* Begin of CHG0243133 INC3591169 - Ignore below exclusion logic for Customer Master App
+   so that report displays customers belong to "HOSPITAL" ship to type for S.Org: 4000      
       // === 3) CUSTOMERMASTER SalesOrg = 4000 exclusion logic via entity map ===
       const dynamicRule = dynamicEntityRules[entityName];
 
@@ -429,6 +439,7 @@ module.exports = cds.service.impl(async function () {
           where.push(exclusionFilter);
         }
       }
+      End of CHG0243133 INC3591169 */      
       // === 4) Fuzzy transformation (data-type-safe + per-field exclusions) ===
       if (fuzzySearchEntities.has(entityName) && where.length) {
         const transformed = [];
