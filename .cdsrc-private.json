@@ -5,10 +5,10 @@
         "binding": {
           "type": "cf",
           "apiEndpoint": "https://api.cf.us20.hana.ondemand.com",
-          "org": "McKesson Corporation_discovery-sunrise",
-          "space": "Datasphere_Dev",
-          "instance": "mck-portal-ds-db-4",
-          "key": "mck-portal-ds-db-4-key"
+          "org": "McKesson_Canada_CF_PROD",
+          "space": "MCKCAN_DATASPHERE_PROD",
+          "instance": "mck-portal-ds-db-prod",
+          "key": "mck-portal-ds-db-prod-key"
         },
         "kind": "hana-cloud",
         "vcap": {
@@ -19,8 +19,8 @@
         "binding": {
           "type": "cf",
           "apiEndpoint": "https://api.cf.us20.hana.ondemand.com",
-          "org": "McKesson Corporation_discovery-sunrise",
-          "space": "Datasphere_Dev",
+          "org": "McKesson_Canada_CF_PROD",
+          "space": "MCKCAN_DATASPHERE_PROD",
           "instance": "mck-portal-auth",
           "key": "mck-portal-auth-key"
         },

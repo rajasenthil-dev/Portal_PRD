@@ -1,3 +1,8 @@
+/* ********* Modification Log ************************************************************
+Version CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+1.0     CHG0245690  INC3591169     Feb-02-26  Bryan Cash/Raja Senthil N
+DESCRIPTION: OKTA Group Update 
+*******************************************************************************************/
 // // OKTA helper module for REST operations (list users, get user, update user, groups, membership)
 // // Uses axios for HTTP calls. Uses env vars: OKTA_BASE_URL, OKTA_API_TOKEN
 // const axios = require('axios');
@@ -281,7 +286,11 @@ async function updateUser(userId, profile = {}, groupIds = []) {
   // if (Array.isArray(groupIds) && groupIds.length > 0) {
   //   await _replaceUserGroups(userId, groupIds);
   // }
-
+/* Begin of INC3591169 - OKTA Group Update */
+  if (Array.isArray(groupIds) && groupIds.length > 0) {
+    await _replaceUserGroups(userId, groupIds);
+  }
+/* End of INC3591169 - OKTA Group Update */
   return;
 }
 
@@ -290,8 +299,12 @@ async function _replaceUserGroups(userId, newGroupIds) {
 
   // Fetch current group assignments
   const currentGroupsResp = await api.get(`/users/${encodeURIComponent(userId)}/groups`);
-  const currentGroupIds = currentGroupsResp.data.map(g => g.id);
-
+/* Begin of INC3591169 - OKTA Group Update */
+  // const currentGroupIds = currentGroupsResp.data.map(g => g.id);
+  const currentGroupIds = currentGroupsResp.data
+  .filter(g => g.type === 'OKTA_GROUP') // 👈 critical
+  .map(g => g.id);
+/* End of INC3591169 - OKTA Group Update */
   // Remove from any group not in the new list
   for (const oldGroupId of currentGroupIds) {
     if (!newGroupIds.includes(oldGroupId)) {
