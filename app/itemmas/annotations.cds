@@ -1,3 +1,8 @@
+/* ********* Modification Log *****************************************************************
+Version: CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+  1.0    CHG0245631  INC3619116     Feb-02-26   Raja Senthil N
+DESCRIPTION: ITEM Master Listing App: Add new column field: UNITS_PER_PALLET
+***********************************************************************************************/
 using INVENTORY as service from '../../srv/service';
 
 annotate INVENTORY.ITEMMASTER with @(
@@ -141,7 +146,15 @@ annotate INVENTORY.ITEMMASTER with @(
                 Value : SALESORG,
                 Label : '{i18n>ITEMMASTER.SALESORG}',
                 ![@HTML5.CssDefaults] : {width : '5rem'}
+            },
+/* Begin of INC3619116 - New Column "UNITS_PER_PALLET"*/
+            {
+                $Type : 'UI.DataField',
+                Value : UNITS_PER_PALLET,
+                Label : '{i18n>ITEMMASTER.UNITS_PER_PALLET}',
+                ![@HTML5.CssDefaults] : {width : '7.5rem'}
             }
+/* End of INC3619116*/
         ],
     },
 )

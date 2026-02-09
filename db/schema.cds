@@ -1,7 +1,9 @@
 /* ********* Modification Log *****************************************************************
-CHG#:       INCIDENT#:     DATE:       DEVELOPER:
-CHG0238269  INC3492677     Jan-12-26  Raja Senthil
+Version: CHG#:       INCIDENT#:     DATE:       DEVELOPER:
+  1.0    CHG0238269  INC3492677     Jan-12-26  Raja Senthil
 DESCRIPTION: App: Inventory Status:- Update Char Length of "MANUFACTURER_MFRNR"
+  2.0    CHG0245631  INC3619116     Feb-02-26   Raja Senthil N
+DESCRIPTION: ITEM Master Listing App: Add new column field: UNITS_PER_PALLET
 ***********************************************************************************************/
 @cds.search: { PRODUCTSTANDARDID, PRODUCT, CATEGORY, MANUFACTURERNUMBER, SALESORG, CREATIONDATE, PRODUCTDESCRIPTION_EN, SIZEUOM }
 @cds.persistence.exists
@@ -46,7 +48,10 @@ entity ITEMMASTER
         MANUFACTURERNUMBER    : String(10)    @title: '{i18n>ITEMMASTER.MANUFACTURERNUMBER}';
         MFRNR_PART_NUMBER     : String(40)    @title: '{i18n>ITEMMASTER.MFRNR_PART_NUMBER}';
         MFRNR_NAME            : String(35)    @title: '{i18n>ITEMMASTER.MFRNR_NAME}';
-        STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';       
+        STPRS                 : Decimal(11,2) @title: '{i18n>ITEMMASTER.STPRS}';
+/* Begin of INC3619116 - Add new field*/
+        UNITS_PER_PALLET      : Decimal(5,0) @title: '{i18n>ITEMMASTER.UNITS_PER_PALLET}';
+/* End of INC3619116 */               
 }
 
 
