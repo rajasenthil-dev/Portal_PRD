@@ -46,3 +46,5 @@ using from './mckaccesshubuser/annotations';
 using from './salesserialnumber/annotations';
 
 using from './accessmanager1/annotations';
+
+using from './mfglogoupld/annotations';
